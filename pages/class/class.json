@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "课堂管理",
+  "usingComponents": {
+    "students": "/pages/class_students/class_students",
+    "signin": "/pages/class_signin/class_signin",
+    "chat": "/pages/class_chat/class_chat",
+    "notice": "/pages/class_notice/class_notice"
+  }
+  
+}

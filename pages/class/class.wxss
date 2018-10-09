@@ -1,0 +1,67 @@
+.classinfm{
+  height: 60rpx;
+  margin-top: 60rpx;
+  margin-left: 40rpx;
+  position: relative;
+}
+
+.classpicture{
+  height: 60rpx;
+  width: 60rpx;
+}
+
+.classname{
+  font-size: 36rpx;
+  font-weight: bold;
+  position: absolute;
+  top: 10rpx;
+  left: 80rpx;
+}
+
+.classgreat{
+  font-size: 36rpx;
+  font-weight: bold;
+  position: absolute;
+  top: 10rpx;
+  left: 160rpx;
+}
+
+.clear{
+  display: flex;
+  flex-direction: column;
+  height:4rpx;
+  background: #eeeeee;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+
+.plate-img image{
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.contact-tab {
+	display: flex;
+  text-align: center;
+  height: 120rpx;
+  justify-content: center;
+}
+
+
+.contact-tab view {
+	height: 50rpx;
+	margin: 0 20rpx;
+	line-height: 50rpx;
+  text-align: center;
+	border-bottom: 5rpx solid transparent;
+	font-size: 32rpx;
+  font-weight: bold;
+}
+.contact-tab view.current {
+	color: #1DA27F;
+  text-align: center;
+}
+

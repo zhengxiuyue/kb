@@ -1,0 +1,47 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/more/more",
+    "pages/mine/mine",
+    "pages/mine_class_now/mine_class_now",
+    "pages/mine_class_history/mine_class_history",
+    "pages/class/class",
+    "pages/class_students/class_students",
+    "pages/class_chat/class_chat",
+    "pages/class_signin/class_signin",
+    "pages/class_notice/class_notice"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#1DA27F",
+    "navigationBarTitleText": "课表小程序",
+    "navigationBarTextStyle":"white",
+    "backgroundColor" :"#fff"
+  },
+    "tabBar": {
+      "color": "#888",
+      "selectedColor": "#1DA27F",
+      "backgroundColor": "#fff",
+      "borderStyle": "black",
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "text": "首页",
+          "iconPath": "image/index.png",
+          "selectedIconPath": "image/indexselected.png"
+        },
+        {
+          "pagePath": "pages/more/more",
+          "text": "更多",          
+          "iconPath": "image/more.png",
+          "selectedIconPath": "image/moreselected.png"
+        },
+        {
+          "pagePath": "pages/mine/mine",
+          "text": "我的",
+          "iconPath": "image/mine.png",
+          "selectedIconPath": "image/mineselected.png"
+        }
+      ]
+    }
+}

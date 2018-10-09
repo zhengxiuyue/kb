@@ -1,0 +1,54 @@
+
+
+
+    <view class='classcard' bindtap='classcard'>
+      <view class='classtop'>
+        <text class='classname'>模特</text>
+      </view>
+      <view class='classbottom'>
+        <view class='classinfm'>时间：2018/10/12-2018/12/29  周六9:30--11:00</view>
+        <view class='classinfm'>地点：老年人文化室204
+        </view>
+        <view class='classinfm'>班次：6班</view>
+      </view>
+    </view>
+
+
+      <view class='classcard' bindtap='classcard'>
+      <view class='classtop'>
+        <text class='classname'>模特</text>
+      </view>
+      <view class='classbottom'>
+        <view class='classinfm'>时间：2018/10/12-2018/12/29  周六9:30--11:00</view>
+        <view class='classinfm'>地点：老年人文化室204
+        </view>
+        <view class='classinfm'>班次：6班</view>
+      </view>
+    </view>
+ 
+
+      <view class='classcard' bindtap='classcard'>
+      <view class='classtop'>
+        <text class='classname'>模特</text>
+      </view>
+      <view class='classbottom'>
+        <view class='classinfm'>时间：2018/10/12-2018/12/29  周六9:30--11:00</view>
+        <view class='classinfm'>地点：老年人文化室204
+        </view>
+        <view class='classinfm'>班次：6班</view>
+      </view>
+    </view>
+  
+
+       <view class='classcard' bindtap='classcard'>
+      <view class='classtop'>
+        <text class='classname'>模特</text>
+      </view>
+      <view class='classbottom'>
+        <view class='classinfm'>时间：2018/10/12-2018/12/29  周六9:30--11:00</view>
+        <view class='classinfm'>地点：老年人文化室204
+        </view>
+        <view class='classinfm'>班次：6班</view>
+      </view>
+    </view>
+  

@@ -1,0 +1,15 @@
+<view class='title'>
+  请选择签到课堂
+</view>
+
+<button class='select' type="defaule">2018/09/10已经签到</button>
+
+<button class='select select2' type="defaule" bindtap="clickButton">正在发布签到，点击发布签到</button>
+
+<button class='select select3' type="defaule">第三节课</button>
+
+<button class='select select3' type="defaule">第四节课</button>
+
+<button class='select select3' type="defaule">第五节课</button>
+
+<button class='select select3' type="defaule">第六节课</button>

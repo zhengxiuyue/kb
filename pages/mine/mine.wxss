@@ -1,0 +1,51 @@
+.page{
+  display: flex;
+  flex-direction: column;
+  background: #F8F8F8;
+}
+
+.user{
+  height: 120rpx;
+  background-color: #fff;
+  margin: 20rpx;
+  border-radius: 6rpx;
+  line-height: 120rpx;
+}
+
+.name{
+  font-size: 32rpx;
+  margin: 20rpx;
+  font-weight: bold;
+}
+
+.title{
+  margin-bottom: 20rpx;
+}
+
+.class_now{
+  font-size: 38rpx;
+  color: #1DA27F;
+  font-weight: bold;
+  margin-right: 20rpx;
+  margin-left: 40rpx;
+}
+
+.class_history{
+  font-size: 30rpx; 
+}
+
+.contact-tab {
+	display: flex;
+}
+.contact-tab view {
+	height: 70rpx;
+	margin: 0 30rpx;
+	line-height: 70rpx;
+	border-bottom: 5rpx solid transparent;
+	font-size: 32rpx;
+  font-weight: bold;
+}
+.contact-tab view.current {
+	border-color: #1DA27F;
+	color: #1DA27F;
+}

@@ -1,0 +1,29 @@
+/* pages/mine_class_now/mine_class_now.wxss */
+
+.classcard{
+  height: 220rpx;
+  margin: 20rpx;
+  border-radius: 2rpx;
+ }
+
+.classtop{
+  height: 70rpx;
+  background-color: #ff9900;
+  color: #fff;
+  line-height: 70rpx;
+  font-size: 36rpx;
+  font-weight: bold;
+  padding-left: 20rpx;
+}
+
+.classbottom{
+  height: 150rpx;
+  background-color: #fff;
+  font-size: 30rpx;
+}
+
+.classinfm{
+  padding: 0rpx 10rpx;
+  padding-top: 8rpx;
+}
+

@@ -1,0 +1,19 @@
+<view class='page'>
+
+  <view class='user'>
+    <text class='username'>你的名字</text>
+  </view>
+
+<!--  <view class='title'>
+    <text class='class_now'>当前课堂</text>
+    <text class='class_history' bindtap='class_history'>历史课堂</text>
+  </view>-->
+
+  <view class="contact-tab">
+		<view class="{{current === 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">当前课堂</view>
+		<view class="{{current === 1 ? 'current' : ''}}" bindtap="changeTab" data-index="1">历史课堂</view>
+	</view>
+
+  	<class-now style="{{current === 0 ? 'display: inline;': 'display: none;'}}" data="{{teacherContacts}}" binddetail="gotoContactDetail" search="{{value}}"></class-now>
+	<class-history style="{{current === 1 ? 'display: inline;': 'display: none;'}}" data="{{parentContacts}}"></class-history>
+  </view>

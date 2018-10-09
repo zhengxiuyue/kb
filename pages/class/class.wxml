@@ -1,0 +1,62 @@
+<view class='page'>
+  <view class='classinfm'>
+    <image src='/image/class.png' class='classpicture'></image>
+    <view class='classname'>模特</view>
+    <view class='classgreat'>6班</view>
+  </view>
+
+  <view class='clear'></view>
+
+  <view class="contact-tab">
+		<view class="{{current === 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">
+      <view class="plate-img" wx:if="{{current==0}}">
+        <image src="/image/studentsselected.png"></image>
+      </view>
+      <view class="plate-img" wx:elif="{{current!=0}}">
+        <image src="/image/students.png"></image>
+      </view>
+      成员
+    </view>
+
+		<view class="{{current === 1 ? 'current' : ''}}" bindtap="changeTab" data-index="1">
+      <view class="plate-img" wx:if="{{current==1}}">
+        <image src="/image/signinselected.png"></image>
+      </view>
+      <view class="plate-img" wx:elif="{{current!=1}}">
+        <image src="/image/signin.png"></image>
+      </view>
+      签到
+    </view>
+
+    <view class="{{current === 2 ? 'current' : ''}}" bindtap="changeTab" data-index="2">
+      <view class="plate-img" wx:if="{{current==2}}">
+        <image src="/image/chatselected.png"></image>
+      </view>
+      <view class="plate-img" wx:elif="{{current!=2}}">
+        <image src="/image/chat.png"></image>
+      </view>
+      讨论
+    </view>
+
+		<view class="{{current === 3 ? 'current' : ''}}" bindtap="changeTab" data-index="3">
+      <view class="plate-img" wx:if="{{current==3}}">
+          <image src="/image/noticeselected.png"></image>
+      </view>
+      <view class="plate-img" wx:elif="{{current!=3}}">
+        <image src="/image/notice.png"></image>
+      </view>
+      通知
+    </view>
+	</view>
+
+  <view class='clear'></view>
+  
+  <students style="{{current === 0 ? 'display: inline;': 'display: none;'}}" binddetail="gotoContactDetail" search="{{value}}"></students>
+	<signin style="{{current === 1 ? 'display: inline;': 'display: none;'}}" ></signin>
+  <chat style="{{current === 2 ? 'display: inline;': 'display: none;'}}"  binddetail="gotoContactDetail" search="{{value}}"></chat>
+	<notice style="{{current === 3 ? 'display: inline;': 'display: none;'}}"></notice>
+  
+
+
+
+</view>
