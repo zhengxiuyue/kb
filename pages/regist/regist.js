@@ -1,11 +1,11 @@
-// pages/xiuyue/xiuyue.js
+// pages/regist/regist.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    current:0
+
   },
 
   /**
@@ -62,11 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  changeTab(e) {
-    let index = parseInt(e.currentTarget.dataset.index || 0)
-    this.setData({
-      current: index
-    })
   }
 })

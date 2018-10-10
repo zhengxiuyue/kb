@@ -1,11 +1,15 @@
-// pages/xiuyue/xiuyue.js
+// pages/login/login.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    current:0
+    items: [
+      {value: '老师',id:'0'},
+      {value: '学生',id:'1'},
+    ],
+    uerId:null
   },
 
   /**
@@ -63,10 +67,11 @@ Page({
   onShareAppMessage: function () {
 
   },
-  changeTab(e) {
-    let index = parseInt(e.currentTarget.dataset.index || 0)
-    this.setData({
-      current: index
+
+  login:function(e){
+    wx.switchTab({
+      url: '/pages/index/index',
     })
   }
+  
 })

@@ -1,0 +1,36 @@
+<!--pages/login/login.wxml-->
+<image src='/image/logo.png' class='logo'></image>
+
+<view class='infm'>
+  <image src='/image/tel.png' class='icon'></image>
+  <input class='ipt' type='number' placeholder='请输入手机号码' placeholder-class='placeholder' ></input>
+</view>
+
+<view class='infm'>
+  <image src='/image/password.png' class='icon2'></image>
+  <input class='ipt' type='password' placeholder='请输入密码' placeholder-class='placeholder'>qingshunnn</input>
+</view>
+
+<view class='infm-noborder'>
+  <image src='/image/user.png' class='icon3'></image>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio" wx:for-items="{{items}}" wx:key="xxx">
+      <radio value="{{item.id}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+  </radio-group>
+</view>
+
+
+<view class='infm-half'>
+  <image src='/image/code.png' class='icon2'></image>
+  <input class='ipt' type='number' placeholder='请输入验证码' placeholder-class='placeholder' >qingshunnn</input>
+</view>
+
+<view class='submit'>
+  <button class='login' bindtap='login' data-cid="{{ item.id }}">登入</button>
+  <text class='forget'>忘记密码</text>
+  <text class='regist'>注册</text>
+</view>
+
+
+

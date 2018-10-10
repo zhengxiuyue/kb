@@ -1,14 +1,17 @@
 <!--index.wxml-->
 <view class="page">
+<text>{{userId}}</text>
+<!--近期开课标题-->
+  <view class="title">
+    <text class="app-title">近期开课</text>
+    <view class="more" bindtap='more'>更多
+      <image src="/image/icon-jt.png" class="iconjt">
+      </image>
+    </view> 
+  </view>
 
- <view class="title">
-  <text class="app-title">近期开课</text>
- <view class="more">更多<image src="/image/icon-jt.png" class="iconjt"></image></view> 
-
-  
- </view>
-
- <view class="class">
+<!--近期开课课堂-->
+  <view class="class">
 
  <view class="oneclass">
  <text class="classname">模特</text>
