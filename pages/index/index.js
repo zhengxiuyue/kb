@@ -1,18 +1,23 @@
 // pages/xiuyue/xiuyue.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userId:null
+    userid:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  //获取全局变量
   onLoad: function (options) {
-  
+    var userId=app.globalData.userId
+    this.setData({
+      userid: userId
+    })
   },
 
   /**

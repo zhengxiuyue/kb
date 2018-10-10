@@ -1,4 +1,5 @@
 // pages/login/login.js
+var app = getApp();
 Page({
 
   /**
@@ -67,7 +68,11 @@ Page({
   onShareAppMessage: function () {
 
   },
-
+  //修改全局变量selectCodition的值
+  radioChange: function (e) {
+    var con = e.detail.value
+    app.globalData.userId=con
+  },
   login:function(e){
     wx.switchTab({
       url: '/pages/index/index',

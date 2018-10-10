@@ -5,6 +5,7 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    
 	//测试lala
     // 登录
     wx.login({
@@ -34,7 +35,8 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    userId:""
   }
 })
 

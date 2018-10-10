@@ -1,6 +1,5 @@
 <!--index.wxml-->
 <view class="page">
-<text>{{userId}}</text>
 <!--近期开课标题-->
   <view class="title">
     <text class="app-title">近期开课</text>
