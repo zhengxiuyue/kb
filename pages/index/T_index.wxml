@@ -1,0 +1,5 @@
+<!--pages/index/T_index.wxml-->
+<import src="/pages/tabBar/tabBar.wxml"/> 
+
+ <template is="tabBar" data="{{tabBar}}"/>
+<text>pages/index/T_index.wxml</text>

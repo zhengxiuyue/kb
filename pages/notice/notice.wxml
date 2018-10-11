@@ -1,0 +1,32 @@
+<!--pages/notice/notice.wxml-->
+<view class='page'>
+  <view class='notice'>
+    <view class='content'>
+    hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa
+      <text> hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa</text>
+    </view>
+    <view class='time'>
+      2018年10月6号
+    </view>
+  </view>
+
+  <view class='notice'>
+    <view class='content'>
+    hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa
+      <text> hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa</text>
+    </view>
+    <view class='time'>
+      2018年10月6号
+    </view>
+  </view>
+
+  <view class='notice'>
+    <view class='content'>
+    hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa
+      <text> hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa</text>
+    </view>
+    <view class='time'>
+      2018年10月6号
+    </view>
+  </view>
+</view>
