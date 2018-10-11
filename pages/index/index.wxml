@@ -1,5 +1,8 @@
 <!--index.wxml-->
+
 <view class="page">
+<import src="/pages/tabBar/tabBar.wxml"/> 
+<template is="tabBar" data="{{tabBar}}"/>
 <!--近期开课标题-->
   <view class="title">
     <text class="app-title">近期开课</text>
@@ -12,84 +15,90 @@
 <!--近期开课课堂-->
   <view class="class">
 
- <view class="oneclass">
- <text class="classname">模特</text>
- <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
-  <image src="/image/icon-jt.png" class="iconjtimg"></image>
- </view>
+    <view class="oneclass">
+      <text class="classname">模特</text>
+      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
+      <image src="/image/icon-jt.png" class="iconjtimg"></image>
+    </view>
 
-  <view class="oneclass">
- <text class="classname">模特</text>
- <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
-  <image src="/image/icon-jt.png" class="iconjtimg"></image>
- </view>
+    <view class="oneclass">
+      <text class="classname">模特</text>
+      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
+      <image src="/image/icon-jt.png" class="iconjtimg"></image>
+    </view>
 
-  <view class="oneclass">
- <text class="classname">模特</text>
- <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
-  <image src="/image/icon-jt.png" class="iconjtimg"></image>
- </view>
+    <view class="oneclass">
+      <text class="classname">模特</text>
+      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
+      <image src="/image/icon-jt.png" class="iconjtimg"></image>
+    </view>
 
-  <view class="oneclass">
- <text class="classname">模特</text>
- <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
-  <image src="/image/icon-jt.png" class="iconjtimg"></image>
- </view>
+    <view class="oneclass">
+      <text class="classname">模特</text>
+      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
+      <image src="/image/icon-jt.png" class="iconjtimg"></image>
+    </view>
 
-   <view class="oneclass">
- <text class="classname">模特</text>
- <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
-  <image src="/image/icon-jt.png" class="iconjtimg"></image>
- </view>
-
- </view>
-
-<view class="title">
- <text class="app-title">通知</text>
- <view class="more">更多<image src="/image/icon-jt.png" class="iconjt"></image></view> 
- </view>
-
- <view class="notice">
- 原11月19日 10:00-12:00 模特 基础班 课堂改到11月21日 10:00-12:00
- </view>
-
- <view class="title">
- <text class="app-title">我的课表</text>
- </view>
+    <view class="oneclass">
+      <text class="classname">模特</text>
+      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
+      <image src="/image/icon-jt.png" class="iconjtimg"></image>
+    </view>
+  </view>
 
 
- <view class="class">
+  <view class="title">
+    <text class="app-title" >通知</text>
+    <view class="more" bindtap='notice'>更多<image src="/image/icon-jt.png" class="iconjt"></image></view> 
+  </view>
 
- <view class="oneclass">
- <text class="classname">模特</text>
- <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
-  <image src="/image/icon-jt.png" class="iconjtimg"></image>
- </view>
 
-  <view class="oneclass">
- <text class="classname">模特</text>
- <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
-  <image src="/image/icon-jt.png" class="iconjtimg"></image>
- </view>
+  <swiper class="notice" vertical="true" autoplay="true" circular="true" interval="4000">
+    <block wx:for="{{msgList}}">
+      <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
+        <swiper-item>
+          <view class="swiper_item">{{item.title}}</view>
+        </swiper-item>
+      </navigator>
+    </block>
+  </swiper>
 
-  <view class="oneclass">
- <text class="classname">模特</text>
- <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
-  <image src="/image/icon-jt.png" class="iconjtimg"></image>
- </view>
+  <view class="title">
+    <text class="app-title">我的课表</text>
+  </view>
 
-  <view class="oneclass">
- <text class="classname">模特</text>
- <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
-  <image src="/image/icon-jt.png" class="iconjtimg"></image>
- </view>
+  <view class="class">
 
-   <view class="oneclass">
- <text class="classname">模特</text>
- <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
-  <image src="/image/icon-jt.png" class="iconjtimg"></image>
- </view>
- </view>
- </view>
+    <view class="oneclass" bindtap='enterclass'>
+      <text class="classname">模特</text>
+      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
+      <image src="/image/icon-jt.png" class="iconjtimg"></image>
+    </view>
+
+    <view class="oneclass" bindtap='enterclass'>
+      <text class="classname">模特</text>
+      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
+      <image src="/image/icon-jt.png" class="iconjtimg"></image>
+    </view>
+
+    <view class="oneclass" bindtap='enterclass'>
+      <text class="classname">模特</text>
+      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
+      <image src="/image/icon-jt.png" class="iconjtimg"></image>
+    </view>
+  
+    <view class="oneclass" bindtap='enterclass'>
+      <text class="classname">模特</text>
+      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
+      <image src="/image/icon-jt.png" class="iconjtimg"></image>
+    </view>
+
+    <view class="oneclass" bindtap='enterclass'>
+      <text class="classname">模特</text>
+      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
+      <image src="/image/icon-jt.png" class="iconjtimg"></image>
+    </view>
+  </view>
+</view>
 
 

@@ -74,9 +74,18 @@ Page({
     app.globalData.userId=con
   },
   login:function(e){
-    wx.switchTab({
-      url: '/pages/index/index',
-    })
+    var con = app.globalData.userId
+    if(con==1){
+      wx.redirectTo({
+        url: '/pages/index/index',
+      })
+    }
+    else if (con == 0){
+      wx.redirectTo({
+        url: '/pages/index/T_index',
+      })
+    }
+    
   }
   
 })

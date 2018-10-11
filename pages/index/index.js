@@ -14,10 +14,19 @@ Page({
    */
   //获取全局变量
   onLoad: function (options) {
+    app.editTabBar();
+    var that = this;
     var userId=app.globalData.userId
     this.setData({
       userid: userId
     })
+    console.log(options.title)
+    this.setData({
+      msgList: [
+        { url: "url", title: "原11月12日模特课改为11月13号同一时间同一地点上课！" },
+        { url: "url", title: "原11月12日模特课取消！" },
+        { url: "url", title: "原11月12日模特课改为11月13号同一时间同一地点上课！" }]
+    });
   },
 
   /**
@@ -69,8 +78,18 @@ Page({
 
   },
   more:function(){
-    wx.switchTab({
+    wx.redirectTo({
       url: '/pages/more/more'
+    })
+  },
+  notice: function () {
+    wx.navigateTo({
+      url: '/pages/notice/notice',
+    })
+  },
+  enterclass:function(){
+    wx.navigateTo({
+      url: '/pages/class_students/class_students',
     })
   }
 })

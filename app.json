@@ -1,9 +1,14 @@
 {
   "pages":[
-    "pages/login/login",
     "pages/index/index",
+    "pages/login/login",
+    "pages/tabBar/tabBar",
+    
+    "pages/index/T_index",
     "pages/more/more",
     "pages/mine/mine",
+    "pages/mine/T_mine",
+    "pages/notice/notice",
     "pages/regist/regist",
     "pages/mine_class_now/mine_class_now",
     "pages/mine_class_history/mine_class_history",
@@ -19,31 +24,5 @@
     "navigationBarTitleText": "课表小程序",
     "navigationBarTextStyle":"white",
     "backgroundColor" :"#fff"
-  },
-    "tabBar": {
-      "color": "#888",
-      "selectedColor": "#1DA27F",
-      "backgroundColor": "#fff",
-      "borderStyle": "black",
-      "list": [
-        {
-          "pagePath": "pages/index/index",
-          "text": "首页",
-          "iconPath": "image/index.png",
-          "selectedIconPath": "image/indexselected.png"
-        },
-        {
-          "pagePath": "pages/more/more",
-          "text": "更多",          
-          "iconPath": "image/more.png",
-          "selectedIconPath": "image/moreselected.png"
-        },
-        {
-          "pagePath": "pages/mine/mine",
-          "text": "我的",
-          "iconPath": "image/mine.png",
-          "selectedIconPath": "image/mineselected.png"
-        }
-      ]
-    }
+  }
 }
