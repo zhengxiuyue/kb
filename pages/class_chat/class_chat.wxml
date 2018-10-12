@@ -1,3 +1,19 @@
-<view>
-讨论
+<view class='students'>
+  <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
+  <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+  <view class='stu_name'>
+    赵XX
+  </view>
+  <view class='chat'>
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx
+  </view>
+  <view class='time'>
+    2018年9月19日 19:09
+  </view>
+  <image src='{{like}}' class='like'></image>
+  <view class='like_num'>{{like_num}}</view>
+  <image src='{{comment}}' class='comment' bindtap='comment'></image>
+  <view class='comment_num'>{{comment_num}}</view>
 </view>
+
+<image src='{{edit}}' class='edit' bindtap='edit'></image>

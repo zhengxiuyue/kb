@@ -54,12 +54,10 @@
 
 
   <swiper class="notice" vertical="true" autoplay="true" circular="true" interval="4000">
-    <block wx:for="{{msgList}}">
-      <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
+    <block wx:for="{{msgList}}" wx:key="{{}}">
         <swiper-item>
           <view class="swiper_item">{{item.title}}</view>
         </swiper-item>
-      </navigator>
     </block>
   </swiper>
 

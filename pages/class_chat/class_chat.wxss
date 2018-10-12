@@ -1,0 +1,80 @@
+.headphoto{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius:100rpx;
+  margin-left: 20rpx;
+}
+
+.students{
+  background-color: #fff;
+  margin: 20rpx;
+  position: relative;
+}
+
+.stu_name{
+  font-weight: bold;
+  position: absolute;
+  top:20rpx;
+  left: 120rpx;
+}
+
+.stu_tel{
+  font-size: 32rpx;
+  position: absolute;
+  top:25rpx;
+  left: 250rpx;
+}
+
+.chat{
+  word-break:break-all;
+  padding: 10rpx;
+}
+
+.time{
+  font-size: 28rpx;
+  color: #ccc;
+  padding: 10rpx;
+}
+
+.like{
+  height: 40rpx;
+  width: 40rpx;
+  position: absolute;
+  bottom: 20rpx;
+  right: 100rpx;
+}
+
+.comment{
+  height: 35rpx;
+  width: 35rpx;
+  position: absolute;
+  bottom: 20rpx;
+  right: 40rpx;
+}
+
+.edit{
+  height: 120rpx;
+  width: 120rpx;
+  float: right;
+  position: fixed;
+  bottom: 120px;
+  right: 10px;  
+}
+
+.like_num{
+  color: #1DA27F;
+  font-size: 30rpx;
+  font-weight: bold;
+  position: absolute;
+  bottom: 40rpx;
+  right: 85rpx;
+}
+
+.comment_num{
+  color: #1DA27F;
+  font-size: 30rpx;
+  font-weight: bold;
+  position: absolute;
+  bottom: 40rpx;
+  right: 20rpx;
+}

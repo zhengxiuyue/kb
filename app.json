@@ -1,22 +1,23 @@
 {
   "pages":[
-    "pages/index/index",
     "pages/login/login",
+    "pages/index/index",
+    "pages/regist/regist",
     "pages/tabBar/tabBar",
-    
     "pages/index/T_index",
     "pages/more/more",
     "pages/mine/mine",
     "pages/mine/T_mine",
     "pages/notice/notice",
-    "pages/regist/regist",
     "pages/mine_class_now/mine_class_now",
     "pages/mine_class_history/mine_class_history",
     "pages/class/class",
     "pages/class_students/class_students",
     "pages/class_chat/class_chat",
     "pages/class_signin/class_signin",
-    "pages/class_notice/class_notice"
+    "pages/class_notice/class_notice",
+    "pages/class_notice_edit/class_notice_edit",
+    "pages/class_comment/class_comment"
   ],
   "window":{
     "backgroundTextStyle":"dark",

@@ -5,7 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    "imgUrl": "/image/headphoto.png",
+    "like":"/image/like.png",
+    "comment":"/image/comment.png",
+    "edit": "/image/edit.png",
+    "like_num":"2",
+    "comment_num": "3"
   },
 
   /**
@@ -62,5 +67,15 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  edit:function(e){
+    wx.navigateTo({
+      url: '/pages/class_notice_edit/class_notice_edit',
+    })
+  },
+  comment:function(e){
+    wx.navigateTo({
+      url: '/pages/class_comment/class_comment',
+    })
   }
 })
