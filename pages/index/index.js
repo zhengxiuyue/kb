@@ -89,7 +89,7 @@ Page({
   },
   enterclass:function(){
     wx.navigateTo({
-      url: '/pages/class_students/class_students',
+      url: '/pages/class/class',
     })
   }
 })

@@ -6,16 +6,35 @@
 
 .user{
   height: 120rpx;
-  background-color: #fff;
-  margin: 20rpx;
-  border-radius: 6rpx;
-  line-height: 120rpx;
+  margin: 0rpx 20rpx;
 }
 
-.name{
-  font-size: 32rpx;
-  margin: 20rpx;
+.username{
+  font-size: 36rpx;
   font-weight: bold;
+  line-height: 120rpx;
+  justify-content: center;
+  margin-left: 40rpx;
+}
+
+.exit{
+  font-size: 30rpx;
+  color: #1DA27F;
+  font-weight: bold;
+  margin-left: 140rpx;
+  position: absolute;
+  top: 39rpx;
+}
+
+.userAvatarUrl{
+  height: 100rpx;
+  width: 100rpx;
+  border-radius:50%;
+  overflow:hidden;
+  display:block;
+  position: absolute;
+  right: 100rpx;
+  top: 10rpx;
 }
 
 .title{
@@ -42,10 +61,22 @@
 	margin: 0 30rpx;
 	line-height: 70rpx;
 	border-bottom: 5rpx solid transparent;
-	font-size: 32rpx;
+	font-size: 30rpx;
   font-weight: bold;
 }
 .contact-tab view.current {
 	border-color: #1DA27F;
 	color: #1DA27F;
+  font-size: 34rpx;
+}
+
+.clear{
+  display: flex;
+  flex-direction: column;
+  height:4rpx;
+  background: #eeeeee;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  margin-top: 5rpx;
+  margin-bottom: 30rpx;
 }

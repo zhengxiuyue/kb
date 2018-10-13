@@ -7,8 +7,10 @@ Page({
   data: {
     "imgUrl": "/image/headphoto.png",
     "like":"/image/like.png",
+    "dislike": "/image/dislike.png",
     "comment":"/image/comment.png",
     "edit": "/image/edit.png",
+    islike:1,
     "like_num":"2",
     "comment_num": "3"
   },
@@ -77,5 +79,19 @@ Page({
     wx.navigateTo({
       url: '/pages/class_comment/class_comment',
     })
+  },
+  changelike(e) {
+    let that = this;
+    if(that.data.islike==0)
+    {
+      console.log(that.data.islike)
+      that.data.islike = 1
+    }
+    else if (that.data.islike == 1)
+    {
+      console.log(that.data.islike)
+      that.data.islike = 0
+      console.log(that.data.islike)
+    }
   }
 })

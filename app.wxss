@@ -1,20 +1,11 @@
 /**app.wxss**/
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-} 
-
 .page{
   display: flex;
   flex-direction: column;
   background: #F8F8F8;
-  z-index: 1;
 }
+
+
 
 .menu-item{ 
   width: 32%;    
@@ -46,8 +37,6 @@
   bottom: 0rpx;  
   width: 100%;    
   padding: 0px 2%;  
-  opacity:1;
-  z-index: 9;
 }   
 
 .button{  

@@ -41,6 +41,11 @@
   margin:20rpx 80rpx 50rpx 80rpx;
 }
 
+.infm-total{
+  position: relative;
+  height: 60rpx;
+}
+
 .infm-half{
   position: relative;
   height: 60rpx;
@@ -51,6 +56,20 @@
 .ipt{
   position: absolute;
   left:80rpx;
+}
+
+
+.canvas{
+  width: 90px;
+  height: 28px;
+  border-radius: 14px;
+}
+
+
+.canvas1{
+  position: absolute;
+  right:-310rpx;
+  top: 0rpx;
 }
 
 .placeholder{

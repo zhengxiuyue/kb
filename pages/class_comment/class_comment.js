@@ -5,7 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    "imgUrl": "/image/headphoto.png",
+    current:0,
+    "like_num": "2",
+    "comment_num": "3"
   },
 
   /**
@@ -62,5 +65,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  changeTab(e) {
+    let index = parseInt(e.currentTarget.dataset.index || 0)
+    this.setData({
+      current: index
+    })
   }
 })

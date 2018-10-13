@@ -1,1 +1,83 @@
 /* pages/regist/regist.wxss */
+.logo{
+  width: 100%;
+  height: 310rpx;
+}
+
+.infm{
+  position: relative;
+  height: 60rpx;
+  margin:20rpx 80rpx 50rpx 80rpx;
+  border-bottom:4rpx solid #dddee1;
+}
+
+.infm-noborder{
+  position: relative;
+  height: 60rpx;
+  margin:20rpx 80rpx 50rpx 80rpx;
+}
+
+.infm-half{
+  position: relative;
+  height: 60rpx;
+  margin:20rpx 45% 0rpx 80rpx;
+  border-bottom:4rpx solid #dddee1;
+}
+
+.ipt{
+  position: absolute;
+  left:10rpx;
+}
+
+.btn{
+  position: absolute;
+  right:10rpx;
+  bottom: 5rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  justify-content: center;
+  color: #dddee1;
+  border:none;
+  background-color: #fff;
+}
+
+.placeholder{
+  color: #dddee1;
+}
+
+.identity{
+  margin-left:80rpx; 
+  position: relative;
+}
+
+.radio-group{
+  position: absolute;
+  top: -4rpx;
+  left: 100rpx;
+}
+
+.login{
+  margin: 80rpx;
+  background-color: #1DA27F;
+  color: #fff;
+}
+
+.submit{
+  position: relative;
+}
+
+.forget{
+  position: absolute;
+  top: 100rpx;
+  font-size: 30rpx;
+  left: 80rpx;
+}
+
+.regist{
+  position: absolute;
+  font-size: 30rpx;
+  color: #1DA27F;
+  top: 100rpx;
+  right: 80rpx;
+}
+

@@ -3,12 +3,12 @@
 
 <view class='infm'>
   <image src='/image/tel.png' class='icon'></image>
-  <input class='ipt' type='number' placeholder='请输入手机号码' placeholder-class='placeholder' ></input>
+  <input class='ipt' type='number' value='{{tel}}' bindinput='telInput' placeholder='请输入手机号码' placeholder-class='placeholder' ></input>
 </view>
 
 <view class='infm'>
   <image src='/image/password.png' class='icon2'></image>
-  <input class='ipt' type='password' placeholder='请输入密码' placeholder-class='placeholder'>qingshunnn</input>
+  <input class='ipt' type='password' value='{{password}}' bindinput='passwordInput' placeholder='请输入密码' placeholder-class='placeholder'>qingshunnn</input>
 </view>
 
 <view class='infm-noborder'>
@@ -20,17 +20,22 @@
   </radio-group>
 </view>
 
-
+<view class='infm-total'>
 <view class='infm-half'>
   <image src='/image/code.png' class='icon2'></image>
-  <input class='ipt' type='number' placeholder='请输入验证码' placeholder-class='placeholder' >qingshunnn</input>
+  <input class='ipt' type='number' placeholder='请输入验证码' bindinput='authcodeInput' value='{{authcode}}'  placeholder-class='placeholder' ></input>
 </view>
+<canvas canvas-id="canvas" bindtap='change' class='canvas1'></canvas>
+</view>
+
+
 
 <view class='submit'>
   <button class='login' bindtap='login' data-cid="{{ item.id }}">登入</button>
   <text class='forget'>忘记密码</text>
-  <text class='regist'>注册</text>
+  <text class='regist' bindtap='regist'>注册</text>
 </view>
+
 
 
 

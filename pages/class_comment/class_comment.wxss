@@ -1,1 +1,50 @@
 /* pages/class_comment/class_comment.wxss */
+.headphoto{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius:100rpx;
+  margin-left: 20rpx;
+}
+
+.students{
+  background-color: #fff;
+  margin: 20rpx;
+  position: relative;
+}
+
+.stu_name{
+  font-weight: bold;
+  position: absolute;
+  top:20rpx;
+  left: 120rpx;
+}
+
+.chat{
+  word-break:break-all;
+  padding: 10rpx;
+}
+
+.time{
+  font-size: 28rpx;
+  color: #ccc;
+  padding: 10rpx;
+}
+
+.contact-tab {
+	display: flex;
+}
+
+.contact-tab view {
+	height: 70rpx;
+	margin: 0 30rpx;
+	line-height: 70rpx;
+	border-bottom: 5rpx solid transparent;
+	font-size: 32rpx;
+  font-weight: bold;
+}
+
+.contact-tab view.current {
+	border-color: #1DA27F;
+	color: #1DA27F;
+  font-size: 38rpx;
+}

@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": ""
+  "navigationBarTitleText": "课程讨论",
+  "usingComponents": {
+    "comment": "/pages/class_comment/comment",
+    "like": "/pages/class_comment/like" 
+    }
 }

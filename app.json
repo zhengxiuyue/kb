@@ -17,7 +17,9 @@
     "pages/class_signin/class_signin",
     "pages/class_notice/class_notice",
     "pages/class_notice_edit/class_notice_edit",
-    "pages/class_comment/class_comment"
+    "pages/class_comment/class_comment",
+    "pages/class_comment/comment",
+    "pages/class_comment/like"
   ],
   "window":{
     "backgroundTextStyle":"dark",

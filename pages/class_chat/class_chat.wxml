@@ -10,7 +10,10 @@
   <view class='time'>
     2018年9月19日 19:09
   </view>
-  <image src='{{like}}' class='like'></image>
+  <view bindtap='changelike'>
+  <image wx:if="{{islike==1}}" class="like" src="{{like}}" background-size="cover"></image>
+   <image wx:else class="like" src="{{dislike}}" background-size="cover"></image>
+  </view>
   <view class='like_num'>{{like_num}}</view>
   <image src='{{comment}}' class='comment' bindtap='comment'></image>
   <view class='comment_num'>{{comment_num}}</view>
