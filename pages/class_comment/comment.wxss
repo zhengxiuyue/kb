@@ -1,0 +1,41 @@
+/* pages/class_comment/comment.wxss */
+.headphoto{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius:100rpx;
+  margin-left: 20rpx;
+}
+
+.students{
+  margin: 20rpx;
+  position: relative;
+}
+
+.stu_name{
+  font-weight: bold;
+  position: absolute;
+  top:20rpx;
+  left: 120rpx;
+}
+
+.chat{
+  word-break:break-all;
+  padding: 10rpx;
+}
+
+.time{
+  font-size: 28rpx;
+  color: #ccc;
+  padding: 10rpx;
+}
+
+.clear{
+  display: flex;
+  flex-direction: column;
+  height:4rpx;
+  background: #eeeeee;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
