@@ -1,8 +1,114 @@
-.log-list {
+.page{
   display: flex;
   flex-direction: column;
-  padding: 40rpx;
+  background: #F8F8F8;
+  padding: 10rpx;
+  color: #000;
+  font-family: "微软雅黑";
 }
-.log-item {
-  margin: 10rpx;
+
+.area{
+  display: flex;
+  font-size: 34rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  padding-left: 20rpx;
+}
+.text-blod{
+  font-weight: bold;
+}
+
+.areaIcon{
+  width:40rpx;
+  height:40rpx; 
+}
+
+.section{
+  margin: 2rpx 0rpx;
+}
+
+.pikerImg{
+  width:30rpx;
+  height:30rpx; 
+}
+
+.title{
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;   
+}
+
+.app-title{
+ font-size: 34rpx;
+ font-weight: bold ;
+ font-family: '微软雅黑';
+ margin-left: 20rpx;
+ margin-top: 20rpx;
+ padding-left: 20rpx;
+ border-left:8rpx solid #1DA27F;
+}
+
+.more{
+font-size: 30rpx;
+float: right;
+margin-right: 60rpx;
+font-family: '微软雅黑';
+position: relative;
+color: #666666;
+}
+
+.iconjt{
+  width:60rpx;
+  height:60rpx;
+  margin-top: 48rpx;
+  position: absolute;
+  right: -40rpx;
+  top: -55rpx;
+}
+
+.content
+{
+  text-align: left;
+  display: block;
+  background-color: #fff;
+  margin:0rpx 20rpx; 
+  border-radius: 10rpx;
+  font-size: 34rpx;
+  padding: 20rpx;
+}
+
+.content-title
+{
+  display: inline-block;
+  color:#1DA27F;
+  font-weight: bold;
+  font-size: 40rpx;
+  width: 180rpx;
+  position: relative;
+  top: -20rpx;
+}
+
+.content-middle{
+  display: inline-block;
+  line-height: 1.5;
+  margin-left: 20rpx;
+}
+
+.content-rank
+{
+  display: inline-block;
+  font-weight: bold;
+}
+
+.content-time{
+  font-size: 30rpx;
+}
+
+.content-btn{
+  float: right;
+  position: relative;
+  top: -10rpx;
+}
+
+.break{
+  height: 20rpx;
 }

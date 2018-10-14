@@ -19,7 +19,11 @@
     "pages/class_notice_edit/class_notice_edit",
     "pages/class_comment/class_comment",
     "pages/class_comment/comment",
-    "pages/class_comment/like"
+    "pages/class_comment/like",
+    "pages/class_des/class_des",
+    "pages/class_signUp/class_signUp",
+    "pages/classList1/classList1",
+    "pages/classList2/classList2"
   ],
   "window":{
     "backgroundTextStyle":"dark",

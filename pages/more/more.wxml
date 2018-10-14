@@ -1,4 +1,132 @@
 <!--more.wxml-->
- <import src="/pages/tabBar/tabBar.wxml"/> 
- <template is="tabBar" data="{{tabBar}}"/>
-<text>这里是另外一个测试</text>
+
+<import src="/pages/tabBar/tabBar.wxml"/> 
+<template is="tabBar" data="{{tabBar}}"/>
+
+<view class='page'>
+
+  <!--选择地区-->
+
+  <view class='area'>
+  <view class="section">
+  <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+    <view class="picker">
+      <image src='/image/area.png' class='areaIcon'></image><text decode="true" class='text-blod'>&nbsp;{{multiArray[0][multiIndex[0]]}}&nbsp;&nbsp;</text>
+      {{multiArray[1][multiIndex[1]]}} <image src='/image/dropDown.png' class='pikerImg'></image>
+    </view>
+  </picker>
+</view>
+  </view>
+
+  <!--可预约课程列表-->
+  <view>
+      <view class="title">
+        <text class="app-title">预约课程</text>
+        <view class="more" bindtap='GOclassList1'>
+          <text decode="true">更多&nbsp;</text>
+          <image src="/image/icon-jt.png" class="iconjt">
+          </image>
+        </view>   
+      </view>
+
+<i-action-sheet visible="{{ visible1 }}" actions="{{ actions1 }}" show-cancel bind:cancel="handleCancel1" bind:click="handleClickItem1" />
+
+      <view class='content'>
+        <view class='content-title'>
+          旅游英语
+        </view>
+        <view class='content-middle'>
+          <view class='content-rank'>高级班</view>
+          <view class='content-time'><text decode="true">陈良华老师</text></view>
+        </view>
+      <view class='content-btn'>
+           <i-button type="success" bind:click="handleOpen1" size='small'>预约试听</i-button>
+      </view>
+      </view>
+      <view class='break'></view>
+           <view class='content'>
+        <view class='content-title'>
+          旅游英语
+        </view>
+        <view class='content-middle'>
+          <view class='content-rank'>高级班</view>
+          <view class='content-time'><text decode="true">陈良华老师</text></view>
+        </view>
+      <view class='content-btn'>
+           <i-button type="success" bind:click="handleOpen1" size='small'>预约试听</i-button>
+      </view>
+      </view>
+      <view class='break'></view>
+           <view class='content'>
+        <view class='content-title'>
+          旅游英语
+        </view>
+        <view class='content-middle'>
+          <view class='content-rank'>高级班</view>
+          <view class='content-time'><text decode="true">陈良华老师</text></view>
+        </view>
+      <view class='content-btn'>
+           <i-button type="success" bind:click="handleOpen1" size='small'>预约试听</i-button>
+      </view>
+      </view>
+      <view class='break'></view>
+
+  </view>
+
+
+
+   <!--可报名课程列表-->
+  <view>
+      <view class="title">
+      <text class="app-title">报名课程</text>
+      <view class="more"  bindtap='GOclassList2'><text decode="true">更多&nbsp;</text>
+        <image src="/image/icon-jt.png" class="iconjt">
+        </image>
+      </view> 
+    </view>
+      
+      <view class='content'  bindtap='GOclass_des'>
+        <view class='content-title'>
+          旅游英语
+        </view>
+        <view class='content-middle'>    
+          <view class='content-rank'>高级班</view>
+          <view class='content-time'><text decode="true">10/16&nbsp;10:00-12:00</text></view>
+        </view>
+       <view class='content-btn' bindtap='GOclass_signUp'>
+           <i-button type="success" size='small'>报名体验</i-button>
+      </view>
+      </view>
+      <view class='break'></view>
+
+      <view class='content'  bindtap='GOclass_des'>
+        <view class='content-title'>
+          旅游英语
+        </view>
+        <view class='content-middle'>    
+          <view class='content-rank'>高级班</view>
+          <view class='content-time'><text decode="true">10/16&nbsp;10:00-12:00</text></view>
+        </view>
+       <view class='content-btn' bindtap='GOclass_signUp'>
+           <i-button type="success" size='small'>报名体验</i-button>
+      </view>
+      </view>
+      <view class='break'></view>
+
+      <view class='content'  bindtap='GOclass_des'>
+        <view class='content-title'>
+          旅游英语
+        </view>
+        <view class='content-middle'>    
+          <view class='content-rank'>高级班</view>
+          <view class='content-time'><text decode="true">10/16&nbsp;10:00-12:00</text></view>
+        </view>
+       <view class='content-btn' bindtap='GOclass_signUp'>
+           <i-button type="success" size='small'>报名体验</i-button>
+      </view>
+      </view>
+      <view class='break'></view>
+       
+  </view>
+
+</view>

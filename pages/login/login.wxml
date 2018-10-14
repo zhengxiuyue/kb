@@ -23,7 +23,7 @@
 <view class='infm-total'>
 <view class='infm-half'>
   <image src='/image/code.png' class='icon2'></image>
-  <input class='ipt' type='number' placeholder='请输入验证码' bindinput='authcodeInput' value='{{authcode}}'  placeholder-class='placeholder' ></input>
+  <input class='ipt' placeholder='请输入验证码' bindinput='authcodeInput' value='{{authcode}}'  placeholder-class='placeholder' ></input>
 </view>
 <canvas canvas-id="canvas" bindtap='change' class='canvas1'></canvas>
 </view>
