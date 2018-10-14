@@ -1,0 +1,121 @@
+<!--pages/classList1/classList1.wxml-->
+<view class='page'>
+<i-action-sheet visible="{{ visible1 }}" actions="{{ actions1 }}" show-cancel bind:cancel="handleCancel1" bind:click="handleClickItem1" />
+    <view class='content'>
+            <view class='content-title'>
+              旅游英语
+            </view>
+            <view class='content-middle'>
+              <view class='content-rank'>高级班</view>
+              <view class='content-time'><text decode="true">陈良华老师</text></view>
+            </view>
+          <view class='content-btn'>
+              <i-button type="success" bind:click="handleOpen1" size='small'>预约试听</i-button>
+          </view>
+          </view>
+          <view class='break'></view>
+           <view class='content'>
+            <view class='content-title'>
+              旅游英语
+            </view>
+            <view class='content-middle'>
+              <view class='content-rank'>高级班</view>
+              <view class='content-time'><text decode="true">陈良华老师</text></view>
+            </view>
+          <view class='content-btn'>
+              <i-button type="success" bind:click="handleOpen1" size='small'>预约试听</i-button>
+          </view>
+          </view>
+          <view class='break'></view>
+           <view class='content'>
+            <view class='content-title'>
+              旅游英语
+            </view>
+            <view class='content-middle'>
+              <view class='content-rank'>高级班</view>
+              <view class='content-time'><text decode="true">陈良华老师</text></view>
+            </view>
+          <view class='content-btn'>
+              <i-button type="success" bind:click="handleOpen1" size='small'>预约试听</i-button>
+          </view>
+          </view>
+          <view class='break'></view>
+           <view class='content'>
+            <view class='content-title'>
+              旅游英语
+            </view>
+            <view class='content-middle'>
+              <view class='content-rank'>高级班</view>
+              <view class='content-time'><text decode="true">陈良华老师</text></view>
+            </view>
+          <view class='content-btn'>
+              <i-button type="success" bind:click="handleOpen1" size='small'>预约试听</i-button>
+          </view>
+          </view>
+          <view class='break'></view>
+           <view class='content'>
+            <view class='content-title'>
+              旅游英语
+            </view>
+            <view class='content-middle'>
+              <view class='content-rank'>高级班</view>
+              <view class='content-time'><text decode="true">陈良华老师</text></view>
+            </view>
+          <view class='content-btn'>
+              <i-button type="success" bind:click="handleOpen1" size='small'>预约试听</i-button>
+          </view>
+          </view>
+          <view class='break'></view>
+           <view class='content'>
+            <view class='content-title'>
+              旅游英语
+            </view>
+            <view class='content-middle'>
+              <view class='content-rank'>高级班</view>
+              <view class='content-time'><text decode="true">陈良华老师</text></view>
+            </view>
+          <view class='content-btn'>
+              <i-button type="success" bind:click="handleOpen1" size='small'>预约试听</i-button>
+          </view>
+          </view>
+          <view class='break'></view>
+           <view class='content'>
+            <view class='content-title'>
+              旅游英语
+            </view>
+            <view class='content-middle'>
+              <view class='content-rank'>高级班</view>
+              <view class='content-time'><text decode="true">陈良华老师</text></view>
+            </view>
+          <view class='content-btn'>
+              <i-button type="success" bind:click="handleOpen1" size='small'>预约试听</i-button>
+          </view>
+          </view>
+          <view class='break'></view>
+           <view class='content'>
+            <view class='content-title'>
+              旅游英语
+            </view>
+            <view class='content-middle'>
+              <view class='content-rank'>高级班</view>
+              <view class='content-time'><text decode="true">陈良华老师</text></view>
+            </view>
+          <view class='content-btn'>
+              <i-button type="success" bind:click="handleOpen1" size='small'>预约试听</i-button>
+          </view>
+          </view>
+          <view class='break'></view>
+           <view class='content'>
+            <view class='content-title'>
+              旅游英语
+            </view>
+            <view class='content-middle'>
+              <view class='content-rank'>高级班</view>
+              <view class='content-time'><text decode="true">陈良华老师</text></view>
+            </view>
+          <view class='content-btn'>
+              <i-button type="success" bind:click="handleOpen1" size='small'>预约试听</i-button>
+          </view>
+          </view>
+          <view class='break'></view>
+</view>

@@ -1,0 +1,53 @@
+<!--pages/class_signUp/class_signUp.wxml-->
+<view class='page'>
+
+  <!--课程报名-->
+  <view class='title'>
+  <image src='/image/brief.png' class='titleImg'></image>
+  <text class='title-text'>课程简介</text>
+  </view>
+
+  <view class='class-des'>
+    <view>
+      <view class='class-des-item'>课程编号：C123H5</view>
+      <view class='class-des-item'>课程名称：旅游英语</view>
+    </view>
+    <view>
+      <view class='class-des-item'>总时长：18学时</view>
+      <view class='class-des-item'>上课时长：2小时</view>
+    </view>
+     <view>
+      <view class='class-des-item'>每节课课时：0.5课时</view>
+      <view class='class-des-item amount'>500.00元</view>
+    </view>
+  </view>
+
+  <!--个人信息-->
+  <view class='title'>
+  <image src='/image/mineselected.png' class='titleImg'></image>
+  <text class='title-text'>个人信息</text>
+  </view>
+
+  <i-panel title="无标题输入框">
+    <i-input value="{{ value1 }}" placeholder="请输入姓名" />
+    <i-input value="{{ value2 }}" placeholder="请输入手机号" />
+    <i-input value="{{ value3 }}" placeholder="请输入验证码" />
+</i-panel>
+
+<view class='tips'>
+  <image src='/image/warning.png' class='tipsImg'></image>
+  <view class='tipsText'>填写信息后支付，方便我们提供更深入的服务</view>
+</view>
+
+<view>
+  <i-button type="success" bind:click="handleOpen5">确认报名</i-button>
+  <i-modal title="确认报名" visible="{{ visible5 }}" actions="{{ actions5 }}" bind:click="handleClick5">
+    <view>确认报名该课程？</view>
+</i-modal>
+
+<i-message id="message" />
+</view>
+
+<button disabled='{{isClick}}' bindtap='gainAuthCodeAction' class='btn'>{{time}}</button>  
+
+</view>
