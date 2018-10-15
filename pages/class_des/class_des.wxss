@@ -25,7 +25,7 @@
 }
 .class{
   margin: 20rpx 60rpx;
-  line-height: 1.5;
+  line-height: 1.8;
   font-size: 34rpx;
 }
 .class-desImg{
@@ -51,20 +51,30 @@
 .sign{
   background-color: #fff;
   font-size: 34rpx;
-  line-height: 1.2;
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 150rpx;
+  height: 130rpx;
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content:space-between;
   text-align: center;
 }
 .share{
-  width: 25%;
+  width: 20%;
   height: 100%;
 }
+.share-text{
+  position: relative;
+  top: -10rpx;
+}
+.contact-img{
+  position: relative;
+  left: 30rpx;
+}
 .contact{
-  width: 25%;
+  width: 30%;
   height: 100%;
 }
 button::after {

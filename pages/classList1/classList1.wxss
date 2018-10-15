@@ -5,33 +5,34 @@
   padding: 30rpx 10rpx;
   color: #000;
   font-family: "微软雅黑";
+  height:1300rpx;  
 }
 .content
 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content:space-between;
   text-align: left;
-  display: block;
-  background-color: #fff;
-  margin:0rpx 20rpx; 
+  background-color: #fff; 
   border-radius: 10rpx;
   font-size: 34rpx;
-  padding: 20rpx;
+  padding: 20rpx 40rpx 10rpx 40rpx;
 }
 
 .content-title
 {
-  display: inline-block;
   color:#1DA27F;
   font-weight: bold;
   font-size: 40rpx;
   width: 180rpx;
   position: relative;
-  top: -20rpx;
+  top: 20rpx;
 }
 
 .content-middle{
-  display: inline-block;
   line-height: 1.5;
-  margin-left: 20rpx;
+  width: 265rpx;
 }
 
 .content-rank

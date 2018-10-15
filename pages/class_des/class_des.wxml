@@ -70,7 +70,7 @@
       <view class='sign'>
         <view class='share'>
         <button open-type='share'>
-        <view>
+        <view class='share-text'>
             <image src='/image/share.png' class='signImg' />
             分享
         </view>
@@ -78,8 +78,12 @@
         </view>
         <view class='contact' bindtap='call'>
         <button>
-        <view><image src='/image/tele.png' class='signImg'></image></view>
-         电话咨询
+        <view class='share-text'>
+        <view class='contact-img'>
+        <image src='/image/tele.png' class='signImg'></image>
+        </view>
+        电话咨询
+        </view>
         </button>
         </view>
         <view class='btn' bindtap='GOclass_signUp'>

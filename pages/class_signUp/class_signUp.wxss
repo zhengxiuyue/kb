@@ -3,8 +3,8 @@
   padding: 10rpx;
   line-height: 2;
   background: #F8F8F8;
-  height:1200rpx;
-  font-size: 32rpx;
+  font-size: 34rpx;
+  height:1300rpx;  
 }
 
 .title{
@@ -27,8 +27,8 @@
 }
 
 .class-des{
-  padding-left: 60rpx;
-  padding-right: 60rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
   margin-bottom: 40rpx;
 }
 

@@ -93,7 +93,7 @@
           <view class='content-rank'>高级班</view>
           <view class='content-time'><text decode="true">10/16&nbsp;10:00-12:00</text></view>
         </view>
-       <view class='content-btn' bindtap='GOclass_signUp'>
+       <view class='content-btn' catchtap='GOclass_signUp'>
            <i-button type="success" size='small'>报名体验</i-button>
       </view>
       </view>
@@ -107,7 +107,7 @@
           <view class='content-rank'>高级班</view>
           <view class='content-time'><text decode="true">10/16&nbsp;10:00-12:00</text></view>
         </view>
-       <view class='content-btn' bindtap='GOclass_signUp'>
+       <view class='content-btn' catchtap='GOclass_signUp'>
            <i-button type="success" size='small'>报名体验</i-button>
       </view>
       </view>
@@ -121,7 +121,7 @@
           <view class='content-rank'>高级班</view>
           <view class='content-time'><text decode="true">10/16&nbsp;10:00-12:00</text></view>
         </view>
-       <view class='content-btn' bindtap='GOclass_signUp'>
+       <view class='content-btn' catchtap='GOclass_signUp'>
            <i-button type="success" size='small'>报名体验</i-button>
       </view>
       </view>
