@@ -152,9 +152,9 @@ Page({
           url: '/pages/index/T_index',
         })
       }    
-      wx.redirectTo({
-        url: '/pages/login/login',
-      })
+      // wx.redirectTo({
+      //   url: '/pages/login/login',
+      // })
     }
     
     

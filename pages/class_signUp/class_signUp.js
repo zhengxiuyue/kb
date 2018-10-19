@@ -34,6 +34,26 @@ Page({
       const action = [...this.data.actions5];
       action[1].loading = true;
 
+      wx.requestPayment({
+        timeStamp: '',
+        nonceStr: '',
+        package: '',
+        signType: 'MD5',
+        paySign: '',
+        success:function(){
+          $Message({
+            content: '报名成功！',
+            type: 'success'
+          });
+        },
+        fail:function(){
+          $Message({
+            content: '报名失败！',
+            type: 'success'
+          });
+        }
+      })
+
       this.setData({
         actions5: action
       });
@@ -43,10 +63,6 @@ Page({
         this.setData({
           visible5: false,
           actions5: action
-        });
-        $Message({
-          content: '报名成功！',
-          type: 'success'
         });
       }, 2000);
       /*wx.redirectTo({

@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -59,7 +59,32 @@
 				{
 					"id": -1,
 					"name": "详情",
-					"pathName": "pages/class_des/class_des"
+					"pathName": "pages/class_des/class_des",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "des1",
+					"pathName": "pages/class_des1/class_des1",
+					"query": ""
+				},
+				{
+					"id": 6,
+					"name": "signUp",
+					"pathName": "pages/class_signUp/class_signUp",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "List1",
+					"pathName": "pages/classList1/classList1",
+					"query": ""
 				}
 			]
 		}

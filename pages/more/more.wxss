@@ -6,11 +6,11 @@
   color: #000;
   font-family: "微软雅黑";
   height:1300rpx;  
+  font-size: 34rpx;
 }
 
 .area{
   display: flex;
-  font-size: 34rpx;
   padding-top: 10rpx;
   padding-bottom: 10rpx;
   padding-left: 20rpx;
@@ -39,9 +39,7 @@
 }
 
 .app-title{
- font-size: 34rpx;
  font-weight: bold ;
- font-family: '微软雅黑';
  margin-left: 20rpx;
  margin-top: 20rpx;
  padding-left: 20rpx;
@@ -49,10 +47,9 @@
 }
 
 .more{
-font-size: 30rpx;
+font-size: 85%;
 float: right;
 margin-right: 60rpx;
-font-family: '微软雅黑';
 position: relative;
 color: #666666;
 }
@@ -75,15 +72,14 @@ color: #666666;
   text-align: left;
   background-color: #fff; 
   border-radius: 10rpx;
-  font-size: 34rpx;
-  padding: 20rpx 40rpx 10rpx 40rpx;
+  padding: 20rpx 30rpx 10rpx 30rpx;
 }
 
 .content-title
 {
   color:#1DA27F;
   font-weight: bold;
-  font-size: 40rpx;
+  font-size: 125%;
   width: 180rpx;
   position: relative;
   top: 20rpx;
@@ -92,6 +88,7 @@ color: #666666;
 .content-middle{
   line-height: 1.5;
   width: 265rpx;
+  margin-left: 15rpx;
 }
 
 .content-rank
@@ -101,7 +98,7 @@ color: #666666;
 }
 
 .content-time{
-  font-size: 30rpx;
+  font-size: 85%;
 }
 
 .content-btn{
@@ -112,4 +109,15 @@ color: #666666;
 
 .break{
   height: 20rpx;
+}
+
+.error{
+  display: none;
+  color: #515151;
+  margin: 0rpx auto;
+}
+
+.error_img{
+  width: 40rpx;
+  height: 40rpx;
 }

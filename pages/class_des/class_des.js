@@ -11,6 +11,10 @@ Page({
       phoneNumber: '15171809954',
     })
   },
+  //获取手机号码
+  telInput: function (event) {
+    this.setData({ tel: event.detail.value })
+  },
   onShareAppMessage: function (ops) {
     if (ops.from === 'button') {
       // 来自页面内转发按钮

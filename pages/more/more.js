@@ -98,25 +98,6 @@ Page({
     }
     this.setData(data);
   },
-  handleClickItem1({ detail }) {
-    const index = detail.index + 1;
-    if (index == 2) {
-      wx.makePhoneCall({
-        phoneNumber: '15171809954'
-        // ,fail: tips("电话预约失败")
-      });
-    }
-  },
-  handleOpen1() {
-    this.setData({
-      visible1: true
-    });
-  },
-  handleCancel1() {
-    this.setData({
-      visible1: false
-    });
-  },
   tips(info) {
     $Message({
       content: info
@@ -125,11 +106,6 @@ Page({
   GOclass_des: function (e) {
     wx.navigateTo({
       url: '../class_des/class_des',
-    })
-  },
-  GOclass_signUp: function (e) {
-    wx.navigateTo({
-      url: '../class_signUp/class_signUp',
     })
   },
   GOclassList1: function (e) {
@@ -144,5 +120,10 @@ Page({
   },
   onLoad: function (options) {
     app.editTabBar();
+  },
+  GOclass_des1: function (e) {
+    wx.navigateTo({
+      url: '../class_des1/class_des1',
+    })
   }
 })

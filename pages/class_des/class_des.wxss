@@ -1,15 +1,19 @@
 /* pages/class_des/class_des.wxss */
 .page{
+  display: flex;
+  flex-direction: column;
+  background: #F8F8F8;
   padding: 10rpx;
+  color: #000;
+  font-family: "微软雅黑";
+  height:1300rpx;  
+  font-size: 34rpx;
   line-height: 2;
   background: #F8F8F8;
-  height:1300rpx;
 }
 
 .title{
-  font-size: 34rpx;
   font-weight: bold ;
-  font-family: '微软雅黑';
   margin-left: 20rpx;
   margin-top: 20rpx;
 }
@@ -26,7 +30,6 @@
 .class{
   margin: 20rpx 60rpx;
   line-height: 1.8;
-  font-size: 34rpx;
 }
 .class-desImg{
   display: inline-block;
@@ -50,16 +53,16 @@
 }
 .sign{
   background-color: #fff;
-  font-size: 34rpx;
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 130rpx;
+  height: 150rpx;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content:space-between;
   text-align: center;
+
 }
 .share{
   width: 20%;
@@ -68,6 +71,7 @@
 .share-text{
   position: relative;
   top: -10rpx;
+  font-size: 90%;
 }
 .contact-img{
   position: relative;
@@ -99,7 +103,7 @@ button {
 .btn{
   height: 100%;
   width: 50%;
-  padding-top: 60rpx;
+  padding-top: 45rpx;
   background-color: #1DA27F;
   color: #fff;
   font-weight: bold;

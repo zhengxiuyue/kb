@@ -23,12 +23,13 @@
   </view>
 
   <!--个人信息-->
+<view>
   <view class='title'>
   <image src='/image/mineselected.png' class='titleImg'></image>
   <text class='title-text'>个人信息</text>
   </view>
 
-  <i-panel title="无标题输入框">
+  <i-panel title="无标题输入框"> 
     <i-input value="{{ value1 }}" placeholder="请输入姓名" />
     <i-input value="{{ value2 }}" placeholder="请输入手机号" />
     <i-input value="{{ value3 }}" placeholder="请输入验证码" />
@@ -47,7 +48,7 @@
 
 <i-message id="message" />
 </view>
+</view>
 
-<button disabled='{{isClick}}' bindtap='gainAuthCodeAction' class='btn'>{{time}}</button>  
-
+<button disabled='{{isClick}}' bindtap='gainAuthCodeAction' class='btn'>{{time}}</button> 
 </view>

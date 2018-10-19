@@ -60,15 +60,15 @@
 }
 
 .btn{
-  display: inline-block;
-  position: absolute;
-  right:40rpx;
-  top: 610rpx;
-  height: 50rpx;
+  height: 60rpx;
   font-size: 24rpx;
   line-height: 40rpx;
-  justify-content: center;
   color: #dddee1;
   border:none;
+  padding-top: 7rpx;
   background-color: #fff;
+  float: right;
+  position: absolute;
+  top: 625rpx;
+  right: 20rpx;
 }
