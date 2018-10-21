@@ -4,6 +4,7 @@
     <image src='/image/class.png' class='classpicture'></image>
     <view class='classname'>模特</view>
     <view class='classgreat'>6班</view>
+    <view class='classinfmt'>C123H 18学时 36次课</view>
   </view>
 
   <view class='clear'></view>
@@ -50,7 +51,7 @@
     </view>
 	</view>
 
-  <view class='clear'></view>
+  <view class='clear1'></view>
   
   <students style="{{current === 0 ? 'display: inline;': 'display: none;'}}" binddetail="gotoContactDetail" search="{{value}}"></students>
 	<signin style="{{current === 1 ? 'display: inline;': 'display: none;'}}" ></signin>

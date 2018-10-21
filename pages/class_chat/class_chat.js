@@ -72,7 +72,7 @@ Page({
   },
   edit:function(e){
     wx.navigateTo({
-      url: '/pages/class_notice_edit/class_notice_edit',
+      url: '/pages/class_chat_edit/class_chat_edit',
     })
   },
   comment:function(e){

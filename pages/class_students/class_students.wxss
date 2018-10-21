@@ -21,10 +21,12 @@
 .select{
   position: absolute;
   left: 160rpx;
-  top: -10rpx;
+  top: -5rpx;
   border:1px solid #ccc;
   border-radius:20rpx;
   background-color: #fff;
+  height: 40rpx;
+  padding-left: 20rpx;
 }
 
 .students{

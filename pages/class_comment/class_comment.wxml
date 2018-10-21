@@ -4,10 +4,10 @@
     <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
     <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <view class='stu_name'>
-      赵XX
+      赵雅涵
     </view>
     <view class='chat'>
-      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx
+      请问第一节课讲得作业在哪里，需要交吗？下节课预习是预习那部分呢？
     </view>
     <view class='time'>
       2018年9月19日 19:09
@@ -16,10 +16,8 @@
 
     <view class="contact-tab">
 		<view class="{{current === 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">讨论({{like_num}})</view>
-		<view class="{{current === 1 ? 'current' : ''}}" bindtap="changeTab" data-index="1">赞({{comment_num}})</view>
 	</view>
 
   	<comment style="{{current === 0 ? 'display: inline;': 'display: none;'}}" data="{{teacherContacts}}" binddetail="gotoContactDetail" search="{{value}}"></comment>
-	<like style="{{current === 1 ? 'display: inline;': 'display: none;'}}" data="{{parentContacts}}"></like>
-  
+
 </view>

@@ -1,1 +1,87 @@
 /* pages/index/T_index.wxss */
+.title{
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;  
+}
+
+.app-title{
+ font-size: 34rpx;
+ font-weight: bold ;
+ font-family: '微软雅黑';
+ margin-left: 20rpx;
+ margin-top: 20rpx;
+ padding-left: 20rpx;
+ border-left:8rpx solid #1DA27F;
+}
+
+.more{
+font-size: 34rpx;
+float: right;
+margin-right: 60rpx;
+font-weight: bold;
+font-family: '微软雅黑';
+position: relative;
+text-align: center;
+}
+
+.class{
+  background-color: #fff;
+  height: 405rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 6rpx;
+}
+
+.oneclass{
+  margin: 20rpx;
+  position: relative;
+  margin-bottom: 40rpx;
+}
+
+.classname{
+  color: #1DA27F;
+  font-size: 40rpx;
+  font-weight: bold;
+  margin: 20rpx;
+}
+
+.classgreat{
+  font-size: 34rpx;
+  padding-bottom: 10rpx;
+  border-bottom:2rpx solid #eeeeee;
+}
+
+.classtime{
+  font-size: 32rpx;
+}
+
+.notice{
+  background-color: #ff9900;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 10rpx;
+  height: 85rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 6rpx;
+}
+
+.iconjtimg{
+  width:60rpx;
+  height:60rpx;
+  margin-top: 50rpx;
+  position: absolute;
+  right: -15rpx;
+  top: -50rpx;
+}
+
+.iconjt{
+  width:60rpx;
+  height:60rpx;
+  margin-top: 50rpx;
+  position: absolute;
+  right: -40rpx;
+  top: -55rpx;
+}
+ 

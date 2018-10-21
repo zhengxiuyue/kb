@@ -3,10 +3,10 @@
     <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
     <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <view class='stu_name'>
-      赵XX
+      周楠楠
     </view>
     <view class='chat'>
-      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx
+      老师说是写一篇英文的自我介绍，要求一百词左右，下节课上课的时候交给老师。
     </view>
     <view class='time'>
       2018年9月19日 19:09
@@ -17,11 +17,11 @@
     <view class='students'>
     <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
     <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <view class='stu_name'>
-      赵XX
+   <view class='stu_name'>
+      周楠楠
     </view>
     <view class='chat'>
-      XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXxx
+      老师说是写一篇英文的自我介绍，要求一百词左右，下节课上课的时候交给老师。
     </view>
     <view class='time'>
       2018年9月19日 19:09

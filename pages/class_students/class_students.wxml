@@ -11,10 +11,10 @@
   <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
   <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
   <view class='stu_name'>
-    赵XX
+    赵韩亚
   </view>
   <view class='stu_tel'>
-    151XXXXXXXX
+    15171415567
   </view>
 </view>
 
@@ -22,10 +22,10 @@
   <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
   <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
   <view class='stu_name'>
-    赵XX
+    赵韩亚
   </view>
   <view class='stu_tel'>
-    151XXXXXXXX
+    15171415567
   </view>
 </view>
 
@@ -33,10 +33,10 @@
   <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
   <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
   <view class='stu_name'>
-    赵XX
+    赵韩亚
   </view>
   <view class='stu_tel'>
-    151XXXXXXXX
+    15171415567
   </view>
 </view>
 
@@ -44,9 +44,9 @@
   <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
   <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
   <view class='stu_name'>
-    赵XX
+    赵韩亚
   </view>
   <view class='stu_tel'>
-    151XXXXXXXX
+    15171415567
   </view>
 </view>

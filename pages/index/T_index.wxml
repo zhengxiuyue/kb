@@ -1,5 +1,41 @@
 <!--pages/index/T_index.wxml-->
 <import src="/pages/tabBar/tabBar.wxml"/> 
+<template is="tabBar" data="{{tabBar}}"/>
+<view class="page">
+ <view class="title">
+    <text class="app-title">我的课表</text>
+  </view>
+{{userstatus}}
+  <view class="class">
 
- <template is="tabBar" data="{{tabBar}}"/>
-<text>pages/index/T_index.wxml</text>
+    <view class="oneclass" bindtap='enterclass'>
+      <text class="classname">模特</text>
+      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
+      <image src="/image/icon-jt.png" class="iconjtimg"></image>
+    </view>
+
+    <view class="oneclass" bindtap='enterclass'>
+      <text class="classname">模特</text>
+      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
+      <image src="/image/icon-jt.png" class="iconjtimg"></image>
+    </view>
+
+    <view class="oneclass" bindtap='enterclass'>
+      <text class="classname">模特</text>
+      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
+      <image src="/image/icon-jt.png" class="iconjtimg"></image>
+    </view>
+  
+    <view class="oneclass" bindtap='enterclass'>
+      <text class="classname">模特</text>
+      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
+      <image src="/image/icon-jt.png" class="iconjtimg"></image>
+    </view>
+
+    <view class="oneclass" bindtap='enterclass'>
+      <text class="classname">模特</text>
+      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
+      <image src="/image/icon-jt.png" class="iconjtimg"></image>
+    </view>
+  </view>
+</view>

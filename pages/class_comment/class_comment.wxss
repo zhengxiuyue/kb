@@ -22,6 +22,7 @@
 .chat{
   word-break:break-all;
   padding: 10rpx;
+  font-size: 32rpx;
 }
 
 .time{

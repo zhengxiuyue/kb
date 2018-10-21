@@ -1,12 +1,16 @@
-.page{
-  display: flex;
-  flex-direction: column;
-  background: #F8F8F8;
-}
 
 .user{
   height: 120rpx;
   margin: 0rpx 20rpx;
+}
+
+.dropDown{
+  height: 30rpx;
+  width: 30rpx;
+  float: right;
+  position: absolute;
+  right: 50rpx;
+  top: 50rpx;
 }
 
 .username{

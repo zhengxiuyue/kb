@@ -58,13 +58,11 @@
   left:80rpx;
 }
 
-
 .canvas{
   width: 90px;
   height: 28px;
   border-radius: 14px;
 }
-
 
 .canvas1{
   position: absolute;
@@ -99,16 +97,18 @@
 
 .forget{
   position: absolute;
-  top: 100rpx;
+  top: 90rpx;
   font-size: 30rpx;
   left: 80rpx;
+  margin-top: 10rpx;
 }
 
 .regist{
   position: absolute;
   font-size: 30rpx;
   color: #1DA27F;
-  top: 100rpx;
+  top: 90rpx;
   right: 80rpx;
+  margin-top: 10rpx;
 }
 

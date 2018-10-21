@@ -8,5 +8,5 @@
 
   <view class='clear'></view>
     <textarea  maxlength="500" value="{{evaContent}}" class="weui-textarea" placeholder="写下你的想法..." placeholder-class='place_notice' />     
-    <button class="btn">发布</button>
+    <button class="btn" bindtap='returnchat'>发布</button>
 </view>

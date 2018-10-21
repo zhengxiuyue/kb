@@ -26,6 +26,14 @@
   left: 160rpx;
 }
 
+.classinfmt{
+  font-size: 32rpx;
+  font-weight: bold;
+  position: absolute;
+  top: 70rpx;
+  left: 80rpx;
+}
+
 .clear{
   display: flex;
   flex-direction: column;
@@ -33,10 +41,20 @@
   background: #eeeeee;
   margin-left: 40rpx;
   margin-right: 40rpx;
-  margin-top: 30rpx;
+  margin-top: 70rpx;
   margin-bottom: 30rpx;
 }
 
+.clear1{
+  display: flex;
+  flex-direction: column;
+  height:4rpx;
+  background: #eeeeee;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  margin-top: 20rpx;
+  margin-bottom: 30rpx;
+}
 
 .plate-img image{
   width: 60rpx;

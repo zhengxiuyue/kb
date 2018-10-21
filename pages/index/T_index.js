@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    userstatus: app.globalData.userstatus
   },
 
   /**
@@ -63,5 +63,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  enterclass: function () {
+    wx.navigateTo({
+      url: '/pages/class/class',
+    })
   }
 })

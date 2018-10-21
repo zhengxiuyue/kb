@@ -1,10 +1,4 @@
 /**index.wxss**/
-.page{
-  display: flex;
-  flex-direction: column;
-  background: #F8F8F8;
-}
-
 .title{
   margin-top: 30rpx;
   margin-bottom: 20rpx;  
@@ -32,16 +26,15 @@ text-align: center;
 
 .class{
   background-color: #fff;
-  height: 405rpx;
-  margin-left: 20rpx;
-  margin-right: 20rpx;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
   border-radius: 6rpx;
 }
 
 .oneclass{
   margin: 20rpx;
   position: relative;
-  margin-bottom: 30rpx;
+  margin-bottom: 40rpx;
 }
 
 .classname{
@@ -62,12 +55,12 @@ text-align: center;
 }
 
 .notice{
-  background-color: #fff;
-  color: #ff9900;
+  background-color: #ff9900;
+  color: #fff;
   font-size: 32rpx;
   font-weight: bold;
   padding: 10rpx;
-  height: 100rpx;
+  height: 85rpx;
   margin-left: 20rpx;
   margin-right: 20rpx;
   border-radius: 6rpx;
@@ -89,5 +82,130 @@ text-align: center;
   position: absolute;
   right: -40rpx;
   top: -55rpx;
+}
+
+.page{
+  display: flex;
+  flex-direction: column;
+  background: #F8F8F8;
+  padding: 10rpx;
+  color: #000;
+  font-family: "微软雅黑";
+  height:1300rpx;  
+  font-size: 34rpx;
+}
+
+.area{
+  display: flex;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  padding-left: 20rpx;
+}
+.text-blod{
+  font-weight: bold;
+}
+
+.areaIcon{
+  width:40rpx;
+  height:40rpx; 
+}
+
+.section{
+  margin: 2rpx 0rpx;
+}
+
+.pikerImg{
+  width:30rpx;
+  height:30rpx; 
+}
+
+.title{
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;   
+}
+
+.app-title{
+ font-weight: bold ;
+ margin-left: 20rpx;
+ margin-top: 20rpx;
+ padding-left: 20rpx;
+ border-left:8rpx solid #1DA27F;
+}
+
+.more{
+font-size: 85%;
+float: right;
+margin-right: 60rpx;
+position: relative;
+color: #666666;
+}
+
+.iconjt{
+  width:60rpx;
+  height:60rpx;
+  margin-top: 48rpx;
+  position: absolute;
+  right: -40rpx;
+  top: -55rpx;
+}
+
+.content
+{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content:space-between;
+  text-align: left;
+  background-color: #fff; 
+  border-radius: 10rpx;
+  padding: 20rpx 20rpx 0rpx 20rpx;
+}
+
+.content-title
+{
+  color:#1DA27F;
+  font-weight: bold;
+  font-size: 125%;
+  width: 180rpx;
+  position: relative;
+  top: 20rpx;
+}
+
+.content-middle{
+  line-height: 1.5;
+  width: 265rpx;
+  margin-left: 15rpx;
+}
+
+.content-rank
+{
+  display: inline-block;
+  font-weight: bold;
+}
+
+.content-time{
+  font-size: 85%;
+}
+
+.content-btn{
+  float: right;
+  position: relative;
+  top: -10rpx;
+}
+
+.break{
+  height: 20rpx;
+  background: #F8F8F8;
+}
+
+.error{
+  display: none;
+  color: #515151;
+  margin: 0rpx auto;
+}
+
+.error_img{
+  width: 40rpx;
+  height: 40rpx;
 }
  

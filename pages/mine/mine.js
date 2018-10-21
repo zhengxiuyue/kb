@@ -12,6 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    app.editTabBar();
   },
 
   /**
@@ -25,7 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    app.editTabBar();    //显示自定义的底部导航
+        //显示自定义的底部导航
   },
 
   /**
@@ -69,7 +70,7 @@ Page({
       current: index
     })
   },
-  exit:function(e){
+  dropDown:function(e){
     wx.redirectTo({
       url: '/pages/login/login',
     })

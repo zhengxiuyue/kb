@@ -24,7 +24,8 @@
     "pages/class_signUp/class_signUp",
     "pages/classList1/classList1",
     "pages/classList2/classList2",
-    "pages/class_des1/class_des1"
+    "pages/class_des1/class_des1",
+    "pages/class_chat_edit/class_chat_edit"
   ],
   "window":{
     "backgroundTextStyle":"dark",

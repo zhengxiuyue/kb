@@ -11,7 +11,7 @@ Page({
       {value: '老师',id:'0'},
       {value: '学生',id:'1'},
     ],
-    uerstatus: '',
+    userstatus: '',
     tel: '',
     password: '',
     authcode: '',
@@ -23,7 +23,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-
     drawPic(that);
   },
 
@@ -78,8 +77,9 @@ Page({
   //获取用户身份
   radioChange: function (event) {
     var con = event.detail.value
-    app.globalData.uerstatus = con
-    this.setData({ uerstatus: event.detail.value })
+    app.globalData.userstatus = con
+    console.log(con);
+    this.setData({ userstatus: event.detail.value })
   },
 
   //获取手机号码
@@ -100,7 +100,7 @@ Page({
   //修改全局变量selectCodition的值
   login:function(e){
     let that = this;
-    var con = app.globalData.uerstatus
+    var con = app.globalData.userstatus
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号
     //判断手机号码
     if (!myreg.test(that.data.tel)) {
@@ -123,7 +123,7 @@ Page({
     }
 
     //判断身份
-    else if (that.data.uerstatus == '') {
+    else if (that.data.userstatus == '') {
       wx.showToast({
         title: '请选择身份!',
         icon: 'none',
@@ -133,7 +133,7 @@ Page({
     }
 
     //判断验证码 
-    else if (that.data.authcode != that.data.text) {
+    else if (that.data.authcode.toUpperCase() != that.data.text.toUpperCase()) {
       wx.showToast({
         title: '请填写正确的验证码!',
         icon: 'none',
@@ -152,12 +152,7 @@ Page({
           url: '/pages/index/T_index',
         })
       }    
-      // wx.redirectTo({
-      //   url: '/pages/login/login',
-      // })
-    }
-    
-    
+    }    
   },
   regist: function (e) {
     wx.redirectTo({

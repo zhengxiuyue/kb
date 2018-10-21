@@ -62,5 +62,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  returnchat:function(e){
+    wx.navigateBack({
+      
+    })
   }
 })

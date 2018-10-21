@@ -72,7 +72,7 @@ color: #666666;
   text-align: left;
   background-color: #fff; 
   border-radius: 10rpx;
-  padding: 20rpx 30rpx 10rpx 30rpx;
+  padding: 20rpx 30rpx 0rpx 30rpx;
 }
 
 .content-title

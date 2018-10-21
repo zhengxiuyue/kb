@@ -8,7 +8,7 @@
 
 .classtop{
   height: 70rpx;
-  background-color: gainsboro;
+  background-color:#999;
   color: #fff;
   line-height: 70rpx;
   font-size: 36rpx;

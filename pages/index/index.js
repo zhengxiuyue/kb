@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userid:null
+    userstatus:null
   },
 
   /**
@@ -14,17 +14,23 @@ Page({
    */
   //获取全局变量
   onLoad: function (options) {
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        
+      },
+    })
     app.editTabBar();
     var that = this;
-    var userId=app.globalData.userId
+    var userstatus = app.globalData.userstatus
     this.setData({
-      userid: userId
+      userstatus: userstatus
     })
-    console.log(options.title)
+    console.log(userstatus)
     this.setData({
       msgList: [
         { url: "url", title: "原11月12日模特课改为11月13号同一时间同一地点上课！" },
-        { url: "url", title: "原11月12日模特课取消！" },
+        { url: "url", title: "原11月12日模特课取消！原11月12日模特课改为11月13号同一时间同一地点上课！原11月12日模特课改为11月13号同一时间同一地点上课！" },
         { url: "url", title: "原11月12日模特课改为11月13号同一时间同一地点上课！" }]
     });
   },

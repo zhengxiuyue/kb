@@ -1,32 +1,32 @@
 <!--pages/notice/notice.wxml-->
 <view class='page'>
   <view class='notice'>
+    <view class='title'>【{{title}}】</view>
     <view class='content'>
-    hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa
-      <text> hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa</text>
+      {{content}}
     </view>
     <view class='time'>
-      2018年10月6号
+     {{teacher}} {{time}}
     </view>
   </view>
 
   <view class='notice'>
+    <view class='title'>【{{title}}】</view>
     <view class='content'>
-    hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa
-      <text> hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa</text>
+      {{content}}
     </view>
-    <view class='time'>
-      2018年10月6号
-    </view>
+    <view class='teacher'>{{teacher}}</view>
+    <view class='time'>{{teacher}} {{time}}</view>
+    
   </view>
 
   <view class='notice'>
+    <view class='title'>【{{title}}】</view>
     <view class='content'>
-    hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa
-      <text> hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa</text>
+      {{content}}
     </view>
     <view class='time'>
-      2018年10月6号
+     {{teacher}} {{time}}
     </view>
   </view>
 </view>

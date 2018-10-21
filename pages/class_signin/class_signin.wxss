@@ -1,7 +1,14 @@
-.title{
+.sign{
   font-weight: bold;
   font-size: 32rpx;
   margin-left: 40rpx;
+  text-align: center;
+}
+
+.explain{
+  font-size: 30rpx;
+  color: gainsboro;
+  margin-bottom: 30rpx;
 }
 
 .select{
@@ -23,4 +30,9 @@
 
 .select3{
   background-color:gainsboro;
+}
+
+.space{
+  width: 200rpx;
+  height: 178rpx;
 }

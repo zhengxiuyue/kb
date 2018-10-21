@@ -1,29 +1,29 @@
 <view class='notice'>
-  <view class='content'>
-   hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa
-    <text> hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa</text>
-  </view>
-  <view class='time'>
-    2018年10月6号
-  </view>
+    <view class='title'>【{{title}}】{{userstatus}}</view>
+    <view class='content'>
+      {{content}}
+    </view>
+    <view class='time'>
+     {{teacher}} {{time}}
+    </view>
 </view>
 
 <view class='notice'>
-  <view class='content'>
-   hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa
-    <text> hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa</text>
-  </view>
-  <view class='time'>
-    2018年10月6号
-  </view>
+    <view class='title'>【{{title}}】</view>
+    <view class='content'>
+      {{content}}
+    </view>
+    <view class='time'>
+     {{teacher}} {{time}}
+    </view>
 </view>
 
 <view class='notice'>
-  <view class='content'>
-   hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa
-    <text> hhhhhhnnnnnsnsnnsjsjaaaaaaaaaaaassssssssssssa</text>
-  </view>
-  <view class='time'>
-    2018年10月6号
-  </view>
+    <view class='title'>【{{title}}】</view>
+    <view class='content'>
+      {{content}}
+    </view>
+    <view class='time'>
+     {{teacher}} {{time}}
+    </view>
 </view>

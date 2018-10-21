@@ -1,17 +1,19 @@
 //app.js
 App({
+
   onLaunch: function () {
     var that = this;
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    
-	//测试lala
+
+    //测试lala
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+
       }
     })
     // 获取用户信息
@@ -21,8 +23,10 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
+
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
+
 
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
@@ -35,54 +39,48 @@ App({
       }
     })
   },
-   //第一种底部   
-    editTabBar: function () 
-    {    //使用getCurrentPages可以获取当前加载中所有的页面对象的一个数组，数组最后一个就是当前页面。    
-      var curPageArr = getCurrentPages();    //获取加载的页面   
-      var curPage = curPageArr[curPageArr.length - 1];    //获取当前页面的对象    
-      var pagePath = curPage.route;    //当前页面url    
-      if (pagePath.indexOf('/') != 0) 
-      {      
-        pagePath = '/' + pagePath;    }   
-        var tabBar = this.globalData.tabBar;   
-        for (var i = 0; i < tabBar.list.length; i++) 
-        {      
-          tabBar.list[i].active = false;      
-          if (tabBar.list[i].pagePath == pagePath) 
-          {       
-            tabBar.list[i].active = true;    //根据页面地址设置当前页面状态         
-          }   
-        }   
-        curPage.setData({      tabBar: tabBar    });  }, 
-        //第二种底部，原理同上 
-      editTabBar1: function () 
-      {    
-        var curPageArr = getCurrentPages();   
-        var curPage = curPageArr[curPageArr.length - 1];    
-        var pagePath = curPage.route;    
-        if (pagePath.indexOf('/') != 0) 
-          {      
-            pagePath = '/' + pagePath;    
-          }   
-          var tabBar = this.globalData.tabBar1;    
-          for (var i = 0; i < tabBar.list.length; i++) 
-          {      
-            tabBar.list[i].active = false;      
-            if (tabBar.list[i].pagePath == pagePath) 
-            {        
-              tabBar.list[i].active = true;       
-            }    
-          }    
-        curPage.setData({tabBar: tabBar}); 
-    },
+  //第一种底部   
+  editTabBar: function () {    //使用getCurrentPages可以获取当前加载中所有的页面对象的一个数组，数组最后一个就是当前页面。    
+    var curPageArr = getCurrentPages();    //获取加载的页面   
+    var curPage = curPageArr[curPageArr.length - 1];    //获取当前页面的对象    
+    var pagePath = curPage.route;    //当前页面url    
+    if (pagePath.indexOf('/') != 0) {
+      pagePath = '/' + pagePath;
+    }
+    var tabBar = this.globalData.tabBar;
+    for (var i = 0; i < tabBar.list.length; i++) {
+      tabBar.list[i].active = false;
+      if (tabBar.list[i].pagePath == pagePath) {
+        tabBar.list[i].active = true;    //根据页面地址设置当前页面状态         
+      }
+    }
+    curPage.setData({ tabBar: tabBar });
+  },
+  //第二种底部，原理同上 
+  editTabBar1: function () {
+    var curPageArr = getCurrentPages();
+    var curPage = curPageArr[curPageArr.length - 1];
+    var pagePath = curPage.route;
+    if (pagePath.indexOf('/') != 0) {
+      pagePath = '/' + pagePath;
+    }
+    var tabBar = this.globalData.tabBar1;
+    for (var i = 0; i < tabBar.list.length; i++) {
+      tabBar.list[i].active = false;
+      if (tabBar.list[i].pagePath == pagePath) {
+        tabBar.list[i].active = true;
+      }
+    }
+    curPage.setData({ tabBar: tabBar });
+  },
   globalData: {
     userInfo: null,
-    userId: "",
+    userstatus: "",
     tabBar: {
-      "color": "black",
-      "selectedColor": "#1DA27F",
-      "backgroundColor": "#fff",
-      "borderStyle": "black",
+      color: "black",
+      selectedColor: "#1DA27F",
+      backgroundColor: "#fff",
+      borderStyle: "white",
       "list": [
         {
           "pagePath": "/pages/index/index",
@@ -91,7 +89,7 @@ App({
           "selectedIconPath": "/image/indexselected.png",
           "clas": "menu-item",
           "selectedColor": "#1DA27F",
-          active: false
+          active: true
         },
         {
           "pagePath": "/pages/more/more",
@@ -120,14 +118,14 @@ App({
       "color": "#888",
       "selectedColor": "#1DA27F",
       "backgroundColor": "#fff",
-      "borderStyle": "black",
+      "borderStyle": "white",
       "list": [{
         "pagePath": "/pages/index/T_index",
         "text": "首页",
         "iconPath": "/image/index.png",
         "selectedIconPath": "/image/indexselected.png",
         "clas": "menu-item1",
-        "selectedColor": "#4EDF80",
+        "selectedColor": "#1DA27F",
         active: false
       },
       {
@@ -143,4 +141,3 @@ App({
     }
   }
 })
-

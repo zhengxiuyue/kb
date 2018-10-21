@@ -1,18 +1,19 @@
 // pages/mine/T_mine.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    current: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    app.editTabBar1();
   },
 
   /**
@@ -62,5 +63,16 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  changeTab(e) {
+    let index = parseInt(e.currentTarget.dataset.index || 0)
+    this.setData({
+      current: index
+    })
+  },
+  dropDown: function (e) {
+    wx.redirectTo({
+      url: '/pages/login/login',
+    })
   }
 })

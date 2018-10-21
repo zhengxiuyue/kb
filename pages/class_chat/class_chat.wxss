@@ -28,6 +28,7 @@
 .chat{
   word-break:break-all;
   padding: 10rpx;
+  font-size: 34rpx;
 }
 
 .time{
@@ -59,6 +60,7 @@
   position: fixed;
   bottom: 120px;
   right: 10px;  
+  z-index: 999;
 }
 
 .like_num{

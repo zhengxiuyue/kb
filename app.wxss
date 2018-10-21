@@ -5,13 +5,15 @@
   background: #F8F8F8;
 }
 
-
-
 .menu-item{ 
+  
   width: 32%;    
   float: left;    
   text-align: center;   
   padding-top: 8px; 
+  height: 90rpx;
+  z-index: 999;
+
 }  
 
 .menu-item1{    
@@ -26,17 +28,14 @@
   height: 23px;   
   display: block;   
   margin:auto;  
-}  
-
-.clear{    
-  clear: both;  
-}  
+}    
 
 .tab-bar{   
   position: fixed;
   bottom: 0rpx;  
   width: 100%;    
   padding: 0px 2%;  
+  z-index: 999;
 }   
 
 .button{  

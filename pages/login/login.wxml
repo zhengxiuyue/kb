@@ -31,7 +31,7 @@
 
 
 <view class='submit'>
-  <button class='login' bindtap='login' data-cid="{{ item.id }}">登入</button>
+  <button class='login' bindtap='login' data-cid="{{ item.id }}">登录</button>
   <text class='forget'>忘记密码</text>
   <text class='regist' bindtap='regist'>注册</text>
 </view>
