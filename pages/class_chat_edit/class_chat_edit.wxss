@@ -1,0 +1,60 @@
+/* pages/class_chat_edit/class_chat_edit.wxss */
+.classinfm{
+  height: 60rpx;
+  margin-top: 60rpx;
+  margin-left: 40rpx;
+  position: relative;
+}
+
+.classpicture{
+  height: 60rpx;
+  width: 60rpx;
+}
+
+.classname{
+  font-size: 36rpx;
+  font-weight: bold;
+  position: absolute;
+  top: 10rpx;
+  left: 80rpx;
+}
+
+.classgreat{
+  font-size: 36rpx;
+  font-weight: bold;
+  position: absolute;
+  top: 10rpx;
+  left: 160rpx;
+}
+
+.clear{
+  display: flex;
+  flex-direction: column;
+  height:4rpx;
+  background: #eeeeee;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.weui-textarea{
+  padding: 2%;
+  margin-left:5%;
+  width: 86%;
+  height: 400rpx;
+  background-color: #fff;
+}
+
+.btn{
+  background-color: #1DA27F;
+  color: #fff;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+  width: 50%;
+  text-align: center;
+}
+
+.place_notice{
+  color: #dddee1;
+}
