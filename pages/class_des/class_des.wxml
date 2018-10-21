@@ -53,6 +53,15 @@
         <text class='teacher-rank'>高级英语老师</text>
       </view>
 
+<!--报名截至时间-->
+    <view class='title'>
+        <image src='/image/time.png' class='titleImg'></image>
+        <text class='title-text'>截止时间</text>
+      </view>
+     <view class='teacher'>
+        2018/9/10
+      </view>
+
       <!--报名须知-->
       <view class='title'>
         <image src='/image/help.png' class='titleImg'></image>

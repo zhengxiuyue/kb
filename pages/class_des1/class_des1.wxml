@@ -54,7 +54,7 @@
 
      <!--报名须知-->
       <view class='title'>
-        <image src='/image/help.png' class='titleImg'></image>
+        <image src='/image/time.png' class='titleImg'></image>
         <text class='title-text'>预约时间</text>
       </view>
 

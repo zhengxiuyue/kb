@@ -1,7 +1,7 @@
 <!--pages/class_signUp/class_signUp.wxml-->
 <view class='page'>
 
-  <!--课程报名-->
+ <!-- <!--课程报名
   <view class='title'>
   <image src='/image/brief.png' class='titleImg'></image>
   <text class='title-text'>课程简介</text>
@@ -20,7 +20,49 @@
       <view class='class-des-item'>每节课课时：0.5课时</view>
       <view class='class-des-item amount'>500.00元</view>
     </view>
-  </view>
+  </view>-->
+
+        <!--课程简介-->
+      <view class='title'>
+        <image src='/image/brief.png' class='titleImg'></image>
+        <text class='title-text'>课程简介</text>
+      </view>
+      
+      <view class='class'>
+        
+        <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>课程编号：C123H</text></view>
+
+         <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>课程名称：旅游英语</text></view>
+
+         <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>总学时：18学时</text></view>
+
+         <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>课程价格：500元</text></view>
+
+           <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>上课时长：2小时</text></view>
+
+           <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>每节课课时：0.5课时</text></view>
+
+           <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>课容量：30</text></view>
+
+           <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>课余量：5</text></view>
+
+      </view>
 
   <!--个人信息-->
 <view>
