@@ -8,7 +8,7 @@ Page({
   data: {
     username:"赵雅涵",
     tel:"15171411165",
-    password:"1111",
+    password:"****",
     newpassword: "",
     newpassword2: ""
   },

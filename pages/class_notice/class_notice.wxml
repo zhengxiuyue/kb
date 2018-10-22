@@ -1,14 +1,4 @@
 <view class='notice'>
-    <view class='title'>【{{title}}】{{userstatus}}</view>
-    <view class='content'>
-      {{content}}
-    </view>
-    <view class='time'>
-     {{teacher}} {{time}}
-    </view>
-</view>
-
-<view class='notice'>
     <view class='title'>【{{title}}】</view>
     <view class='content'>
       {{content}}
@@ -27,3 +17,16 @@
      {{teacher}} {{time}}
     </view>
 </view>
+
+<view class='notice'>
+    <view class='title'>【{{title}}】</view>
+    <view class='content'>
+      {{content}}
+    </view>
+    <view class='time'>
+     {{teacher}} {{time}}
+    </view>
+</view>
+
+<image wx:if="{{userstatus==0}}" class="edit" src="{{edit}}" background-size="cover" bindtap='edit'></image>
+

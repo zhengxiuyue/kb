@@ -1,4 +1,7 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "signin": "/pages/class_signin/signin",
+    "notsignin": "/pages/class_signin/notsignin"
+  }
 }

@@ -1,11 +1,41 @@
-<view class='sign'>
-  <!-- 请选择签到课堂 -->
+<view wx:if="{{userstatus==1}}" class='sign'>
   <image src='/image/space.png' class='space'> </image>
   <view class='explain'>暂无课堂签到信息发布</view>
 </view>
 
+<view wx:if="{{userstatus==0}}" class='sign'>
+  <text class='title'>选择课堂: 
+  </text> 
+  
+  <view class="phone_one" bindtap="clickPerson">
+    <view class="phone_personal">{{firstPerson}}</view>
+  </view>
+ 
+  <!-- <view class='time' style=' font-weight: normal;'>
+    签到时间默认五分钟
+  </view>  -->
+ 
+  <view class="person_box">
+    <view class="phone_select" hidden="{{selectPerson}}">
+      <view class="select_one" bindtap="mySelect" data-me="第一节">第一节</view>
+      <view class="select_one" bindtap="mySelect" data-me="第二节">第二节</view>
+      <view class="select_one" bindtap="mySelect" data-me="第三节">第三节</view>
+    </view>
+  </view>
+ <button class='submit' bindtap='submit' style='display:{{dispaly1}}' >发布签到</button>
 
-<!-- <button class='select' type="defaule">2018/09/10已经签到</button>
+  <view style='display:{{display}}'>
+   <!-- <view class='title1'>你已发布签到，签到信息如下： 
+  </view>  -->
+  <view class="contact-tab">
+		<view class="{{current === 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">已签到</view>
+		<view class="{{current === 1 ? 'current' : ''}}" bindtap="changeTab" data-index="1">未签到</view>
+	</view>
+
+  	<signin style="{{current === 0 ? 'display: inline;': 'display: none;'}}" data="{{userstatus}}"  search="{{value}}"></signin>
+	<notsignin style="{{current === 1 ? 'display: inline;': 'display: none;'}}" data="{{userstatus}}"></notsignin>
+  </view>
+  <!-- <button class='select' type="defaule">2018/09/10已经签到</button>
 
 <button class='select select2' type="defaule" bindtap="clickButton">正在发布签到，点击发布签到</button>
 
@@ -15,4 +45,7 @@
 
 <button class='select select3' type="defaule">第五节课</button>
 
-<button class='select select3' type="defaule">第六节课</button> -->
+<button class='select select3' type="defaule">第六节课</button>  -->
+</view>
+
+

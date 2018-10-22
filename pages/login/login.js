@@ -78,7 +78,7 @@ Page({
   radioChange: function (event) {
     var con = event.detail.value
     app.globalData.userstatus = con
-    this.setData({ userstatus: event.detail.value })
+    this.setData({userstatus: event.detail.value })
   },
 
   //获取手机号码
@@ -100,7 +100,7 @@ Page({
   login:function(e){
     let that = this;
     var con = app.globalData.userstatus
-    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
     //判断手机号码
     if (!myreg.test(that.data.tel)) {
       wx.showToast({

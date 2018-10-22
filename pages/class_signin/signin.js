@@ -1,23 +1,18 @@
-// pages/index/T_index.js
-var app = getApp();
+// pages/class_signin/signin.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userstatus:""
-    },
+    "imgUrl": "/image/headphoto.png"
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.editTabBar1();
-    var that = this;
-    that.setData({
-      userstatus: app.globalData.userstatus
-    })
+
   },
 
   /**
@@ -67,10 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  enterclass: function () {
-    wx.navigateTo({
-      url: '/pages/class/class',
-    })
   }
 })

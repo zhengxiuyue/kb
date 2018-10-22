@@ -26,16 +26,16 @@ text-align: center;
 
 .class{
   background-color: #fff;
-  height: 405rpx;
   margin-left: 20rpx;
   margin-right: 20rpx;
   border-radius: 6rpx;
+  margin-bottom: 20rpx;
 }
 
 .oneclass{
   margin: 20rpx;
   position: relative;
-  margin-bottom: 40rpx;
+  margin-bottom: 50rpx;
 }
 
 .classname{

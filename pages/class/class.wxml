@@ -4,7 +4,7 @@
     <image src='/image/class.png' class='classpicture'></image>
     <view class='classname'>模特</view>
     <view class='classgreat'>6班</view>
-    <view class='classinfmt'>C123H 18学时 36次课</view>
+    <text class='classinfmt'>【课堂编号】C123H 【总学时】18学时 \n【课堂次数】36次课 【课堂价格】¥500</text>
   </view>
 
   <view class='clear'></view>
@@ -53,10 +53,10 @@
 
   <view class='clear1'></view>
   
-  <students style="{{current === 0 ? 'display: inline;': 'display: none;'}}" binddetail="gotoContactDetail" search="{{value}}"></students>
-	<signin style="{{current === 1 ? 'display: inline;': 'display: none;'}}" ></signin>
-  <chat style="{{current === 2 ? 'display: inline;': 'display: none;'}}"  binddetail="gotoContactDetail" search="{{value}}"></chat>
-	<notice style="{{current === 3 ? 'display: inline;': 'display: none;'}}"></notice>
+  <students style="{{current === 0 ? 'display: inline;': 'display: none;'}}" ></students>
+	<signin style="{{current === 1 ? 'display: inline;': 'display: none;'}}"  userstatus="{{userstatus}}"></signin>
+  <chat style="{{current === 2 ? 'display: inline;': 'display: none;'}}" ></chat>
+	<notice style="{{current === 3 ? 'display: inline;': 'display: none;'}}" userstatus="{{userstatus}}"></notice>
   
 
 

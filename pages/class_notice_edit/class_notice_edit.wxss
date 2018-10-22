@@ -38,6 +38,15 @@
   margin-bottom: 30rpx;
 }
 
+.weui-textarea1{
+  padding: 2%;
+  margin-left:5%;
+  width: 86%;
+  height: 40rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+}
+
 .weui-textarea{
   padding: 2%;
   margin-left:5%;

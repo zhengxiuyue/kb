@@ -23,3 +23,13 @@
   padding-left: 40%;
   padding-bottom: 10rpx;
 }
+
+.edit{
+  height: 120rpx;
+  width: 120rpx;
+  float: right;
+  position: fixed;
+  bottom: 120px;
+  right: 10px;  
+  z-index: 999;
+}

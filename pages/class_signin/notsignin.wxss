@@ -1,0 +1,40 @@
+/* pages/class_signin/notsignin.wxss */
+.headphoto{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius:100rpx;
+  margin-left: 20rpx;
+}
+
+.title{
+  font-weight: bold;
+  font-size: 32rpx;
+  margin-left: 40rpx;
+}
+
+.head{
+  position: relative;
+  height: 80rpx;
+  border-radius: 10rpx;
+}
+
+.students{
+  background-color: #fff;
+  margin: 20rpx;
+  position: relative;
+}
+
+.stu_name{
+  font-weight: bold;
+  position: absolute;
+  top:20rpx;
+  left: 120rpx;
+}
+
+.stu_tel{
+  font-size: 32rpx;
+  position: absolute;
+  top:25rpx;
+  left: 250rpx;
+}
+
