@@ -1,0 +1,64 @@
+/* pages/mine_setup/mine_setup.wxss */
+.photo{
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.userAvatarUrl{
+  height: 200rpx;
+  width: 200rpx;
+  border-radius:50%;
+  overflow:hidden;
+  margin: 10rpx auto;  
+  display: flex;
+  justify-content: center;
+}
+
+.username{
+  margin-bottom: 20rpx;
+}
+
+.exit1{
+  color: #1DA27F;
+  font-size: 32rpx;
+  position: absolute;
+  top: 225rpx;
+  left: 60%;
+}
+
+.exit{
+  background-color:#1DA27F;
+  margin: 5rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+  color: #fff;
+}
+
+.title{
+  margin-left: 20rpx;
+}
+
+.infm{
+  width: 100%;
+  background-color: #fff;
+  margin: 20rpx 0;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 10rpx;
+}
+
+.submit{
+  position: relative;
+}
+
+.revise{
+  margin: 80rpx;
+  background-color: #1DA27F;
+  color: #fff;
+  width: 80%;
+  height: 90rpx;
+  line-height: 90rpx;
+  justify-content: center;
+}
