@@ -72,7 +72,7 @@ Page({
   },
   dropDown:function(e){
     wx.redirectTo({
-      url: '/pages/login/login',
+      url: '/pages/mine_setup/mine_setup',
     })
   }
 })

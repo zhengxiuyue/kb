@@ -97,5 +97,10 @@ Page({
     wx.navigateTo({
       url: '/pages/class/class',
     })
+  },
+  GOclass_des: function (e) {
+    wx.navigateTo({
+      url: '../class_des/class_des',
+    })
   }
 })

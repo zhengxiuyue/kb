@@ -78,7 +78,6 @@ Page({
   radioChange: function (event) {
     var con = event.detail.value
     app.globalData.userstatus = con
-    console.log(con);
     this.setData({ userstatus: event.detail.value })
   },
 

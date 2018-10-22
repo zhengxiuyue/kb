@@ -66,8 +66,8 @@
 
 .canvas1{
   position: absolute;
-  right:-310rpx;
-  top: 0rpx;
+  left:60%;
+  top: 0%;
 }
 
 .placeholder{
@@ -85,19 +85,26 @@
   left: 100rpx;
 }
 
-.login{
-  margin: 80rpx;
-  background-color: #1DA27F;
-  color: #fff;
-}
 
 .submit{
   position: relative;
 }
 
+.login{
+  margin: 80rpx;
+  background-color: #1DA27F;
+  color: #fff;
+  position: absolute;
+  top: 0rpx;
+  width: 80%;
+  height: 90rpx;
+  line-height: 90rpx;
+  justify-content: center;
+}
+
 .forget{
   position: absolute;
-  top: 90rpx;
+  top: 165rpx;
   font-size: 30rpx;
   left: 80rpx;
   margin-top: 10rpx;
@@ -107,7 +114,7 @@
   position: absolute;
   font-size: 30rpx;
   color: #1DA27F;
-  top: 90rpx;
+  top: 165rpx;
   right: 80rpx;
   margin-top: 10rpx;
 }

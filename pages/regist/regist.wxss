@@ -24,9 +24,33 @@
   border-bottom:4rpx solid #dddee1;
 }
 
+.icon{
+  width: 55rpx;
+  height: 55rpx;
+  position: absolute;
+  top:0rpx;
+  left:0rpx;
+}
+
+.icon2{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top:0rpx;
+  left:5rpx;
+}
+
+.icon3{
+  width: 48rpx;
+  height: 48rpx;
+  position: absolute;
+  top:0rpx;
+  left:8rpx;
+}
+
 .ipt{
   position: absolute;
-  left:10rpx;
+  left:80rpx;
 }
 
 .btn{
@@ -56,28 +80,28 @@
   left: 100rpx;
 }
 
-.login{
-  margin: 80rpx;
-  background-color: #1DA27F;
-  color: #fff;
-}
-
 .submit{
   position: relative;
 }
 
-.forget{
+.login{
+  margin: 0rpx 80rpx;
+  background-color: #1DA27F;
+  color: #fff;
   position: absolute;
-  top: 100rpx;
-  font-size: 30rpx;
-  left: 80rpx;
+  top: -0rpx;
+  width: 80%;
+  height: 90rpx;
+  line-height: 90rpx;
+  justify-content: center;
 }
 
 .regist{
   position: absolute;
   font-size: 30rpx;
   color: #1DA27F;
-  top: 100rpx;
+  top: 95rpx;
   right: 80rpx;
 }
+
 

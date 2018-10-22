@@ -7,14 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    items: [
-      { value: '老师', id: '0' },
-      { value: '学生', id: '1' },
-    ],
-    uerstatus: '',
     username: '',
     tel:'',
     password: '',
+    password2: '',
     authcode: '',
     time: '获取验证码', //倒计时 
     currentTime: 60,//限制60s
@@ -77,13 +73,6 @@ Page({
 
   },
 
-  //获取用户身份
-  radioChange: function (event) {
-    var con = event.detail.value
-    app.globalData.uerstatus = con
-    this.setData({ uerstatus: event.detail.value })
-  },
-
   //获取用户名
   usernameInput: function (event) {
     this.setData({ username: event.detail.value })
@@ -100,6 +89,12 @@ Page({
     this.setData({ password: event.detail.value.replace(/\s+/g, '') })
   },
 
+  //获取确认密码
+  passwordInput2: function (event) {
+    // console.log("password==", event.detail.value)
+    this.setData({ password2: event.detail.value.replace(/\s+/g, '') })
+  },
+
   //获取验证码
   authcodeInput: function (event) {
     // console.log("password==", event.detail.value)
@@ -107,7 +102,7 @@ Page({
   },
 
   
-  //获取验证码
+  //验证
   gainAuthCodeAction: function () {
     let that = this;
     //第一步：验证手机号码
@@ -181,7 +176,7 @@ Page({
     // wx.request({})
   },
 
-  //注册
+  //注册验证
   regist: function (e) {
     let that = this;
     var name = /^[\u4E00-\u9FA5A-Za-z]+$/;//判断姓名
@@ -195,17 +190,6 @@ Page({
       })
       return false;
     }
-
-    //判断身份
-    else if (that.data.uerstatus == '') {
-      wx.showToast({
-        title: '请选择身份!',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    }
-
     //判断手机号码
     else if (!myreg.test(that.data.tel)) {
       wx.showToast({
@@ -235,6 +219,17 @@ Page({
       })
       return false;
     }
+
+    //判断确认密码
+    else if (that.data.password != that.data.password2) {
+      wx.showToast({
+        title: '两次密码请保持一致!',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    }
+
     else {
       wx.redirectTo({
         url: '/pages/login/login',

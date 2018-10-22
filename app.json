@@ -7,6 +7,7 @@
     "pages/index/T_index",
     "pages/more/more",
     "pages/mine/mine",
+    "pages/mine_setup/mine_setup",
     "pages/mine/T_mine",
     "pages/notice/notice",
     "pages/mine_class_now/mine_class_now",
