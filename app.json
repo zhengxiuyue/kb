@@ -3,6 +3,7 @@
     "pages/login/login",
     "pages/index/index",
     "pages/regist/regist",
+    "pages/forget/forget",
     "pages/tabBar/tabBar",
     "pages/index/T_index",
     "pages/more/more",

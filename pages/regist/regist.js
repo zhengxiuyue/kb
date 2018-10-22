@@ -238,8 +238,8 @@ Page({
   },
   //登入
   login:function(e){
-    wx.redirectTo({
-      url: '/pages/login/login',
+    wx.navigateBack({
+      
     })
   }
 })

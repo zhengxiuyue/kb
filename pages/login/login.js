@@ -154,10 +154,15 @@ Page({
     }    
   },
   regist: function (e) {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/regist/regist',
     })
   } ,
+  forget:function(e){
+    wx.navigateTo({
+      url: '/pages/forget/forget',
+    })
+  },
   change: function () { var that = this; drawPic(that); }, mobile(e) { this.setData({ mobile: e.detail.value }) }
 
 })
