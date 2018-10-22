@@ -5,7 +5,7 @@
 <template is="tabBar" data="{{tabBar}}"/>
     <view class="title">
       <text class="app-title">近期开课</text>
-      <view class="more"  bindtap='GOclassList2'><text decode="true">更多&nbsp;</text>
+      <view class="more"  bindtap='more'><text decode="true">更多&nbsp;</text>
         <image src="/image/icon-jt.png" class="iconjt">
         </image>
       </view> 
