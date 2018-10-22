@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -90,6 +90,18 @@
 					"id": -1,
 					"name": "T_index",
 					"pathName": "pages/index/T_index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "mine_setup",
+					"pathName": "pages/mine_setup/mine_setup",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "class_signin",
+					"pathName": "pages/class_signin/class_signin",
 					"query": ""
 				},
 				{

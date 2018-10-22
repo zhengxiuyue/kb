@@ -75,7 +75,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    userstatus: "",
+    userstatus:null,
     tabBar: {
       color: "black",
       selectedColor: "#1DA27F",
