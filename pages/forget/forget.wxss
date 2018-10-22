@@ -1,0 +1,96 @@
+/* pages/forget/forget.wxss */
+
+.infm{
+  position: relative;
+  height: 60rpx;
+  margin:20rpx 80rpx 50rpx 80rpx;
+  border-bottom:4rpx solid #dddee1;
+}
+
+.infm-noborder{
+  position: relative;
+  height: 60rpx;
+  margin:20rpx 80rpx 50rpx 80rpx;
+}
+
+.infm-half{
+  position: relative;
+  height: 60rpx;
+  margin:20rpx 45% 0rpx 80rpx;
+  border-bottom:4rpx solid #dddee1;
+}
+
+.icon{
+  width: 55rpx;
+  height: 55rpx;
+  position: absolute;
+  top:0rpx;
+  left:0rpx;
+}
+
+.icon2{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top:0rpx;
+  left:5rpx;
+}
+
+.icon3{
+  width: 48rpx;
+  height: 48rpx;
+  position: absolute;
+  top:0rpx;
+  left:8rpx;
+}
+
+.ipt{
+  position: absolute;
+  left:80rpx;
+}
+
+.btn{
+  position: absolute;
+  right:10rpx;
+  bottom: 5rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  justify-content: center;
+  color: #dddee1;
+  border:none;
+  background-color: #fff;
+}
+
+.placeholder{
+  color: #dddee1;
+}
+
+.identity{
+  margin-left:80rpx; 
+  position: relative;
+}
+
+.radio-group{
+  position: absolute;
+  top: -4rpx;
+  left: 100rpx;
+}
+
+.submit{
+  position: relative;
+}
+
+.sure{
+  margin: 0rpx 80rpx;
+  background-color: #1DA27F;
+  color: #fff;
+  position: absolute;
+  top: -0rpx;
+  width: 80%;
+  height: 90rpx;
+  line-height: 90rpx;
+  justify-content: center;
+}
+
+
+
