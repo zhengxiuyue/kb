@@ -1,7 +1,43 @@
 
 
+<view class='classcard1' bindtap='classcard'>
+  <view class='classtop1'>
+        <text class='classname1'>课堂：模特</text>
+  </view>
+  <text class='classgrate'>班级：六班</text>
+  <text class='classinfm1' decode="{{true}}">时间：2018/10/12-2018/12/29  \n &ensp;&ensp;&ensp;&ensp;&ensp;&nbsp; 周六9:30--11:00
+  地点：老年人文化室204</text>
+</view>
 
-    <view class='classcard' bindtap='classcard'>
+<view class='classcard1' bindtap='classcard'>
+  <view class='classtop1'>
+        <text class='classname1'>课堂：模特</text>
+  </view>
+  <text class='classgrate'>班级：六班</text>
+  <text class='classinfm1' decode="{{true}}">时间：2018/10/12-2018/12/29  \n &ensp;&ensp;&ensp;&ensp;&ensp;&nbsp; 周六9:30--11:00
+  地点：老年人文化室204</text>
+</view>
+
+<view class='classcard1' bindtap='classcard'>
+  <view class='classtop1'>
+        <text class='classname1'>课堂：模特</text>
+  </view>
+  <text class='classgrate'>班级：六班</text>
+  <text class='classinfm1' decode="{{true}}">时间：2018/10/12-2018/12/29  \n &ensp;&ensp;&ensp;&ensp;&ensp;&nbsp; 周六9:30--11:00
+  地点：老年人文化室204</text>
+</view>
+
+<view class='classcard1' bindtap='classcard'>
+  <view class='classtop1'>
+        <text class='classname1'>课堂：模特</text>
+  </view>
+  <text class='classgrate'>班级：六班</text>
+  <text class='classinfm1' decode="{{true}}">时间：2018/10/12-2018/12/29  \n &ensp;&ensp;&ensp;&ensp;&ensp;&nbsp; 周六9:30--11:00
+  地点：老年人文化室204</text>
+</view>
+
+
+    <!-- <view class='classcard' bindtap='classcard'>
       <view class='classtop'>
         <text class='classname'>模特</text>
       </view>
@@ -12,6 +48,7 @@
         <view class='classinfm'>班次：6班</view>
       </view>
     </view>
+
 
 
   <view class='classcard' bindtap='classcard'>
@@ -36,4 +73,4 @@
         </view>
         <view class='classinfm'>班次：6班</view>
       </view>
-    </view>
+    </view> -->

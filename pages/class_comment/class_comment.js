@@ -6,15 +6,16 @@ Page({
    */
   data: {
     "imgUrl": "/image/headphoto.png",
-    current:0,
+    "current":0,
     "like_num": "2",
-    "comment_num": "3"
+    "comment_num": "3",
+    "comment_content":""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
 
   },
 
@@ -66,11 +67,31 @@ Page({
   onShareAppMessage: function () {
 
   },
-
+  commentInput: function (event) {
+    this.setData({ comment_content: event.detail.value })
+  },
   changeTab(e) {
     let index = parseInt(e.currentTarget.dataset.index || 0)
     this.setData({
       current: index
     })
+  },
+  release:function(e){
+    let that = this;
+    if(that.data.comment_content.length == 0)
+    {
+      wx.showToast({
+        title: '请输入评论!',
+        icon: 'none',
+        duration: 1000
+      })
+    }else{
+      wx.showToast({
+        title: '发布成功',
+        icon: 'success',
+        duration: 2000
+      }),
+        that.onLoad()
+    }
   }
 })

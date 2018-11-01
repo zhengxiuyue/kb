@@ -56,7 +56,7 @@ text-align: center;
 }
 
 .notice{
-  background-color: #ff9900;
+  background-color:rgb(255,202,0);
   color: #fff;
   font-size: 32rpx;
   font-weight: bold;

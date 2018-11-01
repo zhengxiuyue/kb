@@ -15,11 +15,11 @@
 }
 
 .username{
-  font-size: 36rpx;
+  font-size: 38rpx;
   font-weight: bold;
   line-height: 120rpx;
   justify-content: center;
-  margin-left: 40rpx;
+  margin-left: 60rpx;
 }
 
 .exit{

@@ -10,7 +10,9 @@ Page({
     tel:"15171411165",
     password:"****",
     newpassword: "",
-    newpassword2: ""
+    newpassword2: "",
+    hiddenmodalput: true,
+    showModal: false
   },
 
   /**
@@ -80,41 +82,6 @@ Page({
     this.setData({ newpassword2: event.detail.value.replace(/\s+/g, '') })
   },
 
-  //提交
-  submit:function(e){
-    let that = this;
-    if (that.data.newpassword.length == 0) {
-      wx.showToast({
-        title: '请输入新密码!',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    }
-    else if (that.data.newpassword2.length == 0) {
-      wx.showToast({
-        title: '请输入确认密码!',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    }
-    else if (that.data.newpassword != that.data.newpassword2) {
-      wx.showToast({
-        title: '两次密码请保持一致!',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    }
-    else {
-      wx.showToast({
-        title: '修改成功',
-        icon: 'success',
-        duration: 2000
-      })  
-    }
-  },
   exit:function(e){
     wx.showModal({
       title: '提示',
@@ -129,5 +96,62 @@ Page({
         }
       }
     })
+  },
+
+/**   * 弹窗   */  
+showDialogBtn: function () { 
+  this.setData({ showModal: true }) 
+},  
+
+/**   * 弹出框蒙层截断touchmove事件   */  
+preventTouchMove: function () { },  
+
+/**   * 隐藏模态对话框   */ 
+hideModal: function () { 
+  this.setData({ showModal: false }); 
+},  
+   
+/**   * 对话框取消按钮点击事件   */  
+onCancel: function () { 
+  this.hideModal(); 
+},  
+
+/**   * 对话框确认按钮点击事件   */  
+onConfirm: function () { 
+  let that = this;
+  if (that.data.newpassword.length == 0) {
+    wx.showToast({
+      title: '请输入新密码!',
+      icon: 'none',
+      duration: 1000
+    })
+    return false;
+  }
+  else if (that.data.newpassword2.length == 0) {
+    wx.showToast({
+      title: '请输入确认密码!',
+      icon: 'none',
+      duration: 1000
+    })
+    return false;
+  }
+  else if (that.data.newpassword != that.data.newpassword2) {
+    wx.showToast({
+      title: '两次密码请保持一致!',
+      icon: 'none',
+      duration: 1000
+    })
+    return false;
+  }
+  else {
+    wx.showToast({
+      title: '修改成功',
+      icon: 'success',
+      duration: 2000
+    })
+  }
+  this.hideModal()
+  this.setData({ newpassword2:''})
+  this.setData({ newpassword: '' })
   }
 })

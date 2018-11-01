@@ -10,9 +10,10 @@ Page({
     "dislike": "/image/dislike.png",
     "comment":"/image/comment.png",
     "edit": "/image/edit.png",
-    islike:1,
+    "islike":0,
     "like_num":"2",
-    "comment_num": "3"
+    "comment_num": "3",
+    "color":0
   },
 
   /**
@@ -84,14 +85,15 @@ Page({
     let that = this;
     if(that.data.islike==0)
     {
-      console.log(that.data.islike)
-      that.data.islike = 1
+      this.setData({ islike: 1 })
+      this.setData({ color: 1 })
+      this.setData({ like_num: 3 })
     }
     else if (that.data.islike == 1)
     {
-      console.log(that.data.islike)
-      that.data.islike = 0
-      console.log(that.data.islike)
+      this.setData({ islike: 0 })
+      this.setData({ color: 0 })
+      this.setData({ like_num: 2 })
     }
   }
 })

@@ -3,6 +3,7 @@
   width: 80rpx;
   border-radius:100rpx;
   margin-left: 20rpx;
+  margin-top: 10rpx;
 }
 
 .students{
@@ -43,6 +44,7 @@
   position: absolute;
   bottom: 20rpx;
   right: 100rpx;
+  z-index: 99;
 }
 
 .comment{
@@ -64,7 +66,6 @@
 }
 
 .like_num{
-  color: #1DA27F;
   font-size: 30rpx;
   font-weight: bold;
   position: absolute;

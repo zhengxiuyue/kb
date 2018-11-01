@@ -2,27 +2,46 @@
 <view class='page'>
   <view class='photo'>
     <open-data type="userAvatarUrl" class='userAvatarUrl' style="" ></open-data>
-    <view class='username'>赵韩亚</view>
-    <view class='exit' bindtap='exit'>退出登录</view>
   </view>
 
-  
-  <view class='infm'><text class='title'>姓名: </text>{{username}}</view>
-  <!-- <input class='infm' value='{{username}}' disabled></input> -->
-  <view class='infm'><text class='title'>手机: </text>{{tel}}</view>
-  <!-- <input class='infm' value='{{tel}}' disabled></input> -->
-  <view class='infm' disabled><text class='title'>密码: </text>{{password}}</view>
-  <!-- <input class='infm' type='password' value='{{password}}'></input> -->
+  <view class='title0'>个人信息</view>
 
-  
- 
-  <view class='title1'>请输入新密码</view>
-  <input class='infm1' type='password' value='{{newpassword}}' bindinput='passwordInput'></input>
-  <view class='title1'>请再次输入密码</view>
-  <input class='infm1' type='password' value='{{newpassword2}}' bindinput='passwordInput2'></input> 
+  <view class='infm'>
+    <text class='title'>姓名
+    </text>
+    <text class='content' decode="{{true}}">&nbsp;{{username}}</text>
+  </view>
 
-  <button class='revise' bindtap='submit' >提交</button>
+  <view class='infm'>
+    <text class='title'>手机\n</text>
+    <text class='content' decode="{{true}}">&nbsp;{{tel}}</text>
+  </view>
 
+  <view class='infm'>
+    <text class='title'>更多\n</text>
+    <text class='content' decode="{{true}}" style='color:#1DA27F' bindtap='showDialogBtn'>&nbsp;修改密码</text>
+  </view>
+
+  <button class='revise' bindtap='exit' >退出登录</button>
+
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>  
+<view class="modal-dialog" wx:if="{{showModal}}">    
+  <view class="modal-title">修改密码</view>    
+    <view class="modal-content">  
+
+      <view class="modal-input">        
+        <input placeholder-class="input-holder" type="password" maxlength="10" bindinput="passwordInput" class="input" placeholder="新密码"  value='{{newpassword}}' placeholder-style='font-size:34rpx;'>
+        </input>      
+      </view>      
+      
+      <view class="modal-input">        
+      <input placeholder-class="input-holder" type="password" maxlength="10" bindinput="passwordInput2" class="input" placeholder="确认密码" value='{{newpassword2}}'placeholder-style='font-size:34rpx;'>
+      </input>      
+      </view>      
+    </view>    
+    <view class="modal-footer">      
+      <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>              <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>         </view>  
+  </view>
 </view>
 
 

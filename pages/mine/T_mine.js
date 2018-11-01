@@ -71,7 +71,7 @@ Page({
     })
   },
   dropDown: function (e) {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/mine_setup/mine_setup',
     })
   }

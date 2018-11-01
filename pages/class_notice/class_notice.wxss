@@ -11,6 +11,15 @@
   color: #1DA27F;
 }
 
+.delete{
+  font-size: 30rpx;
+  color: #ffa704;
+  border: 2rpx solid #ffa704;
+  padding: 3rpx 15rpx;
+  float: right;
+  margin-right: 40rpx;
+}
+
 .content{
   padding: 10rpx 20rpx;
   font-size: 34rpx;

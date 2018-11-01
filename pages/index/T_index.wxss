@@ -55,18 +55,6 @@ text-align: center;
   font-size: 32rpx;
 }
 
-.notice{
-  background-color: #ff9900;
-  color: #fff;
-  font-size: 32rpx;
-  font-weight: bold;
-  padding: 10rpx;
-  height: 85rpx;
-  margin-left: 20rpx;
-  margin-right: 20rpx;
-  border-radius: 6rpx;
-}
-
 .iconjtimg{
   width:60rpx;
   height:60rpx;

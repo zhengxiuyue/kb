@@ -1,5 +1,7 @@
 <view class='notice'>
-    <view class='title'>【{{title}}】</view>
+    <view class='title'>【{{title}}】
+      <text class='delete' bindtap='delt' style='display:{{userstatus == 0? "block":"none"}}'>删除</text>
+    </view>
     <view class='content'>
       {{content}}
     </view>
@@ -9,7 +11,9 @@
 </view>
 
 <view class='notice'>
-    <view class='title'>【{{title}}】</view>
+    <view class='title'>【{{title}}】
+      <text class='delete' bindtap='delt' style='display:{{userstatus == 0? "block":"none"}}'>删除</text>
+    </view>
     <view class='content'>
       {{content}}
     </view>
@@ -19,7 +23,10 @@
 </view>
 
 <view class='notice'>
-    <view class='title'>【{{title}}】</view>
+    <view class='title'>【{{title}}】
+      <text class='delete' bindtap='delt' style='display:{{userstatus == 0? "block":"none"}}'>删除</text>
+    </view>
+    
     <view class='content'>
       {{content}}
     </view>

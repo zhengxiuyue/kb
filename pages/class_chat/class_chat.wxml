@@ -1,20 +1,22 @@
-<view class='students' bindtap='comment'>
-  <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
-  <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-  <view class='stu_name'>
-    赵雅涵
+<view class='students' >
+  <view bindtap='comment'>
+    <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
+    <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <view class='stu_name'>
+      赵雅涵
+    </view>
+    <view class='chat'>
+      请问第一节课讲得作业在哪里，需要交吗？下节课预习是预习那部分呢？
+    </view>
+    <view class='time'>
+      2018年9月19日 19:09
+    </view>
   </view>
-  <view class='chat'>
-    请问第一节课讲得作业在哪里，需要交吗？下节课预习是预习那部分呢？
+  
+  <view>
+  <image bindtap='changelike' class='like' src='{{islike == 1? "/image/like.png" : "/image/dislike.png"}}' ></image>
   </view>
-  <view class='time'>
-    2018年9月19日 19:09
-  </view>
-  <view bindtap='changelike'>
-  <image wx:if="{{islike==1}}" class="like" src="{{like}}" background-size="cover"></image>
-   <image wx:else class="like" src="{{dislike}}" background-size="cover"></image>
-  </view>
-  <view class='like_num'>{{like_num}}</view>
+  <view class='like_num' style='color:{{color == 1? "#1DA27F" : "gray"}}'>{{like_num}}</view>
   <image src='{{comment}}' class='comment'></image>
   <view class='comment_num'>{{comment_num}}</view>
 </view>

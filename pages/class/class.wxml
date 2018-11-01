@@ -1,13 +1,68 @@
 
 <view class='page'>
-  <view class='classinfm'>
-    <image src='/image/class.png' class='classpicture'></image>
-    <view class='classname'>模特</view>
-    <view class='classgreat'>6班</view>
-    <text class='classinfmt'>【课堂编号】C123H 【总学时】18学时 \n【课堂次数】36次课 【课堂价格】¥500</text>
-  </view>
+  <view class='help'>
+    <view class='help_item'>
+      <!--显示部分-->
+      <view class='title' data-index='1' catchtap='panel'>
+        <!--文字-->
+        <view class='title_1'>
+          <image src='/image/class.png' class='classpicture'></image>
+          <view class='classname'>模特</view>
+          <view class='classgreat'>6班</view>
+    
+          <view class='teacher'>
+                授课老师：陈良华
+              <text class='teacher-rank'>高级英语老师</text>
+          </view>
+        </view>
 
-  <view class='clear'></view>
+        <!--箭头-->
+        <view class='title_2'>
+          <image src="/image/{{showIndex == 1 ? 'up':'down'}}.png"></image>
+        </view>
+      </view>
+      
+      <!--隐藏部分-->
+      <view class='detail' wx:if="{{showIndex == 1}}">
+        <view class='class'>
+          <view class='class_des_text'>
+            <text>课程编号：C123H</text>
+          </view>
+
+          <view class='class_des_text'>
+            <text>课程名称：旅游英语</text>
+          </view>
+
+          <view class='class_des_text'>
+            <text>总学时：18学时</text>
+          </view>
+
+          <view class='class_des_text'>
+            <text>课程价格：500元</text>
+          </view>
+
+          <view class='class_des_text'>
+            <text>上课时长：2小时</text>
+          </view>
+
+          <view class='class_des_text'>
+            <text>每节课课时：0.5课时</text>
+          </view>
+
+          <view class='class_des_text'>
+            <text>课容量：30</text>
+          </view>
+
+          <view class='class_des_text'>
+            <text>课余量：5</text>
+          </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+  <view class='clear' style='margin-top:{{showIndex == 1 ? "20rpx":"100rpx"}};'></view>
 
   <view class="contact-tab">
 		<view class="{{current === 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">
@@ -58,7 +113,4 @@
   <chat style="{{current === 2 ? 'display: inline;': 'display: none;'}}" ></chat>
 	<notice style="{{current === 3 ? 'display: inline;': 'display: none;'}}" userstatus="{{userstatus}}"></notice>
   
-
-
-
 </view>

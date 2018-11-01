@@ -6,7 +6,8 @@ Page({
    */
   data: {
     current:0,
-    userstatus:""
+    userstatus:"",
+    showIndex: 0
   },
 
   /**
@@ -74,5 +75,16 @@ Page({
     this.setData({
       current: index
     })
+  },
+  panel: function (e) {
+    if (e.currentTarget.dataset.index != this.data.showIndex) {
+      this.setData({
+        showIndex: e.currentTarget.dataset.index
+      })
+    } else {
+      this.setData({
+        showIndex: 0
+      })
+    }
   }
 })

@@ -133,7 +133,7 @@ App({
         "text": "我的",
         "iconPath": "/image/mine.png",
         "selectedIconPath": "/image/mineselected.png",
-        "selectedColor": "#4EDF80",
+        "selectedColor": "#1DA27F",
         "clas": "menu-item1",
         active: false
       }],

@@ -3,29 +3,22 @@
   <view class='title'>
     学生
   </view>
-  <input type="text" name="id" placeholder='输入关键词' class='select'/>
-</view>
-
-
-<view class='students'>
-  <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
-  <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-  <view class='stu_name'>
-    赵韩亚
-  </view>
-  <view class='stu_tel'>
-    15171415567
-  </view>
-</view>
-
-<view class='students'>
-  <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
-  <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-  <view class='stu_name'>
-    赵韩亚
-  </view>
-  <view class='stu_tel'>
-    15171415567
+  <view class='select'>
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="请输入查询内容" value="{{SearchData.value}}" bindinput='SearchInput' bindconfirm="SearchConfirm" />
+          <view class="weui-icon-clear" wx:if="{{SearchData.value.length > 0}}" bindtap="SearchClear">
+            <icon type="clear" size="14"></icon>
+          </view>
+        </view>
+      </view>
+      
+      <view class="weui-search-bar__cancel-btn" bindtap="SearchConfirm">
+          <text wx:if="{{SearchData.value.length>0}}" data-key='search'>搜索</text>
+      </view>
+    </view>
   </view>
 </view>
 
@@ -36,7 +29,7 @@
     赵韩亚
   </view>
   <view class='stu_tel'>
-    15171415567
+    15171415567 <text bindtap='tel' class='tel' >呼叫</text>
   </view>
 </view>
 
@@ -47,6 +40,29 @@
     赵韩亚
   </view>
   <view class='stu_tel'>
-    15171415567
+    15171415567 <text bindtap='tel' class='tel' >呼叫</text>
+  </view>
+  
+</view>
+
+<view class='students'>
+  <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
+  <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+  <view class='stu_name'>
+    赵韩亚
+  </view>
+  <view class='stu_tel'>
+    15171415567 <text bindtap='tel' class='tel' >呼叫</text>
+  </view>
+</view>
+
+<view class='students'>
+  <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
+  <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+  <view class='stu_name'>
+    赵韩亚
+  </view>
+  <view class='stu_tel'>
+    15171415567 <text bindtap='tel' class='tel' >呼叫</text>
   </view>
 </view>
