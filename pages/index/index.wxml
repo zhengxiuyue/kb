@@ -11,14 +11,15 @@
       </view> 
     </view>
 <!--近期开课课堂-->
-  <view class="class">   
+  <view class="class"> 
+
       <view class='content' bindtap='GOclass_des'>
         <view class='content-title'>
           旅游英语
         </view>
         <view class='content-middle'>    
-          <view class='content-rank'>高级班</view>
-          <view class='content-time'><text decode="true">10/16&nbsp;10:00-12:00</text></view>
+          <text class='content-rank'>高级班</text>
+          <text class='content-time'><text decode="true">10/16&nbsp;10:00-12:00</text></text>
         </view>
        <view class='content-btn'>
            <i-button type="success" size='small'>报名体验</i-button>

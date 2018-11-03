@@ -152,14 +152,17 @@ color: #666666;
 
 .content
 {
+  height: 100rpx;
+  line-height: 100rpx;
+  align-items: center;
+  position: relative;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content:space-between;
-  text-align: left;
   background-color: #fff; 
   border-radius: 10rpx;
-  padding: 20rpx 20rpx 0rpx 20rpx;
+  padding: 20rpx 20rpx;
 }
 
 .content-title
@@ -169,13 +172,15 @@ color: #666666;
   font-size: 125%;
   width: 180rpx;
   position: relative;
-  top: 20rpx;
 }
 
 .content-middle{
   line-height: 1.5;
   width: 265rpx;
   margin-left: 15rpx;
+  margin-top: 10rpx; 
+  align-items: center;
+  position: relative;
 }
 
 .content-rank
@@ -191,7 +196,6 @@ color: #666666;
 .content-btn{
   float: right;
   position: relative;
-  top: -10rpx;
 }
 
 .break{
