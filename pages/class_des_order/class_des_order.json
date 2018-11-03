@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "课程详情",
+ "usingComponents": {
+  "i-button": "../../dist/button/index",
+  "i-action-sheet": "../../dist/action-sheet/index"
+}
+}

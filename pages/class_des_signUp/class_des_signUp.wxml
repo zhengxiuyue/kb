@@ -1,0 +1,102 @@
+<!--pages/class_des/class_des.wxml-->
+<view  class='page'>
+      <!--课程简介-->
+      <view class='title'>
+        <image src='/image/brief.png' class='titleImg'></image>
+        <text class='title-text'>课程简介</text>
+      </view>
+      
+      <view class='class'>
+        
+        <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>课程编号：C123H</text></view>
+
+         <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>课程名称：旅游英语</text></view>
+
+         <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>总学时：18学时</text></view>
+
+         <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>课程价格：500元</text></view>
+
+           <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>上课时长：2小时</text></view>
+
+           <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>每节课课时：0.5课时</text></view>
+
+           <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>课容量：30</text></view>
+
+           <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>课余量：5</text></view>
+
+      </view>
+
+      <!--授课老师-->
+      <view class='title'>
+        <image src='/image/teacher.png' class='titleImg'></image>
+        <text class='title-text'>授课老师</text>
+      </view>
+
+      <view class='teacher'>
+        陈良华
+        <text class='teacher-rank'>高级英语老师</text>
+      </view>
+
+<!--报名截至时间-->
+    <view class='title'>
+        <image src='/image/time.png' class='titleImg'></image>
+        <text class='title-text'>截止时间</text>
+      </view>
+     <view class='teacher'>
+        2018/9/10
+      </view>
+
+      <!--报名须知-->
+      <view class='title'>
+        <image src='/image/help.png' class='titleImg'></image>
+        <text class='title-text'>报名须知</text>
+      </view>
+
+       <view class='know'>
+        <view>1、报名成功后，拥有上课的权力。</view>
+        <view>2、报名成功后，可向系统出示手机号或课堂详情作为凭证</view>
+        <view>3、购买课程不支持退款，请谨慎购买。</view>
+      </view>
+</view>
+
+<!--报名按钮-->
+      <view class='sign'>
+        <view class='share'>
+        <button open-type='share'>
+        <view class='share-text'>
+            <image src='/image/share.png' class='signImg' />
+            分享
+        </view>
+        </button>
+        </view>
+        <view class='contact' bindtap='call'>
+        <button>
+        <view class='share-text'>
+        <view class='contact-img'>
+        <image src='/image/tele.png' class='signImg'></image>
+        </view>
+        电话咨询
+        </view>
+        </button>
+        </view>
+        <view class='btn' bindtap='GOclass_signUp'>
+          报名体验
+        </view>
+      
+      </view>
