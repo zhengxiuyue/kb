@@ -1,10 +1,6 @@
 /* pages/class_signUp/class_signUp.wxss */
 .page{
-  padding: 10rpx;
-  line-height: 2;
-  background: #F8F8F8;
-  font-size: 34rpx;
-  height:1300rpx;  
+  line-height: 2; 
 }
 button::after{
 border:none;

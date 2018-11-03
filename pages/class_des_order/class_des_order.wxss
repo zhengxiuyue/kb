@@ -1,16 +1,4 @@
 /* pages/class_des/class_des.wxss */
-.page{
-  display: flex;
-  flex-direction: column;
-  background: #F8F8F8;
-  padding: 10rpx;
-  color: #000;
-  font-family: "微软雅黑";
-  height:1300rpx;  
-  font-size: 34rpx;
-  line-height: 2;
-  background: #F8F8F8;
-}
 
 .title{
   font-weight: bold ;
