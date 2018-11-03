@@ -90,7 +90,7 @@
  font-size: 34rpx;
 }
 .class{
-  margin: 20rpx 60rpx 0rpx 60rpx;
+  margin: 20rpx 60rpx 0rpx 65rpx;
   line-height: 1.8;
 }
 

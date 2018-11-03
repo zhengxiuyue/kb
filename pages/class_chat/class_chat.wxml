@@ -16,7 +16,7 @@
   <view>
   <image bindtap='changelike' class='like' src='{{islike == 1? "/image/like.png" : "/image/dislike.png"}}' ></image>
   </view>
-  <view class='like_num' style='color:{{color == 1? "#1DA27F" : "gray"}}'>{{like_num}}</view>
+  <view class='like_num' style='color:{{color == 1? "#1DA27F" : "#b5b5b2"}}'>{{like_num}}</view>
   <image src='{{comment}}' class='comment'></image>
   <view class='comment_num'>{{comment_num}}</view>
 </view>
@@ -37,7 +37,7 @@
   <image wx:if="{{islike==1}}" class="like" src="{{like}}" background-size="cover"></image>
    <image wx:else class="like" src="{{dislike}}" background-size="cover"></image>
   </view>
-  <view class='like_num'>{{like_num}}</view>
+ <view class='like_num' style='color:{{color == 1? "#1DA27F" : "#b5b5b2"}}'>{{like_num}}</view>
   <image src='{{comment}}' class='comment' ></image>
   <view class='comment_num'>{{comment_num}}</view>
 </view>
@@ -58,7 +58,7 @@
   <image wx:if="{{islike==1}}" class="like" src="{{like}}" background-size="cover"></image>
    <image wx:else class="like" src="{{dislike}}" background-size="cover"></image>
   </view>
-  <view class='like_num'>{{like_num}}</view>
+  <view class='like_num' style='color:{{color == 1? "#1DA27F" : "#b5b5b2"}}'>{{like_num}}</view>
   <image src='{{comment}}' class='comment' ></image>
   <view class='comment_num'>{{comment_num}}</view>
 </view>

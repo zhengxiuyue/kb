@@ -1,6 +1,8 @@
 .sign{
   font-size: 32rpx;
   position: relative;
+  text-align: center;
+  margin:0rpx auto; 
 }
 
 .title{
