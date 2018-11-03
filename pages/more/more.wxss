@@ -41,6 +41,7 @@ float: right;
 margin-right: 60rpx;
 position: relative;
 color: #666666;
+font-weight: bold;
 }
 
 .iconjt{

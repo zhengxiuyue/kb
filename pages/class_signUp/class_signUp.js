@@ -178,6 +178,9 @@ Page({
               content: '报名成功！',
               type: 'success'
             });
+            wx.navigateTo({
+              url: '../mine/mine',
+            })
           },
           fail: function () {
             $Message({

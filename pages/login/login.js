@@ -24,6 +24,22 @@ Page({
   onLoad: function (options) {
     var that = this;
     drawPic(that);
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+          console.log(res.code);
+          //发起网络请求
+          wx.request({
+            url: '',
+            data: {
+              code: res.code
+            }
+          })
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
+        }
+      }
+    })
   },
 
   /**
