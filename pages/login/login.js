@@ -130,7 +130,7 @@ Page({
       })
       return false;
     }
-    else if (that.data.authcode) {
+    else if (that.data.authcode.length==0) {
       wx.showToast({
         title: '请输入验证码!',
         icon: 'none',
