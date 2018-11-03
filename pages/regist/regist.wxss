@@ -1,4 +1,19 @@
 /* pages/regist/regist.wxss */
+button::after{
+border:none;
+}
+
+button{
+  background-color: #fff;
+  color: #2a9dd1;
+}
+
+input{
+outline:none;
+border:none;
+list-style: none;
+}
+
 .logo{
   width: 100%;
   height: 310rpx;
@@ -7,7 +22,7 @@
 .infm{
   position: relative;
   height: 60rpx;
-  margin:20rpx 80rpx 50rpx 80rpx;
+  margin:20rpx 80rpx 40rpx 80rpx;
   border-bottom:4rpx solid #dddee1;
 }
 
@@ -60,9 +75,10 @@
   height: 70rpx;
   line-height: 70rpx;
   justify-content: center;
-  color: #dddee1;
   border:none;
   background-color: #fff;
+  font-size: 30rpx;
+  color:#2a9dd1;
 }
 
 .placeholder{
@@ -100,7 +116,7 @@
   position: absolute;
   font-size: 30rpx;
   color: #1DA27F;
-  top: 95rpx;
+  top: 105rpx;
   right: 80rpx;
 }
 

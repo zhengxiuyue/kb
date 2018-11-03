@@ -1,5 +1,9 @@
 var app = getApp();
 
+// 引入SDK核心类
+var QQMapWX = require('../../dist/qqmap-wx-jssdk.min.js');
+var qqmapsdk;
+ 
 Page({
   data: {
     multiArray: [['北京', '上海', '长沙', '武汉'], ['全部', '北京A校区', '北京B校区', '北京C校区']],
@@ -105,17 +109,17 @@ Page({
   },
   GOclass_des: function (e) {
     wx.navigateTo({
-      url: '../class_des/class_des',
+      url: '../class_des_signUp/class_des_signUp',
     })
   },
   GOclassList1: function (e) {
     wx.navigateTo({
-      url: '../classList1/classList1',
+      url: '../classList_order/classList_order',
     })
   },
   GOclassList2: function (e) {
     wx.navigateTo({
-      url: '../classList2/classList2',
+      url: '../classList_signUp/classList_signUp',
     })
   },
   onLoad: function (options) {
@@ -123,7 +127,43 @@ Page({
   },
   GOclass_des1: function (e) {
     wx.navigateTo({
-      url: '../class_des1/class_des1',
+      url: '../class_des_order/class_des_order',
     })
+  },
+  /**
+ * 生命周期函数--监听页面加载
+ */
+  onLoad: function (options) {
+    app.editTabBar();
+   wx.getLocation({
+     success: function(res) {
+       const latitude = res.latitude
+       const longitude = res.longitude
+       const speed = res.speed
+       const accuracy = res.accuracy
+       console.log(res);
+       qqmapsdk = new QQMapWX({
+         key: 'S3LBZ-7NFWX-YVU4W-7JY7T-MEV6J-SKBF5'
+       }); 
+       wx.getLocation({  //获取当前地址
+         success: function (res) {
+           var latitude = res.latitude // 纬度，浮点数，范围为90 ~ -90
+           var longitude = res.longitude // 经度，浮点数，范围为180 ~ -180
+           //根据经纬度获取所在城市
+           qqmapsdk.reverseGeocoder({
+             location: { latitude: latitude, longitude: longitude },
+             success: function (res) {
+               //address 城市
+               that.setData({ address: res.result.address_component.city })
+               wx.showToast({
+                 title: `当前位置： ` + that.data.address,
+                 icon: 'none'
+               });
+             }
+           });
+         }
+       })
+     }
+   })
   }
 })

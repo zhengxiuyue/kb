@@ -24,11 +24,11 @@
     "pages/class_comment/class_comment",
     "pages/class_comment/comment",
     "pages/class_comment/like",
-    "pages/class_des/class_des",
+    "pages/class_des_signUp/class_des_signUp",
     "pages/class_signUp/class_signUp",
-    "pages/classList1/classList1",
-    "pages/classList2/classList2",
-    "pages/class_des1/class_des1",
+    "pages/classList_order/classList_order",
+    "pages/classList_signUp/classList_signUp",
+    "pages/class_des_order/class_des_order",
     "pages/class_chat_edit/class_chat_edit"
   ],
   "window":{

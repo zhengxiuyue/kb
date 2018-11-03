@@ -1,4 +1,5 @@
 <!--pages/forget/forget.wxml-->
+<image src='/image/logo2.png' class='logo'></image>
 <view>
   <view style='height:50rpx;'></view>
   <view class='infm'>

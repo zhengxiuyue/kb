@@ -91,7 +91,7 @@
 }
 
 .login{
-  margin: 80rpx;
+  margin: 40rpx 80rpx;
   background-color: #1DA27F;
   color: #fff;
   position: absolute;
@@ -104,18 +104,16 @@
 
 .forget{
   position: absolute;
-  top: 165rpx;
+  top: 145rpx;
   font-size: 30rpx;
   left: 80rpx;
-  margin-top: 10rpx;
 }
 
 .regist{
   position: absolute;
   font-size: 30rpx;
   color: #1DA27F;
-  top: 165rpx;
+  top: 145rpx;
   right: 80rpx;
-  margin-top: 10rpx;
 }
 

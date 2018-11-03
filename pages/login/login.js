@@ -130,11 +130,18 @@ Page({
       })
       return false;
     }
-
+    else if (that.data.authcode) {
+      wx.showToast({
+        title: '请输入验证码!',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    }
     //判断验证码 
     else if (that.data.authcode.toUpperCase() != that.data.text.toUpperCase()) {
       wx.showToast({
-        title: '请填写正确的验证码!',
+        title: '验证码错误!',
         icon: 'none',
         duration: 1000
       })

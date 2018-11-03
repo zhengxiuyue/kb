@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "可报名课程",
-  "usingComponents": {
-    "i-action-sheet": "../../dist/action-sheet/index",
-    "i-button": "../../dist/button/index"
-  }
-}

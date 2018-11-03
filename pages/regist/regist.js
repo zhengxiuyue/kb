@@ -109,7 +109,7 @@ Page({
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
     if (that.data.tel.length == 0) {
       wx.showToast({
-        title: '手机号不能为空',
+        title: '请填写正确的手机号码!',
         icon: 'none',
         duration: 1000
       })
@@ -118,7 +118,7 @@ Page({
 
     if (!myreg.test(that.data.tel)) {
       wx.showToast({
-        title: '错误的手机号码！',
+        title: '请填写正确的手机号码!',
         icon: 'none',
         duration: 1000
       })
@@ -231,6 +231,11 @@ Page({
     }
 
     else {
+      wx.showToast({
+        title: '注册成功',
+        icon: 'success',
+        duration: 2000
+      });
       wx.redirectTo({
         url: '/pages/login/login',
       })
@@ -239,7 +244,7 @@ Page({
   //登入
   login:function(e){
     wx.navigateBack({
-      
+      url: '/pages/login/login',
     })
   }
 })
