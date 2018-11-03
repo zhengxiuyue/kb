@@ -80,6 +80,10 @@ list-style: none;
   font-size: 30rpx;
   color:#2a9dd1;
 }
+button[disabled]{
+background-color: #fff !important;
+color:#2a9dd1 !important;
+}
 
 .placeholder{
   color: #dddee1;
