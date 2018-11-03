@@ -15,7 +15,7 @@
   position: absolute;
   top: 20rpx;
   left: -40rpx;
-  background-color: #999999dc;
+  background-color: gray;
   z-index: 99;
   text-align: center;
 }

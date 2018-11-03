@@ -116,7 +116,7 @@ App({
       "color": "#888",
       "selectedColor": "#1DA27F",
       "backgroundColor": "#fff",
-      "borderStyle": "white",
+      "borderStyle": "#dddee1",
       "list": [{
         "pagePath": "/pages/index/T_index",
         "text": "首页",

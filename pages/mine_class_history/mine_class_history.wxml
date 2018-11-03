@@ -1,5 +1,4 @@
 
-
 <view class='classcard1' bindtap='classcard'>
   <view class='classtop1'>
         <text class='classname1'>课堂：模特</text>
