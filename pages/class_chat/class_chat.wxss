@@ -3,13 +3,14 @@
   width: 80rpx;
   border-radius:100rpx;
   margin-left: 20rpx;
-  margin-top: 10rpx;
+  margin-top: 15rpx;
 }
 
 .students{
   background-color: #fff;
-  margin: 20rpx;
+  margin: 30rpx;
   position: relative;
+  border-radius:5rpx; 
 }
 
 .stu_name{
@@ -27,9 +28,9 @@
 }
 
 .chat{
-  word-break:break-all;
-  padding: 10rpx;
+  margin: 5rpx 20rpx 10rpx 20rpx;
   font-size: 34rpx;
+  line-height: 1.5;
 }
 
 .time{

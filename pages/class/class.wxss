@@ -74,7 +74,6 @@
 }
 
 .title{
-  font-weight: bold ;
   margin-left: 20rpx;
   margin-top: 20rpx;
 }
@@ -97,7 +96,6 @@
 .class_des_text{
   line-height: 2;
   font-size: 32rpx;
-  font-weight: bold;
 }
 
 .class-desImg{
@@ -116,11 +114,9 @@
   margin-left: 80rpx;
   line-height: 2;
   font-size: 32rpx;
-  font-weight: bold;
 }
 
 .teacher-rank{
-  color: #333333;
   font-size: 30rpx;
 }
 
@@ -159,7 +155,7 @@
 
 .contact-tab view {
 	height: 50rpx;
-	margin: 0 20rpx;
+	margin: 0 16rpx;
 	line-height: 50rpx;
   text-align: center;
 	border-bottom: 5rpx solid transparent;
@@ -169,5 +165,12 @@
 .contact-tab view.current {
 	color: #1DA27F;
   text-align: center;
+  align-items: center;
 }
+
+.contact-tab view.current1 {
+  text-align: center;
+  align-items: center;
+}
+
 

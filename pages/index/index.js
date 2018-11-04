@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userstatus:null
+    userstatus:null,
+    windowHeight:null
   },
 
   /**
@@ -15,18 +16,21 @@ Page({
   //获取全局变量
   onLoad: function (options) {
     var that = this;
-    wx.getSystemInfo({
-      success: function (res) {
-        
-      },
-    })
+    //创建节点选择器
+    var query = wx.createSelectorQuery();    //选择id    
+    var that = this;    
+    query.select('.page').boundingClientRect(function (rect) {      // 
+    console.log(rect.height)     
+    that.setData({       
+      windowHeight: rect.height +45+'px'     
+      })   
+      }).exec();
+
     app.editTabBar();
-    var that = this;
     var userstatus = app.globalData.userstatus
     this.setData({
-      userstatus: userstatus
+      userstatus: userstatus,
     })
-    console.log(userstatus)
     this.setData({
       msgList: [
         { url: "url", title: "原11月12日模特课改为11月13号同一时间同一地点上课！" },

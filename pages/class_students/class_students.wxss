@@ -43,7 +43,7 @@
 .stu_tel{
   font-size: 32rpx;
   position: absolute;
-  top:25rpx;
+  top:20rpx;
   left: 250rpx;
 }
 
@@ -62,6 +62,7 @@
   display: flex;
   box-sizing: border-box;
 }
+
 .weui-icon-search {
   margin-right: 8px;
   font-size: inherit;
@@ -72,6 +73,7 @@
   left: 10px;
   top: 7px;
 }
+
 .weui-search-bar__form {
   position: relative;
   -webkit-box-flex: 1;
@@ -81,6 +83,7 @@
   background: #fff;
   border: 1rpx solid #e6e6ea;
 }
+
 .weui-search-bar__box {
   position: relative;
   padding-left: 30px;
@@ -103,6 +106,7 @@
   padding: 7px 8px;
   font-size: 0;
 }
+
 .weui-search-bar__label {
   position: absolute;
   top: 0;

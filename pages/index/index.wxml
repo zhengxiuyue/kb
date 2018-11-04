@@ -1,8 +1,7 @@
 <!--index.wxml-->
-
-<view class="page">
 <import src="/pages/tabBar/tabBar.wxml"/> 
 <template is="tabBar" data="{{tabBar}}"/>
+<view class="page" style='height:{{windowHeight}};'>
     <view class="title">
       <text class="app-title">近期开课</text>
       <view class="more"  bindtap='more'><text decode="true">更多&nbsp;</text>

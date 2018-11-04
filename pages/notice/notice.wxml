@@ -15,8 +15,9 @@
     <view class='content'>
       {{content}}
     </view>
-    <view class='teacher'>{{teacher}}</view>
-    <view class='time'>{{teacher}} {{time}}</view>
+    <view class='time'>
+      {{teacher}} {{time}}
+    </view>
     
   </view>
 
