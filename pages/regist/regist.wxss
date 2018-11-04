@@ -79,6 +79,7 @@ list-style: none;
   background-color: #fff;
   font-size: 30rpx;
   color:#2a9dd1;
+  z-index: 99;
 }
 button[disabled]{
 background-color: #fff !important;
