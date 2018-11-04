@@ -218,7 +218,7 @@ Page({
         duration: 2000
       }),  
       wx.navigateBack({
-        url: '/pages/index/index',
+        url: '/pages/login/login'
       })
     }
   }
