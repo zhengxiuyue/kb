@@ -6,6 +6,7 @@ var qqmapsdk;
  
 Page({
   data: {
+    windowHeight:null,
     multiArray: [['北京', '上海', '长沙', '武汉'], ['全部', '北京A校区', '北京B校区', '北京C校区']],
     objectMultiArray: [
       [
@@ -134,6 +135,15 @@ Page({
  * 生命周期函数--监听页面加载
  */
   onLoad: function (options) {
+    //创建节点选择器
+    var query = wx.createSelectorQuery();    //选择id    
+    var that = this;
+    query.select('.page').boundingClientRect(function (rect) {      // 
+      console.log(rect.height)
+      that.setData({
+        windowHeight: rect.height + 45 + 'px'
+      })
+    }).exec();
     app.editTabBar();
    wx.getLocation({
      success: function(res) {

@@ -1,6 +1,6 @@
 <import src="/pages/tabBar/tabBar.wxml"/> 
 <template is="tabBar" data="{{tabBar}}"/>
-<view class='page' style='heigth:{{windowHeight}}'>
+<view class='page' style='height:{{windowHeight}}'>
 
   <view class='user'>
     <view class='username'>赵韩亚</view>

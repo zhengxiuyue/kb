@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    current: 0
+    current: 0,
+    windowHeight:null
   },
 
   /**
@@ -13,6 +14,15 @@ Page({
    */
   onLoad: function (options) {
     app.editTabBar();
+    //创建节点选择器
+    var query = wx.createSelectorQuery();    //选择id    
+    var that = this;
+    query.select('.page').boundingClientRect(function (rect) {      // 
+      console.log(rect.height)
+      that.setData({
+        windowHeight: rect.height + 45 + 'px'
+      })
+    }).exec();
   },
 
   /**

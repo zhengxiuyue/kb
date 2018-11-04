@@ -1,4 +1,4 @@
-// pages/xiuyue/xiuyue.js
+// pages/index/index.js
 var app = getApp();
 Page({
 

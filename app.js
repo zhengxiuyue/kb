@@ -1,6 +1,5 @@
 //app.js
 App({
-
   onLaunch: function () {
     var that = this;
     // 展示本地存储能力
@@ -30,7 +29,6 @@ App({
     wx.login({
       //获取code
       success: function (res) {
-       
         var code = res.code; //返回code
         console.log(code);
         var appId = 'wx3f4ccb9e9f33c7cf';
@@ -49,10 +47,11 @@ App({
       }
     })
     // 获取用户信息
-  
   },
+
   //第一种底部   
-  editTabBar: function () {    //使用getCurrentPages可以获取当前加载中所有的页面对象的一个数组，数组最后一个就是当前页面。    
+  editTabBar: function () {    
+    //使用getCurrentPages可以获取当前加载中所有的页面对象的一个数组，数组最后一个就是当前页面。 
     var curPageArr = getCurrentPages();    //获取加载的页面   
     var curPage = curPageArr[curPageArr.length - 1];    //获取当前页面的对象    
     var pagePath = curPage.route;    //当前页面url    
