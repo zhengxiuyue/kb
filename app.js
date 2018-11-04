@@ -15,7 +15,7 @@ App({
         var code = res.code; //返回code
         console.log(code);
         var appId = 'wx3f4ccb9e9f33c7cf';
-        var secret = '...';
+        var secret = '261784d5c7b10b0884c42a4ed7fde5df';
         wx.request({
           url: 'https://api.weixin.qq.com/sns/jscode2session?appid=' + appId + '&secret=' + secret + '&js_code=' + code + '&grant_type=authorization_code',
           data: {},

@@ -22,6 +22,11 @@
   height:30rpx; 
 }
 
+.big_title{
+  display: flex;
+  justify-content: space-between;
+}
+
 .title{
   margin-top: 30rpx;
   margin-bottom: 20rpx;   
@@ -36,21 +41,26 @@
 }
 
 .more{
-font-size: 85%;
-float: right;
-margin-right: 60rpx;
-position: relative;
+display:flex; 
+font-size: 28rpx;
 color: #666666;
-font-weight: bold;
+position: relative;
+top: 20rpx;
+}
+.more_text
+{
+  height: 60rpx;
+  position: relative;
+  left: 10rpx;
+}
+.more_img{
+  width:40rpx;
+  height:40rpx;
 }
 
 .iconjt{
-  width:60rpx;
-  height:60rpx;
-  margin-top: 48rpx;
-  position: absolute;
-  right: -40rpx;
-  top: -55rpx;
+  width:40rpx;
+  height:40rpx;
 }
 
 .content
@@ -72,8 +82,8 @@ font-weight: bold;
 {
   color:#1DA27F;
   font-weight: bold;
-  font-size: 125%;
-  width: 180rpx;
+  font-size: 36rpx;
+  width: 200rpx;
   position: relative;
 }
 
