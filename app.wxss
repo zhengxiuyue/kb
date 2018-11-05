@@ -7,11 +7,7 @@
   color: #000;
   font-family: "微软雅黑";  
   font-size: 34rpx;
-<<<<<<< HEAD
-  min-height: 1200rpx;
-=======
   min-height: 1300rpx;
->>>>>>> fc3f4396b6a75b307eb74029ab95fc149f355a39
 }
 
 .menu-item{ 
