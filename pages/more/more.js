@@ -135,10 +135,7 @@ Page({
  * 生命周期函数--监听页面加载
  */
   onLoad: function (options) {
-<<<<<<< HEAD
     var that = this;
-=======
->>>>>>> fc3f4396b6a75b307eb74029ab95fc149f355a39
     //创建节点选择器
     var query = wx.createSelectorQuery();    //选择id    
     var that = this;
