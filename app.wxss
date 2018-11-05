@@ -7,7 +7,11 @@
   color: #000;
   font-family: "微软雅黑";  
   font-size: 34rpx;
+<<<<<<< HEAD
+  min-height: 1200rpx;
+=======
   min-height: 1300rpx;
+>>>>>>> fc3f4396b6a75b307eb74029ab95fc149f355a39
 }
 
 .menu-item{ 
@@ -47,3 +51,106 @@
   margin: 130px;
 }
 
+.content
+{
+  height: 100rpx;
+  background-color: #fff; 
+  border-radius: 10rpx;
+  padding: 20rpx 0rpx;
+  text-align: left;
+}
+
+.content-title
+{
+  margin-left: 20rpx;
+  display: inline-block;
+  color:#1DA27F;
+  font-weight: bold;
+  font-size: 36rpx;
+  width: 190rpx;
+  position: relative;
+  top: -10rpx;
+}
+
+.content-middle{
+  margin-left: 30rpx;
+  display: inline-block;
+  width: 340rpx;
+  position: relative;
+  top: 12rpx;
+}
+
+.content-rank
+{
+  display: inline-block;
+  font-weight: bold;
+}
+
+.content-time{
+  font-size: 30rpx;
+}
+
+.content-btn{
+  display: inline-block;
+  text-align: center;
+  font-size: 30rpx;
+  width: 150rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #19be6b;
+  color: #fff;
+  border-radius: 5rpx;
+  border-color: #1da27f;
+  position: relative;
+  top: -12rpx;
+}
+
+.break{
+  height: 20rpx;
+}
+
+.error{
+  color: #515151;
+  margin: 0rpx auto;
+}
+
+.error_img{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.search{
+  border: 1px solid #1DA27F;
+  border-radius: 40rpx;
+  margin: 5rpx 40rpx 40rpx 40rpx;
+  padding: 10rpx 20rpx;
+}
+
+.searchImg{
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.searchInput{
+  padding-left: 20rpx;
+  display: inline-block;
+  width: 90%;
+}
+.more{
+display:flex; 
+font-size: 30rpx;
+color: #666666;
+position: relative;
+top: 20rpx;
+}
+.more_text
+{
+  height: 60rpx;
+  position: relative;
+  left: 10rpx;
+}
+.more_img{
+  width:40rpx;
+  height:40rpx;
+}
