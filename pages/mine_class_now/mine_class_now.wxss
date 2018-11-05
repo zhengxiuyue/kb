@@ -1,6 +1,6 @@
 /* pages/mine_class_now/mine_class_now.wxss */
 .classcard1{
-  height: 260rpx;
+  height: 320rpx;
   margin: 20rpx 40rpx;
   padding: 20 40rpx;
   border-radius: 2rpx;
@@ -29,35 +29,21 @@
 }
 
 .classgrate{
+  font-weight: bold; 
   position: absolute;
   top: 38rpx;
   left: 380rpx;
   font-size:32rpx;
-  font-weight: bold;
+  color: #464c5b;
 }
 
 .classinfm1{
+  color: #657180;
   font-size: 32rpx;
   position: absolute;
   line-height: 1.5;
   top: 100rpx;
-  left: 20rpx;
-}
-
-.classcard{
-  height: 220rpx;
-  margin: 20rpx;
-  border-radius: 2rpx;
- }
-
-.classtop{
-  height: 70rpx;
-  background-color: rgba(29, 162, 126, 0.61);
-  color: #fff;
-  line-height: 70rpx;
-  font-size: 36rpx;
-  font-weight: bold;
-  padding-left: 20rpx;
+  left: 40rpx;
 }
 
 .classbottom{

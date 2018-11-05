@@ -29,7 +29,9 @@
     赵韩亚
   </view>
   <view class='stu_tel'>
-    15171415567 <text bindtap='tel' class='tel' >呼叫</text>
+    15171415567
+    <image src='/image/tele.png' class='contact'></image>
+    <text bindtap='tel' class='tel' >呼叫</text>
   </view>
 </view>
 
@@ -40,7 +42,9 @@
     赵韩亚
   </view>
   <view class='stu_tel'>
-    15171415567 <text bindtap='tel' class='tel' >呼叫</text>
+    15171415567 
+    <image src='/image/tele.png' class='contact'></image>
+    <text bindtap='tel' class='tel' >呼叫</text>
   </view>
   
 </view>
@@ -52,7 +56,9 @@
     赵韩亚
   </view>
   <view class='stu_tel'>
-    15171415567 <text bindtap='tel' class='tel' >呼叫</text>
+    15171415567 
+    <image src='/image/tele.png' class='contact'></image>
+    <text bindtap='tel' class='tel' >呼叫</text>
   </view>
 </view>
 
@@ -63,6 +69,8 @@
     赵韩亚
   </view>
   <view class='stu_tel'>
-    15171415567 <text bindtap='tel' class='tel' >呼叫</text>
+    15171415567 
+    <image src='/image/tele.png' class='contact'></image>
+    <text bindtap='tel' class='tel' >呼叫</text>
   </view>
 </view>
