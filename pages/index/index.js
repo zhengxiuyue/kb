@@ -34,7 +34,7 @@ Page({
     this.setData({
       msgList: [
         { url: "url", title: "原11月12日模特课改为11月13号同一时间同一地点上课！" },
-        { url: "url", title: "原11月12日模特课取消！原11月12日模特课改为11月13号同一时间同一地点上课！原11月12日模特课改为11月13号同一时间同一地点上课！" },
+        { url: "url", title: "原11月12日模特课取消!原11月12日模特课改为11月13号同一时间同一地点上课！" },
         { url: "url", title: "原11月12日模特课改为11月13号同一时间同一地点上课！" }]
     });
   },
@@ -104,7 +104,12 @@ Page({
   },
   GOclass_des: function (e) {
     wx.navigateTo({
-      url: '../class_des/class_des',
+      url: '../class_des_signUp/class_des_signUp',
+    })
+  },
+  GOmore: function (e) {
+    wx.navigateTo({
+      url: '../more/more',
     })
   }
 })

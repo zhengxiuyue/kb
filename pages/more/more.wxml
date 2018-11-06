@@ -3,18 +3,18 @@
 <import src="/pages/tabBar/tabBar.wxml"/> 
 <template is="tabBar" data="{{tabBar}}"/>
 
-<view class='page'>
+<view class='page' style='height:{{windowHeight}};'>
   <!--选择地区-->
 
   <view class='area'>
   <view class="section">
   <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
     <view class="picker">
-      <image src='/image/area.png' class='areaIcon'></image><text decode="true" class='text-blod'>&nbsp;{{multiArray[0][multiIndex[0]]}}&nbsp;&nbsp;</text>
-      {{multiArray[1][multiIndex[1]]}} <image src='/image/dropDown.png' class='pikerImg'></image>
+      <image src='/image/area.png' class='areaIcon'></image><text decode="true" class='text-blod'>&nbsp;{{city}}&nbsp;&nbsp;</text>
+      {{multiArray[3][multiIndex[3]]}} <image src='/image/dropDown.png' class='pikerImg'></image>
     </view>
   </picker>
-</view>
+  </view>
   </view>
 
   <!--可预约课程列表-->
@@ -38,11 +38,44 @@
           <view class='content-time'><text decode="true">陈良华老师</text></view>
         </view>
       <view class='content-btn'>
-           <i-button type="success" size='small'>预约试听</i-button>
+          预约试听
       </view>
       </view>
       <view class='break'></view>
 
+           <view class='content'  bindtap='GOclass_des1'>
+        <view class='content-title'>
+          钢琴四人班
+        </view>
+        <view class='content-middle'>
+          <view class='content-rank'>高级班</view>
+          <view class='content-time'><text decode="true">陈良华老师</text></view>
+        </view>
+      <view class='content-btn'>
+          预约试听
+      </view>
+      </view>
+      <view class='break'></view>
+
+           <view class='content'  bindtap='GOclass_des1'>
+        <view class='content-title'>
+          钢琴四人班
+        </view>
+        <view class='content-middle'>
+          <view class='content-rank'>高级班</view>
+          <view class='content-time'><text decode="true">陈良华老师</text></view>
+        </view>
+      <view class='content-btn'>
+          预约试听
+      </view>
+      </view>
+      <view class='break'></view>
+
+  </view>
+
+        <!--没有课程时的显示-->
+  <view class='error' visible="{{ visible1 }}">
+    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;没有数据</text>
   </view>
 
 
@@ -51,7 +84,7 @@
     <view>
      <view class='big_title'>
         <view class="title">
-          <text class="app-title">预约课程</text> 
+          <text class="app-title">报名课程</text> 
         </view>
         <view class="more" bindtap='GOclassList1'>
           <view class='more_text'><text decode="true">更多&nbsp;</text></view>
@@ -61,15 +94,37 @@
       
       <view class='content' bindtap='GOclass_des'>
         <view class='content-title'>
-          旅游英语
+          钢琴四人班
         </view>
         <view class='content-middle'>    
           <view class='content-rank'>高级班</view>
-          <view class='content-time'><text decode="true">10/16&nbsp;10:00-12:00</text></view>
+          <view class='content-time'><text decode="true">2018/10/16&nbsp;10:00-12:00</text></view>
         </view>
-       <view class='content-btn'>
-           <i-button type="success" size='small'>报名体验</i-button>
+       <view class='content-btn'>报名体验</view>
       </view>
+      <view class='break'></view>
+
+      <view class='content' bindtap='GOclass_des'>
+        <view class='content-title'>
+          钢琴四人班
+        </view>
+        <view class='content-middle'>    
+          <view class='content-rank'>高级班</view>
+          <view class='content-time'><text decode="true">2018/10/16&nbsp;10:00-12:00</text></view>
+        </view>
+       <view class='content-btn'>报名体验</view>
+      </view>
+      <view class='break'></view>
+
+      <view class='content' bindtap='GOclass_des'>
+        <view class='content-title'>
+          钢琴四人班
+        </view>
+        <view class='content-middle'>    
+          <view class='content-rank'>高级班</view>
+          <view class='content-time'><text decode="true">2018/10/16&nbsp;10:00-12:00</text></view>
+        </view>
+       <view class='content-btn'>报名体验</view>
       </view>
       <view class='break'></view>
 

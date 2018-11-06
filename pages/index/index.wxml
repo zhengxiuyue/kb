@@ -2,108 +2,150 @@
 <import src="/pages/tabBar/tabBar.wxml"/> 
 <template is="tabBar" data="{{tabBar}}"/>
 <view class="page" style='height:{{windowHeight}};'>
-    <view class="title">
-      <text class="app-title">近期开课</text>
-      <view class="more"  bindtap='more'><text decode="true">更多&nbsp;</text>
-        <image src="/image/icon-jt.png" class="iconjt">
-        </image>
-      </view> 
+    <view class='big_title'>
+        <view class="title">
+          <text class="app-title">近期开课</text> 
+        </view>
+        <view class="more" bindtap='GOmore'>
+          <view class='more_text'><text decode="true">更多&nbsp;</text></view>
+          <view class='more_img'><image src="/image/icon-jt.png" class="iconjt"></image></view>
+        </view>  
     </view>
 <!--近期开课课堂-->
-  <view class="class"> 
-
-      <view class='content' bindtap='GOclass_des'>
+       <view class='content' bindtap='GOclass_des'>
         <view class='content-title'>
-          旅游英语
-        </view>
-        <view class='content-middle'>    
-          <text class='content-rank'>高级班</text>
-          <text class='content-time'><text decode="true">10/16&nbsp;10:00-12:00</text></text>
-        </view>
-       <view class='content-btn'>
-           <i-button type="success" size='small'>报名体验</i-button>
-      </view>
-      </view>
-
-        <view class='break'></view>
-
-      <view class='content' bindtap='GOclass_des'>
-        <view class='content-title'>
-          旅游英语
+          钢琴四人班
         </view>
         <view class='content-middle'>    
           <view class='content-rank'>高级班</view>
-          <view class='content-time'><text decode="true">10/16&nbsp;10:00-12:00</text></view>
+          <view class='content-time'><text decode="true">2018/10/16&nbsp;10:00-12:00</text></view>
         </view>
-       <view class='content-btn'>
-           <i-button type="success" size='small'>报名体验</i-button>
+       <view class='content-btn'>报名体验</view>
       </view>
-      </view>
-
-        <view class='break'></view>
-
+      <view class='break'></view>
       <view class='content' bindtap='GOclass_des'>
         <view class='content-title'>
-          旅游英语
+          钢琴四人班
         </view>
         <view class='content-middle'>    
           <view class='content-rank'>高级班</view>
-          <view class='content-time'><text decode="true">10/16&nbsp;10:00-12:00</text></view>
+          <view class='content-time'><text decode="true">2018/10/16&nbsp;10:00-12:00</text></view>
         </view>
-       <view class='content-btn'>
-           <i-button type="success" size='small'>报名体验</i-button>
+       <view class='content-btn'>报名体验</view>
       </view>
+      <view class='break'></view>
+      <view class='content' bindtap='GOclass_des'>
+        <view class='content-title'>
+          钢琴四人班
+        </view>
+        <view class='content-middle'>    
+          <view class='content-rank'>高级班</view>
+          <view class='content-time'><text decode="true">2018/10/16&nbsp;10:00-12:00</text></view>
+        </view>
+       <view class='content-btn'>报名体验</view>
       </view>
+      <view class='break'></view>
+  <!--没有课程时的显示-->
+  <view class='error' visible="{{ visible1 }}">
+    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;没有数据</text>
   </view>
 
-  <view class="title">
-    <text class="app-title" >通知</text>
-    <view class="more" bindtap='notice'>更多<image src="/image/icon-jt.png" class="iconjt"></image></view> 
-  </view>
-
-  <swiper class="notice" vertical="true" autoplay="true" circular="true" interval="4000">
+  <view class='big_title'>
+        <view class="title">
+          <text class="app-title">通知</text> 
+        </view>
+        <view class="more" bindtap='notice'>
+          <view class='more_text'><text decode="true">更多&nbsp;</text></view>
+          <view class='more_img'><image src="/image/icon-jt.png" class="iconjt"></image></view>
+        </view>  
+    </view>
+  <view  class='notice_view'>
+    <swiper class="notice" vertical="true" autoplay="true" circular="true" interval="4000" >
     <block wx:for="{{msgList}}" wx:key="{{}}">
         <swiper-item>
           <view class="swiper_item">{{item.title}}</view>
         </swiper-item>
     </block>
   </swiper>
+  </view>
 
   <view class="title">
     <text class="app-title">我的课表</text>
   </view>
 
-  <view class="class">
+  <view class='data'>
+    <view>
+      <view>一</view><view class='week selected'>5</view>
+    </view>
+     <view>
+      <view>二</view><view class='week'>6</view>
+    </view>
+     <view>
+      <view>三</view><view class='week'>7</view>
+    </view>
+     <view>
+      <view>四</view><view class='week'>8</view>
+    </view>
+     <view>
+      <view>五</view><view class='week'>9</view>
+    </view>
+     <view>
+      <view>六</view><view class='week'>10</view>
+    </view>
+      <view>
+      <view>日</view><view class='week'>11</view>
+    </view>
+  </view>
 
-    <view class="oneclass" bindtap='enterclass'>
-      <text class="classname">模特</text>
-      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
-      <image src="/image/icon-jt.png" class="iconjtimg"></image>
-    </view>
+  <view class='Aclass' bindtap='enterclass'> 
+      <view class='b1'>
+        星期日
+      </view>
+      <view class='b2'>
+      钢琴四人班基础班 | 6班
+      </view>
+      
+      <view class='b3'>
+        10月30日
+      </view>
+      <view class='b4'>
+        10：00-12：00 | 2h
+      </view>
+  </view>
+   <view class='Aclass' bindtap='enterclass'> 
+      <view class='b1'>
+        星期日
+      </view>
+      <view class='b2'>
+      钢琴四人班基础班 | 6班
+      </view>
+      
+      <view class='b3'>
+        10月30日
+      </view>
+      <view class='b4'>
+        10：00-12：00 | 2h
+      </view>
+  </view>
+   <view class='Aclass' bindtap='enterclass'> 
+      <view class='b1'>
+        星期日
+      </view>
+      <view class='b2'>
+      钢琴四人班基础班 | 6班
+      </view>
+      
+      <view class='b3'>
+        10月30日
+      </view>
+      <view class='b4'>
+        10：00-12：00 | 2h
+      </view>
+  </view>
 
-    <view class="oneclass" bindtap='enterclass'>
-      <text class="classname">模特</text>
-      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
-      <image src="/image/icon-jt.png" class="iconjtimg"></image>
-    </view>
-
-    <view class="oneclass" bindtap='enterclass'>
-      <text class="classname">模特</text>
-      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
-      <image src="/image/icon-jt.png" class="iconjtimg"></image>
-    </view>
-  
-    <view class="oneclass" bindtap='enterclass'>
-      <text class="classname">模特</text>
-      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
-      <image src="/image/icon-jt.png" class="iconjtimg"></image>
-    </view>
-
-    <view class="oneclass" bindtap='enterclass'>
-      <text class="classname">模特</text>
-      <text class="classgreat">基础班<text class="classtime"> 11月19日(周一) 10:00-12:00</text></text>
-      <image src="/image/icon-jt.png" class="iconjtimg"></image>
-    </view>
+    <!--没有课程时的显示-->
+  <view class='error' visible="{{ visible1 }}">
+    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;您还没有选课</text>
   </view>
 </view>
 

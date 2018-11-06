@@ -11,6 +11,7 @@
   background-color: #fff;
   margin: 20rpx;
   position: relative;
+  border-radius: 10rpx; 
 }
 
 .stu_name{

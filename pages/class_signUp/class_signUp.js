@@ -8,9 +8,6 @@ Page({
     time: '获取验证码', //倒计时 
     currentTime: 60,//限制60s
     isClick: false,//获取验证码按钮，默认允许点击
-    value1: '',
-    value2: '',
-    value3: '',
     visible5: false,
     actions5: [
       {
@@ -23,6 +20,7 @@ Page({
       }
     ]
   },
+
   handleOpen5() {
     this.setData({
       visible5: true
@@ -30,7 +28,30 @@ Page({
   },
 
   handleClick5({ detail }) {
-   
+    if (detail.index === 0) {
+      this.setData({
+        visible5: false
+      });
+    } else {
+      const action = [...this.data.actions5];
+      action[1].loading = true;
+
+      this.setData({
+        actions5: action
+      });
+
+      setTimeout(() => {
+        action[1].loading = false;
+        this.setData({
+          visible5: false,
+          actions5: action
+        });
+        $Message({
+          content: '删除成功！',
+          type: 'success'
+        });
+      }, 2000);
+    }
   },
 
   //获取用户名
@@ -57,7 +78,7 @@ Page({
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
     if (that.data.tel.length == 0) {
       wx.showToast({
-        title: '请输入正确的手机号码！',
+        title: '请填写正确的手机号码!',
         icon: 'none',
         duration: 1000
       })
@@ -66,7 +87,7 @@ Page({
 
     if (!myreg.test(that.data.tel)) {
       wx.showToast({
-        title: '请输入正确的手机号码！',
+        title: '请填写正确的手机号码!',
         icon: 'none',
         duration: 1000
       })
@@ -149,62 +170,8 @@ Page({
     }
 
     //判断验证码 服务端！！！
-    else if (that.data.authcode.length != 4) {
-      wx.showToast({
-        title: '请填写正确的验证码!',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    }
-
     else {
-      if (e.index === 0) {
-        this.setData({
-          visible5: false
-        });
-      } else {
-        const action = [...this.data.actions5];
-        action[1].loading = true;
-
-        wx.requestPayment({
-          timeStamp: '',
-          nonceStr: '',
-          package: '',
-          signType: 'MD5',
-          paySign: '',
-          success: function () {
-            $Message({
-              content: '报名成功！',
-              type: 'success'
-            });
-            wx.navigateTo({
-              url: '../mine/mine',
-            })
-          },
-          fail: function () {
-            $Message({
-              content: '报名失败！',
-              type: 'success'
-            });
-          }
-        })
-
-        this.setData({
-          actions5: action
-        });
-
-        setTimeout(() => {
-          action[1].loading = false;
-          this.setData({
-            visible5: false,
-            actions5: action
-          });
-        }, 2000);
-        /*wx.redirectTo({
-          url: '../class_des/class_des',
-        })*/
-      }
+      handleOpen5()
     }
   }
 });
