@@ -8,7 +8,7 @@
   font-size: 36rpx;
   font-weight: bold;
   word-break:break-all;
-  color: #1DA27F;
+  color: #46475b;
 }
 
 .delete{
@@ -21,13 +21,14 @@
 }
 
 .content{
+  color: #757180;
   padding: 10rpx 20rpx;
   font-size: 34rpx;
   word-break:break-all;
 }
 
 .time{
-  color: gainsboro;
+  color: #9ea7b4;
   font-size: 32rpx;
   padding-left: 40%;
   padding-bottom: 10rpx;

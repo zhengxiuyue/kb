@@ -3,105 +3,65 @@ var app = getApp();
 // 引入SDK核心类
 var QQMapWX = require('../../dist/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
- 
+
 Page({
   data: {
-    windowHeight:null,
-    multiArray: [['北京', '上海', '长沙', '武汉'], ['全部', '北京A校区', '北京B校区', '北京C校区']],
+    city:'',
+    windowHeight: null,
+    multiArray: [['湖北省', '湖南省'], ['宜昌市', '长沙市'], ['枝江市', '株洲区'], ['A校区', 'B校区', 'C校区']],
     objectMultiArray: [
       [
         {
           id: 0,
-          name: '北京'
+          name: '湖北省'
         },
         {
           id: 1,
-          name: '上海'
-        },
-        {
-          id: 2,
-          name: '长沙'
-        },
-        {
-          id: 3,
-          name: '武汉'
+          name: '湖南省'
         }
-      ], [
+      ],
+      [
         {
           id: 0,
-          name: '全部'
+          name: '宜昌市'
         },
         {
           id: 1,
-          name: '北京A校区'
+          name: '长沙市'
+        }
+      ],
+      [
+        {
+          id: 0,
+          name: '枝江市'
         },
         {
-          id: 2,
-          name: '北京B校区'
-        },
-        {
-          id: 3,
-          name: '北京C校区'
+          id: 1,
+          name: '株洲区'
         }
       ]
-    ],
-    multiIndex: [0, 0],
-    visible1: false,
-    actions1: [
+      [
       {
-        name: '张先生 15171809954',
+        id: 0,
+        name: 'A校区'
       },
       {
-        icon: 'mobilephone',
-        name: ' 电话预约',
+        id: 1,
+        name: 'B校区'
+      },
+      {
+        id: 2,
+        name: 'C校区'
       }
-    ]
+      ]
+    ],
+    multiIndex: [0, 0, 0, 0]
   },
-  bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+  changeCity: function (e) {
+    console.log(e);
     this.setData({
-      index: e.detail.value
-    })
-  },
-  bindRegionChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      region: e.detail.value
-    })
-  },
-  bindMultiPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      multiIndex: e.detail.value
-    })
-  },
-  bindMultiPickerColumnChange: function (e) {
-    console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
-    var data = {
-      multiArray: this.data.multiArray,
-      multiIndex: this.data.multiIndex
-    };
-    data.multiIndex[e.detail.column] = e.detail.value;
-    switch (e.detail.column) {
-      case 0:
-        switch (data.multiIndex[0]) {
-          case 0:
-            data.multiArray[1] = ['全部', '北京A校区', '北京B校区', '北京C校区'];
-            break;
-          case 1:
-            data.multiArray[1] = ['全部', '上海A校区', '上海B校区', '上海C校区'];
-            break;
-          case 2:
-            data.multiArray[1] = ['全部', '长沙A校区', '长沙B校区', '长沙C校区'];
-            break;
-          case 3:
-            data.multiArray[1] = ['全部', '武汉A校区', '武汉B校区', '武汉C校区'];
-            break;
-        }
-        data.multiIndex[1] = 0;
-        break;
-    }
-    this.setData(data);
+      city: e
+     })
   },
   tips(info) {
     $Message({
@@ -131,9 +91,64 @@ Page({
       url: '../class_des_order/class_des_order',
     })
   },
+  bindMultiPickerChange: function (e) {
+    console.log('发送选择改变，携带值为', e.detail.value[1])
+    var theCity = this.multiArray[1][e.detail.value[1]];
+    this.changeCity(theCity);
+    this.setData({
+      multiIndex: e.detail.value
+    })
+  },
+  bindMultiPickerColumnChange: function (e) {
+    console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
+    var data = {
+      multiArray: this.data.multiArray,
+      multiIndex: this.data.multiIndex
+    };
+    data.multiIndex[e.detail.column] = e.detail.value;
+    switch (e.detail.column) {
+      case 0:
+        switch (data.multiIndex[0]) {
+          case 0:
+            data.multiArray[1] = ['宜昌市'];
+            data.multiArray[2] = ['枝江市'];
+            data.multiArray[3] = ['A校区', 'B校区', 'C校区'];
+            break;
+          case 1:
+            data.multiArray[1] = ['长沙市'];
+            data.multiArray[2] = ['株洲区'];
+            data.multiArray[3] = ['A校区', 'B校区', 'C校区'];
+            break;
+        }
+        data.multiIndex[1] = 0;
+        data.multiIndex[2] = 0;
+        data.multiIndex[3] = 0;
+        break;
+      case 1:
+        switch (data.multiIndex[0]) {
+          case 0:
+            switch (data.multiIndex[1]) {
+              case 0:
+                data.multiArray[2] = ['枝江市'];
+                data.multiArray[3] = ['A校区', 'B校区', 'C校区'];
+                break;
+              case 1:
+                data.multiArray[2] = ['株洲区'];
+                data.multiArray[3] = ['A校区', 'B校区', 'C校区'];
+                break;
+            }
+            break;
+        }
+        data.multiIndex[2] = 0;
+        data.multiIndex[3] = 0;
+        console.log(data.multiIndex);
+        break;
+    }
+    this.setData(data);
+  },
   /**
  * 生命周期函数--监听页面加载
- */
+ */  
   onLoad: function (options) {
     var that = this;
     //创建节点选择器
@@ -146,35 +161,37 @@ Page({
       })
     }).exec();
     app.editTabBar();
-   wx.getLocation({
-     success: function(res) {
-       const latitude = res.latitude
-       const longitude = res.longitude
-       const speed = res.speed
-       const accuracy = res.accuracy
-       console.log(res);
-       qqmapsdk = new QQMapWX({
-         key: 'S3LBZ-7NFWX-YVU4W-7JY7T-MEV6J-SKBF5'
-       }); 
-       wx.getLocation({  //获取当前地址
-         success: function (res) {
-           var latitude = res.latitude // 纬度，浮点数，范围为90 ~ -90
-           var longitude = res.longitude // 经度，浮点数，范围为180 ~ -180
-           //根据经纬度获取所在城市
-           qqmapsdk.reverseGeocoder({
-             location: { latitude: latitude, longitude: longitude },
-             success: function (res) {
-               //address 城市
-               that.setData({ address: res.result.address_component.city })
-               wx.showToast({
-                 title: `当前位置： ` + that.data.address,
-                 icon: 'none'
-               });
-             }
-           });
-         }
-       })
-     }
-   })
+    wx.getLocation({
+      success: function (res) {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        const speed = res.speed
+        const accuracy = res.accuracy
+        console.log(res);
+        qqmapsdk = new QQMapWX({
+          key: 'S3LBZ-7NFWX-YVU4W-7JY7T-MEV6J-SKBF5'
+        });
+        wx.getLocation({  //获取当前地址
+          success: function (res) {
+            var latitude = res.latitude // 纬度，浮点数，范围为90 ~ -90
+            var longitude = res.longitude // 经度，浮点数，范围为180 ~ -180
+            //根据经纬度获取所在城市
+            qqmapsdk.reverseGeocoder({
+              location: { latitude: latitude, longitude: longitude },
+              success: function (res) {
+                //address 城市
+                that.changeCity(res.result.address_component.city);
+                console.log(res.result);
+                that.setData({address: res.result.address})
+                wx.showToast({
+                  title: `当前位置： ` + that.data.address,
+                  icon: 'none'
+                });
+              }
+            });
+          }
+        })
+      }
+    })
   }
 })

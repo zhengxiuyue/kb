@@ -10,13 +10,13 @@
   background-color: #fff;
   margin: 30rpx;
   position: relative;
-  border-radius:5rpx; 
+  border-radius:8rpx; 
 }
 
 .stu_name{
   font-weight: bold;
   position: absolute;
-  top:20rpx;
+  top:30rpx;
   left: 120rpx;
 }
 
@@ -28,6 +28,7 @@
 }
 
 .chat{
+  color: #657180;
   margin: 5rpx 20rpx 10rpx 20rpx;
   font-size: 34rpx;
   line-height: 1.5;
