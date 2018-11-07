@@ -1,33 +1,64 @@
 <!--pages/notice/notice.wxml-->
 <view class='page'>
+  <view class='time'>{{time}}</view>
   <view class='notice'>
-    <view class='title'>【{{title}}】</view>
-    <view class='content'>
-      {{content}}
-    </view>
-    <view class='time'>
-     {{teacher}} {{time}}
-    </view>
+      <view class='title'>{{title}}
+        <image class='delete' src='/image/delete.png' bindtap='delt' style='display:{{userstatus == 0? "block":"none"}}'></image>
+      </view>
+      <view class='content'>
+        <text>{{content}}</text>
+      </view>
+      <view class='teacher'>
+      {{teacher}}
+      </view>
+      <view style='height:15rpx;'></view>
   </view>
+  <view style='height:10rpx;'></view>
 
+  <view class='time'>{{time}}</view>
   <view class='notice'>
-    <view class='title'>【{{title}}】</view>
-    <view class='content'>
-      {{content}}
-    </view>
-    <view class='time'>
-      {{teacher}} {{time}}
-    </view>
-    
+      <view class='title'>{{title}}
+        <image class='delete' src='/image/delete.png' bindtap='delt' style='display:{{userstatus == 0? "block":"none"}}'></image>
+      </view>
+      <view class='content'>
+        <text>{{content}}</text>
+      </view>
+      <view class='teacher'>
+      {{teacher}}
+      </view>
+      <view style='height:15rpx;'></view>
   </view>
+  <view style='height:10rpx;'></view>
 
+  <view class='time'>{{time}}</view>
   <view class='notice'>
-    <view class='title'>【{{title}}】</view>
-    <view class='content'>
-      {{content}}
-    </view>
-    <view class='time'>
-     {{teacher}} {{time}}
-    </view>
+      <view class='title'>{{title}}
+        <image class='delete' src='/image/delete.png' bindtap='delt' style='display:{{userstatus == 0? "block":"none"}}'></image>
+      </view>
+      <view class='content'>
+        <text>{{content}}</text>
+      </view>
+      <view class='teacher'>
+      {{teacher}}
+      </view>
+      <view style='height:15rpx;'></view>
   </view>
+  <view style='height:20rpx;'></view>
+
+  <view class='time'>{{time}}</view>
+  <view class='notice'>
+      <view class='title'>{{title}}
+        <image class='delete' src='/image/delete.png' bindtap='delt' style='display:{{userstatus == 0? "block":"none"}}'></image>
+      </view>
+      <view class='content'>
+        <text>{{content}}</text>
+      </view>
+      <view class='teacher'>
+      {{teacher}}
+      </view>
+      <view style='height:15rpx;'></view>
+  </view>
+  <view style='height:10rpx;'></view>
 </view>
+
+
