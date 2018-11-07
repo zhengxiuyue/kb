@@ -63,15 +63,15 @@
   color:#1DA27F;
   font-weight: bold;
   font-size: 36rpx;
-  width: 190rpx;
+  width: 180rpx;
   position: relative;
   top: -10rpx;
 }
 
 .content-middle{
-  margin-left: 30rpx;
+  margin-left: 20rpx;
   display: inline-block;
-  width: 340rpx;
+  width: 350rpx;
   position: relative;
   top: 12rpx;
 }

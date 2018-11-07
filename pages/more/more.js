@@ -92,9 +92,10 @@ Page({
     })
   },
   bindMultiPickerChange: function (e) {
-    console.log('发送选择改变，携带值为', e.detail.value[1])
-    var theCity = this.multiArray[1][e.detail.value[1]];
-    this.changeCity(theCity);
+    console.log('发送选择改变，携带值为', e.detail.value[1]);
+    var that = this;
+   // console.log(that.data.multiArray[1][e.detail.value[1]]);
+    that.changeCity(that.data.multiArray[1][e.detail.value[1]]);
     this.setData({
       multiIndex: e.detail.value
     })
@@ -161,36 +162,34 @@ Page({
       })
     }).exec();
     app.editTabBar();
-    wx.getLocation({
+    wx.getLocation({  //获取当前地址
       success: function (res) {
-        const latitude = res.latitude
-        const longitude = res.longitude
-        const speed = res.speed
-        const accuracy = res.accuracy
-        console.log(res);
+        var latitude = res.latitude // 纬度，浮点数，范围为90 ~ -90
+        var longitude = res.longitude // 经度，浮点数，范围为180 ~ -180
+        //根据经纬度获取所在城市
         qqmapsdk = new QQMapWX({
           key: 'S3LBZ-7NFWX-YVU4W-7JY7T-MEV6J-SKBF5'
         });
-        wx.getLocation({  //获取当前地址
+        qqmapsdk.reverseGeocoder({
+          location: { latitude: latitude, longitude: longitude },
           success: function (res) {
-            var latitude = res.latitude // 纬度，浮点数，范围为90 ~ -90
-            var longitude = res.longitude // 经度，浮点数，范围为180 ~ -180
-            //根据经纬度获取所在城市
-            qqmapsdk.reverseGeocoder({
-              location: { latitude: latitude, longitude: longitude },
-              success: function (res) {
-                //address 城市
-                that.changeCity(res.result.address_component.city);
-                console.log(res.result);
-                that.setData({address: res.result.address})
-                wx.showToast({
-                  title: `当前位置： ` + that.data.address,
-                  icon: 'none'
-                });
-              }
+            //address 城市
+            that.changeCity(res.result.address_component.city);
+            console.log(res.result);
+            that.setData({ address: res.result.address })
+            wx.showToast({
+              title: `当前位置： ` + that.data.address,
+              icon: 'none'
             });
           }
-        })
+        });
+      },
+      fail(res) {
+        wx.showToast({
+          title: '无法获取当前位置',
+          icon: 'none'
+        });
+        that.changeCity('北京市');
       }
     })
   }
