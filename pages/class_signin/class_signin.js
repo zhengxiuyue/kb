@@ -16,7 +16,7 @@ Component({
    */
   data: {
     selectPerson: true,
-    firstPerson: '2018/11/6 9:30--11:00 第二节',
+    firstPerson: '2018/11/06 9:30--11:00 第二节',
     selectArea: false,
     current: 0,
     display:"none",

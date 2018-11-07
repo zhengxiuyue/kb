@@ -1,9 +1,11 @@
 /* pages/class_signin/signin.wxss */
+
 .headphoto{
-  height: 80rpx;
-  width: 80rpx;
+  height: 70rpx;
+  width: 70rpx;
   border-radius:100rpx;
   margin-left: 20rpx;
+  margin-top: 5rpx;
 }
 
 .title{
@@ -18,22 +20,127 @@
   border-radius: 10rpx;
 }
 
+.select{
+  position: absolute;
+  left: 120rpx;
+  top: -25rpx;
+}
+
 .students{
-  background-color: #fff;
   margin: 20rpx;
+  height: 80rpx;
   position: relative;
 }
 
 .stu_name{
-  font-weight: bold;
+  color: #495060;
   position: absolute;
   top:20rpx;
   left: 120rpx;
+  font-size: 34rpx;
 }
 
 .stu_tel{
-  font-size: 32rpx;
+  color: #495060;
+  font-size: 30rpx;
   position: absolute;
-  top:25rpx;
-  left: 250rpx;
+  top:20rpx;
+  left: 240rpx;
+}
+
+.contact{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  top: 4rpx;
+  left: 360rpx;
+}
+
+.tel{
+   /* border: 1rpx solid #1DA27F;  */
+   padding: 7rpx 120rpx 7rpx 90rpx;
+   font-size: 28rpx;
+   border-radius:5rpx; 
+   color: #9ea7b4;
+}
+
+.weui-search-bar {
+  position: relative;
+  padding: 8px 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.weui-icon-search {
+  margin-right: 8px;
+  font-size: inherit;
+}
+
+.weui-icon-search_in-box {
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+
+.weui-search-bar__form {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+  flex: auto;
+  border-radius: 5px;
+  background: #fff;
+  border: 1rpx solid #e6e6ea;
+}
+
+.weui-search-bar__box {
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.weui-search-bar__input {
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+}
+
+.weui-icon-clear {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 7px 8px;
+  font-size: 0;
+}
+
+.weui-search-bar__label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  border-radius: 3px;
+  text-align: center;
+  color: #9b9b9b;
+  background: #fff;
+  line-height: 28px;
+}
+.weui-search-bar__cancel-btn {
+  margin-left: 10px;
+  line-height: 28px;
+  color: #DC3C24;
+  white-space: nowrap;
+}
+
+.clear{
+  height:4rpx;
+  background: #eeeeee;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  margin-bottom: 30rpx;
 }

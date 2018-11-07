@@ -1,7 +1,7 @@
 /* pages/mine_class_now/mine_class_now.wxss */
 .classcard1{
   height: 320rpx;
-  margin: 20rpx 40rpx;
+  margin: 30rpx 40rpx;
   padding: 20 40rpx;
   border-radius: 2rpx;
   background-color: #fff;
@@ -38,7 +38,6 @@
 }
 
 .classinfm1{
-  color: #657180;
   font-size: 32rpx;
   position: absolute;
   line-height: 1.5;

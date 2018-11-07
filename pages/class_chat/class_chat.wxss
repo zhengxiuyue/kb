@@ -8,9 +8,9 @@
 
 .students{
   background-color: #fff;
-  margin: 30rpx;
+  margin: 0 30rpx 15rpx 30rpx;
   position: relative;
-  border-radius:8rpx; 
+  border-radius:10rpx; 
 }
 
 .stu_name{
@@ -30,7 +30,7 @@
 .chat{
   color: #657180;
   margin: 5rpx 20rpx 10rpx 20rpx;
-  font-size: 34rpx;
+  font-size: 32rpx;
   line-height: 1.5;
 }
 

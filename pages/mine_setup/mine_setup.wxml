@@ -9,17 +9,17 @@
   <view class='infm'>
     <text class='title'>姓名
     </text>
-    <text class='content' decode="{{true}}">&nbsp;{{username}}</text>
+    <text class='cont' decode="{{true}}">&nbsp;{{username}}</text>
   </view>
 
   <view class='infm'>
     <text class='title'>手机\n</text>
-    <text class='content' decode="{{true}}">&nbsp;{{tel}}</text>
+    <text class='cont' decode="{{true}}">&nbsp;{{tel}}</text>
   </view>
 
   <view class='infm'>
     <text class='title'>更多\n</text>
-    <text class='content' decode="{{true}}" style='color:#1DA27F' bindtap='showDialogBtn'>&nbsp;修改密码</text>
+    <text class='cont' decode="{{true}}" style='color:#1DA27F' bindtap='showDialogBtn'>&nbsp;修改密码</text>
   </view>
 
   <button class='revise' bindtap='exit' >退出登录</button>

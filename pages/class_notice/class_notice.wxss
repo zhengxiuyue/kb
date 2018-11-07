@@ -1,36 +1,47 @@
 .notice{
-  margin: 20rpx;
+  margin: 30rpx;
   background-color: #fff;
+  border-radius: 10rpx;
+}
+
+.time{
+  background-color: #e9eaec;
+  width: 230rpx;
+  padding: 10rpx;
+  margin: 10rpx auto;
+  font-size: 30rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 10rpx; 
 }
 
 .title{
   padding: 20rpx 0rpx 10rpx 20rpx;
-  font-size: 36rpx;
+  font-size: 34rpx;
   font-weight: bold;
   word-break:break-all;
   color: #46475b;
 }
 
 .delete{
-  font-size: 30rpx;
-  color: #ffa704;
-  border: 2rpx solid #ffa704;
-  padding: 3rpx 15rpx;
-  float: right;
+  width: 45rpx;
+  height: 45rpx;
   margin-right: 40rpx;
+ float: right;
 }
 
 .content{
-  color: #757180;
+  color: #657180;
   padding: 10rpx 20rpx;
-  font-size: 34rpx;
+  font-size: 32rpx;
   word-break:break-all;
 }
 
-.time{
-  color: #9ea7b4;
+.teacher{
+  color: #657180;
+  font-weight: bold;
   font-size: 32rpx;
-  padding-left: 40%;
+  padding-left: 70%;
   padding-bottom: 10rpx;
 }
 
