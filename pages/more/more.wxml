@@ -92,7 +92,7 @@
         </view>  
       </view>
       
-      <view class='content' bindtap='GOclass_des'  wx:for="{{classList_signUp}}" bindtap='toDetail' data-index='{{index}}'>
+      <view class='content' bindtap='GOclass_des'  wx:for="{{classList_signUp}}"  data-index='{{index}}' wx:key="*this">
         <view class='content-title'>
           {{item.coursename}}
         </view>
@@ -102,7 +102,6 @@
         </view>
        <view class='content-btn'>报名体验</view>
       </view>
-      <view class='break'></view>
 
   </view>
 

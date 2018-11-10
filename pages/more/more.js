@@ -6,7 +6,12 @@ var qqmapsdk;
 
 Page({
   data: {
-    classList_signUp:null,//可报名课程列表
+    classList_signUp:[
+      {
+        coursename:"模特"
+      }
+    ],
+    //classList_signUp:null,//可报名课程列表
     classList_order:null,//可预约课程
     city:'',
     windowHeight: null,
@@ -66,17 +71,6 @@ Page({
       city: e
      })
   },
-  toDetail: function (e) {//都可以传e对象
-    console.log(e);
-    var index = e.currentTarget.dataset.index;
-    console.log(index);
-    var classList_signUp = this.data.classList_signUp;
-    var title = classList_signUp[index].coursename;
-    wx.setStorageSync("title", title);
-    wx.navigateTo({
-      url: '/pages/detail/detail',
-    })
-  },
 
   tips(info) {
     $Message({
@@ -85,6 +79,11 @@ Page({
   },
 
   GOclass_des: function (e) {
+    console.log(e);
+    var index = e.currentTarget.dataset.index;
+    console.log(index);
+    var classList_signUp = this.data.classList_signUp;
+    var title = classList_signUp[index].coursename;
     wx.navigateTo({
       url: '../class_des_signUp/class_des_signUp',
     })
@@ -248,7 +247,7 @@ Page({
       success(res) {
         if (res.data.resultCode=='101'){
           that.setData({
-            proList: res.data.data
+            s: res.data.data
           });
         }
         else if (res.data.resultCode == '202'){
