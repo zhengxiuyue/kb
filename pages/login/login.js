@@ -14,7 +14,7 @@ Page({
     userstatus: '',
     tel: '',
     password: '',
-    authcode: '',
+    authcode: '',//验证码
     text: '',
   },
 
@@ -96,6 +96,11 @@ Page({
     this.setData({ authcode: event.detail.value })
   },
 
+  change: function (e) {
+    var that = this;
+    drawPic(that);
+  }, 
+
   //修改全局变量selectCodition的值
   login:function(e){
     let that = this;
@@ -108,6 +113,9 @@ Page({
         icon: 'none',
         duration: 1000
       })
+      that.setData({
+        tel: ""
+      })
       return false;
     }
 
@@ -117,6 +125,9 @@ Page({
         title: '请填写正确的密码!',
         icon: 'none',
         duration: 1000
+      })
+      that.setData({
+        password: ""
       })
       return false;
     }
@@ -145,6 +156,10 @@ Page({
         icon: 'none',
         duration: 1000
       })
+      that.change()
+      that.setData({ 
+        authcode: ""
+      })
       return false;
     }
     else {
@@ -170,7 +185,10 @@ Page({
       url: '/pages/forget/forget',
     })
   },
-  change: function () { var that = this; drawPic(that); }, mobile(e) { this.setData({ mobile: e.detail.value }) }
+
+  mobile(e) { 
+    this.setData({ mobile: e.detail.value }) 
+  }
 
 })
 
