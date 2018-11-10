@@ -63,11 +63,10 @@ App({
     curPage.setData({ tabBar: tabBar });
   },
   globalData: {
-    openid:'11111111111111',
+    openid:null,
     userInfo: null,
     userstatus:null,
-    windowWidth:null,
-    windowHeight:null,
+    requestIP: "http://localhost:8080/happyschedule",
     tabBar: {
       color: "black",
       selectedColor: "#1DA27F",

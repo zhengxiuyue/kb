@@ -103,48 +103,68 @@ Page({
 
   
   //验证
-  gainAuthCodeAction: function () {
-    let that = this;
-    //第一步：验证手机号码
-    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
-    if (that.data.tel.length == 0) {
-      wx.showToast({
-        title: '请填写正确的手机号码!',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    }
-
-    if (!myreg.test(that.data.tel)) {
-      wx.showToast({
-        title: '请填写正确的手机号码!',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    }
-    //第二步：设置计时器
-    // 先禁止获取验证码按钮的点击
-    that.setData({
-      isClick: true,
+gainAuthCodeAction: function () {
+  let that = this;
+  //第一步：验证手机号码
+  var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
+  if (that.data.tel.length == 0) {
+    wx.showToast({
+      title: '请填写手机号码!',
+      icon: 'none',
+      duration: 1000
     })
-    //60s倒计时 setInterval功能用于循环，常常用于播放动画，或者时间显示
-    var currentTime = that.data.currentTime;
-    interval = setInterval(function () {
-      currentTime--;//减
-      that.setData({
-        time: currentTime + '秒后获取'
-      })
-      if (currentTime <= 0) {
-        clearInterval(interval)
-        that.setData({
-          time: '重新发送',
-          currentTime: 60,
-          isClick: false
-        })
+    return false;
+  }
+
+  else if (!myreg.test(that.data.tel)) {
+    wx.showToast({
+      title: '请填写正确的手机号码!',
+      icon: 'none',
+      duration: 1000
+    })
+    return false;
+  }
+
+  wx.request({
+    url: 'http://localhost:8080/happyschedule/student/sendCode',
+    data: {
+      phone: that.data.tel,
+    },
+    method:'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded',
+      'openid': app.globalData.openid
+    },// 设置请求的 header
+    success: function (res) {
+      if (res.data.resultCode == "101") {
+      } else {
+        console.log("index.js wx.request CheckCallUser statusCode");
       }
-    }, 1000);
+    },
+  })  
+  //第二步：设置计时器
+  // 先禁止获取验证码按钮的点击
+  that.setData({
+    isClick: true,
+  })
+  //60s倒计时 setInterval功能用于循环，常常用于播放动画，或者时间显示
+  var currentTime = that.data.currentTime;
+  interval = setInterval(function () {
+    currentTime--;//减
+    that.setData({
+      time: currentTime + '秒后获取'
+    })
+    if (currentTime <= 0) {
+      clearInterval(interval)
+      that.setData({
+        time: '重新发送',
+        currentTime: 60,
+        isClick: false
+      })
+    }
+  }, 1000);
+},
+
     /*第三步：请求验证码接口，并记录服务器返回的验证码用于判断，这里服务器也可能不返回验证码，那验证码的判断交给后台
     else{      
       wx.request({       
@@ -174,7 +194,7 @@ Page({
         }, 1000)
     */
     // wx.request({})
-  },
+ 
 
   //注册验证
   regist: function (e) {
@@ -201,7 +221,7 @@ Page({
     }
 
     //判断验证码 服务端！！！
-    else if (that.data.authcode.length != 4) {
+    else if (that.data.authcode.length != 6) {
       wx.showToast({
         title: '请填写正确的验证码!',
         icon: 'none',
@@ -231,14 +251,38 @@ Page({
     }
 
     else {
-      wx.showToast({
-        title: '注册成功',
-        icon: 'success',
-        duration: 2000
-      });
-      wx.redirectTo({
-        url: '/pages/login/login',
+      wx.request({
+        url: 'http://localhost:8080/happyschedule/student/register',
+        data: {
+          phone: that.data.tel,
+          pwd: that.data.password,
+          repwd: that.data.password2,
+          verification: that.data.authcode,
+          name: that.data.username
+        },
+        header: {
+          'content-type': 'application/json',
+          'openid': app.globalData.openid
+        },// 设置请求的 header
+        success: function (res) {
+          if (res.data.resultCode == "10001") {
+            wx.showToast({
+              title: '注册成功',
+              icon: 'success',
+              duration: 2000
+            });
+            wx.redirectTo({
+              url: '/pages/login/login',
+            })
+          } else {
+            console.log("index.js wx.request CheckCallUser statusCode");
+          }
+        },
+        fail: function () {
+          console.log("index.js wx.request CheckCallUser fail");
+        }
       })
+     
     }
   },
   //登入

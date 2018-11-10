@@ -11,10 +11,11 @@ Page({
       {value: '学生',id:'3'},
     ],
     userstatus: '',
-    tel: '',
-    password: '',
+    "tel": '',
+    "password": '',
     authcode: '',//验证码
     text: '',
+    code:''
   },
 
   /**
@@ -23,6 +24,18 @@ Page({
   onLoad: function (options) {
     var that = this;
     drawPic(that);
+    wx.login({
+      success(res) {
+        if (res.code) {
+          console.log(res.code)
+          that.setData({
+            code:res.code
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
   },
 
   /**
@@ -103,6 +116,7 @@ Page({
   //修改全局变量selectCodition的值
   login:function(e){
     let that = this;
+    var requestIP =app.globalData.requestIP
     var con = app.globalData.userstatus
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
     //判断手机号码
@@ -157,21 +171,20 @@ Page({
     }
     else {
       if (con == 3) {
-        console.log(that.data.tel);
         wx.request({
-          url: 'http://localhost:8080/happyschedule/user/login',
+          url: requestIP+'/user/login',
           data:{
             account: that.data.tel,
-            "pwd":'that.data.password',
-            "type":3 
+            pwd: that.data.password,
+            "type":3,
+            code: that.data.code
           },
-          method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
           header: {
             'content-type': 'application/json'
           },// 设置请求的 header
           success: function (res) {
-            console.log(res.resultCode);
-            if (res.resultCode == "101") {
+            if (res.data.resultCode == "101") {
+              app.globalData.openid = res.data.data 
               wx.redirectTo({
                 url: '/pages/index/index',
               })
@@ -181,16 +194,35 @@ Page({
           },
           fail: function () {
             console.log("index.js wx.request CheckCallUser fail");
-          },
-          complete: function () {
-        // complete
           }
         })
        
       }
       else if (con == 2) {
-        wx.redirectTo({
-          url: '/pages/index/T_index',
+        wx.request({
+          url: 'http://localhost:8080/happyschedule/user/login',
+          data: {
+            account: that.data.tel,
+            pwd: that.data.password,
+            "type": 3,
+            code: that.data.code
+          },
+          header: {
+            'content-type': 'application/json'
+          },// 设置请求的 header
+          success: function (res) {
+            if (res.data.resultCode == "101") {
+              app.globalData.openid = res.data.data
+              wx.redirectTo({
+                url: '/pages/index/T_index',
+              })
+            } else {
+              console.log("index.js wx.request CheckCallUser statusCode");
+            }
+          },
+          fail: function () {
+            console.log("index.js wx.request CheckCallUser fail");
+          }
         })
       }    
     }    

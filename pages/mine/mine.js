@@ -5,8 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    current: 0,
-    windowHeight:null
+    current: 1,
+    windowHeight:null,
+    username:""
   },
 
   /**
@@ -23,6 +24,46 @@ Page({
         windowHeight: rect.height + 45 + 'px'
       })
     }).exec();
+
+    wx.request({
+      url: 'http://localhost:8080/happyschedule/user/getMyInfo',
+      data: {
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/json',
+        'openid': app.globalData.openid
+      },// 设置请求的 header
+      success: function (res) {
+        if (res.data.resultCode == "101") {
+          console.log(res.data.data.name)
+          that.setData({
+            username: res.data.data.name
+          })
+        } else {
+          console.log("请求失败");
+        }
+      },
+    })
+
+    wx.request({
+      url: 'http://localhost:8080/happyschedule/student/getMyClass',
+      data: {
+        state: this.data.current
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'openid': app.globalData.openid
+      },// 设置请求的 header
+      success: function (res) {
+        if (res.data.resultCode == "101") {
+          console.log(res.data)
+        } else {
+          console.log("请求失败");
+        }
+      },
+    })
   },
 
   /**
@@ -78,6 +119,25 @@ Page({
     let index = parseInt(e.currentTarget.dataset.index || 0)
     this.setData({
       current: index
+    })
+    console.log(this.data.current);
+    wx.request({
+      url: 'http://localhost:8080/happyschedule/student/getMyClass',
+      data: {
+        state: this.data.current
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'openid': app.globalData.openid
+      },// 设置请求的 header
+      success: function (res) {
+        if (res.data.resultCode == "101") {
+          console.log(res.data)
+        } else {
+          console.log("请求失败");
+        }
+      },
     })
   },
   dropDown:function(e){

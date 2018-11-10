@@ -12,14 +12,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+   
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.request({
+      url: 'http://localhost:8080/happyschedule/class/getClassmateInfo',
+      data: {
+        classid: "056e42deb68011e8ab8e00163e00299d"
+      },
+      header: {
+        'content-type': 'application/json',
+        'openid': app.globalData.openid
+      },// 设置请求的 header
+      success: function (res) {
+        if (res.data.resultCode == "101") {
+          console.log(res.data)
+        } else {
+          console.log("请求失败");
+        }
+      },
+    })
   },
 
   /**

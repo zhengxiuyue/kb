@@ -89,9 +89,6 @@ Page({
       success: function (sm) {
         if (sm.confirm) {
           // 用户点击了确定 可以调用删除方法了
-          wx.redirectTo({
-            url: '/pages/login/login',
-          })
         } else if (sm.cancel) {
         }
       }
