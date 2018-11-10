@@ -239,8 +239,9 @@ Page({
       data: {
         storeid: '4fda538b94cb11e8800900163e00299d'
       },
+      method:'POST',
       header: {
-        'content-type': 'application/json', // 默认值
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
         'openid': app.globalData.openid
       },
       success(res) {
@@ -252,36 +253,12 @@ Page({
             error_noClassSignUp: "none"
           });
         }
-        else if (res.data.resultCode == '202'){
-          that.setData({
-            error_noClassSignUp:"block"
-          });
-          that.setData({
-            errortips:'出错了'
-          })
-        }
-        else if (res.data.resultCode == '204') {
-          that.setData({
-            error_noClassSignUp: "block"
-          });
-          that.setData({
-            errortips: '没有数据'
-          })
-        }
-        else if (res.data.resultCode == '300') {
-          that.setData({
-            error_noClassSignUp: "block"
-          });
-          that.setData({
-            errortips: '网络错误'
-          })
-        }
         else {
           that.setData({
             error_noClassSignUp: "block"
           });
           that.setData({
-            errortips: '出错了'
+            errortips: '没有数据'
           })
         }
       },
@@ -290,7 +267,7 @@ Page({
           error_noClassSignUp: "block"
         });
         that.setData({
-          errortips: '出错了'
+          errortips: '没有数据'
         })
       }
     })
@@ -304,8 +281,9 @@ Page({
         data: {
           storeid: '4fda538b94cb11e8800900163e00299d'
         },
+        method: 'POST',
         header: {
-          'content-type': 'application/json', // 默认值
+          'content-type': 'application/x-www-form-urlencoded', // 默认值
           'openid': app.globalData.openid
         },
         success(res) {
@@ -317,35 +295,12 @@ Page({
               error_noClassOrder: "none"
             });
           }
-          else if (res.data.resultCode == '202') {
-            that.setData({
-              error_noClassOrder: "block"
-            });
-            that.setData({
-              errortips: '出错了'
-            })
-          }
-          else if (res.data.resultCode == '204') {
+          else{
             that.setData({
               error_noClassOrder: "block"
             });
             that.setData({
               errortips: '没有数据'
-            })
-          }
-          else if (res.data.resultCode == '300') {
-            that.setData({
-              error_noClassOrder: "block"
-            });
-            that.setData({
-              errortips: '网络错误'
-            })
-          }else{
-            that.setData({
-              error_noClassOrder: "block"
-            });
-            that.setData({
-              errortips: '出错了'
             })
           }
         },
@@ -354,7 +309,7 @@ Page({
             error_noClassOrder: "block"
           });
           that.setData({
-            errortips: '出错了'
+            errortips: '没有数据'
           })
         }
       })

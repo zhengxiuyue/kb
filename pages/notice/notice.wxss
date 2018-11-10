@@ -1,12 +1,16 @@
 .notice{
-  margin: 10rpx 30rpx 30rpx 0rpx;
+  margin: 0rpx auto;
+}
+
+.aNotice{
+  margin:10rpx 10rpx 30rpx 10rpx;
   background-color: #fff;
   border-radius: 10rpx;
 }
 
 .time{
   background-color: #e9eaec;
-  width: 230rpx;
+  width: 330rpx;
   padding: 10rpx;
   margin: 10rpx auto;
   font-size: 30rpx;
@@ -32,9 +36,10 @@
 
 .content{
   color: #657180;
-  padding: 10rpx 20rpx;
+  padding: 20rpx 20rpx;
   font-size: 32rpx;
   word-break:break-all;
+  line-height: 1.5;
 }
 
 .teacher{
