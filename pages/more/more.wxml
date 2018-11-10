@@ -29,53 +29,24 @@
         </view>  
       </view>
 
-      <view class='content'  bindtap='GOclass_des1'>
+      <view class='content'  bindtap='GOclass_des1'  wx:for="{{classList_order}}" wx:if="{{index<3}}"  data-index='{{index}}' wx:key="*this">
         <view class='content-title'>
-          钢琴四人班
+          {{item.coursename}}
         </view>
         <view class='content-middle'>
           <view class='content-rank'>高级班</view>
-          <view class='content-time'><text decode="true">陈良华老师</text></view>
+          <view class='content-time'><text decode="true">{{item.name}}老师</text></view>
         </view>
       <view class='content-btn'>
           预约试听
       </view>
       </view>
-      <view class='break'></view>
-
-           <view class='content'  bindtap='GOclass_des1'>
-        <view class='content-title'>
-          钢琴四人班
-        </view>
-        <view class='content-middle'>
-          <view class='content-rank'>高级班</view>
-          <view class='content-time'><text decode="true">陈良华老师</text></view>
-        </view>
-      <view class='content-btn'>
-          预约试听
-      </view>
-      </view>
-      <view class='break'></view>
-
-           <view class='content'  bindtap='GOclass_des1'>
-        <view class='content-title'>
-          钢琴四人班
-        </view>
-        <view class='content-middle'>
-          <view class='content-rank'>高级班</view>
-          <view class='content-time'><text decode="true">陈良华老师</text></view>
-        </view>
-      <view class='content-btn'>
-          预约试听
-      </view>
-      </view>
-      <view class='break'></view>
 
   </view>
 
         <!--没有课程时的显示-->
-  <view class='error' visible="{{ visible1 }}">
-    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;没有数据</text>
+  <view class='error' style='display:{{error_noClassOrder}};'>
+    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;{{errortips}}</text>
   </view>
 
 
@@ -92,7 +63,7 @@
         </view>  
       </view>
       
-      <view class='content' bindtap='GOclass_des'  wx:for="{{classList_signUp}}" bindtap='toDetail' data-index='{{index}}'>
+      <view class='content' bindtap='GOclass_des'  wx:for="{{classList_signUp}}" wx:if="{{index<3}}"  data-index='{{index}}' wx:key="*this">
         <view class='content-title'>
           {{item.coursename}}
         </view>
@@ -102,13 +73,12 @@
         </view>
        <view class='content-btn'>报名体验</view>
       </view>
-      <view class='break'></view>
 
   </view>
 
 <!--没有课程时的显示-->
-  <view class='error' visible="{{ visible1 }}">
-    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;没有数据</text>
+  <view class='error' style='display:{{error_noClassSignUp}};'>
+    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;{{errortips}}</text>
   </view>
 
 </view>

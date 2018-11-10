@@ -7,7 +7,7 @@
   color: #000;
   font-family: "微软雅黑";  
   font-size: 34rpx;
-  min-height: 1300rpx;
+  min-height: 1200rpx;
 }
 
 .menu-item{ 
@@ -54,6 +54,7 @@
   border-radius: 10rpx;
   padding: 20rpx 0rpx;
   text-align: left;
+  margin-bottom: 20rpx;
 }
 
 .content-title
@@ -62,16 +63,17 @@
   display: inline-block;
   color:#1DA27F;
   font-weight: bold;
-  font-size: 36rpx;
-  width: 180rpx;
+  font-size: 34rpx;
+  width: 170rpx;
   position: relative;
   top: -10rpx;
+  text-align: center;
 }
 
 .content-middle{
-  margin-left: 30rpx;
+  margin-left: 20rpx;
   display: inline-block;
-  width: 350rpx;
+  width: 370rpx;
   position: relative;
   top: 12rpx;
 }
@@ -87,18 +89,18 @@
 }
 
 .content-btn{
-  display: inline-block;
-  text-align: center;
-  font-size: 30rpx;
-  width: 150rpx;
-  height: 80rpx;
-  line-height: 80rpx;
-  background-color: #19be6b;
-  color: #fff;
-  border-radius: 5rpx;
-  border-color: #1da27f;
-  position: relative;
-  top: -12rpx;
+  display:inline-block;
+  text-align:center;
+  font-size:28rpx;
+  width:130rpx;
+  height:60rpx;
+  line-height:60rpx;
+  background-color:#19be6b;
+  color:#fff;
+  border-radius:5rpx;
+  border-color:#1da27f;
+  position:relative;
+  top:-15rpx;
 }
 
 .break{

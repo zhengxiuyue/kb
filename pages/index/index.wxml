@@ -12,42 +12,19 @@
         </view>  
     </view>
 <!--近期开课课堂-->
-       <view class='content' bindtap='GOclass_des'>
+       <view class='content' bindtap='GOclass_des' wx:for="{{recentClassList}}" wx:if="{{index<3}}"  data-index='{{index}}' wx:key="*this">
         <view class='content-title'>
-          钢琴四人班
+          {{item.coursename}}
         </view>
         <view class='content-middle'>    
           <view class='content-rank'>高级班</view>
           <view class='content-time'><text decode="true">2018/10/16&nbsp;10:00-12:00</text></view>
         </view>
        <view class='content-btn'>报名体验</view>
-      </view>
-      <view class='break'></view>
-      <view class='content' bindtap='GOclass_des'>
-        <view class='content-title'>
-          钢琴四人班
-        </view>
-        <view class='content-middle'>    
-          <view class='content-rank'>高级班</view>
-          <view class='content-time'><text decode="true">2018/10/16&nbsp;10:00-12:00</text></view>
-        </view>
-       <view class='content-btn'>报名体验</view>
-      </view>
-      <view class='break'></view>
-      <view class='content' bindtap='GOclass_des'>
-        <view class='content-title'>
-          钢琴四人班
-        </view>
-        <view class='content-middle'>    
-          <view class='content-rank'>高级班</view>
-          <view class='content-time'><text decode="true">2018/10/16&nbsp;10:00-12:00</text></view>
-        </view>
-       <view class='content-btn'>报名体验</view>
-      </view>
-      <view class='break'></view>
+       </view>
   <!--没有课程时的显示-->
-  <view class='error' visible="{{ visible1 }}">
-    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;没有数据</text>
+  <view class='error' style='display:{{error_noClassList}};'>
+    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;{{errortips}}</text>
   </view>
 
   <view class='big_title'>
@@ -61,9 +38,9 @@
     </view>
   <view  class='notice_view'><!--style='background-image:url(../../image/notice_image.png)'-->
     <swiper class="notice" vertical="true" autoplay="true" circular="true" interval="4000" >
-    <block wx:for="{{msgList}}" wx:key="{{}}">
+    <block wx:for="{{noticeList}}" wx:key="{{}}">
         <swiper-item>
-          <view class="swiper_item">{{item.title}}</view>
+          <view class="swiper_item">{{item.no_content}}</view>
         </swiper-item>
     </block>
   </swiper>
@@ -97,55 +74,25 @@
     </view>
   </view>-->
 
-  <view class='Aclass' bindtap='enterclass'> 
+  <view class='Aclass' bindtap='enterclass'  wx:for="{{courseList}}" data-index='{{index}}' wx:key="*this"> 
       <view class='b1'>
         星期日
       </view>
       <view class='b2'>
-      钢琴四人班基础班 | 6班
+      {{item.coursename}}{{item.level}} | 6班
       </view>
       
       <view class='b3'>
-        10月30日
+        {{item.date}}
       </view>
       <view class='b4'>
-        10：00-12：00 | 2h
+        {{item.startpoint}}-{{item.endpoint}} | 2h
       </view>
   </view>
-   <view class='Aclass' bindtap='enterclass'> 
-      <view class='b1'>
-        星期日
-      </view>
-      <view class='b2'>
-      钢琴四人班基础班 | 6班
-      </view>
-      
-      <view class='b3'>
-        10月30日
-      </view>
-      <view class='b4'>
-        10：00-12：00 | 2h
-      </view>
-  </view>
-   <view class='Aclass' bindtap='enterclass'> 
-      <view class='b1'>
-        星期日
-      </view>
-      <view class='b2'>
-      钢琴四人班基础班 | 6班
-      </view>
-      
-      <view class='b3'>
-        10月30日
-      </view>
-      <view class='b4'>
-        10：00-12：00 | 2h
-      </view>
-  </view>
-
+  
     <!--没有课程时的显示-->
-  <view class='error' visible="{{ visible1 }}">
-    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;您还没有选课</text>
+  <view class='error' style='display:{{error_noClass}};'  bindtap='more'>
+    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;您还没有选课 <text style='color:#1296db'>去选课</text></text>
   </view>
 </view>
 
