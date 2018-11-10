@@ -101,10 +101,10 @@ Page({
     this.setData({ authcode: event.detail.value })
   },
 
-  
   //验证
 gainAuthCodeAction: function () {
   let that = this;
+  var requestIP = app.globalData.requestIP
   //第一步：验证手机号码
   var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
   if (that.data.tel.length == 0) {
@@ -126,7 +126,7 @@ gainAuthCodeAction: function () {
   }
 
   wx.request({
-    url: 'http://localhost:8080/happyschedule/student/sendCode',
+    url: requestIP+'/student/sendCode',
     data: {
       phone: that.data.tel,
     },
@@ -198,7 +198,8 @@ gainAuthCodeAction: function () {
 
   //注册验证
   regist: function (e) {
-    let that = this;
+    let that = this
+    var requestIP = app.globalData.requestIP
     var name = /^[\u4E00-\u9FA5A-Za-z]+$/;//判断姓名
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号
     //判断姓名
@@ -252,7 +253,7 @@ gainAuthCodeAction: function () {
 
     else {
       wx.request({
-        url: 'http://localhost:8080/happyschedule/student/register',
+        url: requestIP +'/student/register',
         data: {
           phone: that.data.tel,
           pwd: that.data.password,
@@ -282,7 +283,6 @@ gainAuthCodeAction: function () {
           console.log("index.js wx.request CheckCallUser fail");
         }
       })
-     
     }
   },
   //登入

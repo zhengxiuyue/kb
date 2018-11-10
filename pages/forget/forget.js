@@ -98,6 +98,7 @@ Page({
   //验证
   gainAuthCodeAction: function () {
     let that = this;
+    var requestIP = app.globalData.requestIP
     //第一步：验证手机号码
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
     if (that.data.tel.length == 0) {
@@ -117,6 +118,24 @@ Page({
       })
       return false;
     }
+
+    wx.request({
+      url: requestIP +'/user/sendCode',
+      data: {
+        phone: that.data.tel,
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'openid': app.globalData.openid
+      },// 设置请求的 header
+      success: function (res) {
+        if (res.data.resultCode == "101") {
+        } else {
+          console.log("index.js wx.request CheckCallUser statusCode");
+        }
+      },
+    })  
     //第二步：设置计时器
     // 先禁止获取验证码按钮的点击
     that.setData({
@@ -171,6 +190,7 @@ Page({
   //注册验证
   sure: function (e) {
     let that = this;
+    var requestIP = app.globalData.requestIP
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号
     //判断手机号码
     if (!myreg.test(that.data.tel)) {
@@ -183,7 +203,7 @@ Page({
     }
 
     //判断验证码 服务端！！！
-    else if (that.data.authcode.length != 4) {
+    else if (that.data.authcode.length != 6) {
       wx.showToast({
         title: '请填写正确的验证码!',
         icon: 'none',
@@ -212,13 +232,35 @@ Page({
       return false;
     }
     else {
-      wx.showToast({
-        title: '重置成功',
-        icon: 'success',
-        duration: 2000
-      }),  
-      wx.navigateBack({
-        url: '/pages/login/login'
+      wx.request({
+        url: requestIP + '/user/resetPwd',
+        data: {
+          phone: that.data.tel,
+          pwd: that.data.password,       
+          verification: that.data.authcode,
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'openid': app.globalData.openid
+        },// 设置请求的 header
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            wx.showToast({
+              title: '重置成功',
+              icon: 'success',
+              duration: 2000
+            }),
+              wx.navigateBack({
+                url: '/pages/login/login'
+              })
+          } else {
+            console.log("index.js wx.request CheckCallUser statusCode");
+          }
+        },
+        fail: function () {
+          console.log("index.js wx.request CheckCallUser fail");
+        }
       })
     }
   }

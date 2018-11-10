@@ -191,16 +191,12 @@ Page({
             } else {
               console.log("index.js wx.request CheckCallUser statusCode" );
             }
-          },
-          fail: function () {
-            console.log("index.js wx.request CheckCallUser fail");
           }
         })
-       
       }
       else if (con == 2) {
         wx.request({
-          url: 'http://localhost:8080/happyschedule/user/login',
+          url: requestIP +'/user/login',
           data: {
             account: that.data.tel,
             pwd: that.data.password,
@@ -241,7 +237,6 @@ Page({
   mobile(e) { 
     this.setData({ mobile: e.detail.value }) 
   }
-
 })
 
 //绘制图片验证码

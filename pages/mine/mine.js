@@ -18,6 +18,7 @@ Page({
     //创建节点选择器
     var query = wx.createSelectorQuery();    //选择id    
     var that = this;
+    var requestIP = app.globalData.requestIP
     query.select('.page').boundingClientRect(function (rect) {      // 
       console.log(rect.height)
       that.setData({
@@ -26,7 +27,7 @@ Page({
     }).exec();
 
     wx.request({
-      url: 'http://localhost:8080/happyschedule/user/getMyInfo',
+      url: requestIP+'/user/getMyInfo',
       data: {
       },
       method: 'POST',
@@ -47,7 +48,7 @@ Page({
     })
 
     wx.request({
-      url: 'http://localhost:8080/happyschedule/student/getMyClass',
+      url: requestIP + '/student/getMyClass',
       data: {
         state: this.data.current
       },
