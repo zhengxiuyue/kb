@@ -6,6 +6,7 @@ var qqmapsdk;
 
 Page({
   data: {
+    classList_signUp:null,//可报名课程列表
     city:'',
     windowHeight: null,
     multiArray: [['湖北省', '湖南省'], ['宜昌市', '长沙市'], ['枝江市', '株洲区'], ['A校区', 'B校区', 'C校区']],
@@ -57,17 +58,20 @@ Page({
     ],
     multiIndex: [0, 0, 0, 0]
   },
+
   changeCity: function (e) {
-    console.log(e);
+    //console.log(e);
     this.setData({
       city: e
      })
   },
+
   tips(info) {
     $Message({
       content: info
     });
   },
+
   GOclass_des: function (e) {
     wx.navigateTo({
       url: '../class_des_signUp/class_des_signUp',
@@ -83,16 +87,15 @@ Page({
       url: '../classList_signUp/classList_signUp',
     })
   },
-  onLoad: function (options) {
-    app.editTabBar();
-  },
   GOclass_des1: function (e) {
     wx.navigateTo({
       url: '../class_des_order/class_des_order',
     })
   },
+
+  //多列选择器
   bindMultiPickerChange: function (e) {
-    console.log('发送选择改变，携带值为', e.detail.value[1]);
+   // console.log('发送选择改变，携带值为', e.detail.value[1]);
     var that = this;
    // console.log(that.data.multiArray[1][e.detail.value[1]]);
     that.changeCity(that.data.multiArray[1][e.detail.value[1]]);
@@ -101,7 +104,7 @@ Page({
     })
   },
   bindMultiPickerColumnChange: function (e) {
-    console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
+   // console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     var data = {
       multiArray: this.data.multiArray,
       multiIndex: this.data.multiIndex
@@ -142,11 +145,12 @@ Page({
         }
         data.multiIndex[2] = 0;
         data.multiIndex[3] = 0;
-        console.log(data.multiIndex);
+       // console.log(data.multiIndex);
         break;
     }
     this.setData(data);
   },
+
   /**
  * 生命周期函数--监听页面加载
  */  
@@ -156,12 +160,19 @@ Page({
     var query = wx.createSelectorQuery();    //选择id    
     var that = this;
     query.select('.page').boundingClientRect(function (rect) {      // 
-      console.log(rect.height)
+      //console.log(rect.height)
       that.setData({
         windowHeight: rect.height + 45 + 'px'
       })
     }).exec();
     app.editTabBar();
+
+    this.getLocation();
+  },
+
+  //获取当前定位
+    getLocation: function (e) {
+    var that = this;
     wx.getLocation({  //获取当前地址
       success: function (res) {
         var latitude = res.latitude // 纬度，浮点数，范围为90 ~ -90
@@ -174,13 +185,28 @@ Page({
           location: { latitude: latitude, longitude: longitude },
           success: function (res) {
             //address 城市
-            that.changeCity(res.result.address_component.city);
-            console.log(res.result);
+            // console.log(res.result);
             that.setData({ address: res.result.address })
             wx.showToast({
               title: `当前位置： ` + that.data.address,
               icon: 'none'
             });
+            //获取当前定位下的门店
+            /*            
+            wx.request({
+              url: 'http://localhost:8080/happyschedule/student/getClassEnter?storeid=4fda538b94cb11e8800900163e00299d',
+              data: {
+                storeid: '4fda538b94cb11e8800900163e00299d'
+              },
+              header: {
+                'content-type': 'application/json', // 默认值
+                'openid': openid
+              },
+              success(res) {
+                console.log(res.data)
+              }
+            }) */
+            that.changeCity(res.result.address_component.city);
           }
         });
       },
@@ -192,5 +218,43 @@ Page({
         that.changeCity('北京市');
       }
     })
+  },
+
+  //获取当前门店下的可报名课程
+  getClassList_signUp:function(e){
+    wx.request({
+      url: 'http://localhost:8080/happyschedule/student/getClassEnter?storeid=4fda538b94cb11e8800900163e00299d',
+      data: {
+        storeid: '4fda538b94cb11e8800900163e00299d'
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'openid': '11111111111111'
+      },
+      success(res) {
+        console.log(res.data)
+      }
+    })
+  },
+
+  //获取当前门店下的可预约课程
+    getClassList_oreder: function (e) {
+    wx.request({
+      url: 'http://localhost:8080/happyschedule/student/getClassEnter?storeid=4fda538b94cb11e8800900163e00299d',
+      data: {
+        storeid: '4fda538b94cb11e8800900163e00299d'
+      },
+      header: {
+        'content-type': 'application/json', // 默认值
+        'openid': '11111111111111'
+      },
+      success(res) {
+        console.log(res.data)
+      }
+    })
+  },
+
+  //初始化多列选择器
+  getArea:function(e){
   }
 })

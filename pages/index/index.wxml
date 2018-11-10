@@ -73,7 +73,7 @@
     <text class="app-title">我的课表</text>
   </view>
 
-  <view class='data'>
+  <!--<view class='data'>
     <view>
       <view>一</view><view class='week selected'>5</view>
     </view>
@@ -95,7 +95,7 @@
       <view>
       <view>日</view><view class='week'>11</view>
     </view>
-  </view>
+  </view>-->
 
   <view class='Aclass' bindtap='enterclass'> 
       <view class='b1'>

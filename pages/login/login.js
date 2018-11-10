@@ -2,14 +2,13 @@
 var app = getApp();
 var ctx;
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     items: [
-      {value: '老师',id:'0'},
-      {value: '学生',id:'1'},
+      {value: '老师',id:'2'},
+      {value: '学生',id:'3'},
     ],
     userstatus: '',
     tel: '',
@@ -113,9 +112,6 @@ Page({
         icon: 'none',
         duration: 1000
       })
-      that.setData({
-        tel: ""
-      })
       return false;
     }
 
@@ -125,9 +121,6 @@ Page({
         title: '请填写正确的密码!',
         icon: 'none',
         duration: 1000
-      })
-      that.setData({
-        password: ""
       })
       return false;
     }
@@ -163,12 +156,39 @@ Page({
       return false;
     }
     else {
-      if (con == 1) {
-        wx.redirectTo({
-          url: '/pages/index/index',
+      if (con == 3) {
+        console.log(that.data.tel);
+        wx.request({
+          url: 'http://localhost:8080/happyschedule/user/login',
+          data:{
+            account: that.data.tel,
+            "pwd":'that.data.password',
+            "type":3 
+          },
+          method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+          header: {
+            'content-type': 'application/json'
+          },// 设置请求的 header
+          success: function (res) {
+            console.log(res.resultCode);
+            if (res.resultCode == "101") {
+              wx.redirectTo({
+                url: '/pages/index/index',
+              })
+            } else {
+              console.log("index.js wx.request CheckCallUser statusCode" );
+            }
+          },
+          fail: function () {
+            console.log("index.js wx.request CheckCallUser fail");
+          },
+          complete: function () {
+        // complete
+          }
         })
+       
       }
-      else if (con == 0) {
+      else if (con == 2) {
         wx.redirectTo({
           url: '/pages/index/T_index',
         })
