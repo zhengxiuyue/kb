@@ -7,6 +7,7 @@ var qqmapsdk;
 Page({
   data: {
     classList_signUp:null,//可报名课程列表
+    classList_order:null,//可预约课程
     city:'',
     windowHeight: null,
     multiArray: [['湖北省', '湖南省'], ['宜昌市', '长沙市'], ['枝江市', '株洲区'], ['A校区', 'B校区', 'C校区']],
@@ -64,6 +65,17 @@ Page({
     this.setData({
       city: e
      })
+  },
+  toDetail: function (e) {//都可以传e对象
+    console.log(e);
+    var index = e.currentTarget.dataset.index;
+    console.log(index);
+    var classList_signUp = this.data.classList_signUp;
+    var title = classList_signUp[index].coursename;
+    wx.setStorageSync("title", title);
+    wx.navigateTo({
+      url: '/pages/detail/detail',
+    })
   },
 
   tips(info) {
@@ -168,6 +180,7 @@ Page({
     app.editTabBar();
 
     this.getLocation();
+    this.getClassList_signUp();
   },
 
   //获取当前定位
@@ -222,6 +235,7 @@ Page({
 
   //获取当前门店下的可报名课程
   getClassList_signUp:function(e){
+    var that = this;
     wx.request({
       url: 'http://localhost:8080/happyschedule/student/getClassEnter?storeid=4fda538b94cb11e8800900163e00299d',
       data: {
@@ -229,10 +243,26 @@ Page({
       },
       header: {
         'content-type': 'application/json', // 默认值
-        'openid': '11111111111111'
+        'openid': app.globalData.openid
       },
       success(res) {
-        console.log(res.data)
+        if (res.data.resultCode=='101'){
+          that.setData({
+            proList: res.data.data
+          });
+        }
+        else if (res.data.resultCode == '202'){
+
+        }
+        else if (res.data.resultCode == '204') {
+
+        }
+        else if (res.data.resultCode == '300') {
+          wx.showToast({
+            title: '网络错误',
+            icon: 'none'
+          });
+        }
       }
     })
   },
@@ -246,10 +276,10 @@ Page({
       },
       header: {
         'content-type': 'application/json', // 默认值
-        'openid': '11111111111111'
+        'openid': app.globalData.openid
       },
       success(res) {
-        console.log(res.data)
+        console.log("可预约课程"+res.data)
       }
     })
   },
