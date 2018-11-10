@@ -6,12 +6,10 @@ var qqmapsdk;
 
 Page({
   data: {
-    classList_signUp:[
-      {
-        coursename:"模特"
-      }
-    ],
-    //classList_signUp:null,//可报名课程列表
+    errortips:'',
+    error_noClassOrder:'none',
+    error_noClassSignUp:'none',
+    classList_signUp:null,//可报名课程列表
     classList_order:null,//可预约课程
     city:'',
     windowHeight: null,
@@ -180,6 +178,7 @@ Page({
 
     this.getLocation();
     this.getClassList_signUp();
+    this.getClassList_order();
   },
 
   //获取当前定位
@@ -236,7 +235,7 @@ Page({
   getClassList_signUp:function(e){
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/happyschedule/student/getClassEnter?storeid=4fda538b94cb11e8800900163e00299d',
+      url: 'http://localhost:8080/happyschedule/student/getClassEnter',
       data: {
         storeid: '4fda538b94cb11e8800900163e00299d'
       },
@@ -247,40 +246,118 @@ Page({
       success(res) {
         if (res.data.resultCode=='101'){
           that.setData({
-            s: res.data.data
+            classList_signUp: res.data.data
+          });
+          that.setData({
+            error_noClassSignUp: "none"
           });
         }
         else if (res.data.resultCode == '202'){
-
+          that.setData({
+            error_noClassSignUp:"block"
+          });
+          that.setData({
+            errortips:'出错了'
+          })
         }
         else if (res.data.resultCode == '204') {
-
+          that.setData({
+            error_noClassSignUp: "block"
+          });
+          that.setData({
+            errortips: '没有数据'
+          })
         }
         else if (res.data.resultCode == '300') {
-          wx.showToast({
-            title: '网络错误',
-            icon: 'none'
+          that.setData({
+            error_noClassSignUp: "block"
           });
+          that.setData({
+            errortips: '网络错误'
+          })
         }
+        else {
+          that.setData({
+            error_noClassSignUp: "block"
+          });
+          that.setData({
+            errortips: '出错了'
+          })
+        }
+      },
+      fail(res) {
+        that.setData({
+          error_noClassSignUp: "block"
+        });
+        that.setData({
+          errortips: '出错了'
+        })
       }
     })
   },
 
   //获取当前门店下的可预约课程
-    getClassList_oreder: function (e) {
-    wx.request({
-      url: 'http://localhost:8080/happyschedule/student/getClassEnter?storeid=4fda538b94cb11e8800900163e00299d',
-      data: {
-        storeid: '4fda538b94cb11e8800900163e00299d'
-      },
-      header: {
-        'content-type': 'application/json', // 默认值
-        'openid': app.globalData.openid
-      },
-      success(res) {
-        console.log("可预约课程"+res.data)
-      }
-    })
+    getClassList_order: function (e) {
+      var that = this;
+      wx.request({
+        url: 'http://localhost:8080/happyschedule/student/getClassAppointment',
+        data: {
+          storeid: '4fda538b94cb11e8800900163e00299d'
+        },
+        header: {
+          'content-type': 'application/json', // 默认值
+          'openid': app.globalData.openid
+        },
+        success(res) {
+          if (res.data.resultCode == '101') {
+            that.setData({
+              classList_order: res.data.data
+            });
+            that.setData({
+              error_noClassOrder: "none"
+            });
+          }
+          else if (res.data.resultCode == '202') {
+            that.setData({
+              error_noClassOrder: "block"
+            });
+            that.setData({
+              errortips: '出错了'
+            })
+          }
+          else if (res.data.resultCode == '204') {
+            that.setData({
+              error_noClassOrder: "block"
+            });
+            that.setData({
+              errortips: '没有数据'
+            })
+          }
+          else if (res.data.resultCode == '300') {
+            that.setData({
+              error_noClassOrder: "block"
+            });
+            that.setData({
+              errortips: '网络错误'
+            })
+          }else{
+            that.setData({
+              error_noClassOrder: "block"
+            });
+            that.setData({
+              errortips: '出错了'
+            })
+          }
+        },
+        fail(res){
+          that.setData({
+            error_noClassOrder: "block"
+          });
+          that.setData({
+            errortips: '出错了'
+          })
+        }
+      })
   },
 
   //初始化多列选择器

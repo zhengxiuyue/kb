@@ -54,6 +54,7 @@
   border-radius: 10rpx;
   padding: 20rpx 0rpx;
   text-align: left;
+  margin-bottom: 20rpx;
 }
 
 .content-title
