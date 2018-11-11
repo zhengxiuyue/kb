@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    calendar:"block",
     curYear: new Date().getFullYear(), // 年份
     curMonth: new Date().getMonth() + 1,// 月份 1-12
     day: new Date().getDate(), // 日期 1-31 若日期超过该月天数，月份自动增加
