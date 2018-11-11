@@ -6,6 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    curYear: new Date().getFullYear(), // 年份
+    curMonth: new Date().getMonth() + 1,// 月份 1-12
+    day: new Date().getDate(), // 日期 1-31 若日期超过该月天数，月份自动增加
+    header_show: true, // 主标题是否显示
+    prev: true, // 上一个月按钮是否显示
+    next: true, // 下一个月按钮是否显示
     error_noClass: 'none',
     error_noClassList:'none',
     errortips:'',
@@ -19,7 +25,10 @@ Page({
     userstatus:null,
     windowHeight:null
   },
+  chooseDate:function(e){
 
+  }
+,
   /**
    * 生命周期函数--监听页面加载
    */

@@ -50,7 +50,17 @@
     <text class="app-title">我的课表</text>
   </view>
 
-  <!--<view class='data'>
+  <calendar 
+    cur-year="{{curYear}}"
+    cur-month="{{curMonth}}" 
+    day="{{day}}" 
+    header_show='{{header_show}}' 
+    prev='{{prev}}' 
+    next='{{next}}'
+    txt_type ='cn-d' 
+/>
+
+  <view class='data'>
     <view>
       <view>一</view><view class='week selected'>5</view>
     </view>
@@ -72,7 +82,7 @@
       <view>
       <view>日</view><view class='week'>11</view>
     </view>
-  </view>-->
+  </view>
 
   <view class='Aclass' bindtap='enterclass'  wx:for="{{courseList}}" data-index='{{index}}' wx:key="*this"> 
       <view class='b1'>

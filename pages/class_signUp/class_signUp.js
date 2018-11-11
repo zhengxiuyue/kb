@@ -33,24 +33,36 @@ Page({
         visible5: false
       });
     } else {
-      const action = [...this.data.actions5];
-      action[1].loading = true;
+      wx.requestPayment({
+        timeStamp: '',
+        nonceStr: '',
+        package: '',
+        signType: 'MD5',
+        paySign: '',
+        success(res) {
+          
+         },
+        fail(res) { 
+          const action = [...this.data.actions5];
+          action[1].loading = true;
 
-      this.setData({
-        actions5: action
-      });
+          this.setData({
+            actions5: action
+          });
 
-      setTimeout(() => {
-        action[1].loading = false;
-        this.setData({
-          visible5: false,
-          actions5: action
-        });
-        $Message({
-          content: '删除成功！',
-          type: 'success'
-        });
-      }, 2000);
+          setTimeout(() => {
+            action[1].loading = false;
+            this.setData({
+              visible5: false,
+              actions5: action
+            });
+            $Message({
+              content: '报名失败！',
+              type: 'success'
+            });
+          }, 2000);
+        }
+      })
     }
   },
 
@@ -148,7 +160,10 @@ Page({
   //注册验证
   signUp: function (e) {
     let that = this;
-    var name = /^[\u4E00-\u9FA5A-Za-z]+$/;//判断姓名
+    that.setData({
+      visible5:true
+    });
+    /*var name = /^[\u4E00-\u9FA5A-Za-z]+$/;//判断姓名
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号
     //判断姓名
     if (!name.test(that.data.username) || that.data.username.length == 0) {
@@ -173,5 +188,6 @@ Page({
     else {
       handleOpen5()
     }
+    */
   }
 });

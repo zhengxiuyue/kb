@@ -166,4 +166,8 @@
     background-color:#1DA27F;
     color: #fff;
   }
+  .active-coloro {
+  color: #fff;
+  background: #1DA27F;
+}
  
