@@ -173,7 +173,6 @@ Page({
           that.setData({
             item: that.data.item
           })
-          console.log(that.data.item)
         }
         else if (res.data.resultCode == "204") {
           that.setData({

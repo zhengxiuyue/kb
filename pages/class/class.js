@@ -165,7 +165,7 @@ Page({
       })
     } else if (that.data.current == 1){
       wx.request({
-        url: requestIP + '/student/sign',
+        url: requestIP + '/teacher/getSignBefore',
         data: {
           classid: "c866bf76b4ef11e8ab8e00163e00299d"
         },
