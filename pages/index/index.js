@@ -6,7 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    calendar:"block",
+    date: new Date().toLocaleDateString().replace("/", "-").replace("/", "-"),
+    top:"block",
+    down:"none",
+    calendarsim:"block",
+    calendar:"none",
     curYear: new Date().getFullYear(), // 年份
     curMonth: new Date().getMonth() + 1,// 月份 1-12
     day: new Date().getDate(), // 日期 1-31 若日期超过该月天数，月份自动增加
@@ -53,7 +57,6 @@ Page({
     })
 
     this.getRecentClass();
-    this.getMyCourse();
   },
 
   /**
@@ -103,6 +106,63 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  Godown:function(e){
+    var that = this;
+    that.setData({
+      down:"block",
+      top:"none",
+      calendarsim:"none",
+      calendar:"block"
+    })
+  },
+  Gotop: function (e) {
+    var that = this;
+    that.setData({
+      top: "block",
+      down: "none",
+      calendar: "none",
+      calendarsim: "block"
+    })
+  },
+  selectDate: function (e) {
+    console.log(e)
+    var that = this;
+    that.setData({
+      date:e.detail.date
+    })
+    wx.request({
+      url: 'http://localhost:8080/happyschedule/student/getMyCourse',
+      data: {
+        date:that.data
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'openid': app.globalData.openid
+      },
+      success(res) {
+        console.log(res.data.resultCode);
+        if (res.data.resultCode == '101') {
+          that.setData({
+            courseList: res.data.data
+          });
+          that.setData({
+            error_noClass: "none"
+          });
+        }
+        else {
+          that.setData({
+            error_noClass: "block"
+          });
+        }
+      },
+      fail(res) {
+        that.setData({
+          error_noClass: "block"
+        });
+      }
+    })
   },
   more:function(){
     wx.redirectTo({
@@ -191,41 +251,5 @@ Page({
         }
       }
     })
-  },
-
-    //获取我的课表
-  getMyCourse: function (e) {
-    var that = this;
-    wx.request({
-      url: 'http://localhost:8080/happyschedule/student/getMyCourse',
-      data: {
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'openid': app.globalData.openid
-      },
-      success(res) {
-        console.log(res.data.resultCode);
-        if (res.data.resultCode == '101') {
-          that.setData({
-            courseList: res.data.data
-          });
-          that.setData({
-            error_noClass: "none"
-          });
-        }
-        else {
-          that.setData({
-            error_noClass: "block"
-          });
-        }
-      },
-      fail(res) {
-        that.setData({
-          error_noClass: "block"
-        });
-      }
-    })
-  },
+  }
 })
