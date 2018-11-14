@@ -166,4 +166,22 @@
     background-color:#1DA27F;
     color: #fff;
   }
+  .active-coloro {
+  color: #fff;
+  background: #1DA27F;
+}
+.header-style{
+  display: inline-block;
+  text-align: center;
+  line-height: 96rpx;
+  font-size: 28rpx;
+  margin: 0rpx auto;
+  letter-spacing: 2rpx;
+}
+.header-img{
+ float:right;
+top:100rpx;
+right:150rpx;
+position:relative;
+}
  

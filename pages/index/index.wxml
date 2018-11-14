@@ -48,7 +48,26 @@
 
   <view class="title">
     <text class="app-title">我的课表</text>
+      <view class='header-img' style='display:{{down}};' bindtap='Gotop'><image src='../../image/up-circle.png' class='areaIcon'></image></view>
+ <view class='header-img' style='display:{{top}}; ' bindtap='Godown'><image src='../../image/down-circle.png' class='areaIcon'></image></view>
   </view>
+
+  <view class='header-style' style='display:{{calendarsim}};'>
+  <view>{{date}}</view>
+  </view>
+
+  <calendar 
+    cur-year="{{curYear}}"
+    cur-month="{{curMonth}}" 
+    day="{{day}}" 
+    header_show='{{header_show}}'
+    header-style='header-style' 
+    style='display:{{calendar}};'
+    active-coloro="active-coloro"
+    active-colort="active-colort"
+    bindselectDate='selectDate'   
+    bindchooseDate='chooseDate'
+/>
 
   <!--<view class='data'>
     <view>

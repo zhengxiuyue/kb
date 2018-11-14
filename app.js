@@ -66,7 +66,8 @@ App({
     openid:null,
     userInfo: null,
     userstatus:null,
-    requestIP: "http://localhost:8080/happyschedule",
+    windowWidth:null,
+    windowHeight:null,
     tabBar: {
       color: "black",
       selectedColor: "#1DA27F",

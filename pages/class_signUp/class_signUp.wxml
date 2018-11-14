@@ -40,6 +40,10 @@
 
          <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>课程地点：北京市辖区东城区王府井</text></view>
+
+         <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
           <text>总学时：18学时</text></view>
 
          <view class='class_des_text'>
