@@ -7,7 +7,7 @@
   </view>
 
   <view class='clear'></view>
-  <textarea  maxlength="15" value="{{evaContent}}" class="weui-textarea1" placeholder="标题（必填）" placeholder-class='place_notice' /> 
-    <textarea  maxlength="500" value="{{evaContent}}" class="weui-textarea" placeholder="请输入通知内容" placeholder-class='place_notice' />     
-    <button class="btn" bindtap='returnchat'>发布</button>
+  <textarea  maxlength="15" value="{{evaContent}}" class="weui-textarea1" placeholder="标题（必填）" placeholder-class='place_notice' bindinput='noticetitleInput' /> 
+    <textarea  maxlength="500" value="{{evaContent}}" class="weui-textarea" placeholder="请输入通知内容" placeholder-class='place_notice' bindinput='noticecontentInput'/>     
+    <button class="btn" bindtap='returnnotice'>发布</button>
 </view>

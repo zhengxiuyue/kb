@@ -8,6 +8,24 @@
   position: relative;
 }
 
+.classcard{
+  margin: 200rpx auto;
+  text-align: center;
+}
+
+.space{
+  height: 250rpx;
+  width: 250rpx;
+}
+
+.signin{
+  color: #1296db;
+}
+
+.signin2{
+  color: red;
+}
+
 .classtop1{
   height: 60rpx;
   width: 200rpx;

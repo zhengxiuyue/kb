@@ -6,7 +6,7 @@
 
 .time{
   background-color: #e9eaec;
-  width: 230rpx;
+  width: 330rpx;
   padding: 10rpx;
   margin: 10rpx auto;
   font-size: 30rpx;

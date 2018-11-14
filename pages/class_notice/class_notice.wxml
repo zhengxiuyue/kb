@@ -1,62 +1,19 @@
-<view class='time'>{{time}}</view>
-<view class='notice'>
-    <view class='title'>{{title}}
-      <image class='delete' src='/image/delete.png' bindtap='delt' style='display:{{userstatus == 0? "block":"none"}}'></image>
-    </view>
-    <view class='content'>
-      <text>{{content}}</text>
-    </view>
-    <view class='teacher'>
-     {{teacher}}
-    </view>
-    <view style='height:15rpx;'></view>
+<view wx:for = "{{notice}}" wx:key="">
+  <view class='time'>{{item.no_time}}</view>
+  <view class='notice'>
+      <view class='title'>{{item.no_title}}
+        <image class='delete' src='/image/delete.png' bindtap='delt' style='display:{{userstatus == 2? "block":"none"}}'></image>
+      </view>
+      <view class='content'>
+        <text>{{item.no_content}}</text>
+      </view>
+      <view class='teacher'>
+      {{item.name}}
+      </view>
+      <view style='height:15rpx;'></view>
+  </view>
+  <view style='height:20rpx;'></view>
 </view>
-<view style='height:20rpx;'></view>
 
-<view class='time'>{{time}}</view>
-<view class='notice'>
-    <view class='title'>{{title}}
-      <image class='delete' src='/image/delete.png' bindtap='delt' style='display:{{userstatus == 0? "block":"none"}}'></image>
-    </view>
-    <view class='content'>
-      <text>{{content}}</text>
-    </view>
-    <view class='teacher'>
-     {{teacher}}
-    </view>
-    <view style='height:15rpx;'></view>
-</view>
-<view style='height:20rpx;'></view>
-
-<view class='time'>{{time}}</view>
-<view class='notice'>
-    <view class='title'>{{title}}
-      <image class='delete' src='/image/delete.png' bindtap='delt' style='display:{{userstatus == 0? "block":"none"}}'></image>
-    </view>
-    <view class='content'>
-      <text>{{content}}</text>
-    </view>
-    <view class='teacher'>
-     {{teacher}}
-    </view>
-    <view style='height:15rpx;'></view>
-</view>
-<view style='height:20rpx;'></view>
-
-<view class='time'>{{time}}</view>
-<view class='notice'>
-    <view class='title'>{{title}}
-      <image class='delete' src='/image/delete.png' bindtap='delt' style='display:{{userstatus == 0? "block":"none"}}'></image>
-    </view>
-    <view class='content'>
-      <text>{{content}}</text>
-    </view>
-    <view class='teacher'>
-     {{teacher}}
-    </view>
-    <view style='height:15rpx;'></view>
-</view>
-<view style='height:20rpx;'></view>
-
-<image wx:if="{{userstatus==0}}" class="edit" src="{{edit}}" background-size="cover" bindtap='edit'></image>
+<image style='display:{{userstatus == 2? "block":"none"}}' class="edit" src="{{edit}}" background-size="cover" bindtap='edit'></image>
 

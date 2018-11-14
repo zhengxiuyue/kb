@@ -1,4 +1,4 @@
-
+/* pages/mine/mine.wxss */
 .user{
   height: 120rpx;
   margin: 0rpx 20rpx;

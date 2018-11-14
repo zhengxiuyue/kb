@@ -31,6 +31,8 @@ Page({
           that.setData({
             code:res.code
           })
+          app.globalData.openid = null
+          console.log(app.globalData.openid)
         } else {
           console.log('登录失败！' + res.errMsg)
         }
@@ -179,12 +181,14 @@ Page({
             "type":3,
             code: that.data.code
           },
+          method: 'POST',
           header: {
-            'content-type': 'application/json'
+            'content-type': 'application/x-www-form-urlencoded',
           },// 设置请求的 header
           success: function (res) {
             if (res.data.resultCode == "101") {
               app.globalData.openid = res.data.data 
+              console.log(app.globalData.openid)
               wx.redirectTo({
                 url: '/pages/index/index',
               })
@@ -196,28 +200,27 @@ Page({
       }
       else if (con == 2) {
         wx.request({
-          url: requestIP +'/user/login',
+          url: requestIP + '/user/login',
           data: {
             account: that.data.tel,
             pwd: that.data.password,
-            "type": 3,
+            "type": 2,
             code: that.data.code
           },
+          method: 'POST',
           header: {
-            'content-type': 'application/json'
+            'content-type': 'application/x-www-form-urlencoded',
           },// 设置请求的 header
           success: function (res) {
             if (res.data.resultCode == "101") {
               app.globalData.openid = res.data.data
+              console.log(app.globalData.openid)
               wx.redirectTo({
                 url: '/pages/index/T_index',
               })
             } else {
               console.log("index.js wx.request CheckCallUser statusCode");
             }
-          },
-          fail: function () {
-            console.log("index.js wx.request CheckCallUser fail");
           }
         })
       }    

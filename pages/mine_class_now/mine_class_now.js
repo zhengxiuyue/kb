@@ -1,120 +1,54 @@
-//logs.js
-// pages/xiuyue/xiuyue.js
-Page({
+// pages/mine_class_now/mine_class_now.js
+var app = getApp();
+Component({
+  /**
+   * 组件的属性列表
+   */
+
+  properties: {
+    item: {
+      type: "Array",
+      value: "",
+    },
+    Isclassspace:{
+      type: "String",
+      value: "",
+    },
+    userstatus: {
+      type: "Number",
+      value: "",
+    }
+  },
 
   /**
-   * 页面的初始数据
+   * 组件的初始数据
    */
   data: {
-
+    space:"/image/space.png"
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 组件的方法列表
    */
-  onLoad: function (options) {
-   
+  methods: {
+    classcard: function (event) {
+      var classid = event.target.id
+      // console.log(classid)
+      // console.log(event.target.id)
+      wx.navigateTo({
+        url: '/pages/class/class?classid=' + classid,
+      })
+    },
+    signin: function(){
+      wx.switchTab({
+        url: '/pages/more/more',
+      })
+    }
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    wx.request({
-      url: 'http://localhost:8080/happyschedule/teacher/getMyClassNow',
-      data: {
-      },
-      header: {
-        'content-type': 'application/json',
-        'openid': app.globalData.openid
-      },// 设置请求的 header
-      success: function (res) {
-        if (res.data.resultCode == "101") {
-          console.log(res.data)
-        } else {
-          console.log("请求失败");
-        }
-      },
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    wx.request({
-      url: 'http://localhost:8080/happyschedule/teacher/getMyClassNow',
-      data: {
-      },
-      header: {
-        'content-type': 'application/json',
-        'openid': app.globalData.openid
-      },// 设置请求的 header
-      success: function (res) {
-        if (res.data.resultCode == "101") {
-          console.log(res.data)
-        } else {
-          console.log("请求失败");
-        }
-      },
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    wx.request({
-      url: 'http://localhost:8080/happyschedule/teacher/getMyClassNow',
-      data: {
-      },
-      header: {
-        'content-type': 'application/json',
-        'openid': app.globalData.openid
-      },// 设置请求的 header
-      success: function (res) {
-        if (res.data.resultCode == "101") {
-          console.log(res.data)
-        } else {
-          console.log("请求失败");
-        }
-      },
-    })
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-   classcard: function () {
-    wx.navigateTo({
-      url: '/pages/class/class',
-    })
+  ready: function () {
+    
   }
 })
-
 
 

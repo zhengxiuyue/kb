@@ -6,9 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    username:"赵雅涵",
-    tel:"15171411165",
-    password:"****",
+    username:"",
+    tel:"",
     newpassword: "",
     newpassword2: "",
     hiddenmodalput: true,
@@ -20,6 +19,29 @@ Page({
    */
   onLoad: function (options) {
 
+    let that = this;
+    var requestIP = app.globalData.requestIP
+    wx.request({
+      url: requestIP + '/user/getMyInfo',
+      data: {
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/json',
+        'openid': app.globalData.openid
+      },// 设置请求的 header
+      success: function (res) {
+        if (res.data.resultCode == "101") {
+          // console.log(res.data.data.name)
+          that.setData({
+            username: res.data.data.name,
+            tel: res.data.data.username
+          })
+        } else {
+          console.log("请求失败");
+        }
+      },
+    })
   },
 
   /**
@@ -72,13 +94,11 @@ Page({
   },
   //获取密码
   passwordInput: function (event) {
-    // console.log("password==", event.detail.value)
     this.setData({ newpassword: event.detail.value.replace(/\s+/g, '') })
   },
 
   //获取确认密码
   passwordInput2: function (event) {
-    // console.log("password==", event.detail.value)
     this.setData({ newpassword2: event.detail.value.replace(/\s+/g, '') })
   },
 
@@ -88,6 +108,10 @@ Page({
       content: '确定要退出登录吗？',
       success: function (sm) {
         if (sm.confirm) {
+          app.globalData.openid = null
+          wx.redirectTo({
+            url: '/pages/login/login',
+          })
           // 用户点击了确定 可以调用删除方法了
         } else if (sm.cancel) {
         }
@@ -116,6 +140,7 @@ onCancel: function () {
 /**   * 对话框确认按钮点击事件   */  
 onConfirm: function () { 
   let that = this;
+  var requestIP = app.globalData.requestIP
   if (that.data.newpassword.length == 0) {
     wx.showToast({
       title: '请输入新密码!',
@@ -141,14 +166,43 @@ onConfirm: function () {
     return false;
   }
   else {
-    wx.showToast({
-      title: '修改成功',
-      icon: 'success',
-      duration: 2000
+    wx.request({
+      url: requestIP + '/user/resetPwdTwo',
+      data: {
+        repwd: that.data.newpassword2,
+        pwd: that.data.newpassword,
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'openid': app.globalData.openid
+      },// 设置请求的 header
+      success: function (res) {
+        if (res.data.resultCode == "101") {
+          wx.showToast({
+            title: '修改成功',
+            icon: 'success',
+            duration: 2000
+          }),
+            wx.navigateBack({
+              url: '/pages/login/login'
+            })
+        } else {
+          console.log("非101");
+        }
+      },
+      fail: function () {
+        console.log("请求失败");
+      }
     })
+ 
   }
-  this.hideModal()
-  this.setData({ newpassword2:''})
-  this.setData({ newpassword: '' })
+    this.hideModal()
+    this.setData({ 
+      newpassword2:''
+    })
+    this.setData({ 
+      newpassword: '' 
+    })
   }
 })

@@ -63,7 +63,7 @@
   font-weight: bold;
   position: absolute;
   top: 20rpx;
-  left: 200rpx;
+  margin-left: 200rpx; 
 }
 
 .classinfmt{

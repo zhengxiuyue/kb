@@ -7,6 +7,6 @@
   </view>
 
   <view class='clear'></view>
-    <textarea  maxlength="500" value="{{evaContent}}" class="weui-textarea" placeholder="写下你的想法..." placeholder-class='place_notice' />     
+    <textarea  maxlength="500" value="{{evaContent}}" class="weui-textarea" placeholder="写下你的想法..." placeholder-class='place_notice' bindinput='chatInput'/>     
     <button class="btn" bindtap='returnchat'>发布</button>
 </view>

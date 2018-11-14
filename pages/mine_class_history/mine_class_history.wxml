@@ -1,44 +1,22 @@
-<view class='classcard1' bindtap='classcard'>
+<view class='classcard1' catchtap='classcard' wx:for = "{{item}}" wx:key="" id='{{item.classid}}'>
   <view class='classtop1'>
-        <text class='classname1'>课堂：模特</text>
+        <text class='classname1'>{{item.coursename}}</text>
   </view>
-  <text class='classgrate'>班级：基础班7</text>
-  <text class='classinfm1' decode="{{true}}">开始时间：2018/10/12
-  结束时间：2018/12/29 
-  上课时间：周六9:30--11:00
-  地点：老年人文化室204</text>
+  <text class='classgrate'>班级：{{item.levelname}}</text>
+  <text class='classinfm1' decode="{{true}}">开始时间：{{item.startdate}}
+  结束时间：{{item.enddate}} 
+  上课时间：{{item.startpoint}}--{{item.endpoint}}
+  地点：{{item.location}}</text>
 </view>
 
-
-<view class='classcard1' bindtap='classcard'>
-  <view class='classtop1'>
-        <text class='classname1'>课堂：模特</text>
+<view class='classcard' style='display:{{Isclassspace}}'>
+  <image src='{{space}}' class='space'></image>
+  <view>  
+    <text  wx:if="{{userstatus == 3}}">还没有报名课堂</text>
+    <text  wx:if="{{userstatus == 2}}">还没有发布课堂</text>
+    <view  bindtap='signin'>
+      <text class='signin' style='display:{{userstatus == 3? "block":"none"}}'>去报名</text>
+    </view>
+      <text class='signin2' style='display:{{userstatus == 2? "block":"none"}}'>请到PC端发布课堂</text>
   </view>
-  <text class='classgrate'>班级：基础班7</text>
-  <text class='classinfm1' decode="{{true}}">开始时间：2018/10/12
-  结束时间：2018/12/29 
-  上课时间：周六9:30--11:00
-  地点：老年人文化室204</text>
-</view>
-
-<view class='classcard1' bindtap='classcard'>
-  <view class='classtop1'>
-        <text class='classname1'>课堂：模特</text>
-  </view>
-  <text class='classgrate'>班级：基础班7</text>
-  <text class='classinfm1' decode="{{true}}">开始时间：2018/10/12
-  结束时间：2018/12/29 
-  上课时间：周六9:30--11:00
-  地点：老年人文化室204</text>
-</view>
-
-<view class='classcard1' bindtap='classcard'>
-  <view class='classtop1'>
-        <text class='classname1'>课堂：模特</text>
-  </view>
-  <text class='classgrate'>班级：基础班7</text>
-  <text class='classinfm1' decode="{{true}}">开始时间：2018/10/12
-  结束时间：2018/12/29 
-  上课时间：周六9:30--11:00
-  地点：老年人文化室204</text>
 </view>

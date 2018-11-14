@@ -7,12 +7,11 @@
         <!--文字-->
         <view class='title_1'>
           <image src='/image/class.png' class='classpicture'></image>
-          <view class='classname'>模特</view>
-          <view class='classgreat'>6班</view>
+          <view class='classname'>{{items.coursename}}</view>
+          <view class='classgreat'>{{items.level}}{{items.classnumber}}</view>
     
           <view class='teacher'>
-                授课老师：陈良华
-              <text class='teacher-rank'>高级英语老师</text>
+                授课老师：{{items.teachername}}
           </view>
         </view>
 
@@ -25,46 +24,30 @@
       <!--隐藏部分-->
       <view class='detail' wx:if="{{showIndex == 1}}">
         <view class='class'>
+        
           <view class='class_des_text'>
-            <text>课程编号：C123H</text>
+            <text>课程地点：{{items.location}}</text>
           </view>
 
           <view class='class_des_text'>
-            <text>课程名称：旅游英语</text>
+            <text>总学时：{{items.period}}学时</text>
           </view>
 
           <view class='class_des_text'>
-            <text>课程地点：北京市辖区东城区王府井</text>
+            <text>课程价格：{{items.price}}元</text>
           </view>
 
           <view class='class_des_text'>
-            <text>总学时：18学时</text>
+            <text>上课时长：{{items.requiredclasshours}}分钟</text>
           </view>
 
           <view class='class_des_text'>
-            <text>课程价格：500元</text>
-          </view>
-
-          <view class='class_des_text'>
-            <text>上课时长：2小时</text>
-          </view>
-
-          <view class='class_des_text'>
-            <text>每节课课时：0.5课时</text>
-          </view>
-
-          <view class='class_des_text'>
-            <text>课容量：30</text>
-          </view>
-
-          <view class='class_des_text'>
-            <text>课余量：5</text>
+            <text>课容量：{{items.vol}}</text>
           </view>
       </view>
     </view>
   </view>
 </view>
-
 
   <view class='clear' style='margin-top:{{showIndex == 1 ? "20rpx":"100rpx"}};'></view>
   <view class="contact-tab">
@@ -111,9 +94,9 @@
 
   <view class='clear1'></view>
   
-  <students style="{{current === 0 ? 'display: inline;': 'display: none;'}}" ></students>
-	<signin style="{{current === 1 ? 'display: inline;': 'display: none;'}}"  userstatus="{{userstatus}}"></signin>
-  <chat style="{{current === 2 ? 'display: inline;': 'display: none;'}}" ></chat>
-	<notice style="{{current === 3 ? 'display: inline;': 'display: none;'}}" userstatus="{{userstatus}}"></notice>
+  <students style="{{current == 0 ? 'display: inline;': 'display: none;'}}" mate="{{mate}}"  ></students>
+	<signin style="{{current == 1 ? 'display: inline;': 'display: none;'}}"  userstatus="{{userstatus}}"></signin>
+  <chat style="{{current == 2 ? 'display: inline;': 'display: none;'}}" ></chat>
+	<notice style="{{current == 3 ? 'display: inline;': 'display: none;'}}" userstatus="{{userstatus}}"  notice="{{notice}}"></notice>
   
 </view>

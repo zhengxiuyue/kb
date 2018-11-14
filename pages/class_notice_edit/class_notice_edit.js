@@ -1,11 +1,13 @@
 // pages/class_notice_edit/class_notice_edit.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    noticetitle:"",
+    noticecontent:""
   },
 
   /**
@@ -63,9 +65,68 @@ Page({
   onShareAppMessage: function () {
 
   },
-  returnchat:function(e){
-    wx.navigateBack({
-      
+  noticetitleInput: function (event) {
+    this.setData({
+      noticetitle: event.detail.value.replace(/\s+/g, '')
     })
+  },
+  noticecontentInput: function (event) {
+    this.setData({
+      noticecontent: event.detail.value.replace(/\s+/g, '')
+    })
+  },
+
+  returnnotice:function(e){
+
+    let that = this;
+    var requestIP = app.globalData.requestIP
+    //判断评论是否为空
+     if (that.data.noticetitle.length == 0) {
+      wx.showToast({
+        title: '请输入通知标题!',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    }
+     else if (that.data.noticecontent.length == 0) {
+       wx.showToast({
+         title: '请输入通知内容!',
+         icon: 'none',
+         duration: 1000
+       })
+       return false;
+     }
+    //发请求
+    else {
+       console.log(that.data.noticecontent)
+       console.log(that.data.noticetitle)
+      wx.request({
+        url: requestIP + '/teacher/publishNotice',
+        data: {
+          classid: "c866bf76b4ef11e8ab8e00163e00299d",
+          content: that.data.noticecontent,
+          title: that.data.noticetitle,
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'openid': app.globalData.openid
+        },// 设置请求的 header
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            wx.showToast({
+              title: '发布成功',
+              icon: 'success',
+              duration: 2000
+            }), 
+            wx.navigateBack({
+            })
+          } else {
+            console.log("请求失败");
+          }
+        },
+      })
+    }
   }
 })
