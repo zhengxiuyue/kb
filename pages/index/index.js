@@ -1,5 +1,7 @@
 // pages/index/index.js
 var app = getApp();
+var requestIP = app.globalData.requestIP;
+
 Page({
 
   /**
@@ -131,7 +133,7 @@ Page({
       date:e.detail.date
     })
     wx.request({
-      url: 'http://localhost:8080/happyschedule/student/getMyCourse',
+      url: requestIP+'/student/getMyCourse',
       data: {
         date:that.data
       },
@@ -193,7 +195,7 @@ Page({
   getRecentClass:function(e){
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/happyschedule/student/getRecentClass',
+      url: requestIP+'/student/getRecentClass',
       data: {
       },
       method:'POST',
@@ -234,7 +236,7 @@ Page({
   getNotice:function(e){
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/happyschedule/student/getNotice',
+      url: requestIP+'/student/getNotice',
       data: {
       },
       method: 'POST',
@@ -256,7 +258,7 @@ Page({
   getMyCourse: function (e) {
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/happyschedule/student/getMyCourse',
+      url: requestIP+'/student/getMyCourse',
       data: {
       },
       method: 'POST',

@@ -3,6 +3,7 @@ var app = getApp();
 // 引入SDK核心类
 var QQMapWX = require('../../dist/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
+var requestIP = app.globalData.requestIP;
 
 Page({
   data: {
@@ -235,7 +236,7 @@ Page({
   getClassList_signUp:function(e){
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/happyschedule/student/getClassEnter',
+      url: requestIP+'/student/getClassEnter',
       data: {
         storeid: '4fda538b94cb11e8800900163e00299d'
       },
@@ -277,7 +278,7 @@ Page({
     getClassList_order: function (e) {
       var that = this;
       wx.request({
-        url: 'http://localhost:8080/happyschedule/student/getClassAppointment',
+        url: requestIP+'/student/getClassAppointment',
         data: {
           storeid: '4fda538b94cb11e8800900163e00299d'
         },
