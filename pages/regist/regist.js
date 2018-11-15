@@ -266,7 +266,7 @@ gainAuthCodeAction: function () {
           'openid': app.globalData.openid
         },// 设置请求的 header
         success: function (res) {
-          if (res.data.resultCode == "10001") {
+          if (res.data.resultCode == "101") {
             wx.showToast({
               title: '注册成功',
               icon: 'success',

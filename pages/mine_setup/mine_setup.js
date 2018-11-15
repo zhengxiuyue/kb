@@ -109,7 +109,7 @@ Page({
       success: function (sm) {
         if (sm.confirm) {
           app.globalData.openid = null
-          wx.redirectTo({
+          wx.reLaunch({
             url: '/pages/login/login',
           })
           // 用户点击了确定 可以调用删除方法了
