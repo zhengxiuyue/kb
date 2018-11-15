@@ -73,3 +73,13 @@
 <view style='height:40rpx;'></view>
 
 <image src='{{edit}}' class='edit' bindtap='edit'></image>
+
+<view class='classcard' style='display:{{Isclassspace}}'>
+  <image src='{{space}}' class='space'></image>
+  <view>  
+    <text>还没有任何评论</text>
+    <view  bindtap='signin'>
+      <text class='signin'>去发布评论</text>
+    </view>
+  </view>
+</view>

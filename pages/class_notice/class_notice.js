@@ -13,6 +13,10 @@ Component({
     userstatus: {
       type: "Number",
       value: "",
+    },
+    Isclassspace: {
+      type: "String",
+      value: "",
     }
   },
 
@@ -21,6 +25,7 @@ Component({
    */
   data: {
     "edit": "/image/edit.png",
+    "space":"/image/space.png"
   },
 
   /**

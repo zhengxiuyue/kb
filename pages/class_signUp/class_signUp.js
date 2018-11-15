@@ -1,5 +1,6 @@
 const { $Message } = require('../../dist/base/index');
 var interval = null //倒计时函数
+var app = getApp();
 Page({
   data: {
     username: '',
@@ -86,6 +87,7 @@ Page({
   //验证
   gainAuthCodeAction: function () {
     let that = this;
+    var requestIP = app.globalData.requestIP
     //第一步：验证手机号码
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
     if (that.data.tel.length == 0) {
@@ -97,7 +99,7 @@ Page({
       return false;
     }
 
-    if (!myreg.test(that.data.tel)) {
+    else if (!myreg.test(that.data.tel)) {
       wx.showToast({
         title: '请填写正确的手机号码!',
         icon: 'none',
@@ -105,6 +107,25 @@ Page({
       })
       return false;
     }
+
+    wx.request({
+      url: requestIP + '/student/sendCode',
+      data: {
+        phone: that.data.tel,
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'openid': app.globalData.openid
+      },// 设置请求的 header
+      success: function (res) {
+        if (res.data.resultCode == "101") {
+        } else {
+          console.log("请求失败");
+        }
+      },
+    })  
+
     //第二步：设置计时器
     // 先禁止获取验证码按钮的点击
     that.setData({

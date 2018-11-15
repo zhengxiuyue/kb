@@ -11,7 +11,9 @@ Page({
     classid:"",
     mate: [], //课堂成员
     items:[], //课堂详情
-    notice:[]//课堂通知
+    notice:[],//课堂通知
+    chat:[],//课堂讨论
+    Isclassspace: "none"
   },
 
   /**
@@ -199,7 +201,14 @@ Page({
           if (res.data.resultCode == "101") {
             console.log(res.data.data)
             console.log(res.data)
-          } else {
+          } 
+          else if (res.data.resultCode == "204"){
+            that.setData({
+              chat: [],
+              Isclassspace: "block"
+            })
+          }
+          else {
             console.log("请求失败");
           }
         },
@@ -229,7 +238,14 @@ Page({
               notice: that.data.notice
             })
           
-          } else {
+          } 
+          else if (res.data.resultCode == "204") {
+            that.setData({
+              notice: [],
+              Isclassspace: "block"
+            })
+          }
+          else {
             console.log("请求失败");
           }
         },

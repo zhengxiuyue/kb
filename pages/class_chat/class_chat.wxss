@@ -83,3 +83,17 @@
   bottom: 40rpx;
   right: 20rpx;
 }
+
+.classcard{
+  margin: 100rpx auto;
+  text-align: center;
+}
+
+.space{
+  height: 250rpx;
+  width: 250rpx;
+}
+
+.signin{
+  color: #1296db;
+}

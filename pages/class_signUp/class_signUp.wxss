@@ -100,6 +100,7 @@ list-style: none;
   background-color: #F8F8F8;
   position: relative;
   top: -55rpx;
+  z-index: 99;
 }
 .infm{
   position: relative;
