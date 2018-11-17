@@ -27,7 +27,7 @@
   width: 45rpx;
   height: 45rpx;
   margin-right: 40rpx;
- float: right;
+  float: right;
 }
 
 .content{

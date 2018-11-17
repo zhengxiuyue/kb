@@ -31,10 +31,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    classcard: function (event) {
-      var classid = event.target.id
-      // console.log(classid)
-      // console.log(event.target.id)
+    classcard: function (e) {
+      var classid = e.currentTarget.dataset.classid
+      console.log(classid)
       wx.navigateTo({
         url: '/pages/class/class?classid=' + classid,
       })

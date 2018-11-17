@@ -1,9 +1,9 @@
-<view wx:if="{{userstatus==1}}" class='sign'>
+<view wx:if="{{userstatus==3}}" class='sign'>
   <image src='/image/space.png' class='space'> </image>
   <view class='explain'>暂无课堂签到信息发布</view>
 </view>
 
-<view wx:if="{{userstatus==0}}" class='sign1'>
+<view wx:if="{{userstatus==2}}" class='sign1'>
   <text class='title'>选择课堂: 
   </text> 
   

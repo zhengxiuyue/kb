@@ -14,7 +14,7 @@ Component({
       type: "Number",
       value: "",
     },
-    Isclassspace: {
+    Isnoticespace: {
       type: "String",
       value: "",
     }
@@ -62,7 +62,6 @@ Component({
                     icon: 'success',
                     duration: 2000
                   })
-                  
                 } else {
                   console.log("请求失败");
                 }

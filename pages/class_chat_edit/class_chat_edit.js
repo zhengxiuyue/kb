@@ -88,19 +88,11 @@ Page({
 
     //发请求
     else {
-      // 调用函数时，传入new Date()参数，返回值是日期和时间  
-      // var time = util.formatTime(new Date());
-      // // 再通过setData更改Page()里面的data，动态更新页面的数据  
-      // that.setData({
-      //   chattime: time
-      // });
-      // console.log(that.data.chattime) 
       wx.request({
         url: requestIP + '/user/addDiscuss',
         data: {
           classid: "c866bf76b4ef11e8ab8e00163e00299d",
           content:that.data.chatcontent,
-          // time: that.data.chattime
         },
         method: 'POST',
         header: {
@@ -109,10 +101,14 @@ Page({
         },// 设置请求的 header
         success: function (res) {
           if (res.data.resultCode == "101") {
+            wx.showToast({
+              title: '发布成功',
+              icon: 'success',
+              duration: 2000
+            })
             wx.navigateBack({
             })
-            console.log(res.data.data)
-            console.log(res.data)
+            
           } else {
             console.log("请求失败");
           }

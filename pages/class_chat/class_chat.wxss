@@ -13,6 +13,14 @@
   border-radius:10rpx; 
 }
 
+.delete{
+  width: 45rpx;
+  height: 45rpx;
+  margin-right: 40rpx;
+  float: right;
+  margin-top: 25rpx;
+}
+
 .stu_name{
   font-weight: bold;
   position: absolute;

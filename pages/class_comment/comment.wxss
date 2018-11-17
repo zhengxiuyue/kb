@@ -40,3 +40,21 @@
   margin-top: 30rpx;
   margin-bottom: 30rpx;
 }
+
+.classcard{
+  margin: 100rpx auto;
+  text-align: center;
+}
+
+.space{
+  height: 250rpx;
+  width: 250rpx;
+}
+
+.delete{
+  width: 45rpx;
+  height: 45rpx;
+  margin-right: 40rpx;
+  float: right;
+  margin-top: 25rpx;
+}

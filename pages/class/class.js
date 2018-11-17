@@ -13,7 +13,9 @@ Page({
     items:[], //课堂详情
     notice:[],//课堂通知
     chat:[],//课堂讨论
-    Isclassspace: "none"
+    Isnoticespace: "none",
+    Ischatspace: "none",
+    openid:""
   },
 
   /**
@@ -22,18 +24,20 @@ Page({
   onLoad: function (options) {
     var that = this;
     var userstatus = app.globalData.userstatus
+    var openid = app.globalData.openid
     var requestIP = app.globalData.requestIP
+    var classid = that.options.classid
     this.setData({
       userstatus: userstatus,
-      //classid: options.classid
+      openid: openid,
+      classid: classid
     })
-   // console.log(that.data.classid)
 
     //请求课堂详细信息
     wx.request({
       url: requestIP + '/student/getClassInfo',
       data: {
-        classid:"c866bf76b4ef11e8ab8e00163e00299d"
+        classid: that.data.classid
       },
       method: 'POST',
       header: {
@@ -55,7 +59,7 @@ Page({
     wx.request({
       url: requestIP + '/user/getClassmateInfo',
       data: {
-        classid: "c866bf76b4ef11e8ab8e00163e00299d"
+        classid: that.data.classid
       },
       method: 'POST',
       header: {
@@ -141,7 +145,7 @@ Page({
       wx.request({
         url: requestIP + '/user/getClassmateInfo',
         data: {
-          classid: "c866bf76b4ef11e8ab8e00163e00299d"
+          classid: that.data.classid
         },
         method: 'POST',
         header: {
@@ -165,11 +169,32 @@ Page({
           }
         },
       })
-    } else if (that.data.current == 1){
+    } else if (that.data.current == 1 & that.data.userstatus == 2 ){
       wx.request({
         url: requestIP + '/teacher/getSignBefore',
         data: {
-          classid: "c866bf76b4ef11e8ab8e00163e00299d"
+          classid: that.data.classid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'openid': app.globalData.openid
+        },// 设置请求的 header
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            console.log(res.data.data)
+            console.log(res.data)
+          } else {
+            console.log("请求失败");
+          }
+        },
+      })
+    }
+    else if (that.data.current == 1 & that.data.userstatus == 3) {
+      wx.request({
+        url: requestIP + '/student/getSignBefore',
+        data: {
+          classid: that.data.classid
         },
         method: 'POST',
         header: {
@@ -190,7 +215,7 @@ Page({
       wx.request({
         url: requestIP + '/user/getDiscussInfo',
         data: {
-          classid: "c866bf76b4ef11e8ab8e00163e00299d"
+          classid: that.data.classid
         },
         method: 'POST',
         header: {
@@ -199,13 +224,22 @@ Page({
         },// 设置请求的 header
         success: function (res) {
           if (res.data.resultCode == "101") {
-            console.log(res.data.data)
-            console.log(res.data)
+            that.setData({
+              chat: []
+            })
+            console.log(res.data.data.length)
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.chat[i] = res.data.data[i]
+            }
+            that.setData({
+              chat: that.data.chat
+            })
+            console.log(that.data.chat)
           } 
           else if (res.data.resultCode == "204"){
             that.setData({
               chat: [],
-              Isclassspace: "block"
+              Ischatspace: "block"
             })
           }
           else {
@@ -218,7 +252,7 @@ Page({
       wx.request({
         url: requestIP + '/user/getNotice',
         data: {
-          classid: "c866bf76b4ef11e8ab8e00163e00299d"
+          classid: that.data.classid
         },
         method: 'POST',
         header: {
@@ -242,7 +276,7 @@ Page({
           else if (res.data.resultCode == "204") {
             that.setData({
               notice: [],
-              Isclassspace: "block"
+              Isnoticespace: "block"
             })
           }
           else {
