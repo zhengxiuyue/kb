@@ -91,8 +91,9 @@ Page({
         }
         else{
           that.setData({
-            error_noNotice:"block"
-          })
+            noticeList:null,
+            error_noNotice: "block"
+          });
         }
       }
     })

@@ -1,8 +1,8 @@
-var app = getApp();
 
 // 引入SDK核心类
 var QQMapWX = require('../../dist/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
+var app = getApp();
 var requestIP = app.globalData.requestIP;
 
 Page({
@@ -36,31 +36,31 @@ Page({
   },
 
   GOclass_des: function (e) {
-    console.log(e);
     var index = e.currentTarget.dataset.index;
     console.log(index);
-    var classList_signUp = this.data.classList_signUp;
-    var title = classList_signUp[index].coursename;
+    var classList_order = this.data.classList_order;
+    var classid = classList_order[index].classid;
+    wx.setStorageSync("classid", classid);
     wx.navigateTo({
       url: '../class_des_signUp/class_des_signUp',
     })
   },
   GOclassList1: function (e) {
     wx.navigateTo({
-      url: '../classList_order/classList_order',
+      url: '../classList_order/classList_order?classList_order',
     })
   },
   GOclassList2: function (e) {
     wx.navigateTo({
-      url: '../classList_signUp/classList_signUp',
+      url: '../classList_signUp/classList_signUp?classList_signUp',
     })
   },
   GOclass_des1: function (e) {
     var index = e.currentTarget.dataset.index;
     console.log(index);
     var classList_order = this.data.classList_order;
-    var courseid = classList_order[index].courseid;
-    wx.setStorageSync("courseid", courseid);
+    var classid = classList_order[index].classid;
+    wx.setStorageSync("classid", classid);
     wx.navigateTo({
       url: '../class_des_order/class_des_order',
     })
@@ -250,6 +250,7 @@ Page({
             that.setData({
               classList_order: res.data.data
             });
+            console.log(that.data.classList_order[0]);
             that.setData({
               error_noClassOrder: "none"
             });

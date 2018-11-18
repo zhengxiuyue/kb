@@ -13,11 +13,11 @@
 
          <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>课程名称：旅游英语</text></view>
+          <text>课程名称：{{courseList.coursename}}</text></view>
 
           <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>课程地点：北京市辖区东城区王府井</text></view>
+          <text>课程地点：{{courseList.location}}</text></view>
 
          <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
@@ -25,11 +25,11 @@
 
          <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>课程价格：500元</text></view>
+          <text>课程价格：{{courseList.price}}元</text></view>
 
            <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>上课时长：2小时</text></view>
+          <text>上课时长：{{courseList.requiredclasshours}}小时</text></view>
 
            <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
@@ -52,18 +52,18 @@
       </view>
 
       <view class='teacher'>
-        陈良华
-        <text class='teacher-rank'>1767260413</text>
+        {{courseList.teachername}}
+        <text class='teacher-rank'>{{courseList.phone}}</text>
       </view>
 
      <!--报名须知-->
       <view class='title'>
         <image src='/image/time.png' class='titleImg'></image>
-        <text class='title-text'>预约时间</text>
+        <text class='title-text'>截至时间</text>
       </view>
 
        <view class='know'>
-        <view>2018/10/19-2018/11/29</view>
+        <view>{{courseList.deadline}}</view>
       </view>
 
     <view class='btn'>

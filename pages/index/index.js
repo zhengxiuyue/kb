@@ -132,6 +132,7 @@ Page({
     that.setData({
       date:e.detail.date
     })
+    that.Gotop();
     that.getMyCourse();
   },
   more:function(){
@@ -183,6 +184,9 @@ Page({
         }
        else {
           that.setData({
+            recentClassList: null
+          });
+          that.setData({
             error_noClass: "block"
           });
           that.setData({
@@ -191,6 +195,9 @@ Page({
         }
       },
       fail(res) {
+        that.setData({
+          recentClassList:null
+        });
         that.setData({
           error_noClassList: "block"
         });
@@ -248,11 +255,17 @@ Page({
         }
         else {
           that.setData({
+            courseList: null
+          });
+          that.setData({
             error_noClass: "block"
           });
         }
       },
       fail(res) {
+        that.setData({
+          courseList: null
+        });
         that.setData({
           error_noClass: "block"
         });

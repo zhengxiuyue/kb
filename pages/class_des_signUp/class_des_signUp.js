@@ -1,5 +1,10 @@
 // pages/class_des/class_des.js
+var app = getApp();
+var requestIP = app.globalData.requestIP;
 Page({
+  data:{
+    phoneNumber:"17671260413"
+  },
   GOclass_signUp:function(e)
   {
     wx.navigateTo({
@@ -7,8 +12,9 @@ Page({
     })
   },
   call:function(e){
+    var that = this;
     wx.makePhoneCall({
-      phoneNumber: '15171809954',
+      phoneNumber: that.data.phoneNumber,
     })
   },
   //获取手机号码
@@ -33,5 +39,31 @@ Page({
       }
     }
 
+  },
+  onLoad: function (options) {
+    var that = this;
+    var classid = wx.getStorageSync("classid")
+    console.log(classid);
+    wx.request({
+      url: requestIP + '/student/getClassInfo',
+      data: {
+        classid: classid
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'openid': app.globalData.openid
+      },
+      success(res) {
+        console.log(res.data.resultCode)
+        if (res.data.resultCode == '101') {
+          that.setData({
+            courseList: res.data.data
+          });
+        }
+      },
+      fail(res) {
+      }
+    })
   }
 })
