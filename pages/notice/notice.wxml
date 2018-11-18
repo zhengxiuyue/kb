@@ -1,20 +1,22 @@
 <!--pages/notice/notice.wxml-->
 <view class='page'>
-<view class='notice'>
-    <view class='time'>{{time}}</view>
+  <!--没有课程时的显示-->
+  <view class='error' style='display:{{error_noNotice}};'>
+    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;{{errortips}}</text>
+  </view>
+<view class='notice' wx:for="{{noticeList}}" wx:key="{{}}">
+    <view class='time'>{{item.no_time}}</view>
   <view class='aNotice'>
-      <view class='title'>{{title}}
+      <view class='title'>{{item.no_title}}
         <image class='delete' src='/image/delete.png' bindtap='delt' style='display:{{userstatus == 0? "block":"none"}}'></image>
       </view>
-      <view class='content'>
-        <text>{{content}}</text>
+      <view class='contentNotice'>
+        <text>{{item.no_content}}</text>
       </view>
       <view class='teacher'>
-      {{teacher}}
+      {{item.name}}
       </view>
-      <view style='height:15rpx;'></view>
   </view>
-  <view style='height:10rpx;'></view>
 </view>
 </view>
 

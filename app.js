@@ -63,7 +63,7 @@ App({
     curPage.setData({ tabBar: tabBar });
   },
   globalData: {
-    openid:null,
+    openid:"111111111111111111",
     userInfo: null,
     userstatus:null,
     requestIP: "http://localhost:8080/happyschedule",

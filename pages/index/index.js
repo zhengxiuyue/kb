@@ -24,9 +24,7 @@ Page({
     errortips:'',
     recentClassList:null,//近期开课课程
     noticeList:[{
-      no_time: "2018-10-21 11:57:18",
-      no_content: "快乐50课表，专为退休人士创办的学习社区！本周课表出炉，了解一下？",
-      no_id: 2
+      no_content: "快乐50课表，专为退休人士创办的学习社区！本周课表出炉，了解一下？"
     }],//通知
     courseList:'',//近两周课表列表
     userstatus:null,
@@ -58,6 +56,8 @@ Page({
     })
 
     this.getRecentClass();
+    this.getMyCourse();
+    this.getNotice();
   },
 
   /**
@@ -132,38 +132,7 @@ Page({
     that.setData({
       date:e.detail.date
     })
-    wx.request({
-      url: requestIP+'/student/getMyCourse',
-      data: {
-        date:that.data
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'openid': app.globalData.openid
-      },
-      success(res) {
-        console.log(res.data.resultCode);
-        if (res.data.resultCode == '101') {
-          that.setData({
-            courseList: res.data.data
-          });
-          that.setData({
-            error_noClass: "none"
-          });
-        }
-        else {
-          that.setData({
-            error_noClass: "block"
-          });
-        }
-      },
-      fail(res) {
-        that.setData({
-          error_noClass: "block"
-        });
-      }
-    })
+    that.getMyCourse();
   },
   more:function(){
     wx.redirectTo({
@@ -257,9 +226,11 @@ Page({
     //获取我的课表
   getMyCourse: function (e) {
     var that = this;
+    console.log(that.data.date);
     wx.request({
       url: requestIP+'/student/getMyCourse',
       data: {
+        startdate: that.data.date
       },
       method: 'POST',
       header: {

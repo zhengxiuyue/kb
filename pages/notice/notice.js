@@ -1,21 +1,24 @@
 // pages/notice/notice.js
+var app = getApp();
+var requestIP = app.globalData.requestIP;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    time: "2018年10月21日 11:57",
-    content: "原11月12日模特课取消！原11月12日模特课改为11月13号同一时间同一地点上课！",
-    title: "课堂延迟通知",
-    teacher: "赵雅涵老师"
+    userstatus: app.globalData.userstatus,
+    error_noNotice:"none",
+    errortips:"暂时没有通知",
+    noticeList:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getNotice();
   },
 
   /**
@@ -66,6 +69,33 @@ Page({
   onShareAppMessage: function () {
 
   
+  },
+  //获取通知
+  getNotice: function (e) {
+    var that = this;
+    wx.request({
+      url: requestIP + '/student/getNotice',
+      data: {
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'openid': app.globalData.openid
+      },
+      success(res) {
+        if (res.data.resultCode == '101') {
+          that.setData({
+            noticeList: res.data.data,
+             error_noNotice: "none"
+          });
+        }
+        else{
+          that.setData({
+            error_noNotice:"block"
+          })
+        }
+      }
+    })
   }
 
 })

@@ -7,60 +7,18 @@ var requestIP = app.globalData.requestIP;
 
 Page({
   data: {
+    province:"",
+    areaname:"",
     errortips:'',
     error_noClassOrder:'none',
     error_noClassSignUp:'none',
     classList_signUp:null,//可报名课程列表
     classList_order:null,//可预约课程
     city:'',
+    storename:"",
+    storeid:'',
     windowHeight: null,
-    multiArray: [['湖北省', '湖南省'], ['宜昌市', '长沙市'], ['枝江市', '株洲区'], ['A校区', 'B校区', 'C校区']],
-    objectMultiArray: [
-      [
-        {
-          id: 0,
-          name: '湖北省'
-        },
-        {
-          id: 1,
-          name: '湖南省'
-        }
-      ],
-      [
-        {
-          id: 0,
-          name: '宜昌市'
-        },
-        {
-          id: 1,
-          name: '长沙市'
-        }
-      ],
-      [
-        {
-          id: 0,
-          name: '枝江市'
-        },
-        {
-          id: 1,
-          name: '株洲区'
-        }
-      ]
-      [
-      {
-        id: 0,
-        name: 'A校区'
-      },
-      {
-        id: 1,
-        name: 'B校区'
-      },
-      {
-        id: 2,
-        name: 'C校区'
-      }
-      ]
-    ],
+    multiArray: [[], [], [], []],
     multiIndex: [0, 0, 0, 0]
   },
 
@@ -98,6 +56,11 @@ Page({
     })
   },
   GOclass_des1: function (e) {
+    var index = e.currentTarget.dataset.index;
+    console.log(index);
+    var classList_order = this.data.classList_order;
+    var courseid = classList_order[index].courseid;
+    wx.setStorageSync("courseid", courseid);
     wx.navigateTo({
       url: '../class_des_order/class_des_order',
     })
@@ -178,8 +141,6 @@ Page({
     app.editTabBar();
 
     this.getLocation();
-    this.getClassList_signUp();
-    this.getClassList_order();
   },
 
   //获取当前定位
@@ -203,22 +164,12 @@ Page({
               title: `当前位置： ` + that.data.address,
               icon: 'none'
             });
-            //获取当前定位下的门店
-            /*            
-            wx.request({
-              url: 'http://localhost:8080/happyschedule/student/getClassEnter?storeid=4fda538b94cb11e8800900163e00299d',
-              data: {
-                storeid: '4fda538b94cb11e8800900163e00299d'
-              },
-              header: {
-                'content-type': 'application/json', // 默认值
-                'openid': openid
-              },
-              success(res) {
-                console.log(res.data)
-              }
-            }) */
-            that.changeCity(res.result.address_component.city);
+            that.setData({
+              province: res.result.address_component.province,
+              city: res.result.address_component.city,
+              areaname: res.result.address_component.district
+            });
+            that.getRecentStore();
           }
         });
       },
@@ -227,7 +178,12 @@ Page({
           title: '无法获取当前位置',
           icon: 'none'
         });
-        that.changeCity('北京市');
+        that.setData({
+          province: "北京市",
+          city:"市辖区",
+          areaname:"东城区"
+        })
+        that.getRecentStore();
       }
     })
   },
@@ -238,7 +194,7 @@ Page({
     wx.request({
       url: requestIP+'/student/getClassEnter',
       data: {
-        storeid: '4fda538b94cb11e8800900163e00299d'
+       storeid: that.data.storeid
       },
       method:'POST',
       header: {
@@ -246,6 +202,7 @@ Page({
         'openid': app.globalData.openid
       },
       success(res) {
+        console.log(res.data.resultCode)
         if (res.data.resultCode=='101'){
           that.setData({
             classList_signUp: res.data.data
@@ -277,10 +234,11 @@ Page({
   //获取当前门店下的可预约课程
     getClassList_order: function (e) {
       var that = this;
+      console.log(that.data.storeid);
       wx.request({
         url: requestIP+'/student/getClassAppointment',
         data: {
-          storeid: '4fda538b94cb11e8800900163e00299d'
+          storeid: that.data.storeid
         },
         method: 'POST',
         header: {
@@ -318,5 +276,40 @@ Page({
 
   //初始化多列选择器
   getArea:function(e){
+  },
+
+  getRecentStore:function(e){
+    //获取当前定位下的门店   
+    var that = this;        
+    wx.request({
+      url: requestIP + '/student/getRecentStore',
+      data: {
+        province: that.data.province,
+        city: that.data.city,
+        areaname: that.data.areaname
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'openid': app.globalData.openid
+      },
+      success(res) {
+        console.log(res.data.data[0].areaid);
+        if (res.data.resultCode == '101') {
+          that.setData({
+            storename: res.data.data[0].storename,
+            storeid: res.data.data[0].areaid,
+          });
+          that.getClassList_signUp();
+          that.getClassList_order();
+          console.log(that.data.storeid);
+        }
+        else {
+          that.setData({
+            storename: "暂无门店"
+          });
+        }
+      }
+    });
   }
 })
