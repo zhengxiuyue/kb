@@ -26,7 +26,7 @@ Page({
     noticeList:[{
       no_content: "快乐50课表，专为退休人士创办的学习社区！本周课表出炉，了解一下？"
     }],//通知
-    courseList:'',//近两周课表列表
+    courseList:'',//课表列表
     userstatus:null,
     windowHeight:null
   },
@@ -145,9 +145,13 @@ Page({
       url: '/pages/notice/notice',
     })
   },
-  enterclass:function(){
+  enterclass:function(e){
+    var index = e.currentTarget.dataset.index;
+    console.log(index);
+    var courseList = this.data.courseList;
+    var classid = courseList[index].classid;
     wx.navigateTo({
-      url: '/pages/class/class',
+      url: '/pages/class/class?class_id=' + classid,
     })
   },
   GOclass_des: function (e) {
@@ -245,6 +249,7 @@ Page({
         'openid': app.globalData.openid
       },
       success(res) {
+       console.log(res.data.data);
         if (res.data.resultCode == '101') {
           that.setData({
             courseList: res.data.data

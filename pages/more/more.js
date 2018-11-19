@@ -238,7 +238,7 @@ Page({
   //获取当前门店下的可预约课程
     getClassList_order: function (e) {
       var that = this;
-      console.log(that.data.storeid);
+      //console.log(that.data.storeid);
       wx.request({
         url: requestIP+'/student/getClassAppointment',
         data: {

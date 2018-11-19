@@ -97,6 +97,30 @@ Page({
       fail(res) {
       }
     })
+    this.getMyInfo();
+  },
+
+  getMyInfo:function(e){
+    var that = this;
+    wx.request({
+      url: requestIP + '/user/getMyInfo',
+      data: {
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'openid': app.globalData.openid
+      },
+      success(res) {
+        console.log(res.data);
+        if (res.data.resultCode == '101') {
+          that.setData({
+            username: res.data.data.name,
+            //tel: res.data.data.tel
+          });
+        }
+      }
+    })
   },
 
   //获取用户名
