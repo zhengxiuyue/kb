@@ -1,6 +1,6 @@
 /* pages/class_des/class_des.wxss */
 .page{
-  height: 1400rpx;
+  height: 1200rpx;
 }
 .title{
   font-weight: bold ;

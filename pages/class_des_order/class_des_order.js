@@ -7,11 +7,11 @@ Page({
     courseid:null,
     visible1: false,
    // ordername:null,
-    order_phonenumber:null,
+    order_phonenumber:"17671260413",
     actions1: [
       {
         icon:null,
-        name: null
+        name: "负责人电话"
       },
       {
         icon: 'mobilephone',
@@ -57,7 +57,7 @@ Page({
           that.setData({
             courseList: res.data.data,
           //  actions1[0].name: res.data.data.teachername,
-            order_phonenumber: res.data.data.phone
+            //order_phonenumber: res.data.data.phone
           });
         }
       },

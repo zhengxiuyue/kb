@@ -1,8 +1,10 @@
 const { $Message } = require('../../dist/base/index');
 var interval = null //倒计时函数
 var app = getApp();
+var requestIP = app.globalData.requestIP;
 Page({
   data: {
+    courseList:null,
     username: '',
     tel: '',
     authcode: '',
@@ -65,6 +67,36 @@ Page({
         }
       })
     }
+  },
+
+  onLoad: function (options) {
+    var that = this;
+    var classid = options.classid;
+    that.setData({
+      classid: classid
+    })
+    console.log(classid);
+    wx.request({
+      url: requestIP + '/student/getClassInfo',
+      data: {
+        classid: classid
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'openid': app.globalData.openid
+      },
+      success(res) {
+        console.log(res.data.resultCode)
+        if (res.data.resultCode == '101') {
+          that.setData({
+            courseList: res.data.data
+          });
+        }
+      },
+      fail(res) {
+      }
+    })
   },
 
   //获取用户名
@@ -147,35 +179,6 @@ Page({
         })
       }
     }, 1000);
-    /*第三步：请求验证码接口，并记录服务器返回的验证码用于判断，这里服务器也可能不返回验证码，那验证码的判断交给后台
-    else{      
-      wx.request({       
-        data: {},        
-        'url': 接口地址,        
-        success(res) {          
-          console.log(res.data.data)          
-          _this.setData({            
-            iscode: res.data.data          
-          })          
-          var num = 61;          
-          var timer = setInterval(function () 
-          {            
-            num--;            
-            if (num <= 0) {              
-              clearInterval(timer);              
-              _this.setData({                
-                codename: '重新发送',                
-                disabled: false              
-              })             
-            } else 
-            {             
-               _this.setData({                
-                 codename: num + "s"              
-              })           
-            }          
-        }, 1000)
-    */
-    // wx.request({})
   },
 
   //注册验证
@@ -184,31 +187,5 @@ Page({
     that.setData({
       visible5:true
     });
-    /*var name = /^[\u4E00-\u9FA5A-Za-z]+$/;//判断姓名
-    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号
-    //判断姓名
-    if (!name.test(that.data.username) || that.data.username.length == 0) {
-      wx.showToast({
-        title: '请输入正确的姓名!',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    }
-    //判断手机号码
-    else if (!myreg.test(that.data.tel)) {
-      wx.showToast({
-        title: '请填写正确的手机号码!',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    }
-
-    //判断验证码 服务端！！！
-    else {
-      handleOpen5()
-    }
-    */
   }
 });

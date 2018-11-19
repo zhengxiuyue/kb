@@ -82,7 +82,8 @@
         {{item.date}}
       </view>
       <view class='b4'>
-        {{tools.my_slice(item.startpoint,0,5)}}-{{tools.my_slice(item.endpoint,0,5)}} | {{item.time}}
+        {{tools.my_slice(item.startpoint,0,5)}}-{{tools.my_slice(item.endpoint,0,5)}}
+        <image  class = 'class_stu' src='../../image/class_stu.png'></image>
       </view>
   </view>
   

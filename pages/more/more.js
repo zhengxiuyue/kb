@@ -46,11 +46,15 @@ Page({
     })
   },
   GOclassList1: function (e) {
+    var that = this;
+    var classList_order = that.data.classList_order;
     wx.navigateTo({
       url: '../classList_order/classList_order?classList_order',
     })
   },
   GOclassList2: function (e) {
+    var that = this;
+    var classList_signUp = that.data.classList_signUp;
     wx.navigateTo({
       url: '../classList_signUp/classList_signUp?classList_signUp',
     })
@@ -295,7 +299,6 @@ Page({
         'openid': app.globalData.openid
       },
       success(res) {
-        console.log(res.data.data[0].areaid);
         if (res.data.resultCode == '101') {
           that.setData({
             storename: res.data.data[0].storename,

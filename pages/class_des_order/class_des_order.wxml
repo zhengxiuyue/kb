@@ -9,11 +9,11 @@
         
         <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>课程编号：C123H</text></view>
-
-         <view class='class_des_text'>
-          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
           <text>课程名称：{{courseList.coursename}}</text></view>
+
+        <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>班级：{{courseList.level}}{{courseList.classnumber}}班</text></view>
 
           <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
@@ -21,7 +21,7 @@
 
          <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>总学时：18学时</text></view>
+          <text>总学时：{{courseList.period}}学时</text></view>
 
          <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
@@ -29,19 +29,7 @@
 
            <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>上课时长：{{courseList.requiredclasshours}}小时</text></view>
-
-           <view class='class_des_text'>
-          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>每节课课时：0.5课时</text></view>
-
-           <view class='class_des_text'>
-          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>课容量：30</text></view>
-
-           <view class='class_des_text'>
-          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>课余量：5</text></view>
+          <text>课容量：{{courseList.vol}}</text></view>
 
       </view>
 
@@ -56,7 +44,6 @@
         <text class='teacher-rank'>{{courseList.phone}}</text>
       </view>
 
-     <!--报名须知-->
       <view class='title'>
         <image src='/image/time.png' class='titleImg'></image>
         <text class='title-text'>截至时间</text>

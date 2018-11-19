@@ -3,12 +3,16 @@ var app = getApp();
 var requestIP = app.globalData.requestIP;
 Page({
   data:{
-    phoneNumber:"17671260413"
+    phoneNumber:"17671260413",
+    classid:null
   },
   GOclass_signUp:function(e)
   {
+    var that = this;
+    var classid = that.data.classid;
+    console.log("详情页面的"+classid);
     wx.navigateTo({
-      url: '../class_signUp/class_signUp',
+      url: '../class_signUp/class_signUp?classid='+classid,
     })
   },
   call:function(e){
@@ -42,7 +46,10 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    var classid = wx.getStorageSync("classid")
+    var classid = wx.getStorageSync("classid");
+    that.setData({
+      classid:classid
+    })
     console.log(classid);
     wx.request({
       url: requestIP + '/student/getClassInfo',
