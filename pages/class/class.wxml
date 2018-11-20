@@ -11,7 +11,7 @@
           <view class='classgreat'>{{items.level}}{{items.classnumber}}</view>
     
           <view class='teacher'>
-                授课老师：{{items.teachername}}
+                授课老师：{{items.teachername}} {{items.phone}}
           </view>
         </view>
 
@@ -38,7 +38,7 @@
           </view>
 
           <view class='class_des_text'>
-            <text>上课时长：{{items.requiredclasshours}}分钟</text>
+            <text>上课时长：{{items.requiredclasshours}}h</text>
           </view>
 
           <view class='class_des_text'>
@@ -95,8 +95,8 @@
   <view class='clear1'></view>
   
   <students style="{{current == 0 ? 'display: inline;': 'display: none;'}}" mate="{{mate}}"  ></students>
-	<signin style="{{current == 1 ? 'display: inline;': 'display: none;'}}"  userstatus="{{userstatus}}"></signin>
+	<signin style="{{current == 1 ? 'display: inline;': 'display: none;'}}"  userstatus="{{userstatus}}" sign="{{sign}}" classnum="{{classnum}}" time="{{time}}"></signin>
   <chat style="{{current == 2 ? 'display: inline;': 'display: none;'}}" chat="{{chat}}" Ischatspace="{{Ischatspace}}" openid="{{openid}}"></chat>
-	<notice style="{{current == 3 ? 'display: inline;': 'display: none;'}}" userstatus="{{userstatus}}"  notice="{{notice}}" Isnoticespace="{{Isnoticespace}}" ></notice>
+	<notice id="notice" style="{{current == 3 ? 'display: inline;': 'display: none;'}}" userstatus="{{userstatus}}"  notice="{{notice}}" Isnoticespace="{{Isnoticespace}}" ></notice>
   
 </view>

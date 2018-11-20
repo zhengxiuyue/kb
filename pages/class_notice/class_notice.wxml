@@ -2,7 +2,7 @@
   <view class='time'>{{item.no_time}}</view>
   <view class='notice'>
       <view class='title'>{{item.no_title}}
-        <image class='delete' src='/image/delete.png' bindtap='delt' style='display:{{userstatus == 2? "block":"none"}}'></image>
+        <image class='delete' src='/image/delete.png' bindtap='delt' data-no_id='{{item.no_id}}' style='display:{{userstatus == 2? "block":"none"}}'></image>
       </view>
       <view class='content'>
         <text>{{item.no_content}}</text>
@@ -17,11 +17,11 @@
 
 <image style='display:{{userstatus == 2? "block":"none"}}' class="edit" src="{{edit}}" background-size="cover" bindtap='edit'></image>
 
-<view class='classcard' style='display:{{Isclassspace}}'>
+<view class='classcard' style='display:{{Isnoticespace}}'>
   <image src='{{space}}' class='space'></image>
   <view>  
     <text>还没有任何通知</text>
-    <view  bindtap='signin'>
+    <view  bindtap='gonotice'>
       <text wx:if="{{userstatus == 2}}" class='signin'>去发布通知</text>
     </view>
   </view>

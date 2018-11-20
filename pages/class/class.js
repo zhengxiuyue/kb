@@ -1,4 +1,5 @@
 var app = getApp();
+var util = require('../../utils/util.js');
 Page({
 
   /**
@@ -13,9 +14,14 @@ Page({
     items:[], //课堂详情
     notice:[],//课堂通知
     chat:[],//课堂讨论
+    sign:[
+      {classnum:''}
+    ],//课堂签到
     Isnoticespace: "none",
     Ischatspace: "none",
-    openid:""
+    openid:"",
+    classnum:[],
+    time:""
   },
 
   /**
@@ -27,11 +33,19 @@ Page({
     var openid = app.globalData.openid
     var requestIP = app.globalData.requestIP
     var classid = that.options.classid
+
+    // 调用函数时，传入new Date()参数，返回值是日期和时间    
+    var time = util.formatTime(new Date());    
+    // 再通过setData更改Page()里面的data，动态更新页面的数据    
+
     this.setData({
       userstatus: userstatus,
       openid: openid,
-      classid: classid
+      classid: classid,
+      time: time 
     })
+    console.log(time)
+
 
     //请求课堂详细信息
     wx.request({
@@ -97,6 +111,7 @@ Page({
    */
   onShow: function () {
       //显示自定义的底部导航
+    // this.selectComponent("#notice").getData();
   },
 
   /**
@@ -182,8 +197,18 @@ Page({
         },// 设置请求的 header
         success: function (res) {
           if (res.data.resultCode == "101") {
-            console.log(res.data.data)
-            console.log(res.data)
+            that.setData({
+              sign: []
+            })
+            console.log(res.data.data.length)
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.sign[i] = res.data.data[i]
+              that.data.sign[i].classnum = i+1
+            }
+            that.setData({
+              sign: that.data.sign,
+            })
+            console.log(that.data.sign)
           } else {
             console.log("请求失败");
           }
@@ -227,7 +252,6 @@ Page({
             that.setData({
               chat: []
             })
-            console.log(res.data.data.length)
             for (var i = 0, len = res.data.data.length; i < len; i++) {
               that.data.chat[i] = res.data.data[i]
             }
@@ -264,14 +288,12 @@ Page({
             that.setData({
               notice: []
             })
-            console.log(res.data.data.length)
             for (var i = 0, len = res.data.data.length; i < len; i++) {
               that.data.notice[i] = res.data.data[i]
             }
             that.setData({
               notice: that.data.notice
             })
-          
           } 
           else if (res.data.resultCode == "204") {
             that.setData({

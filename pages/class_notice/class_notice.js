@@ -25,7 +25,8 @@ Component({
    */
   data: {
     "edit": "/image/edit.png",
-    "space":"/image/space.png"
+    "space":"/image/space.png",
+    "no_id": ""
   },
 
   /**
@@ -40,6 +41,10 @@ Component({
     delt: function (e) {
       let that = this;
       var requestIP = app.globalData.requestIP
+      var no_id = e.currentTarget.dataset.no_id
+      that.setData({
+        no_id: no_id
+      })
       wx.showModal({
         title: '提示',
         content: '确定要删除本条通知吗？',
@@ -48,7 +53,7 @@ Component({
             wx.request({
               url: requestIP + '/teacher/deleteNotice',
               data: {
-                noticeid: "6",
+                noticeid: that.data.no_id,
               },
               method: 'POST',
               header: {
@@ -71,6 +76,11 @@ Component({
             // 重新发请求刷新数据
           } else if (sm.cancel) { }
         }
+      })
+    },
+    gonotice: function(e){
+      wx.navigateTo({
+        url: '/pages/class_notice_edit/class_notice_edit',
       })
     }
   },

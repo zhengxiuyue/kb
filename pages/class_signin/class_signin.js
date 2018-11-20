@@ -1,4 +1,6 @@
 // pages/signin/signin.js
+var util = require('../../utils/util.js');
+var app = getApp();
 Component({
   /**
    * 组件的属性列表
@@ -8,7 +10,19 @@ Component({
     userstatus: {
       type: "Number",
       value: "",
-    }
+    },
+    sign: {
+      type: "Array",
+      value: "",
+    },
+    classnum: {
+      type: "Array",
+      value: "",
+    },
+    time: {
+      type: "String",
+      value: "",
+    },
   },
 
   /**
@@ -21,7 +35,8 @@ Component({
     current: 0,
     display:"none",
     dispaly1:"block",
-    status:0
+    status:0,
+    scheduleid:""
   },
 
   /**
@@ -50,19 +65,45 @@ Component({
     },
     //点击切换
     mySelect: function (e) {
+      let that = this;
+      var scheduleid = e.currentTarget.dataset.scheduleid
       this.setData({
         firstPerson: e.target.dataset.me,
+        scheduleid:scheduleid,
         selectPerson: true,
         selectArea: false,
         status: e.target.dataset.id
       })
+      console.log(that.data.scheduleid)
     }, 
+
+    //发签到
     submit:function(e){
-      wx.showToast({
-        title: '发布成功',
-        icon: 'success',
-        duration: 2000
-      }),  
+      var that = this;
+      var requestIP = app.globalData.requestIP
+      wx.request({
+        url: requestIP + '/teacher/publishSign',
+        data: {
+          scheduleid: that.data.scheduleid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'openid': app.globalData.openid
+        },// 设置请求的 header
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            wx.showToast({
+              title: '发布成功',
+              icon: 'success',
+              duration: 2000
+            })
+          } else {
+            console.log("请求失败");
+          }
+        },
+      })
+     
       this.setData({
         display:"block",
         dispaly1:"none",

@@ -17,9 +17,12 @@
  
   <view class="person_box">
     <view class="phone_select" hidden="{{selectPerson}}">
-      <view class="select_one" bindtap="mySelect" data-id="1" data-me="2018/10/30 9:30--11:00 第一节">2018/10/30 9:30--11:00 第一节</view>
-      <view class="select_one" bindtap="mySelect" data-id="0" data-me="2018/11/06 9:30--11:00 第二节">2018/11/06 9:30--11:00 第二节</view>
+      <view wx:for = "{{sign}}" wx:key="" class="select_one" data-scheduleid='{{item.scheduleid}}' bindtap="mySelect" data-id="{{time>item.date+item.startpoint ? '1':'0'}}" data-me="{{item.date}} {{item.startpoint}}--{{item.endpoint}} 第{{item.classnum}}节" style='color:{{time<item.date+item.startpoint ? "gray":""}}'>{{item.date}} {{item.startpoint}}--{{item.endpoint}}<!--  第{{item.classnum}}节 --></view>
+      
+      
+      <view class="select_one" bindtap="mySelect" data-id="1" data-me="2018/11/06 9:30--11:00 第二节">2018/11/06 9:30--11:00 第二节</view>
       <view class="select_one" data-me="2018/11/13 9:30--11:00 第三节" style='color:gray'>2018/11/13 9:30--11:00 第三节</view>
+      
     </view>
   </view>
  <button class='submit' bindtap='submit' style='display:{{status == 0? "block" : "none"}}' >发布签到</button>
@@ -28,12 +31,12 @@
    <!-- <view class='title1'>你已发布签到，签到信息如下： 
   </view>  -->
   <view class="contact-tab">
-		<view class="{{current === 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">已签到</view>
-		<view class="{{current === 1 ? 'current' : ''}}" bindtap="changeTab" data-index="1">未签到</view>
+		<view class="{{current == 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">已签到</view>
+		<view class="{{current == 1 ? 'current' : ''}}" bindtap="changeTab" data-index="1">未签到</view>
 	</view>
 
-  	<signin style="{{current === 0 ? 'display: inline;': 'display: none;'}}" data="{{userstatus}}"  search="{{value}}"></signin>
-	<notsignin style="{{current === 1 ? 'display: inline;': 'display: none;'}}" data="{{userstatus}}"></notsignin>
+  	<signin style="{{current == 0 ? 'display: inline;': 'display: none;'}}" data="{{userstatus}}"  search="{{value}}"></signin>
+	<notsignin style="{{current == 1 ? 'display: inline;': 'display: none;'}}" data="{{userstatus}}"></notsignin>
   </view>
 </view>
 
