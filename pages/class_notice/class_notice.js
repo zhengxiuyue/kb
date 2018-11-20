@@ -10,6 +10,10 @@ Component({
       type: "Array",
       value: "",
     },
+    items: {
+      type: "Array",
+      vaule:""
+    },
     userstatus: {
       type: "Number",
       value: "",
@@ -17,7 +21,11 @@ Component({
     Isnoticespace: {
       type: "String",
       value: "",
-    }
+    },
+    classid: {
+      type: "String",
+      value: ""
+    },
   },
 
   /**
@@ -33,9 +41,15 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    edit: function () {   
+    edit: function (e) {   
+      var that = this
+      var classid = that.data.classid
+      var level = that.data.items.level
+      var coursename = that.data.items.coursename
+      console.log(coursename)
+      console.log(level)
       wx.navigateTo({
-        url: '/pages/class_notice_edit/class_notice_edit',
+        url: '/pages/class_notice_edit/class_notice_edit?classid=' + classid+'&level=' + level + '&coursename=' + coursename,
       })
     },
     delt: function (e) {
@@ -79,14 +93,28 @@ Component({
       })
     },
     gonotice: function(e){
+      var that=this
+      var classid = that.data.classid   
       wx.navigateTo({
-        url: '/pages/class_notice_edit/class_notice_edit',
+        url: '/pages/class_notice_edit/class_notice_edit?classid=' + classid,
+      })
+    },
+    getData() {
+
+      console.log("刷新数据")
+
+      var num = Math.floor(Math.random() * 10 + 1);
+
+      this.setData({
+
+        notice: num
+
       })
     }
   },
 
   ready: function () {
-   
+    //this.getData();
   }
 })
 

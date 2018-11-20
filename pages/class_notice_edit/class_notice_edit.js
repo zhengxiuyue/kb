@@ -7,14 +7,26 @@ Page({
    */
   data: {
     noticetitle:"",
-    noticecontent:""
+    noticecontent:"",
+    classid:"",
+    level:"",
+    coursename:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that=this
+    var classid = that.options.classid
+    var level = that.options.level
+    var coursename = that.options.coursename
+    that.setData({
+      classid: classid,
+      coursename:coursename,
+      level:level
+    })
+    console.log(classid)
   },
 
   /**
@@ -78,7 +90,7 @@ Page({
 
   returnnotice:function(e){
 
-    let that = this;
+    var that = this;
     var requestIP = app.globalData.requestIP
     //判断评论是否为空
      if (that.data.noticetitle.length == 0) {
@@ -104,7 +116,7 @@ Page({
       wx.request({
         url: requestIP + '/teacher/publishNotice',
         data: {
-          classid: "c866bf76b4ef11e8ab8e00163e00299d",
+          classid: that.data.classid,
           content: that.data.noticecontent,
           title: that.data.noticetitle,
         },

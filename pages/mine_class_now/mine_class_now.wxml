@@ -1,3 +1,4 @@
+<wxs src="../more/more.wxs" module="tools" />
 <view class='classcard1' catchtap='classcard' wx:for = "{{item}}" wx:key="" data-classid='{{item.classid}}'>
   <view class='classtop1'>
         <text class='classname1'>{{item.coursename}}</text>
@@ -5,15 +6,15 @@
   <text class='classgrate'>班级：{{item.levelname}}</text>
   <text class='classinfm1' decode="{{true}}">开始时间：{{item.startdate}}
   结束时间：{{item.enddate}} 
-  上课时间：{{item.startpoint}}--{{item.endpoint}}
+  上课时间：{{tools.my_slice(item.startpoint,0,5)}}--{{tools.my_slice(item.endpoint,0,5)}}
   地点：{{item.location}}</text>
 </view>
 
 <view class='classcard' style='display:{{Isclassspace}}'>
   <image src='{{space}}' class='space'></image>
   <view>  
-    <text  wx:if="{{userstatus == 3}}">还没有报名课堂</text>
-    <text  wx:if="{{userstatus == 2}}">还没有发布课堂</text>
+    <text style='font-size:30rpx;' wx:if="{{userstatus == 3}}">还没有报名课堂</text>
+    <text style='font-size:30rpx;' wx:if="{{userstatus == 2}}">还没有发布课堂</text>
     <view  bindtap='signin'>
       <text class='signin' style='display:{{userstatus == 3? "block":"none"}}'>去报名</text>
     </view>

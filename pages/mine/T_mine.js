@@ -58,10 +58,11 @@ Page({
       },
     })
 
+    //获取当前课堂和历史课堂
     wx.request({
-      url: requestIP + '/student/getMyClass',
+      url: requestIP + '/teacher/getMyClass',
       data: {
-        state: this.data.current
+        "type": this.data.current
       },
       method: 'POST',
       header: {
@@ -152,9 +153,9 @@ Page({
     })
     var requestIP = app.globalData.requestIP
     wx.request({
-      url: requestIP + '/student/getMyClass',
+      url: requestIP + '/teacher/getMyClass',
       data: {
-        state: this.data.current
+        "type": this.data.current
       },
       method: 'POST',
       header: {

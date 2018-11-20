@@ -41,7 +41,7 @@
   <image src='{{space}}' class='space'></image>
   <view>  
     <text>还没有任何评论</text>
-    <view  bindtap='signin'>
+    <view  bindtap='edit'>
       <text class='signin'>去发布评论</text>
     </view>
   </view>

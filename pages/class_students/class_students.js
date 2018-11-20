@@ -23,8 +23,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    tel: function (event) {
-      var tel = event.target.id
+    tel: function (e) {
+      var tel = e.currentTarget.dataset.tel
       console.log(tel)
       wx.makePhoneCall({
         phoneNumber: tel,

@@ -8,7 +8,7 @@
         <view class='title_1'>
           <image src='/image/class.png' class='classpicture'></image>
           <view class='classname'>{{items.coursename}}</view>
-          <view class='classgreat'>{{items.level}}{{items.classnumber}}</view>
+          <view class='classgreat'>{{items.level}}{{items.classnumber}}班</view>
     
           <view class='teacher'>
                 授课老师：{{items.teachername}} {{items.phone}}
@@ -95,8 +95,8 @@
   <view class='clear1'></view>
   
   <students style="{{current == 0 ? 'display: inline;': 'display: none;'}}" mate="{{mate}}"  ></students>
-	<signin style="{{current == 1 ? 'display: inline;': 'display: none;'}}"  userstatus="{{userstatus}}" sign="{{sign}}" classnum="{{classnum}}" time="{{time}}"></signin>
-  <chat style="{{current == 2 ? 'display: inline;': 'display: none;'}}" chat="{{chat}}" Ischatspace="{{Ischatspace}}" openid="{{openid}}"></chat>
-	<notice id="notice" style="{{current == 3 ? 'display: inline;': 'display: none;'}}" userstatus="{{userstatus}}"  notice="{{notice}}" Isnoticespace="{{Isnoticespace}}" ></notice>
+	<signin style="{{current == 1 ? 'display: inline;': 'display: none;'}}"  userstatus="{{userstatus}}" sign="{{sign}}" classnum="{{classnum}}" time="{{time}}"  classid="{{classid}}" Issignstu="{{Issignstu}}" Issigntea="{{Issigntea}}"></signin>
+  <chat style="{{current == 2 ? 'display: inline;': 'display: none;'}}" chat="{{chat}}" Ischatspace="{{Ischatspace}}" openid="{{openid}}" classid="{{classid}}" ></chat>
+	<notice id="notice" style="{{current == 3 ? 'display: inline;': 'display: none;'}}" userstatus="{{userstatus}}"  notice="{{notice}}" Isnoticespace="{{Isnoticespace}}" classid="{{classid}}" items="{{items}}" wx:if="{{showCom}}"></notice>
   
 </view>

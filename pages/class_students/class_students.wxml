@@ -31,7 +31,7 @@
   <view class='stu_tel' bindtap='tel' id='{{item.tel}}'>
     {{item.tel}}
     <image src='/image/contact.png' class='contact' ></image>
-    <text bindtap='tel' class='tel' >呼叫</text>
+    <text bindtap='tel' class='tel' data-tel='item.tel'>呼叫</text>
   </view>
   <view class='clear'></view>
 </view>

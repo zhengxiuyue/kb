@@ -15,7 +15,7 @@ Page({
     "password": '',
     authcode: '',//验证码
     text: '',
-    code:''
+    code:'',
   },
 
   /**
@@ -29,7 +29,7 @@ Page({
         if (res.code) {
           console.log(res.code)
           that.setData({
-            code:res.code
+            code:res.code,
           })
           app.globalData.openid = null
           console.log(app.globalData.openid)
@@ -205,7 +205,9 @@ Page({
             account: that.data.tel,
             pwd: that.data.password,
             "type": 2,
-            code: that.data.code
+            code: that.data.code,
+            nickName:app.globalData.nickName,
+            avatarUrl: app.globalData.avatarUrl
           },
           method: 'POST',
           header: {

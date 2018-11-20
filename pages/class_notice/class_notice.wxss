@@ -66,5 +66,6 @@
 }
 
 .signin{
+  font-size: 30rpx;
   color: #1296db;
 }

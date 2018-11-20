@@ -8,14 +8,19 @@ Page({
    */
   data: {
     chatcontent:"",
-    chattime:""
+    chattime:"",
+    classid:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    var that = this
+    var classid = that.options.classid
+    that.setData({
+      classid:classid 
+    })
   },
 
   /**
@@ -74,7 +79,7 @@ Page({
   },
 
   returnchat: function (e) {
-    let that = this;
+    var that = this;
     var requestIP = app.globalData.requestIP
     //判断评论是否为空
     if (that.data.chatcontent.length == 0) {
@@ -91,7 +96,7 @@ Page({
       wx.request({
         url: requestIP + '/user/addDiscuss',
         data: {
-          classid: "c866bf76b4ef11e8ab8e00163e00299d",
+          classid: that.data.classid,
           content:that.data.chatcontent,
         },
         method: 'POST',

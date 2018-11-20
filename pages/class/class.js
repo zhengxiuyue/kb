@@ -21,7 +21,10 @@ Page({
     Ischatspace: "none",
     openid:"",
     classnum:[],
-    time:""
+    time:"",
+    Issignstu:"",
+    Issigntea:"",
+    showCom: true
   },
 
   /**
@@ -111,6 +114,17 @@ Page({
    */
   onShow: function () {
       //显示自定义的底部导航
+    this.setData({
+
+      showCom: false
+
+    });
+
+    this.setData({
+
+      showCom: true
+
+    });
     // this.selectComponent("#notice").getData();
   },
 
@@ -217,7 +231,7 @@ Page({
     }
     else if (that.data.current == 1 & that.data.userstatus == 3) {
       wx.request({
-        url: requestIP + '/student/getSignBefore',
+        url: requestIP + '/user/getSign',
         data: {
           classid: that.data.classid
         },
@@ -227,9 +241,10 @@ Page({
           'openid': app.globalData.openid
         },// 设置请求的 header
         success: function (res) {
-          if (res.data.resultCode == "101") {
-            console.log(res.data.data)
-            console.log(res.data)
+          if (res.data.resultCode == "219") {
+            that.setData({
+              Issignstu:1
+            })
           } else {
             console.log("请求失败");
           }

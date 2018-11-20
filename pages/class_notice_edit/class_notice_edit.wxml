@@ -2,8 +2,8 @@
 <view class='page'>
   <view class='classinfm'>
     <image src='/image/class.png' class='classpicture'></image>
-    <view class='classname'>模特</view>
-    <view class='classgreat'>6班</view>
+    <view class='classname'>{{coursename}}</view>
+    <view class='classgreat'>{{level}}</view>
   </view>
 
   <view class='clear'></view>

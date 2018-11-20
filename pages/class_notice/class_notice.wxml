@@ -15,14 +15,14 @@
   <view style='height:20rpx;'></view>
 </view>
 
-<image style='display:{{userstatus == 2? "block":"none"}}' class="edit" src="{{edit}}" background-size="cover" bindtap='edit'></image>
+<image style='display:{{userstatus == 2? "block":"none"}}' class="edit" src="{{edit}}" background-size="cover" bindtap='edit' data-coursename='items.coursename' data-level='items.level'></image>
 
 <view class='classcard' style='display:{{Isnoticespace}}'>
   <image src='{{space}}' class='space'></image>
   <view>  
-    <text>还没有任何通知</text>
+    <text style='font-size:30rpx;'>还没有任何通知</text>
     <view  bindtap='gonotice'>
-      <text wx:if="{{userstatus == 2}}" class='signin'>去发布通知</text>
+      <text wx:if="{{userstatus == 2}}" class='signin' >去发布通知</text>
     </view>
   </view>
 </view>

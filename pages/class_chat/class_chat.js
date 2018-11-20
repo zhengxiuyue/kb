@@ -21,7 +21,11 @@ Component({
     openid: {
       type: "String",
       value: "",
-    }
+    },
+    classid: {
+      type: "String",
+      value: "",
+    }, 
   },
 
   /**
@@ -47,8 +51,10 @@ Component({
    */
   methods: {
     edit: function (e) {
+      var that = this
+      var classid = that.data.classid
       wx.navigateTo({
-        url: '/pages/class_chat_edit/class_chat_edit',
+        url: '/pages/class_chat_edit/class_chat_edit?classid=' + classid,
       })
     },
     comment: function (e) {
