@@ -217,6 +217,9 @@ Page({
         }
         else {
           that.setData({
+            classList_signUp: null
+          });
+          that.setData({
             error_noClassSignUp: "block"
           });
           that.setData({
@@ -225,6 +228,9 @@ Page({
         }
       },
       fail(res) {
+        that.setData({
+          classList_signUp: null
+        });
         that.setData({
           error_noClassSignUp: "block"
         });
@@ -238,7 +244,6 @@ Page({
   //获取当前门店下的可预约课程
     getClassList_order: function (e) {
       var that = this;
-      //console.log(that.data.storeid);
       wx.request({
         url: requestIP+'/student/getClassAppointment',
         data: {
@@ -261,6 +266,9 @@ Page({
           }
           else{
             that.setData({
+              classList_order: null
+            });
+            that.setData({
               error_noClassOrder: "block"
             });
             that.setData({
@@ -269,6 +277,9 @@ Page({
           }
         },
         fail(res){
+          that.setData({
+            classList_order: null
+          });
           that.setData({
             error_noClassOrder: "block"
           });
@@ -306,13 +317,29 @@ Page({
           });
           that.getClassList_signUp();
           that.getClassList_order();
-          console.log(that.data.storeid);
         }
         else {
+          that.setData({
+            storename: null,
+            storeid: null,
+          });
+          that.getClassList_signUp();
+          that.getClassList_order();
           that.setData({
             storename: "暂无门店"
           });
         }
+      },
+      fail(res) {
+        that.setData({
+          storename: null,
+          storeid: null,
+        });
+        that.getClassList_signUp();
+        that.getClassList_order();
+        that.setData({
+          storename: "暂无门店"
+        });
       }
     });
   }

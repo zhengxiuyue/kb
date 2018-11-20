@@ -89,6 +89,7 @@ Page({
       success(res) {
         console.log(res.data.resultCode)
         if (res.data.resultCode == '101') {
+          console.log(res.data)
           that.setData({
             courseList: res.data.data
           });
@@ -116,7 +117,7 @@ Page({
         if (res.data.resultCode == '101') {
           that.setData({
             username: res.data.data.name,
-            //tel: res.data.data.tel
+            tel: res.data.data.username
           });
         }
       }
