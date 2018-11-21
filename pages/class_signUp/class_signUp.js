@@ -38,38 +38,64 @@ Page({
         visible5: false
       });
     } else {
-      
-      wx.requestPayment({
-        timeStamp: '',
-        nonceStr: '',
-        package: '',
-        signType: 'MD5',
-        paySign: '',
-        success(res) {
-          
-         },
-        fail(res) { 
-          const action = [...this.data.actions5];
-          action[1].loading = true;
+    //判断手机号是否正确
+      let that = this;
+      var requestIP = app.globalData.requestIP
+      //第一步：验证手机号码
+      var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
+      console.log("手机号" + that.data.tel);
+      if (that.data.tel.length == 0) {
+        wx.showToast({
+          title: '请填写正确的手机号码!',
+          icon: 'none',
+          duration: 1000
+        })
+        return false;
+      }
 
+      else if (!myreg.test(that.data.tel)) {
+        wx.showToast({
+          title: '请填写正确的手机号码!',
+          icon: 'none',
+          duration: 1000
+        })
+        return false;
+      }
+    //判断验证码是否正确
+    
+    }
+  },
+  pay:function(e){
+    wx.requestPayment({
+      timeStamp: '',
+      nonceStr: '',
+      package: '',
+      signType: 'MD5',
+      paySign: '',
+      success(res) {
+
+      },
+      fail(res) {
+        const action = [...this.data.actions5];
+        action[1].loading = true;
+
+        this.setData({
+          actions5: action
+        });
+
+        setTimeout(() => {
+          action[1].loading = false;
           this.setData({
+            visible5: false,
             actions5: action
           });
-
-          setTimeout(() => {
-            action[1].loading = false;
-            this.setData({
-              visible5: false,
-              actions5: action
-            });
-            $Message({
-              content: '报名失败！',
-              type: 'success'
-            });
-          }, 2000);
-        }
-      })
-    }
+          $Message({
+            content: '报名失败！',
+            type: 'success'
+          });
+        }, 2000);
+      }
+    })
   },
 
   onLoad: function (options) {
