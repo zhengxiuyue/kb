@@ -96,7 +96,7 @@
   
   <students style="{{current == 0 ? 'display: inline;': 'display: none;'}}" mate="{{mate}}"  ></students>
 	<signin style="{{current == 1 ? 'display: inline;': 'display: none;'}}"  userstatus="{{userstatus}}" sign="{{sign}}" classnum="{{classnum}}" time="{{time}}"  classid="{{classid}}" Issignstu="{{Issignstu}}" Issigntea="{{Issigntea}}"></signin>
-  <chat style="{{current == 2 ? 'display: inline;': 'display: none;'}}" chat="{{chat}}" Ischatspace="{{Ischatspace}}" openid="{{openid}}" classid="{{classid}}" ></chat>
+  <chat style="{{current == 2 ? 'display: inline;': 'display: none;'}}" chat="{{chat}}" Ischatspace="{{Ischatspace}}" openid="{{openid}}" classid="{{classid}}" items="{{items}}"></chat>
 	<notice id="notice" style="{{current == 3 ? 'display: inline;': 'display: none;'}}" userstatus="{{userstatus}}"  notice="{{notice}}" Isnoticespace="{{Isnoticespace}}" classid="{{classid}}" items="{{items}}" wx:if="{{showCom}}"></notice>
   
 </view>

@@ -151,10 +151,15 @@ Page({
     var courseList = this.data.courseList;
     var classid = courseList[index].classid;
     wx.navigateTo({
-      url: '/pages/class/class?class_id=' + classid,
+      url: '/pages/class/class?classid=' + classid,
     })
   },
   GOclass_des: function (e) {
+    var index = e.currentTarget.dataset.index;
+    console.log(index);
+    var recentClassList = this.data.recentClassList;
+    var classid = recentClassList[index].classid;
+    wx.setStorageSync("classid", classid);
     wx.navigateTo({
       url: '../class_des_signUp/class_des_signUp',
     })
@@ -178,6 +183,7 @@ Page({
         'openid': app.globalData.openid
       },
       success(res) {
+        console.log(res.data.data);
         if (res.data.resultCode == '101') {
           that.setData({
             recentClassList: res.data.data
@@ -225,6 +231,7 @@ Page({
         'openid': app.globalData.openid
       },
       success(res) {
+        console.log(res.data.data);
         if (res.data.resultCode == '101') {
           that.setData({
             noticeList: res.data.data
@@ -257,6 +264,9 @@ Page({
           that.setData({
             error_noClass: "none"
           });
+          that.setData({
+            error_noClass_1: "none"
+          });
         }
         else {
           that.setData({
@@ -265,6 +275,9 @@ Page({
           that.setData({
             error_noClass: "block"
           });
+          that.setData({
+            error_noClass_1: "none"
+          });
         }
       },
       fail(res) {
@@ -272,7 +285,10 @@ Page({
           courseList: null
         });
         that.setData({
-          error_noClass: "block"
+          error_noClass: "none"
+        });
+        that.setData({
+          error_noClass_1: "block"
         });
       }
     })

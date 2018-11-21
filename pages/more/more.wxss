@@ -32,6 +32,10 @@
   margin-bottom: 20rpx;   
 }
 
+.picker{
+  display: inline-block;
+}
+
 .app-title{
  font-weight: bold ;
  margin-left: 20rpx;

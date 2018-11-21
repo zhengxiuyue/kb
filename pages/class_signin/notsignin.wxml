@@ -1,14 +1,12 @@
 <!--pages/class_signin/notsignin.wxml-->
-<view class='students'>
-  <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
-  <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+<view class='students'  wx:for = "{{sign}}" wx:key = "">
+  <image wx:if="{{item.protrait!=null}}" class="headphoto" src="{{item.protrait}}" background-size="cover"></image>
+  <image wx:else class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
   <view class='stu_name'>
-    赵韩亚
+    {{item.name}}
   </view>
   <view class='stu_tel'>
-    15171415567
-    <image src='/image/contact.png' class='contact' bindtap='tel'></image>
-    <text bindtap='tel' class='tel' >呼叫</text>
+    {{item.signtime}}
   </view>
   <view class='clear'></view>
 </view>

@@ -137,32 +137,41 @@ gainAuthCodeAction: function () {
     },// 设置请求的 header
     success: function (res) {
       if (res.data.resultCode == "101") {
-      } else {
+        // 先禁止获取验证码按钮的点击
+        that.setData({
+          isClick: true,
+        })
+        //60s倒计时 setInterval功能用于循环，常常用于播放动画，或者时间显示
+        var currentTime = that.data.currentTime;
+        interval = setInterval(function () {
+          currentTime--;//减
+          that.setData({
+            time: currentTime + '秒后获取'
+          })
+          if (currentTime <= 0) {
+            clearInterval(interval)
+            that.setData({
+              time: '重新发送',
+              currentTime: 60,
+              isClick: false
+            })
+          }
+        }, 1000);
+      } 
+      else if (res.data.resultCode == "205"){
+        wx.showToast({
+          title: '该号码已经注册',
+          icon: 'success',
+          duration: 2000
+        })
+      }
+      else {
         console.log("index.js wx.request CheckCallUser statusCode");
       }
     },
   })  
   //第二步：设置计时器
-  // 先禁止获取验证码按钮的点击
-  that.setData({
-    isClick: true,
-  })
-  //60s倒计时 setInterval功能用于循环，常常用于播放动画，或者时间显示
-  var currentTime = that.data.currentTime;
-  interval = setInterval(function () {
-    currentTime--;//减
-    that.setData({
-      time: currentTime + '秒后获取'
-    })
-    if (currentTime <= 0) {
-      clearInterval(interval)
-      that.setData({
-        time: '重新发送',
-        currentTime: 60,
-        isClick: false
-      })
-    }
-  }, 1000);
+
 },
 
     /*第三步：请求验证码接口，并记录服务器返回的验证码用于判断，这里服务器也可能不返回验证码，那验证码的判断交给后台

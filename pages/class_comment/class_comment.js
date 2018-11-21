@@ -66,7 +66,8 @@ Page({
         } 
         else if (res.data.resultCode == "204"){
           that.setData({
-            Iscommentspace:"block"
+            Iscommentspace:"block",
+            comment_num: 0
           })
         }
         else {

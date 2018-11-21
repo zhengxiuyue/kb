@@ -1,4 +1,5 @@
 <!--pages/index/T_index.wxml-->
+<wxs src="../more/more.wxs" module="tools" />
 <import src="/pages/tabBar/tabBar.wxml"/> 
 <template is="tabBar" data="{{tabBar}}"/>
 <view class="page">

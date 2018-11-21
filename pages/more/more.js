@@ -7,14 +7,18 @@ var requestIP = app.globalData.requestIP;
 
 Page({
   data: {
-    province:"",
-    areaname:"",
+    array: ['王府井'],
+    storeidList: ['4fda538b94cb11e880090063e0299d'],
+    index: 0,
+    region: ['北京市', '北京市', '东城区'],
+    province:"",//省
+    areaname:"",//区
     errortips:'',
     error_noClassOrder:'none',
     error_noClassSignUp:'none',
     classList_signUp:null,//可报名课程列表
     classList_order:null,//可预约课程
-    city:'',
+    city:'',//市
     storename:"",
     storeid:'',
     windowHeight: null,
@@ -38,8 +42,8 @@ Page({
   GOclass_des: function (e) {
     var index = e.currentTarget.dataset.index;
     console.log(index);
-    var classList_order = this.data.classList_order;
-    var classid = classList_order[index].classid;
+    var classList_signUp = this.data.classList_signUp;
+    var classid = classList_signUp[index].classid;
     wx.setStorageSync("classid", classid);
     wx.navigateTo({
       url: '../class_des_signUp/class_des_signUp',
@@ -69,7 +73,27 @@ Page({
       url: '../class_des_order/class_des_order',
     })
   },
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    var that = this;
+    this.setData({
+      storeid: that.data.storeidList[e.detail.value],
+      storename: that.data.array[e.detail.value]
+    });
+    that.getClassList_signUp();
+    that.getClassList_order();
+  },
+  bindRegionChange: function (e) {
+  console.log('picker发送选择改变，携带值为', e.detail.value);
+    var that = this;
+    that.setData({
+      province: e.detail.value[0],
+      city: e.detail.value[1],
+      areaname: e.detail.value[2]
+  });
+  that.getRecentStore();
 
+  },/*
   //多列选择器
   bindMultiPickerChange: function (e) {
    // console.log('发送选择改变，携带值为', e.detail.value[1]);
@@ -126,7 +150,7 @@ Page({
         break;
     }
     this.setData(data);
-  },
+  },*/
 
   /**
  * 生命周期函数--监听页面加载
@@ -184,7 +208,7 @@ Page({
         });
         that.setData({
           province: "北京市",
-          city:"市辖区",
+          city:"北京市",
           areaname:"东城区"
         })
         that.getRecentStore();
@@ -195,6 +219,7 @@ Page({
   //获取当前门店下的可报名课程
   getClassList_signUp:function(e){
     var that = this;
+    console.log("storeid" + that.data.storeid);
     wx.request({
       url: requestIP+'/student/getClassEnter',
       data: {
@@ -206,7 +231,7 @@ Page({
         'openid': app.globalData.openid
       },
       success(res) {
-        console.log(res.data.resultCode)
+        console.log(res.data.data);
         if (res.data.resultCode=='101'){
           that.setData({
             classList_signUp: res.data.data
@@ -290,10 +315,6 @@ Page({
       })
   },
 
-  //初始化多列选择器
-  getArea:function(e){
-  },
-
   getRecentStore:function(e){
     //获取当前定位下的门店   
     var that = this;        
@@ -311,9 +332,19 @@ Page({
       },
       success(res) {
         if (res.data.resultCode == '101') {
+          console.log(res.data.data);
+         var storeList = [];
+         var storeidList =  [];
+         for(var i = 0;i<res.data.data.length;i++){
+           console.log(res.data.data[i].storename);
+           storeList.push(res.data.data[i].storename);
+           storeidList.push(res.data.data[i].areaid);
+          }
           that.setData({
             storename: res.data.data[0].storename,
             storeid: res.data.data[0].areaid,
+            array: storeList,
+            storeidList: storeidList
           });
           that.getClassList_signUp();
           that.getClassList_order();
@@ -326,7 +357,8 @@ Page({
           that.getClassList_signUp();
           that.getClassList_order();
           that.setData({
-            storename: "暂无门店"
+            storename: "暂无门店",
+            array:null
           });
         }
       },
@@ -338,7 +370,8 @@ Page({
         that.getClassList_signUp();
         that.getClassList_order();
         that.setData({
-          storename: "暂无门店"
+          storename: "暂无门店",
+          array:['暂无门店']
         });
       }
     });

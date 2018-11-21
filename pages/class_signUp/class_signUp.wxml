@@ -43,14 +43,14 @@
   </view>
 <view class='infm'>
 
-  <input class='ipt' bindinput='usernameInput' placeholder='请输入姓名' value='{{username}}'placeholder-class='placeholder'></input>
+  <input class='ipt' disabled = "true" bindinput='usernameInput' placeholder='请输入姓名' value='{{username}}'placeholder-class='placeholder'></input>
 </view>
 
 <view class='infm'>
   <input class='ipt' type='number' value='{{tel}}' bindinput='telInput' placeholder='请输入手机号码' placeholder-class='placeholder'></input>
 </view>
 
-<view class='infm'>
+<view class='infm' style='display:{{auth}}'>
   <input class='ipt' type='number' value='{{authcode}}' bindinput='authcodeInput' placeholder='请输入验证码' placeholder-class='placeholder' >
   </input><button disabled='{{isClick}}' bindtap='gainAuthCodeAction' class='btn'>{{time}}</button> 
 </view>

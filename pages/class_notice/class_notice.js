@@ -41,13 +41,18 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    getData() {
+
+      console.log("刷新数据")
+      this.setData({
+        notice: 1
+      })
+    },
     edit: function (e) {   
       var that = this
       var classid = that.data.classid
       var level = that.data.items.level
       var coursename = that.data.items.coursename
-      console.log(coursename)
-      console.log(level)
       wx.navigateTo({
         url: '/pages/class_notice_edit/class_notice_edit?classid=' + classid+'&level=' + level + '&coursename=' + coursename,
       })
@@ -81,6 +86,7 @@ Component({
                     icon: 'success',
                     duration: 2000
                   })
+                  that.getData();
                 } else {
                   console.log("请求失败");
                 }
@@ -99,22 +105,12 @@ Component({
         url: '/pages/class_notice_edit/class_notice_edit?classid=' + classid,
       })
     },
-    getData() {
-
-      console.log("刷新数据")
-
-      var num = Math.floor(Math.random() * 10 + 1);
-
-      this.setData({
-
-        notice: num
-
-      })
-    }
+ 
   },
 
   ready: function () {
-    //this.getData();
+    console.log('ready')
+    this.getData();
   }
 })
 

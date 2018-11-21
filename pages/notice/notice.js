@@ -84,6 +84,7 @@ Page({
       },
       success(res) {
         if (res.data.resultCode == '101') {
+          console.log("通知"+res.data.data)
           that.setData({
             noticeList: res.data.data,
              error_noNotice: "none"

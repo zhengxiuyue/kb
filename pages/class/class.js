@@ -88,7 +88,6 @@ Page({
           that.setData({
             mate: []
           })
-          console.log(res.data.data.length)
           for (var i = 0, len = res.data.data.length; i < len; i++) {
             that.data.mate[i] = res.data.data[i]
           }
@@ -115,15 +114,11 @@ Page({
   onShow: function () {
       //显示自定义的底部导航
     this.setData({
-
       showCom: false
-
     });
 
     this.setData({
-
       showCom: true
-
     });
     // this.selectComponent("#notice").getData();
   },
@@ -198,7 +193,10 @@ Page({
           }
         },
       })
-    } else if (that.data.current == 1 & that.data.userstatus == 2 ){
+    } 
+    //老师签到功能
+    else if (that.data.current == 1 & that.data.userstatus == 2 ){
+      //获取签到列表
       wx.request({
         url: requestIP + '/teacher/getSignBefore',
         data: {
@@ -208,28 +206,38 @@ Page({
         header: {
           'content-type': 'application/x-www-form-urlencoded',
           'openid': app.globalData.openid
-        },// 设置请求的 header
+        },
         success: function (res) {
           if (res.data.resultCode == "101") {
             that.setData({
               sign: []
             })
-            console.log(res.data.data.length)
             for (var i = 0, len = res.data.data.length; i < len; i++) {
               that.data.sign[i] = res.data.data[i]
-              that.data.sign[i].classnum = i+1
+              that.data.sign[i].classnum = i+1//获取第几节课
             }
             that.setData({
               sign: that.data.sign,
             })
-            console.log(that.data.sign)
           } else {
+            that.setData({
+              sign: []
+            })
             console.log("请求失败");
           }
         },
+        fail: function () {
+          that.setData({
+            sign: []
+          })
+          console.log("fail");
+        },
       })
     }
+
+    //学生签到功能
     else if (that.data.current == 1 & that.data.userstatus == 3) {
+      //获取当前是否有签到
       wx.request({
         url: requestIP + '/user/getSign',
         data: {
@@ -239,18 +247,28 @@ Page({
         header: {
           'content-type': 'application/x-www-form-urlencoded',
           'openid': app.globalData.openid
-        },// 设置请求的 header
+        },
         success: function (res) {
+          //当前有签到信息
           if (res.data.resultCode == "219") {
             that.setData({
+              //显示签到按钮
               Issignstu:1
             })
           } else {
             console.log("请求失败");
           }
         },
+        fail: function () {
+          that.setData({
+            Issignstu: ""
+          })
+          console.log("fail");
+        },
       })
     }
+
+    //讨论功能
     else if (that.data.current == 2) {
       wx.request({
         url: requestIP + '/user/getDiscussInfo',

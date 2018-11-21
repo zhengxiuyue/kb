@@ -23,15 +23,15 @@
 </view>
 
 <view class='students' wx:for = "{{mate}}" wx:key="">
-  <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
+  <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{item.protrait}}" background-size="cover"></image>
   <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
   <view class='stu_name'>
     {{item.name}}
   </view>
-  <view class='stu_tel' bindtap='tel' id='{{item.tel}}'>
+  <view class='stu_tel' bindtap='tel' data-tel='{{item.tel}}'>
     {{item.tel}}
     <image src='/image/contact.png' class='contact' ></image>
-    <text bindtap='tel' class='tel' data-tel='item.tel'>呼叫</text>
+    <text  class='tel'>呼叫</text>
   </view>
   <view class='clear'></view>
 </view>

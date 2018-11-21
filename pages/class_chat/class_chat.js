@@ -26,6 +26,10 @@ Component({
       type: "String",
       value: "",
     }, 
+    items: {
+      type: "String",
+      value: ""
+    }
   },
 
   /**
@@ -151,8 +155,10 @@ Component({
 
     //没有评论数据时，提请去发布评论
     signin: function(e){
+      var level = that.data.items.level
+      var coursename = that.data.items.coursename
       wx.navigateTo({
-        url: '/pages/class_chat_edit/class_chat_edit',
+        url: '/pages/class_chat_edit/class_chat_edit?level=' + level + '&coursename=' +coursename,
       })
     }
   },

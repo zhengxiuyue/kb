@@ -4,9 +4,11 @@ var app = getApp();
 var requestIP = app.globalData.requestIP;
 Page({
   data: {
+    auth:"none",
     courseList:null,
     username: '',
     tel: '',
+    primarytel:'',
     authcode: '',
     time: '获取验证码', //倒计时 
     currentTime: 60,//限制60s
@@ -36,6 +38,7 @@ Page({
         visible5: false
       });
     } else {
+      
       wx.requestPayment({
         timeStamp: '',
         nonceStr: '',
@@ -117,6 +120,7 @@ Page({
         if (res.data.resultCode == '101') {
           that.setData({
             username: res.data.data.name,
+            primarytel: res.data.data.username,
             tel: res.data.data.username
           });
         }
@@ -130,13 +134,25 @@ Page({
   },
 
   //获取手机号码
-  telInput: function (event) {
-    this.setData({ tel: event.detail.value })
+  telInput: function (e) {
+    var that = this;
+    console.log(e.detail.value);
+    console.log(that.data.primarytel);
+    if (e.detail.value == that.data.primarytel) {
+      that.setData({
+        auth: "none"
+      });
+    }
+    else {
+      that.setData({
+        auth: "block"
+      });
+    }
+    this.setData({ tel: e.detail.value })
   },
 
   //获取验证码
   authcodeInput: function (event) {
-    // console.log("password==", event.detail.value)
     this.setData({ authcode: event.detail.value })
   },
 
@@ -147,6 +163,7 @@ Page({
     var requestIP = app.globalData.requestIP
     //第一步：验证手机号码
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
+    console.log("手机号" + that.data.tel);
     if (that.data.tel.length == 0) {
       wx.showToast({
         title: '请填写正确的手机号码!',
@@ -177,6 +194,7 @@ Page({
       },// 设置请求的 header
       success: function (res) {
         if (res.data.resultCode == "101") {
+          console.log(res.data.data);
         } else {
           console.log("请求失败");
         }
@@ -206,7 +224,7 @@ Page({
     }, 1000);
   },
 
-  //注册验证
+  //报名
   signUp: function (e) {
     let that = this;
     that.setData({

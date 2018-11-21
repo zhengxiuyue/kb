@@ -9,7 +9,9 @@ Page({
   data: {
     chatcontent:"",
     chattime:"",
-    classid:""
+    classid:"",
+    level:"",
+    coursename:""
   },
 
   /**
@@ -18,8 +20,12 @@ Page({
   onLoad: function (options) {
     var that = this
     var classid = that.options.classid
+    var level = that.data.items.level
+    var coursename = that.data.items.coursename
     that.setData({
-      classid:classid 
+      coursename:coursename,
+      classid:classid ,
+      level:level
     })
   },
 

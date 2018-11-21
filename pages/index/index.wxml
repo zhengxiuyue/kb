@@ -91,6 +91,9 @@
   <view class='error' style='display:{{error_noClass}};'  bindtap='more'>
     <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;没有课表 <text style='color:#1296db'>去选课</text></text>
   </view>
+    <view class='error' style='display:{{error_noClass_1}};'  bindtap='more'>
+    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;没有数据</text>
+  </view>
 </view>
 
 

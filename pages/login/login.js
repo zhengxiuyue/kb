@@ -32,7 +32,6 @@ Page({
             code:res.code,
           })
           app.globalData.openid = null
-          console.log(app.globalData.openid)
         } else {
           console.log('登录失败！' + res.errMsg)
         }
@@ -172,6 +171,7 @@ Page({
       return false;
     }
     else {
+      //学生角色登录
       if (con == 3) {
         wx.request({
           url: requestIP+'/user/login',
@@ -179,12 +179,14 @@ Page({
             account: that.data.tel,
             pwd: that.data.password,
             "type":3,
-            code: that.data.code
+            code: that.data.code,
+            nickName: app.globalData.nickName,
+            avatarUrl: app.globalData.avatarUrl
           },
           method: 'POST',
           header: {
             'content-type': 'application/x-www-form-urlencoded',
-          },// 设置请求的 header
+          },
           success: function (res) {
             if (res.data.resultCode == "101") {
               app.globalData.openid = res.data.data 
@@ -193,11 +195,17 @@ Page({
                 url: '/pages/index/index',
               })
             } else {
-              console.log("index.js wx.request CheckCallUser statusCode" );
+              console.log("请求失败" );
             }
+          },
+          fail: function () {
+            app.globalData.openid = null 
+            console.log("fail");
           }
         })
       }
+
+      //老师角色登录
       else if (con == 2) {
         wx.request({
           url: requestIP + '/user/login',
@@ -212,7 +220,7 @@ Page({
           method: 'POST',
           header: {
             'content-type': 'application/x-www-form-urlencoded',
-          },// 设置请求的 header
+          },
           success: function (res) {
             if (res.data.resultCode == "101") {
               app.globalData.openid = res.data.data
@@ -220,25 +228,77 @@ Page({
               wx.redirectTo({
                 url: '/pages/index/T_index',
               })
-            } else {
+            }
+            else if (res.data.resultCode == "214"){
+              wx.showToast({
+                title: '账号和密码不匹配!',
+                icon: 'none',
+                duration: 1000
+              })
+              wx.login({
+                success(res) {
+                  if (res.code) {
+                    console.log(res.code)
+                    that.setData({
+                      code: res.code,
+                    })
+                    app.globalData.openid = null
+                  } else {
+                    console.log('登录失败！' + res.errMsg)
+                  }
+                }
+              })
+              return false;
+            } 
+            else if (res.data.resultCode == "213") {
+              wx.showToast({
+                title: '请选择正确的身份!',
+                icon: 'none',
+                duration: 1000
+              })
+              wx.login({
+                success(res) {
+                  if (res.code) {
+                    console.log(res.code)
+                    that.setData({
+                      code: res.code,
+                    })
+                    app.globalData.openid = null
+                  } else {
+                    console.log('登录失败！' + res.errMsg)
+                  }
+                }
+              })
+              return false;
+            } 
+            else {
               console.log("index.js wx.request CheckCallUser statusCode");
             }
-          }
+          },
+          fail: function () {
+            app.globalData.openid = null
+            console.log("fail");
+          },
         })
       }    
     }    
   },
+
+  //注册
   regist: function (e) {
     wx.navigateTo({
       url: '/pages/regist/regist',
     })
-  } ,
+  },
+
+  //忘记密码
   forget:function(e){
     wx.navigateTo({
       url: '/pages/forget/forget',
     })
   },
 
+  //更换验证码
   mobile(e) { 
     this.setData({ mobile: e.detail.value }) 
   }

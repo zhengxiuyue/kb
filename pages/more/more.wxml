@@ -8,12 +8,25 @@
 
   <view class='area'>
   <view class="section">
-  <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <view class="picker">
+    <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+      <image src='/image/area.png' class='areaIcon'></image><text decode="true" class='text-blod'>&nbsp;{{city}}&nbsp;&nbsp;</text>
+  </picker>
+      </view>
+
+    <view class="picker">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+   <text decode="true"> &nbsp;{{storename}}</text><image src='/image/dropDown.png' class='pikerImg'></image>
+    </view>
+  </picker>
+      </view>
+  <!--<picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
     <view class="picker">
       <image src='/image/area.png' class='areaIcon'></image><text decode="true" class='text-blod'>&nbsp;{{city}}&nbsp;&nbsp;</text>
       {{storename}} <image src='/image/dropDown.png' class='pikerImg'></image>
     </view>
-  </picker>
+  </picker>-->
   </view>
   </view>
 

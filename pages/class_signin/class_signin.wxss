@@ -154,3 +154,13 @@
 	color: #1DA27F;
   font-size: 34rpx;
 }
+
+.classcard{
+  margin: 100rpx auto;
+  text-align: center;
+}
+
+.space{
+  height: 250rpx;
+  width: 250rpx;
+}

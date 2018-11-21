@@ -8,7 +8,6 @@
       <view class='stu_name'>
         {{item.name}}
       </view>
-{{app.globalData.openid}}
         <image class='delete' src='/image/delete.png'  data-item = "{{item.dis_id}}"   bindtap='delt' style='display:{{item.openid == openid? "block" : "none"}}'></image>
 
       <view class='chat'>

@@ -134,13 +134,13 @@ Page({
     that.Gotop();
     that.getMyCourse();
   },
-  enterclass: function () {
+  enterclass: function (e) {
     var index = e.currentTarget.dataset.index;
     console.log(index);
     var courseList = this.data.courseList;
     var classid = courseList[index].classid;
     wx.navigateTo({
-      url: '/pages/class/class?class_id=' + classid,
+      url: '/pages/class/class?classid=' + classid,
     })
   },
 

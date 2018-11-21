@@ -24,7 +24,6 @@
     "pages/class_notice_edit/class_notice_edit",
     "pages/class_comment/class_comment",
     "pages/class_comment/comment",
-    "pages/class_comment/like",
     "pages/class_des_signUp/class_des_signUp",
     "pages/class_signUp/class_signUp",
     "pages/classList_order/classList_order",
