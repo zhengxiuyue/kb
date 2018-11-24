@@ -66,9 +66,6 @@
 
 <view>
   <i-button type="success" bindtap='signUp'>确认预约</i-button>
-  <i-modal title="确认报名" visible="{{ visible5 }}" actions="{{ actions5 }}" bind:click="handleClick5">
-    <view>确认预约该课程？</view>
-</i-modal>
 
 <i-message id="message" />
 </view>

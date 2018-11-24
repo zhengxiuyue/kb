@@ -27,44 +27,6 @@ Page({
     ]
   },
 
-  handleOpen5() {
-    this.setData({
-      visible5: true
-    });
-  },
-
-  handleClick5({ detail }) {
-    if (detail.index === 0) {
-      this.setData({
-        visible5: false
-      });
-    } else {
-      //判断手机号是否正确
-      let that = this;
-      //第一步：验证手机号码
-      var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
-      console.log("手机号" + that.data.tel);
-      if (that.data.tel.length == 0) {
-        wx.showToast({
-          title: '请填写正确的手机号码!',
-          icon: 'none',
-          duration: 1000
-        })
-        return false;
-      }
-
-      else if (!myreg.test(that.data.tel)) {
-        wx.showToast({
-          title: '请填写正确的手机号码!',
-          icon: 'none',
-          duration: 1000
-        })
-        return false;
-      }
-
-    }
-  },
-
   onLoad: function (options) {
     var that = this;
     var classid = options.classid;
@@ -127,8 +89,9 @@ Page({
   },
   //获取预约码
   reservationCodeInput:function(e){
-    this.setData({ reservationCode: event.detail.value })
+    this.setData({ reservationCode: e.detail.value })
   },
+
   //获取手机号码
   telInput: function (e) {
     var that = this;
@@ -176,25 +139,7 @@ Page({
       })
       return false;
     }
-
-    wx.request({
-      url: requestIP + '/student/sendCode',
-      data: {
-        phone: that.data.tel,
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'userid': app.globalData.userid
-      },// 设置请求的 header
-      success: function (res) {
-        if (res.data.resultCode == "101") {
-          console.log(res.data.data);
-        } else {
-          console.log("请求失败");
-        }
-      },
-    })
+  that.sendCode();
 
     //第二步：设置计时器
     // 先禁止获取验证码按钮的点击
@@ -268,7 +213,7 @@ Page({
       }
       else if (that.data.auth == "block")
       {
-        that.sendCode();
+        that.order(that.data.authcode);
       }
     }
 
@@ -276,34 +221,33 @@ Page({
   //验证验证码
   sendCode:function(e){
     var that = this;
+
     wx.request({
       url: requestIP + '/student/sendCode',
       data: {
         phone: that.data.tel,
-        code: that.data.authcode,
         type: 2
       },
       method: 'POST',
       header: {
-        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'content-type': 'application/x-www-form-urlencoded',
         'userid': app.globalData.userid
-      },
-      success(res) {
-        console.log(res.data.data);
-        if (res.data.resultCode == '101') {
-          that.order();
-        }
-        else {
+      },// 设置请求的 header
+      success: function (res) {
+        if (res.data.resultCode == "101") {
+          console.log(res.data.data);
+        } else {
+
           wx.showToast({
-            title: '验证码错误!',
+            title: '验证码发送失败!',
             icon: 'none',
             duration: 1000
           })
         }
       },
-      fail(res) {
+      fail: function (res) {
         wx.showToast({
-          title: '验证码错误!',
+          title: '验证码发送失败!',
           icon: 'none',
           duration: 1000
         })
@@ -315,7 +259,7 @@ Page({
     console.log(e);
     var code = e;
     wx.request({
-      url: requestIP + '/student/getRecentClass',
+      url: requestIP + '/student/subscirbe',
       data: {
         schid: that.data.classid,
         name:that.data.username,

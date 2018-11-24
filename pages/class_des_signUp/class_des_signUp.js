@@ -25,6 +25,29 @@ Page({
   telInput: function (event) {
     this.setData({ tel: event.detail.value })
   },
+  onPullDownRefresh: function () {
+    wx.request({
+      url: requestIP + '/student/getClassInfo',
+      data: {
+        classid: that.data.classid
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'userid': app.globalData.userid
+      },
+      success(res) {
+        console.log(res.data.resultCode)
+        if (res.data.resultCode == '101') {
+          that.setData({
+            courseList: res.data.data
+          });
+        }
+      },
+      fail(res) {
+      }
+    })
+  },
   onShareAppMessage: function (ops) {
     if (ops.from === 'button') {
       // 来自页面内转发按钮
