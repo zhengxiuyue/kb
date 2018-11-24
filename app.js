@@ -1,37 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
-    let that = this; 
-    wx.login({                   
-      success(res) {
-        if (res.code) {
-          that.globalData.code = res.code
-          wx.request({
-            url: that.globalData.requestIP + '/user/getOpenid',
-            data: {
-              code: that.globalData.code
-            },
-            method: 'POST',
-            header: {
-              'content-type': 'application/x-www-form-urlencoded',
-            },
-            success: function (res) {
-              if (res.data.resultCode == "101") {
-                that.globalData.openid = res.data.data
-              } else {
-                console.log("请求失败");
-              }
-            },
-            fail: function () {
-              app.globalData.openid = null
-              console.log("fail");
-            }
-          })
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
-      }
-    })
+    var that = this; 
     // 展示本地存储能力
     // var logs = wx.getStorageSync('logs') || []
     // logs.unshift(Date.now())
@@ -94,7 +64,7 @@ App({
   },
   globalData: {
     openid: "",//
-    userid: "1d286e83b68511e8ab8e00163e00299d",
+    userid: "0137da84b68111e8ab8e00163e00299d",
     nickName:"",
     avatarUrl:"",
     userInfo: null,

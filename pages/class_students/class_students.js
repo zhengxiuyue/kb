@@ -29,7 +29,8 @@ Component({
       wx.makePhoneCall({
         phoneNumber: tel,
       })
-    }
+    },
+    
   },
 
   ready: function () {

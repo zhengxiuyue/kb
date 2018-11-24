@@ -120,7 +120,8 @@ Component({
                     success: function (res) {
                       if (res.data.resultCode == "101") {
                         that.setData({
-                          chat: []
+                          chat: [],
+                          Ischatspace: "none"
                         })
                         for (var i = 0, len = res.data.data.length; i < len; i++) {
                           that.data.chat[i] = res.data.data[i]

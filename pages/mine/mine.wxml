@@ -7,7 +7,6 @@
     <view class='username'>{{username}}</view>
     <open-data type="userAvatarUrl" class='userAvatarUrl' style="" ></open-data>    
     <image src='/image/dropDown.png' class='dropDown' bindtap='dropDown'></image>
-                  <!-- <open-data type="userNickName" lang="zh_CN"></open-data> -->
   </view>
   <view class='clear'></view>
 

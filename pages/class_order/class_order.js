@@ -213,6 +213,14 @@ Page({
       }
       else if (that.data.auth == "block")
       {
+        if(that.data.authcode.length == 0){
+          wx.showToast({
+            title: '请输入验证码！',
+            icon:'none',
+            duration:1000
+          })
+          return false;
+        }
         that.order(that.data.authcode);
       }
     }
@@ -237,7 +245,6 @@ Page({
         if (res.data.resultCode == "101") {
           console.log(res.data.data);
         } else {
-
           wx.showToast({
             title: '验证码发送失败!',
             icon: 'none',
@@ -285,11 +292,11 @@ Page({
     var code = e;
     var that = this;
     wx.request({
-      url: requestIP + '/student/subscirbe',
+      url: requestIP + '/student/subscribe',
       data: {
         schid: that.data.classid,
         name:that.data.username,
-        phone:taht.data.tel,
+        phone:that.data.tel,
         code: code,
         reservation:that.data.reservationCode
       },
@@ -299,7 +306,7 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.data);
+        console.log(res.data.resultCode+res.data.data);
         if (res.data.resultCode == '101') {
           $Message({
             content: '预约成功！',

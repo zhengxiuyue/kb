@@ -11,13 +11,27 @@ Page({
     username:"",
     item: [],//定义变长数组课堂信息
     Isclassspace:"none",
-    userstatus:""
+    userstatus:"",
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              console.log(res.userInfo)
+            }
+          })
+        }
+      }
+    })
+
     app.editTabBar();
 
     //page高度加高
@@ -192,7 +206,11 @@ Page({
     wx.navigateTo({
       url: '/pages/mine_setup/mine_setup',
     })
+  },
+  bindGetUserInfo: function (e) {
+    console.log(e.detail.userInfo)
   }
+
 })
 
 
