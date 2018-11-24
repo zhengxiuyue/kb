@@ -17,7 +17,7 @@
           {{item.dis_time}}
         </view>    
       <image src='{{comment}}' class='comment'></image>
-      <view class='comment_num'>{{comment_num}}</view>
+      <view class='comment_num'>{{item.replynum}}</view>
      </view>
     <view style='height:15rpx;'></view>
   </view>

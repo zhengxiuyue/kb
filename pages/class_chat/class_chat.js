@@ -42,7 +42,7 @@ Component({
     "comment": "/image/comment.png",
     "edit": "/image/edit.png",
     "islike": 0,
-    "comment_num": "3",
+    "comment_num": "3",/////
     "color": 0,
     "space":"/image/space.png",
     "Isdelete":"block",

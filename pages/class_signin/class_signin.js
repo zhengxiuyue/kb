@@ -43,6 +43,14 @@ Component({
       type: "String",
       value: "",
     },//老师签到框
+    Issign: {
+      type: "Number",
+      value: "",
+    },//学生是否签到
+    signbtn: {
+      type: "String",
+      value: "",
+    },//学生签到按钮信息
   },
 
   /**
@@ -60,7 +68,6 @@ Component({
     space:"/image/space.png",
     signstu:[],//已签到学生信息
     notsignstu: [],//未签到学生信息
-    signbtn:"签到",//学生签到按钮信息
     stutime:"",//学生成功签到的时间
   },
 
@@ -72,38 +79,40 @@ Component({
     signstu:function(){
       var requestIP = app.globalData.requestIP
       var that = this
-      wx.request({
-        url: requestIP + '/student/sign',
-        data: {
-          signnumber:that.data.signnumber//签到编号
-        },
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'userid': app.globalData.userid
-        },
-        success: function (res) {
-          //本节课发布了签到
-          if (res.data.resultCode == "101") {
-            wx.showToast({
-              title: '签到成功',
-              icon: 'success',
-              duration: 2000
-            })
-            var stutime = util.formatTime(new Date());   
-            that.setData({
-              signbtn:"签到成功",
-              stutime: stutime
-            })
-          }
-          else {
-            console.log("请求失败");
-          }
-        },
-        fail: function () {
-          console.log("fail");
-        },
-      })
+      //还未签到才可以签到
+      if(that.data.Issign == 0){
+        wx.request({
+          url: requestIP + '/student/sign',
+          data: {
+            signnumber: that.data.signnumber//签到编号
+          },
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'userid': app.globalData.userid
+          },
+          success: function (res) {
+            //本节课发布了签到
+            if (res.data.resultCode == "101") {
+              wx.showToast({
+                title: '签到成功',
+                icon: 'success',
+                duration: 2000
+              })
+              var stutime = util.formatTime(new Date());
+              that.setData({
+                stutime: stutime
+              })
+            }
+            else {
+              console.log("请求失败");
+            }
+          },
+          fail: function () {
+            console.log("fail");
+          },
+        })
+      }
     },   
     clickPerson: function () {
       var selectPerson = this.data.selectPerson;

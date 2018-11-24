@@ -16,7 +16,7 @@
 .delete{
   width: 45rpx;
   height: 45rpx;
-  margin-right: 40rpx;
+  margin-right: 55rpx;
   float: right;
   margin-top: 25rpx;
 }
@@ -62,12 +62,12 @@
   width: 35rpx;
   position: absolute;
   bottom: 18rpx;
-  right: 40rpx;
+  right: 60rpx;
 }
 
 .edit{
-  height: 120rpx;
-  width: 120rpx;
+  height: 80rpx;
+  width: 80rpx;
   float: right;
   position: fixed;
   bottom: 120px;
@@ -89,7 +89,7 @@
   font-weight: bold;
   position: absolute;
   bottom: 40rpx;
-  right: 20rpx;
+  right: 40rpx;
 }
 
 .classcard{

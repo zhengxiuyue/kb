@@ -27,6 +27,8 @@ Page({
     showCom: true,
     signnumber:"",//学生签到编号
     firstPerson:"",//老师选择课堂框
+    Issign:null,//学生是否签到
+    signbtn: "",//学生签到按钮信息
   },
 
   /**
@@ -321,16 +323,30 @@ Page({
         success: function (res) {
           //当前有签到信息
           if (res.data.resultCode == "219") {
-            var signnumber = res.data.data
+            console.log(res.data)
+            var signnumber = res.data.data.sign_id
+            var Issign = res.data.data.sign
+            console.log(signnumber + Issign)
             that.setData({
               //显示签到按钮
               signnumber: signnumber,
+              Issign: Issign,
               Issignstu: "1",
               Issigntea: "3"
             })
+            if(Issign == 0){
+              that.setData({
+                signbtn:"签到"
+              })
+            }else if(Issign){
+              that.setData({
+                signbtn: "你已签到成功"
+              })
+            }
           } else {
             that.setData({
-              Issigntea: "3"
+              Issigntea: "3",
+              signbtn:""
             })
             console.log("请求失败");
           }
@@ -338,7 +354,8 @@ Page({
         fail: function () {
           that.setData({
             Issignstu: "",
-            Issigntea: ""
+            Issigntea: "",
+            signbtn:""
           })
           console.log("fail");
         },
