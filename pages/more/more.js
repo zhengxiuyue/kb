@@ -7,6 +7,8 @@ var requestIP = app.globalData.requestIP;
 
 Page({
   data: {
+    city: app.globalData.city,
+    storename: app.globalData.storename,
     array: ['王府井'],
     storeidList: ['4fda538b94cb11e880090063e0299d'],
     index: 0,
@@ -18,9 +20,6 @@ Page({
     error_noClassSignUp:'none',
     classList_signUp:null,//可报名课程列表
     classList_order:null,//可预约课程
-    city:'',//市
-    storename:"",
-    storeid:'',
     windowHeight: null,
     multiArray: [[], [], [], []],
     multiIndex: [0, 0, 0, 0]
@@ -28,9 +27,7 @@ Page({
 
   changeCity: function (e) {
     //console.log(e);
-    this.setData({
-      city: e
-     })
+    app.globalData.city = e;
   },
 
   tips(info) {
@@ -51,15 +48,15 @@ Page({
   },
   GOclassList1: function (e) {
     var that = this;
-    console.log("更多页面的"+that.data.storeid);
-    wx.setStorageSync("storeid", that.data.storeid);
+   // console.log("更多页面的"+that.data.storeid);
+    wx.setStorageSync("storeid", app.globalData.storeid);
     wx.navigateTo({
       url: '../classList_order/classList_order',
     })
   },
   GOclassList2: function (e) {
     var that = this;
-    wx.setStorageSync("storeid", that.data.storeid);
+    wx.setStorageSync("storeid", app.globalData.storeid);
     wx.navigateTo({
       url: '../classList_signUp/classList_signUp',
     })
@@ -77,10 +74,8 @@ Page({
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     var that = this;
-    this.setData({
-      storeid: that.data.storeidList[e.detail.value],
-      storename: that.data.array[e.detail.value]
-    });
+    app.globalData.storename = that.data.array[e.detail.value];
+    app.globalData.storeid = that.data.storeidList[e.detail.value];
     that.getClassList_signUp();
     that.getClassList_order();
   },
@@ -89,73 +84,12 @@ Page({
     var that = this;
     that.setData({
       province: e.detail.value[0],
-      city: e.detail.value[1],
       areaname: e.detail.value[2]
   });
+  app.globalData.city = e.detail.value[1];
   that.getRecentStore();
 
-  },/*
-  //多列选择器
-  bindMultiPickerChange: function (e) {
-   // console.log('发送选择改变，携带值为', e.detail.value[1]);
-    var that = this;
-   // console.log(that.data.multiArray[1][e.detail.value[1]]);
-    that.changeCity(that.data.multiArray[1][e.detail.value[1]]);
-    this.setData({
-      multiIndex: e.detail.value
-    })
   },
-  bindMultiPickerColumnChange: function (e) {
-   // console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
-    var data = {
-      multiArray: this.data.multiArray,
-      multiIndex: this.data.multiIndex
-    };
-    data.multiIndex[e.detail.column] = e.detail.value;
-    switch (e.detail.column) {
-      case 0:
-        switch (data.multiIndex[0]) {
-          case 0:
-            data.multiArray[1] = ['宜昌市'];
-            data.multiArray[2] = ['枝江市'];
-            data.multiArray[3] = ['A校区', 'B校区', 'C校区'];
-            break;
-          case 1:
-            data.multiArray[1] = ['长沙市'];
-            data.multiArray[2] = ['株洲区'];
-            data.multiArray[3] = ['A校区', 'B校区', 'C校区'];
-            break;
-        }
-        data.multiIndex[1] = 0;
-        data.multiIndex[2] = 0;
-        data.multiIndex[3] = 0;
-        break;
-      case 1:
-        switch (data.multiIndex[0]) {
-          case 0:
-            switch (data.multiIndex[1]) {
-              case 0:
-                data.multiArray[2] = ['枝江市'];
-                data.multiArray[3] = ['A校区', 'B校区', 'C校区'];
-                break;
-              case 1:
-                data.multiArray[2] = ['株洲区'];
-                data.multiArray[3] = ['A校区', 'B校区', 'C校区'];
-                break;
-            }
-            break;
-        }
-        data.multiIndex[2] = 0;
-        data.multiIndex[3] = 0;
-       // console.log(data.multiIndex);
-        break;
-    }
-    this.setData(data);
-  },*/
-
-  /**
- * 生命周期函数--监听页面加载
- */  
   onLoad: function (options) {
     var that = this;
     //创建节点选择器
@@ -168,8 +102,15 @@ Page({
       })
     }).exec();
     app.editTabBar();
-
-    this.getLocation();
+    console.log("already" + app.globalData.alreadyFlag);
+    if (app.globalData.alreadyFlag == '0')
+    {
+    that.getLocation();
+    app.globalData.alreadyFlag = "1";
+    }else{
+      that.getClassList_order();
+      that.getClassList_order();
+    }
   },
 
   onPullDownRefresh: function () {
@@ -179,6 +120,7 @@ Page({
 
   //获取当前定位
     getLocation: function (e) {
+    console.log("执行了获取地理位置");
     var that = this;
     wx.getLocation({  //获取当前地址
       success: function (res) {
@@ -200,9 +142,9 @@ Page({
             });
             that.setData({
               province: res.result.address_component.province,
-              city: res.result.address_component.city,
               areaname: res.result.address_component.district
             });
+            app.globalData.city = res.result.address_component.city
             that.getRecentStore();
           }
         });
@@ -214,9 +156,9 @@ Page({
         });
         that.setData({
           province: "北京市",
-          city:"北京市",
           areaname:"东城区"
         })
+        app.globalData.city = "北京市";
         that.getRecentStore();
       }
     })
@@ -225,11 +167,11 @@ Page({
   //获取当前门店下的可报名课程
   getClassList_signUp:function(e){
     var that = this;
-    console.log("storeid" + that.data.storeid);
+   // console.log("storeid" + that.data.storeid);
     wx.request({
       url: requestIP+'/student/getClassEnter',
       data: {
-       storeid: that.data.storeid
+        storeid: app.globalData.storeid
       },
       method:'POST',
       header: {
@@ -278,7 +220,7 @@ Page({
       wx.request({
         url: requestIP+'/student/getClassAppointment',
         data: {
-          storeid: that.data.storeid
+          storeid: app.globalData.storeid
         },
         method: 'POST',
         header: {
@@ -328,7 +270,7 @@ Page({
       url: requestIP + '/student/getRecentStore',
       data: {
         province: that.data.province,
-        city: that.data.city,
+        city: app.globalData.city,
         areaname: that.data.areaname
       },
       method: 'POST',
@@ -342,41 +284,35 @@ Page({
          var storeList = [];
          var storeidList =  [];
          for(var i = 0;i<res.data.data.length;i++){
-           console.log(res.data.data[i].storename);
+          // console.log(res.data.data[i].storename);
            storeList.push(res.data.data[i].storename);
            storeidList.push(res.data.data[i].areaid);
           }
           that.setData({
-            storename: res.data.data[0].storename,
-            storeid: res.data.data[0].areaid,
             array: storeList,
             storeidList: storeidList
           });
+          app.globalData.storename = res.data.data[0].storename;
+          app.globalData.storeid = res.data.data[0].areaid;
           that.getClassList_signUp();
           that.getClassList_order();
         }
         else {
-          that.setData({
-            storename: null,
-            storeid: null,
-          });
+          app.globalData.storename = "暂无门店";
+          app.globalData.storeid = "";
           that.getClassList_signUp();
           that.getClassList_order();
           that.setData({
-            storename: "暂无门店",
             array:['暂无门店']
           });
         }
       },
       fail(res) {
-        that.setData({
-          storename: null,
-          storeid: null,
-        });
+        app.globalData.storename = "暂无门店";
+        app.globalData.storeid = "";
         that.getClassList_signUp();
         that.getClassList_order();
         that.setData({
-          storename: "暂无门店",
           array:['暂无门店']
         });
       }

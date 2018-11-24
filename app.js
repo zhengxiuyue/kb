@@ -70,6 +70,10 @@ App({
     userInfo: null,
     userstatus:3,
     code:"",
+    storeid:"",
+    city:"",
+    storename:'',
+    alreadyFlag: "0",
     ad_telephone: "17671260413",
     requestIP: "http://localhost:8080/happyschedule",
     tabBar: {

@@ -209,7 +209,7 @@ Page({
     else{
       if (that.data.auth == "none")
       {
-        that.order("noneedforcode");
+        that.order("*noneedforcode*");
       }
       else if (that.data.auth == "block")
       {
