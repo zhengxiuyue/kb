@@ -10,7 +10,7 @@ Page({
     tel: '',
     reservationCode:'',//预约码
     primarytel: '',
-    auth: '',
+    authcode: '',
     time: '获取验证码', //倒计时 
     currentTime: 60,//限制60s
     isClick: false,//获取验证码按钮，默认允许点击
@@ -61,41 +61,8 @@ Page({
         })
         return false;
       }
-      //判断验证码是否正确
 
     }
-  },
-  pay: function (e) {
-    wx.requestPayment({
-      timeStamp: '',
-      nonceStr: '',
-      package: '',
-      signType: 'MD5',
-      paySign: '',
-      success(res) {
-
-      },
-      fail(res) {
-        const action = [...this.data.actions5];
-        action[1].loading = true;
-
-        this.setData({
-          actions5: action
-        });
-
-        setTimeout(() => {
-          action[1].loading = false;
-          this.setData({
-            visible5: false,
-            actions5: action
-          });
-          $Message({
-            content: '报名失败！',
-            type: 'success'
-          });
-        }, 2000);
-      }
-    })
   },
 
   onLoad: function (options) {

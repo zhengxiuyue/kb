@@ -171,6 +171,11 @@ Page({
     this.getLocation();
   },
 
+  onPullDownRefresh: function () {
+    this.getClassList_signUp();
+    this.getClassList_order();
+  },
+
   //获取当前定位
     getLocation: function (e) {
     var that = this;
