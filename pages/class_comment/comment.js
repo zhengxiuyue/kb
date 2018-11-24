@@ -31,7 +31,7 @@ Component({
     "imgUrl": "/image/headphoto.png",
     "space": "/image/space.png",
     reply_id: null,
-    userid: app.globalData.userid
+    userid: ""
   },
 
   /**
@@ -119,6 +119,9 @@ Component({
   },
 
   ready: function () {
-
+    var that = this
+    that.setData({
+      userid: app.globalData.userid
+    })
   }
 })

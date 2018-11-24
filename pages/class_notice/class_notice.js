@@ -126,7 +126,6 @@ Component({
     }
   },
   ready: function () {
-    console.log(app.globalData.userstatus)
     var that = this
     that.setData({
       userstatus: app.globalData.userstatus

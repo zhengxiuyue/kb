@@ -189,20 +189,63 @@ Page({
           },
           success: function (res) {
             if (res.data.resultCode == "101") {
-              app.globalData.openid = res.data.data 
-              app.globalData.userid = res.data.data
+              app.globalData.openid = res.data.data.openid
+              app.globalData.userid = res.data.data.userid
               console.log(app.globalData.openid)
               wx.redirectTo({
                 url: '/pages/index/index',
               })
-            } else {
-              console.log("请求失败" );
+            }
+            else if (res.data.resultCode == "214"){
+              wx.showToast({
+                title: '账号和密码不匹配!',
+                icon: 'none',
+                duration: 1000
+              })
+              wx.login({
+                success(res) {
+                  if (res.code) {
+                    console.log(res.code)
+                    that.setData({
+                      code: res.code,
+                    })
+                    app.globalData.openid = null
+                  } else {
+                    console.log('登录失败！' + res.errMsg)
+                  }
+                }
+              })
+              return false;
+            } 
+            else if (res.data.resultCode == "213") {
+              wx.showToast({
+                title: '请选择正确的身份!',
+                icon: 'none',
+                duration: 1000
+              })
+              wx.login({
+                success(res) {
+                  if (res.code) {
+                    console.log(res.code)
+                    that.setData({
+                      code: res.code,
+                    })
+                    app.globalData.openid = null
+                  } else {
+                    console.log('登录失败！' + res.errMsg)
+                  }
+                }
+              })
+              return false;
+            } 
+            else {
+              console.log("index.js wx.request CheckCallUser statusCode");
             }
           },
           fail: function () {
-            app.globalData.openid = null 
+            app.globalData.openid = null
             console.log("fail");
-          }
+          },
         })
       }
 
