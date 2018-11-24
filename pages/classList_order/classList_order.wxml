@@ -19,4 +19,9 @@
     预约试听
 </view>
 </view>
+
+            <!--没有课程时的显示-->
+      <view class='error' style='display:{{error_noClassOrder}};'>
+        <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;{{errortips}}</text>
+      </view>
 </view>

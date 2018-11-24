@@ -51,14 +51,17 @@ Page({
   },
   GOclassList1: function (e) {
     var that = this;
+    console.log("更多页面的"+that.data.storeid);
+    wx.setStorageSync("storeid", that.data.storeid);
     wx.navigateTo({
-      url: '../classList_order/classList_order?storeid = ' + that.data.storeid,
+      url: '../classList_order/classList_order',
     })
   },
   GOclassList2: function (e) {
     var that = this;
+    wx.setStorageSync("storeid", that.data.storeid);
     wx.navigateTo({
-      url: '../classList_signUp/classList_signUp?storeid' + that.data.storeid,
+      url: '../classList_signUp/classList_signUp',
     })
   },
   GOclass_des1: function (e) {

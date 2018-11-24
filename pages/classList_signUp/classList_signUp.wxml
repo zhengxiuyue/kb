@@ -1,4 +1,5 @@
 <!--pages/classList2/classList2.wxml-->
+<wxs src="../more/more.wxs" module="tools" />
 <view class='page'>
 
  <!--搜索框-->
@@ -6,4 +7,20 @@
     <input placeholder='搜索课程' confirm-type = '搜索'  class='searchInput' bindconfirm = ''></input>
      <image src='/image/search.png' class='searchImg'></image>
     </view>
+
+    <view class='content' bindtap='GOclass_des'  wx:for="{{classList_signUp}}" wx:if="{{index<3}}"  data-index='{{index}}' wx:key="item.courseid">
+        <view class='content-title'>
+          {{item.coursename}}
+        </view>
+        <view class='content-middle'>    
+          <view class='content-rank'>{{item.level}}</view>
+          <view class='content-time'><text decode="true">{{item.startdate}}&nbsp;{{tools.my_slice(item.startpoint,0,5)}}-{{tools.my_slice(item.endpoint,0,5)}}</text></view>
+        </view>
+       <view class='content-btn'>报名体验</view>
+      </view>
+
+      <!--没有课程时的显示-->
+  <view class='error' style='display:{{error_noClassSignUp}};'>
+    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;{{errortips}}</text>
+  </view>
 </view>

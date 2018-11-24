@@ -4,16 +4,29 @@ var requestIP = app.globalData.requestIP;
 Page({
   data: {
     classList_order: "",
-    storeid:""
+    storeid:"",
+    errortips: '',
+    error_noClassOrder: 'none',
+    error_noClassSignUp: 'none',
   },
 
   onPullDownRefresh: function () {
     this.getClassList_order();
   },
 
+  GOclass_des1: function (e) {
+    var index = e.currentTarget.dataset.index;
+    console.log(index);
+    var classList_order = this.data.classList_order;
+    var classid = classList_order[index].classid;
+    wx.setStorageSync("classid", classid);
+    wx.navigateTo({
+      url: '../class_des_order/class_des_order',
+    })
+  },
+
   onLoad: function (options) {
-    var storeid = options.storeid;
-    console.log("列表页面的"+storeid);
+    var storeid = wx.getStorageSync("storeid");
     this.setData({
       storeid: storeid
     }),

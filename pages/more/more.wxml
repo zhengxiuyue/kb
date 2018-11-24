@@ -70,7 +70,7 @@
         <view class="title">
           <text class="app-title">报名课程</text> 
         </view>
-        <view class="more" bindtap='GOclassList1'>
+        <view class="more" bindtap='GOclassList2'>
           <view class='more_text'><text decode="true">更多&nbsp;</text></view>
           <view class='more_img'><image src="/image/icon-jt.png" class="iconjt"></image></view>
         </view>  
