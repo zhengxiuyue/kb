@@ -283,6 +283,7 @@ Page({
   order:function(e){
     console.log(e);
     var code = e;
+    var that = this;
     wx.request({
       url: requestIP + '/student/subscirbe',
       data: {
