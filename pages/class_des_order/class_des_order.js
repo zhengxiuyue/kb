@@ -3,43 +3,52 @@ var app = getApp();
 var requestIP = app.globalData.requestIP;
 Page({
   data: {
-    courseList:null,
-    courseid:null,
-    visible1: false,
-   // ordername:null,
-    order_phonenumber:"17671260413",
-    actions1: [
-      {
-        icon:null,
-        name: "负责人电话"
-      },
-      {
-        icon: 'mobilephone',
-        name: ' 电话预约',
-      }
-    ]
+    phoneNumber: app.globalData.ad_telephone,
+    classid: null
   },
-  handleClickItem1({ detail }) {
-    const index = detail.index + 1;
-    if (index == 2) {
-      wx.makePhoneCall({
-        phoneNumber: this.data.order_phonenumber
-      });
+  GOclass_signUp: function (e) {
+    var that = this;
+    var classid = that.data.classid;
+    console.log("详情页面的" + classid);
+    wx.navigateTo({
+      url: '../class_order/class_order?classid=' + classid,
+    })
+  },
+  call: function (e) {
+    var that = this;
+    wx.makePhoneCall({
+      phoneNumber: that.data.phoneNumber,
+    })
+  },
+  //获取手机号码
+  telInput: function (event) {
+    this.setData({ tel: event.detail.value })
+  },
+  onShareAppMessage: function (ops) {
+    if (ops.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(ops.target)
     }
-  },
-  handleOpen1() {
-    this.setData({
-      visible1: true
-    });
-  },
-  handleCancel1() {
-    this.setData({
-      visible1: false
-    });
+    return {
+      title: '快乐50课表',
+      path: 'pages/class_des/class_des',
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    }
+
   },
   onLoad: function (options) {
     var that = this;
-    var classid = wx.getStorageSync("classid")
+    var classid = wx.getStorageSync("classid");
+    that.setData({
+      classid: classid
+    })
     console.log(classid);
     wx.request({
       url: requestIP + '/student/getClassInfo',
@@ -49,15 +58,13 @@ Page({
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'openid': app.globalData.openid
+        'userid': app.globalData.userid
       },
       success(res) {
         console.log(res.data.resultCode)
         if (res.data.resultCode == '101') {
           that.setData({
-            courseList: res.data.data,
-          //  actions1[0].name: res.data.data.teachername,
-            //order_phonenumber: res.data.data.phone
+            courseList: res.data.data
           });
         }
       },

@@ -1,18 +1,37 @@
 //app.js
 App({
   onLaunch: function () {
-    var that = this;
-    // wx.login({
-    //   success(res) {
-    //     if (res.code) {
-    //       console.log(res.code)
-    //       that.globalData.code = res.code
-    //       console.log(that.globalData.code)
-    //     } else {
-    //       console.log('登录失败！' + res.errMsg)
-    //     }
-    //   }
-    // })
+    let that = this; 
+    wx.login({                   
+      success(res) {
+        if (res.code) {
+          that.globalData.code = res.code
+          wx.request({
+            url: that.globalData.requestIP + '/user/getOpenid',
+            data: {
+              code: that.globalData.code
+            },
+            method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+            },
+            success: function (res) {
+              if (res.data.resultCode == "101") {
+                that.globalData.openid = res.data.data
+              } else {
+                console.log("请求失败");
+              }
+            },
+            fail: function () {
+              app.globalData.openid = null
+              console.log("fail");
+            }
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
     // 展示本地存储能力
     // var logs = wx.getStorageSync('logs') || []
     // logs.unshift(Date.now())
@@ -80,6 +99,8 @@ App({
     avatarUrl:"",
     userInfo: null,
     userstatus:3,
+    code:"",
+    ad_telephone: "17671260413",
     requestIP: "http://localhost:8080/happyschedule",
     tabBar: {
       color: "black",

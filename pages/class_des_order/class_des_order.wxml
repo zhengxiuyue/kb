@@ -1,3 +1,4 @@
+<!--pages/class_des/class_des.wxml-->
 <view  class='page'>
       <!--课程简介-->
       <view class='title'>
@@ -7,7 +8,8 @@
       
       <view class='class'>
         
-        <view class='class_des_text'>
+        
+         <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
           <text>课程名称：{{courseList.coursename}}</text></view>
 
@@ -53,10 +55,41 @@
         <view>{{courseList.deadline}}</view>
       </view>
 
-    <view class='btn'>
-      <i-button bind:click="handleOpen1" type="success" size='small'>预约试听</i-button>
-    </view>
+      <!--预约须知-->
+      <view class='title'>
+        <image src='/image/help.png' class='titleImg'></image>
+        <text class='title-text'>预约须知</text>
+      </view>
 
-    <i-action-sheet visible="{{ visible1 }}" actions="{{ actions1 }}" show-cancel bind:cancel="handleCancel1" bind:click="handleClickItem1" />
-
+       <view class='know'>
+        <view>1、预约成功后，拥有体验上课的权力。</view>
+        <view>2、预约成功后，可向前台出示手机号或课堂详情作为凭证</view>
+        <view>3、预约课程支持取消预约</view>
+      </view>
 </view>
+
+<!--报名按钮-->
+      <view class='sign'>
+        <view class='share'>
+        <button open-type='share'>
+        <view class='share-text'>
+            <image src='/image/share.png' class='signImg' />
+           <text class='text-share'>分享</text> 
+        </view>
+        </button>
+        </view>
+        <view class='contact' bindtap='call'>
+        <button>
+        <view class='share-text'>
+        <view class='contact-img'>
+        <image src='/image/tele.png' class='signImg'></image>
+        </view>
+         <text class='text'>电话咨询</text>
+        </view>
+        </button>
+        </view>
+        <view class='btn' bindtap='GOclass_signUp'>
+          预约试听
+        </view>
+      
+      </view>

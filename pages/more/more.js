@@ -228,7 +228,7 @@ Page({
       method:'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'openid': app.globalData.openid
+        'userid': app.globalData.userid
       },
       success(res) {
         console.log(res.data.data);
@@ -277,7 +277,7 @@ Page({
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded', // 默认值
-          'openid': app.globalData.openid
+          'userid': app.globalData.userid
         },
         success(res) {
           if (res.data.resultCode == '101') {
@@ -328,7 +328,7 @@ Page({
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'openid': app.globalData.openid
+        'userid': app.globalData.userid
       },
       success(res) {
         if (res.data.resultCode == '101') {
@@ -358,7 +358,7 @@ Page({
           that.getClassList_order();
           that.setData({
             storename: "暂无门店",
-            array:null
+            array:['暂无门店']
           });
         }
       },

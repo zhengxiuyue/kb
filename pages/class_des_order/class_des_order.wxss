@@ -1,5 +1,7 @@
 /* pages/class_des/class_des.wxss */
-
+.page{
+  height: 1200rpx;
+}
 .title{
   font-weight: bold ;
   margin-left: 20rpx;
@@ -39,7 +41,74 @@
 .know{
   margin-left: 60rpx;
 }
-.btn{
-  margin: 0rpx auto;
+.sign{
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
   width: 100%;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content:space-between;
+  text-align: center;
+}
+.share{
+  width: 20%;
+  height: 100%;
+}
+.share-text{
+  position: relative;
+  top: -30rpx;
+  font-size: 90%;
+}
+.contact-img{
+  position: relative;
+  left: 30rpx;
+}
+.contact{
+  width: 30%;
+  height: 100%;
+}
+button::after {
+  border: none;
+}
+button {
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+}
+.share-text{
+  position: relative;
+  top: -20rpx;
+}
+.signImg{
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+  padding-top: 40rpx;
+  padding-left: 40rpx;
+}
+.btn{
+  height: 100%;
+  width: 50%;
+  padding-top: 45rpx;
+  background-color: #1DA27F;
+  color: #fff;
+  font-weight: bold;
+  position:relative;
+  top:-10rpx;
+}
+
+.text-share{
+  position: relative;
+  top:-15rpx;
+  font-size: 34rpx;
+  left: 15rpx;
+}
+
+.text{
+  position: relative;
+  top:-15rpx;
+  font-size: 34rpx;
 }

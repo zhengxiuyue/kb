@@ -180,7 +180,7 @@ Page({
       method:'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'openid': app.globalData.openid
+        'userid': app.globalData.userid
       },
       success(res) {
         console.log(res.data.data);
@@ -228,7 +228,7 @@ Page({
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'openid': app.globalData.openid
+        'userid': app.globalData.userid
       },
       success(res) {
         console.log(res.data.data);
@@ -253,7 +253,7 @@ Page({
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'openid': app.globalData.openid
+        'userid': app.globalData.userid
       },
       success(res) {
        console.log(res.data.data);

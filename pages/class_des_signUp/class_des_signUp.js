@@ -3,7 +3,7 @@ var app = getApp();
 var requestIP = app.globalData.requestIP;
 Page({
   data:{
-    phoneNumber:"17671260413",
+    phoneNumber: app.globalData.ad_telephone,
     classid:null
   },
   GOclass_signUp:function(e)
@@ -59,7 +59,7 @@ Page({
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'openid': app.globalData.openid
+        'userid': app.globalData.userid
       },
       success(res) {
         console.log(res.data.resultCode)
