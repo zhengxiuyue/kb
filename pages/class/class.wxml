@@ -11,7 +11,7 @@
           <view class='classgreat'>{{items.level}}{{items.classnumber}}班</view>
     
           <view class='teacher'>
-                授课老师：{{items.teachername}} {{items.phone}}
+                授课老师：{{items.teachername}} {{items.phone}}{{Issigntea}}
           </view>
         </view>
 
@@ -81,7 +81,7 @@
       <view class='title_3'>讨论</view>
     </view>
 
-		<view class="{{current === 3 ? 'current' : ''}}" bindtap="changeTab" data-index="3">
+		<view class="{{current == 3 ? 'current' : ''}}" bindtap="changeTab" data-index="3">
       <view class="plate-img" wx:if="{{current==3}}">
           <image src="/image/noticeselected.png"></image>
       </view>
@@ -95,8 +95,8 @@
   <view class='clear1'></view>
   
   <students style="{{current == 0 ? 'display: inline;': 'display: none;'}}" mate="{{mate}}"  ></students>
-	<signin style="{{current == 1 ? 'display: inline;': 'display: none;'}}"  userstatus="{{userstatus}}" sign="{{sign}}" classnum="{{classnum}}" time="{{time}}"  classid="{{classid}}" Issignstu="{{Issignstu}}" Issigntea="{{Issigntea}}"></signin>
-  <chat style="{{current == 2 ? 'display: inline;': 'display: none;'}}" chat="{{chat}}" Ischatspace="{{Ischatspace}}" openid="{{openid}}" classid="{{classid}}" items="{{items}}"></chat>
-	<notice id="notice" style="{{current == 3 ? 'display: inline;': 'display: none;'}}" userstatus="{{userstatus}}"  notice="{{notice}}" Isnoticespace="{{Isnoticespace}}" classid="{{classid}}" items="{{items}}" wx:if="{{showCom}}"></notice>
+	<signin style="{{current == 1 ? 'display: inline;': 'display: none;'}}"  userstatus="{{userstatus}}" sign="{{sign}}" classnum="{{classnum}}" time="{{time}}"  classid="{{classid}}" Issignstu="{{Issignstu}}" Issigntea="{{Issigntea}}" signnumber="{{signnumber}}" firstPerson="{{firstPerson}}"></signin>
+  <chat style="{{current == 2 ? 'display: inline;': 'display: none;'}}" chat="{{chat}}" Ischatspace="{{Ischatspace}}" openid="{{openid}}" classid="{{classid}}" items="{{items}}" current="{{current}}"></chat>
+	<notice id="notice" bindmyevent="myEventListener" style="{{current == 3 ? 'display: inline;': 'display: none;'}}"  notice="{{notice}}" Isnoticespace="{{Isnoticespace}}" classid="{{classid}}" items="{{items}}" current="{{current}}" wx:if="{{showCom}}"></notice>
   
 </view>

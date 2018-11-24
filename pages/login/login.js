@@ -190,6 +190,7 @@ Page({
           success: function (res) {
             if (res.data.resultCode == "101") {
               app.globalData.openid = res.data.data 
+              app.globalData.userid = res.data.data
               console.log(app.globalData.openid)
               wx.redirectTo({
                 url: '/pages/index/index',
@@ -223,8 +224,8 @@ Page({
           },
           success: function (res) {
             if (res.data.resultCode == "101") {
-              app.globalData.openid = res.data.data
-              console.log(app.globalData.openid)
+              app.globalData.openid = res.data.data.openid
+              app.globalData.userid = res.data.data.userid
               wx.redirectTo({
                 url: '/pages/index/T_index',
               })

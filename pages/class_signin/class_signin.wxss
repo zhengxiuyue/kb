@@ -6,6 +6,11 @@
   margin:0rpx auto; 
 }
 
+.contact{
+  margin-left: 30rpx;
+  margin-top: 40rpx;
+}
+
 .sign1{
   font-size: 32rpx;
   position: relative;
@@ -32,7 +37,6 @@
 
 .explain{
   font-size: 30rpx;
-  color: gainsboro;
   margin-bottom: 30rpx;
 }
 
@@ -50,6 +54,7 @@
 }
 
 .space{
+  margin: 10rpx auto;
   width: 200rpx;
   height: 178rpx;
 }
@@ -163,4 +168,53 @@
 .space{
   height: 250rpx;
   width: 250rpx;
+}
+
+.signclick{
+  margin: 80rpx auto;
+  background-color: #1296db;
+  color: #fff;
+  width: 40%;
+  height: 90rpx;
+  line-height: 90rpx;
+  justify-content: center;
+}
+
+/* pages/class_signin/notsignin.wxss */
+.headphoto{
+  height: 70rpx;
+  width: 70rpx;
+  border-radius:100rpx;
+  margin-left: 20rpx;
+  margin-top: 5rpx;
+}
+
+.students{
+  margin: 20rpx;
+  height: 80rpx;
+  position: relative;
+}
+
+.stu_name{
+  color: #495060;
+  position: absolute;
+  top:20rpx;
+  left: 120rpx;
+  font-size: 34rpx;
+}
+
+.stu_tel{
+  color: #495060;
+  font-size: 30rpx;
+  position: absolute;
+  top:20rpx;
+  left: 240rpx;
+}
+
+.clear{
+  height:4rpx;
+  background: #eeeeee;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  margin-bottom: 30rpx;
 }

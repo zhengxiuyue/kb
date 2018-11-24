@@ -20,8 +20,8 @@ Page({
   onLoad: function (options) {
     var that = this
     var classid = that.options.classid
-    var level = that.data.items.level
-    var coursename = that.data.items.coursename
+    var level = that.options.level
+    var coursename = that.options.coursename
     that.setData({
       coursename:coursename,
       classid:classid ,
@@ -108,7 +108,7 @@ Page({
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded',
-          'openid': app.globalData.openid
+          'userid': app.globalData.userid
         },// 设置请求的 header
         success: function (res) {
           if (res.data.resultCode == "101") {

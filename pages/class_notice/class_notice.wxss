@@ -16,11 +16,18 @@
 }
 
 .title{
-  padding: 20rpx 0rpx 10rpx 20rpx;
+  padding: 20rpx 0rpx 10rpx 30rpx;
   font-size: 34rpx;
   font-weight: bold;
   word-break:break-all;
   color: #46475b;
+}
+
+.content{
+  padding: 10rpx 30rpx 20rpx 30rpx;
+  color: #657180;
+  font-size: 32rpx;
+  word-break:break-all;
 }
 
 .delete{
@@ -28,13 +35,6 @@
   height: 45rpx;
   margin-right: 40rpx;
   float: right;
-}
-
-.content{
-  color: #657180;
-  padding: 10rpx 20rpx;
-  font-size: 32rpx;
-  word-break:break-all;
 }
 
 .teacher{

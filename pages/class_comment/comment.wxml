@@ -5,7 +5,7 @@
   <view class='stu_name'>
     {{item.name}}
   </view>
-  <image class='delete' src='/image/delete.png'  data-item = "{{item.reply_id}}" bindtap='delt' style='display:{{item.openid == openid? "block" : "none"}}'></image>
+  <image class='delete' src='/image/delete.png'  data-item = "{{item.reply_id}}" bindtap='delt' style='display:{{item.userid == userid? "block" : "none"}}'></image>
 
   <view class='chat'>
     {{item.re_content}}

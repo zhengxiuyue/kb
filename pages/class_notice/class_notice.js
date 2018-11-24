@@ -14,10 +14,6 @@ Component({
       type: "Array",
       vaule:""
     },
-    userstatus: {
-      type: "Number",
-      value: "",
-    },
     Isnoticespace: {
       type: "String",
       value: "",
@@ -26,6 +22,10 @@ Component({
       type: "String",
       value: ""
     },
+    current: {
+      type: "String",
+      value: ""
+    }
   },
 
   /**
@@ -34,21 +34,15 @@ Component({
   data: {
     "edit": "/image/edit.png",
     "space":"/image/space.png",
-    "no_id": ""
+    "no_id": "",
+    userstatus:""
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    getData() {
-
-      console.log("刷新数据")
-      this.setData({
-        notice: 1
-      })
-    },
-    edit: function (e) {   
+    editnotice: function (e) {   
       var that = this
       var classid = that.data.classid
       var level = that.data.items.level
@@ -77,7 +71,7 @@ Component({
               method: 'POST',
               header: {
                 'content-type': 'application/x-www-form-urlencoded',
-                'openid': app.globalData.openid
+                'userid': app.globalData.userid
               },// 设置请求的 header
               success: function (res) {
                 if (res.data.resultCode == "101") {
@@ -86,7 +80,39 @@ Component({
                     icon: 'success',
                     duration: 2000
                   })
-                  that.getData();
+                  wx.request({
+                    url: requestIP + '/user/getNotice',
+                    data: {
+                      classid: that.data.classid
+                    },
+                    method: 'POST',
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded',
+                      'userid': app.globalData.userid
+                    },// 设置请求的 header
+                    success: function (res) {
+                      if (res.data.resultCode == "101") {
+                        that.setData({
+                          notice: []
+                        })
+                        for (var i = 0, len = res.data.data.length; i < len; i++) {
+                          that.data.notice[i] = res.data.data[i]
+                        }
+                        that.setData({
+                          notice: that.data.notice
+                        })
+                      }
+                      else if (res.data.resultCode == "204") {
+                        that.setData({
+                          notice: [],
+                          Isnoticespace: "block"
+                        })
+                      }
+                      else {
+                        console.log("请求失败");
+                      }
+                    },
+                  })
                 } else {
                   console.log("请求失败");
                 }
@@ -97,20 +123,14 @@ Component({
           } else if (sm.cancel) { }
         }
       })
-    },
-    gonotice: function(e){
-      var that=this
-      var classid = that.data.classid   
-      wx.navigateTo({
-        url: '/pages/class_notice_edit/class_notice_edit?classid=' + classid,
-      })
-    },
- 
+    }
   },
-
   ready: function () {
-    console.log('ready')
-    this.getData();
+    console.log(app.globalData.userstatus)
+    var that = this
+    that.setData({
+      userstatus: app.globalData.userstatus
+    }) 
   }
 })
 

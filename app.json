@@ -18,8 +18,6 @@
     "pages/class_students/class_students",
     "pages/class_chat/class_chat",
     "pages/class_signin/class_signin",
-    "pages/class_signin/signin",
-    "pages/class_signin/notsignin",
     "pages/class_notice/class_notice",
     "pages/class_notice_edit/class_notice_edit",
     "pages/class_comment/class_comment",

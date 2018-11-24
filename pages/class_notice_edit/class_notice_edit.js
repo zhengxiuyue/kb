@@ -26,7 +26,6 @@ Page({
       coursename:coursename,
       level:level
     })
-    console.log(classid)
   },
 
   /**
@@ -123,7 +122,7 @@ Page({
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded',
-          'openid': app.globalData.openid
+          'userid': app.globalData.userid
         },// 设置请求的 header
         success: function (res) {
           if (res.data.resultCode == "101") {
@@ -134,6 +133,7 @@ Page({
             }), 
             wx.navigateBack({
             })
+            
           } else {
             console.log("请求失败");
           }

@@ -39,6 +39,8 @@ Page({
       content: content,
       openid: openid
     })
+
+    //获取评论信息
     wx.request({
       url: requestIP + '/user/getReplyInfo',
       data: {
@@ -47,12 +49,13 @@ Page({
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
-        'openid': app.globalData.openid
+        'userid': app.globalData.userid
       },// 设置请求的 header
       success: function (res) {
         if (res.data.resultCode == "101") {
           that.setData({
-            comment: []
+            comment: [],
+            Iscommentspace:"none"
           })
           console.log(res.data.data.length)
           for (var i = 0, len = res.data.data.length; i < len; i++) {
@@ -125,10 +128,13 @@ Page({
   onShareAppMessage: function () {
 
   },
+
+  //获取评论信息
   commentInput: function (event) {
     this.setData({ comment_content: event.detail.value })
   },
  
+ //发布评论
   release:function(e){
     let that = this
     var requestIP = app.globalData.requestIP
@@ -149,7 +155,7 @@ Page({
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded',
-          'openid': app.globalData.openid
+          'userid': app.globalData.userid
         },// 设置请求的 header
         success: function (res) {
           if (res.data.resultCode == "101") {
@@ -160,17 +166,16 @@ Page({
               duration: 2000
             })
             that.setData({
-              comment_content:""
+              comment_content:"",
+              Iscommentspace: "none",
             })
-            that.onLoad()
+            that.onLoad()//刷新评论信息
           }
           else {
             console.log("请求失败");
           }
         },
       })
-     
-        that.onLoad()
     }
   }
 })

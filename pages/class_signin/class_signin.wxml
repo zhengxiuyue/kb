@@ -4,7 +4,8 @@
 <view wx:if="{{userstatus==3}}" class='sign'>
   <image  style='display:{{Issignstu == 0? "block" : "none"}}' src='/image/space.png' class='space'> </image>
   <view class='explain' style='display:{{Issignstu == 0? "block" : "none"}}'>暂无课堂签到信息发布</view>
-  <button style='display:{{Issignstu == 1? "block" : "none"}}' bindtap='signstu' >签到</button>
+  <text style='display:{{Issignstu == 1? "block" : "none"}}' >{{stutime}}</text>
+  <button style='display:{{Issignstu == 1? "block" : "none"}}' class='signclick' bindtap='signstu'>{{signbtn}}</button>
 </view>
 
 
@@ -47,14 +48,11 @@
 <!-- 已上完且发布了签到的显示 -->
    <!-- <view class='title1'>你已发布签到，签到信息如下： 
   </view>  -->
-<view style='display:{{Issigntea == 1? "block":"none"}}'>
+<view style='display:{{Issigntea == 1? "block":"none"}};' class='contact'>
   <view class="contact-tab" >
-    <view class="{{current == 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">已签到</view>
-    <view class="{{current == 1 ? 'current' : ''}}" bindtap="changeTab" data-index="1">未签到</view>
+    <view class="{{current == 1 ? 'current' : ''}}" bindtap="changeTab" data-index="1">已签到</view>
+    <view class="{{current == 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">未签到</view>
   </view>
-
-  <signin style="{{current == 1 ? 'display: inline;': 'display: none;'}}" sign="{{sign}}"></signin>
-	<notsignin style="{{current == 0 ? 'display: inline;': 'display: none;'}}" sign="{{sign}}"></notsignin>
 </view>
 
 <!-- 已上完但未发布签到的显示 -->
@@ -65,4 +63,32 @@
   </view>
 </view>
 
+<!-- 已经签到学生信息 -->
+<view style='display:{{Issigntea == 1? "block":"none"}};'>
+  <view class='students'  wx:for = "{{signstu}}" wx:key = "">
+    <image wx:if="{{item.protrait!=null}}" class="headphoto" src="{{item.protrait}}" background-size="cover"></image>
+    <image wx:else class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
+    <view class='stu_name'>
+      {{item.name}}
+    </view>
+    <view class='stu_tel'>
+      {{item.sign_time}}
+    </view>
+    <view class='clear'></view>
+  </view>
+</view>
 
+<!-- 未签到学生信息
+<view style='display:{{Issigntea == 1? "block":"none"}};'>
+<view class='students'  wx:for = "{{notsignstu}}" wx:key = "">
+  <image wx:if="{{item.protrait!=null}}" class="headphoto" src="{{item.protrait}}" background-size="cover"></image>
+  <image wx:else class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
+  <view class='stu_name'>
+    {{item.name}}
+  </view>
+  <view class='stu_tel'>
+    {{item.signtime}}
+  </view>
+  <view class='clear'></view>
+</view>
+</view> -->

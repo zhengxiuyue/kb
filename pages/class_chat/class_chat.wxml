@@ -1,37 +1,29 @@
 <view wx:for = "{{chat}}" wx:key = "">
   <view class='students'>
-
-    <view bindtap='comment' data-dis_id = "{{item.dis_id}}" data-name = "{{item.name}}" data-content = "{{item.content}}" data-dis_time = "{{item.dis_time}}"dis_iddis_iddis_id
-    >
       <image wx:if="{{imgUrl!=null}}" class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
       <image wx:else class="headphoto" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <view class='stu_name'>
         {{item.name}}
       </view>
-        <image class='delete' src='/image/delete.png'  data-item = "{{item.dis_id}}"   bindtap='delt' style='display:{{item.openid == openid? "block" : "none"}}'></image>
+      <image class='delete' src='/image/delete.png'  data-item = "{{item.dis_id}}"   bindtap='delt' style='display:{{item.userid == userid? "block" : "none"}}'></image>
 
-      <view class='chat'>
-        <text>{{item.content}}</text>
-      </view>
+      <view bindtap='comment' data-dis_id = "{{item.dis_id}}" data-name = "{{item.name}}" data-content = "{{item.content}}" data-dis_time = "{{item.dis_time}}">
+      
+        <view class='chat' >
+          <text>{{item.content}}</text>
+        </view>
 
-      <view class='time'>
-        {{item.dis_time}}
-      </view>
-    </view>
-    
-    <view>
-    <image bindtap='changelike'  data-item = "{{item.dis_id}}" class='like' src='{{islike == 1? "/image/like.png" : "/image/dislike.png"}}' ></image>
-    </view>
-
-    <view class='like_num' style='color:{{color == 1? "#1DA27F" : "#b5b5b2"}}'>
-      {{item.count}}   
-    </view>
-    <image src='{{comment}}' class='comment'></image>
-    <view class='comment_num'>{{comment_num}}</view>
+        <view class='time'>
+          {{item.dis_time}}
+        </view>    
+      <image src='{{comment}}' class='comment'></image>
+      <view class='comment_num'>{{comment_num}}</view>
+     </view>
     <view style='height:15rpx;'></view>
   </view>
   <view style='height:40rpx;'></view>
-</view>
+ </view>
+
 
 <image src='{{edit}}' class='edit' bindtap='edit'></image>
 

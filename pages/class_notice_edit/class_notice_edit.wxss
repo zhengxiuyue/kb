@@ -42,7 +42,8 @@
   padding: 2%;
   margin-left:5%;
   width: 86%;
-  height: 40rpx;
+  height: 45rpx;
+  line-height: 45rpx;
   background-color: #fff;
   margin-bottom: 20rpx;
 }

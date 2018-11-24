@@ -10,14 +10,18 @@ Component({
       type: "Array",
       value: "",
     },
-    openid: {
+    dis_id: {
       type: "String",
       value: "",
     },
     Iscommentspace: {
       type: "String",
       value: "",
-    }
+    },
+    comment_num: {
+      type: "Number",
+      value: "",
+    },
   },
 
   /**
@@ -26,15 +30,17 @@ Component({
   data: {
     "imgUrl": "/image/headphoto.png",
     "space": "/image/space.png",
-    reply_id: null
+    reply_id: null,
+    userid: app.globalData.userid
   },
 
   /**
    * 组件的方法列表
    */
   methods: {   
+    //删除评论
     delt: function (e) {
-      let that = this;
+      var that = this;
       var requestIP = app.globalData.requestIP
       //获取该评论的id
       var reply_id = e.currentTarget.dataset.item
@@ -55,8 +61,8 @@ Component({
               method: 'POST',
               header: {
                 'content-type': 'application/x-www-form-urlencoded',
-                'openid': app.globalData.openid
-              },// 设置请求的 header
+                'userid': app.globalData.userid
+              },
               success: function (res) {
                 if (res.data.resultCode == "101") {
                   wx.showToast({
@@ -64,13 +70,48 @@ Component({
                     icon: 'success',
                     duration: 2000
                   })
-                  that.attached
+                  wx.request({
+                    url: requestIP + '/user/getReplyInfo',
+                    data: {
+                      discussid: that.data.dis_id
+                    },
+                    method: 'POST',
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded',
+                      'userid': app.globalData.userid
+                    },// 设置请求的 header
+                    success: function (res) {
+                      if (res.data.resultCode == "101") {
+                        that.setData({
+                          comment: []
+                        })
+                        console.log(res.data.data.length)
+                        for (var i = 0, len = res.data.data.length; i < len; i++) {
+                          that.data.comment[i] = res.data.data[i]
+                        }
+                        that.setData({
+                          comment: that.data.comment,
+                          comment_num: res.data.data.length
+                        })
+                        console.log(that.data.comment)
+                      }
+                      else if (res.data.resultCode == "204") {
+                        that.setData({
+                          comment: [],
+                          Iscommentspace: "block",
+                          comment_num: 0
+                        })
+                      }
+                      else {
+                        console.log("请求失败");
+                      }
+                    },
+                  })
                 } else {
                   console.log("请求失败");
                 }
               }
             })
-            // 重新发请求刷新数据
           } else if (sm.cancel) { }
         }
       })
@@ -78,9 +119,6 @@ Component({
   },
 
   ready: function () {
-
-  },
-  attached: function () {
 
   }
 })

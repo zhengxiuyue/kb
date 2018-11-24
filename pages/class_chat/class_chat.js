@@ -18,15 +18,15 @@ Component({
       type: "String",
       value: "",
     }, 
-    openid: {
-      type: "String",
-      value: "",
-    },
     classid: {
       type: "String",
       value: "",
     }, 
     items: {
+      type: "String",
+      value: ""
+    },
+    current: {
       type: "String",
       value: ""
     }
@@ -46,21 +46,25 @@ Component({
     "color": 0,
     "space":"/image/space.png",
     "Isdelete":"block",
-    dis_id:null
-    
+    dis_id:null,
+    userid:app.globalData.userid
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    edit: function (e) {
+    //发布评论
+    edit: function (e) {      
       var that = this
       var classid = that.data.classid
+      var level = that.data.items.level
+      var coursename = that.data.items.coursename
       wx.navigateTo({
-        url: '/pages/class_chat_edit/class_chat_edit?classid=' + classid,
+        url: '/pages/class_chat_edit/class_chat_edit?classid=' + classid + '&level=' + level + '&coursename=' + coursename,
       })
     },
+
     comment: function (e) {
       //获取该评论的id
       var dis_id = e.currentTarget.dataset.dis_id
@@ -72,47 +76,8 @@ Component({
         url: '/pages/class_comment/class_comment?dis_id=' + dis_id + '&dis_time=' + dis_time + '&content=' + content + '&name=' + name,
       })
     },
-    changelike(e) {
-      let that = this;
-      var requestIP = app.globalData.requestIP
-      //获取该评论的id
-      var dis_id = e.currentTarget.dataset.item
-      console.log(dis_id)
-      that.setData({
-        dis_id: dis_id
-      })
-      if (that.data.islike == 0) {
-        wx.request({
-          url: requestIP + '/user/agreeDiscuss',
-          data: {
-            discussid: that.data.dis_id,
-          },
-          method: 'POST',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded',
-            'openid': app.globalData.openid
-          },// 设置请求的 header
-          success: function (res) {
-            if (res.data.resultCode == "101") {
-              that.setData({
-                islike: 1,
-                color: 1
-              })
-              that.properties.chat.count = that.properties.chat.count+1
-            } else {
-              console.log("请求失败");
-            }
-          }
-        })
-      }
-      else if (that.data.islike == 1) {
-        this.setData({ islike: 0 })
-        this.setData({ color: 0 })
-        this.setData({ like_num: 2 })
-      }
-    },
     delt: function (e) {
-      let that = this;
+      var that = this;
       var requestIP = app.globalData.requestIP
       //获取该评论的id
       var dis_id = e.currentTarget.dataset.item
@@ -133,7 +98,7 @@ Component({
               method: 'POST',
               header: {
                 'content-type': 'application/x-www-form-urlencoded',
-                'openid': app.globalData.openid
+                'userid': app.globalData.userid
               },// 设置请求的 header
               success: function (res) {
                 if (res.data.resultCode == "101") {
@@ -141,6 +106,40 @@ Component({
                     title: '删除成功',
                     icon: 'success',
                     duration: 2000
+                  })
+                  wx.request({
+                    url: requestIP + '/user/getDiscussInfo',
+                    data: {
+                      classid: that.data.classid
+                    },
+                    method: 'POST',
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded',
+                      'userid': app.globalData.userid
+                    },
+                    success: function (res) {
+                      if (res.data.resultCode == "101") {
+                        that.setData({
+                          chat: []
+                        })
+                        for (var i = 0, len = res.data.data.length; i < len; i++) {
+                          that.data.chat[i] = res.data.data[i]
+                        }
+                        that.setData({
+                          chat: that.data.chat
+                        })
+                        console.log(that.data.chat)
+                      }
+                      else if (res.data.resultCode == "204") {
+                        that.setData({
+                          chat: [],
+                          Ischatspace: "block"
+                        })
+                      }
+                      else {
+                        console.log("请求失败");
+                      }
+                    },
                   })
                 } else {
                   console.log("请求失败");
@@ -151,23 +150,15 @@ Component({
           } else if (sm.cancel) { }
         }
       })
-    },
-
-    //没有评论数据时，提请去发布评论
-    signin: function(e){
-      var level = that.data.items.level
-      var coursename = that.data.items.coursename
-      wx.navigateTo({
-        url: '/pages/class_chat_edit/class_chat_edit?level=' + level + '&coursename=' +coursename,
-      })
     }
   },
 
   ready: function () {
-
-  },
-  attached: function (){
-    
+    //获取userid
+    var that = this
+    that.setData({
+      userid: app.globalData.userid
+    })
   }
 })
 

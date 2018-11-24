@@ -45,8 +45,8 @@ Page({
       method: 'POST',
       header: {
         'content-type': 'application/json',
-        'openid': app.globalData.openid
-      },// 设置请求的 header
+        'userid': app.globalData.userid
+      },
       success: function (res) {
         if (res.data.resultCode == "101") {
           that.setData({
@@ -67,8 +67,8 @@ Page({
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
-        'openid': app.globalData.openid
-      },// 设置请求的 header
+        'userid': app.globalData.userid
+      },
       success: function (res) {
         if (res.data.resultCode == "101") {
           that.setData({
@@ -160,8 +160,8 @@ Page({
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
-        'openid': app.globalData.openid
-      },// 设置请求的 header
+        'userid': app.globalData.userid
+      },
       success: function (res) {
         if (res.data.resultCode == "101") {
           that.setData({

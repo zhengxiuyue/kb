@@ -22,9 +22,11 @@ Page({
     openid:"",
     classnum:[],
     time:"",
-    Issignstu:"",
-    Issigntea:"",
-    showCom: true
+    "Issignstu":"",
+    "Issigntea":"",
+    showCom: true,
+    signnumber:"",//学生签到编号
+    firstPerson:"",//老师选择课堂框
   },
 
   /**
@@ -33,12 +35,13 @@ Page({
   onLoad: function (options) {
     var that = this;
     var userstatus = app.globalData.userstatus
+    console.log(userstatus+"kkkk")
     var openid = app.globalData.openid
     var requestIP = app.globalData.requestIP
     var classid = that.options.classid
 
     // 调用函数时，传入new Date()参数，返回值是日期和时间    
-    var time = util.formatTime(new Date());    
+    var time = util.formatTime(new Date()); 
     // 再通过setData更改Page()里面的data，动态更新页面的数据    
 
     this.setData({
@@ -47,8 +50,6 @@ Page({
       classid: classid,
       time: time 
     })
-    console.log(time)
-
 
     //请求课堂详细信息
     wx.request({
@@ -59,8 +60,8 @@ Page({
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
-        'openid': app.globalData.openid
-      },// 设置请求的 header
+        'userid': app.globalData.userid
+      },
       success: function (res) {
         if (res.data.resultCode == "101") {
           that.setData({
@@ -81,8 +82,8 @@ Page({
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
-        'openid': app.globalData.openid
-      },// 设置请求的 header
+        'userid': app.globalData.userid
+      },
       success: function (res) {
         if (res.data.resultCode == "101") {
           that.setData({
@@ -112,15 +113,81 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-      //显示自定义的底部导航
-    this.setData({
-      showCom: false
-    });
-
-    this.setData({
-      showCom: true
-    });
-    // this.selectComponent("#notice").getData();
+    //显示自定义的底部导航
+    var that = this
+    var requestIP = app.globalData.requestIP
+    if (that.data.current == 2) {
+      wx.request({
+        url: requestIP + '/user/getDiscussInfo',
+        data: {
+          classid: that.data.classid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            that.setData({
+              chat: []
+            })
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.chat[i] = res.data.data[i]
+            }
+            that.setData({
+              chat: that.data.chat
+            })
+          }
+          else if (res.data.resultCode == "204") {
+            that.setData({
+              chat: [],
+              Ischatspace: "block"
+            })
+          }
+          else {
+            console.log("请求失败");
+          }
+        },
+      })
+    }
+    else if (that.data.current == 3) {
+      wx.request({
+        url: requestIP + '/user/getNotice',
+        data: {
+          classid: that.data.classid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            that.setData({
+              notice: [],
+              Isnoticespace: "none"
+            })
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.notice[i] = res.data.data[i]
+            }
+            that.setData({
+              notice: that.data.notice
+            })
+          }
+          else if (res.data.resultCode == "204") {
+            that.setData({
+              notice: [],
+              Isnoticespace: "block"
+            })
+          }
+          else {
+            console.log("请求失败");
+          }
+        },
+      })
+    }
+    
   },
 
   /**
@@ -128,7 +195,7 @@ Page({
    */
   onHide: function () {
 
-  },
+  }, 
 
   /**
    * 生命周期函数--监听页面卸载
@@ -164,7 +231,6 @@ Page({
     this.setData({
       current: index
     })
-    console.log(that.data.current)
     if(that.data.current == 0){
       wx.request({
         url: requestIP + '/user/getClassmateInfo',
@@ -174,14 +240,13 @@ Page({
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded',
-          'openid': app.globalData.openid
-        },// 设置请求的 header
+          'userid': app.globalData.userid
+        },
         success: function (res) {
           if (res.data.resultCode == "101") {
             that.setData({
               mate: []
             })
-            console.log(res.data.data.length)
             for (var i = 0, len = res.data.data.length; i < len; i++) {
               that.data.mate[i] = res.data.data[i]
             }
@@ -205,12 +270,15 @@ Page({
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded',
-          'openid': app.globalData.openid
+          'userid': app.globalData.userid
         },
         success: function (res) {
+          var time = util.formatTime(new Date()); 
           if (res.data.resultCode == "101") {
             that.setData({
-              sign: []
+              sign: [],
+              firstPerson:time,
+              Issigntea:"3"
             })
             for (var i = 0, len = res.data.data.length; i < len; i++) {
               that.data.sign[i] = res.data.data[i]
@@ -221,14 +289,16 @@ Page({
             })
           } else {
             that.setData({
-              sign: []
+              sign: [],
+              Issigntea:"3"
             })
             console.log("请求失败");
           }
         },
         fail: function () {
           that.setData({
-            sign: []
+            sign: [],
+            Issigntea:"3"
           })
           console.log("fail");
         },
@@ -246,22 +316,29 @@ Page({
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded',
-          'openid': app.globalData.openid
+          'userid': app.globalData.userid
         },
         success: function (res) {
           //当前有签到信息
           if (res.data.resultCode == "219") {
+            var signnumber = res.data.data
             that.setData({
               //显示签到按钮
-              Issignstu:1
+              signnumber: signnumber,
+              Issignstu: "1",
+              Issigntea: "3"
             })
           } else {
+            that.setData({
+              Issigntea: "3"
+            })
             console.log("请求失败");
           }
         },
         fail: function () {
           that.setData({
-            Issignstu: ""
+            Issignstu: "",
+            Issigntea: ""
           })
           console.log("fail");
         },
@@ -278,8 +355,8 @@ Page({
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded',
-          'openid': app.globalData.openid
-        },// 设置请求的 header
+          'userid': app.globalData.userid
+        },
         success: function (res) {
           if (res.data.resultCode == "101") {
             that.setData({
@@ -291,7 +368,6 @@ Page({
             that.setData({
               chat: that.data.chat
             })
-            console.log(that.data.chat)
           } 
           else if (res.data.resultCode == "204"){
             that.setData({
@@ -314,12 +390,13 @@ Page({
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded',
-          'openid': app.globalData.openid
-        },// 设置请求的 header
+          'userid': app.globalData.userid
+        },
         success: function (res) {
           if (res.data.resultCode == "101") {
             that.setData({
-              notice: []
+              notice: [],
+              Isnoticespace: "none"
             })
             for (var i = 0, len = res.data.data.length; i < len; i++) {
               that.data.notice[i] = res.data.data[i]

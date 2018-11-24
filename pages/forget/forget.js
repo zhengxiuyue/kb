@@ -127,8 +127,8 @@ Page({
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
-        'openid': app.globalData.openid
-      },// 设置请求的 header
+        'userid': app.globalData.userid
+      },
       success: function (res) {
         if (res.data.resultCode == "101") {
         } else {
@@ -242,8 +242,8 @@ Page({
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded',
-          'openid': app.globalData.openid
-        },// 设置请求的 header
+          'userid': app.globalData.userid
+        },
         success: function (res) {
           if (res.data.resultCode == "101") {
             wx.showToast({
