@@ -51,16 +51,14 @@ Page({
   },
   GOclassList1: function (e) {
     var that = this;
-    var classList_order = that.data.classList_order;
     wx.navigateTo({
-      url: '../classList_order/classList_order?classList_order',
+      url: '../classList_order/classList_order?storeid = ' + that.data.storeid,
     })
   },
   GOclassList2: function (e) {
     var that = this;
-    var classList_signUp = that.data.classList_signUp;
     wx.navigateTo({
-      url: '../classList_signUp/classList_signUp?classList_signUp',
+      url: '../classList_signUp/classList_signUp?storeid' + that.data.storeid,
     })
   },
   GOclass_des1: function (e) {

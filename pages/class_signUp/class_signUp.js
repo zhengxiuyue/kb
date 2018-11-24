@@ -26,6 +26,32 @@ Page({
     ]
   },
 
+  onPullDownRefresh: function () {
+    var that = this;
+    wx.request({
+      url: requestIP + '/student/getClassInfo',
+      data: {
+        classid: classid
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'userid': app.globalData.userid
+      },
+      success(res) {
+        console.log(res.data.resultCode)
+        if (res.data.resultCode == '101') {
+          console.log(res.data)
+          that.setData({
+            courseList: res.data.data
+          });
+        }
+      },
+      fail(res) {
+      }
+    })
+  },
+
   handleOpen5() {
     var that = this;
     that.setData({

@@ -6,4 +6,17 @@
     <input placeholder='搜索课程' confirm-type = '搜索'  class='searchInput' bindconfirm = ''></input>
      <image src='/image/search.png' class='searchImg'></image>
     </view>
+
+    <view class='content'  bindtap='GOclass_des1'  wx:for="{{classList_order}}" wx:if="{{index<3}}"  data-index='{{index}}' wx:key="item.courseid">
+  <view class='content-title'>
+    {{item.coursename}}
+  </view>
+  <view class='content-middle'>
+    <view class='content-rank'>{{item.level}}</view>
+    <view class='content-time'><text decode="true">{{item.name}}老师</text></view>
+  </view>
+<view class='content-btn'>
+    预约试听
+</view>
+</view>
 </view>
