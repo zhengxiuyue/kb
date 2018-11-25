@@ -13,8 +13,6 @@ Page({
     storeidList: ['4fda538b94cb11e880090063e0299d'],
     index: 0,
     region: ['北京市', '北京市', '东城区'],
-    province:"",//省
-    areaname:"",//区
     errortips:'',
     error_noClassOrder:'none',
     error_noClassSignUp:'none',
@@ -23,14 +21,6 @@ Page({
     windowHeight: null,
     multiArray: [[], [], [], []],
     multiIndex: [0, 0, 0, 0]
-  },
-
-  changeCity: function (e) {
-    //console.log(e);
-    app.globalData.city = e;
-    that.setData({
-      city:e
-    })
   },
 
   tips(info) {
@@ -79,19 +69,23 @@ Page({
     var that = this;
     app.globalData.storename = that.data.array[e.detail.value];
     app.globalData.storeid = that.data.storeidList[e.detail.value];
+    that.setData({
+      storeid: app.globalData.storeid,
+      storename: app.globalData.storename
+    })
     that.getClassList_signUp();
     that.getClassList_order();
   },
   bindRegionChange: function (e) {
   console.log('picker发送选择改变，携带值为', e.detail.value);
     var that = this;
+    app.globalData.province = e.detail.value[0];
+    app.globalData.areaname = e.detail.value[2];
+    app.globalData.city = e.detail.value[1];
     that.setData({
-      province: e.detail.value[0],
-      areaname: e.detail.value[2],
-      city: e.detail.value[1]
-  });
-  app.globalData.city = e.detail.value[1];
-  that.getRecentStore();
+      city: app.globalData.city,
+    })
+    that.getRecentStore();
 
   },
   onLoad: function (options) {
@@ -116,6 +110,7 @@ Page({
     })
     app.globalData.alreadyFlag = "1";
     }else{
+      that.getRecentStore();
       that.getClassList_order();
       that.getClassList_signUp();
       that.setData({
@@ -152,12 +147,12 @@ Page({
               title: `当前位置： ` + that.data.address,
               icon: 'none'
             });
+            app.globalData.province = res.result.address_component.province;
+            app.globalData.areaname = res.result.address_component.district;
+            app.globalData.city = res.result.address_component.city;
             that.setData({
-              province: res.result.address_component.province,
-              areaname: res.result.address_component.district,
-              city: res.result.address_component.city
-            });
-            app.globalData.city = res.result.address_component.city
+              city: app.globalData.city,
+            })
             that.getRecentStore();
           }
         });
@@ -167,12 +162,12 @@ Page({
           title: '无法获取当前位置',
           icon: 'none'
         });
-        that.setData({
-          province: "北京市",
-          areaname:"东城区",
-          city:"北京市"
-        })
+        app.globalData.province = "北京市";
+        app.globalData.areaname = "东城区";
         app.globalData.city = "北京市";
+        that.setData({
+          city: app.globalData.city
+        })
         that.getRecentStore();
       }
     })
@@ -283,9 +278,9 @@ Page({
     wx.request({
       url: requestIP + '/student/getRecentStore',
       data: {
-        province: that.data.province,
+        province: app.globalData.province,
         city: app.globalData.city,
-        areaname: that.data.areaname
+        areaname: app.globalData.areaname
       },
       method: 'POST',
       header: {
