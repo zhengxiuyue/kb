@@ -28,6 +28,9 @@ Page({
   changeCity: function (e) {
     //console.log(e);
     app.globalData.city = e;
+    that.setData({
+      city:e
+    })
   },
 
   tips(info) {
@@ -84,7 +87,8 @@ Page({
     var that = this;
     that.setData({
       province: e.detail.value[0],
-      areaname: e.detail.value[2]
+      areaname: e.detail.value[2],
+      city: e.detail.value[1]
   });
   app.globalData.city = e.detail.value[1];
   that.getRecentStore();
@@ -106,10 +110,18 @@ Page({
     if (app.globalData.alreadyFlag == '0')
     {
     that.getLocation();
+    that.setData({
+      city: app.globalData.city,
+      storename: app.globalData.storename
+    })
     app.globalData.alreadyFlag = "1";
     }else{
       that.getClassList_order();
-      that.getClassList_order();
+      that.getClassList_signUp();
+      that.setData({
+        city: app.globalData.city,
+        storename: app.globalData.storename
+      })
     }
   },
 
@@ -142,7 +154,8 @@ Page({
             });
             that.setData({
               province: res.result.address_component.province,
-              areaname: res.result.address_component.district
+              areaname: res.result.address_component.district,
+              city: res.result.address_component.city
             });
             app.globalData.city = res.result.address_component.city
             that.getRecentStore();
@@ -156,7 +169,8 @@ Page({
         });
         that.setData({
           province: "北京市",
-          areaname:"东城区"
+          areaname:"东城区",
+          city:"北京市"
         })
         app.globalData.city = "北京市";
         that.getRecentStore();
@@ -290,7 +304,8 @@ Page({
           }
           that.setData({
             array: storeList,
-            storeidList: storeidList
+            storeidList: storeidList,
+            storename: res.data.data[0].storename
           });
           app.globalData.storename = res.data.data[0].storename;
           app.globalData.storeid = res.data.data[0].areaid;
@@ -299,6 +314,9 @@ Page({
         }
         else {
           app.globalData.storename = "暂无门店";
+          that.setData({
+            storename: app.globalData.storename
+          });
           app.globalData.storeid = "";
           that.getClassList_signUp();
           that.getClassList_order();

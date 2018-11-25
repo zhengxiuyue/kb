@@ -64,11 +64,11 @@ App({
   },
   globalData: {
     openid: "",//
-    userid: "0137da84b68111e8ab8e00163e00299d",
+    userid: "",
     nickName:"",
     avatarUrl:"",
     userInfo: null,
-    userstatus:3,
+    userstatus:null,
     code:"",
     storeid:"",
     city:"",
