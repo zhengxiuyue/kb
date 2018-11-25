@@ -22,13 +22,15 @@ Page({
     openid:"",
     classnum:[],
     time:"",
-    "Issignstu":"",
-    "Issigntea":"",
+    "Issignstu":"3",//学生签到信息显示
+    "Issigntea":"4",//老师签到信息显示
     showCom: true,
     signnumber:"",//学生签到编号
     firstPerson:"",//老师选择课堂框
     Issign:null,//学生是否签到
     signbtn: "",//学生签到按钮信息
+    Ismatespace: "none",//学生信息查询是否为空
+    search: "",//学生查询内容
   },
 
   /**
@@ -133,7 +135,8 @@ Page({
           if (res.data.resultCode == "101") {
             that.setData({
               chat: [],
-              Ischatspace: "none"
+              Ischatspace: "none",
+              search:""
             })
             for (var i = 0, len = res.data.data.length; i < len; i++) {
               that.data.chat[i] = res.data.data[i]
@@ -149,6 +152,11 @@ Page({
             })
           }
           else {
+            that.setData({
+              chat: [],
+              Ischatspace: "none",
+              search: ""
+            })
             console.log("请求失败");
           }
         },
@@ -248,7 +256,9 @@ Page({
         success: function (res) {
           if (res.data.resultCode == "101") {
             that.setData({
-              mate: []
+              mate: [],
+              Ismatespace:"none",
+              search:""
             })
             for (var i = 0, len = res.data.data.length; i < len; i++) {
               that.data.mate[i] = res.data.data[i]
@@ -257,6 +267,11 @@ Page({
               mate: that.data.mate
             })
           } else {
+            that.setData({
+              mate: [],
+              Ismatespace: "none",
+              search:""
+            })
             console.log("请求失败");
           }
         },
@@ -324,10 +339,10 @@ Page({
         success: function (res) {
           //当前有签到信息
           if (res.data.resultCode == "219") {
-            console.log(res.data)
+            //获取签到编号
             var signnumber = res.data.data.sign_id
+            //获取是否签到
             var Issign = res.data.data.sign
-            console.log(signnumber + Issign)
             that.setData({
               //显示签到按钮
               signnumber: signnumber,
@@ -335,6 +350,7 @@ Page({
               Issignstu: "1",
               Issigntea: "3"
             })
+            //如果未签到
             if(Issign == 0){
               that.setData({
                 signbtn:"签到"

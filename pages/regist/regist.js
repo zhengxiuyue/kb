@@ -129,6 +129,7 @@ gainAuthCodeAction: function () {
     url: requestIP+'/student/sendCode',
     data: {
       phone: that.data.tel,
+      type:1
     },
     method:'POST',
     header: {

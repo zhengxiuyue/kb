@@ -27,7 +27,6 @@ Page({
     wx.login({
       success(res) {
         if (res.code) {
-          console.log(res.code)
           that.setData({
             code:res.code,
           })
@@ -191,7 +190,6 @@ Page({
             if (res.data.resultCode == "101") {
               app.globalData.openid = res.data.data.openid
               app.globalData.userid = res.data.data.userid
-              console.log(app.globalData.openid)
               wx.redirectTo({
                 url: '/pages/index/index',
               })
@@ -202,10 +200,11 @@ Page({
                 icon: 'none',
                 duration: 1000
               })
+              app.globalData.openid = ""
+              app.globalData.userid = ""
               wx.login({
                 success(res) {
                   if (res.code) {
-                    console.log(res.code)
                     that.setData({
                       code: res.code,
                     })
@@ -223,10 +222,11 @@ Page({
                 icon: 'none',
                 duration: 1000
               })
+              app.globalData.openid = ""
+              app.globalData.userid = ""
               wx.login({
                 success(res) {
                   if (res.code) {
-                    console.log(res.code)
                     that.setData({
                       code: res.code,
                     })
@@ -239,11 +239,13 @@ Page({
               return false;
             } 
             else {
-              console.log("index.js wx.request CheckCallUser statusCode");
+              app.globalData.openid = ""
+              app.globalData.userid = ""
+              console.log("请求失败");
             }
           },
           fail: function () {
-            app.globalData.openid = null
+            app.globalData.openid = ""
             console.log("fail");
           },
         })
@@ -279,10 +281,11 @@ Page({
                 icon: 'none',
                 duration: 1000
               })
+              app.globalData.openid = ""
+              app.globalData.userid = ""
               wx.login({
                 success(res) {
                   if (res.code) {
-                    console.log(res.code)
                     that.setData({
                       code: res.code,
                     })
@@ -300,10 +303,11 @@ Page({
                 icon: 'none',
                 duration: 1000
               })
+              app.globalData.openid = ""
+              app.globalData.userid = ""
               wx.login({
                 success(res) {
                   if (res.code) {
-                    console.log(res.code)
                     that.setData({
                       code: res.code,
                     })
@@ -316,7 +320,7 @@ Page({
               return false;
             } 
             else {
-              console.log("index.js wx.request CheckCallUser statusCode");
+              console.log("请求失败");
             }
           },
           fail: function () {

@@ -10,6 +10,18 @@ Component({
       type: "Array",
       value: "",
     },
+    classid: {
+      type: "String",
+      value: ""
+    },
+    Ismatespace: {
+      type: "String",
+      value: ""
+    },//查询结果是否为空
+    search: {
+      type: "String",
+      value: ""
+    },//查询内容
   },
 
   /**
@@ -17,7 +29,7 @@ Component({
    */
   data: {
     "imgUrl": "/image/headphoto.png",
-    search:""
+    space: "/image/space.png"
   },
 
   /**
@@ -26,7 +38,7 @@ Component({
   methods: {
     SearchInput:function(e){
       this.setData({
-        search:e.detail.value
+        search: e.detail.value.replace(/\s+/g, '')
       })
     },
     tel: function (e) {
@@ -39,21 +51,59 @@ Component({
     search: function(e){
       let that = this;
       var requestIP = app.globalData.requestIP
+      if (that.data.search.length == 0) {
+        wx.showToast({
+          title: '请填写查询内容!',
+          icon: 'none',
+          duration: 1000
+        })
+        return false;
+      }
       wx.request({
         url: requestIP + '/user/searchStudent',
         data: {
-          classid: "a357296ab67811e8ab8e00163e00299d",
+          classid: that.data.classid,
           search: that.data.search
         },
-        success: function (result) {
-          console.log('request success', result)
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },// 设置请求的 header
+        success: function (res) {
+          //查询到信息
+          if (res.data.resultCode == "101") {
+            that.setData({
+              mate: [],
+            })
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.mate[i] = res.data.data[i]
+            }
+            that.setData({
+              mate: that.data.mate
+            })
+          }
+          //未查询到
+          else if (res.data.resultCode == "204") {
+            that.setData({
+              mate: [],
+              Ismatespace: "block"
+            })
+          }
+          else {
+            that.setData({
+              mate: [],
+              Ismatespace: "none"
+            })
+            console.log("请求失败");
+          }
         }
       })
-
     }
   },
 
   ready: function () {
+  
   }
 })
 

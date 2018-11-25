@@ -15,14 +15,42 @@
   </view>
 
     <view class="contact-tab">
-		<view class="{{current == 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">讨论({{comment_num}})</view>
-	</view>
+		  <view class="{{current == 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">讨论({{comment_num}})       </view>
+  	</view>
 
-  	<comment style="{{current == 0 ? 'display: inline;': 'display: none;'}}" comment="{{comment}}" Iscommentspace="{{Iscommentspace}}" binddetail="gotoContactDetail" dis_id="{{dis_id}}" comment_num="{{comment_num}}"> </comment>
+  	<!-- <comment style="{{current == 0 ? 'display: inline;': 'display: none;'}}" comment="{{comment}}" Iscommentspace="{{Iscommentspace}}" binddetail="gotoContactDetail" dis_id="{{dis_id}}" comment_num="{{comment_num}}"> </comment> -->
 
-  <view class="page__hd" style="">
+
+
+<view class='students1' wx:for = "{{comment}}" wx:key = "">
+  <image wx:if="{{imgUrl!=null}}" class="headphoto1" src="{{imgUrl}}" background-size="cover"></image>
+  <image wx:else class="headphoto1" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+  <view class='stu_name'>
+    {{item.name}}
+  </view>
+  <image class='delete' src='/image/delete.png'  data-item = "{{item.reply_id}}" bindtap='delt' style='display:{{item.userid == userid? "block" : "none"}}'></image>
+
+  <view class='chat1'>
+    {{item.re_content}}
+  </view>
+  <view class='time'>
+    {{item.re_time}}
+  </view>
+  <view class='clear'></view>
+</view>
+
+ <view class="page__hd" style="">
     <input placeholder='写评论…' placeholder-style='font-size:30rpx;' class='inpt' value='{{comment_content}}' bindinput='commentInput'></input>
     <text class='release' bindtap='release'>发布</text>    
   </view>
-</view>
 
+<view style='height:40rpx;'></view>
+<!-- 回复为空时显示 -->
+<view class='classcard' style='display:{{Iscommentspace}}'>
+  <image src='{{space}}' class='space'></image>
+  <view>  
+    <text>还没有任何回复</text>
+  </view>
+</view>
+ 
+</view>

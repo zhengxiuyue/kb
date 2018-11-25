@@ -68,7 +68,8 @@ Component({
     space:"/image/space.png",
     signstu:[],//已签到学生信息
     notsignstu: [],//未签到学生信息
-    stutime:"",//学生成功签到的时间
+    signnum: "",//学生签到个数
+    signtime:"",//学生成功签到的时间
   },
 
   /**
@@ -99,16 +100,27 @@ Component({
                 icon: 'success',
                 duration: 2000
               })
-              var stutime = util.formatTime(new Date());
               that.setData({
-                stutime: stutime
+                signnum: res.data.data.number,
+                signtime: res.data.data.sign_time,
+                Issign:1
               })
             }
             else {
+              that.setData({
+                signnum: "",
+                signtime: "",
+                Issign:null
+              })
               console.log("请求失败");
             }
           },
           fail: function () {
+            that.setData({
+              signnum: "",
+              signtime: "",
+              Issign: null
+            })
             console.log("fail");
           },
         })

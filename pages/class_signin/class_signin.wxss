@@ -171,7 +171,7 @@
 }
 
 .signclick{
-  margin: 80rpx auto;
+  margin: 20rpx auto;
   background-color: #1296db;
   color: #fff;
   width: 40%;

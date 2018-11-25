@@ -183,10 +183,7 @@ onConfirm: function () {
             title: '修改成功',
             icon: 'success',
             duration: 2000
-          }),
-            wx.navigateBack({
-              url: '/pages/login/login'
-            })
+          })
         } else {
           console.log("非101");
         }
