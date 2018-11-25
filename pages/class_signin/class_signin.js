@@ -51,6 +51,14 @@ Component({
       type: "String",
       value: "",
     },//学生签到按钮信息
+    signnum: {
+      type: "String",
+      value: "",
+    },//学生签到个数
+    signtime: {
+      type: "String",
+      value: "",
+    },//学生成功签到的时间
   },
 
   /**
@@ -68,8 +76,8 @@ Component({
     space:"/image/space.png",
     signstu:[],//已签到学生信息
     notsignstu: [],//未签到学生信息
-    signnum: "",//学生签到个数
-    signtime:"",//学生成功签到的时间
+    // signnum: "",//学生签到个数
+    // signtime:"",//学生成功签到的时间
   },
 
   /**

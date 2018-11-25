@@ -22,7 +22,6 @@ Page({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
             success: function (res) {
-              console.log(res.userInfo)
               app.globalData.nickName = res.userInfo.nickName
               app.globalData.avatarUrl = res.userInfo.avatarUrl
               wx.redirectTo({
@@ -87,8 +86,6 @@ Page({
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
       var that = this;
-      console.log(e.detail.userInfo.nickName)
-      console.log(e.detail.userInfo.avatarUrl)
       app.globalData.nickName = e.detail.userInfo.nickName
       app.globalData.avatarUrl = e.detail.userInfo.avatarUrl
       

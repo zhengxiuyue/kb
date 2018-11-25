@@ -31,6 +31,8 @@ Page({
     signbtn: "",//学生签到按钮信息
     Ismatespace: "none",//学生信息查询是否为空
     search: "",//学生查询内容
+    signnum: "",//学生签到个数
+    signtime: "",//学生成功签到的时间
   },
 
   /**
@@ -341,11 +343,17 @@ Page({
           if (res.data.resultCode == "219") {
             //获取签到编号
             var signnumber = res.data.data.sign_id
+            //获取第几个签到
+            var signnum = res.data.data.number
+            //获取签到时间
+            var signtime = res.data.data.sign_time
             //获取是否签到
             var Issign = res.data.data.sign
             that.setData({
               //显示签到按钮
               signnumber: signnumber,
+              signnum: signnum,
+              signtime: signtime,
               Issign: Issign,
               Issignstu: "1",
               Issigntea: "3"
@@ -355,7 +363,7 @@ Page({
               that.setData({
                 signbtn:"签到"
               })
-            }else if(Issign){
+            }else if(Issign == 1){
               that.setData({
                 signbtn: "你已签到成功"
               })

@@ -6,6 +6,10 @@
   margin:0rpx auto; 
 }
 
+.info{
+  color: #1296db;
+}
+
 .contact{
   margin-left: 30rpx;
   margin-top: 40rpx;
