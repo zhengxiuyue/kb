@@ -9,6 +9,12 @@ Page({
     error_noClassOrder: 'none',
     error_noClassSignUp: 'none'
   },
+  /**
+ * 用户点击右上角分享
+ */
+  onShareAppMessage: function () {
+
+  },
   //获取当前门店下的可报名课程
   getClassList_signUp: function (e) {
     var that = this;

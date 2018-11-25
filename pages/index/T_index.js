@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    date: new Date().toLocaleDateString().replace("/", "-").replace("/", "-"),
+    date: new Date().getFullYear() + "-" + (parseInt(new Date().getMonth()) + 1).toString() + "-" + new Date().getDate(),
+   // date: new Date().toLocaleDateString().replace("/", "-").replace("/", "-"),
     top: "block",
     down: "none",
     calendarsim: "block",

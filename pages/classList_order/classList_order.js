@@ -13,6 +13,12 @@ Page({
   onPullDownRefresh: function () {
     this.getClassList_order();
   },
+  /**
+ * 用户点击右上角分享
+ */
+  onShareAppMessage: function () {
+
+  },
 
   GOclass_des1: function (e) {
     var index = e.currentTarget.dataset.index;
