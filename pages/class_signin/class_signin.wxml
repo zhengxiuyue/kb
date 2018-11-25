@@ -3,11 +3,15 @@
 <!-- 学生角色 -->
 <view wx:if="{{userstatus==3}}" class='sign'>
   <image  style='display:{{Issignstu == 0? "block" : "none"}}' src='/image/space.png' class='space'> </image>
-  <view class='explain' style='display:{{Issign == 0? "block" : "none"}}'>暂无课堂签到信息发布</view>
+  <view class='explain' style='display:{{Issignstu == 0? "block" : "none"}}'>暂无课堂签到信息发布</view>
   <text style='display:{{Issign == 1? "block" : "none"}}' >
-  你是第<text class='info'>{{signnum}}</text>个签到
-  你的签到时间是
-  <text class='info'>{{signtime}}</text></text>
+    你是第<text class='info'>{{signnum}}</text>个签到
+    你的签到时间是
+    <text class='info'>{{signtime}}</text>
+  </text>
+  <text style='display:{{Issign == 0? "block" : "none"}}' >
+    正在发布签到，请点击下面按钮进行签到
+  </text>
   <button style='display:{{Issignstu == 1? "block" : "none"}}' class='signclick' bindtap='signstu'>{{signbtn}}</button>
 </view>
 

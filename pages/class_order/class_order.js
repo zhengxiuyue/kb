@@ -197,20 +197,21 @@ Page({
       return false;
     }
 
-    else if (that.data.reservationCode.length == 0){
-      wx.showToast({
-        title: '请填写预约码!',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    }
-
-    else{
-      if (that.data.auth == "none")
+    else if (that.data.auth == "none")
       {
-        that.order("*noneedforcode*");
+      if (that.data.reservationCode.length == 0) {
+        wx.showToast({
+          title: '请填写预约码!',
+          icon: 'none',
+          duration: 1000
+        })
+        return false;
       }
+      else{
+        that.order("*noneedforcode*");
+        }
+      }
+    
       else if (that.data.auth == "block")
       {
         if(that.data.authcode.length == 0){
@@ -221,10 +222,18 @@ Page({
           })
           return false;
         }
+        else if (that.data.reservationCode.length == 0) {
+          wx.showToast({
+            title: '请填写预约码!',
+            icon: 'none',
+            duration: 1000
+          })
+          return false;
+        }
+        else{
         that.order(that.data.authcode);
+        }
       }
-    }
-
   },
   //验证验证码
   sendCode:function(e){

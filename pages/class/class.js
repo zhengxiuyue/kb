@@ -343,17 +343,11 @@ Page({
           if (res.data.resultCode == "219") {
             //获取签到编号
             var signnumber = res.data.data.sign_id
-            //获取第几个签到
-            var signnum = res.data.data.number
-            //获取签到时间
-            var signtime = res.data.data.sign_time
             //获取是否签到
             var Issign = res.data.data.sign
             that.setData({
               //显示签到按钮
               signnumber: signnumber,
-              signnum: signnum,
-              signtime: signtime,
               Issign: Issign,
               Issignstu: "1",
               Issigntea: "3"
@@ -364,7 +358,13 @@ Page({
                 signbtn:"签到"
               })
             }else if(Issign == 1){
+              //获取第几个签到
+              var signnum = res.data.data.number
+              //获取签到时间
+              var signtime = res.data.data.sign_time
               that.setData({
+                signnum: signnum,
+                signtime: signtime,
                 signbtn: "你已签到成功"
               })
             }

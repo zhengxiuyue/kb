@@ -111,7 +111,8 @@ Component({
               that.setData({
                 signnum: res.data.data.number,
                 signtime: res.data.data.sign_time,
-                Issign:1
+                Issign:1,
+                signbtn:"你已签到成功"
               })
             }
             else {
