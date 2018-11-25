@@ -7,7 +7,12 @@ Page({
     storeid: "",
     errortips: '',
     error_noClassOrder: 'none',
-    error_noClassSignUp: 'none'
+    error_noClassSignUp: 'none',
+    term:""
+  },
+
+  termInput: function (event) {
+    this.setData({ term: event.detail.value })
   },
   /**
  * 用户点击右上角分享
@@ -82,9 +87,61 @@ Page({
 
   onLoad: function (options) {
     var storeid = wx.getStorageSync("storeid");
+    console.log("报名课程的详情" + storeid);
     this.setData({
       storeid: storeid
     }),
       this.getClassList_signUp();
+  },
+
+  searchClassEnter: function (e) {
+    var that = this;
+   // console.log("storeid" + that.data.storeid);
+    wx.request({
+      url: requestIP + '/student/getClassEnter',
+      data: {
+        storeid: that.data.storeid,
+        term: that.data.term
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'userid': app.globalData.userid
+      },
+      success(res) {
+        console.log(res.data.data);
+        if (res.data.resultCode == '101') {
+          console.log("返回的搜索结果是" + res.data.data);
+          that.setData({
+            classList_signUp: res.data.data
+          });
+          that.setData({
+            error_noClassSignUp: "none"
+          });
+        }
+        else {
+          that.setData({
+            classList_signUp: null
+          });
+          that.setData({
+            error_noClassSignUp: "block"
+          });
+          that.setData({
+            errortips: '没有数据'
+          })
+        }
+      },
+      fail(res) {
+        that.setData({
+          classList_signUp: null
+        });
+        that.setData({
+          error_noClassSignUp: "block"
+        });
+        that.setData({
+          errortips: '没有数据'
+        })
+      }
+    })
   }
 })

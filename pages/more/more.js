@@ -322,11 +322,14 @@ Page({
       },
       fail(res) {
         app.globalData.storename = "暂无门店";
+        that.setData({
+          storename: app.globalData.storename
+        });
         app.globalData.storeid = "";
         that.getClassList_signUp();
         that.getClassList_order();
         that.setData({
-          array:['暂无门店']
+          array: ['暂无门店']
         });
       }
     });

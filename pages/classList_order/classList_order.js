@@ -8,6 +8,7 @@ Page({
     errortips: '',
     error_noClassOrder: 'none',
     error_noClassSignUp: 'none',
+    term:""
   },
 
   onPullDownRefresh: function () {
@@ -86,5 +87,60 @@ Page({
         })
       }
     })
+  },
+
+  termInput: function (event) {
+    this.setData({ term: event.detail.value })
+  },
+
+  searchClassAppointment:function(e){
+    var that = this;
+    wx.request({
+      url: requestIP + '/student/getClassAppointment',
+      data: {
+        storeid: that.data.storeid,
+        term: that.data.term
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'userid': app.globalData.userid
+      },
+      success(res) {
+        if (res.data.resultCode == '101') {
+          console.log("返回的搜索结果是"+res.data.data);
+          that.setData({
+            classList_order: res.data.data
+          });
+          console.log(that.data.classList_order[0]);
+          that.setData({
+            error_noClassOrder: "none"
+          });
+        }
+        else {
+          that.setData({
+            classList_order: null
+          });
+          that.setData({
+            error_noClassOrder: "block"
+          });
+          that.setData({
+            errortips: '没有数据'
+          })
+        }
+      },
+      fail(res) {
+        that.setData({
+          classList_order: null
+        });
+        that.setData({
+          error_noClassOrder: "block"
+        });
+        that.setData({
+          errortips: '没有数据'
+        })
+      }
+    })
+
   }
 })

@@ -327,6 +327,12 @@ Page({
             content: '预约成功！',
             type: 'success'
           });
+        } else if (res.data.resultCode == '216'){
+          wx.showToast({
+            title: '验证码错误!',
+            icon: 'none',
+            duration: 1000
+          })
         }
         else {
           $Message({
