@@ -39,8 +39,10 @@ Page({
       success(res) {
         console.log(res.data.resultCode)
         if (res.data.resultCode == '101') {
+          console.log(res.data.data.hotline);
           that.setData({
-            courseList: res.data.data
+            courseList: res.data.data,
+            phoneNumber: res.data.data.hotline
           });
         }
       },
@@ -87,8 +89,10 @@ Page({
       success(res) {
         console.log(res.data.resultCode)
         if (res.data.resultCode == '101') {
+          console.log(res.data.data.hotline);
           that.setData({
-            courseList: res.data.data
+            courseList: res.data.data,
+            phoneNumber: res.data.data.hotline
           });
         }
       },

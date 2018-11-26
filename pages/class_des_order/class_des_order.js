@@ -3,7 +3,7 @@ var app = getApp();
 var requestIP = app.globalData.requestIP;
 Page({
   data: {
-    phoneNumber: app.globalData.ad_telephone,
+    phoneNumber: "",
     classid: null
   },
   GOclass_signUp: function (e) {
@@ -64,8 +64,10 @@ Page({
       success(res) {
         console.log(res.data.resultCode)
         if (res.data.resultCode == '101') {
+          console.log(res.data.data.hotline);
           that.setData({
-            courseList: res.data.data
+            courseList: res.data.data,
+            phoneNumber:res.data.data.hotline
           });
         }
       },
@@ -93,8 +95,10 @@ Page({
       success(res) {
         console.log(res.data.resultCode)
         if (res.data.resultCode == '101') {
+          console.log(res.data.data);
           that.setData({
-            courseList: res.data.data
+            courseList: res.data.data,
+            phoneNumber: res.data.data.hotline
           });
         }
       },

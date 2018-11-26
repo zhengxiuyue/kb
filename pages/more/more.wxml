@@ -42,7 +42,7 @@
         </view>  
       </view>
 
-      <view class='content'  bindtap='GOclass_des1'  wx:for="{{classList_order}}" wx:if="{{index<3}}"  data-index='{{index}}' wx:key="item.courseid">
+      <view class='content'  bindtap='GOclass_des1'  wx:for="{{classList_order}}" wx:if="{{index<4}}"  data-index='{{index}}' wx:key="item.courseid">
         <view class='content-title'>
           {{item.coursename}}
         </view>
@@ -76,7 +76,7 @@
         </view>  
       </view>
       
-      <view class='content' bindtap='GOclass_des'  wx:for="{{classList_signUp}}" wx:if="{{index<3}}"  data-index='{{index}}' wx:key="item.courseid">
+      <view class='content' bindtap='GOclass_des'  wx:for="{{classList_signUp}}" wx:if="{{index<4}}"  data-index='{{index}}' wx:key="item.courseid">
         <view class='content-title'>
           {{item.coursename}}
         </view>
