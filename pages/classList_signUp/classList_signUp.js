@@ -37,6 +37,7 @@ Page({
       success(res) {
         console.log(res.data.data);
         if (res.data.resultCode == '101') {
+          console.log("有多少可报名" + res.data.data.length);
           that.setData({
             classList_signUp: res.data.data
           });
@@ -87,7 +88,7 @@ Page({
 
   onLoad: function (options) {
     var storeid = wx.getStorageSync("storeid");
-    console.log("报名课程的详情" + storeid);
+    console.log("报名课程的列表" + storeid);
     this.setData({
       storeid: storeid
     }),
@@ -98,7 +99,7 @@ Page({
     var that = this;
    // console.log("storeid" + that.data.storeid);
     wx.request({
-      url: requestIP + '/student/getClassEnter',
+      url: requestIP + '/student/searchClassEnter',
       data: {
         storeid: that.data.storeid,
         term: that.data.term

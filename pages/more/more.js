@@ -188,8 +188,8 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.data);
         if (res.data.resultCode=='101'){
+          console.log("有多少可报名" + res.data.data.length);
           that.setData({
             classList_signUp: res.data.data
           });
@@ -238,10 +238,10 @@ Page({
         },
         success(res) {
           if (res.data.resultCode == '101') {
+            console.log("有多少可预约" + res.data.data.length);
             that.setData({
               classList_order: res.data.data
             });
-            console.log(that.data.classList_order[0]);
             that.setData({
               error_noClassOrder: "none"
             });

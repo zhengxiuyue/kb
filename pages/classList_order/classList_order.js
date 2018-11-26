@@ -56,6 +56,9 @@ Page({
       success(res) {
         if (res.data.resultCode == '101') {
           that.setData({
+            classList_order: null
+          });
+          that.setData({
             classList_order: res.data.data
           });
           console.log(that.data.classList_order[0]);
@@ -96,7 +99,7 @@ Page({
   searchClassAppointment:function(e){
     var that = this;
     wx.request({
-      url: requestIP + '/student/getClassAppointment',
+      url: requestIP + '/student/searchClassAppointment',
       data: {
         storeid: that.data.storeid,
         term: that.data.term
@@ -108,7 +111,10 @@ Page({
       },
       success(res) {
         if (res.data.resultCode == '101') {
-          console.log("返回的搜索结果是"+res.data.data);
+          console.log("有多少可预约" + res.data.data.length);
+          that.setData({
+            classList_order: null
+          });
           that.setData({
             classList_order: res.data.data
           });

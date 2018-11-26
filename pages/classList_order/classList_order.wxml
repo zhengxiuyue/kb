@@ -7,7 +7,7 @@
      <image src='/image/search.png' class='searchImg' bindtap='searchClassAppointment'></image>
     </view>
 
-    <view class='content'  bindtap='GOclass_des1'  wx:for="{{classList_order}}" wx:if="{{index<3}}"  data-index='{{index}}' wx:key="item.courseid">
+    <view class='content'  bindtap='GOclass_des1'  wx:for="{{classList_order}}" data-index='{{index}}' wx:key="item.courseid">
   <view class='content-title'>
     {{item.coursename}}
   </view>

@@ -64,7 +64,7 @@ App({
   },
   globalData: {
     openid: "",//
-    userid: "",
+    userid: "0137da84b68111e8ab8e00163e00299d",
     nickName:"",
     avatarUrl:"",
     userInfo: null,
