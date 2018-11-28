@@ -248,20 +248,23 @@ Component({
             } 
             else if (res.data.resultCode == "204"){
               that.setData({
-                Issigntea: "1"
+                Issigntea: "1",
+                signstu: []
               })
               console.log("还没有签到的人")
             }
             else {
               that.setData({
-                Issigntea: ""
+                Issigntea: "",
+                signstu: []
               })
               console.log("请求失败");
             }
           },
           fail: function () {
             that.setData({
-              Issigntea: ""
+              Issigntea: "",
+              signstu: []
             })
             console.log("fail");
           },

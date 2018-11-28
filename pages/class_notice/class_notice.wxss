@@ -46,8 +46,8 @@
 }
 
 .edit{
-  height: 120rpx;
-  width: 120rpx;
+  height: 80rpx;
+  width: 80rpx;
   float: right;
   position: fixed;
   bottom: 120px;
