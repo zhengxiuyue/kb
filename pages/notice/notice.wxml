@@ -8,7 +8,7 @@
     <view class='time'>{{item.no_time}}</view>
   <view class='aNotice'>
       <view class='title'>{{item.no_title}}
-        <image class='delete' src='/image/delete.png' bindtap='delt' style='display:{{userstatus == 0? "block":"none"}}'></image>
+        <!--image class='delete' src='/image/delete.png' bindtap='delt' style='display:{{userstatus == 2? "block":"none"}}'></image>-->
       </view>
       <view class='contentNotice'>
         <text>{{item.no_content}}</text>

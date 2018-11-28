@@ -78,8 +78,11 @@ Page({
   onLoad: function (options) {
     var that = this;
     var classid = wx.getStorageSync("classid");
+    var res_status = app.globalData.res_status;
+   // console.log("预约详情这里" + that.options.res_status);
     that.setData({
-      classid: classid
+      classid: classid,
+      res_status: res_status
     })
     console.log(classid);
     wx.request({

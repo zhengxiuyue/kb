@@ -98,6 +98,79 @@ Page({
         }
       }
     })
+  },
+  delt: function (e) {
+    let that = this;
+    var requestIP = app.globalData.requestIP
+    var no_id = e.currentTarget.dataset.no_id
+    that.setData({
+      no_id: no_id
+    })
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除本条通知吗？',
+      success: function (sm) {
+        if (sm.confirm) {
+          wx.request({
+            url: requestIP + '/teacher/deleteNotice',
+            data: {
+              noticeid: that.data.no_id,
+            },
+            method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded',
+              'userid': app.globalData.userid
+            },// 设置请求的 header
+            success: function (res) {
+              if (res.data.resultCode == "101") {
+                wx.showToast({
+                  title: '删除成功',
+                  icon: 'success',
+                  duration: 2000
+                })
+                wx.request({
+                  url: requestIP + '/user/getNotice',
+                  data: {
+                    classid: that.data.classid
+                  },
+                  method: 'POST',
+                  header: {
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'userid': app.globalData.userid
+                  },// 设置请求的 header
+                  success: function (res) {
+                    if (res.data.resultCode == "101") {
+                      that.setData({
+                        notice: []
+                      })
+                      for (var i = 0, len = res.data.data.length; i < len; i++) {
+                        that.data.notice[i] = res.data.data[i]
+                      }
+                      that.setData({
+                        notice: that.data.notice
+                      })
+                    }
+                    else if (res.data.resultCode == "204") {
+                      that.setData({
+                        notice: [],
+                        Isnoticespace: "block"
+                      })
+                    }
+                    else {
+                      console.log("请求失败");
+                    }
+                  },
+                })
+              } else {
+                console.log("请求失败");
+              }
+            }
+          })
+
+          // 重新发请求刷新数据
+        } else if (sm.cancel) { }
+      }
+    })
   }
 
 })

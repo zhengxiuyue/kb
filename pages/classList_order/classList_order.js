@@ -26,7 +26,9 @@ Page({
     console.log(index);
     var classList_order = this.data.classList_order;
     var classid = classList_order[index].classid;
+    var res_status = classList_order[index].res_status;
     wx.setStorageSync("classid", classid);
+    app.globalData.res_status = res_status;
     wx.navigateTo({
       url: '../class_des_order/class_des_order',
     })

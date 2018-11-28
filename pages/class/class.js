@@ -368,7 +368,15 @@ Page({
                 signbtn: "你已签到成功"
               })
             }
-          } else {
+          } else if (res.data.resultCode == "217")
+          {
+            that.setData({
+              //显示签到按钮
+              Issignstu: "0",
+              Issigntea: "3"
+            })
+          } 
+          else {
             that.setData({
               Issigntea: "3",
               signbtn:""

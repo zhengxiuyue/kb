@@ -21,8 +21,8 @@ Page({
     prev: true, // 上一个月按钮是否显示
     next: true, // 下一个月按钮是否显示
     error_noClass: 'none',
-    error_noClassList:'none',
-    errortips:'',
+    error_noClass_recent:'none',
+    errortips_recent:'',
     recentClassList:null,//近期开课课程
     noticeList:[{
       no_content: "快乐50课表，专为退休人士创办的学习社区！本周课表出炉，了解一下？"
@@ -192,7 +192,7 @@ Page({
             recentClassList: res.data.data
           });
           that.setData({
-            error_noClass: "none"
+            error_noClass_recent: "none"
           });
         }
        else {
@@ -200,22 +200,22 @@ Page({
             recentClassList: null
           });
           that.setData({
-            error_noClass: "block"
+            error_noClass_recent: "block"
           });
           that.setData({
-            errortips: '没有数据'
+            errortips_recent: '没有数据'
           })
         }
       },
       fail(res) {
         that.setData({
-          recentClassList:null
+          recentClassList: null
         });
         that.setData({
-          error_noClassList: "block"
+          error_noClass_recent: "block"
         });
         that.setData({
-          errortips: '没有数据'
+          errortips_recent: '没有数据'
         })
       }
     })

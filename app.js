@@ -64,7 +64,7 @@ App({
   },
   globalData: {
     openid: "",//
-    userid: "0137da84b68111e8ab8e00163e00299d",//0137da84b68111e8ab8e00163e00299d//389b9df8b4f111e8ab8e00163e00299d
+    userid: "",//0137da84b68111e8ab8e00163e00299d//06c02c6cb67211e8ab8e00163e00299d
     nickName:"",
     avatarUrl:"",
     userInfo: null,
@@ -76,7 +76,7 @@ App({
     areaname:"",
     storename:'',
     alreadyFlag: "0",
-    //ad_telephone: "17671260413",
+    res_status:null,
     requestIP: "http://localhost:8080/happyschedule",
     tabBar: {
       color: "black",

@@ -8,7 +8,7 @@ Page({
     courseList: null,
     username: '',
     tel: '',
-    reservationCode:'',//预约码
+    reservationCode:'11',//预约码
     primarytel: '',
     authcode: '',
     time: '获取验证码', //倒计时 
@@ -323,10 +323,18 @@ Page({
       success(res) {
         console.log(res.data.resultCode+res.data.data);
         if (res.data.resultCode == '101') {
-          $Message({
+         /* $Message({
             content: '预约成功！',
             type: 'success'
-          });
+          });*/
+          wx.showToast({
+            title: '预约成功！!',
+            icon: 'success',
+            duration: 1000
+          })
+          wx.navigateTo({
+            url: '../more/more',
+          })
         } else if (res.data.resultCode == '216'){
           wx.showToast({
             title: '验证码错误!',

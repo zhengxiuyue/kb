@@ -24,8 +24,8 @@
        <view class='content-btn'>报名体验</view>
        </view>
   <!--没有课程时的显示-->
-  <view class='error' style='display:{{error_noClassList}};'>
-    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;{{errortips}}</text>
+  <view class='error' style='display:{{error_noClass_recent}};'>
+    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;{{errortips_recent}}</text>
   </view>
 
   <view class='big_title'>

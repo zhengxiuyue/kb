@@ -103,6 +103,36 @@
   top:-15rpx;
 }
 
+.content-btn2{
+  display:inline-block;
+  text-align:center;
+  font-size:28rpx;
+  width:130rpx;
+  height:60rpx;
+  line-height:60rpx;
+  background-color:#10aeff;
+  color:#fff;
+  border-radius:5rpx;
+  border-color:#10aeff;
+  position:relative;
+  top:-15rpx;
+}
+
+.content-btn1{
+  display:inline-block;
+  text-align:center;
+  font-size:28rpx;
+  width:130rpx;
+  height:60rpx;
+  line-height:60rpx;
+  background-color:#cdcdcd;
+  color:#fff;
+  border-radius:5rpx;
+  border-color:#cdcdcd;
+  position:relative;
+  top:-15rpx;
+}
+
 .break{
   height: 20rpx;
 }
