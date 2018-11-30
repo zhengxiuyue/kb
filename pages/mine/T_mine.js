@@ -34,7 +34,6 @@ Page({
     this.setData({
       userstatus: userstatus,
     })
-    console.log(that.data.userstatus)
 
     var requestIP = app.globalData.requestIP
 

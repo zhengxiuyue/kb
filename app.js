@@ -20,6 +20,8 @@ App({
         }
       }
     })
+    console.log("ssss")
+    console.log(that.globalData.userid )
     if (that.globalData.userid != '')
     {
       if (that.globalData.userstatus == 2)

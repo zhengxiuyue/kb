@@ -221,7 +221,238 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    wx.showNavigationBarLoading()
+    //模拟加载    
+    setTimeout(function () {      // complete      
+      wx.hideNavigationBarLoading() //完成停止加载      
+      wx.stopPullDownRefresh() //停止下拉刷新   
+    }, 1500);
 
+    let that = this
+    var requestIP = app.globalData.requestIP
+    if (that.data.current == 0) {
+      wx.request({
+        url: requestIP + '/user/getClassmateInfo',
+        data: {
+          classid: that.data.classid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            that.setData({
+              mate: [],
+              Ismatespace: "none",
+              search: ""
+            })
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.mate[i] = res.data.data[i]
+            }
+            that.setData({
+              mate: that.data.mate
+            })
+          } else {
+            that.setData({
+              mate: [],
+              Ismatespace: "none",
+              search: ""
+            })
+            console.log("请求失败");
+          }
+        },
+      })
+    }
+    //老师签到功能
+    else if (that.data.current == 1 & that.data.userstatus == 2) {
+      //获取签到列表
+      wx.request({
+        url: requestIP + '/teacher/getSignBefore',
+        data: {
+          classid: that.data.classid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          var time = util.formatTime(new Date());
+          if (res.data.resultCode == "101") {
+            that.setData({
+              sign: [],
+              firstPerson: time,
+              Issigntea: "3"
+            })
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.sign[i] = res.data.data[i]
+              that.data.sign[i].classnum = i + 1//获取第几节课
+            }
+            that.setData({
+              sign: that.data.sign,
+            })
+          } else {
+            that.setData({
+              sign: [],
+              Issigntea: "3"
+            })
+            console.log("请求失败");
+          }
+        },
+        fail: function () {
+          that.setData({
+            sign: [],
+            Issigntea: "3"
+          })
+          console.log("fail");
+        },
+      })
+    }
+
+    //学生签到功能
+    else if (that.data.current == 1 & that.data.userstatus == 3) {
+      //获取当前是否有签到
+      wx.request({
+        url: requestIP + '/user/getSign',
+        data: {
+          classid: that.data.classid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          //当前有签到信息
+          if (res.data.resultCode == "219") {
+            //获取签到编号
+            var signnumber = res.data.data.sign_id
+            //获取是否签到
+            var Issign = res.data.data.sign
+            that.setData({
+              //显示签到按钮
+              signnumber: signnumber,
+              Issign: Issign,
+              Issignstu: "1",
+              Issigntea: "3"
+            })
+            //如果未签到
+            if (Issign == 0) {
+              that.setData({
+                signbtn: "签到"
+              })
+            } else if (Issign == 1) {
+              //获取第几个签到
+              var signnum = res.data.data.number
+              //获取签到时间
+              var signtime = res.data.data.sign_time
+              that.setData({
+                signnum: signnum,
+                signtime: signtime,
+                signbtn: "你已签到成功"
+              })
+            }
+          } else if (res.data.resultCode == "217") {
+            that.setData({
+              //显示签到按钮
+              Issignstu: "0",
+              Issigntea: "3"
+            })
+          }
+          else {
+            that.setData({
+              Issigntea: "3",
+              signbtn: ""
+            })
+            console.log("请求失败");
+          }
+        },
+        fail: function () {
+          that.setData({
+            Issignstu: "",
+            Issigntea: "",
+            signbtn: ""
+          })
+          console.log("fail");
+        },
+      })
+    }
+
+    //讨论功能
+    else if (that.data.current == 2) {
+      wx.request({
+        url: requestIP + '/user/getDiscussInfo',
+        data: {
+          classid: that.data.classid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            that.setData({
+              chat: [],
+              Ischatspace: "none"
+            })
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.chat[i] = res.data.data[i]
+            }
+            that.setData({
+              chat: that.data.chat
+            })
+          }
+          else if (res.data.resultCode == "204") {
+            that.setData({
+              chat: [],
+              Ischatspace: "block"
+            })
+          }
+          else {
+            console.log("请求失败");
+          }
+        },
+      })
+    }
+    else if (that.data.current == 3) {
+      wx.request({
+        url: requestIP + '/user/getNotice',
+        data: {
+          classid: that.data.classid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            that.setData({
+              notice: [],
+              Isnoticespace: "none"
+            })
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.notice[i] = res.data.data[i]
+            }
+            that.setData({
+              notice: that.data.notice
+            })
+          }
+          else if (res.data.resultCode == "204") {
+            that.setData({
+              notice: [],
+              Isnoticespace: "block"
+            })
+          }
+          else {
+            console.log("请求失败");
+          }
+        },
+      })
+    }
   },
 
   /**
