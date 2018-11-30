@@ -40,7 +40,7 @@
 </view>
 
  <view class="page__hd" style="">
-    <input placeholder='写评论…' placeholder-style='font-size:30rpx;' class='inpt' value='{{comment_content}}' bindinput='commentInput'></input>
+    <input placeholder='写评论…' placeholder-style='font-size:30rpx;' class='inpt' value='{{comment_content}}' bindinput='commentInput' cursor-spacing="40"></input>
     <text class='release' bindtap='release'>发布</text>    
   </view>
 

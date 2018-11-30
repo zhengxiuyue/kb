@@ -2,6 +2,38 @@
 App({
   onLaunch: function () {
     var that = this; 
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              that.globalData.nickName = res.userInfo.nickName
+              that.globalData.avatarUrl = res.userInfo.avatarUrl
+            }
+          })
+        }
+        else{
+          wx.redirectTo({
+            url: '/pages/authorize/authorize',
+          })
+        }
+      }
+    })
+    if (that.globalData.userid != '')
+    {
+      if (that.globalData.userstatus == 2)
+      {
+        wx.switchTab({
+          url: '/pages/index/T_index',
+        })
+      }
+      else if (that.globalData.userstatus == 3) {
+        wx.switchTab({
+          url: '/pages/index/index',
+        })
+      }
+    }
     // 展示本地存储能力
     // var logs = wx.getStorageSync('logs') || []
     // logs.unshift(Date.now())
@@ -77,7 +109,9 @@ App({
     storename:'',
     alreadyFlag: "0",
     res_status:null,
-    requestIP: "http://localhost:8080/happyschedule",
+    requestIP: "http://39.104.155.0:8080/happyschedule",
+    // requestIP: "http://27awkz.natappfree.cc/happyschedule",
+   
     tabBar: {
       color: "black",
       selectedColor: "#1DA27F",

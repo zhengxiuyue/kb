@@ -194,6 +194,28 @@ Page({
                 url: '/pages/index/index',
               })
             }
+            else if (res.data.resultCode == "204") {
+              wx.showToast({
+                title: '电话号码未注册!',
+                icon: 'none',
+                duration: 1000
+              })
+              app.globalData.openid = ""
+              app.globalData.userid = ""
+              wx.login({
+                success(res) {
+                  if (res.code) {
+                    that.setData({
+                      code: res.code,
+                    })
+                    app.globalData.openid = null
+                  } else {
+                    console.log('登录失败！' + res.errMsg)
+                  }
+                }
+              })
+              return false;
+            } 
             else if (res.data.resultCode == "214"){
               wx.showToast({
                 title: '账号和密码不匹配!',
@@ -278,6 +300,28 @@ Page({
             else if (res.data.resultCode == "214"){
               wx.showToast({
                 title: '账号和密码不匹配!',
+                icon: 'none',
+                duration: 1000
+              })
+              app.globalData.openid = ""
+              app.globalData.userid = ""
+              wx.login({
+                success(res) {
+                  if (res.code) {
+                    that.setData({
+                      code: res.code,
+                    })
+                    app.globalData.openid = null
+                  } else {
+                    console.log('登录失败！' + res.errMsg)
+                  }
+                }
+              })
+              return false;
+            } 
+            else if (res.data.resultCode == "204") {
+              wx.showToast({
+                title: '电话号码未注册!',
                 icon: 'none',
                 duration: 1000
               })

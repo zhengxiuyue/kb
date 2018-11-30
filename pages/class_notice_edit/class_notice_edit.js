@@ -10,7 +10,12 @@ Page({
     noticecontent:"",
     classid:"",
     level:"",
-    coursename:""
+    coursename:"",
+    texts: "最少10个字",
+    min: 10,//最少字数
+    max: 100, //最多字数 (根据自己需求改变)
+    focus:false,
+    focustitle:false
   },
 
   /**
@@ -76,14 +81,47 @@ Page({
   onShareAppMessage: function () {
 
   },
+
   noticetitleInput: function (event) {
     this.setData({
-      noticetitle: event.detail.value.replace(/\s+/g, '')
+      noticetitle: event.detail.value.replace(/\s+/g, ''),
+    });
+  },
+
+  noticecontentInput: function (event) {
+    // 获取输入框的内容
+    var value = event.detail.value;
+    // 获取输入框内容的长度
+    var len = parseInt(value.length);
+
+    //最少字数限制
+    if (len < this.data.min)
+      this.setData({
+        texts: "最少10个字"
+      })
+    else if (len > this.data.min)
+      this.setData({
+        noticecontent: event.detail.value.replace(/\s+/g, ''),
+        texts: " "
+      })
+
+    //最多字数限制
+    if (len > this.data.max) return;
+    // 当输入框内容的长度大于最大长度限制（max)时，终止setData()的执行
+    this.setData({
+      currentWordNumber: len //当前字数 
+    });
+  },
+
+  bindButtonTap: function () {
+    this.setData({
+      focus: true
     })
   },
-  noticecontentInput: function (event) {
+
+  bindButtonTaptitle: function () {
     this.setData({
-      noticecontent: event.detail.value.replace(/\s+/g, '')
+      focustitle: true
     })
   },
 
@@ -140,5 +178,28 @@ Page({
         },
       })
     }
+  },
+  inputs: function (e) {
+    // // 获取输入框的内容
+    // var value = e.detail.value;
+    // // 获取输入框内容的长度
+    // var len = parseInt(value.length);
+
+    // //最少字数限制
+    // if (len <= this.data.min)
+    //   this.setData({
+    //     texts: "最低五个字"
+    //   })
+    // else if (len > this.data.min)
+    //   this.setData({
+    //     texts: " "
+    //   })
+
+    // //最多字数限制
+    // if (len > this.data.max) return;
+    // // 当输入框内容的长度大于最大长度限制（max)时，终止setData()的执行
+    // this.setData({
+    //   currentWordNumber: len //当前字数 
+    // });
   }
 })

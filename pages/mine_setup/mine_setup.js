@@ -108,7 +108,7 @@ Page({
       content: '确定要退出登录吗？',
       success: function (sm) {
         if (sm.confirm) {
-          app.globalData.openid = null
+          app.globalData.userid = null
           wx.reLaunch({
             url: '/pages/login/login',
           })

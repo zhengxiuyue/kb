@@ -52,12 +52,34 @@ Component({
       let that = this;
       var requestIP = app.globalData.requestIP
       if (that.data.search.length == 0) {
-        wx.showToast({
-          title: '请填写查询内容!',
-          icon: 'none',
-          duration: 1000
+        wx.request({
+          url: requestIP + '/user/getClassmateInfo',
+          data: {
+            classid: that.data.classid
+          },
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+            'userid': app.globalData.userid
+          },
+          success: function (res) {
+            if (res.data.resultCode == "101") {
+              that.setData({
+                mate: [],
+                Ismatespace: "none"
+              })
+              for (var i = 0, len = res.data.data.length; i < len; i++) {
+                that.data.mate[i] = res.data.data[i]
+              }
+              that.setData({
+                mate: that.data.mate
+              })
+            } else {
+              console.log("请求失败");
+            }
+          },
         })
-        return false;
+        return true
       }
       wx.request({
         url: requestIP + '/user/searchStudent',

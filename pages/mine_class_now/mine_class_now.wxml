@@ -18,6 +18,5 @@
     <view  bindtap='signin'>
       <text class='signin' style='display:{{userstatus == 3? "block":"none"}}'>去报名</text>
     </view>
-      <text class='signin2' style='display:{{userstatus == 2? "block":"none"}}'>请到PC端发布课堂</text>
   </view>
 </view>

@@ -1,12 +1,14 @@
 /* pages/class_chat_edit/class_chat_edit.wxss */
 .classinfm{
-  height: 60rpx;
   margin-top: 60rpx;
-  margin-left: 40rpx;
-  position: relative;
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 100%;
 }
 
-.classpicture{
+.classinfm image{
+  margin-left: 40rpx; 
+  float: left; 
   height: 60rpx;
   width: 60rpx;
 }
@@ -14,17 +16,13 @@
 .classname{
   font-size: 36rpx;
   font-weight: bold;
-  position: absolute;
-  top: 10rpx;
-  left: 80rpx;
+  margin-left: 20rpx;
 }
 
 .classgreat{
   font-size: 36rpx;
   font-weight: bold;
-  position: absolute;
-  top: 10rpx;
-  left: 160rpx;
+  margin-left: 20rpx;
 }
 
 .clear{
@@ -42,7 +40,7 @@
   padding: 2%;
   margin-left:5%;
   width: 86%;
-  height: 400rpx;
+  height: 300rpx;
   background-color: #fff;
 }
 
@@ -57,4 +55,20 @@
 
 .place_notice{
   color: #dddee1;
+}
+
+.currentWordNumber {
+font-size: 28rpx;
+color: gray;
+position: absolute;
+right: 20rpx;
+top: 280rpx;
+}
+
+.hint {
+font-size: 28rpx;
+position: absolute;
+top: 280rpx;
+left: 20rpx;
+color: red;
 }

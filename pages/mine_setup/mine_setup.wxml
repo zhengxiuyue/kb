@@ -30,12 +30,12 @@
     <view class="modal-content">  
 
       <view class="modal-input">        
-        <input placeholder-class="input-holder" type="password" maxlength="10" bindinput="passwordInput" class="input" placeholder="新密码"  value='{{newpassword}}' placeholder-style='font-size:34rpx;'>
+        <input placeholder-class="input-holder" type="password" maxlength="10" bindinput="passwordInput" class="input" placeholder="新密码"  value='{{newpassword}}' placeholder-style='font-size:34rpx;' cursor-spacing="50">
         </input>      
       </view>      
       
       <view class="modal-input">        
-      <input placeholder-class="input-holder" type="password" maxlength="10" bindinput="passwordInput2" class="input" placeholder="确认密码" value='{{newpassword2}}'placeholder-style='font-size:34rpx;'>
+      <input placeholder-class="input-holder" type="password" maxlength="10" bindinput="passwordInput2" class="input" placeholder="确认密码" value='{{newpassword2}}'placeholder-style='font-size:34rpx;' cursor-spacing="50">
       </input>      
       </view>      
     </view>    

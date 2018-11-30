@@ -1,5 +1,5 @@
 <view wx:for = "{{notice}}" wx:key="">
-  <view class='time'>{{item.no_time}}{{userstatus}}</view>
+  <view class='time'>{{item.no_time}}</view>
   <view class='notice'>
       <view class='title'>{{item.no_title}}
         <image class='delete' src='/image/delete.png' bindtap='delt' data-no_id='{{item.no_id}}' style='display:{{userstatus == 2? "block":"none"}}'></image>

@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/authorize/authorize",
     "pages/login/login",
+    "pages/authorize/authorize",
     "pages/index/index",
     "pages/regist/regist",
     "pages/forget/forget",
@@ -34,7 +34,9 @@
     "navigationBarBackgroundColor": "#1DA27F",
     "navigationBarTitleText": "课表小程序",
     "navigationBarTextStyle":"white",
-    "backgroundColor" :"#fff"
+    "backgroundColor" :"#fff",
+    "enablePullDownRefresh":true,
+    "onReachBottomDistance":400
   },
   "plugins": {
     "calendar": {

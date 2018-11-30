@@ -11,7 +11,7 @@
           <view class='classgreat'>{{items.level}}{{items.classnumber}}班</view>
     
           <view class='teacher'>
-                授课老师：{{items.teachername}} {{items.phone}}{{Issigntea}}
+                授课老师：{{items.teachername}} {{items.phone}}
           </view>
         </view>
 
@@ -34,7 +34,8 @@
           </view>
 
           <view class='class_des_text'>
-            <text>课程价格：{{items.price}}元</text>
+            <text wx:if="{{items.improveprice != ''}}">课程价格：{{items.improveprice}}元</text>
+            <text wx:if="{{items.improveprice == ''}}">课程价格：{{items.price}}元</text>
           </view>
 
           <view class='class_des_text'>

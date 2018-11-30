@@ -11,7 +11,11 @@ Page({
     chattime:"",
     classid:"",
     level:"",
-    coursename:""
+    coursename:"",
+    texts: "最少10个字",
+    min: 10,//最少字数
+    max: 100, //最多字数 (根据自己需求改变)
+    focus: false,
   },
 
   /**
@@ -79,9 +83,28 @@ Page({
   },
 
   chatInput: function (event) {
-    this.setData({ 
-      chatcontent: event.detail.value.replace(/\s+/g, '') 
-    })
+    // 获取输入框的内容
+    var value = event.detail.value;
+    // 获取输入框内容的长度
+    var len = parseInt(value.length);
+
+    //最少字数限制
+    if (len < this.data.min)
+      this.setData({
+        texts: "最少10个字"
+      })
+    else if (len > this.data.min)
+      this.setData({
+        chatcontent: event.detail.value.replace(/\s+/g, ''),
+        texts: " "
+      })
+
+    //最多字数限制
+    if (len > this.data.max) return;
+    // 当输入框内容的长度大于最大长度限制（max)时，终止setData()的执行
+    this.setData({
+      currentWordNumber: len //当前字数 
+    });
   },
 
   returnchat: function (e) {
@@ -126,5 +149,11 @@ Page({
         },
       })
     }
-  }
+  },
+  bindButtonTap: function () {
+    this.setData({
+      focus: true
+    })
+  },
+
 })
