@@ -66,6 +66,7 @@ list-style: none;
 .ipt{
   position: absolute;
   left:80rpx;
+  font-size: 30rpx;
 }
 
 .btn{
@@ -88,6 +89,7 @@ color:#2a9dd1 !important;
 
 .placeholder{
   color: #dddee1;
+  font-size: 30rpx;
 }
 
 .identity{
@@ -106,6 +108,7 @@ color:#2a9dd1 !important;
 }
 
 .login{
+  font-size: 32rpx;
   margin: 0rpx 80rpx;
   background-color: #1DA27F;
   color: #fff;

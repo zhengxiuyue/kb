@@ -78,10 +78,10 @@
 
 .weui-icon-search_in-box {
   position: absolute;
-  left: 20rpx;
-  top: 14rpx;
-  width: 55rpx;
-  height: 55rpx;
+  left: 15rpx;
+  top: 5rpx;
+  height: 46rpx;
+  width: 46rpx; 
 }
 
 .weui-search-bar__form {

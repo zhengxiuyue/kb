@@ -16,6 +16,11 @@ Page({
     authcode: '',//验证码
     text: '',
     code:'',
+    ratio:'',
+    height:'',
+    width:'',
+    short: '',
+    long: '',
   },
 
   /**
@@ -23,6 +28,23 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    wx.getSystemInfo({
+      success: function(res) {
+        console.log(res.screenWidth)//手机屏幕宽度
+        console.log(res.screenHeight)//手机屏幕高度
+        that.setData({
+          // ratio: 750 / res.screenWidth,
+          width: res.screenWidth / 750 * 56,
+          height: res.screenWidth / 750 * 180,
+          short:  res.screenWidth / 750 * 40,
+          long: res.screenWidth / 750 * 52
+        })
+        console.log(that.data.width)
+        console.log(that.data.height)
+        console.log(that.data.long)
+        console.log(that.data.short)
+      },
+    })
     drawPic(that);
     wx.login({
       success(res) {
@@ -419,9 +441,14 @@ function randomColor(min, max){
 /**绘制验证码图片**/
 function drawPic(that)
 {
+  var height = that.data.height
+  var width = that.data.width
+  var long = that.data.long
+  var short = that.data.short
+  var xo = short*0.25
   ctx = wx.createCanvasContext('canvas');    /**绘制背景色**/   
   ctx.fillStyle = randomColor(180, 240); //颜色若太深可能导致看不清   
-  ctx.fillRect(0, 0, 90, 28)    /**绘制文字**/    
+  ctx.fillRect(0, 0, height, width)    /**绘制文字**/    
   var arr;   
   var text = '';    
   var str = 'ABCEFGHJKLMNPQRSTWXY123456789';    
@@ -429,10 +456,10 @@ function drawPic(that)
   {        
     var txt = str[randomNum(0, str.length)];        
     ctx.fillStyle = randomColor(50, 160); //随机生成字体颜色    
-    ctx.font = randomNum(20, 26) + 'px SimHei'; //随机生成字体大小     
-    var x = 5 + i * 20;      
-    var y = randomNum(20, 25);       
-    var deg = randomNum(-20, 20); //修改坐标原点和旋转角度       
+    ctx.font = randomNum(short, long) + 'px SimHei'; //随机生成字体大小     
+    var x = xo + i * short;      
+    var y = randomNum(short, long);       
+    var deg = randomNum(-short, short); //修改坐标原点和旋转角度       
     ctx.translate(x, y);     
     ctx.rotate(deg * Math.PI / 180);    
     ctx.fillText(txt, 5, 0);    
@@ -445,8 +472,8 @@ function drawPic(that)
   for (var i = 0; i < 4; i++) {        
     ctx.strokeStyle = randomColor(40, 180);        
     ctx.beginPath();        
-    ctx.moveTo(randomNum(0, 90), randomNum(0, 28));        
-    ctx.lineTo(randomNum(0, 90), randomNum(0, 28));        
+    ctx.moveTo(randomNum(0, height), randomNum(0, width));        
+    ctx.lineTo(randomNum(0, height), randomNum(0, width));        
     ctx.stroke();    
   }    
   
@@ -454,7 +481,7 @@ function drawPic(that)
   for (var i = 0; i < 20; i++) {        
     ctx.fillStyle = randomColor(0, 255);        
     ctx.beginPath();        
-    ctx.arc(randomNum(0, 90), randomNum(0, 28), 1, 0, 2 * Math.PI);        
+    ctx.arc(randomNum(0, height), randomNum(0, width), 1, 0, 2 * Math.PI);        
     ctx.fill();    
   }    
   ctx.draw(false, function(){        

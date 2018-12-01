@@ -5,7 +5,7 @@
 
   <view class='user'>
     <view class='username'>{{username}}</view>
-    <open-data type="userAvatarUrl" class='userAvatarUrl' style="" ></open-data>    
+    <open-data type="userAvatarUrl" class='userAvatarUrl' style=""></open-data>    
     <image src='/image/dropDown.png' class='dropDown' bindtap='dropDown'></image>
   </view>
   <view class='clear'></view>

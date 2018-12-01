@@ -61,15 +61,17 @@
 }
 
 .canvas{
-  width: 90px;
-  height: 28px;
-  border-radius: 14px;
+  width: 180rpx;
+  height: 56rpx; 
+  border-radius: 28rpx;
 }
 
 .canvas1{
   position: absolute;
   left:60%;
   top: 0%;
+  /* width: 180rpx;
+  height: 56rpx; */
 }
 
 .placeholder{

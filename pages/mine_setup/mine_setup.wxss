@@ -12,7 +12,7 @@
   border-radius:50%;
   overflow:hidden;
   margin: 10rpx auto;  
-  display: flex;
+  display: block;
   justify-content: center;
 }
 

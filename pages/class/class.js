@@ -471,11 +471,11 @@ Page({
     var coursename = that.data.items.coursename
     var level = that.data.items.level
     var classid = that.data.classid
+    var nickname = app.globalData.nickName
     var num = 1
-    console.log(classid)
     return {
-      title: '快乐课表',
-      desc: '我正在' + teacher + '老师的' + coursename + level + '学习',
+      title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
+      desc: '交友学习欢迎加入',
       path: '/pages/class/class?classid=' + classid + '&num=' +num
     }
   },
