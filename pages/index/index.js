@@ -42,6 +42,11 @@ Page({
   onLoad: function (options) {
     var that = this;
     //创建节点选择器
+    if(options.num == 1){
+      wx.redirectTo({
+        url: '/pages/class_des_signUp/class_des_signUp?classid=' + options.classid,
+      })
+    }
     var query = wx.createSelectorQuery();    //选择id    
     var that = this;    
     query.select('.page').boundingClientRect(function (rect) {      //    
