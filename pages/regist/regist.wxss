@@ -67,6 +67,7 @@ list-style: none;
   position: absolute;
   left:80rpx;
   font-size: 30rpx;
+  height: auto;
 }
 
 .btn{

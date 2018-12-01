@@ -39,10 +39,6 @@ Page({
           short:  res.screenWidth / 750 * 40,
           long: res.screenWidth / 750 * 52
         })
-        console.log(that.data.width)
-        console.log(that.data.height)
-        console.log(that.data.long)
-        console.log(that.data.short)
       },
     })
     drawPic(that);
