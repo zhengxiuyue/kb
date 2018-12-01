@@ -190,6 +190,9 @@ Page({
             if (res.data.resultCode == "101") {
               app.globalData.openid = res.data.data.openid
               app.globalData.userid = res.data.data.userid
+              wx.clearStorageSync();
+              wx.setStorageSync('userid', res.data.data.userid)
+              wx.setStorageSync('userstatus', 3)
               wx.redirectTo({
                 url: '/pages/index/index',
               })
@@ -293,6 +296,10 @@ Page({
             if (res.data.resultCode == "101") {
               app.globalData.openid = res.data.data.openid
               app.globalData.userid = res.data.data.userid
+              wx.clearStorageSync();
+              wx.setStorageSync('userid', res.data.data.userid)
+              wx.setStorageSync('userstatus', 2)
+              wx.setStorageSync('openid', res.data.data.openid)
               wx.redirectTo({
                 url: '/pages/index/T_index',
               })

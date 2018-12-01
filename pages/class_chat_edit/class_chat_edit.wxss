@@ -45,6 +45,7 @@
 }
 
 .btn{
+  font-size: 32rpx; 
   background-color: #1DA27F;
   color: #fff;
   margin-top: 40rpx;

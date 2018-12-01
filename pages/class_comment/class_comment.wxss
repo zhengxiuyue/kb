@@ -158,16 +158,23 @@ font-size: 28rpx;
 z-index: 999; 
 } 
 .release .text{ 
-width: 604rpx; 
-min-height: 34rpx; 
-max-height: 102rpx; /*最多显示三行*/ 
-border-width: 15rpx 20rpx; /*使用padding与预期留白不一致，故使用border*/ 
+  height:100%;
+   
+    overflow-y:hidden;
+    word-break:break-all;
+    word-wrap:break-word;
+
+ width: 604rpx; 
+ border-width: 15rpx 20rpx; /*使用padding与预期留白不一致，故使用border*/
 border-style: solid; 
 border-color: #ffffff; 
-line-height: 34rpx; 
+min-height: 34rpx; 
+max-height: 102rpx;
+ line-height: 34rpx; 
 font-size: 28rpx; 
 background-color: #ffffff; 
 border-radius: 4rpx; 
+
 } 
 .release .submit{ 
 width: 116rpx; 
@@ -176,3 +183,5 @@ line-height: 64rpx;
 text-align: center; 
 color: #1DA27F; 
 } 
+
+

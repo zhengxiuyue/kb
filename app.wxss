@@ -29,8 +29,8 @@
 }  
 
 .img{   
-  width: 23px;    
-  height: 23px;   
+  width: 46rpx;    
+  height: 46rpx;   
   display: block;   
   margin:auto;  
 }    

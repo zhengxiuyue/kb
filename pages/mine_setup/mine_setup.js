@@ -89,9 +89,8 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  },
+  // onShareAppMessage: function () {
+  // },
   //获取密码
   passwordInput: function (event) {
     this.setData({ newpassword: event.detail.value.replace(/\s+/g, '') })
@@ -108,7 +107,7 @@ Page({
       content: '确定要退出登录吗？',
       success: function (sm) {
         if (sm.confirm) {
-          app.globalData.userid = null
+          wx.clearStorageSync();
           wx.reLaunch({
             url: '/pages/login/login',
           })

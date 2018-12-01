@@ -7,7 +7,7 @@
     <view class="weui-search-bar">
       <view class="weui-search-bar__form">
         <view class="weui-search-bar__box">
-          <icon class="weui-icon-search_in-box" type="search" size="14" bindtap='search'></icon>
+          <icon class="weui-icon-search_in-box" type="search" bindtap='search'></icon>
           <input type="text" class="weui-search-bar__input" placeholder="请输入查询内容" value="{{search}}" bindinput='SearchInput' />
           
         </view>

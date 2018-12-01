@@ -6,6 +6,9 @@ Page({
   data: {
     auth:"none",
     courseList:null,
+    classname:"",
+    price:"",
+    improveprice:"",
     username: '',
     tel: '',
     primarytel:'',
@@ -67,30 +70,6 @@ Page({
         visible5: false
       });
     } else {
-    /*//判断手机号是否正确
-      let that = this;
-      var requestIP = app.globalData.requestIP
-      //第一步：验证手机号码
-      var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
-      console.log("手机号" + that.data.tel);
-      if (that.data.tel.length == 0) {
-        wx.showToast({
-          title: '请填写正确的手机号码!',
-          icon: 'none',
-          duration: 1000
-        })
-        return false;
-      }
-
-      else if (!myreg.test(that.data.tel)) {
-        wx.showToast({
-          title: '请填写正确的手机号码!',
-          icon: 'none',
-          duration: 1000
-        })
-        return false;
-      }
-    //判断验证码是否正确*/
 
     that.pay();
     
@@ -106,49 +85,94 @@ Page({
       actions5: action
     });
 
+    wx.request({
+      url: requestIP + '/student/signup',
+      data: {
+        classid:that.data.classid,
+        classname:that.data.classname,
+        userid: app.globalData.userid,
+        improveprice: that.data.improveprice,
+        price: that.data.price
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'userid': app.globalData.userid
+      },
+      success(res) {
+        console.log(res.data.data);
+        if (res.data.resultCode == '101') {
+          var merchantNumber = res.data.data;
+          wx.request({
+            url: requestIP + '/weixin/pay',
+            data: {
+              merchantNumber: merchantNumber
+            },
+            method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded', // 默认值
+              'userid': app.globalData.userid
+            },
+            success(re) {
+              console.log(re.data.resultCode);
+              if (re.data.resultCode == '101') {
+
+                //调用微信API
+                wx.requestPayment(
+                  {
+                    'timeStamp': '',
+                    'nonceStr': '',
+                    'package': '',
+                    'signType': 'MD5',
+                    'paySign': '',
+                    'success': function (res) { },
+                    'fail': function (res) { },
+                    'complete': function (res) { }
+                  })
+
+              }
+              else {
+                $Message({
+                  content: '报名失败！',
+                  type: 'error'
+                });
+              }
+            },
+            fail(re) {
+              $Message({
+                content: '报名失败！',
+                type: 'error'
+              });
+            }
+          })
+
+        }
+        else {
+          $Message({
+            content: '报名失败！',
+            type: 'error'
+          });
+        }
+      },
+      fail(res) {
+
+        $Message({
+          content: '报名失败！',
+          type: 'error'
+        });
+        
+      }
+    })
+
     setTimeout(() => {
       action[1].loading = false;
       that.setData({
         visible5: false,
         actions5: action
       });
-      $Message({
-        content: '报名成功！',
-        type: 'success'
-      });
+
     }, 2000);
-    //
-   /* wx.requestPayment({
-     timeStamp: '',
-      nonceStr: '',
-      package: '',
-      signType: 'MD5',
-      paySign: '',
-      success(res) {
 
-      },
-      fail(res) {
-        var that = this;
-        const action = [...that.data.actions5];
-        action[1].loading = true;
-
-        that.setData({
-          actions5: action
-        });
-
-        setTimeout(() => {
-          action[1].loading = false;
-          that.setData({
-            visible5: false,
-            actions5: action
-          });
-          $Message({
-            content: '报名失败！',
-            type: 'success'
-          });
-        }, 2000);
-      }
-    })*/
   },
   /**
  * 用户点击右上角分享
@@ -178,7 +202,10 @@ Page({
         if (res.data.resultCode == '101') {
           console.log(res.data)
           that.setData({
-            courseList: res.data.data
+            courseList: res.data.data,
+            classname:res.data.data.classname,
+            price:res.data.data.price,
+            improveprice:res.data.data.improveprice
           });
         }
       },

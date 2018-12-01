@@ -92,12 +92,28 @@ button {
 .btn{
   height: 100%;
   width: 50%;
-  padding-top: 45rpx;
+  padding-top: 35rpx;
   background-color: #1DA27F;
   color: #fff;
   font-weight: bold;
-  position:relative;
-  top:-10rpx;
+}
+
+.btn1{
+  height: 100%;
+  width: 50%;
+  padding-top: 35rpx;
+  background-color: #cdcdcd;
+  color: #fff;
+  font-weight: bold;
+}
+
+.btn2{
+  height: 100%;
+  width: 50%;
+  padding-top: 35rpx;
+  background-color: #10aeff;
+  color: #fff;
+  font-weight: bold;
 }
 
 .text-share{

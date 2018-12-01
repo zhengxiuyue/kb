@@ -190,7 +190,7 @@ Page({
       },
       success(res) {
         if (res.data.resultCode=='101'){
-          console.log("有多少可报名" + res.data.data.length);
+          console.log("有多少可报名" + res.data.data[0].classid);
           that.setData({
             classList_signUp: res.data.data
           });

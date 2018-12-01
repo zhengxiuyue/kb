@@ -56,6 +56,8 @@
 .ipt{
   position: absolute;
   left:80rpx;
+  height: auto;
+  font-size: 30rpx;
 }
 
 .canvas{
@@ -72,6 +74,7 @@
 
 .placeholder{
   color: #dddee1;
+  font-size: 30rpx;
 }
 
 .identity{
@@ -80,6 +83,7 @@
 }
 
 .radio-group{
+  font-size: 32rpx;
   position: absolute;
   top: -4rpx;
   left: 100rpx;
@@ -91,6 +95,7 @@
 }
 
 .login{
+  font-size: 32rpx;
   margin: 40rpx 80rpx;
   background-color: #1DA27F;
   color: #fff;

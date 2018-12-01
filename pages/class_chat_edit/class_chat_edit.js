@@ -22,6 +22,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     var that = this
     var classid = that.options.classid
     var level = that.options.level
@@ -78,9 +79,9 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  // onShareAppMessage: function () {
 
-  },
+  // },
 
   chatInput: function (event) {
     // 获取输入框的内容

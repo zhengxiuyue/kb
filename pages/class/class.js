@@ -466,7 +466,18 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    var that = this
+    var teacher = that.data.items.teachername
+    var coursename = that.data.items.coursename
+    var level = that.data.items.level
+    var classid = that.data.classid
+    var num = 1
+    console.log(classid)
+    return {
+      title: '快乐课表',
+      desc: '我正在' + teacher + '老师的' + coursename + level + '学习',
+      path: '/pages/class/class?classid=' + classid + '&num=' +num
+    }
   },
   changeTab(e) {
     let index = parseInt(e.currentTarget.dataset.index || 0)

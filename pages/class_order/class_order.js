@@ -8,7 +8,7 @@ Page({
     courseList: null,
     username: '',
     tel: '',
-    reservationCode:'11',//预约码
+    reservationCode:'',//预约码
     primarytel: '',
     authcode: '',
     time: '获取验证码', //倒计时 
