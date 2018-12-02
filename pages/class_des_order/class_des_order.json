@@ -3,5 +3,7 @@
  "usingComponents": {
   "i-button": "../../dist/button/index",
   "i-action-sheet": "../../dist/action-sheet/index"
-}
+},
+"enablePullDownRefresh": true,
+"onReachBottomDistance": 400
 }

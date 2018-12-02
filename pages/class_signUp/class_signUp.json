@@ -5,5 +5,7 @@
     "i-modal": "../../dist/modal/index",
     "i-message": "../../dist/message/index"
   },
-  "navigationBarTitleText": "课程报名"
+  "navigationBarTitleText": "课程报名",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 400
 }

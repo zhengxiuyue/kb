@@ -5,5 +5,7 @@
     "i-modal": "../../dist/modal/index",
     "i-message": "../../dist/message/index"
   },
-  "navigationBarTitleText": "课程预约"
+  "navigationBarTitleText": "课程预约",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 400
 }

@@ -30,6 +30,12 @@ Page({
   },
 
   onPullDownRefresh: function () {
+    wx.showNavigationBarLoading()
+    //模拟加载    
+    setTimeout(function () {      // complete      
+      wx.hideNavigationBarLoading() //完成停止加载      
+      wx.stopPullDownRefresh() //停止下拉刷新   
+    }, 1500);
     var that = this;
     wx.request({
       url: requestIP + '/student/getClassInfo',

@@ -5,5 +5,7 @@
    "i-button": "../../dist/button/index",
     "i-index": "../../dist/index/index",
     "i-index-item": "../../dist/index-item/index"
-  }
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 400
 }
