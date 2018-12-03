@@ -122,7 +122,7 @@ App({
   },
   globalData: {
     openid: "",//
-    userid: "0137da84b68111e8ab8e00163e00299d",//0137da84b68111e8ab8e00163e00299d//06c02c6cb67211e8ab8e00163e00299d
+    userid: "",//0137da84b68111e8ab8e00163e00299d//06c02c6cb67211e8ab8e00163e00299d
     nickName:"",
     avatarUrl:"",
     userInfo: null,
@@ -136,8 +136,8 @@ App({
     alreadyFlag: "0",
     res_status:null,
     //requestIP: "http://localhost:8080/happyschedule",
-     requestIP: "http://39.104.155.0:8080/happyschedule",
-    // requestIP: "http://27awkz.natappfree.cc/happyschedule",
+     //requestIP: "http://39.104.155.0:8080/happyschedule",
+    requestIP: "http://27awkz.natappfree.cc/happyschedule",
    // requestIP: "http://curriculum.50fun.cn/happyschedule",
     
     tabBar: {

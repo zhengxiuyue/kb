@@ -124,17 +124,38 @@ Page({
               if (re.data.resultCode == '101') {
 
                 //调用微信API
-                wx.requestPayment(
-                  {
-                    'timeStamp': '',
-                    'nonceStr': '',
-                    'package': '',
-                    'signType': 'MD5',
-                    'paySign': '',
-                    'success': function (res) { },
-                    'fail': function (res) { },
-                    'complete': function (res) { }
-                  })
+                wx.requestPayment({
+                  timeStamp: re.data.data.timeStamp,
+                  nonceStr: re.data.data.nonceStr,
+                  package: re.data.data.package,
+                  signType: re.data.data.signType,
+                  paySign: re.data.data.paySign,
+                  'success': function (res) {
+                    $Message({
+                      content: '报名成功！',
+                      type: 'success'
+                    });
+                    wx.navigateTo({
+                      url: '/pages/class/class',
+                    })
+                  },
+                  'fail': function (res) {
+                    if (res.errMsg == "requestPayment:fail cancel") {
+                      wx.showModal({
+                        title: '提示',
+                        content: '您已经取消了本次支付',
+                        showCancel: false
+                      })
+                    }
+                    else {
+                      wx.showModal({
+                        title: '提示',
+                        content: '网络错误，请重试',
+                        showCancel: false
+                      })
+                    }
+                  }
+                })
 
               }
               else {
