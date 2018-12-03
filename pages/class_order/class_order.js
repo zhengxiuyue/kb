@@ -6,6 +6,7 @@ Page({
   data: {
     auth: "none",
     courseList: null,
+    coursename:"",
     username: '',
     tel: '',
     reservationCode:'',//预约码
@@ -31,7 +32,9 @@ Page({
  */
   onShareAppMessage: function () {
     var that = this
+    var coursename = that.data.coursename
     var classid = that.data.classid
+    var nickname = app.globalData.nickName
     var num = 1
     return {
       title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
@@ -62,7 +65,8 @@ Page({
         if (res.data.resultCode == '101') {
           console.log(res.data)
           that.setData({
-            courseList: res.data.data
+            courseList: res.data.data,
+            coursename: res.data.data.coursename
           });
         }
       },
@@ -306,7 +310,8 @@ Page({
         if (res.data.resultCode == '101') {
           console.log(res.data)
           that.setData({
-            courseList: res.data.data
+            courseList: res.data.data,
+            coursename: res.data.data.coursename
           });
         }
       },

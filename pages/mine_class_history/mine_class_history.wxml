@@ -1,5 +1,5 @@
 <wxs src="../more/more.wxs" module="tools" />
-<view class='classcard1' catchtap='classcard' wx:for = "{{item}}" wx:key="" id='{{item.classid}}'>
+<view class='classcard1' catchtap='classcard' wx:for = "{{item}}" wx:key="" data-classid='{{item.classid}}'>
   <view class='classtop1'>
         <text class='classname1'>{{item.coursename}}</text>
   </view>

@@ -31,20 +31,22 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    classcard: function () {
+    classcard: function (e) {
+      var classid = e.currentTarget.dataset.classid
+      console.log(classid)
       wx.navigateTo({
-        url: '/pages/class/class',
+        url: '/pages/class/class?classid=' + classid,
       })
     },
     signin: function () {
-      wx.redirectTo({
+      wx.switchTab({
         url: '/pages/more/more',
       })
     }
   },
 
   ready: function () {
-   
+
   }
 })
 

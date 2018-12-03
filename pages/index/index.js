@@ -43,8 +43,9 @@ Page({
     var that = this;
     //创建节点选择器
     if(options.num == 1){
+      console.log(options.classid);
       wx.setStorageSync("classid", options.classid)
-      wx.redirectTo({
+      wx.navigateTo({
         url: '/pages/class_des_signUp/class_des_signUp',
       })
     }

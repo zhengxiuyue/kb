@@ -4,7 +4,8 @@ var requestIP = app.globalData.requestIP;
 Page({
   data: {
     phoneNumber: "",
-    classid: null
+    classid: null,
+    coursename:""
   },
   GOclass_signUp: function (e) {
     var that = this;
@@ -26,20 +27,15 @@ Page({
   },
   onShareAppMessage: function (ops) {
     var that = this
+    var coursename = that.data.coursename
     var classid = that.data.classid
+    var nickname = app.globalData.nickName
     var num = 1
     return {
       title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
       desc: '交友学习欢迎加入',
       path: '/pages/class_des_order/class_des_order?classid=' + classid + '&num=' + num
     }
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   },
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading()
@@ -64,7 +60,8 @@ Page({
           console.log(res.data.data.hotline);
           that.setData({
             courseList: res.data.data,
-            phoneNumber:res.data.data.hotline
+            phoneNumber:res.data.data.hotline,
+            coursename: res.data.data.coursename            
           });
         }
       },
@@ -98,7 +95,8 @@ Page({
           console.log(res.data.data);
           that.setData({
             courseList: res.data.data,
-            phoneNumber: res.data.data.hotline
+            phoneNumber: res.data.data.hotline,
+            coursename: res.data.data.coursename 
           });
         }
       },

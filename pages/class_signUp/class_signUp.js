@@ -6,7 +6,7 @@ Page({
   data: {
     auth:"none",
     courseList:null,
-    classname:"",
+    coursename:"",
     price:"",
     improveprice:"",
     username: '',
@@ -52,7 +52,8 @@ Page({
         if (res.data.resultCode == '101') {
           console.log(res.data)
           that.setData({
-            courseList: res.data.data
+            courseList: res.data.data,
+            coursename: res.data.data.coursename
           });
         }
       },
@@ -206,7 +207,9 @@ Page({
  */
   onShareAppMessage: function () {
     var that = this
+    var coursename = that.data.coursename
     var classid = that.data.classid
+    var nickname = app.globalData.nickName
     var num = 1
     return {
       title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
@@ -237,9 +240,7 @@ Page({
           console.log(res.data)
           that.setData({
             courseList: res.data.data,
-            classname:res.data.data.classname,
-            price:res.data.data.price,
-            improveprice:res.data.data.improveprice
+            coursename: res.data.data.coursename
           });
         }
       },

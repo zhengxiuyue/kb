@@ -467,9 +467,7 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this
-    var teacher = that.data.items.teachername
     var coursename = that.data.items.coursename
-    var level = that.data.items.level
     var classid = that.data.classid
     var nickname = app.globalData.nickName
     var num = 1

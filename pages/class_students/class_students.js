@@ -28,7 +28,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    "imgUrl": "/image/headphoto.png",
+    "imgUrl": "/image/photo.png",
     space: "/image/space.png"
   },
 

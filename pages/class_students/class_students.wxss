@@ -47,6 +47,13 @@
   left: 240rpx;
 }
 
+.tel{
+   padding: 7rpx 120rpx 7rpx 90rpx; 
+   font-size: 28rpx;
+   border-radius:5rpx; 
+   color: #9ea7b4;
+} 
+
 .contact{
   width: 40rpx;
   height: 40rpx;
@@ -55,12 +62,7 @@
   left: 360rpx;
 }
 
-.tel{
-   padding: 7rpx 120rpx 7rpx 90rpx;
-   font-size: 28rpx;
-   border-radius:5rpx; 
-   color: #9ea7b4;
-}
+
 
 .weui-search-bar {
   position: relative;

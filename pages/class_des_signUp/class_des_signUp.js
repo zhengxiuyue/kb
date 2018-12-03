@@ -4,7 +4,8 @@ var requestIP = app.globalData.requestIP;
 Page({
   data:{
     phoneNumber: app.globalData.ad_telephone,
-    classid:null
+    classid:null,
+    coursename:""
   },
   GOclass_signUp:function(e)
   {
@@ -48,7 +49,8 @@ Page({
           console.log(res.data.data.hotline);
           that.setData({
             courseList: res.data.data,
-            phoneNumber: res.data.data.hotline
+            phoneNumber: res.data.data.hotline,
+            coursename: res.data.data.coursename
           });
         }
       },
@@ -58,14 +60,15 @@ Page({
   },
   onShareAppMessage: function (ops) {
     var that = this
+    var coursename = that.data.coursename
     var classid = that.data.classid
+    var nickname = app.globalData.nickName
     var num = 1
     return {
       title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
       desc: '交友学习欢迎加入',
       path: '/pages/class_des_signUp/class_des_signUp?classid=' + classid + '&num=' + num
     }
-
   },
   onLoad: function (options) {
     var that = this;
@@ -90,7 +93,8 @@ Page({
           console.log(res.data.data.hotline);
           that.setData({
             courseList: res.data.data,
-            phoneNumber: res.data.data.hotline
+            phoneNumber: res.data.data.hotline,
+            coursename: res.data.data.coursename
           });
         }
       },

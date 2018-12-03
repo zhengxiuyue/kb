@@ -35,7 +35,7 @@
   position: absolute;
   top: 20rpx;
   left: -40rpx;
-  background-color: rgb(255,202,0);
+  background-color: gray;
   z-index: 99;
   text-align: center;
 }
