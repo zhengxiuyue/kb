@@ -135,9 +135,9 @@ App({
     storename:'',
     alreadyFlag: "0",
     res_status:null,
-    //requestIP: "http://localhost:8080/happyschedule",
-     //requestIP: "http://39.104.155.0:8080/happyschedule",
-    requestIP: "http://27awkz.natappfree.cc/happyschedule",
+  //requestIP: "http://localhost:8080/happyschedule",
+     requestIP: "http://39.104.155.0:8080/happyschedule",
+    //requestIP: "http://27awkz.natappfree.cc/happyschedule",
    // requestIP: "http://curriculum.50fun.cn/happyschedule",
     
     tabBar: {
