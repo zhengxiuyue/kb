@@ -95,11 +95,11 @@
           预约试听
         </view>
 
-        <view class='btn' style='display:{{res_status == 0? "block":"none"}}'>
+        <view class='btn' style='display:{{res_status == 0? "block":"none"}}' bindtap='order_ing'>
           预约中
         </view>
 
-        <view class='btn' style='display:{{res_status == 1? "block":"none"}}'>
+        <view class='btn' style='display:{{res_status == 1? "block":"none"}}' bindtap='order_ed'>
           已预约
         </view>
       

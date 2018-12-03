@@ -319,6 +319,20 @@ Page({
       }
     })
   },
+  order_ing:function(){
+    wx.showToast({
+      title: '您的预约正在处理中，请勿重复预约!',
+      icon: "",
+      duration: 1000
+    })
+  },
+  order_ed:function(){
+    wx.showToast({
+      title: '您已预约该课程，请勿重复预约!',
+      icon: '',
+      duration: 1000
+    })
+  },
   //预约
   order:function(e){
     console.log(e);
