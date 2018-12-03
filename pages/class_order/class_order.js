@@ -30,7 +30,14 @@ Page({
  * 用户点击右上角分享
  */
   onShareAppMessage: function () {
-
+    var that = this
+    var classid = that.data.classid
+    var num = 1
+    return {
+      title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
+      desc: '交友学习欢迎加入',
+      path: '/pages/class_order/class_order?classid=' + classid + '&num=' + num
+    }
   },
 
   onLoad: function (options) {
