@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 18,
+			"current": 19,
 			"list": [
 				{
 					"id": -1,
@@ -149,7 +149,14 @@
 				{
 					"id": -1,
 					"name": "order",
-					"pathName": "pages/class_order/class_order"
+					"pathName": "pages/class_order/class_order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "导航栏",
+					"pathName": "pages/tabBar/tabBar",
+					"query": ""
 				}
 			]
 		}

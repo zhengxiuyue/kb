@@ -1,10 +1,10 @@
 const { $Message } = require('../../dist/base/index');
-var interval = null //倒计时函数
+
 var app = getApp();
 var requestIP = app.globalData.requestIP;
 Page({
   data: {
-    auth:"none",
+    classid:"",
     courseList:null,
     coursename:"",
     price:"",
@@ -12,10 +12,6 @@ Page({
     username: '',
     tel: '',
     primarytel:'',
-    authcode: '',
-    time: '获取验证码', //倒计时 
-    currentTime: 60,//限制60s
-    isClick: false,//获取验证码按钮，默认允许点击
     visible5: false,
     actions5: [
       {
@@ -40,7 +36,7 @@ Page({
     wx.request({
       url: requestIP + '/student/getClassInfo',
       data: {
-        classid: classid
+        classid: that.data.classid
       },
       method: 'POST',
       header: {
@@ -48,12 +44,12 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.resultCode)
         if (res.data.resultCode == '101') {
-          console.log(res.data)
           that.setData({
             courseList: res.data.data,
-            coursename: res.data.data.coursename
+            coursename: res.data.data.coursename,
+            improveprice: res.data.data.improveprice,
+            price: res.data.data.price
           });
         }
       },
@@ -78,130 +74,126 @@ Page({
       });
     } else {
 
-    that.pay();
-    
-    }
-  },
-  //发起支付
-  pay:function(e){
-    var that = this;
-    const action = [...that.data.actions5];
-    action[1].loading = true;
+      const action = [...that.data.actions5];
+      action[1].loading = true;
 
-    that.setData({
-      actions5: action
-    });
+      that.setData({
+        actions5: action
+      });
 
-    wx.request({
-      url: requestIP + '/student/signup',
-      data: {
-        classid:that.data.classid,
-        classname:that.data.classname,
-        userid: app.globalData.userid,
-        improveprice: that.data.improveprice,
-        price: that.data.price
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'userid': app.globalData.userid
-      },
-      success(res) {
-        console.log(res.data.data);
-        if (res.data.resultCode == '101') {
-          var merchantNumber = res.data.data;
-          wx.request({
-            url: requestIP + '/weixin/pay',
-            data: {
-              merchantNumber: merchantNumber
-            },
-            method: 'POST',
-            header: {
-              'content-type': 'application/x-www-form-urlencoded', // 默认值
-              'userid': app.globalData.userid
-            },
-            success(re) {
-              console.log(re.data.resultCode);
-              if (re.data.resultCode == '101') {
+      console.log("报名这里" + that.data.classid);
 
-                //调用微信API
-                wx.requestPayment({
-                  timeStamp: re.data.data.timeStamp,
-                  nonceStr: re.data.data.nonceStr,
-                  package: re.data.data.package,
-                  signType: re.data.data.signType,
-                  paySign: re.data.data.paySign,
-                  'success': function (res) {
-                    $Message({
-                      content: '报名成功！',
-                      type: 'success'
-                    });
-                    wx.navigateTo({
-                      url: '/pages/class/class',
-                    })
-                  },
-                  'fail': function (res) {
-                    if (res.errMsg == "requestPayment:fail cancel") {
-                      wx.showModal({
-                        title: '提示',
-                        content: '您已经取消了本次支付',
-                        showCancel: false
+      wx.request({
+        url: requestIP + '/student/signup',
+        data: {
+          classid: that.data.classid,
+          classname: that.data.coursename,
+          improveprice: that.data.improveprice,
+          price: that.data.price,
+          userid: app.globalData.userid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded', // 默认值
+          'userid': app.globalData.userid
+        },
+        success(res) {
+          console.log(res.data.data);
+          if (res.data.resultCode == '101') {
+            var merchantNumber = res.data.data;
+            wx.request({
+              url: requestIP + '/weixin/pay',
+              data: {
+                merchantNumber: merchantNumber
+              },
+              method: 'POST',
+              header: {
+                'content-type': 'application/x-www-form-urlencoded', // 默认值
+                'userid': app.globalData.userid
+              },
+              success(re) {
+                if (re.data.resultCode == '101') {
+
+                  //调用微信API
+                  wx.requestPayment({
+                    timeStamp: re.data.data.timeStamp,
+                    nonceStr: re.data.data.nonceStr,
+                    package: re.data.data.package,
+                    signType: re.data.data.signType,
+                    paySign: re.data.data.paySign,
+                    'success': function (res) {
+                      $Message({
+                        content: '报名成功！',
+                        type: 'success'
+                      });
+                      wx.navigateTo({
+                        url: '/pages/class/class',
                       })
+                    },
+                    'fail': function (res) {
+                      if (res.errMsg == "requestPayment:fail cancel") {
+                        wx.showModal({
+                          title: '提示',
+                          content: '您已经取消了本次支付',
+                          showCancel: false
+                        })
+                      }
+                      else {
+                        wx.showModal({
+                          title: '提示',
+                          content: '网络错误，请重试',
+                          showCancel: false
+                        })
+                      }
                     }
-                    else {
-                      wx.showModal({
-                        title: '提示',
-                        content: '网络错误，请重试',
-                        showCancel: false
-                      })
-                    }
-                  }
-                })
+                  })
 
-              }
-              else {
+                }
+                else {
+                  $Message({
+                    content: '报名失败！',
+                    type: 'error'
+                  });
+                }
+              },
+              fail(re) {
                 $Message({
                   content: '报名失败！',
                   type: 'error'
                 });
               }
-            },
-            fail(re) {
-              $Message({
-                content: '报名失败！',
-                type: 'error'
-              });
-            }
-          })
+            })
 
-        }
-        else {
+          }
+          else {
+            $Message({
+              content: '报名失败！',
+              type: 'error'
+            });
+          }
+        },
+        fail(res) {
+
           $Message({
             content: '报名失败！',
             type: 'error'
           });
+
         }
-      },
-      fail(res) {
+      })
 
-        $Message({
-          content: '报名失败！',
-          type: 'error'
+      setTimeout(() => {
+        action[1].loading = false;
+        that.setData({
+          visible5: false,
+          actions5: action
         });
-        
-      }
-    })
 
-    setTimeout(() => {
-      action[1].loading = false;
-      that.setData({
-        visible5: false,
-        actions5: action
-      });
-
-    }, 2000);
-
+      }, 2000);
+  
+    }
   },
+
   /**
  * 用户点击右上角分享
  */
@@ -220,15 +212,13 @@ Page({
 
   onLoad: function (options) {
     var that = this;
-    var classid = options.classid;
     that.setData({
-      classid: classid
-    })
-    console.log(classid);
+      classid: options.classid
+    });
     wx.request({
       url: requestIP + '/student/getClassInfo',
       data: {
-        classid: classid
+        classid: that.data.classid
       },
       method: 'POST',
       header: {
@@ -240,7 +230,9 @@ Page({
           console.log(res.data)
           that.setData({
             courseList: res.data.data,
-            coursename: res.data.data.coursename
+            coursename: res.data.data.coursename,
+            improveprice: res.data.data.improveprice,
+            price: res.data.data.price
           });
         }
       },
@@ -295,79 +287,6 @@ Page({
       });
     }
     that.setData({ tel: e.detail.value })
-  },
-
-  //获取验证码
-  authcodeInput: function (event) {
-    this.setData({ authcode: event.detail.value })
-  },
-
-
-  //验证
-  gainAuthCodeAction: function () {
-    let that = this;
-    var requestIP = app.globalData.requestIP
-    //第一步：验证手机号码
-    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
-    console.log("手机号" + that.data.tel);
-    if (that.data.tel.length == 0) {
-      wx.showToast({
-        title: '请填写正确的手机号码!',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    }
-
-    else if (!myreg.test(that.data.tel)) {
-      wx.showToast({
-        title: '请填写正确的手机号码!',
-        icon: 'none',
-        duration: 1000
-      })
-      return false;
-    }
-
-    wx.request({
-      url: requestIP + '/student/sendCode',
-      data: {
-        phone: that.data.tel,
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'userid': app.globalData.userid
-      },// 设置请求的 header
-      success: function (res) {
-        if (res.data.resultCode == "101") {
-          console.log(res.data.data);
-        } else {
-          console.log("请求失败");
-        }
-      },
-    })  
-
-    //第二步：设置计时器
-    // 先禁止获取验证码按钮的点击
-    that.setData({
-      isClick: true,
-    })
-    //60s倒计时 setInterval功能用于循环，常常用于播放动画，或者时间显示
-    var currentTime = that.data.currentTime;
-    interval = setInterval(function () {
-      currentTime--;//减
-      that.setData({
-        time: currentTime + '秒后获取'
-      })
-      if (currentTime <= 0) {
-        clearInterval(interval)
-        that.setData({
-          time: '重新发送',
-          currentTime: 60,
-          isClick: false
-        })
-      }
-    }, 1000);
   },
 
   //报名

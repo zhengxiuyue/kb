@@ -92,15 +92,6 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    //创建节点选择器
-    var query = wx.createSelectorQuery();    //选择id    
-    var that = this;
-    query.select('.page').boundingClientRect(function (rect) {      // 
-      //console.log(rect.height)
-      that.setData({
-        windowHeight: rect.height + 45 + 'px'
-      })
-    }).exec();
     app.editTabBar();
     console.log("already" + app.globalData.alreadyFlag);
     if (app.globalData.alreadyFlag == '0')

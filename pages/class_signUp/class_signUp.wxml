@@ -50,11 +50,6 @@
   <input class='ipt' disabled = "true" type='number' value='{{tel}}' bindinput='telInput' placeholder='请输入手机号码' placeholder-class='placeholder'></input>
 </view>
 
-<view class='infm' style='display:{{auth}}'>
-  <input class='ipt' type='number' value='{{authcode}}' bindinput='authcodeInput' placeholder='请输入验证码' placeholder-class='placeholder' >
-  </input><button disabled='{{isClick}}' bindtap='gainAuthCodeAction' class='btn'>{{time}}</button> 
-</view>
-
 <view class='tips'>
   <image src='/image/warning.png' class='tipsImg'></image>
   <view class='tipsText'>填写信息后支付，方便我们提供更深入的服务</view>

@@ -49,14 +49,7 @@ Page({
         url: '/pages/class_des_signUp/class_des_signUp',
       })
     }
-    var query = wx.createSelectorQuery();    //选择id    
-    var that = this;    
-    query.select('.page').boundingClientRect(function (rect) {      //    
-    that.setData({       
-      windowHeight: rect.height +45+'px'     
-      })   
-      }).exec();
-
+    
     app.editTabBar();
     var userstatus = app.globalData.userstatus
     this.setData({

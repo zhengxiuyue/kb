@@ -8,6 +8,7 @@
   font-family: "微软雅黑";  
   font-size: 34rpx;
   min-height: 1200rpx;
+  padding-bottom: 100rpx;
 }
 
 .menu-item{ 

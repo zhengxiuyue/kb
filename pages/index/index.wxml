@@ -2,7 +2,7 @@
 <wxs src="../more/more.wxs" module="tools" />
 <import src="/pages/tabBar/tabBar.wxml"/> 
 <template is="tabBar" data="{{tabBar}}"/>
-<view class="page" style='height:{{windowHeight}};'>
+<view class="page">
     <view class='big_title'>
         <view class="title">
           <text class="app-title">近期开课</text> 
@@ -13,7 +13,7 @@
         </view>  
     </view>
 <!--近期开课课堂-->
-       <view class='content' bindtap='GOclass_des' wx:for="{{recentClassList}}" wx:if="{{index<3}}"  data-index='{{index}}' wx:key="*this">
+       <view class='content' bindtap='GOclass_des' wx:for="{{recentClassList}}" wx:if="{{index<4}}"  data-index='{{index}}' wx:key="*this">
         <view class='content-title'>
           {{item.coursename}}
         </view>
@@ -95,6 +95,7 @@
     <view class='error' style='display:{{error_noClass_1}};'  bindtap='more'>
     <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;没有数据</text>
   </view>
+
 </view>
 
 

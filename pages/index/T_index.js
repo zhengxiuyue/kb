@@ -42,13 +42,6 @@ Page({
   onLoad: function (options) {
     var that = this;
     //创建节点选择器
-    var query = wx.createSelectorQuery();    //选择id    
-    var that = this;
-    query.select('.page').boundingClientRect(function (rect) {      //    
-      that.setData({
-        windowHeight: rect.height + 45 + 'px'
-      })
-    }).exec();
 
     app.editTabBar1();
     var userstatus = app.globalData.userstatus

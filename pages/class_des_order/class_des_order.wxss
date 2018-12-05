@@ -40,6 +40,7 @@
 }
 .know{
   margin-left: 60rpx;
+  line-height: 1.8;
 }
 .sign{
   background-color: #fff;

@@ -3,7 +3,7 @@
 <import src="/pages/tabBar/tabBar.wxml"/> 
 <template is="tabBar" data="{{tabBar}}"/>
 
-<view class='page' style='height:{{windowHeight}};'>
+<view class='page'>
   <!--选择地区-->
 
   <view class='area'>
