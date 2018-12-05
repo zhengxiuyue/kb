@@ -148,8 +148,6 @@ Page({
      }
     //发请求
     else {
-       console.log(that.data.noticecontent)
-       console.log(that.data.noticetitle)
       wx.request({
         url: requestIP + '/teacher/publishNotice',
         data: {

@@ -43,7 +43,6 @@ Component({
     },
     tel: function (e) {
       var tel = e.currentTarget.dataset.tel
-      console.log(tel)
       wx.makePhoneCall({
         phoneNumber: tel,
       })

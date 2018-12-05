@@ -41,7 +41,6 @@ Page({
   onLoad: function (options) {
     var that = this;
     var userstatus = app.globalData.userstatus
-    console.log(userstatus+"kkkk")
     var openid = app.globalData.openid
     var requestIP = app.globalData.requestIP
     var classid = that.options.classid

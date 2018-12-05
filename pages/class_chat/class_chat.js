@@ -36,7 +36,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    "imgUrl": "/image/headphoto.png",
+    "imgUrl": "/image/photo.png",
     "like": "/image/like.png",
     "dislike": "/image/dislike.png",
     "comment": "/image/comment.png",
@@ -71,9 +71,9 @@ Component({
       var dis_time = e.currentTarget.dataset.dis_time
       var content = e.currentTarget.dataset.content
       var name = e.currentTarget.dataset.name
-      console.log(dis_id + dis_time+content+name)
+      var protrait = e.currentTarget.dataset.protrait
       wx.navigateTo({
-        url: '/pages/class_comment/class_comment?dis_id=' + dis_id + '&dis_time=' + dis_time + '&content=' + content + '&name=' + name,
+        url: '/pages/class_comment/class_comment?dis_id=' + dis_id + '&dis_time=' + dis_time + '&content=' + content + '&name=' + name + '&protrait=' + protrait,
       })
     },
     delt: function (e) {
@@ -81,7 +81,6 @@ Component({
       var requestIP = app.globalData.requestIP
       //获取该评论的id
       var dis_id = e.currentTarget.dataset.item
-      console.log(dis_id)
       that.setData({
         dis_id: dis_id
       })
@@ -129,7 +128,6 @@ Component({
                         that.setData({
                           chat: that.data.chat
                         })
-                        console.log(that.data.chat)
                       }
                       else if (res.data.resultCode == "204") {
                         that.setData({

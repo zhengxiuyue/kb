@@ -27,7 +27,7 @@ Page({
     var that = this;
     query.select('.page').boundingClientRect(function (rect) {      // 
       that.setData({
-        windowHeight: rect.height + 45 + 'px'
+        windowHeight: rect.height + 90 + 'px'
       })
     }).exec();
 

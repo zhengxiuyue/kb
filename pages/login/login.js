@@ -30,8 +30,6 @@ Page({
     var that = this;
     wx.getSystemInfo({
       success: function(res) {
-        console.log(res.screenWidth)//手机屏幕宽度
-        console.log(res.screenHeight)//手机屏幕高度
         that.setData({
           // ratio: 750 / res.screenWidth,
           width: res.screenWidth / 750 * 56,

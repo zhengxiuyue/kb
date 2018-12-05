@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "imgUrl": "/image/headphoto.png",
+    "imgUrl": "/image/photo.png",
     "current":0,
     "like_num": "2",
     "comment_num": "",
@@ -20,6 +20,7 @@ Page({
     "userid":"",
     "space": "/image/space.png",
     reply_id: null,
+    protrait:""
   },
 
   /**
@@ -33,8 +34,9 @@ Page({
     var dis_time = that.options.dis_time
     var content = that.options.content
     var name = that.options.name
-    console.log(dis_id + dis_time + content + name)
+    var protrait = that.options.protrait
     this.setData({
+      protrait: protrait,
       dis_id: dis_id,
       dis_time: dis_time,
       name: name,
@@ -59,7 +61,6 @@ Page({
             comment: [],
             Iscommentspace:"none"
           })
-          console.log(res.data.data.length)
           for (var i = 0, len = res.data.data.length; i < len; i++) {
             that.data.comment[i] = res.data.data[i]
           }
@@ -67,7 +68,6 @@ Page({
             comment: that.data.comment,
             comment_num: res.data.data.length
           })
-          console.log(that.data.comment)
         } 
         else if (res.data.resultCode == "204"){
           that.setData({
@@ -161,7 +161,6 @@ Page({
         },// 设置请求的 header
         success: function (res) {
           if (res.data.resultCode == "101") {
-            console.log(res.data.data)
             wx.showToast({
               title: '发布成功',
               icon: 'success',
@@ -186,7 +185,6 @@ Page({
     var requestIP = app.globalData.requestIP
     //获取该评论的id
     var reply_id = e.currentTarget.dataset.item
-    console.log(reply_id)
     that.setData({
       reply_id: reply_id
     })
@@ -227,7 +225,6 @@ Page({
                       that.setData({
                         comment: []
                       })
-                      console.log(res.data.data.length)
                       for (var i = 0, len = res.data.data.length; i < len; i++) {
                         that.data.comment[i] = res.data.data[i]
                       }
@@ -235,7 +232,6 @@ Page({
                         comment: that.data.comment,
                         comment_num: res.data.data.length
                       })
-                      console.log(that.data.comment)
                     }
                     else if (res.data.resultCode == "204") {
                       that.setData({
