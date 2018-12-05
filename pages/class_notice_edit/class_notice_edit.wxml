@@ -8,7 +8,7 @@
 
   <view class='clear'></view>
 
-<textarea class="weui-textarea1" placeholder='标题（最多15字）' placeholder-class='place_notice'  maxlength="{{max1}}" bindinput="noticetitleInput" focus="{{focustitle}}" auto-focus bindtap='bindButtonTaptitle'>
+<textarea class="weui-textarea1" placeholder='标题（最多15字）' placeholder-class='place_notice'  maxlength="{{max1}}" bindinput="noticetitleInput" focus="{{focustitle}}" auto-focus bindtap='bindButtonTaptitle' maxlength='15'>
 </textarea>
 
   <textarea class="weui-textarea" placeholder='请输入通知内容' placeholder-class='place_notice' minlength="{{min}}" maxlength="{{max}}" focus="{{focus}}" bindinput="noticecontentInput" bindtap='bindButtonTap' cursor-spacing="200">

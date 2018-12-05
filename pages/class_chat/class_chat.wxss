@@ -104,4 +104,5 @@
 
 .signin{
   color: #1296db;
+  font-size: 30rpx;
 }

@@ -11,8 +11,8 @@ Page({
     classid:"",
     level:"",
     coursename:"",
-    texts: "最少10个字",
-    min: 10,//最少字数
+    texts: "最少5个字",
+    min: 5,//最少字数
     max: 100, //最多字数 (根据自己需求改变)
     focus:false,
     focustitle:false
@@ -97,9 +97,9 @@ Page({
     //最少字数限制
     if (len < this.data.min)
       this.setData({
-        texts: "最少10个字"
+        texts: "最少5个字"
       })
-    else if (len > this.data.min)
+    else if (len >= this.data.min)
       this.setData({
         noticecontent: event.detail.value.replace(/\s+/g, ''),
         texts: " "

@@ -29,6 +29,6 @@
 </view>
 
 <view class='submit'>
-  <button class='login' bindtap='regist' >注册</button>
+  <button class='login' bindtap='regist' disabled='{{isregistClick}}' >注册</button>
   <text class='regist' bindtap='login'>登录</text>
 </view>

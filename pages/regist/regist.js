@@ -15,6 +15,7 @@ Page({
     time: '获取验证码', //倒计时 
     currentTime: 60,//限制60s
     isClick: false,//获取验证码按钮，默认允许点击
+    isregistClick: false,//regist按钮，默认允许点击
   },
 
   /**
@@ -138,7 +139,7 @@ gainAuthCodeAction: function () {
     },
     success: function (res) {
       if (res.data.resultCode == "101") {
-        // 先禁止获取验证码按钮的点击
+       
       } 
       else if (res.data.resultCode == "205"){
         wx.showToast({
@@ -153,6 +154,7 @@ gainAuthCodeAction: function () {
     },
   })  
   //第二步：设置计时器
+  // 先禁止获取验证码按钮的点击
   that.setData({
     isClick: true,
   })

@@ -12,8 +12,8 @@ Page({
     classid:"",
     level:"",
     coursename:"",
-    texts: "最少10个字",
-    min: 10,//最少字数
+    texts: "最少5个字",
+    min: 5,//最少字数
     max: 100, //最多字数 (根据自己需求改变)
     focus: false,
   },
@@ -90,11 +90,11 @@ Page({
     var len = parseInt(value.length);
 
     //最少字数限制
-    if (len < this.data.min)
+    if (len < 5)
       this.setData({
-        texts: "最少10个字"
+        texts: "最少5个字"
       })
-    else if (len > this.data.min)
+    else if (len >= this.data.min)
       this.setData({
         chatcontent: event.detail.value.replace(/\s+/g, ''),
         texts: " "
