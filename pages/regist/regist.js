@@ -139,25 +139,6 @@ gainAuthCodeAction: function () {
     success: function (res) {
       if (res.data.resultCode == "101") {
         // 先禁止获取验证码按钮的点击
-        that.setData({
-          isClick: true,
-        })
-        //60s倒计时 setInterval功能用于循环，常常用于播放动画，或者时间显示
-        var currentTime = that.data.currentTime;
-        interval = setInterval(function () {
-          currentTime--;//减
-          that.setData({
-            time: currentTime + '秒后获取'
-          })
-          if (currentTime <= 0) {
-            clearInterval(interval)
-            that.setData({
-              time: '重新发送',
-              currentTime: 60,
-              isClick: false
-            })
-          }
-        }, 1000);
       } 
       else if (res.data.resultCode == "205"){
         wx.showToast({
@@ -172,39 +153,27 @@ gainAuthCodeAction: function () {
     },
   })  
   //第二步：设置计时器
+  that.setData({
+    isClick: true,
+  })
+  //60s倒计时 setInterval功能用于循环，常常用于播放动画，或者时间显示
+  var currentTime = that.data.currentTime;
+  interval = setInterval(function () {
+    currentTime--;//减
+    that.setData({
+      time: currentTime + '秒后获取'
+    })
+    if (currentTime <= 0) {
+      clearInterval(interval)
+      that.setData({
+        time: '重新发送',
+        currentTime: 60,
+        isClick: false
+      })
+    }
+  }, 1000);
 
 },
-
-    /*第三步：请求验证码接口，并记录服务器返回的验证码用于判断，这里服务器也可能不返回验证码，那验证码的判断交给后台
-    else{      
-      wx.request({       
-        data: {},        
-        'url': 接口地址,        
-        success(res) {          
-          console.log(res.data.data)          
-          _this.setData({            
-            iscode: res.data.data          
-          })          
-          var num = 61;          
-          var timer = setInterval(function () 
-          {            
-            num--;            
-            if (num <= 0) {              
-              clearInterval(timer);              
-              _this.setData({                
-                codename: '重新发送',                
-                disabled: false              
-              })             
-            } else 
-            {             
-               _this.setData({                
-                 codename: num + "s"              
-              })           
-            }          
-        }, 1000)
-    */
-    // wx.request({})
- 
 
   //注册验证
   regist: function (e) {
@@ -231,7 +200,7 @@ gainAuthCodeAction: function () {
       return false;
     }
 
-    //判断验证码 服务端！！！
+    //判断验证码 服务端！！
     else if (that.data.authcode.length != 6) {
       wx.showToast({
         title: '请填写正确的验证码!',
