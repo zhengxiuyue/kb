@@ -1,7 +1,7 @@
 <!--pages/mine/T_mine.wxml-->
 <import src="/pages/tabBar/tabBar.wxml"/> 
 <template is="tabBar" data="{{tabBar}}"/>
-<view class='page' style='height:{{windowHeight}}'>
+<view class='page'>
 
   <view class='user'>
     <view class='username'>{{username}}老师</view>

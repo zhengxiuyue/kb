@@ -22,13 +22,13 @@ Page({
 
     //page高度加高
     //创建节点选择器
-    var query = wx.createSelectorQuery();    //选择id    
+    // var query = wx.createSelectorQuery();    //选择id    
     var that = this;
-    query.select('.page').boundingClientRect(function (rect) {      // 
-      that.setData({
-        windowHeight: rect.height + 90 + 'px'
-      })
-    }).exec();
+    // query.select('.page').boundingClientRect(function (rect) {      // 
+    //   that.setData({
+    //     windowHeight: rect.height + 90 + 'px'
+    //   })
+    // }).exec();
 
     var userstatus = app.globalData.userstatus
     this.setData({

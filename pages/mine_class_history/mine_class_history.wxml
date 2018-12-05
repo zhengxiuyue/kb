@@ -13,7 +13,7 @@
 <view class='classcard' style='display:{{Isclassspace}}'>
   <image src='{{space}}' class='space'></image>
   <view>  
-    <text style='font-size:30rpx;' wx:if="{{userstatus == 3}}">还没有结束/的课堂</text>
+    <text style='font-size:30rpx;' wx:if="{{userstatus == 3}}">还没有结束的课堂</text>
     <text style='font-size:30rpx;' wx:if="{{userstatus == 2}}">还没有结束的课堂</text>
   </view>
 </view>
