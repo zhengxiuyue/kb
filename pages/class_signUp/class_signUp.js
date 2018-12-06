@@ -127,7 +127,7 @@ Page({
                         type: 'success'
                       });
                       wx.navigateTo({
-                        url: '/pages/class/class',
+                        url: '/pages/class/class?classid=' + that.data.classid,
                       })
                     },
                     'fail': function (res) {
