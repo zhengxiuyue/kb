@@ -27,7 +27,9 @@
 
          <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>课程价格：{{courseList.price}}元</text></view>
+                    <text style='display: {{courseList.improveprice == null? "none":"inline"}}' >课程价格：{{courseList.improveprice}}元</text>
+
+          <text style='display: {{courseList.improveprice == null? "inline":"none"}}' >课程价格：{{courseList.price}}元</text></view>
 
            <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
