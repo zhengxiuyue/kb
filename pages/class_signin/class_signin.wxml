@@ -15,7 +15,6 @@
   <button style='display:{{Issignstu == 1? "block" : "none"}}' class='signclick' bindtap='signstu'>{{signbtn}}</button>
 </view>
 
-
 <!-- 老师角色 -->
 <view wx:if="{{userstatus==2}}" class='sign1'>
   <text class='title'>选择课堂: 
@@ -26,13 +25,13 @@
     <view class="phone_personal">{{firstPerson}}</view>
   </view>
  
-  <!-- <view class='time' style=' font-weight: normal;'>
-    签到时间默认五分钟
-  </view>  -->
+  <view class='time' style=' font-weight: normal;'>
+    *签到时间默认五分钟,
+    未到时间的课不能进行操作
+  </view>  
  
   <view class="person_box">
     <view class="phone_select" hidden="{{selectPerson}}">
-      <!-- <view wx:for = "{{sign}}" wx:key="" class="select_one" data-scheduleid='{{item.scheduleid}}' bindtap="mySelect" data-id="{{time > item.date+item.startpoint && time < item.date+item.endpoint? '1':'0'}}"  data-me="{{time > item.date+item.startpoint ? '':'item.date item.startpoint--item.endpoint 第item.classnum节'}}" data-signid="{{item.sign_id}}" style='color:{{time<item.date+item.startpoint ? "gray":""}}'>{{item.date}} {{item.startpoint}}--{{item.endpoint}}<!--  第{{item.classnum}}节 </view> -->
 <!-- 已经上完的课——查看签到信息 -->
       <view  wx:for = "{{sign}}" wx:key="" wx:if = "{{time > (item.date+' '+item.endpoint) || (time > (item.date+' '+item.startpoint) && time <= (item.date+' '+item.endpoint) && item.sign_id != null) }}" class="select_one" data-scheduleid='{{item.scheduleid}}' bindtap="mySelect" data-id="1"  data-me="{{item.date}} {{tools.my_slice(item.startpoint,0,5)}}-{{tools.my_slice(item.endpoint,0,5)}} 第{{item.classnum}}节" data-signid="{{item.sign_id}}" >{{item.date}} {{tools.my_slice(item.startpoint,0,5)}}-{{tools.my_slice(item.endpoint,0,5)}} 第{{item.classnum}}节</view>
 

@@ -4,6 +4,13 @@
   border-radius: 10rpx;
 }
 
+.headphoto{
+  height: 60rpx;
+  width: 60rpx;
+  border-radius:100rpx;
+  padding-right: 10rpx;
+}
+
 .time{
   background-color: #e9eaec;
   width: 330rpx;
@@ -38,11 +45,14 @@
 }
 
 .teacher{
+  align-items: center;
+  display: flex;
   color: #657180;
   font-weight: bold;
   font-size: 32rpx;
   padding-left: 70%;
-  padding-bottom: 10rpx;
+  margin-bottom: 10rpx;
+  background-color:blanchedalmond; 
 }
 
 .edit{

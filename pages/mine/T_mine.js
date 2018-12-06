@@ -7,9 +7,10 @@ Page({
    */
   data: {
     current: 1,
-    windowHeight: null,
+    //windowHeight: null,
     username: "",
-    item: [],//定义变长数组课堂信息
+    itemnow: [],//定义变长数组课堂信息
+    itemhistory: [],//定义变长数组课堂信息
     Isclassspace: "none",
     userstatus: ""
   },
@@ -71,20 +72,20 @@ Page({
       success: function (res) {
         if (res.data.resultCode == "101") {
           that.setData({
-            item: [],
+            itemnow: [],
             Isclassspace: "none"
           })
           for (var i = 0, len = res.data.data.length; i < len; i++) {
-            that.data.item[i] = res.data.data[i]
+            that.data.itemnow[i] = res.data.data[i]
           }
           that.setData({
-            item: that.data.item
+            itemnow: that.data.itemnow
           })
         }
         else if (res.data.resultCode == "204") {
           // console.log(res.data.resultCode)
           that.setData({
-            item: [],
+            itemnow: [],
             Isclassspace: "block"
           })
         }
@@ -136,42 +137,82 @@ Page({
     wx.stopPullDownRefresh() //停止下拉刷新   
      },1500);
    
-    //获取当前课堂和历史课堂
-    wx.request({
-      url: requestIP + '/teacher/getMyClass',
-      data: {
-        "type": this.data.current
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'userid': app.globalData.userid
-      },
-      success: function (res) {
-        if (res.data.resultCode == "101") {
-          that.setData({
-            item: [],
-            Isclassspace: "none"
-          })
-          for (var i = 0, len = res.data.data.length; i < len; i++) {
-            that.data.item[i] = res.data.data[i]
+   //获取当前课堂
+    if (this.data.current == 1){
+      wx.request({
+        url: requestIP + '/teacher/getMyClass',
+        data: {
+          "type": this.data.current
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            that.setData({
+              itemnow: [],
+              Isclassspace: "none"
+            })
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.itemnow[i] = res.data.data[i]
+            }
+            that.setData({
+              itemnow: that.data.itemnow
+            })
           }
-          that.setData({
-            item: that.data.item
-          })
-        }
-        else if (res.data.resultCode == "204") {
-          // console.log(res.data.resultCode)
-          that.setData({
-            item: [],
-            Isclassspace: "block"
-          })
-        }
-        else {
-          console.log("请求失败");
-        }
-      },
-    })
+          else if (res.data.resultCode == "204") {
+            // console.log(res.data.resultCode)
+            that.setData({
+              itemnow: [],
+              Isclassspace: "block"
+            })
+          }
+          else {
+            console.log("请求失败");
+          }
+        },
+      })
+    }
+    //获取历史课堂
+    else if (this.data.current == 0) {
+      wx.request({
+        url: requestIP + '/teacher/getMyClass',
+        data: {
+          "type": this.data.current
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            that.setData({
+              itemhistory: [],
+              Isclassspace: "none"
+            })
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.itemhistory[i] = res.data.data[i]
+            }
+            that.setData({
+              itemhistory: that.data.itemhistory
+            })
+          }
+          else if (res.data.resultCode == "204") {
+            // console.log(res.data.resultCode)
+            that.setData({
+              itemhistory: [],
+              Isclassspace: "block"
+            })
+          }
+          else {
+            console.log("请求失败");
+          }
+        },
+      })
+    }   
   },
 
   /**
@@ -195,40 +236,79 @@ Page({
       current: index
     })
     var requestIP = app.globalData.requestIP
-    wx.request({
-      url: requestIP + '/teacher/getMyClass',
-      data: {
-        "type": this.data.current
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'userid': app.globalData.userid
-      },
-      success: function (res) {
-        if (res.data.resultCode == "101") {
-          that.setData({
-            item: [],
-            Isclassspace: "none"
-          })
-          for (var i = 0, len = res.data.data.length; i < len; i++) {
-            that.data.item[i] = res.data.data[i]
+    if(index == 1){
+      wx.request({
+        url: requestIP + '/teacher/getMyClass',
+        data: {
+          "type": this.data.current
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            that.setData({
+              itemnow: [],
+              Isclassspace: "none"
+            })
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.itemnow[i] = res.data.data[i]
+            }
+            that.setData({
+              itemnow: that.data.itemnow
+            })
           }
-          that.setData({
-            item: that.data.item
-          })
-        }
-        else if (res.data.resultCode == "204") {
-          that.setData({
-            item: [],
-            Isclassspace: "block"
-          })
-        }
-        else {
-          console.log("请求失败");
-        }
-      },
-    })
+          else if (res.data.resultCode == "204") {
+            that.setData({
+              itemnow: [],
+              Isclassspace: "block"
+            })
+          }
+          else {
+            console.log("请求失败");
+          }
+        },
+      })
+    }
+    else if (this.data.current == 0 && that.data.itemhistory.length==0) {
+      wx.request({
+        url: requestIP + '/teacher/getMyClass',
+        data: {
+          "type": this.data.current
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            that.setData({
+              itemhistory: [],
+              Isclassspace: "none"
+            })
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.itemhistory[i] = res.data.data[i]
+            }
+            that.setData({
+              itemhistory: that.data.itemhistory
+            })
+          }
+          else if (res.data.resultCode == "204") {
+            // console.log(res.data.resultCode)
+            that.setData({
+              itemhistory: [],
+              Isclassspace: "block"
+            })
+          }
+          else {
+            console.log("请求失败");
+          }
+        },
+      })
+    }      
   },
   dropDown: function (e) {
     wx.navigateTo({

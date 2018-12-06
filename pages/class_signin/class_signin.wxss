@@ -37,6 +37,8 @@
 .time{
   text-align: center;
   margin-top: 40rpx;
+  font-size: 30rpx;
+  color: #657180;
 }
 
 .explain{

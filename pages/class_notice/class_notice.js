@@ -35,6 +35,7 @@ Component({
     "edit": "/image/edit.png",
     "space":"/image/space.png",
     "no_id": "",
+    imgUrl:"/image/photo.png",
     userstatus:""
   },
 

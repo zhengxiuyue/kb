@@ -26,7 +26,7 @@
         <view class='class'>
         
           <view class='class_des_text'>
-            <text>课程地点：{{items.location}}</text>
+            <text>课程地点：{{items.province}}-{{items.city}}-{{items.areaname}}-{{items.location}}</text>
           </view>
 
           <view class='class_des_text'>
@@ -39,11 +39,7 @@
           </view>
 
           <view class='class_des_text'>
-            <text>上课时长：{{items.requiredclasshours}}h</text>
-          </view>
-
-          <view class='class_des_text'>
-            <text>课容量：{{items.vol}}</text>
+            <text>课容量：{{items.vol}}(人)</text>
           </view>
       </view>
     </view>
