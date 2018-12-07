@@ -1,4 +1,3 @@
-
 // 引入SDK核心类
 var QQMapWX = require('../../dist/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
@@ -394,12 +393,5 @@ Page({
         });
       }
     });
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

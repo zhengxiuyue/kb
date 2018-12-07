@@ -1,4 +1,3 @@
-// pages/index/index.js
 var app = getApp();
 var requestIP = app.globalData.requestIP;
 

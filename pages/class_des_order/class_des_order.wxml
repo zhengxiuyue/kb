@@ -34,7 +34,7 @@
 
            <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>课容量：{{courseList.vol}}</text></view>
+          <text>课容量：{{courseList.vol}}人</text></view>
 
       </view>
 
@@ -65,9 +65,9 @@
       </view>
 
        <view class='know'>
-        <view>1、预约成功后，拥有体验上课的权力。</view>
-        <view>2、预约成功后，可向前台出示手机号或课堂详情作为凭证</view>
-        <view>3、预约课程支持取消预约</view>
+        <view>1、提交预约申请后，后台会人工审核告知预约结果。</view>
+        <view>2、预约成功后，拥有体验上课的权力。</view>
+        <view>3、预约成功后，可向前台出示手机号或课堂详情作为凭证。</view>
       </view>
 </view>
 

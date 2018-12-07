@@ -121,3 +121,7 @@ list-style: none;
   margin:20rpx 45% 0rpx 80rpx;
   border-bottom:4rpx solid #dddee1;
 }
+
+#disabled{
+  color: #efefef;
+}

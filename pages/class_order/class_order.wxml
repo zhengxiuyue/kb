@@ -63,7 +63,7 @@
 
 <view class='tips'>
   <image src='/image/warning.png' class='tipsImg'></image>
-  <view class='tipsText'>填写信息后支付，方便我们提供更深入的服务</view>
+  <view class='tipsText'>填写信息后预约，方便我们提供更深入的服务</view>
 </view>
 
 <view>

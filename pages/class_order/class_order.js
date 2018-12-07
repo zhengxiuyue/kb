@@ -77,6 +77,7 @@ Page({
   },
 
   getMyInfo: function (e) {
+    wx.getStorageInfoSync("");
     var that = this;
     wx.request({
       url: requestIP + '/user/getMyInfo',

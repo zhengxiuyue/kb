@@ -1,4 +1,3 @@
-// pages/class_des/class_des.js
 var app = getApp();
 var requestIP = app.globalData.requestIP;
 Page({

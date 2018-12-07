@@ -21,12 +21,6 @@
     </view>
   </picker>
       </view>
-  <!--<picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-    <view class="picker">
-      <image src='/image/area.png' class='areaIcon'></image><text decode="true" class='text-blod'>&nbsp;{{city}}&nbsp;&nbsp;</text>
-      {{storename}} <image src='/image/dropDown.png' class='pikerImg'></image>
-    </view>
-  </picker>-->
   </view>
   </view>
 
@@ -65,8 +59,6 @@
   <view class='error' style='display:{{error_noClassOrder}};'>
     <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;{{errortips}}</text>
   </view>
-
-
 
    <!--可报名课程列表-->
     <view>
