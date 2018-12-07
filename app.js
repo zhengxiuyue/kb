@@ -140,12 +140,12 @@ App({
     curPage.setData({ tabBar: tabBar });
   },
   globalData: {
-    openid: "",
-    userid: "",
-    userInfo: null,
+    openid: "",//openid
+    userid: "",//用户id
+    userInfo: null,//用户微信信息
     userstatus:"",//用户身份
-    code:"",
-    storeid:"",
+    code:"",//code
+    storeid:"",//门店id
     province:"",//省
     city:"",//市
     areaname:"",//区

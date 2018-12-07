@@ -13,7 +13,7 @@
         </view>  
     </view>
 <!--近期开课课堂-->
-       <view class='content' bindtap='GOclass_des' wx:for="{{recentClassList}}" wx:if="{{index<4}}"  data-index='{{index}}' wx:key="*this">
+       <view class='content' bindtap='GOclass_des' wx:for="{{recentClassList}}" wx:if="{{index<3}}"  data-index='{{index}}' wx:key="*this">
         <view class='content-title'>
           {{item.coursename}}
         </view>
