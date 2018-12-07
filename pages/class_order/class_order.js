@@ -343,8 +343,10 @@ Page({
             icon: 'success',
             duration: 1000
           })
-          wx.navigateTo({
-            url: '../more/more',
+          setTimeout(function(){
+            wx.navigateTo({
+              url: '../more/more',
+            }),2000
           })
         } else if (res.data.resultCode == '216'){
           wx.showToast({
