@@ -11,7 +11,8 @@ Page({
     userstatus: app.globalData.userstatus,
     error_noNotice:"none",
     errortips:"暂时没有通知",
-    noticeList:""
+    noticeList:"",
+    imgUrl: "/image/photo.png"
   },
 
   /**

@@ -3,6 +3,12 @@
   background-color: #fff;
   border-radius: 10rpx;
 }
+.headphoto{
+  height: 60rpx;
+  width: 60rpx;
+  border-radius:100rpx;
+  margin-right: 20rpx;
+}
 
 .time{
   background-color: #e9eaec;

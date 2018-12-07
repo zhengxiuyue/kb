@@ -8,14 +8,15 @@
     <view class='time'>{{item.no_time}}</view>
   <view class='aNotice'>
       <view class='title'>{{item.no_title}}
-        <!--image class='delete' src='/image/delete.png' bindtap='delt' style='display:{{userstatus == 2? "block":"none"}}'></image>-->
       </view>
       <view class='contentNotice'>
         <text>{{item.no_content}}</text>
       </view>
-      <view class='teacher'>
+      <!--<view class='teacher'>
+      <image wx:if="{{item.protrait!=null}}" class="headphoto" src="{{item.protrait}}" background-size="cover"></image>
+      <image wx:else class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
       {{item.name}}
-      </view>
+      </view>-->
   </view>
 </view>
 </view>

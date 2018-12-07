@@ -130,27 +130,22 @@ App({
     curPage.setData({ tabBar: tabBar });
   },
   globalData: {
-    openid: "",//
-    userid: "",//
-    // nickName:"",//微信昵称
-    // avatarUrl:"",//微信头像
-    // name:"",//用户姓名
-    // tel:"",//用户电话号码
+    openid: "",
+    userid: "",
     userInfo: null,
-    userstatus:"",//用户身份 ,
+    userstatus:"",//用户身份
     code:"",
     storeid:"",
-    province:"",
-    city:"",
-    areaname:"",
-    storename:'',
-    alreadyFlag: "0",
+    province:"",//省
+    city:"",//市
+    areaname:"",//区
+    storename:'',//门店名称
+    alreadyFlag: "0",//是否第一次加载
     res_status:null,
- //requestIP: "http://localhost:8080/happyschedule",
-    // requestIP: "http://39.104.155.0:8080/happyschedule",
-    
-    requestIP: "http://6bdcba.natappfree.cc/happyschedule",
-    //  requestIP: "https://curriculum.50fun.cn/happyschedule",
+    //requestIP: "http://localhost:8080/happyschedule",
+    requestIP: "http://39.104.155.0:8080/happyschedule",
+    //requestIP: "http://6bdcba.natappfree.cc/happyschedule",
+    //requestIP: "https://curriculum.50fun.cn/happyschedule",
     
     tabBar: {
       color: "black",
