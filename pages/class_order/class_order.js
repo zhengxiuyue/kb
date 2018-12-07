@@ -338,10 +338,6 @@ Page({
       success(res) {
         console.log(res.data.resultCode+res.data.data);
         if (res.data.resultCode == '101') {
-         /* $Message({
-            content: '预约成功！',
-            type: 'success'
-          });*/
           wx.showToast({
             title: '预约成功！!',
             icon: 'success',

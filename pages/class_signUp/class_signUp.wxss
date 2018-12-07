@@ -123,5 +123,5 @@ list-style: none;
 }
 
 #disabled{
-  color: #efefef;
+  color: #666666;
 }
