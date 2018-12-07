@@ -7,12 +7,11 @@ Page({
    */
   data: {
     current: 1,
-    windowHeight:null,
+   // windowHeight:null,
     username:"",
     item: [],//定义变长数组课堂信息
     Isclassspace:"none",
     userstatus:"",
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
   /**
@@ -32,32 +31,13 @@ Page({
     // }).exec();
 
     var userstatus = app.globalData.userstatus
+    var username = app.globalData.name
     this.setData({
       userstatus: userstatus,
+      username: username
     })
    
     var requestIP = app.globalData.requestIP
-
-    wx.request({
-      url: requestIP+'/user/getMyInfo',
-      data: {
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/json',
-        'userid': app.globalData.userid
-      },
-      success: function (res) {
-        if (res.data.resultCode == "101") {
-          that.setData({
-            username: res.data.data.name
-          })
-        } else {
-          console.log("请求失败");
-        }
-      },
-    })
-
     wx.request({
       url: requestIP + '/student/getMyClass',
       data: {

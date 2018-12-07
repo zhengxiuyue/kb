@@ -111,11 +111,13 @@ App({
   },
   globalData: {
     openid: "",//
-    userid: "",//0137da84b68111e8ab8e00163e00299d//06c02c6cb67211e8ab8e00163e00299d
-    nickName:"",
-    avatarUrl:"",
+    userid: "",//
+    nickName:"",//微信昵称
+    avatarUrl:"",//微信头像
+    name:"",//用户姓名
+    tel:"",//用户电话号码
     userInfo: null,
-    userstatus:"",//null,
+    userstatus:"",//用户身份 ,
     code:"",
     storeid:"",
     province:"",
@@ -124,10 +126,11 @@ App({
     storename:'',
     alreadyFlag: "0",
     res_status:null,
-    //requestIP: "http://localhost:8080/happyschedule",
-     requestIP: "http://39.104.155.0:8080/happyschedule",
-   // requestIP: "http://smrvek.natappfree.cc/happyschedule",
-   // requestIP: "https://curriculum.50fun.cn/happyschedule",
+ //requestIP: "http://localhost:8080/happyschedule",
+    // requestIP: "http://39.104.155.0:8080/happyschedule",
+    
+    requestIP: "http://7unrj4.natappfree.cc/happyschedule",
+    //  requestIP: "https://curriculum.50fun.cn/happyschedule",
     
     tabBar: {
       color: "black",

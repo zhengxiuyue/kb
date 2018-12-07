@@ -21,26 +21,11 @@ Page({
 
     let that = this;
     var requestIP = app.globalData.requestIP
-    wx.request({
-      url: requestIP + '/user/getMyInfo',
-      data: {
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/json',
-        'userid': app.globalData.userid
-      },
-      success: function (res) {
-        if (res.data.resultCode == "101") {
-          // console.log(res.data.data.name)
-          that.setData({
-            username: res.data.data.name,
-            tel: res.data.data.username
-          })
-        } else {
-          console.log("请求失败");
-        }
-      },
+    var tel = app.globalData.tel
+    var username = app.globalData.name
+    this.setData({
+      tel: tel,
+      username: username
     })
   },
 

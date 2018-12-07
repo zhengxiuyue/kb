@@ -32,32 +32,13 @@ Page({
     // }).exec();
 
     var userstatus = app.globalData.userstatus
+    var username = app.globalData.name
     this.setData({
       userstatus: userstatus,
+      username: username
     })
 
     var requestIP = app.globalData.requestIP
-
-    wx.request({
-      url: requestIP + '/user/getMyInfo',
-      data: {
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/json',
-        'userid': app.globalData.userid
-      },
-      success: function (res) {
-        if (res.data.resultCode == "101") {
-          that.setData({
-            username: res.data.data.name
-          })
-        } else {
-          console.log("请求失败");
-        }
-      },
-    })
-
     //获取当前课堂和历史课堂
     wx.request({
       url: requestIP + '/teacher/getMyClass',

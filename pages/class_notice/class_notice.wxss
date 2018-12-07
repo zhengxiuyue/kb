@@ -52,7 +52,6 @@
   font-size: 32rpx;
   padding-left: 70%;
   margin-bottom: 10rpx;
-  background-color:blanchedalmond; 
 }
 
 .edit{
