@@ -321,12 +321,17 @@ Page({
             if (res.data.resultCode == "101") {
               app.globalData.openid = res.data.data.openid
               app.globalData.userid = res.data.data.userid
-              wx.clearStorageSync();
-              wx.setStorageSync('userid', res.data.data.userid)
-              wx.setStorageSync('userstatus', 2)
-              wx.setStorageSync('openid', res.data.data.openid)
-              wx.setStorageSync('name', res.data.data.name)
-              wx.setStorageSync('tel', res.data.data.tel)
+              wx.setStorage({
+                key: "user",
+                data:
+                  {
+                    userid: res.data.data.userid,
+                    openid: res.data.data.openid,
+                    userstatus: 2,
+                    name: res.data.data.name,
+                    tel: res.data.data.tel
+                  }
+              })
               wx.redirectTo({
                 url: '/pages/index/T_index',
               })

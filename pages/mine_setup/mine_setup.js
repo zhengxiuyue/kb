@@ -21,12 +21,15 @@ Page({
 
     let that = this;
     var requestIP = app.globalData.requestIP
-    var username = wx.getStorageSync('name');
-    var tel = wx.getStorageSync('tel');
-    this.setData({
-      tel: tel,
-      username: username
-    })
+    wx.getStorage({
+      key: "user",
+      success(res) {
+        that.setData({
+          tel: res.data.tel,
+          username: res.data.name
+        })
+      }
+    })    
   },
 
   /**

@@ -31,13 +31,36 @@ App({
         }
       }
     })
-
+    var userstatus = ""
+    var name = ""
+    var openid = ""
+    var tel = ""
+    var userid = ""
     //判断是否还有缓存 有跳入index 无跳入login
-    var userid = wx.getStorageSync('userid')
-    var userstatus = wx.getStorageSync('userstatus')
-    var openid = wx.getStorageSync('openid')
-    var name = wx.getStorageSync('name')
-    var tel = wx.getStorageSync('tel')
+    wx.getStorage({
+      key: "user",
+      success:function(res) {
+        console.log("ss")
+        console.log("ss"+res.data)
+         userstatus = res.data.userstatus
+         name = res.data.name
+         openid = res.data.openid
+         tel = res.data.tel
+         userid = res.data.userid
+      }
+    })
+
+    // wx.getStorage({
+    //   key: "user",
+    //   success(res) {
+    //       var userstatus = res.data.userstatus,
+    //       var username = res.data.name,
+    //       var openid = res.data.openid,
+    //       var tel = res.data.tel,
+    //       var userid = res.data.userid
+    //   }
+    // })
+   
     console.log(userid) 
     console.log(userstatus)
     console.log(openid)

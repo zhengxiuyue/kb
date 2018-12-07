@@ -32,10 +32,14 @@ Page({
     // }).exec();
 
     var userstatus = app.globalData.userstatus
-    var username = wx.getStorageSync('name');
-    this.setData({
-      userstatus: userstatus,
-      username: username
+    wx.getStorage({
+      key: "user",
+      success(res) {
+        that.setData({
+          userstatus: userstatus,
+          username: res.data.name
+        })
+      }
     })
 
     var requestIP = app.globalData.requestIP
