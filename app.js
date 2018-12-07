@@ -26,10 +26,18 @@ App({
     })
 
     //判断是否还有缓存 有跳入index 无跳入login
-    var userid = wx.getStorageSync('userid');
-    var userstatus = wx.getStorageSync('userstatus');
-    var openid = wx.getStorageSync('openid');
-    if (userid) {
+    var userid = wx.getStorageSync('userid')
+    var userstatus = wx.getStorageSync('userstatus')
+    var openid = wx.getStorageSync('openid')
+    var name = wx.getStorageSync('name')
+    var tel = wx.getStorageSync('tel')
+    // console.log(userid) 
+    // console.log(userstatus)
+    // console.log(openid)
+    // console.log(name)
+    // console.log(userid)
+    // console.log(tel)
+    if (userid && tel && name && openid && userstatus) {
       if (userstatus == 2) {
         that.globalData.userid = userid
         that.globalData.userstatus = userstatus
@@ -112,10 +120,10 @@ App({
   globalData: {
     openid: "",//
     userid: "",//
-    nickName:"",//微信昵称
-    avatarUrl:"",//微信头像
-    name:"",//用户姓名
-    tel:"",//用户电话号码
+    // nickName:"",//微信昵称
+    // avatarUrl:"",//微信头像
+    // name:"",//用户姓名
+    // tel:"",//用户电话号码
     userInfo: null,
     userstatus:"",//用户身份 ,
     code:"",
@@ -126,9 +134,10 @@ App({
     storename:'',
     alreadyFlag: "0",
     res_status:null,
-    //requestIP: "http://localhost:8080/happyschedule",
-    requestIP: "http://39.104.155.0:8080/happyschedule",
-    //requestIP: "http://7unrj4.natappfree.cc/happyschedule",
+ //requestIP: "http://localhost:8080/happyschedule",
+    // requestIP: "http://39.104.155.0:8080/happyschedule",
+    
+    requestIP: "http://a37h3f.natappfree.cc/happyschedule",
     //  requestIP: "https://curriculum.50fun.cn/happyschedule",
     
     tabBar: {

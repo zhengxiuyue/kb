@@ -32,7 +32,7 @@ Page({
     // }).exec();
 
     var userstatus = app.globalData.userstatus
-    var username = app.globalData.name
+    var username = wx.getStorageSync('name');
     this.setData({
       userstatus: userstatus,
       username: username

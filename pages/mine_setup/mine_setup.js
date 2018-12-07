@@ -21,8 +21,8 @@ Page({
 
     let that = this;
     var requestIP = app.globalData.requestIP
-    var tel = app.globalData.tel
-    var username = app.globalData.name
+    var username = wx.getStorageSync('name');
+    var tel = wx.getStorageSync('tel');
     this.setData({
       tel: tel,
       username: username

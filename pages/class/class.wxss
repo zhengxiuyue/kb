@@ -7,16 +7,15 @@
 
 .help {
   width: 700rpx;
-  margin: 0 auto;
+  margin: 0;
   margin-top: 20rpx;
   position: relative;
 }
 
 .help .help_item {
-  margin: 10rpx auto;
+  margin: 10rpx 0;
 }
 .help .help_item .title {
-  font-size: 30rpx;
   height: 60rpx;
   line-height: 60rpx;
   display: flex;
@@ -41,7 +40,6 @@
   margin-top: 80rpx;
   margin-bottom: 0;
   font-size: 25rpx;
-  padding-left: 28rpx;
 }
 
 .classpicture{
@@ -90,13 +88,14 @@
 .class{
   margin-top: 20rpx;
   line-height: 1.8;
+  padding-left: 20rpx;
 }
 
 .class_des_text{
   color: #657180;
   line-height: 2;
   font-size: 32rpx;
-  margin-left: 62rpx;
+  margin-left: 60rpx;
 }
 
 .class-desImg{
@@ -112,10 +111,10 @@
 }
 
 .teacher{
-  color: #657180;
-  margin-left: 58rpx;
+   color: #657180;
   line-height: 2;
   font-size: 32rpx;
+  margin-left: 60rpx;
 }
 
 .teacher-rank{

@@ -206,8 +206,6 @@ Page({
             if (res.data.resultCode == "101") {
               app.globalData.openid = res.data.data.openid
               app.globalData.userid = res.data.data.userid
-              app.globalData.name = res.data.data.name
-              app.globalData.tel = res.data.data.tel
               wx.clearStorageSync();
               wx.setStorageSync('userid', res.data.data.userid)
               wx.setStorageSync('openid', res.data.data.openid)
@@ -317,8 +315,6 @@ Page({
             if (res.data.resultCode == "101") {
               app.globalData.openid = res.data.data.openid
               app.globalData.userid = res.data.data.userid
-              app.globalData.name = res.data.data.name
-              app.globalData.tel = res.data.data.tel
               wx.clearStorageSync();
               wx.setStorageSync('userid', res.data.data.userid)
               wx.setStorageSync('userstatus', 2)
