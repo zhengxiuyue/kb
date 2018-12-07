@@ -10,7 +10,7 @@ Page({
     price:"",
     improveprice:"",
     username: '',
-    tel: '',
+    tel: '11111',
     primarytel:'',
     visible5: false,
     actions5: [
@@ -244,25 +244,10 @@ Page({
 
   getMyInfo:function(e){
     var that = this;
-    wx.request({
-      url: requestIP + '/user/getMyInfo',
-      data: {
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'userid': app.globalData.userid
-      },
-      success(res) {
-        console.log("获取个人信息" + res.data.resultCode)
-        if (res.data.resultCode == '101') {
-          that.setData({
-            username: res.data.data.name,
-            primarytel: res.data.data.username,
-            tel: res.data.data.username
-          });
-        }
-      }
+    thst.setData({
+      username: wx.getStorageInfoSync("name"),
+      primarytel: wx.getStorageInfoSync("tel"),
+      tel: wx.getStorageInfoSync("tel")
     })
   },
 

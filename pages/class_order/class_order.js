@@ -77,27 +77,11 @@ Page({
   },
 
   getMyInfo: function (e) {
-    wx.getStorageInfoSync("");
     var that = this;
-    wx.request({
-      url: requestIP + '/user/getMyInfo',
-      data: {
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'userid': app.globalData.userid
-      },
-      success(res) {
-        console.log(res.data);
-        if (res.data.resultCode == '101') {
-          that.setData({
-            username: res.data.data.name,
-            primarytel: res.data.data.username,
-            tel: res.data.data.username
-          });
-        }
-      }
+    thst.setData({
+      username:wx.getStorageInfoSync("name"),
+      primarytel:wx.getStorageInfoSync("tel"),
+      tel: wx.getStorageInfoSync("tel")
     })
   },
 
@@ -113,8 +97,6 @@ Page({
   //获取手机号码
   telInput: function (e) {
     var that = this;
-    console.log(e.detail.value);
-    console.log(that.data.primarytel);
     if (e.detail.value == that.data.primarytel) {
       that.setData({
         auth: "none"
