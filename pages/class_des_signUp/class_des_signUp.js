@@ -46,7 +46,7 @@ Page({
       success(res) {
         console.log(res.data.resultCode)
         if (res.data.resultCode == '101') {
-          console.log(res.data.data.hotline);
+          console.log(res.data.data);
           that.setData({
             courseList: res.data.data,
             phoneNumber: res.data.data.hotline,
