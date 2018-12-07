@@ -1,4 +1,3 @@
-// pages/class_des/class_des.js
 var app = getApp();
 var requestIP = app.globalData.requestIP;
 Page({
@@ -10,7 +9,6 @@ Page({
   GOclass_signUp: function (e) {
     var that = this;
     var classid = that.data.classid;
-    console.log("详情页面的" + classid);
     wx.navigateTo({
       url: '../class_order/class_order?classid=' + classid,
     })
@@ -57,7 +55,7 @@ Page({
       success(res) {
         console.log(res.data.resultCode)
         if (res.data.resultCode == '101') {
-          console.log(res.data.data.hotline);
+          console.log(res.data.data);
           that.setData({
             courseList: res.data.data,
             phoneNumber:res.data.data.hotline,
@@ -73,7 +71,6 @@ Page({
     var that = this;
     var classid = wx.getStorageSync("classid");
     var res_status = app.globalData.res_status;
-   // console.log("预约详情这里" + that.options.res_status);
     that.setData({
       classid: classid,
       res_status: res_status
@@ -102,6 +99,20 @@ Page({
       },
       fail(res) {
       }
+    })
+  },
+  order_ing: function(){
+    wx.showToast({
+      title: '您的预约申请正在处理中，请勿重复预约!',
+      icon: 'none',
+      duration: 1000
+    })
+  },
+  order_ed:function(){
+    wx.showToast({
+      title: '您已预约该课程，请勿重复预约!',
+      icon: 'none',
+      duration: 1000
     })
   }
 })

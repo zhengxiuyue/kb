@@ -206,12 +206,24 @@ Page({
             if (res.data.resultCode == "101") {
               app.globalData.openid = res.data.data.openid
               app.globalData.userid = res.data.data.userid
-              wx.clearStorageSync();
+             /* wx.clearStorageSync();
               wx.setStorageSync('userid', res.data.data.userid)
               wx.setStorageSync('openid', res.data.data.openid)
               wx.setStorageSync('userstatus', 3)
               wx.setStorageSync('name', res.data.data.name)
-              wx.setStorageSync('tel', res.data.data.tel)
+              wx.setStorageSync('tel', res.data.data.tel)*/
+              wx.clearStorage();
+              wx.setStorage({
+                key:"user",
+                data:
+                {
+                  userid: res.data.data.userid,
+                  openid: res.data.data.openid,
+                  userstatus: 3,
+                  name: res.data.data.name,
+                  tel: res.data.data.tel
+                }
+              })
               wx.redirectTo({
                 url: '/pages/index/index',
               })

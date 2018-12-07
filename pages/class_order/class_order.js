@@ -78,10 +78,16 @@ Page({
 
   getMyInfo: function (e) {
     var that = this;
-    thst.setData({
-      username:wx.getStorageInfoSync("name"),
-      primarytel:wx.getStorageInfoSync("tel"),
-      tel: wx.getStorageInfoSync("tel")
+    wx.getStorage({
+      key: 'user',
+      success(res) {
+        console.log(res.data)
+        that.setData({
+          username: res.data.name,
+          primarytel: res.data.tel,
+          tel: res.data.tel
+        })
+      }
     })
   },
 
@@ -343,8 +349,10 @@ Page({
             icon: 'success',
             duration: 1000
           })
-          wx.navigateTo({
-            url: '../more/more',
+          setTimeout(function(){
+            wx.navigateTo({
+              url: '../more/more',
+            }),2000
           })
         } else if (res.data.resultCode == '216'){
           wx.showToast({
