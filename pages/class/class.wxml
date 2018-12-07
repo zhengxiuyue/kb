@@ -26,7 +26,8 @@
         <view class='class'>
         
           <view class='class_des_text'>
-            <text>课程地点：{{items.province}}-{{items.city}}-{{items.areaname}}-{{items.location}}</text>
+            <text decode="{{true}}">课程地点：{{items.province}}-{{items.city}}-{{items.areaname}}\n&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;{{items.location}}</text>
+         
           </view>
 
           <view class='class_des_text'>

@@ -8,7 +8,7 @@
   height: 60rpx;
   width: 60rpx;
   border-radius:100rpx;
-  padding-right: 10rpx;
+  margin-right: 20rpx;
 }
 
 .time{

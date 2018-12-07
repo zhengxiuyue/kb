@@ -129,7 +129,7 @@ App({
  //requestIP: "http://localhost:8080/happyschedule",
     // requestIP: "http://39.104.155.0:8080/happyschedule",
     
-    requestIP: "http://7unrj4.natappfree.cc/happyschedule",
+    requestIP: "http://a37h3f.natappfree.cc/happyschedule",
     //  requestIP: "https://curriculum.50fun.cn/happyschedule",
     
     tabBar: {

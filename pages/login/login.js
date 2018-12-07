@@ -210,7 +210,10 @@ Page({
               app.globalData.tel = res.data.data.tel
               wx.clearStorageSync();
               wx.setStorageSync('userid', res.data.data.userid)
+              wx.setStorageSync('openid', res.data.data.openid)
               wx.setStorageSync('userstatus', 3)
+              wx.setStorageSync('name', res.data.data.name)
+              wx.setStorageSync('tel', res.data.data.tel)
               wx.redirectTo({
                 url: '/pages/index/index',
               })
@@ -320,6 +323,8 @@ Page({
               wx.setStorageSync('userid', res.data.data.userid)
               wx.setStorageSync('userstatus', 2)
               wx.setStorageSync('openid', res.data.data.openid)
+              wx.setStorageSync('name', res.data.data.name)
+              wx.setStorageSync('tel', res.data.data.tel)
               wx.redirectTo({
                 url: '/pages/index/T_index',
               })
