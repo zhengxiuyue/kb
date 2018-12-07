@@ -1,6 +1,5 @@
 .help {
   width: 700rpx;
-  margin: 0;
   margin-top: 20rpx;
   position: relative;
 }
@@ -12,11 +11,13 @@
   height: 60rpx;
   line-height: 60rpx;
   display: flex;
+  background-color:salmon; 
 }
 .help .help_item .title .title_1 {
   width: 630rpx;
   height: 80rpx;
   padding-left: 20rpx;
+  background-color:sandybrown; 
 }
 .help .help_item .title .title_2 {
   width: 50rpx;
@@ -31,8 +32,7 @@
 }
 .help .help_item .detail {
   margin-top: 80rpx;
-  margin-bottom: 0;
-  font-size: 25rpx;
+  background-color: darkgray;
 }
 
 .classpicture{
@@ -70,14 +70,15 @@
 .class{
   margin-top: 20rpx;
   line-height: 1.8;
+  background-color:darkcyan; 
 }
 
 .class_des_text{
   color: #657180;
   line-height: 2;
-  float: left;
-  left: 80rpx; 
+  margin-left: 80rpx; 
   font-size: 32rpx;
+  background-color:aqua; 
 }
 
 .class-desImg-img{
@@ -89,13 +90,9 @@
   color: #657180;
   line-height: 2;
   font-size: 32rpx;
-  float: left;
-  left: 80rpx;
-}
-
-.teacher-rank{
-  color: #657180;
-  font-size: 30rpx;
+  position: absolute;
+  left: 80rpx; 
+  background-color:darkgoldenrod; 
 }
 
 .clear{

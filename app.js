@@ -38,12 +38,12 @@ App({
     var openid = wx.getStorageSync('openid')
     var name = wx.getStorageSync('name')
     var tel = wx.getStorageSync('tel')
-    // console.log(userid) 
-    // console.log(userstatus)
-    // console.log(openid)
-    // console.log(name)
-    // console.log(userid)
-    // console.log(tel)
+    console.log(userid) 
+    console.log(userstatus)
+    console.log(openid)
+    console.log(name)
+    console.log(userid)
+    console.log(tel)
     if (userid && tel && name && openid && userstatus) {
       if (userstatus == 2) {
         that.globalData.userid = userid
@@ -149,7 +149,7 @@ App({
  //requestIP: "http://localhost:8080/happyschedule",
     // requestIP: "http://39.104.155.0:8080/happyschedule",
     
-    requestIP: "http://a37h3f.natappfree.cc/happyschedule",
+    requestIP: "http://6bdcba.natappfree.cc/happyschedule",
     //  requestIP: "https://curriculum.50fun.cn/happyschedule",
     
     tabBar: {
