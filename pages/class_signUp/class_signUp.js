@@ -244,10 +244,16 @@ Page({
 
   getMyInfo:function(e){
     var that = this;
-    thst.setData({
-      username: wx.getStorageInfoSync("name"),
-      primarytel: wx.getStorageInfoSync("tel"),
-      tel: wx.getStorageInfoSync("tel")
+    wx.getStorage({
+      key: 'user',
+      success(res) {
+        console.log(res.data)
+        that.setData({
+          username: res.data.name,
+          primarytel: res.data.tel,
+          tel: res.data.tel
+        })
+      }
     })
   },
 

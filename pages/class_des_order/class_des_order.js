@@ -100,5 +100,19 @@ Page({
       fail(res) {
       }
     })
+  },
+  order_ing: function(){
+    wx.showToast({
+      title: '您的预约申请正在处理中，请勿重复预约!',
+      icon: 'none',
+      duration: 1000
+    })
+  },
+  order_ed:function(){
+    wx.showToast({
+      title: '您已预约该课程，请勿重复预约!',
+      icon: 'none',
+      duration: 1000
+    })
   }
 })
