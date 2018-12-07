@@ -121,6 +121,13 @@ Page({
     this.getClassList_signUp();
     this.getClassList_order();
   },
+  
+  /**
+ * 用户点击右上角分享
+ */
+  onShareAppMessage: function () {
+
+  },
 
   //获取当前定位
     getLocation: function (e) {

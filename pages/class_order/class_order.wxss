@@ -6,11 +6,6 @@ button::after{
 border:none;
 }
 
-button{
-  background-color: #fff;
-  color: #2a9dd1;
-}
-
 input{
 outline:none;
 border:none;
@@ -102,6 +97,12 @@ list-style: none;
   top: -55rpx;
   z-index: 99;
 }
+
+button[disabled]{
+background-color: #F8F8F8 !important;
+color:#2a9dd1 !important;
+}
+
 .infm{
   position: relative;
   height: 60rpx;

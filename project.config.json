@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 19,
+			"current": 18,
 			"list": [
 				{
 					"id": -1,
@@ -147,7 +147,7 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 18,
 					"name": "order",
 					"pathName": "pages/class_order/class_order",
 					"query": ""

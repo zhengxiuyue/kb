@@ -49,6 +49,13 @@ Page({
         url: '/pages/class_des_signUp/class_des_signUp',
       })
     }
+    else if(options.num == 2){
+      console.log(options.classid);
+      wx.setStorageSync("classid", options.classid)
+      wx.navigateTo({
+        url: '/pages/class_des_order/class_des_order',
+      })
+    }
     
     app.editTabBar();
     var userstatus = app.globalData.userstatus
@@ -76,7 +83,12 @@ Page({
     this.getMyCourse();
     this.getNotice();
   },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
 
+  },
   Godown:function(e){
     var that = this;
     that.setData({

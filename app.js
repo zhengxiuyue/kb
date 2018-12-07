@@ -3,14 +3,12 @@ App({
   onLaunch: function (options) {
     var that = this;
     var classid = options.query.classid
-    console.log(options.query.num)
     if (options.query.num){
       var num = options.query.num
     }
     else{
       var num = 0
     }
-    console.log(num)
 
     //判断是否授权 未授权跳授权页面
     wx.getSetting({
@@ -31,90 +29,79 @@ App({
         }
       }
     })
+ 
     var userstatus = ""
-    var name = ""
+    var name = "dd"
     var openid = ""
     var tel = ""
     var userid = ""
     //判断是否还有缓存 有跳入index 无跳入login
     wx.getStorage({
       key: "user",
-      success:function(res) {
-        console.log("ss")
-        console.log("ss"+res.data)
+      success(res){
          userstatus = res.data.userstatus
          name = res.data.name
          openid = res.data.openid
          tel = res.data.tel
          userid = res.data.userid
-      }
-    })
 
-    // wx.getStorage({
-    //   key: "user",
-    //   success(res) {
-    //       var userstatus = res.data.userstatus,
-    //       var username = res.data.name,
-    //       var openid = res.data.openid,
-    //       var tel = res.data.tel,
-    //       var userid = res.data.userid
-    //   }
-    // })
-   
-    console.log(userid) 
-    console.log(userstatus)
-    console.log(openid)
-    console.log(name)
-    console.log(userid)
-    console.log(tel)
-    if (userid && tel && name && openid && userstatus) {
-      if (userstatus == 2) {
-        that.globalData.userid = userid
-        that.globalData.userstatus = userstatus
-        that.globalData.openid = openid
-        wx.redirectTo({
-          url: '/pages/index/T_index?num=' + num + "&classid=" + classid
-        })
+        if (userid && tel && name && openid && userstatus) {
+          if (userstatus == 2) {
+            that.globalData.userid = userid
+            that.globalData.userstatus = userstatus
+            that.globalData.openid = openid
+            wx.redirectTo({
+              url: '/pages/index/T_index?num=' + num + "&classid=" + classid
+            })
+          }
+          else if (userstatus == 3) {
+            that.globalData.userid = userid
+            that.globalData.userstatus = userstatus
+            that.globalData.openid = openid
+            wx.redirectTo({
+              url: '/pages/index/index?num=' + num + "&classid=" + classid
+            })
+          }
+          else {
+            wx.redirectTo({
+              url: '/pages/login/login'
+            })
+          }
+        }
       }
-      else if (userstatus == 3) {
-        that.globalData.userid = userid
-        that.globalData.userstatus = userstatus
-        that.globalData.openid = openid
-        wx.redirectTo({
-          url: '/pages/index/index?num=' + num + "&classid=" + classid
-        })
-      }
-      else {
-        wx.redirectTo({
-          url: '/pages/login/login'
-        })
-      }
-    }
+    })  
+
   },
 
   onShow: function (options){
-    var that = this
-    var userstatus = wx.getStorageSync('userstatus')
-    var classid = options.query.classid
-    if (options.query.num) {
-      var num = options.query.num
-    }
-    else {
-      var num = 0
-    }
-
-    if (num == 1) {
-      if (userstatus == 2) {
-        wx.redirectTo({
-          url: '/pages/index/T_index?num=' + num + "&classid=" + classid
-        })
+    var userstatus = ""
+    wx.getStorage({
+      key: "user",
+      success(res) {
+        userstatus = res.data.userstatus
+        console.log(userstatus)
+        var that = this
+        var classid = options.query.classid
+        if (options.query.num) {
+          var num = options.query.num
+        }
+        else {
+          var num = 0
+        }
+        if (num == 1) {
+          if (userstatus == 2) {
+            wx.redirectTo({
+              url: '/pages/index/T_index?num=' + num + "&classid=" + classid
+            })
+          }
+          else if (userstatus == 3) {
+            wx.redirectTo({
+              url: '/pages/index/index?num=' + num + "&classid=" + classid
+            })
+          }
+        }
       }
-      else if (userstatus == 3) {
-        wx.redirectTo({
-          url: '/pages/index/index?num=' + num + "&classid=" + classid
-        })
-      }
-    }
+    })      
   },
 
   //第一种底部   

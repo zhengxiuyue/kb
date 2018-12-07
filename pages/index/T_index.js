@@ -106,6 +106,7 @@ Page({
   onShareAppMessage: function () {
 
   },
+  
   Godown: function (e) {
     var that = this;
     that.setData({

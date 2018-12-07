@@ -95,7 +95,7 @@ Page({
       content: '确定要退出登录吗？',
       success: function (sm) {
         if (sm.confirm) {
-          wx.clearStorageSync();
+          wx.clearStorage();
           wx.reLaunch({
             url: '/pages/login/login',
           })
