@@ -3,7 +3,14 @@ App({
   onLaunch: function (options) {
     var that = this;
     var classid = options.query.classid
-    var num = options.query.num
+    console.log(options.query.num)
+    if (options.query.num){
+      var num = options.query.num
+    }
+    else{
+      var num = 0
+    }
+    console.log(num)
 
     //判断是否授权 未授权跳授权页面
     wx.getSetting({
@@ -31,6 +38,12 @@ App({
     var openid = wx.getStorageSync('openid')
     var name = wx.getStorageSync('name')
     var tel = wx.getStorageSync('tel')
+    // console.log(userid) 
+    // console.log(userstatus)
+    // console.log(openid)
+    // console.log(name)
+    // console.log(userid)
+    // console.log(tel)
     if (userid && tel && name && openid && userstatus) {
       if (userstatus == 2) {
         that.globalData.userid = userid
@@ -57,10 +70,15 @@ App({
   },
 
   onShow: function (options){
-    var that = this;
-    var userstatus = wx.getStorageSync('userstatus');
+    var that = this
+    var userstatus = wx.getStorageSync('userstatus')
     var classid = options.query.classid
-    var num = options.query.num;
+    if (options.query.num) {
+      var num = options.query.num
+    }
+    else {
+      var num = 0
+    }
 
     if (num == 1) {
       if (userstatus == 2) {
@@ -128,8 +146,9 @@ App({
     storename:'',
     alreadyFlag: "0",
     res_status:null,
-    //requestIP: "http://localhost:8080/happyschedule",
+ //requestIP: "http://localhost:8080/happyschedule",
     // requestIP: "http://39.104.155.0:8080/happyschedule",
+    
     requestIP: "http://a37h3f.natappfree.cc/happyschedule",
     //  requestIP: "https://curriculum.50fun.cn/happyschedule",
     
