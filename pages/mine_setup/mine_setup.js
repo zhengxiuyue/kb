@@ -129,27 +129,45 @@ onConfirm: function () {
   let that = this;
   var requestIP = app.globalData.requestIP
   if (that.data.newpassword.length == 0) {
-    wx.showToast({
-      title: '请输入新密码!',
-      icon: 'none',
-      duration: 1000
-    })
+    wx.showLoading();
+    wx.hideLoading();
+    setTimeout(() => {
+      wx.showToast({
+        title: '请输入新密码!',
+        icon: 'none',
+      });
+      setTimeout(() => {
+        wx.hideToast();
+      }, 2000)
+    }, 0);
     return false;
   }
   else if (that.data.newpassword2.length == 0) {
-    wx.showToast({
-      title: '请输入确认密码!',
-      icon: 'none',
-      duration: 1000
-    })
+    wx.showLoading();
+    wx.hideLoading();
+    setTimeout(() => {
+      wx.showToast({
+        title: '请输入确认密码!',
+        icon: 'none',
+      });
+      setTimeout(() => {
+        wx.hideToast();
+      }, 2000)
+    }, 0);
     return false;
   }
   else if (that.data.newpassword != that.data.newpassword2) {
-    wx.showToast({
-      title: '两次密码请保持一致!',
-      icon: 'none',
-      duration: 1000
-    })
+    wx.showLoading();
+    wx.hideLoading();
+    setTimeout(() => {
+      wx.showToast({
+        title: '两次密码请保持一致!',
+        icon: 'none',
+      });
+      setTimeout(() => {
+        wx.hideToast();
+      }, 2000)
+    }, 0);
     return false;
   }
   else {
@@ -166,11 +184,17 @@ onConfirm: function () {
       },
       success: function (res) {
         if (res.data.resultCode == "101") {
-          wx.showToast({
-            title: '修改成功',
-            icon: 'success',
-            duration: 2000
-          })
+          wx.showLoading();
+          wx.hideLoading();
+          setTimeout(() => {
+            wx.showToast({
+              title: '修改成功',
+              icon: 'success',
+            });
+            setTimeout(() => {
+              wx.hideToast();
+            }, 2000)
+          }, 0);
         } else {
           console.log("非101");
         }

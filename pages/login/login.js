@@ -137,48 +137,78 @@ Page({
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
     //判断手机号码
     if (!myreg.test(that.data.tel)) {
-      wx.showToast({
-        title: '请填写正确的手机号码!',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '请填写正确的手机号码',
+          icon: "none",
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
       return false;
     }
 
     //判断密码
     else if (that.data.password.length == 0) {
-      wx.showToast({
-        title: '请填写正确的密码!',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '请填写正确的密码!',
+          icon: 'none',
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
       return false;
     }
 
     //判断身份
     else if (that.data.userstatus == '') {
-      wx.showToast({
-        title: '请选择身份!',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '请选择身份!',
+          icon: 'none',
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
       return false;
     }
     else if (that.data.authcode.length==0) {
-      wx.showToast({
-        title: '请输入验证码!',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '请输入验证码!',
+          icon: 'none',
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
       return false;
     }
     //判断验证码 
     else if (that.data.authcode.toUpperCase() != that.data.text.toUpperCase()) {
-      wx.showToast({
-        title: '验证码错误!',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '验证码错误!',
+          icon: 'none',
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
       that.change()
       that.setData({ 
         authcode: ""
@@ -223,11 +253,17 @@ Page({
               })
             }
             else if (res.data.resultCode == "204") {
-              wx.showToast({
-                title: '电话号码未注册!',
-                icon: 'none',
-                duration: 1000
-              })
+              wx.showLoading();
+              wx.hideLoading();
+              setTimeout(() => {
+                wx.showToast({
+                  title: '电话号码未注册!',
+                  icon: 'none',
+                });
+                setTimeout(() => {
+                  wx.hideToast();
+                }, 2000)
+              }, 0);
               app.globalData.openid = ""
               app.globalData.userid = ""
               wx.login({
@@ -245,11 +281,17 @@ Page({
               return false;
             } 
             else if (res.data.resultCode == "214"){
-              wx.showToast({
-                title: '账号和密码不匹配!',
-                icon: 'none',
-                duration: 1000
-              })
+              wx.showLoading();
+              wx.hideLoading();
+              setTimeout(() => {
+                wx.showToast({
+                  title: '账号和密码不匹配!',
+                  icon: 'none',
+                });
+                setTimeout(() => {
+                  wx.hideToast();
+                }, 2000)
+              }, 0);
               app.globalData.openid = ""
               app.globalData.userid = ""
               wx.login({
@@ -267,11 +309,17 @@ Page({
               return false;
             } 
             else if (res.data.resultCode == "213") {
-              wx.showToast({
-                title: '请选择正确的身份!',
-                icon: 'none',
-                duration: 1000
-              })
+              wx.showLoading();
+              wx.hideLoading();
+              setTimeout(() => {
+                wx.showToast({
+                  title: '请选择正确的身份!',
+                  icon: 'none',
+                });
+                setTimeout(() => {
+                  wx.hideToast();
+                }, 2000)
+              }, 0);
               app.globalData.openid = ""
               app.globalData.userid = ""
               wx.login({
@@ -337,11 +385,17 @@ Page({
               })
             }
             else if (res.data.resultCode == "214"){
-              wx.showToast({
-                title: '账号和密码不匹配!',
-                icon: 'none',
-                duration: 1000
-              })
+              wx.showLoading();
+              wx.hideLoading();
+              setTimeout(() => {
+                wx.showToast({
+                  title: '账号和密码不匹配!',
+                  icon: 'none',
+                });
+                setTimeout(() => {
+                  wx.hideToast();
+                }, 2000)
+              }, 0);
               app.globalData.openid = ""
               app.globalData.userid = ""
               wx.login({
@@ -359,11 +413,17 @@ Page({
               return false;
             } 
             else if (res.data.resultCode == "204") {
-              wx.showToast({
-                title: '电话号码未注册!',
-                icon: 'none',
-                duration: 1000
-              })
+              wx.showLoading();
+              wx.hideLoading();
+              setTimeout(() => {
+                wx.showToast({
+                  title: '电话号码未注册!',
+                  icon: 'none',
+                });
+                setTimeout(() => {
+                  wx.hideToast();
+                }, 2000)
+              }, 0);
               app.globalData.openid = ""
               app.globalData.userid = ""
               wx.login({
@@ -381,11 +441,17 @@ Page({
               return false;
             } 
             else if (res.data.resultCode == "213") {
-              wx.showToast({
-                title: '请选择正确的身份!',
-                icon: 'none',
-                duration: 1000
-              })
+              wx.showLoading();
+              wx.hideLoading();
+              setTimeout(() => {
+                wx.showToast({
+                  title: '请选择正确的身份!',
+                  icon: 'none',
+                });
+                setTimeout(() => {
+                  wx.hideToast();
+                }, 2000)
+              }, 0);
               app.globalData.openid = ""
               app.globalData.userid = ""
               wx.login({

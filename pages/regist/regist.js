@@ -109,50 +109,35 @@ gainAuthCodeAction: function () {
   //第一步：验证手机号码
   var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
   if (that.data.tel.length == 0) {
-    wx.showToast({
-      title: '请填写手机号码!',
-      icon: 'none',
-      duration: 1000
-    })
+    wx.showLoading();
+    wx.hideLoading();
+    setTimeout(() => {
+      wx.showToast({
+        title: '请填写手机号码!',
+        icon: 'none',
+      });
+      setTimeout(() => {
+        wx.hideToast();
+      }, 2000)
+    }, 0);
     return false;
   }
 
   else if (!myreg.test(that.data.tel)) {
-    wx.showToast({
-      title: '请填写正确的手机号码!',
-      icon: 'none',
-      duration: 1000
-    })
+    wx.showLoading();
+    wx.hideLoading();
+    setTimeout(() => {
+      wx.showToast({
+        title: '请填写正确的手机号码!',
+        icon: 'none',
+      });
+      setTimeout(() => {
+        wx.hideToast();
+      }, 2000)
+    }, 0);
     return false;
   }
 
-  wx.request({
-    url: requestIP+'/student/sendCode',
-    data: {
-      phone: that.data.tel,
-      type:1
-    },
-    method:'POST',
-    header: {
-      'content-type': 'application/x-www-form-urlencoded',
-      'userid': app.globalData.userid
-    },
-    success: function (res) {
-      if (res.data.resultCode == "101") {
-       
-      } 
-      else if (res.data.resultCode == "205"){
-        wx.showToast({
-          title: '该号码已经注册',
-          icon: 'success',
-          duration: 2000
-        })
-      }
-      else {
-        console.log("index.js wx.request CheckCallUser statusCode");
-      }
-    },
-  })  
   //第二步：设置计时器
   // 先禁止获取验证码按钮的点击
   that.setData({
@@ -175,6 +160,40 @@ gainAuthCodeAction: function () {
     }
   }, 1000);
 
+  wx.request({
+    url: requestIP+'/student/sendCode',
+    data: {
+      phone: that.data.tel,
+      type:1
+    },
+    method:'POST',
+    header: {
+      'content-type': 'application/x-www-form-urlencoded',
+      'userid': app.globalData.userid
+    },
+    success: function (res) {
+      if (res.data.resultCode == "101") {
+       
+      } 
+      else if (res.data.resultCode == "205"){
+        wx.showLoading();
+        wx.hideLoading();
+        setTimeout(() => {
+          wx.showToast({
+            title: '该号码已经注册',
+            icon: 'none',
+          });
+          setTimeout(() => {
+            wx.hideToast();
+          }, 2000)
+        }, 0);
+      }
+      else {
+        console.log("index.js wx.request CheckCallUser statusCode");
+      }
+    },
+  })  
+
 },
 
   //注册验证
@@ -185,50 +204,80 @@ gainAuthCodeAction: function () {
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号
     //判断姓名
     if (!name.test(that.data.username) || that.data.username.length == 0) {
-      wx.showToast({
-        title: '请输入正确的姓名!',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '请输入正确的姓名!',
+          icon: 'none',
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
       return false;
     }
     //判断手机号码
     else if (!myreg.test(that.data.tel)) {
-      wx.showToast({
-        title: '请填写正确的手机号码!',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '请填写正确的手机号码!',
+          icon: 'none',
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
       return false;
     }
 
     //判断验证码 服务端！！
     else if (that.data.authcode.length != 6) {
-      wx.showToast({
-        title: '请填写正确的验证码!',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '请填写正确的验证码!',
+          icon: 'none',
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
       return false;
     }
 
     //判断密码
     else if (that.data.password.length == 0) {
-      wx.showToast({
-        title: '请填写正确的密码!',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '请填写正确的密码!',
+          icon: 'none',
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
       return false;
     }
 
     //判断确认密码
     else if (that.data.password != that.data.password2) {
-      wx.showToast({
-        title: '两次密码请保持一致!',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '两次密码请保持一致!',
+          icon: 'none',
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
       return false;
     }
 
@@ -248,20 +297,39 @@ gainAuthCodeAction: function () {
         },
         success: function (res) {
           if (res.data.resultCode == "101") {
-            wx.showToast({
-              title: '注册成功',
-              icon: 'success',
-              duration: 2000
-            });
+            wx.showLoading();
+            wx.hideLoading();
+            setTimeout(() => {
+              wx.showToast({
+                title: '注册成功',
+                icon: 'success',
+              });
+              setTimeout(() => {
+                wx.hideToast();
+              }, 2000)
+            }, 0);
             wx.redirectTo({
               url: '/pages/login/login',
             })
-          } else {
-            console.log("index.js wx.request CheckCallUser statusCode");
+          } else if (res.data.resultCode == "216"){
+            wx.showLoading();
+            wx.hideLoading();
+            setTimeout(() => {
+              wx.showToast({
+                title: '验证码错误',
+                icon: 'none',
+              });
+              setTimeout(() => {
+                wx.hideToast();
+              }, 2000)
+            }, 0);
+          } 
+          else {
+            console.log("请求失败");
           }
         },
         fail: function () {
-          console.log("index.js wx.request CheckCallUser fail");
+          console.log("fail");
         }
       })
     }

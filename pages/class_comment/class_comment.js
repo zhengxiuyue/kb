@@ -142,11 +142,17 @@ Page({
     var requestIP = app.globalData.requestIP
     if(that.data.comment_content.length == 0)
     {
-      wx.showToast({
-        title: '请输入评论!',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '请输入评论!',
+          icon: "none",
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
     }else{
       wx.request({
         url: requestIP + '/user/replyDiscuss',
@@ -161,11 +167,17 @@ Page({
         },// 设置请求的 header
         success: function (res) {
           if (res.data.resultCode == "101") {
-            wx.showToast({
-              title: '发布成功',
-              icon: 'success',
-              duration: 2000
-            })
+            wx.showLoading();
+            wx.hideLoading();
+            setTimeout(() => {
+              wx.showToast({
+                title: '发布成功',
+                icon: "success",
+              });
+              setTimeout(() => {
+                wx.hideToast();
+              }, 2000)
+            }, 0);
             that.setData({
               comment_content:"",
               Iscommentspace: "none",
@@ -205,11 +217,17 @@ Page({
             },
             success: function (res) {
               if (res.data.resultCode == "101") {
-                wx.showToast({
-                  title: '删除成功',
-                  icon: 'success',
-                  duration: 2000
-                })
+                wx.showLoading();
+                wx.hideLoading();
+                setTimeout(() => {
+                  wx.showToast({
+                    title: '删除成功',
+                    icon: "success",
+                  });
+                  setTimeout(() => {
+                    wx.hideToast();
+                  }, 2000)
+                }, 0);
                 wx.request({
                   url: requestIP + '/user/getReplyInfo',
                   data: {

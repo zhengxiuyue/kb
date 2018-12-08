@@ -103,11 +103,17 @@ Component({
           success: function (res) {
             //本节课发布了签到
             if (res.data.resultCode == "101") {
-              wx.showToast({
-                title: '签到成功',
-                icon: 'success',
-                duration: 2000
-              })
+              wx.showLoading();
+              wx.hideLoading();
+              setTimeout(() => {
+                wx.showToast({
+                  title: '签到成功',
+                  icon: "success",
+                });
+                setTimeout(() => {
+                  wx.hideToast();
+                }, 2000)
+              }, 0);
               that.setData({
                 signnum: res.data.data.number,
                 signtime: res.data.data.sign_time,
@@ -301,11 +307,17 @@ Component({
         },// 设置请求的 header
         success: function (res) {
           if (res.data.resultCode == "101") {
-            wx.showToast({
-              title: '发布成功',
-              icon: 'success',
-              duration: 2000
-            })
+            wx.showLoading();
+            wx.hideLoading();
+            setTimeout(() => {
+              wx.showToast({
+                title: '发布成功',
+                icon: "success",
+              });
+              setTimeout(() => {
+                wx.hideToast();
+              }, 2000)
+            }, 0);
             that.setData({
               Issigntea: "1"
             })

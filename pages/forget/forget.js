@@ -102,20 +102,32 @@ Page({
     //第一步：验证手机号码
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
     if (that.data.tel.length == 0) {
-      wx.showToast({
-        title: '请输入正确的手机号码！',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '请填写正确的手机号码!',
+          icon: "none",
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
       return false;
     }
 
     if (!myreg.test(that.data.tel)) {
-      wx.showToast({
-        title: '请输入正确的手机号码！',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '请填写正确的手机号码!',
+          icon: "none",
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
       return false;
     }
 
@@ -194,41 +206,65 @@ Page({
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号
     //判断手机号码
     if (!myreg.test(that.data.tel)) {
-      wx.showToast({
-        title: '请填写正确的手机号码!',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '请输入正确的手机号码!',
+          icon: "none",
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
       return false;
     }
 
     //判断验证码 服务端！！！
     else if (that.data.authcode.length != 6) {
-      wx.showToast({
-        title: '请填写正确的验证码!',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '请填写正确的验证码!',
+          icon: "none",
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
       return false;
     }
 
     //判断密码
     else if (that.data.password.length == 0) {
-      wx.showToast({
-        title: '请填写正确的密码!',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '请填写正确的密码!',
+          icon: "none",
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
       return false;
     }
 
     //判断确认密码
     else if (that.data.password != that.data.password2) {
-      wx.showToast({
-        title: '两次密码请保持一致!',
-        icon: 'none',
-        duration: 1000
-      })
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '两次密码请保持一致!',
+          icon: "none",
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
       return false;
     }
     else {
@@ -246,11 +282,17 @@ Page({
         },
         success: function (res) {
           if (res.data.resultCode == "101") {
-            wx.showToast({
-              title: '重置成功',
-              icon: 'success',
-              duration: 2000
-            }),
+            wx.showLoading();
+            wx.hideLoading();
+            setTimeout(() => {
+              wx.showToast({
+                title: '重置成功',
+                icon: "success",
+              });
+              setTimeout(() => {
+                wx.hideToast();
+              }, 2000)
+            }, 0);
               wx.navigateBack({
                 url: '/pages/login/login'
               })
