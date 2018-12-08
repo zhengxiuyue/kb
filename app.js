@@ -3,12 +3,14 @@ App({
   onLaunch: function (options) {
     var that = this;
     var classid = options.query.classid
+    console.log(options.query.num)
     if (options.query.num){
       var num = options.query.num
     }
     else{
       var num = 0
     }
+    console.log(num)
 
     //判断是否授权 未授权跳授权页面
     wx.getSetting({
@@ -29,79 +31,67 @@ App({
         }
       }
     })
- 
-    var userstatus = ""
-    var name = "dd"
-    var openid = ""
-    var tel = ""
-    var userid = ""
+
     //判断是否还有缓存 有跳入index 无跳入login
-    wx.getStorage({
-      key: "user",
-      success(res){
-         userstatus = res.data.userstatus
-         name = res.data.name
-         openid = res.data.openid
-         tel = res.data.tel
-         userid = res.data.userid
-
-        if (userid && tel && name && openid && userstatus) {
-          if (userstatus == 2) {
-            that.globalData.userid = userid
-            that.globalData.userstatus = userstatus
-            that.globalData.openid = openid
-            wx.redirectTo({
-              url: '/pages/index/T_index?num=' + num + "&classid=" + classid
-            })
-          }
-          else if (userstatus == 3) {
-            that.globalData.userid = userid
-            that.globalData.userstatus = userstatus
-            that.globalData.openid = openid
-            wx.redirectTo({
-              url: '/pages/index/index?num=' + num + "&classid=" + classid
-            })
-          }
-          else {
-            wx.redirectTo({
-              url: '/pages/login/login'
-            })
-          }
-        }
+    var userid = wx.getStorageSync('userid')
+    var userstatus = wx.getStorageSync('userstatus')
+    var openid = wx.getStorageSync('openid')
+    var name = wx.getStorageSync('name')
+    var tel = wx.getStorageSync('tel')
+    console.log(userid) 
+    console.log(userstatus)
+    console.log(openid)
+    console.log(name)
+    console.log(userid)
+    console.log(tel)
+    if (userid && tel && name && openid && userstatus) {
+      if (userstatus == 2) {
+        that.globalData.userid = userid
+        that.globalData.userstatus = userstatus
+        that.globalData.openid = openid
+        wx.redirectTo({
+          url: '/pages/index/T_index?num=' + num + "&classid=" + classid
+        })
       }
-    })  
-
+      else if (userstatus == 3) {
+        that.globalData.userid = userid
+        that.globalData.userstatus = userstatus
+        that.globalData.openid = openid
+        wx.redirectTo({
+          url: '/pages/index/index?num=' + num + "&classid=" + classid
+        })
+      }
+      else {
+        wx.redirectTo({
+          url: '/pages/login/login'
+        })
+      }
+    }
   },
 
   onShow: function (options){
-    var userstatus = ""
-    wx.getStorage({
-      key: "user",
-      success(res) {
-        userstatus = res.data.userstatus
-        console.log(userstatus)
-        var that = this
-        var classid = options.query.classid
-        if (options.query.num) {
-          var num = options.query.num
-        }
-        else {
-          var num = 0
-        }
-        if (num == 1) {
-          if (userstatus == 2) {
-            wx.redirectTo({
-              url: '/pages/index/T_index?num=' + num + "&classid=" + classid
-            })
-          }
-          else if (userstatus == 3) {
-            wx.redirectTo({
-              url: '/pages/index/index?num=' + num + "&classid=" + classid
-            })
-          }
-        }
+    var that = this
+    var userstatus = wx.getStorageSync('userstatus')
+    var classid = options.query.classid
+    if (options.query.num) {
+      var num = options.query.num
+    }
+    else {
+      var num = 0
+    }
+
+    if (num == 1) {
+      if (userstatus == 2) {
+        wx.redirectTo({
+          url: '/pages/index/T_index?num=' + num + "&classid=" + classid
+        })
       }
-    })      
+      else if (userstatus == 3) {
+        wx.redirectTo({
+          url: '/pages/index/index?num=' + num + "&classid=" + classid
+        })
+      }
+    }
   },
 
   //第一种底部   
@@ -140,12 +130,12 @@ App({
     curPage.setData({ tabBar: tabBar });
   },
   globalData: {
-    openid: "",//openid
-    userid: "",//用户id
-    userInfo: null,//用户微信信息
+    openid: "",
+    userid: "",
+    userInfo: null,
     userstatus:"",//用户身份
-    code:"",//code
-    storeid:"",//门店id
+    code:"",
+    storeid:"",
     province:"",//省
     city:"",//市
     areaname:"",//区
