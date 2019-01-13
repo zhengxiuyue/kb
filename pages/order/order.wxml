@@ -1,0 +1,4 @@
+<!--pages/order/order.wxml-->
+<import src="/pages/tabBar/tabBar.wxml"/> 
+<template is="tabBar" data="{{tabBar}}"/>
+<text>pages/order/order.wxml</text>

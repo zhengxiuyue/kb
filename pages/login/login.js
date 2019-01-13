@@ -7,8 +7,9 @@ Page({
    */
   data: {
     items: [
+      {value: '学生', id: '1'},
       {value: '老师',id:'2'},
-      {value: '学生',id:'3'},
+      {value: '助教', id: '3'}
     ],
     userstatus: '',
     "tel": '',
@@ -217,13 +218,13 @@ Page({
     }
     else {
       //学生角色登录
-      if (con == 3) {
+      if (con == 1) {
         wx.request({
           url: requestIP+'/user/login',
           data:{
             account: that.data.tel,
             pwd: that.data.password,
-            "type":3,
+            "type":1,
             code: that.data.code,
             nickName: app.globalData.nickName,
             avatarUrl: app.globalData.avatarUrl
@@ -243,7 +244,7 @@ Page({
                 {
                   userid: res.data.data.userid,
                   openid: res.data.data.openid,
-                  userstatus: 3,
+                  userstatus: 1,
                   name: res.data.data.name,
                   tel: res.data.data.tel
                 }
@@ -264,6 +265,10 @@ Page({
                   wx.hideToast();
                 }, 2000)
               }, 0);
+              that.change()
+              that.setData({
+                authcode: ""
+              })
               app.globalData.openid = ""
               app.globalData.userid = ""
               wx.login({
@@ -292,6 +297,10 @@ Page({
                   wx.hideToast();
                 }, 2000)
               }, 0);
+              that.change()
+              that.setData({
+                authcode: ""
+              })
               app.globalData.openid = ""
               app.globalData.userid = ""
               wx.login({
@@ -320,6 +329,10 @@ Page({
                   wx.hideToast();
                 }, 2000)
               }, 0);
+              that.change()
+              that.setData({
+                authcode: ""
+              })
               app.globalData.openid = ""
               app.globalData.userid = ""
               wx.login({
@@ -396,6 +409,10 @@ Page({
                   wx.hideToast();
                 }, 2000)
               }, 0);
+              that.change()
+              that.setData({
+                authcode: ""
+              })
               app.globalData.openid = ""
               app.globalData.userid = ""
               wx.login({
@@ -424,6 +441,10 @@ Page({
                   wx.hideToast();
                 }, 2000)
               }, 0);
+              that.change()
+              that.setData({
+                authcode: ""
+              })
               app.globalData.openid = ""
               app.globalData.userid = ""
               wx.login({
@@ -452,6 +473,10 @@ Page({
                   wx.hideToast();
                 }, 2000)
               }, 0);
+              that.change()
+              that.setData({
+                authcode: ""
+              })
               app.globalData.openid = ""
               app.globalData.userid = ""
               wx.login({
@@ -477,7 +502,14 @@ Page({
             console.log("fail");
           },
         })
-      }    
+      }   
+
+      //助教角色登录
+      else if (con == 3) {
+        wx.redirectTo({
+          url: '/pages/index/A_index',
+        })
+      } 
     }    
   },
 

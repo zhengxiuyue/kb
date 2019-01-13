@@ -11,7 +11,7 @@
           <view class='classgreat'>{{items.level}}{{items.classnumber}}班</view>
     
           <view class='teacher'>
-                授课老师：{{items.teachername}} {{items.phone}}
+                授课老师：{{items.teachername}}
           </view>
         </view>
 

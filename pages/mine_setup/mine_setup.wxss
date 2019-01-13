@@ -75,14 +75,14 @@
   padding-left: 10rpx;
   border-bottom: 2rpx solid #dddee1;
 }
+
 .infm1{
-  margin-left: 10rpx;
+  margin-left: 20rpx;
   margin-bottom: 20rpx; 
   margin-top: 10rpx;
   line-height: 60rpx;
+  height: 60rpx;
   padding-left: 10rpx;
-  background-color: #fff;
-  border-bottom: 2rpx solid #eeeeee;
 }
 
 .submit{

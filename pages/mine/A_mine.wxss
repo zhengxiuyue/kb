@@ -1,5 +1,4 @@
-/* pages/mine/T_mine.wxss */
-
+/* pages/mine/A_mine.wxss */
 .user{
   height: 120rpx;
   margin: 0rpx 20rpx;
@@ -20,6 +19,17 @@
   line-height: 120rpx;
   justify-content: center;
   margin-left: 60rpx;
+}
+
+.clear{
+  display: flex;
+  flex-direction: column;
+  height:4rpx;
+  background: #eeeeee;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  margin-top: 5rpx;
+  margin-bottom: 30rpx;
 }
 
 .userAvatarUrl{
@@ -48,6 +58,7 @@
 .contact-tab {
 	display: flex;
 }
+
 .contact-tab view {
 	height: 70rpx;
 	margin: 0 30rpx;
@@ -56,19 +67,9 @@
 	font-size: 30rpx;
   font-weight: bold;
 }
+
 .contact-tab view.current {
 	border-color: #1DA27F;
 	color: #1DA27F;
   font-size: 34rpx;
-}
-
-.clear{
-  display: flex;
-  flex-direction: column;
-  height:4rpx;
-  background: #eeeeee;
-  margin-left: 40rpx;
-  margin-right: 40rpx;
-  margin-top: 5rpx;
-  margin-bottom: 30rpx;
 }

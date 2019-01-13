@@ -1,5 +1,6 @@
 // pages/class_students/class_students.js
 var app = getApp();
+var requestIP = app.globalData.requestIP
 Component({
   /**
    * 组件的属性列表
@@ -41,15 +42,8 @@ Component({
         search: e.detail.value.replace(/\s+/g, '')
       })
     },
-    tel: function (e) {
-      var tel = e.currentTarget.dataset.tel
-      wx.makePhoneCall({
-        phoneNumber: tel,
-      })
-    },
     search: function(e){
       let that = this;
-      var requestIP = app.globalData.requestIP
       if (that.data.search.length == 0) {
         wx.request({
           url: requestIP + '/user/getClassmateInfo',

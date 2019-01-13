@@ -17,8 +17,7 @@
     <text class='cont' decode="{{true}}">&nbsp;{{tel}}</text>
   </view>
 
-  <view class='infm'>
-    <text class='title'>更多\n</text>
+  <view class='infm1'>
     <text class='cont' decode="{{true}}" style='color:#1DA27F' bindtap='showDialogBtn'>&nbsp;修改密码</text>
   </view>
 
@@ -28,6 +27,11 @@
 <view class="modal-dialog" wx:if="{{showModal}}">    
   <view class="modal-title">修改密码</view>    
     <view class="modal-content">  
+
+      <view class="modal-input">        
+        <input placeholder-class="input-holder" type="password" maxlength="10" bindinput="oldpasswordInput" class="input" placeholder="旧密码"  value='{{oldpassword}}' placeholder-style='font-size:34rpx;' cursor-spacing="50">
+        </input>      
+      </view>  
 
       <view class="modal-input">        
         <input placeholder-class="input-holder" type="password" maxlength="10" bindinput="passwordInput" class="input" placeholder="新密码"  value='{{newpassword}}' placeholder-style='font-size:34rpx;' cursor-spacing="50">

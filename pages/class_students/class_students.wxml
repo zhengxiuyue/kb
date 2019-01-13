@@ -1,14 +1,14 @@
 <!--pages/class_students/class_students.wxml-->
+<wxs src="../more/more.wxs" module="tools" />
 <view class='head'>
   <view class='title'>
-    学生
+    学生(2人)
   </view>
   <view class='select'>
     <view class="weui-search-bar">
       <view class="weui-search-bar__form">
         <view class="weui-search-bar__box">
           <image class='weui-icon-search_in-box' src='/image/select.png' bindtap='search'></image>
-          <!-- <icon class="weui-icon-search_in-box" type="search" bindtap='search'></icon> -->
           <input type="text" class="weui-search-bar__input" placeholder="请输入查询内容" value="{{search}}" bindinput='SearchInput' />
           
         </view>
@@ -27,10 +27,8 @@
   <view class='stu_name'>
     {{item.name}}
   </view>
-  <view class='stu_tel' bindtap='tel' data-tel='{{item.tel}}'>
-    {{item.tel}}
-    <image src='/image/contact.png' class='contact' ></image>
-    <text  class='tel'>呼叫</text>
+  <view class='stu_tel'>
+    {{tools.my_slice(item.tel,0,3)}}****{{tools.my_slice(item.tel,7,11)}}
   </view>
   <view class='clear'></view>
 </view>

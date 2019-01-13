@@ -1,5 +1,6 @@
 // pages/mine_setup/mine_setup.js
 var app = getApp();
+var requestIP = app.globalData.requestIP
 Page({
 
   /**
@@ -9,6 +10,7 @@ Page({
     username:"",
     tel:"",
     newpassword: "",
+    oldpassword: "",
     newpassword2: "",
     hiddenmodalput: true,
     showModal: false
@@ -20,7 +22,6 @@ Page({
   onLoad: function (options) {
 
     let that = this;
-    var requestIP = app.globalData.requestIP
     wx.getStorage({
       key: "user",
       success(res) {
@@ -79,6 +80,12 @@ Page({
    */
   // onShareAppMessage: function () {
   // },
+
+  //获取旧密码
+  oldpasswordInput: function (event) {
+    this.setData({ oldpassword: event.detail.value.replace(/\s+/g, '') })
+  },
+
   //获取密码
   passwordInput: function (event) {
     this.setData({ newpassword: event.detail.value.replace(/\s+/g, '') })
@@ -127,8 +134,21 @@ onCancel: function () {
 /**   * 对话框确认按钮点击事件   */  
 onConfirm: function () { 
   let that = this;
-  var requestIP = app.globalData.requestIP
-  if (that.data.newpassword.length == 0) {
+  if (that.data.oldpassword.length == 0) {
+    wx.showLoading();
+    wx.hideLoading();
+    setTimeout(() => {
+      wx.showToast({
+        title: '请输入旧密码!',
+        icon: 'none',
+      });
+      setTimeout(() => {
+        wx.hideToast();
+      }, 2000)
+    }, 0);
+    return false;
+  }
+  else if (that.data.newpassword.length == 0) {
     wx.showLoading();
     wx.hideLoading();
     setTimeout(() => {

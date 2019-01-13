@@ -333,6 +333,13 @@ Component({
         dispaly1:"none",
         duration: 10000
       })
+    },
+
+    //老师查看学生签到详情
+    gosigndetail:function(e){
+      wx.navigateTo({
+        url: '/pages',
+      })
     }
   },
 

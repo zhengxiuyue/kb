@@ -1,6 +1,5 @@
 var app = getApp();
 var requestIP = app.globalData.requestIP;
-
 Page({
 
   /**

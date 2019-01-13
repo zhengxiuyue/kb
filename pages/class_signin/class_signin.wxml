@@ -1,8 +1,34 @@
 <wxs src="../more/more.wxs" module="tools" />
 
 <!-- 学生角色 -->
-<view wx:if="{{userstatus==3}}" class='sign'>
-  <image  style='display:{{Issignstu == 0? "block" : "none"}}' src='/image/space.png' class='space'> </image>
+<view wx:if="{{userstatus==1}}" class='sign'>
+  <view class='weui-cell-third'>  
+    <block wx:for="{{sign}}" wx:key="">   
+      <view class='weui-cell-list'>     
+      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+        <view class='weui-cell-circle'></view>       
+        <view class='weui-cell-line'>         
+          <view class='weui-cell-time'>
+            <image src='/image/date.png' class='img_time'></image>
+           <text decode="{{true}}">&nbsp;{{item.date}}</text>
+          </view>             
+
+          <view class='weui-cell-time'>
+            <image src='/image/point.png' class='img_time1'></image>
+            <text decode="{{true}}">&nbsp;{{tools.my_slice(item.startpoint,0,5)}}--{{tools.my_slice(item.endpoint,0,5)}} </text>
+          </view> 
+
+          <view class='result_time'>
+            <!-- <text class='sign_time'>2019-01-13 \n 17:05:33</text> -->
+            <!-- <text class='status_time'>已签到</text>
+            <text class='status_time1'>未签到</text> -->
+              <button class='signclick' bindtap='signstu'>签到中</button>
+          </view>     
+        </view>    
+      </view>   
+    </block>
+  </view>
+  <!-- <image  style='display:{{Issignstu == 0? "block" : "none"}}' src='/image/space.png' class='space'> </image>
   <view class='explain' style='display:{{Issignstu == 0? "block" : "none"}}'>暂无课堂签到信息发布</view>
   <text style='display:{{Issign == 1? "block" : "none"}}' >
     你是第<text class='info'>{{signnum}}</text>个签到
@@ -12,39 +38,42 @@
   <text style='display:{{Issign == 0? "block" : "none"}}' >
     正在发布签到，请点击下面按钮进行签到
   </text>
-  <button style='display:{{Issignstu == 1? "block" : "none"}}' class='signclick' bindtap='signstu'>{{signbtn}}</button>
+  <button style='display:{{Issignstu == 1? "block" : "none"}}' class='signclick' bindtap='signstu'>{{signbtn}}</button> -->
 </view>
 
 <!-- 老师角色 -->
 <view wx:if="{{userstatus==2}}" class='sign1'>
-  <text class='title'>选择课堂: 
-  </text> 
+  <view class='instruction'>提示：上课前半个小时，下课后半个小时可以签到</view>
+   <view class='weui-cell-third'>  
+    <block wx:for="{{sign}}" wx:key="">   
+      <view class='weui-cell-list'>     
+      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+        <view class='weui-cell-circle'></view>       
+        <view class='weui-cell-line-tea'>         
+          <view class='weui-cell-time'>
+            <image src='/image/date.png' class='img_time'></image>
+           <text decode="{{true}}">&nbsp;{{item.date}}</text>
+          </view>             
 
-  <!-- 下拉框选中 -->
-  <view class="phone_one" bindtap="clickPerson">
-    <view class="phone_personal">{{firstPerson}}</view>
-  </view>
- 
-  <view class='time' style=' font-weight: normal;'>
-    *签到时间默认五分钟,
-    未到时间的课不能进行操作
-  </view>  
- 
-  <view class="person_box">
-    <view class="phone_select" hidden="{{selectPerson}}">
-<!-- 已经上完的课——查看签到信息 -->
-      <view  wx:for = "{{sign}}" wx:key="" wx:if = "{{time > (item.date+' '+item.endpoint) || (time > (item.date+' '+item.startpoint) && time <= (item.date+' '+item.endpoint) && item.sign_id != null) }}" class="select_one" data-scheduleid='{{item.scheduleid}}' bindtap="mySelect" data-id="1"  data-me="{{item.date}} {{tools.my_slice(item.startpoint,0,5)}}-{{tools.my_slice(item.endpoint,0,5)}} 第{{item.classnum}}节" data-signid="{{item.sign_id}}" >{{item.date}} {{tools.my_slice(item.startpoint,0,5)}}-{{tools.my_slice(item.endpoint,0,5)}} 第{{item.classnum}}节</view>
+          <view class='weui-cell-time'>
+            <image src='/image/point.png' class='img_time1'></image>
+            <text decode="{{true}}">&nbsp;{{tools.my_slice(item.startpoint,0,5)}}--{{tools.my_slice(item.endpoint,0,5)}} </text>
+          </view> 
 
-<!-- 正在上的课——发布签到 -->
-      <view  wx:for = "{{sign}}" wx:key="" wx:if = "{{time > (item.date+' '+item.startpoint) && time <= (item.date+' '+item.endpoint) && item.sign_id == null}}" class="select_one" data-scheduleid='{{item.scheduleid}}' bindtap="mySelect" data-id="0"  data-me="{{item.date}} {{tools.my_slice(item.startpoint,0,5)}}-{{tools.my_slice(item.endpoint,0,5)}} 第{{item.classnum}}节" data-signid="{{item.sign_id}}" >{{item.date}} {{tools.my_slice(item.startpoint,0,5)}}-{{tools.my_slice(item.endpoint,0,5)}} 第{{item.classnum}}节</view>
-
-<!-- 还未到时间的课——不可操作 -->
-      <view  wx:for = "{{sign}}" wx:key="" wx:if = "{{time < (item.date+' '+item.startpoint)}}" class="select_one" data-scheduleid='{{item.scheduleid}}' data-me="{{item.date}} {{tools.my_slice(item.startpoint,0,5)}}-{{tools.my_slice(item.endpoint,0,5)}} 第{{item.classnum}}节" data-signid="{{item.sign_id}}" style='color:gray'>{{item.date}} {{tools.my_slice(item.startpoint,0,5)}}-{{tools.my_slice(item.endpoint,0,5)}} 第{{item.classnum}}节</view>
-
-      <!-- <view class="select_one" bindtap="mySelect" data-id="1" data-me="2018/11/06 9:30--11:00 第二节">2018/11/06 9:30--11:00 第二节</view>
-      <view class="select_one" data-me="2018/11/13 9:30--11:00 第三节" style='color:gray'>2018/11/13 9:30--11:00 第三节</view> -->
-      
-    </view>
+          <view class='sign_time' bindtap='gosigndetail'><text>
+          已签到学生(12) \n 未签到学生(2) 
+          </text></view>
+<!-- <text class='see_time'>详情</text> -->
+          <view class='result_time'>
+            <!-- <text class='sign_time'>2019-01-13 \n 17:05:33</text> -->
+            <!-- <text class='status_time'>已签到</text>
+            <text class='status_time1'>未签到</text> -->
+              <button class='signclickin' bindtap='signstu'>签到</button>
+              <button class='signclickout' bindtap='signstu'>签退</button>
+          </view>     
+        </view>    
+      </view>   
+    </block>
   </view>
 </view>
 
@@ -52,8 +81,6 @@
  <button class='submit' bindtap='submit' style='display:{{Issigntea == 2? "block":"none"}}' >发布签到</button>
 
 <!-- 已上完且发布了签到的显示 -->
-   <!-- <view class='title1'>你已发布签到，签到信息如下： 
-  </view>  -->
 <view style='display:{{Issigntea == 1? "block":"none"}};' class='contact'>
   <view class="contact-tab" >
     <view class="{{current == 1 ? 'current' : ''}}" bindtap="changeTab" data-index="1">已签到</view>

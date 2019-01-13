@@ -1,6 +1,6 @@
-// pages/mine/T_mine.js
+// pages/mine/A_mine.js
 var app = getApp();
-var requestIP = app.globalData.requestIP
+var requestIP = app.globalData.requestIP;
 Page({
 
   /**
@@ -19,17 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.editTabBar1();
-
-    //page高度加高
-    //创建节点选择器
-    // var query = wx.createSelectorQuery();    //选择id    
-    var that = this;
-    // query.select('.page').boundingClientRect(function (rect) {      // 
-    //   that.setData({
-    //     windowHeight: rect.height + 90 + 'px'
-    //   })
-    // }).exec();
+    app.editTabBar2();
 
     var userstatus = app.globalData.userstatus
     wx.getStorage({
@@ -42,8 +32,6 @@ Page({
       }
     })
 
-
-    //获取当前课堂和历史课堂
     wx.request({
       url: requestIP + '/teacher/getMyClass',
       data: {
@@ -92,7 +80,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //显示自定义的底部导航
+
   },
 
   /**
@@ -114,15 +102,15 @@ Page({
    */
   onPullDownRefresh: function () {
     var that = this
-    wx.showNavigationBarLoading() 
+    wx.showNavigationBarLoading()
     //模拟加载    
-    setTimeout(function()    {      // complete      
-    wx.hideNavigationBarLoading() //完成停止加载      
-    wx.stopPullDownRefresh() //停止下拉刷新   
-     },1500);
-   
-   //获取当前课堂
-    if (this.data.current == 1){
+    setTimeout(function () {      // complete      
+      wx.hideNavigationBarLoading() //完成停止加载      
+      wx.stopPullDownRefresh() //停止下拉刷新   
+    }, 1500);
+
+    //获取当前课堂
+    if (this.data.current == 1) {
       wx.request({
         url: requestIP + '/teacher/getMyClass',
         data: {
@@ -212,14 +200,13 @@ Page({
   onShareAppMessage: function () {
 
   },
-
   changeTab(e) {
     let index = parseInt(e.currentTarget.dataset.index || 0)
     let that = this
     this.setData({
       current: index
     })
-    if(index == 1){
+    if (index == 1) {
       wx.request({
         url: requestIP + '/teacher/getMyClass',
         data: {
@@ -255,7 +242,7 @@ Page({
         },
       })
     }
-    else if (this.data.current == 0 && that.data.itemhistory.length==0) {
+    else if (this.data.current == 0 && that.data.itemhistory.length == 0) {
       wx.request({
         url: requestIP + '/teacher/getMyClass',
         data: {
@@ -291,7 +278,7 @@ Page({
           }
         },
       })
-    }      
+    }
   },
   dropDown: function (e) {
     wx.navigateTo({

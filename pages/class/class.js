@@ -264,8 +264,9 @@ Page({
         },
       })
     }
-    //老师签到功能
-    else if (that.data.current == 1 & that.data.userstatus == 2) {
+    //老师签到功能& that.data.userstatus == 2
+    //签到功能
+    else if (that.data.current == 1) {
       //获取签到列表
       wx.request({
         url: requestIP + '/teacher/getSignBefore',
@@ -518,8 +519,8 @@ Page({
         },
       })
     } 
-    //老师签到功能
-    else if (that.data.current == 1 & that.data.userstatus == 2 ){
+    //签到功能
+    else if (that.data.current == 1){
       //获取签到列表
       wx.request({
         url: requestIP + '/teacher/getSignBefore',

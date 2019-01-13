@@ -6,6 +6,21 @@
   margin:0rpx auto; 
 }
 
+.sign_stu{
+  width: 80%;
+  font-size: 32rpx;
+  position: relative;
+  text-align: center;
+  margin:0rpx auto; 
+}
+
+.instruction{
+  font-size: 26rpx;
+  color: #80848f;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
 .info{
   color: #1296db;
 }
@@ -176,17 +191,27 @@
   width: 250rpx;
 }
 
-.signclick{
-  margin: 20rpx auto;
-  background-color: #1296db;
+.signclickin{
   color: #fff;
-  width: 40%;
-  height: 90rpx;
-  line-height: 90rpx;
+  height: 50rpx;
+  line-height: 50rpx;
   justify-content: center;
+  font-size: 30rpx;
+  margin-bottom: 10rpx; 
+  padding: 0 20rpx;
+  background-color: #ff9900;
 }
 
-/* pages/class_signin/notsignin.wxss */
+.signclickout{
+  color: #fff;
+  height: 50rpx;
+  line-height: 50rpx;
+  justify-content: center;
+  font-size: 30rpx;
+  padding: 0 20rpx;
+  background-color: #1DA27F;
+}
+
 .headphoto{
   height: 70rpx;
   width: 70rpx;
@@ -224,3 +249,103 @@
   margin-right: 40rpx;
   margin-bottom: 30rpx;
 }
+
+/* 时间轴 */
+.weui-cell-list{  
+  margin: 10rpx 10rpx 10rpx 10rpx;
+  position: relative;
+}
+
+.weui-cell-line{
+  margin-left: 170rpx; 
+  border-left: 4rpx solid #1DA27F; 
+  height: 130rpx;   
+  position: relative;
+}
+
+.weui-cell-line-tea{
+  margin-left: 170rpx; 
+  border-left: 4rpx solid #1DA27F; 
+  height: 170rpx;   
+  position: relative;
+}
+
+
+.weui-cell-circle{  
+  border: 4rpx solid #000; 
+  border-radius: 16rpx;  
+  width: 20rpx;  
+  height: 20rpx;  
+  border-color: #1DA27F;
+  margin-left: 160rpx;
+}
+
+.weui-cell-time{  
+  font-size: 30rpx;  
+  padding-left: 30rpx;  
+  display: flex;
+  margin-bottom: 20rpx; 
+}
+
+.weui-cell-name{
+  font-size: 28rpx;
+  height: 46rpx;
+  position: absolute;
+  font-weight: bold;
+  margin-left: 80rpx;
+}
+
+.img_time{
+  width: 42rpx;
+  height: 39rpx;
+  display: flex;
+}
+
+.img_time1{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.result_time{
+  position: absolute;
+  right: 100rpx;
+  top: 20rpx;
+  
+}
+
+/* 未签到 */
+.status_time1{
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #ff9900;
+}
+/* 已签到 */
+.status_time{
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #2d8cf0;
+}
+
+.sign_time{
+  font-size: 28rpx;
+
+}
+
+.sign_time{
+  margin-top: 5rpx;
+  font-size: 28rpx;
+  color: #495060;
+  margin-left: 32rpx;
+}
+
+.see_time{
+  font-weight: bold;
+  font-size: 28rpx;
+  margin-left:24rpx;
+  color:#ff9900;
+  border:2rpx solid #f7b44f;
+  width:120rpx;
+  text-align:center;
+  height:40rpx;
+}
+/* 时间轴 */
