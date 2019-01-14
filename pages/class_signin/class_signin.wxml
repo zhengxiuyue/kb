@@ -61,8 +61,9 @@
           </view> 
 
           <view class='sign_time' bindtap='gosigndetail'><text>
-          已签到学生(12) \n 未签到学生(2) 
-          </text></view>
+          已签到学生(12) \n 未签到学生(2) <text class='more_time'>更多</text>
+          </text><i-icon type="enter" size="16" color="#ff970e" class='icon' />
+           </view>
 <!-- <text class='see_time'>详情</text> -->
           <view class='result_time'>
             <!-- <text class='sign_time'>2019-01-13 \n 17:05:33</text> -->

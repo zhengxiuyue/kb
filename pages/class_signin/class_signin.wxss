@@ -266,7 +266,7 @@
 .weui-cell-line-tea{
   margin-left: 170rpx; 
   border-left: 4rpx solid #1DA27F; 
-  height: 170rpx;   
+  height: 190rpx;   
   position: relative;
 }
 
@@ -309,8 +309,19 @@
 .result_time{
   position: absolute;
   right: 100rpx;
-  top: 20rpx;
-  
+  top: 30rpx;
+}
+
+.more_time{
+  padding-left: 5rpx;
+  font-size: 26rpx;
+  color: #ff970e;
+}
+
+.icon{
+  position: absolute;
+  top: 70rpx;
+  left: 220rpx;
 }
 
 /* 未签到 */
@@ -327,21 +338,19 @@
 }
 
 .sign_time{
-  font-size: 28rpx;
-
-}
-
-.sign_time{
   margin-top: 5rpx;
   font-size: 28rpx;
+  margin-top: -40rpx;
   color: #495060;
   margin-left: 32rpx;
+  position: relative;
 }
 
 .see_time{
   font-weight: bold;
   font-size: 28rpx;
   margin-left:24rpx;
+  margin-top: -40rpx; 
   color:#ff9900;
   border:2rpx solid #f7b44f;
   width:120rpx;
