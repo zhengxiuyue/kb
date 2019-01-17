@@ -217,7 +217,9 @@ Page({
     let index = parseInt(e.currentTarget.dataset.index || 0)
     let that = this
     this.setData({
-      current: index
+      current: index,
+      itemnow: [],
+      Isclassspace: "none"
     })
     if(index == 1){
       wx.request({
@@ -232,10 +234,6 @@ Page({
         },
         success: function (res) {
           if (res.data.resultCode == "101") {
-            that.setData({
-              itemnow: [],
-              Isclassspace: "none"
-            })
             for (var i = 0, len = res.data.data.length; i < len; i++) {
               that.data.itemnow[i] = res.data.data[i]
             }
@@ -245,7 +243,6 @@ Page({
           }
           else if (res.data.resultCode == "204") {
             that.setData({
-              itemnow: [],
               Isclassspace: "block"
             })
           }
@@ -259,7 +256,9 @@ Page({
       wx.request({
         url: requestIP + '/teacher/getMyClass',
         data: {
-          "type": this.data.current
+          "type": this.data.current,
+          itemhistory: [],
+          Isclassspace: "none"
         },
         method: 'POST',
         header: {
@@ -268,10 +267,6 @@ Page({
         },
         success: function (res) {
           if (res.data.resultCode == "101") {
-            that.setData({
-              itemhistory: [],
-              Isclassspace: "none"
-            })
             for (var i = 0, len = res.data.data.length; i < len; i++) {
               that.data.itemhistory[i] = res.data.data[i]
             }
@@ -282,7 +277,6 @@ Page({
           else if (res.data.resultCode == "204") {
             // console.log(res.data.resultCode)
             that.setData({
-              itemhistory: [],
               Isclassspace: "block"
             })
           }

@@ -1,5 +1,6 @@
 var app = getApp();
 var util = require('../../utils/util.js');
+var requestIP = app.globalData.requestIP
 Page({
 
   /**
@@ -23,7 +24,7 @@ Page({
     classnum:[],
     time:"",
     "Issignstu":"3",//学生签到信息显示
-    "Issigntea":"4",//老师签到信息显示
+    gosignteamore:"0",//老师角色签到 是否点进详情
     showCom: true,
     signnumber:"",//学生签到编号
     firstPerson:"",//老师选择课堂框
@@ -42,7 +43,6 @@ Page({
     var that = this;
     var userstatus = app.globalData.userstatus
     var openid = app.globalData.openid
-    var requestIP = app.globalData.requestIP
     var classid = that.options.classid
 
     // 调用函数时，传入new Date()参数，返回值是日期和时间    
@@ -120,7 +120,6 @@ Page({
   onShow: function () {
     //显示自定义的底部导航
     var that = this
-    var requestIP = app.globalData.requestIP
     if (that.data.current == 2) {
       wx.request({
         url: requestIP + '/user/getDiscussInfo',
@@ -228,7 +227,6 @@ Page({
     }, 1500);
 
     let that = this
-    var requestIP = app.globalData.requestIP
     if (that.data.current == 0) {
       wx.request({
         url: requestIP + '/user/getClassmateInfo',
@@ -284,7 +282,7 @@ Page({
             that.setData({
               sign: [],
               firstPerson: time,
-              Issigntea: "3"
+              gosignteamore: "0"
             })
             for (var i = 0, len = res.data.data.length; i < len; i++) {
               that.data.sign[i] = res.data.data[i]
@@ -295,8 +293,7 @@ Page({
             })
           } else {
             that.setData({
-              sign: [],
-              Issigntea: "3"
+              sign: []
             })
             console.log("请求失败");
           }
@@ -304,7 +301,6 @@ Page({
         fail: function () {
           that.setData({
             sign: [],
-            Issigntea: "3"
           })
           console.log("fail");
         },
@@ -336,7 +332,6 @@ Page({
               signnumber: signnumber,
               Issign: Issign,
               Issignstu: "1",
-              Issigntea: "3"
             })
             //如果未签到
             if (Issign == 0) {
@@ -358,12 +353,10 @@ Page({
             that.setData({
               //显示签到按钮
               Issignstu: "0",
-              Issigntea: "3"
             })
           }
           else {
             that.setData({
-              Issigntea: "3",
               signbtn: ""
             })
             console.log("请求失败");
@@ -372,7 +365,6 @@ Page({
         fail: function () {
           that.setData({
             Issignstu: "",
-            Issigntea: "",
             signbtn: ""
           })
           console.log("fail");
@@ -480,7 +472,6 @@ Page({
   changeTab(e) {
     let index = parseInt(e.currentTarget.dataset.index || 0)
     let that = this;
-    var requestIP = app.globalData.requestIP
     this.setData({
       current: index
     })
@@ -538,7 +529,7 @@ Page({
             that.setData({
               sign: [],
               firstPerson:time,
-              Issigntea:"3"
+              gosignteamore:"0"
             })
             for (var i = 0, len = res.data.data.length; i < len; i++) {
               that.data.sign[i] = res.data.data[i]
@@ -549,16 +540,14 @@ Page({
             })
           } else {
             that.setData({
-              sign: [],
-              Issigntea:"3"
+              sign: []
             })
             console.log("请求失败");
           }
         },
         fail: function () {
           that.setData({
-            sign: [],
-            Issigntea:"3"
+            sign: []
           })
           console.log("fail");
         },
@@ -589,8 +578,7 @@ Page({
               //显示签到按钮
               signnumber: signnumber,
               Issign: Issign,
-              Issignstu: "1",
-              Issigntea: "3"
+              Issignstu: "1"
             })
             //如果未签到
             if(Issign == 0){
@@ -612,13 +600,11 @@ Page({
           {
             that.setData({
               //显示签到按钮
-              Issignstu: "0",
-              Issigntea: "3"
+              Issignstu: "0"
             })
           } 
           else {
             that.setData({
-              Issigntea: "3",
               signbtn:""
             })
             console.log("请求失败");
@@ -627,7 +613,6 @@ Page({
         fail: function () {
           that.setData({
             Issignstu: "",
-            Issigntea: "",
             signbtn:""
           })
           console.log("fail");

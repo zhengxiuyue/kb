@@ -33,7 +33,6 @@ Component({
   methods: {
     classcard: function (e) {
       var classid = e.currentTarget.dataset.classid
-      console.log(classid)
       wx.navigateTo({
         url: '/pages/class/class?classid=' + classid,
       })

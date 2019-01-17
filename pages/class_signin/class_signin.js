@@ -1,6 +1,7 @@
 // pages/signin/signin.js
 var util = require('../../utils/util.js');
 var app = getApp();
+var requestIP = app.globalData.requestIP;
 Component({
   /**
    * 组件的属性列表
@@ -27,7 +28,7 @@ Component({
       type: "String",
       value: "",
     }, 
-    Issigntea:{
+    gosignteamore: {
       type: "String",
       value: "",
     },
@@ -74,6 +75,7 @@ Component({
     signid:"",
     state:"",
     space:"/image/space.png",
+    imgUrl: "/image/photo.png",
     signstu:[],//已签到学生信息
     notsignstu: [],//未签到学生信息
     // signnum: "",//学生签到个数
@@ -86,7 +88,6 @@ Component({
   methods: {
     //学生角色签到
     signstu:function(){
-      var requestIP = app.globalData.requestIP
       var that = this
       //还未签到才可以签到
       if(that.data.Issign == 0){
@@ -163,7 +164,6 @@ Component({
       that.setData({
         current: index
       })
-      var requestIP = app.globalData.requestIP
       wx.request({
         url: requestIP + '/teacher/seeSign',
         data: {
@@ -200,7 +200,6 @@ Component({
         },
         fail: function () {
           that.setData({
-            Issigntea: "",
             current: "1"
           })
           console.log("fail");
@@ -212,7 +211,6 @@ Component({
     //点击切换下拉框按钮
     mySelect: function (e) {
       var that = this;
-      var requestIP = app.globalData.requestIP
       var scheduleid = e.currentTarget.dataset.scheduleid
       var signid = e.currentTarget.dataset.signid
       this.setData({
@@ -242,7 +240,6 @@ Component({
           success: function (res) {
             if (res.data.resultCode == "101") {
               that.setData({
-                Issigntea: "1",
                 signstu: []
               })
               for (var i = 0, len = res.data.data.length; i < len; i++) {
@@ -254,14 +251,12 @@ Component({
             } 
             else if (res.data.resultCode == "204"){
               that.setData({
-                Issigntea: "1",
                 signstu: []
               })
               console.log("还没有签到的人")
             }
             else {
               that.setData({
-                Issigntea: "",
                 signstu: []
               })
               console.log("请求失败");
@@ -269,7 +264,6 @@ Component({
           },
           fail: function () {
             that.setData({
-              Issigntea: "",
               signstu: []
             })
             console.log("fail");
@@ -279,69 +273,126 @@ Component({
       //上完的课但没有发布签到
       else if(e.target.dataset.id == 1 & signid == null){
         that.setData({
-          Issigntea: "0"
+
         })
       }
       //正在上的课
       else if (e.target.dataset.id == 0) {
         that.setData({
-          Issigntea:"2"//显示发布签到按钮
+     //显示发布签到按钮
         })
       }
     }, 
    
     //发签到
-    submit:function(e){
+    // submit:function(e){
+    //   var that = this;
+    //   var requestIP = app.globalData.requestIP
+    //   wx.request({
+    //     url: requestIP + '/teacher/publishSign',
+    //     data: {
+    //       classid: that.data.classid,
+    //       scheduleid: that.data.scheduleid
+    //     },
+    //     method: 'POST',
+    //     header: {
+    //       'content-type': 'application/x-www-form-urlencoded',
+    //       'userid': app.globalData.userid
+    //     },// 设置请求的 header
+    //     success: function (res) {
+    //       if (res.data.resultCode == "101") {
+    //         wx.showLoading();
+    //         wx.hideLoading();
+    //         setTimeout(() => {
+    //           wx.showToast({
+    //             title: '发布成功',
+    //             icon: "success",
+    //           });
+    //           setTimeout(() => {
+    //             wx.hideToast();
+    //           }, 2000)
+    //         }, 0);
+    //         that.setData({
+    //           Issigntea: "1"
+    //         })
+            
+    //       } else {
+    //         console.log("请求失败");
+    //       }
+    //     },
+    //   })
+     
+    //   this.setData({
+    //     display:"block",
+    //     dispaly1:"none",
+    //     duration: 10000
+    //   })
+    // },
+
+    //老师查看学生签到详情
+    gosigndetail:function(e){
       var that = this;
-      var requestIP = app.globalData.requestIP
+      var signid = e.currentTarget.dataset.signid
+      that.setData({
+        gosignteamore: "1",
+        signid: signid
+      })     
       wx.request({
-        url: requestIP + '/teacher/publishSign',
+        url: requestIP + '/teacher/seeSign',
         data: {
-          classid: that.data.classid,
-          scheduleid: that.data.scheduleid
+          signid: that.data.signid,
+          state: 1  //获取已签到
         },
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded',
           'userid': app.globalData.userid
-        },// 设置请求的 header
+        },
         success: function (res) {
           if (res.data.resultCode == "101") {
-            wx.showLoading();
-            wx.hideLoading();
-            setTimeout(() => {
-              wx.showToast({
-                title: '发布成功',
-                icon: "success",
-              });
-              setTimeout(() => {
-                wx.hideToast();
-              }, 2000)
-            }, 0);
             that.setData({
-              Issigntea: "1"
+             
+              signstu: []
             })
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.signstu[i] = res.data.data[i]
+            }
+            that.setData({
+              signstu: that.data.signstu
+            })
+          }
+          else if (res.data.resultCode == "204") {
+            that.setData({
             
-          } else {
+              signstu: []
+            })
+            console.log("还没有签到的人")
+          }
+          else {
+            that.setData({
+         
+              signstu: []
+            })
             console.log("请求失败");
           }
         },
-      })
-     
-      this.setData({
-        display:"block",
-        dispaly1:"none",
-        duration: 10000
+        fail: function () {
+          that.setData({
+          
+            signstu: []
+          })
+          console.log("fail");
+        },
       })
     },
-
-    //老师查看学生签到详情
-    gosigndetail:function(e){
-      wx.navigateTo({
-        url: '/pages',
+    gosigntea: function (e) {
+      var that = this;
+      that.setData({
+        gosignteamore: "0",
       })
     }
   },
+
 
   pageLifetimes: {
     show: function () {

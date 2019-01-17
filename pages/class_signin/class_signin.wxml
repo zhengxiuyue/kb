@@ -2,6 +2,7 @@
 
 <!-- 学生角色 -->
 <view wx:if="{{userstatus==1}}" class='sign'>
+  <view class='instruction'>提示：上课前半个小时，下课后半个小时可以签到</view>
   <view class='weui-cell-third'>  
     <block wx:for="{{sign}}" wx:key="">   
       <view class='weui-cell-list'>     
@@ -28,6 +29,7 @@
       </view>   
     </block>
   </view>
+</view>
   <!-- <image  style='display:{{Issignstu == 0? "block" : "none"}}' src='/image/space.png' class='space'> </image>
   <view class='explain' style='display:{{Issignstu == 0? "block" : "none"}}'>暂无课堂签到信息发布</view>
   <text style='display:{{Issign == 1? "block" : "none"}}' >
@@ -39,12 +41,12 @@
     正在发布签到，请点击下面按钮进行签到
   </text>
   <button style='display:{{Issignstu == 1? "block" : "none"}}' class='signclick' bindtap='signstu'>{{signbtn}}</button> -->
-</view>
+
 
 <!-- 老师角色 -->
 <view wx:if="{{userstatus==2}}" class='sign1'>
-  <view class='instruction'>提示：上课前半个小时，下课后半个小时可以签到</view>
-   <view class='weui-cell-third'>  
+  <view class='instruction'>提示：上课前半个小时，下课后半个小时可以签到签退</view>
+   <view class='weui-cell-third' style='display:{{gosignteamore == 0? "block":"none"}};'>  
     <block wx:for="{{sign}}" wx:key="">   
       <view class='weui-cell-list'>     
       <view class='weui-cell-name'>第{{item.classnum}}节</view>    
@@ -60,10 +62,10 @@
             <text decode="{{true}}">&nbsp;{{tools.my_slice(item.startpoint,0,5)}}--{{tools.my_slice(item.endpoint,0,5)}} </text>
           </view> 
 
-          <view class='sign_time' bindtap='gosigndetail'><text>
-          已签到学生(12) \n 未签到学生(2) <text class='more_time'>更多</text>
-          </text><i-icon type="enter" size="16" color="#ff970e" class='icon' />
-           </view>
+          <view class='sign_time' bindtap='gosigndetail' data-signid='{{item.sign_id}}'><text>
+          已签到学生(12) \n 未签到学生(2) <text class='more_time'   >更多</text>
+          </text><i-icon type="enter" size="16" color="#1c2438" class='icon' />
+          </view>
 <!-- <text class='see_time'>详情</text> -->
           <view class='result_time'>
             <!-- <text class='sign_time'>2019-01-13 \n 17:05:33</text> -->
@@ -76,53 +78,60 @@
       </view>   
     </block>
   </view>
+
+  <view style='display:{{gosignteamore == 1? "block":"none"}};' class='signstatus'>
+    <image src='/image/undo.png' class='undo' bindtap='gosigntea'></image>
+    <view  class='contact'>     
+      <view class="contact-tab" >
+        <view class="{{current == 1 ? 'current' : ''}}" bindtap="changeTab" data-index="1">已签到</view>
+        <view class="{{current == 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">未签到</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 已经签到学生信息 -->
+  <view style='display:{{gosignteamore == 1? "block":"none"}};'>
+    <view class='students'  wx:for = "{{signstu}}" wx:key = "">
+      <image wx:if="{{item.protrait!=null}}" class="headphoto" src="{{item.protrait}}" background-size="cover"></image>
+      <image wx:else class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
+      <view class='stu_name'>
+        {{item.name}}
+      </view>
+      <view class='stu_tel'>
+        {{item.sign_time}}
+      </view>
+      <view class='clear'></view>
+    </view>
+  </view>
+
+  <!-- 未签到学生信息 -->
+  <view style='display:{{gosignteamore == 1? "block":"none"}};'>
+    <view class='students'  wx:for = "{{notsignstu}}" wx:key = "">
+      <image wx:if="{{item.protrait!=null}}" class="headphoto" src="{{item.protrait}}" background-size="cover"></image>
+      <image wx:else class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
+      <view class='stu_name'>
+        {{item.name}}
+      </view>
+      <view class='stu_tel'>
+        {{item.signtime}}
+      </view>
+      <view class='clear'></view>
+    </view>
+  </view> 
 </view>
 
 <!-- 正在上的课显示 -->
- <button class='submit' bindtap='submit' style='display:{{Issigntea == 2? "block":"none"}}' >发布签到</button>
+ <!-- <button class='submit' bindtap='submit' style='display:{{Issigntea == 2? "block":"none"}}' >发布签到</button> -->
 
 <!-- 已上完且发布了签到的显示 -->
-<view style='display:{{Issigntea == 1? "block":"none"}};' class='contact'>
-  <view class="contact-tab" >
-    <view class="{{current == 1 ? 'current' : ''}}" bindtap="changeTab" data-index="1">已签到</view>
-    <view class="{{current == 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">未签到</view>
-  </view>
-</view>
+
 
 <!-- 已上完但未发布签到的显示 -->
-<view class='classcard' style='display:{{Issigntea == 0? "block":"none"}}'>
+<!-- <view class='classcard' style='display:{{Issigntea == 0? "block":"none"}}'>
   <image src='{{space}}' class='space'></image>
   <view>  
     <text style='font-size:30rpx;'>您本节课未发布签到</text>
   </view>
-</view>
-
-<!-- 已经签到学生信息 -->
-<view style='display:{{Issigntea == 1? "block":"none"}};'>
-  <view class='students'  wx:for = "{{signstu}}" wx:key = "">
-    <image wx:if="{{item.protrait!=null}}" class="headphoto" src="{{item.protrait}}" background-size="cover"></image>
-    <image wx:else class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
-    <view class='stu_name'>
-      {{item.name}}
-    </view>
-    <view class='stu_tel'>
-      {{item.sign_time}}
-    </view>
-    <view class='clear'></view>
-  </view>
-</view>
-
-<!-- 未签到学生信息
-<view style='display:{{Issigntea == 1? "block":"none"}};'>
-<view class='students'  wx:for = "{{notsignstu}}" wx:key = "">
-  <image wx:if="{{item.protrait!=null}}" class="headphoto" src="{{item.protrait}}" background-size="cover"></image>
-  <image wx:else class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
-  <view class='stu_name'>
-    {{item.name}}
-  </view>
-  <view class='stu_tel'>
-    {{item.signtime}}
-  </view>
-  <view class='clear'></view>
-</view>
 </view> -->
+
+

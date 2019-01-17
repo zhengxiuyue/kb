@@ -1,5 +1,6 @@
 // pages/mine/mine.js
 var app = getApp();
+var requestIP = app.globalData.requestIP
 Page({
 
   /**
@@ -41,7 +42,6 @@ Page({
       }
     })
    
-    var requestIP = app.globalData.requestIP
     wx.request({
       url: requestIP + '/student/getMyClass',
       data: {
@@ -119,7 +119,6 @@ Page({
       wx.stopPullDownRefresh() //停止下拉刷新   
     }, 1500);
 
-    var requestIP = app.globalData.requestIP
     var that = this
     
     wx.request({
@@ -178,9 +177,10 @@ Page({
     let index = parseInt(e.currentTarget.dataset.index || 0)
     let that = this
     this.setData({
-      current: index
+      current: index,
+      Isclassspace: "none",
+      item: []
     })
-    var requestIP = app.globalData.requestIP
     wx.request({
       url: requestIP + '/student/getMyClass',
       data: {
@@ -193,21 +193,15 @@ Page({
       },
       success: function (res) {
         if (res.data.resultCode == "101") {
-          that.setData({
-            item: [],
-            Isclassspace: "none"
-          })
           for (var i = 0, len = res.data.data.length; i < len; i++) {
             that.data.item[i] = res.data.data[i]
           }
           that.setData({
             item: that.data.item
           })
-          console.log(that.data.item)
         }
         else if (res.data.resultCode == "204") {
           that.setData({
-            item: [],
             Isclassspace:"block"
           })
         } 
@@ -221,11 +215,7 @@ Page({
     wx.navigateTo({
       url: '/pages/mine_setup/mine_setup',
     })
-  },
-  bindGetUserInfo: function (e) {
-    console.log(e.detail.userInfo)
   }
-
 })
 
 
