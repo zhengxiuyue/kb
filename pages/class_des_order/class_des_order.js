@@ -4,7 +4,9 @@ Page({
   data: {
     phoneNumber: "",
     classid: null,
-    coursename:""
+    coursename:"",
+    reverseprice:"",
+    res_status:null//预约状态
   },
   GOclass_signUp: function (e) {
     var that = this;
@@ -35,6 +37,7 @@ Page({
       path: '/pages/class_des_order/class_des_order?classid=' + classid + '&num=' + num
     }
   },
+  
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading()
     //模拟加载    
@@ -42,31 +45,10 @@ Page({
       wx.hideNavigationBarLoading() //完成停止加载      
       wx.stopPullDownRefresh() //停止下拉刷新   
     }, 1500);
-    wx.request({
-      url: requestIP + '/student/getClassInfo',
-      data: {
-        classid: that.data.classid
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'userid': app.globalData.userid
-      },
-      success(res) {
-        console.log(res.data.resultCode)
-        if (res.data.resultCode == '101') {
-          console.log(res.data.data);
-          that.setData({
-            courseList: res.data.data,
-            phoneNumber:res.data.data.hotline,
-            coursename: res.data.data.coursename            
-          });
-        }
-      },
-      fail(res) {
-      }
-    })
+    var that = this;
+    that.getClassInfo();
   },
+
   onLoad: function (options) {
     var that = this;
     var classid = wx.getStorageSync("classid");
@@ -75,7 +57,28 @@ Page({
       classid: classid,
       res_status: res_status
     })
-    console.log(classid);
+    that.getClassInfo();
+  },
+
+  order_ing: function(){
+    wx.showToast({
+      title: '您的预约申请正在处理中，请勿重复预约!',
+      icon: 'none',
+      duration: 1000
+    })
+  },
+
+  order_ed:function(){
+    wx.showToast({
+      title: '您已预约该课程，请勿重复预约!',
+      icon: 'none',
+      duration: 1000
+    })
+  },
+
+  getClassInfo:function(){
+    var that = this;
+    var classid = that.data.classid;
     wx.request({
       url: requestIP + '/student/getClassInfo',
       data: {
@@ -87,32 +90,17 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.resultCode)
         if (res.data.resultCode == '101') {
-          console.log(res.data.data);
           that.setData({
-            courseList: res.data.data,
-            phoneNumber: res.data.data.hotline,
-            coursename: res.data.data.coursename 
+            courseList: res.data.data[0],
+            phoneNumber: res.data.data[0].hotline,
+            coursename: res.data.data[0].coursename,
+            reverseprice: res.data.data[1].reverseprice
           });
         }
       },
       fail(res) {
       }
-    })
-  },
-  order_ing: function(){
-    wx.showToast({
-      title: '您的预约申请正在处理中，请勿重复预约!',
-      icon: 'none',
-      duration: 1000
-    })
-  },
-  order_ed:function(){
-    wx.showToast({
-      title: '您已预约该课程，请勿重复预约!',
-      icon: 'none',
-      duration: 1000
     })
   }
 })

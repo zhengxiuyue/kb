@@ -1,8 +1,7 @@
 .area{
-  display: flex;
-  padding-top: 10rpx;
-  padding-bottom: 10rpx;
-  padding-left: 20rpx;
+  padding-top: 30rpx;
+  padding-bottom: 20rpx;
+  padding-left: 20rpx;          
 }
 .text-blod{
   font-weight: bold;
@@ -15,6 +14,8 @@
 
 .section{
   margin: 2rpx 0rpx;
+  display: flex;
+  justify-content:space-between;
 }
 
 .pikerImg{
@@ -47,4 +48,24 @@
 .iconjt{
   width:40rpx;
   height:40rpx;
+}
+
+.orderStore{  
+  text-align: center;
+  color: #19be6b;
+  font-size: 30rpx;
+  border: 1rpx solid #19be6b;
+  padding: 10rpx 30rpx;
+  margin-right: 20rpx;
+  border-radius: 10rpx;
+}
+
+.orderStored{
+  text-align: center;
+  color: #bbbec4;
+  font-size: 30rpx;
+  border: 1rpx solid #bbbec4;
+  padding: 10rpx 30rpx;
+  margin-right: 20rpx;
+  border-radius: 10rpx;
 }

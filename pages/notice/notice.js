@@ -10,7 +10,7 @@ Page({
   data: {
     userstatus: app.globalData.userstatus,
     error_noNotice:"none",
-    errortips:"暂时没有通知",
+    errortips:"暂无相关通知",
     noticeList:"",
     imgUrl: "/image/photo.png"
   },
@@ -80,9 +80,16 @@ Page({
   //获取通知
   getNotice: function (e) {
     var that = this;
+    var province = wx.getStorageSync("Nprovince");
+    var areaname = wx.getStorageSync("Nareaname");
+    var city = wx.getStorageSync("Ncity");
+   // console.log(province + areaname + city);
     wx.request({
       url: requestIP + '/student/getNotice',
       data: {
+        province: province,
+        areaname: areaname,
+        city: city
       },
       method: 'POST',
       header: {
@@ -103,79 +110,6 @@ Page({
             error_noNotice: "block"
           });
         }
-      }
-    })
-  },
-  delt: function (e) {
-    let that = this;
-    var requestIP = app.globalData.requestIP
-    var no_id = e.currentTarget.dataset.no_id
-    that.setData({
-      no_id: no_id
-    })
-    wx.showModal({
-      title: '提示',
-      content: '确定要删除本条通知吗？',
-      success: function (sm) {
-        if (sm.confirm) {
-          wx.request({
-            url: requestIP + '/teacher/deleteNotice',
-            data: {
-              noticeid: that.data.no_id,
-            },
-            method: 'POST',
-            header: {
-              'content-type': 'application/x-www-form-urlencoded',
-              'userid': app.globalData.userid
-            },// 设置请求的 header
-            success: function (res) {
-              if (res.data.resultCode == "101") {
-                wx.showToast({
-                  title: '删除成功',
-                  icon: 'success',
-                  duration: 2000
-                })
-                wx.request({
-                  url: requestIP + '/user/getNotice',
-                  data: {
-                    classid: that.data.classid
-                  },
-                  method: 'POST',
-                  header: {
-                    'content-type': 'application/x-www-form-urlencoded',
-                    'userid': app.globalData.userid
-                  },// 设置请求的 header
-                  success: function (res) {
-                    if (res.data.resultCode == "101") {
-                      that.setData({
-                        notice: []
-                      })
-                      for (var i = 0, len = res.data.data.length; i < len; i++) {
-                        that.data.notice[i] = res.data.data[i]
-                      }
-                      that.setData({
-                        notice: that.data.notice
-                      })
-                    }
-                    else if (res.data.resultCode == "204") {
-                      that.setData({
-                        notice: [],
-                        Isnoticespace: "block"
-                      })
-                    }
-                    else {
-                      console.log("请求失败");
-                    }
-                  },
-                })
-              } else {
-                console.log("请求失败");
-              }
-            }
-          })
-
-          // 重新发请求刷新数据
-        } else if (sm.cancel) { }
       }
     })
   }

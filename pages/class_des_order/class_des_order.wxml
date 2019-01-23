@@ -8,7 +8,6 @@
       
       <view class='class'>
         
-        
          <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
           <text>课程名称：{{courseList.coursename}}</text></view>
@@ -33,6 +32,10 @@
           <text style='display: {{courseList.improveprice == null? "inline":"none"}}' >课程价格：{{courseList.price}}元</text>
           </view>
 
+          <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>预约价格：{{reverseprice}}元</text></view>
+
            <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
           <text>课容量：{{courseList.vol}}人</text></view>
@@ -46,8 +49,8 @@
       </view>
 
       <view class='teacher'>
-        {{courseList.teachername}}
-        <text class='teacher-rank'>{{courseList.phone}}</text>
+        {{courseList.teachername}}老师
+        <!--<text class='teacher-rank'>{{courseList.phone}}</text>-->
       </view>
 
       <view class='title'>
@@ -66,8 +69,8 @@
       </view>
 
        <view class='know'>
-        <view>1、提交预约申请后，后台审核告知预约结果。</view>
-        <view>2、预约成功后，拥有体验上课的权力。</view>
+        <view>1、第一次可享受免费预约课程。</view>
+        <view>2、提交预约申请后，后台审核告知预约结果。</view>
         <view>3、预约成功后，可向前台出示手机号或课堂详情作为凭证。</view>
       </view>
 </view>
@@ -92,8 +95,12 @@
         </view>
         </button>
         </view>
-        <view class='btn' bindtap='GOclass_signUp' style='display:{{res_status == null? "block":"none"}}'>
-          预约试听
+        <view class='btn' bindtap='GOclass_signUp' style='display:{{res_status == null && reverseprice != "0" ? "block":"none"}}'>
+          预约<text decode="{{true}}" class = "price">&nbsp;{{reverseprice}}元</text>
+        </view>
+
+        <view class='btn' bindtap='GOclass_signUp' style='display:{{reverseprice == "0"? "block":"none"}}'>
+          预约<text class = "price" decode="{{true}}">&nbsp;首次免费</text>
         </view>
 
         <view class='btn' style='display:{{res_status == 0? "block":"none"}}' bindtap='order_ing'>

@@ -125,3 +125,8 @@ list-style: none;
 #disabled{
   color: #666666;
 }
+
+#location{
+  display: inline-block;
+  margin-left: 60rpx;
+}

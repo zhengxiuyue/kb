@@ -34,7 +34,6 @@ App({
 
     //判断是否还有缓存 有跳入index 无跳入login
     var userid = wx.getStorageSync('userid')
-    console.log("ddddd"+userid)
     var userstatus = wx.getStorageSync('userstatus')
     var openid = wx.getStorageSync('openid')
     var name = wx.getStorageSync('name')
@@ -152,7 +151,7 @@ App({
 
   globalData: {
     openid: "",
-    userid: "",
+    userid: "02c7a2e3eae711e8ab8e00163e00299d",
     userInfo: null,
     userstatus:"",//用户身份
     code:"",
@@ -160,6 +159,7 @@ App({
     province:"",//省
     city:"",//市
     areaname:"",//区
+<<<<<<< HEAD
     storename:'',//门店名
     alreadyFlag: "0",//是否第一次加载
     res_status:null,
@@ -168,6 +168,14 @@ App({
    //requestIP: "http://4psarc.natappfree.cc/happyschedule",
     
    requestIP: "https://curriculum.50fun.cn/happyschedule",
+=======
+    storename:'',//门店名称
+    res_status:null,
+   // requestIP: "http://localhost:8080/happyschedule",
+   // requestIP: "http://39.104.155.0:8080/happyschedule",
+    requestIP: "http://mekxqf.natappfree.cc/happyschedule",
+   //requestIP: "https://curriculum.50fun.cn/happyschedule",
+>>>>>>> 59ff3f02e78dec965a478cfa8aaf5dbb24b2917d
     
     //学生角色
     tabBar: {
@@ -209,10 +217,10 @@ App({
 
     //老师角色
     tabBar1: {
-      "color": "#888",
-      "selectedColor": "#1DA27F",
-      "backgroundColor": "#fff",
-      "borderStyle": "#dddee1",
+      color: "black",
+      selectedColor: "#1DA27F",
+      backgroundColor: "#fff",
+      borderStyle: "#dddee1",
       "list": [{
         "pagePath": "/pages/index/T_index",
         "text": "首页",

@@ -33,30 +33,7 @@ Page({
       wx.hideNavigationBarLoading() //完成停止加载      
       wx.stopPullDownRefresh() //停止下拉刷新   
     }, 1500);
-    wx.request({
-      url: requestIP + '/student/getClassInfo',
-      data: {
-        classid: that.data.classid
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'userid': app.globalData.userid
-      },
-      success(res) {
-        console.log(res.data.resultCode)
-        if (res.data.resultCode == '101') {
-          console.log(res.data.data);
-          that.setData({
-            courseList: res.data.data,
-            phoneNumber: res.data.data.hotline,
-            coursename: res.data.data.coursename
-          });
-        }
-      },
-      fail(res) {
-      }
-    })
+  that.getClassInfo();
   },
   onShareAppMessage: function (ops) {
     var that = this
@@ -76,7 +53,12 @@ Page({
     that.setData({
       classid:classid
     })
-    console.log(classid);
+  that.getClassInfo();
+  },
+  
+  getClassInfo: function () {
+    var that = this;
+    var classid = that.data.classid;
     wx.request({
       url: requestIP + '/student/getClassInfo',
       data: {
@@ -90,11 +72,11 @@ Page({
       success(res) {
         console.log(res.data.resultCode)
         if (res.data.resultCode == '101') {
-          console.log(res.data.data.hotline);
+          console.log(res.data.data);
           that.setData({
-            courseList: res.data.data,
-            phoneNumber: res.data.data.hotline,
-            coursename: res.data.data.coursename
+            courseList: res.data.data[0],
+            phoneNumber: res.data.data[0].hotline,
+            coursename: res.data.data[0].coursename,
           });
         }
       },

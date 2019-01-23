@@ -1,8 +1,5 @@
 {
   "navigationBarTitleText": "首页",
-  "usingComponents": {
-    "calendar": "plugin://calendar/calendar"
-  },
   "enablePullDownRefresh": true,
   "onReachBottomDistance": 400
 }

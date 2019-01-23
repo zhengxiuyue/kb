@@ -29,7 +29,11 @@
     "pages/classList_order/classList_order",
     "pages/classList_signUp/classList_signUp",
     "pages/class_des_order/class_des_order",
-    "pages/class_chat_edit/class_chat_edit"
+    "pages/class_chat_edit/class_chat_edit",
+    "pages/store_order/store_order",
+    "pages/order_course_des/order_course_des",
+    "pages/order_store_des/order_store_des",
+    "pages/class_order/class_order"
   ],
   "window":{
     "backgroundTextStyle":"dark",

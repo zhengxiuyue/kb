@@ -1,4 +1,30 @@
-<!--pages/index/A_index.wxml-->
 <import src="/pages/tabBar/tabBar.wxml"/> 
 <template is="tabBar" data="{{tabBar}}"/>
-<text>pages/index/A_index.wxml</text>
+<view class = "page">
+  <view class="title">
+    <text class="app-title">我的课表</text>
+  </view>
+
+  <!--我的一周课表-->
+  <view class='Aclass' bindtap='enterclass'  wx:for="{{courseList}}" data-index='{{index}}' wx:key="*this"> 
+      <view class='b1'>
+        {{item.dayinweek}}
+      </view>
+      <view class='b2'>
+      {{item.coursename}}{{item.level}} | {{item.classnumber}}
+      </view>
+      
+      <view class='b3'>
+        {{item.date}}
+      </view>
+      <view class='b4'>
+        {{tools.my_slice(item.startpoint,0,5)}}-{{tools.my_slice(item.endpoint,0,5)}}
+        <image  class = 'class_stu' src='../../image/class_stu.png'></image>
+      </view>
+  </view>
+  
+    <!--没有课程时的显示-->
+  <view class='error' style='display:{{error_noClass}};'  bindtap='more'>
+    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;没有课表</text>
+  </view>
+  </view>
