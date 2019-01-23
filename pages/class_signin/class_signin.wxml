@@ -1,10 +1,11 @@
 <wxs src="../more/more.wxs" module="tools" />
 
 <!-- 学生角色 -->
-<view wx:if="{{userstatus==1}}" class='sign'>
+<view wx:if="{{userstatus==3}}" class='sign'>
   <view class='instruction'>提示：上课前半个小时，下课后半个小时可以签到</view>
   <view class='weui-cell-third'>  
-    <block wx:for="{{sign}}" wx:key="">   
+    <!-- 已经上完的课-->
+    <block wx:for="{{sign}}" wx:key="" wx:if = "{{time > (item.date+' '+item.endpoint) || (time > (item.date+' '+item.startpoint) && time <= (item.date+' '+item.endpoint) && item.sign_id != null) }}">   
       <view class='weui-cell-list'>     
       <view class='weui-cell-name'>第{{item.classnum}}节</view>    
         <view class='weui-cell-circle'></view>       
@@ -19,35 +20,68 @@
             <text decode="{{true}}">&nbsp;{{tools.my_slice(item.startpoint,0,5)}}--{{tools.my_slice(item.endpoint,0,5)}} </text>
           </view> 
 
-          <view class='result_time'>
-            <!-- <text class='sign_time'>2019-01-13 \n 17:05:33</text> -->
-            <!-- <text class='status_time'>已签到</text>
-            <text class='status_time1'>未签到</text> -->
-              <button class='signclick' bindtap='signstu'>签到中</button>
+          <view class='result_time'>            
+            <text class='status_time1' wx:if="{{item.sign_time== null}}">未签到</text>
+            <text class='status_time' wx:else><text class='status_time2'>已签到</text>\n{{tools.my_slice(item.sign_time,11,19)}}</text>
           </view>     
         </view>    
       </view>   
     </block>
+
+    <!-- 正在上的课 -->
+    <block wx:for="{{sign}}" wx:key="" wx:if = "{{time > (item.date+' '+item.startpoint) && time <= (item.date+' '+item.endpoint) && item.sign_id == null}}">   
+      <view class='weui-cell-list'>     
+      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+        <view class='weui-cell-circle'></view>       
+        <view class='weui-cell-line'>         
+          <view class='weui-cell-time'>
+            <image src='/image/date.png' class='img_time'></image>
+           <text decode="{{true}}">&nbsp;{{item.date}}</text>
+          </view>             
+
+          <view class='weui-cell-time'>
+            <image src='/image/point.png' class='img_time1'></image>
+            <text decode="{{true}}">&nbsp;{{tools.my_slice(item.startpoint,0,5)}}--{{tools.my_slice(item.endpoint,0,5)}} </text>
+          </view> 
+
+          <view class='result_time'>            
+            <button class='signclick' bindtap='signstu' data-scheduleid='{{item.scheduleid}}'  wx:if="{{item.sign_time== null}}">签到</button>
+            <text class='status_time' wx:else><text class='status_time2'>已签到</text>\n{{tools.my_slice(item.sign_time,11,19)}}</text>
+          </view>     
+        </view>    
+      </view>   
+    </block>
+
+    <!-- 还未到时间的课 -->
+    <block wx:for="{{sign}}" wx:key="" wx:if = "{{time < (item.date+' '+item.startpoint)}}">   
+      <view class='weui-cell-list'>     
+      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+        <view class='weui-cell-circle'></view>       
+        <view class='weui-cell-line'>         
+          <view class='weui-cell-time'>
+            <image src='/image/date.png' class='img_time'></image>
+           <text decode="{{true}}">&nbsp;{{item.date}}</text>
+          </view>             
+
+          <view class='weui-cell-time'>
+            <image src='/image/point.png' class='img_time1'></image>
+            <text decode="{{true}}">&nbsp;{{tools.my_slice(item.startpoint,0,5)}}--{{tools.my_slice(item.endpoint,0,5)}} </text>
+          </view> 
+
+        </view>    
+      </view>   
+    </block>
+
   </view>
 </view>
-  <!-- <image  style='display:{{Issignstu == 0? "block" : "none"}}' src='/image/space.png' class='space'> </image>
-  <view class='explain' style='display:{{Issignstu == 0? "block" : "none"}}'>暂无课堂签到信息发布</view>
-  <text style='display:{{Issign == 1? "block" : "none"}}' >
-    你是第<text class='info'>{{signnum}}</text>个签到
-    你的签到时间是
-    <text class='info'>{{signtime}}</text>
-  </text>
-  <text style='display:{{Issign == 0? "block" : "none"}}' >
-    正在发布签到，请点击下面按钮进行签到
-  </text>
-  <button style='display:{{Issignstu == 1? "block" : "none"}}' class='signclick' bindtap='signstu'>{{signbtn}}</button> -->
-
 
 <!-- 老师角色 -->
 <view wx:if="{{userstatus==2}}" class='sign1'>
   <view class='instruction'>提示：上课前半个小时，下课后半个小时可以签到签退</view>
    <view class='weui-cell-third' style='display:{{gosignteamore == 0? "block":"none"}};'>  
-    <block wx:for="{{sign}}" wx:key="">   
+    
+    <!-- 已上完的课 -->
+    <block wx:for="{{sign}}" wx:key="" wx:if = "{{time > (item.date+' '+item.endpoint) || (time > (item.date+' '+item.startpoint) && time <= (item.date+' '+item.endpoint) && item.sign_id != null) }}">   
       <view class='weui-cell-list'>     
       <view class='weui-cell-name'>第{{item.classnum}}节</view>    
         <view class='weui-cell-circle'></view>       
@@ -62,18 +96,80 @@
             <text decode="{{true}}">&nbsp;{{tools.my_slice(item.startpoint,0,5)}}--{{tools.my_slice(item.endpoint,0,5)}} </text>
           </view> 
 
-          <view class='sign_time' bindtap='gosigndetail' data-signid='{{item.sign_id}}'><text>
-          已签到学生(12) \n 未签到学生(2) <text class='more_time'   >更多</text>
-          </text><i-icon type="enter" size="16" color="#1c2438" class='icon' />
+          <view class='sign_time' bindtap='gosigndetail' data-scheduleid='{{item.scheduleid}}' data-signnum='{{item.SignNum}}' data-notsignnum='{{item.NotsignNum}}'>
+            <text>\n已签到学生({{item.SignNum}}) \n 未签到学生({{item.NotsignNum}})<text class='more_time'>更多</text></text>
+            <i-icon type="enter" size="16" color="#1c2438" class='icon' />
           </view>
-<!-- <text class='see_time'>详情</text> -->
-          <view class='result_time'>
-            <!-- <text class='sign_time'>2019-01-13 \n 17:05:33</text> -->
-            <!-- <text class='status_time'>已签到</text>
-            <text class='status_time1'>未签到</text> -->
-              <button class='signclickin' bindtap='signstu'>签到</button>
-              <button class='signclickout' bindtap='signstu'>签退</button>
-          </view>     
+
+          <view class='result_time' wx:if="{{item.signIn == null}}">
+            <text class='status_time1'>未签到\n未签退</text>
+          </view>  
+
+          <view class='result_time' wx:else>
+            <text class='status_time'><text class='status_time2'>已签到\n</text>{{tools.my_slice(item.signIn,11,19)}}\n</text>
+            <text class='status_time1' wx:if="{{item.signOut == null}}">未签退</text>
+            <text class='status_time' wx:else><text class='status_time2'>已签退\n</text>{{tools.my_slice(item.signOut,11,19)}}\n</text>
+          </view>    
+        </view>    
+      </view>   
+    </block>
+
+    <!-- 正在上的课 -->
+    <block wx:for="{{sign}}" wx:key="" wx:if = "{{endFormatTime > (item.date+' '+item.startpoint) && endFormatTime2 <= (item.date+' '+item.endpoint) }}">   
+      <view class='weui-cell-list'>     
+      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+        <view class='weui-cell-circle'></view>       
+        <view class='weui-cell-line-tea'>         
+          <view class='weui-cell-time'>
+            <image src='/image/date.png' class='img_time'></image>
+           <text decode="{{true}}">&nbsp;{{item.date}}</text>
+          </view>             
+
+          <view class='weui-cell-time'>
+            <image src='/image/point.png' class='img_time1'></image>
+            <text decode="{{true}}">&nbsp;{{tools.my_slice(item.startpoint,0,5)}}--{{tools.my_slice(item.endpoint,0,5)}} </text>
+          </view> 
+
+          <view class='sign_time' bindtap='gosigndetail' data-scheduleid='{{item.scheduleid}}' data-signnum='{{item.SignNum}}' data-notsignnum='{{item.NotsignNum}}'>
+            <text>\n已签到学生({{item.SignNum}}) \n 未签到学生({{item.NotsignNum}}) <text class='more_time'>更多</text></text>
+            <i-icon type="enter" size="16" color="#1c2438" class='icon' />
+          </view>
+
+          <!-- 已签到签退 -->
+          <view class='result_time' wx:if="{{item.signIn != null & item.signOut !=null}}">
+            <text class='status_time'><text class='status_time2'>已签到\n</text>{{tools.my_slice(item.signIn,11,19)}}\n</text>
+            <text class='status_time'><text class='status_time2'>已签退\n</text>{{tools.my_slice(item.signOut,11,19)}}\n</text>
+          </view> 
+
+          <!-- 已经签到 未签退-->
+          <view class='result_time' wx:if="{{item.signIn != null & item.signOut ==null & endFormatTime2 <= (item.date+' '+item.endpoint)}}">
+            <text class='status_time'><text class='status_time2'>已签到\n</text>{{tools.my_slice(item.signIn,11,19)}}\n</text>
+            <button class='signclickout' bindtap='signout' data-scheduleid='{{item.scheduleid}}'>签退</button>
+          </view>   
+
+          <!-- 还未签到 -->
+          <view class='result_time' wx:if="{{item.signIn == null}}">
+            <button class='signclickin' bindtap='signin' data-scheduleid='{{item.scheduleid}}'>签到</button>
+          </view>    
+        </view>    
+      </view>   
+    </block>
+
+    <!-- 还未上课的课 -->
+    <block wx:for="{{sign}}" wx:key="" wx:if = "{{endFormatTime < (item.date+' '+item.startpoint)}}">   
+      <view class='weui-cell-list'>     
+      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+        <view class='weui-cell-circle'></view>       
+        <view class='weui-cell-line-tea' style='height:110rpx;'>         
+          <view class='weui-cell-time'>
+            <image src='/image/date.png' class='img_time'></image>
+            <text decode="{{true}}">&nbsp;{{item.date}}</text>
+          </view>             
+
+          <view class='weui-cell-time'>
+            <image src='/image/point.png' class='img_time1'></image>
+            <text decode="{{true}}">&nbsp;{{tools.my_slice(item.startpoint,0,5)}}--{{tools.my_slice(item.endpoint,0,5)}} </text>
+          </view> 
         </view>    
       </view>   
     </block>
@@ -83,14 +179,14 @@
     <image src='/image/undo.png' class='undo' bindtap='gosigntea'></image>
     <view  class='contact'>     
       <view class="contact-tab" >
-        <view class="{{current == 1 ? 'current' : ''}}" bindtap="changeTab" data-index="1">已签到</view>
-        <view class="{{current == 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">未签到</view>
+        <view class="{{current == 1 ? 'current' : ''}}" bindtap="changeTab" data-index="1">已签到  {{signnum}}</view>
+        <view class="{{current == 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">未签到{{notsignnum}}</view>
       </view>
     </view>
   </view>
 
   <!-- 已经签到学生信息 -->
-  <view style='display:{{gosignteamore == 1? "block":"none"}};'>
+  <view style='display:{{gosignteamore == 1? "block":"none"}};margin-left:90rpx;'>
     <view class='students'  wx:for = "{{signstu}}" wx:key = "">
       <image wx:if="{{item.protrait!=null}}" class="headphoto" src="{{item.protrait}}" background-size="cover"></image>
       <image wx:else class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
@@ -105,7 +201,7 @@
   </view>
 
   <!-- 未签到学生信息 -->
-  <view style='display:{{gosignteamore == 1? "block":"none"}};'>
+  <view style='display:{{gosignteamore == 1? "block":"none"}};margin-left:90rpx;'>
     <view class='students'  wx:for = "{{notsignstu}}" wx:key = "">
       <image wx:if="{{item.protrait!=null}}" class="headphoto" src="{{item.protrait}}" background-size="cover"></image>
       <image wx:else class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
@@ -118,20 +214,171 @@
       <view class='clear'></view>
     </view>
   </view> 
+
+  
+  <view class='classcard' style='display:{{Issignnumspace}}'>
+    <image src='{{space}}' class='space'></image>
+    <view>  
+      <text style='font-size:30rpx;'>没有学生</text>
+    </view>
+  </view>
 </view>
 
-<!-- 正在上的课显示 -->
- <!-- <button class='submit' bindtap='submit' style='display:{{Issigntea == 2? "block":"none"}}' >发布签到</button> -->
+<!-- 助教角色 -->
+<view wx:if="{{userstatus==1}}" class='sign1'>
+  <view class='instruction'>提示：上课前半个小时，下课后半个小时可以签到签退</view>
+   <view class='weui-cell-third' style='display:{{gosignteamore == 0? "block":"none"}};'>  
+    
+    <!-- 已上完的课 -->
+    <block wx:for="{{sign}}" wx:key="" wx:if = "{{time > (item.date+' '+item.endpoint) || (time > (item.date+' '+item.startpoint) && time <= (item.date+' '+item.endpoint) && item.sign_id != null) }}">   
+      <view class='weui-cell-list'>     
+      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+        <view class='weui-cell-circle'></view>       
+        <view class='weui-cell-line-tea'>         
+          <view class='weui-cell-time'>
+            <image src='/image/date.png' class='img_time'></image>
+           <text decode="{{true}}">&nbsp;{{item.date}}</text>
+          </view>             
 
-<!-- 已上完且发布了签到的显示 -->
+          <view class='weui-cell-time'>
+            <image src='/image/point.png' class='img_time1'></image>
+            <text decode="{{true}}">&nbsp;{{tools.my_slice(item.startpoint,0,5)}}--{{tools.my_slice(item.endpoint,0,5)}} </text>
+          </view> 
 
+          <view class='sign_time' bindtap='gosigndetail' data-scheduleid='{{item.scheduleid}}' data-signnum='{{item.SignNum}}' data-notsignnum='{{item.NotsignNum}}'>
+            <text>\n已签到学生({{item.SignNum}}) \n 未签到学生({{item.NotsignNum}})<text class='more_time'>更多</text></text>
+            <i-icon type="enter" size="16" color="#1c2438" class='icon' />
+          </view>
 
-<!-- 已上完但未发布签到的显示 -->
-<!-- <view class='classcard' style='display:{{Issigntea == 0? "block":"none"}}'>
-  <image src='{{space}}' class='space'></image>
-  <view>  
-    <text style='font-size:30rpx;'>您本节课未发布签到</text>
+          <view class='result_time' wx:if="{{item.signIn == null}}">
+            <text class='teachersign'>老师签到情况</text>
+            <text class='status_time1'>未签到\n未签退</text>
+          </view>  
+
+          <view class='result_time' wx:else>
+            <text class='teachersign'>老师签到情况</text>
+            <text class='status_time'><text class='status_time2'>已签到\n</text>{{tools.my_slice(item.signIn,11,19)}}\n</text>
+            <text class='status_time1' wx:if="{{item.signOut == null}}">未签退</text>
+            <text class='status_time' wx:else><text class='status_time2'>已签退\n</text>{{tools.my_slice(item.signOut,11,19)}}\n</text>
+          </view>    
+        </view>    
+      </view>   
+    </block>
+
+    <!-- 正在上的课 -->
+    <block wx:for="{{sign}}" wx:key="" wx:if = "{{endFormatTime > (item.date+' '+item.startpoint) && endFormatTime2 <= (item.date+' '+item.endpoint) }}">   
+      <view class='weui-cell-list'>     
+      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+        <view class='weui-cell-circle'></view>       
+        <view class='weui-cell-line-tea'>         
+          <view class='weui-cell-time'>
+            <image src='/image/date.png' class='img_time'></image>
+           <text decode="{{true}}">&nbsp;{{item.date}}</text>
+          </view>             
+
+          <view class='weui-cell-time'>
+            <image src='/image/point.png' class='img_time1'></image>
+            <text decode="{{true}}">&nbsp;{{tools.my_slice(item.startpoint,0,5)}}--{{tools.my_slice(item.endpoint,0,5)}} </text>
+          </view> 
+
+          <view class='sign_time' bindtap='gosigndetail' data-scheduleid='{{item.scheduleid}}' data-signnum='{{item.SignNum}}' data-notsignnum='{{item.NotsignNum}}'>
+            <text>\n已签到学生({{item.SignNum}}) \n 未签到学生({{item.NotsignNum}}) <text class='more_time'>更多</text></text>
+            <i-icon type="enter" size="16" color="#1c2438" class='icon' />
+          </view>
+
+          <!-- 已签到签退 -->
+          <view class='result_time' wx:if="{{item.signIn != null & item.signOut !=null}}">
+            <text class='teachersign'>老师签到情况</text>
+            <text class='status_time'><text class='status_time2'>已签到\n</text>{{tools.my_slice(item.signIn,11,19)}}\n</text>
+            <text class='status_time'><text class='status_time2'>已签退\n</text>{{tools.my_slice(item.signOut,11,19)}}\n</text>
+          </view> 
+
+          <!-- 已经签到 未签退-->
+          <view class='result_time' wx:if="{{item.signIn != null & item.signOut ==null & endFormatTime2 <= (item.date+' '+item.endpoint)}}">
+            <text class='teachersign'>老师签到情况</text>
+            <text class='status_time'><text class='status_time2'>已签到\n</text>{{tools.my_slice(item.signIn,11,19)}}\n</text>
+            <text class='status_time1'>还未签退</text>
+          </view>   
+
+          <!-- 还未签到 -->
+          <view class='result_time' wx:if="{{item.signIn == null}}">
+            <text class='teachersign'>老师签到情况</text>
+            <text class='status_time1'>还未签退\n还未签退</text>
+          </view>    
+        </view>    
+      </view>   
+    </block>
+
+    <!-- 还未上课的课 -->
+    <block wx:for="{{sign}}" wx:key="" wx:if = "{{endFormatTime < (item.date+' '+item.startpoint)}}">   
+      <view class='weui-cell-list'>     
+      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+        <view class='weui-cell-circle'></view>       
+        <view class='weui-cell-line-tea' style='height:110rpx;'>         
+          <view class='weui-cell-time'>
+            <image src='/image/date.png' class='img_time'></image>
+            <text decode="{{true}}">&nbsp;{{item.date}}</text>
+          </view>             
+
+          <view class='weui-cell-time'>
+            <image src='/image/point.png' class='img_time1'></image>
+            <text decode="{{true}}">&nbsp;{{tools.my_slice(item.startpoint,0,5)}}--{{tools.my_slice(item.endpoint,0,5)}} </text>
+          </view> 
+        </view>    
+      </view>   
+    </block>
   </view>
-</view> -->
+
+  <view style='display:{{gosignteamore == 1? "block":"none"}};' class='signstatus'>
+    <image src='/image/undo.png' class='undo' bindtap='gosigntea'></image>
+    <view  class='contact'>     
+      <view class="contact-tab" >
+        <view class="{{current == 1 ? 'current' : ''}}" bindtap="changeTab" data-index="1">已签到  {{signnum}}</view>
+        <view class="{{current == 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">未签到{{notsignnum}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 已经签到学生信息 -->
+  <view style='display:{{gosignteamore == 1? "block":"none"}};margin-left:90rpx;'>
+    <view class='students'  wx:for = "{{signstu}}" wx:key = "">
+      <image wx:if="{{item.protrait!=null}}" class="headphoto" src="{{item.protrait}}" background-size="cover"></image>
+      <image wx:else class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
+      <view class='stu_name'>
+        {{item.name}}
+      </view>
+      <view class='stu_tel'>
+        {{item.sign_time}}
+      </view>
+      <view class='clear'></view>
+    </view>
+  </view>
+
+  <!-- 未签到学生信息 -->
+  <view style='display:{{gosignteamore == 1? "block":"none"}};margin-left:90rpx;'>
+    <view class='students'  wx:for = "{{notsignstu}}" wx:key = "">
+      <image wx:if="{{item.protrait!=null}}" class="headphoto" src="{{item.protrait}}" background-size="cover"></image>
+      <image wx:else class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
+      <view class='stu_name'>
+        {{item.name}}
+      </view>
+      <view class='stu_tel'>
+        {{item.signtime}}
+      </view>
+      <view class='clear'></view>
+    </view>
+  </view> 
+
+  
+  <view class='classcard' style='display:{{Issignnumspace}}'>
+    <image src='{{space}}' class='space'></image>
+    <view>  
+      <text style='font-size:30rpx;'>没有学生</text>
+    </view>
+  </view>
+</view>
+
+
+
 
 

@@ -133,7 +133,7 @@ onCancel: function () {
 
 /**   * 对话框确认按钮点击事件   */  
 onConfirm: function () { 
-  let that = this;
+  var that = this;
   if (that.data.oldpassword.length == 0) {
     wx.showLoading();
     wx.hideLoading();
@@ -194,8 +194,8 @@ onConfirm: function () {
     wx.request({
       url: requestIP + '/user/resetPwdTwo',
       data: {
-        repwd: that.data.newpassword2,
-        pwd: that.data.newpassword,
+        oldpwd: that.data.oldpassword,
+        newpwd: that.data.newpassword2
       },
       method: 'POST',
       header: {
@@ -214,16 +214,15 @@ onConfirm: function () {
             setTimeout(() => {
               wx.hideToast();
             }, 2000)
-          }, 0);
+          }, 0);      
         } else {
-          console.log("非101");
+          console.log("非101");          
         }
       },
       fail: function () {
-        console.log("请求失败");
-      }
-    })
- 
+        console.log("fail");
+      },
+    }) 
   }
     this.hideModal()
     this.setData({ 

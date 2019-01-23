@@ -21,7 +21,7 @@
 
 .select{
   position: absolute;
-  left: 170rpx;
+  left: 200rpx;
   top: -25rpx;
 }
 

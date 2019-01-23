@@ -15,6 +15,10 @@ Component({
       type: "String",
       value: ""
     },
+    studentcount:{
+      type:"String",
+      value:""
+    },
     Ismatespace: {
       type: "String",
       value: ""

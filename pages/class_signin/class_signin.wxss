@@ -213,6 +213,7 @@
   margin-bottom: 10rpx; 
   padding: 0 20rpx;
   background-color: #ff9900;
+  width: 100rpx;
 }
 
 .signclickout{
@@ -223,6 +224,7 @@
   font-size: 30rpx;
   padding: 0 20rpx;
   background-color: #1DA27F;
+  width: 100rpx;
 }
 
 .headphoto{
@@ -326,10 +328,22 @@
   height: 40rpx;
 }
 
-.result_time{
+/* .result_time{
   position: absolute;
   right: 100rpx;
   top: 30rpx;
+} */
+.result_time{
+  position: absolute;
+  left: 60%;
+  top: 0rpx;
+  width: 40%;
+  height: 190rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 .more_time{
@@ -341,7 +355,8 @@
 .icon{
   position: absolute;
   top: 70rpx;
-  left: 220rpx;
+  /* left: 220rpx; */
+  margin-left: 0rpx;
 }
 
 /* 未签到 */
@@ -352,7 +367,11 @@
 }
 /* 已签到 */
 .status_time{
-  font-size: 32rpx;
+  font-size: 24rpx;
+}
+
+.status_time2{
+  font-size: 30rpx;
   font-weight: bold;
   color: #2d8cf0;
 }
@@ -382,4 +401,19 @@
 .signstatus{
   position: relative;
   margin-bottom: 100rpx;
+}
+
+.classcard{
+  margin: 100rpx auto;
+  text-align: center;
+}
+
+.space{
+  height: 250rpx;
+  width: 250rpx;
+}
+
+.teachersign{
+  font-size: 30rpx;
+  color: #495060;
 }

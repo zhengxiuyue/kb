@@ -3,7 +3,7 @@
 
 <view class='infm'>
   <image src='/image/tel.png' class='icon'></image>
-  <input class='ipt' type='number' value='{{tel}}' bindinput='telInput' placeholder='请输入手机号码' placeholder-class='placeholder' cursor-spacing="0"></input>
+  <input class='ipt' type='number' value='{{tel}}' bindinput='telInput' placeholder='请输入手机号码或邮箱' placeholder-class='placeholder' cursor-spacing="0"></input>
 </view>
 
 <view class='infm'>

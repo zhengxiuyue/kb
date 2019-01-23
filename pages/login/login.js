@@ -7,9 +7,9 @@ Page({
    */
   data: {
     items: [
-      {value: '学生', id: '1'},
+      {value: '学生', id: '3'},
       {value: '老师',id:'2'},
-      {value: '助教', id: '3'}
+      {value: '助教', id: '1'}
     ],
     userstatus: '',
     "tel": '',
@@ -137,7 +137,8 @@ Page({
     var con = app.globalData.userstatus
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
     //判断手机号码
-    if (!myreg.test(that.data.tel)) {
+   
+    if ((app.globalData.userstatus == 3 || app.globalData.userstatus == 2)&!myreg.test(that.data.tel)) {
       wx.showLoading();
       wx.hideLoading();
       setTimeout(() => {
@@ -218,13 +219,13 @@ Page({
     }
     else {
       //学生角色登录
-      if (con == 1) {
+      if (con == 3) {
         wx.request({
           url: requestIP+'/user/login',
           data:{
             account: that.data.tel,
             pwd: that.data.password,
-            "type":1,
+            "type":3,
             code: that.data.code,
             nickName: app.globalData.nickName,
             avatarUrl: app.globalData.avatarUrl
@@ -258,7 +259,7 @@ Page({
               wx.hideLoading();
               setTimeout(() => {
                 wx.showToast({
-                  title: '电话号码未注册!',
+                  title: '账号未注册!',
                   icon: 'none',
                 });
                 setTimeout(() => {
@@ -434,7 +435,7 @@ Page({
               wx.hideLoading();
               setTimeout(() => {
                 wx.showToast({
-                  title: '电话号码未注册!',
+                  title: '账号未注册!',
                   icon: 'none',
                 });
                 setTimeout(() => {
@@ -505,9 +506,144 @@ Page({
       }   
 
       //助教角色登录
-      else if (con == 3) {
-        wx.redirectTo({
-          url: '/pages/index/A_index',
+      else if (con == 1) {
+        wx.request({
+          url: requestIP + '/user/login',
+          data: {
+            account: that.data.tel,
+            pwd: that.data.password,
+            "type": 1,
+            code: that.data.code,
+            nickName: app.globalData.nickName,
+            avatarUrl: app.globalData.avatarUrl
+          },
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+          },
+          success: function (res) {
+            if (res.data.resultCode == "101") {
+              app.globalData.openid = res.data.data.openid
+              app.globalData.userid = res.data.data.userid
+              wx.setStorage({
+                key: "user",
+                data:
+                {
+                  userid: res.data.data.userid,
+                  openid: res.data.data.openid,
+                  userstatus: 2,
+                  name: res.data.data.name,
+                  tel: res.data.data.tel
+                }
+              })
+              wx.redirectTo({
+                url: '/pages/index/A_index',
+              })
+            }
+            else if (res.data.resultCode == "214") {
+              wx.showLoading();
+              wx.hideLoading();
+              setTimeout(() => {
+                wx.showToast({
+                  title: '账号和密码不匹配!',
+                  icon: 'none',
+                });
+                setTimeout(() => {
+                  wx.hideToast();
+                }, 2000)
+              }, 0);
+              that.change()
+              that.setData({
+                authcode: ""
+              })
+              app.globalData.openid = ""
+              app.globalData.userid = ""
+              wx.login({
+                success(res) {
+                  if (res.code) {
+                    that.setData({
+                      code: res.code,
+                    })
+                    app.globalData.openid = null
+                  } else {
+                    console.log('登录失败！' + res.errMsg)
+                  }
+                }
+              })
+              return false;
+            }
+            else if (res.data.resultCode == "204") {
+              wx.showLoading();
+              wx.hideLoading();
+              setTimeout(() => {
+                wx.showToast({
+                  title: '账号未注册!',
+                  icon: 'none',
+                });
+                setTimeout(() => {
+                  wx.hideToast();
+                }, 2000)
+              }, 0);
+              that.change()
+              that.setData({
+                authcode: ""
+              })
+              app.globalData.openid = ""
+              app.globalData.userid = ""
+              wx.login({
+                success(res) {
+                  if (res.code) {
+                    that.setData({
+                      code: res.code,
+                    })
+                    app.globalData.openid = null
+                  } else {
+                    console.log('登录失败！' + res.errMsg)
+                  }
+                }
+              })
+              return false;
+            }
+            else if (res.data.resultCode == "213") {
+              wx.showLoading();
+              wx.hideLoading();
+              setTimeout(() => {
+                wx.showToast({
+                  title: '请选择正确的身份!',
+                  icon: 'none',
+                });
+                setTimeout(() => {
+                  wx.hideToast();
+                }, 2000)
+              }, 0);
+              that.change()
+              that.setData({
+                authcode: ""
+              })
+              app.globalData.openid = ""
+              app.globalData.userid = ""
+              wx.login({
+                success(res) {
+                  if (res.code) {
+                    that.setData({
+                      code: res.code,
+                    })
+                    app.globalData.openid = null
+                  } else {
+                    console.log('登录失败！' + res.errMsg)
+                  }
+                }
+              })
+              return false;
+            }
+            else {
+              console.log("请求失败");
+            }
+          },
+          fail: function () {
+            app.globalData.openid = null
+            console.log("fail");
+          },
         })
       } 
     }    

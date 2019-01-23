@@ -187,12 +187,12 @@ Page({
             }, 0);
             wx.navigateBack({
             })
-            
+
           } else {
             console.log("请求失败");
           }
         },
-      })
+      })      
     }
   },
   inputs: function (e) {

@@ -50,7 +50,7 @@
   color: #657180;
   font-weight: bold;
   font-size: 32rpx;
-  padding-left: 70%;
+  padding-left: 60%;
   margin-bottom: 10rpx;
 }
 

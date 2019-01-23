@@ -13,7 +13,7 @@
   </view>
 
   <view class='infm'>
-    <text class='title'>手机\n</text>
+    <text class='title'>手机或邮箱\n</text>
     <text class='cont' decode="{{true}}">&nbsp;{{tel}}</text>
   </view>
 

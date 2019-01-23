@@ -18,5 +18,4 @@
 
     <class-now style="{{current == 1 ? 'display: inline;': 'display: none;'}}" item="{{itemnow}}"  userstatus="{{userstatus}}"  Isclassspace="{{Isclassspace}}" ></class-now>
     <class-history style="{{current == 0 ? 'display: inline;': 'display: none;'}}" item="{{itemhistory}}" userstatus="{{userstatus}}"  Isclassspace="{{Isclassspace}}"></class-history>
-
 </view>

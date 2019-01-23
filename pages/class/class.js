@@ -15,6 +15,7 @@ Page({
     items:[], //课堂详情
     notice:[],//课堂通知
     chat:[],//课堂讨论
+    studentcount:'',//学生数量
     sign:[
       {classnum:''}
     ],//课堂签到
@@ -22,18 +23,14 @@ Page({
     Ischatspace: "none",
     openid:"",
     classnum:[],
-    time:"",
-    "Issignstu":"3",//学生签到信息显示
+    time:"",//当前时间
+    endFormatTime:"",//提前半个小时的时间
+    endFormatTime2: "",//推迟半个小时的时间
     gosignteamore:"0",//老师角色签到 是否点进详情
     showCom: true,
-    signnumber:"",//学生签到编号
-    firstPerson:"",//老师选择课堂框
     Issign:null,//学生是否签到
-    signbtn: "",//学生签到按钮信息
     Ismatespace: "none",//学生信息查询是否为空
     search: "",//学生查询内容
-    signnum: "",//学生签到个数
-    signtime: "",//学生成功签到的时间
   },
 
   /**
@@ -46,14 +43,21 @@ Page({
     var classid = that.options.classid
 
     // 调用函数时，传入new Date()参数，返回值是日期和时间    
-    var time = util.formatTime(new Date()); 
+    var time = util.formatTime(new Date())
+    var endFormatTime = util.endFormatTime(new Date(),30)
+    var endFormatTime2 = util.endFormatTime(new Date(), -30)
+    console.log(time)
+    console.log(endFormatTime)
+    console.log(endFormatTime2)
     // 再通过setData更改Page()里面的data，动态更新页面的数据    
 
     this.setData({
       userstatus: userstatus,
       openid: openid,
       classid: classid,
-      time: time 
+      time: time,
+      endFormatTime: endFormatTime,
+      endFormatTime2: endFormatTime2,
     })
 
     //请求课堂详细信息
@@ -70,7 +74,7 @@ Page({
       success: function (res) {
         if (res.data.resultCode == "101") {
           that.setData({
-            items: res.data.data
+            items: res.data.data[0]
           })
         } else {
           console.log("请求失败");
@@ -95,10 +99,12 @@ Page({
             mate: []
           })
           for (var i = 0, len = res.data.data.length; i < len; i++) {
-            that.data.mate[i] = res.data.data[i]
+            that.data.mate[i] = res.data.data[i];
+            that.data.studentcount = res.data.data[0].studentcount
           }
           that.setData({
-            mate: that.data.mate
+            mate: that.data.mate,
+            studentcount:that.data.studentcount
           })
         } else {
           console.log("请求失败");
@@ -227,6 +233,7 @@ Page({
     }, 1500);
 
     let that = this
+    //成员
     if (that.data.current == 0) {
       wx.request({
         url: requestIP + '/user/getClassmateInfo',
@@ -262,12 +269,12 @@ Page({
         },
       })
     }
-    //老师签到功能& that.data.userstatus == 2
-    //签到功能
-    else if (that.data.current == 1) {
+
+    // 签到--学生
+    else if (that.data.current == 1 & that.data.userstatus == 3) {
       //获取签到列表
       wx.request({
-        url: requestIP + '/teacher/getSignBefore',
+        url: requestIP + '/student/getClassSchedule',
         data: {
           classid: that.data.classid
         },
@@ -281,7 +288,49 @@ Page({
           if (res.data.resultCode == "101") {
             that.setData({
               sign: [],
-              firstPerson: time,
+              gosignteamore: "0"
+            })
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.sign[i] = res.data.data[i]
+              that.data.sign[i].classnum = i + 1//获取第几节课
+            }
+            that.setData({
+              sign: that.data.sign,
+            })
+          } else {
+            that.setData({
+              sign: []
+            })
+            console.log("请求失败");
+          }
+        },
+        fail: function () {
+          that.setData({
+            sign: []
+          })
+          console.log("fail");
+        },
+      })
+    }
+
+    //签到--老师
+    else if (that.data.current == 1 & that.data.userstatus == 2) {
+      //获取签到列表
+      wx.request({
+        url: requestIP + '/teacher/getSignList',
+        data: {
+          classid: that.data.classid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          var time = util.formatTime(new Date());
+          if (res.data.resultCode == "101") {
+            that.setData({
+              sign: [],
               gosignteamore: "0"
             })
             for (var i = 0, len = res.data.data.length; i < len; i++) {
@@ -310,66 +359,7 @@ Page({
     //学生签到功能
     else if (that.data.current == 1 & that.data.userstatus == 3) {
       //获取当前是否有签到
-      wx.request({
-        url: requestIP + '/user/getSign',
-        data: {
-          classid: that.data.classid
-        },
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'userid': app.globalData.userid
-        },
-        success: function (res) {
-          //当前有签到信息
-          if (res.data.resultCode == "219") {
-            //获取签到编号
-            var signnumber = res.data.data.sign_id
-            //获取是否签到
-            var Issign = res.data.data.sign
-            that.setData({
-              //显示签到按钮
-              signnumber: signnumber,
-              Issign: Issign,
-              Issignstu: "1",
-            })
-            //如果未签到
-            if (Issign == 0) {
-              that.setData({
-                signbtn: "签到"
-              })
-            } else if (Issign == 1) {
-              //获取第几个签到
-              var signnum = res.data.data.number
-              //获取签到时间
-              var signtime = res.data.data.sign_time
-              that.setData({
-                signnum: signnum,
-                signtime: signtime,
-                signbtn: "你已签到成功"
-              })
-            }
-          } else if (res.data.resultCode == "217") {
-            that.setData({
-              //显示签到按钮
-              Issignstu: "0",
-            })
-          }
-          else {
-            that.setData({
-              signbtn: ""
-            })
-            console.log("请求失败");
-          }
-        },
-        fail: function () {
-          that.setData({
-            Issignstu: "",
-            signbtn: ""
-          })
-          console.log("fail");
-        },
-      })
+     
     }
 
     //讨论功能
@@ -475,6 +465,8 @@ Page({
     this.setData({
       current: index
     })
+
+    //成员
     if(that.data.current == 0){
       wx.request({
         url: requestIP + '/user/getClassmateInfo',
@@ -510,11 +502,12 @@ Page({
         },
       })
     } 
-    //签到功能
-    else if (that.data.current == 1){
+
+    //签到--学生
+    else if (that.data.current == 1 & that.data.userstatus == 3){
       //获取签到列表
       wx.request({
-        url: requestIP + '/teacher/getSignBefore',
+        url: requestIP + '/student/getClassSchedule',
         data: {
           classid: that.data.classid
         },
@@ -528,7 +521,6 @@ Page({
           if (res.data.resultCode == "101") {
             that.setData({
               sign: [],
-              firstPerson:time,
               gosignteamore:"0"
             })
             for (var i = 0, len = res.data.data.length; i < len; i++) {
@@ -554,11 +546,10 @@ Page({
       })
     }
 
-    //学生签到功能
-    else if (that.data.current == 1 & that.data.userstatus == 3) {
-      //获取当前是否有签到
+    //签到--老师
+    else if (that.data.current == 1 & that.data.userstatus == 2) {
       wx.request({
-        url: requestIP + '/user/getSign',
+        url: requestIP + '/teacher/getSignList',
         data: {
           classid: that.data.classid
         },
@@ -568,52 +559,71 @@ Page({
           'userid': app.globalData.userid
         },
         success: function (res) {
-          //当前有签到信息
-          if (res.data.resultCode == "219") {
-            //获取签到编号
-            var signnumber = res.data.data.sign_id
-            //获取是否签到
-            var Issign = res.data.data.sign
+          var time = util.formatTime(new Date());
+          if (res.data.resultCode == "101") {
             that.setData({
-              //显示签到按钮
-              signnumber: signnumber,
-              Issign: Issign,
-              Issignstu: "1"
+              sign: [],
+              gosignteamore: "0"
             })
-            //如果未签到
-            if(Issign == 0){
-              that.setData({
-                signbtn:"签到"
-              })
-            }else if(Issign == 1){
-              //获取第几个签到
-              var signnum = res.data.data.number
-              //获取签到时间
-              var signtime = res.data.data.sign_time
-              that.setData({
-                signnum: signnum,
-                signtime: signtime,
-                signbtn: "你已签到成功"
-              })
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.sign[i] = res.data.data[i]
+              that.data.sign[i].classnum = i + 1//获取第几节课
             }
-          } else if (res.data.resultCode == "217")
-          {
             that.setData({
-              //显示签到按钮
-              Issignstu: "0"
+              sign: that.data.sign,
             })
-          } 
-          else {
+          } else {
             that.setData({
-              signbtn:""
+              sign: []
             })
             console.log("请求失败");
           }
         },
         fail: function () {
           that.setData({
-            Issignstu: "",
-            signbtn:""
+            sign: [],
+          })
+          console.log("fail");
+        },
+      })
+    }
+
+    //签到--助教
+    else if (that.data.current == 1 & that.data.userstatus == 1) {
+      wx.request({
+        url: requestIP + '/assistant/getSignList',
+        data: {
+          classid: that.data.classid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          var time = util.formatTime(new Date());
+          if (res.data.resultCode == "101") {
+            that.setData({
+              sign: [],
+              gosignteamore: "0"
+            })
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.sign[i] = res.data.data[i]
+              that.data.sign[i].classnum = i + 1//获取第几节课
+            }
+            that.setData({
+              sign: that.data.sign,
+            })
+          } else {
+            that.setData({
+              sign: []
+            })
+            console.log("请求失败");
+          }
+        },
+        fail: function () {
+          that.setData({
+            sign: [],
           })
           console.log("fail");
         },

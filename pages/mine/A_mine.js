@@ -20,7 +20,10 @@ Page({
    */
   onLoad: function (options) {
     app.editTabBar2();
+    console.log(app.globalData.userstatus)
+    console.log(app.globalData.userid)
 
+    var that = this
     var userstatus = app.globalData.userstatus
     wx.getStorage({
       key: "user",
@@ -33,7 +36,7 @@ Page({
     })
 
     wx.request({
-      url: requestIP + '/teacher/getMyClass',
+      url: requestIP + '/assistant/getMyClass',
       data: {
         "type": this.data.current
       },
@@ -112,7 +115,7 @@ Page({
     //获取当前课堂
     if (this.data.current == 1) {
       wx.request({
-        url: requestIP + '/teacher/getMyClass',
+        url: requestIP + '/assistant/getMyClass',
         data: {
           "type": this.data.current
         },
@@ -150,7 +153,7 @@ Page({
     //获取历史课堂
     else if (this.data.current == 0) {
       wx.request({
-        url: requestIP + '/teacher/getMyClass',
+        url: requestIP + '/assistant/getMyClass',
         data: {
           "type": this.data.current
         },
@@ -208,7 +211,7 @@ Page({
     })
     if (index == 1) {
       wx.request({
-        url: requestIP + '/teacher/getMyClass',
+        url: requestIP + '/assistant/getMyClass',
         data: {
           "type": this.data.current
         },
@@ -244,7 +247,7 @@ Page({
     }
     else if (this.data.current == 0 && that.data.itemhistory.length == 0) {
       wx.request({
-        url: requestIP + '/teacher/getMyClass',
+        url: requestIP + '/assistant/getMyClass',
         data: {
           "type": this.data.current
         },

@@ -2,24 +2,31 @@
   <view class='time'>{{item.no_time}}</view>
   <view class='notice'>
       <view class='title'>{{item.no_title}}
-        <image class='delete' src='/image/delete.png' bindtap='delt' data-no_id='{{item.no_id}}' style='display:{{userstatus == 2? "block":"none"}}'></image>
+        <image class='delete' src='/image/delete.png' bindtap='delt' data-no_id='{{item.no_id}}' style='display:{{item.userid == userid? "block":"none"}}'></image>
       </view>
 
       <view class='content'>
-        <text>{{item.no_content}}</text>
+        <text>{{item.no_content}}{{uerid}}</text>
       </view>
 
-      <view class='teacher'>
+      <view class='teacher' wx:if="{{item.role == 1}}">
        <image wx:if="{{item.protrait!=null}}" class="headphoto" src="{{item.protrait}}" background-size="cover"></image>
       <image wx:else class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
-      {{item.name}}
+      {{item.name}}助教
       </view>
+
+      <view class='teacher' wx:if="{{item.role == 2}}">
+       <image wx:if="{{item.protrait!=null}}" class="headphoto" src="{{item.protrait}}" background-size="cover"></image>
+      <image wx:else class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
+      {{item.name}}老师
+      </view>
+
       <view style='height:15rpx;'></view>
   </view>
   <view style='height:20rpx;'></view>
 </view>
 
-<image style='display:{{userstatus == 2? "block":"none"}}' class="edit" src="{{edit}}" background-size="cover" bindtap='editnotice' data-coursename='items.coursename' data-level='items.level'></image>
+<image style='display:{{userstatus == 2||userstatus == 1? "block":"none"}}' class="edit" src="{{edit}}" background-size="cover" bindtap='editnotice' data-coursename='items.coursename' data-level='items.level'></image>
 
 <view class='classcard' style='display:{{Isnoticespace}}'>
   <image src='{{space}}' class='space'></image>

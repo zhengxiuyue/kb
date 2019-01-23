@@ -36,7 +36,8 @@ Component({
     "space":"/image/space.png",
     "no_id": "",
     imgUrl:"/image/photo.png",
-    userstatus:""
+    userstatus:"",
+    userid: app.globalData.userid
   },
 
   /**
@@ -135,7 +136,8 @@ Component({
   ready: function () {
     var that = this
     that.setData({
-      userstatus: app.globalData.userstatus
+      userstatus: app.globalData.userstatus,
+      userid:app.globalData.userid
     }) 
   }
 })

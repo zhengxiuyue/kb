@@ -23,7 +23,14 @@
 <view class='students1' wx:for = "{{comment}}" wx:key = "">
   <image wx:if="{{item.protrait!=null}}" class="headphoto1" src="{{item.protrait}}" background-size="cover"></image>
   <image wx:else class="headphoto1" src="{{imgUrl}}" background-size="cover"></image>
-  <view class='stu_name'>
+ 
+  <view wx:if="{{item.role == 1}}"  class='stu_name'>
+    {{item.name}}助教
+  </view>
+  <view wx:if="{{item.role == 2}}"  class='stu_name'>
+    {{item.name}}老师
+  </view>
+  <view wx:if="{{item.role == 3}}"  class='stu_name'>
     {{item.name}}
   </view>
   <image class='delete' src='/image/delete.png'  data-item = "{{item.reply_id}}" bindtap='delt' style='display:{{item.userid == userid? "block" : "none"}}'></image>

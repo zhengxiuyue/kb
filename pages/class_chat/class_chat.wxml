@@ -2,7 +2,13 @@
   <view class='students'>
       <image wx:if="{{item.protrait!=null}}" class="headphoto" src="{{item.protrait}}" background-size="cover"></image>
       <image wx:else class="headphoto" src="{{imgUrl}}" background-size="cover"></image>
-      <view class='stu_name'>
+      <view wx:if="{{item.role == 1}}"  class='stu_name'>
+        {{item.name}}助教
+      </view>
+      <view wx:if="{{item.role == 2}}"  class='stu_name'>
+        {{item.name}}老师
+      </view>
+      <view wx:if="{{item.role == 3}}"  class='stu_name'>
         {{item.name}}
       </view>
       <image class='delete' src='/image/delete.png'  data-item = "{{item.dis_id}}"   bindtap='delt' style='display:{{item.userid == userid? "block" : "none"}}'></image>
@@ -31,7 +37,7 @@
 <view class='classcard' style='display:{{Ischatspace}}'>
   <image src='{{space}}' class='space'></image>
   <view>  
-    <text>还没有任何评论</text>
+    <text style='font-size:30rpx;'>还没有任何评论</text>
     <view  bindtap='edit'>
       <text class='signin'>去发布评论</text>
     </view>

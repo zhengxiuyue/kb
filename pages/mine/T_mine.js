@@ -47,7 +47,7 @@ Page({
     wx.request({
       url: requestIP + '/teacher/getMyClass',
       data: {
-        "type": this.data.current
+        "type": this.data.current  
       },
       method: 'POST',
       header: {

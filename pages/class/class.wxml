@@ -7,8 +7,8 @@
         <!--文字-->
         <view class='title_1'>
           <image src='/image/class.png' class='classpicture'></image>
-          <view class='classname'>{{items.coursename}}</view>
-          <view class='classgreat'>{{items.level}}{{items.classnumber}}班</view>
+          <view class='classname'>{{items.coursename}} {{items.level}}{{items.classnumber}}班</view>
+          <!-- <view class='classgreat'>{{items.level}}{{items.classnumber}}班</view> -->
     
           <view class='teacher'>
                 授课老师：{{items.teachername}}
@@ -92,8 +92,8 @@
 
   <view class='clear1'></view>
   
-  <students style="{{current == 0 ? 'display: inline;': 'display: none;'}}" mate="{{mate}}" classid="{{classid}}" Ismatespace="{{Ismatespace}}" search="{{search}}"></students>
-	<signin style="{{current == 1 ? 'display: inline;': 'display: none;'}}"  userstatus="{{userstatus}}" sign="{{sign}}" classnum="{{classnum}}" time="{{time}}"  classid="{{classid}}" Issignstu="{{Issignstu}}" gosignteamore="{{gosignteamore}}" signnumber="{{signnumber}}" firstPerson="{{firstPerson}}" Issign="{{Issign}}" signbtn="{{signbtn}}" signtime="{{signtime}}"  signnum="{{signnum}}" ></signin>
+  <students style="{{current == 0 ? 'display: inline;': 'display: none;'}}" mate="{{mate}}" classid="{{classid}}" Ismatespace="{{Ismatespace}}" search="{{search}}" studentcount='{{studentcount}}'></students>
+	<signin style="{{current == 1 ? 'display: inline;': 'display: none;'}}"  userstatus="{{userstatus}}" sign="{{sign}}" classnum="{{classnum}}" time="{{time}}" endFormatTime="{{endFormatTime}}" endFormatTime2="{{endFormatTime2}}" classid="{{classid}}" Issignstu="{{Issignstu}}" gosignteamore="{{gosignteamore}}"  firstPerson="{{firstPerson}}" Issign="{{Issign}}" signbtn="{{signbtn}}" signtime="{{signtime}}"  signnum="{{signnum}}" ></signin>
   <chat style="{{current == 2 ? 'display: inline;': 'display: none;'}}" chat="{{chat}}" Ischatspace="{{Ischatspace}}" openid="{{openid}}" classid="{{classid}}" items="{{items}}" current="{{current}}"></chat>
 	<notice id="notice" bindmyevent="myEventListener" style="{{current == 3 ? 'display: inline;': 'display: none;'}}"  notice="{{notice}}" Isnoticespace="{{Isnoticespace}}" classid="{{classid}}" items="{{items}}" current="{{current}}" wx:if="{{showCom}}"></notice>
   
