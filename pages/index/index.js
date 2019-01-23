@@ -1,11 +1,10 @@
+// 引入SDK核心类
+var QQMapWX = require('../../dist/qqmap-wx-jssdk.min.js');
+var qqmapsdk;
 var app = getApp();
 var requestIP = app.globalData.requestIP;
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     date: new Date().getFullYear() + "-" + (parseInt(new Date().getMonth())+1).toString() + "-" +new Date().getDate() ,
     //date: new Date().toLocaleDateString().replace("/", "-").replace("/", "-"),
@@ -63,9 +62,9 @@ Page({
       userstatus: userstatus,
     })
 
+    this.getLocation();
     this.getRecentClass();
     this.getMyCourse();
-    this.getNotice();
   },
 
   /**
@@ -79,9 +78,9 @@ Page({
       wx.stopPullDownRefresh() //停止下拉刷新   
     }, 1500);
 
+    this.getLocation();
     this.getRecentClass();
     this.getMyCourse();
-    this.getNotice();
   },
   /**
    * 用户点击右上角分享
@@ -200,12 +199,76 @@ Page({
     })
   },
 
-//获取通知
+//获取当前定位并写入缓存
+  getLocation: function (e) {
+   // console.log("执行了获取地理位置");
+    var that = this;
+    wx.getLocation({  //获取当前地址
+      success: function (res) {
+        var latitude = res.latitude // 纬度，浮点数，范围为90 ~ -90
+        var longitude = res.longitude // 经度，浮点数，范围为180 ~ -180
+        //根据经纬度获取所在城市
+        qqmapsdk = new QQMapWX({
+          key: 'S3LBZ-7NFWX-YVU4W-7JY7T-MEV6J-SKBF5'
+        });
+        qqmapsdk.reverseGeocoder({
+          location: { latitude: latitude, longitude: longitude },
+          success: function (res) {
+            //address 城市
+            // console.log(res.result);
+            that.setData({ address: res.result.address })
+             wx.showToast({
+              title: "当前位置: " + that.data.address,
+             icon: 'none'
+            });
+            //把当前位置存入全局变量
+            if (!app.globalData.province || !app.globalData.areaname ||! app.globalData.city)
+            {
+              app.globalData.province = res.result.address_component.province;
+              app.globalData.areaname = res.result.address_component.district;
+              app.globalData.city = res.result.address_component.city;
+            }
+            //把当前位置存入小程序缓存
+            wx.setStorageSync("Nprovince", res.result.address_component.province)
+            wx.setStorageSync("Nareaname", res.result.address_component.district)
+            wx.setStorageSync("Ncity", res.result.address_component.city)
+            that.getNotice();
+          }
+        });
+      },
+      fail(res) {
+        wx.showToast({
+          title: '无法获取当前位置',
+          icon: 'none'
+        });
+        //把当前位置存入全局变量
+        if (!app.globalData.province || !app.globalData.areaname || !app.globalData.city) {
+        app.globalData.province = "北京市";
+        app.globalData.areaname = "东城区";
+        app.globalData.city = "北京市";
+  }
+        //把当前位置存入小程序缓存
+        wx.setStorageSync("Nprovince", "北京市")
+        wx.setStorageSync("Nareaname", "东城区")
+        wx.setStorageSync("Ncity", "北京市")
+
+        that.getNotice();
+      }
+    })
+  },
+
+//获取地区通知
   getNotice:function(e){
     var that = this;
+    var province = wx.getStorageSync("Nprovince");
+    var areaname = wx.getStorageSync("Nareaname"); 
+    var city = wx.getStorageSync("Ncity");
     wx.request({
       url: requestIP+'/student/getNotice',
       data: {
+        province: province,
+        areaname: areaname,
+        city: city
       },
       method: 'POST',
       header: {
@@ -226,11 +289,9 @@ Page({
     //获取我的课表
   getMyCourse: function (e) {
     var that = this;
-    console.log(that.data.date);
     wx.request({
       url: requestIP+'/student/getMyCourse',
       data: {
-        startdate: that.data.date
       },
       method: 'POST',
       header: {
@@ -247,9 +308,6 @@ Page({
           that.setData({
             error_noClass: "none"
           });
-          that.setData({
-            error_noClass_1: "none"
-          });
         }
         else {
           that.setData({
@@ -257,9 +315,6 @@ Page({
           });
           that.setData({
             error_noClass: "block"
-          });
-          that.setData({
-            error_noClass_1: "none"
           });
         }
       },
@@ -269,9 +324,6 @@ Page({
         });
         that.setData({
           error_noClass: "none"
-        });
-        that.setData({
-          error_noClass_1: "block"
         });
       }
     })

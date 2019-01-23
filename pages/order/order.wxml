@@ -1,4 +1,50 @@
 <!--pages/order/order.wxml-->
 <import src="/pages/tabBar/tabBar.wxml"/> 
 <template is="tabBar" data="{{tabBar}}"/>
-<text>pages/order/order.wxml</text>
+
+<view class = "page">
+      <view class='big_title'>
+        <view class="title">
+          <text class="app-title">门店预约</text> 
+        </view>
+      </view>
+
+      <view class='content'  bindtap='GO_order_store_des' wx:for="{{storeOrderList}}" data-index='{{index}}' wx:key="item.aresid">
+        <view class='content-title'>
+         <image src = "/image/store.png" class='img'></image>
+        </view>
+        <view class='content-middle'>
+          <view class='content-rank'>item.aresname</view>
+          <view class='content-time'><text decode="true">item.aresmoblie</text></view>
+        </view>
+        <view class='content-btn'>处理</view>
+        <view class='content-btn1'>
+            忽略
+        </view>
+      </view>
+        <!--没有门店预约时的显示-->
+  <view class='error' style='display:{{error_noStoreOrder}};'>
+    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;没有数据</text>
+  </view>
+        <view class='big_title'>
+    <view class="title">
+      <text class="app-title">课程预约</text> 
+    </view>
+      </view>
+
+        <view class='content'  bindtap='GO_order_course_des' wx:for="{{courseOrderList}}" data-index='{{index}}' wx:key="item.resid">
+        <view class='content-title'>
+         <image src = "/image/course.png" class='img'></image>
+        </view>
+        <view class='content-middle'>
+          <view class='content-rank'>item.resname</view>
+          <view class='content-time'><text decode="true">item.resmobile</text></view>
+        </view>
+        <view class='content-btn'>处理</view>
+        <view class='content-btn1'>忽略</view>
+      </view>
+        <!--没有课程预约时的显示-->
+  <view class='error' style='display:{{error_noCourseOrder}};'>
+    <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;没有数据</text>
+  </view>
+</view>

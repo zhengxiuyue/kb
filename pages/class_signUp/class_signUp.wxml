@@ -19,7 +19,8 @@
 
           <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>课程地点：{{courseList.location}}</text></view>
+          <text>课程地点：{{courseList.province}}{{courseList.city}}{{courseList.areaname}}\n</text>
+          <text space="ensp" id = "location">{{courseList.location}}</text></view>
 
          <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
@@ -33,7 +34,7 @@
 
            <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>课容量：{{courseList.vol}}</text></view>
+          <text>课容量：{{courseList.vol}}人</text></view>
 
       </view>
 
@@ -59,9 +60,9 @@
 
 <view>
   <i-button type="success" bindtap='signUp'>确认报名</i-button>
-  <i-modal title="确认报名" visible="{{ visible5 }}" actions="{{ actions5 }}" bind:click="handleClick5">
+  <!--<i-modal title="确认报名" visible="{{ visible5 }}" actions="{{ actions5 }}" bind:click="handleClick5">
     <view>确认报名该课程？</view>
-</i-modal>
+</i-modal>-->
 
 <i-message id="message" />
 </view>

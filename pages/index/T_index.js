@@ -6,36 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    date: new Date().getFullYear() + "-" + (parseInt(new Date().getMonth()) + 1).toString() + "-" + new Date().getDate(),
-   // date: new Date().toLocaleDateString().replace("/", "-").replace("/", "-"),
-    top: "block",
-    down: "none",
-    calendarsim: "block",
-    calendar: "none",
-    curYear: new Date().getFullYear(), // 年份
-    curMonth: new Date().getMonth() + 1,// 月份 1-12
-    day: new Date().getDate(), // 日期 1-31 若日期超过该月天数，月份自动增加
-    header_show: true, // 主标题是否显示
-    prev: true, // 上一个月按钮是否显示
-    next: true, // 下一个月按钮是否显示
     error_noClass: 'none',
-    error_noClassList: 'none',
-    errortips: '',
-    recentClassList: null,//近期开课课程
-    noticeList: [{
-      no_content: "快乐50课表，专为退休人士创办的学习社区！本周课表出炉，了解一下？"
-    }],//通知
-    courseList: '',//近两周课表列表
+    courseList: '',//近1周课表列表
     userstatus: null,
-    windowHeight: null
   },
-  chooseDate: function (e) {
 
-  }
-  ,
-  /**
-   * 生命周期函数--监听页面加载
-   */
   //获取全局变量
   onLoad: function (options) {
     var that = this;
@@ -46,7 +21,6 @@ Page({
     this.setData({
       userstatus: userstatus,
     })
-
 
     this.getMyCourse();
   },
@@ -105,34 +79,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  
-  Godown: function (e) {
-    var that = this;
-    that.setData({
-      down: "block",
-      top: "none",
-      calendarsim: "none",
-      calendar: "block"
-    })
-  },
-  Gotop: function (e) {
-    var that = this;
-    that.setData({
-      top: "block",
-      down: "none",
-      calendar: "none",
-      calendarsim: "block"
-    })
-  },
-  selectDate: function (e) {
-    console.log(e)
-    var that = this;
-    that.setData({
-      date: e.detail.date
-    })
-    that.Gotop();
-    that.getMyCourse();
-  },
+
   enterclass: function (e) {
     var index = e.currentTarget.dataset.index;
     console.log(index);
@@ -149,7 +96,6 @@ Page({
     wx.request({
       url: requestIP + '/teacher/getMyCourse',
       data: {
-        startdate: that.data.date
       },
       method: 'POST',
       header: {

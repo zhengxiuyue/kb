@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 20,
+			"current": 26,
 			"list": [
 				{
 					"id": -1,
@@ -148,8 +148,8 @@
 				},
 				{
 					"id": 18,
-					"name": "order",
-					"pathName": "pages/class_order/class_order",
+					"name": "门店预约详情",
+					"pathName": "pages/order_store_des/order_store_des",
 					"query": ""
 				},
 				{
@@ -159,9 +159,45 @@
 					"query": ""
 				},
 				{
-					"id": -1,
+					"id": 20,
 					"name": "order",
-					"pathName": "pages/class/class",
+					"pathName": "pages/order/order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "门店预约",
+					"pathName": "pages/store_order/store_order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "助教order",
+					"pathName": "pages/order/order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "课程order",
+					"pathName": "pages/class_order/class_order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "注册",
+					"pathName": "pages/regist/regist",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "注册",
+					"pathName": "pages/regist/regist",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "课程预约详情",
+					"pathName": "pages/order_course_des/order_course_des",
 					"query": ""
 				}
 			]

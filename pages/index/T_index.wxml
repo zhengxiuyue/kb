@@ -1,33 +1,11 @@
-<!--pages/index/T_index.wxml-->
-<wxs src="../more/more.wxs" module="tools" />
 <import src="/pages/tabBar/tabBar.wxml"/> 
 <template is="tabBar" data="{{tabBar}}"/>
-<view class="page">
+<view class = "page">
   <view class="title">
     <text class="app-title">我的课表</text>
-      <view class='header-img' style='display:{{down}};' bindtap='Gotop'><image src='../../image/up-circle.png' class='areaIcon'></image></view>
- <view class='header-img' style='display:{{top}}; ' bindtap='Godown'><image src='../../image/down-circle.png' class='areaIcon'></image></view>
-  </view>
-  
-  <view class="class">
-
-    <view class='header-style' style='display:{{calendarsim}};'>
-  <view>{{date}}</view>
   </view>
 
-  <calendar 
-    cur-year="{{curYear}}"
-    cur-month="{{curMonth}}" 
-    day="{{day}}" 
-    header_show='{{header_show}}'
-    header-style='header-style' 
-    style='display:{{calendar}};'
-    active-coloro="active-coloro"
-    active-colort="active-colort"
-    bindselectDate='selectDate'   
-    bindchooseDate='chooseDate'
-/>
-
+  <!--我的一周课表-->
   <view class='Aclass' bindtap='enterclass'  wx:for="{{courseList}}" data-index='{{index}}' wx:key="*this"> 
       <view class='b1'>
         {{item.dayinweek}}
@@ -44,13 +22,9 @@
         <image  class = 'class_stu' src='../../image/class_stu.png'></image>
       </view>
   </view>
-
   
-  </view>
-
-    
     <!--没有课程时的显示-->
   <view class='error' style='display:{{error_noClass}};'  bindtap='more'>
     <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;没有课表</text>
   </view>
-</view>
+  </view>

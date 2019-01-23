@@ -3,7 +3,8 @@
     "i-input": "../../dist/input/index",
     "i-button": "../../dist/button/index",
     "i-modal": "../../dist/modal/index",
-    "i-message": "../../dist/message/index"
+    "i-message": "../../dist/message/index",
+    "i-swipeout": "../../dist/swipeout/index"
   },
   "navigationBarTitleText": "课程报名",
   "enablePullDownRefresh": true,

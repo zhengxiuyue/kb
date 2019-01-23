@@ -1,69 +1,109 @@
 // pages/order/order.js
 var app = getApp();
 var requestIP = app.globalData.requestIP;
+const { $Message } = require('../../dist/base/index');
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    storeOrderList:null,
+    courseOrderList:null,
+    error_noCourseOrder:"none",
+    error_noStoreOrder:"none"
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     app.editTabBar2();
-
+    var that = this;
+    that.getAreaReservation();
+    that.getCourseReservation();
+  },
+  GO_order_course_des: function (e) {
+    var that = this;
+    var index = e.currentTarget.dataset.index;
+    var courseOrderList = this.data.courseOrderList;
+    var resid = courseOrderList[index].resid;
+    wx.navigateTo({
+      url: '../order_course_des/order_course_des?"resid"=' + resid,
+    })
+  },
+  GO_order_store_des: function (e) {
+    var that = this;
+    var index = e.currentTarget.dataset.index;
+    var storeOrderList = this.data.storeOrderList;
+    var aresid = storeOrderList[index].aresid;
+    wx.navigateTo({
+      url: '../order_store_des/order_store_des?"aresid"=' + aresid,
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  getAreaReservation: function (e) {
+    //获取门店预约列表
+    var that = this;
+    wx.request({
+      url: requestIP + '/assistant/getAreaReservation',
+      data: {
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'userid': app.globalData.userid
+      },
+      success(res) {
+        console.log(res.data);
+        if (res.data.resultCode == '101') {
+          that.setData({
+            storeOrderList:res.data.data,
+            error_noStoreOrder:"none"
+          })
+        }
+        else {
+          that.setData({
+            storeOrderList: null,
+            error_noStoreOrder: "block"
+          })
+        }
+      },
+      fail(res) {
+        that.setData({
+          storeOrderList: null,
+          error_noStoreOrder: "block"
+        })
+      }
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  //获取课程预约列表
+  getCourseReservation: function (e) {
+    var that = this;
+    wx.request({
+      url: requestIP + '/assistant/getCourseReservation',
+      data: {
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'userid': app.globalData.userid
+      },
+      success(res) {
+        console.log(res.data);
+        if (res.data.resultCode == '101') {
+          that.setData({
+            courseOrderList: res.data.data,
+            error_noCourseOrder: "none"
+          })
+        }
+        else {
+          that.setData({
+            courseOrderList: null,
+            error_noCourseOrder: "block"
+          })
+        }
+      },
+      fail(res) {
+        that.setData({
+          courseOrderList: null,
+          error_noCourseOrder: "block"
+        })
+      }
+    });
   }
-})
+});

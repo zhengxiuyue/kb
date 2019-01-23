@@ -47,7 +47,7 @@
 
       <view class='teacher'>
         {{courseList.teachername}}
-        <text class='teacher-rank'>{{courseList.phone}}</text>
+        <!--<text class='teacher-rank'>{{courseList.phone}}</text>-->
       </view>
 
       <view class='title'>

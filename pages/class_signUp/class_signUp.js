@@ -10,7 +10,7 @@ Page({
     price:"",
     improveprice:"",
     username: '',
-    tel: '11111',
+    tel: '',
     primarytel:'',
     visible5: false,
     actions5: [
@@ -33,29 +33,7 @@ Page({
       wx.stopPullDownRefresh() //停止下拉刷新   
     }, 1500);
     var that = this;
-    wx.request({
-      url: requestIP + '/student/getClassInfo',
-      data: {
-        classid: that.data.classid
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'userid': app.globalData.userid
-      },
-      success(res) {
-        if (res.data.resultCode == '101') {
-          that.setData({
-            courseList: res.data.data,
-            coursename: res.data.data.coursename,
-            improveprice: res.data.data.improveprice,
-            price: res.data.data.price
-          });
-        }
-      },
-      fail(res) {
-      }
-    })
+    that.getClassInfo();
   },
 
   handleOpen5() {
@@ -68,7 +46,7 @@ Page({
   handleClick5({ detail }) {
     var that = this;
 
-    if (detail.index === 0) {
+    /*if (detail.index === 0) {
       that.setData({
         visible5: false
       });
@@ -79,108 +57,7 @@ Page({
 
       that.setData({
         actions5: action
-      });
-
-      console.log("报名这里" + that.data.classid);
-
-      wx.request({
-        url: requestIP + '/student/signup',
-        data: {
-          classid: that.data.classid,
-          classname: that.data.coursename,
-          improveprice: that.data.improveprice,
-          price: that.data.price,
-          userid: app.globalData.userid
-        },
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded', // 默认值
-          'userid': app.globalData.userid
-        },
-        success(res) {
-          console.log(res.data.data);
-          if (res.data.resultCode == '101') {
-            var merchantNumber = res.data.data;
-            wx.request({
-              url: requestIP + '/weixin/pay',
-              data: {
-                merchantNumber: merchantNumber
-              },
-              method: 'POST',
-              header: {
-                'content-type': 'application/x-www-form-urlencoded', // 默认值
-                'userid': app.globalData.userid
-              },
-              success(re) {
-                if (re.data.resultCode == '101') {
-
-                  //调用微信API
-                  wx.requestPayment({
-                    timeStamp: re.data.data.timeStamp,
-                    nonceStr: re.data.data.nonceStr,
-                    package: re.data.data.package,
-                    signType: re.data.data.signType,
-                    paySign: re.data.data.paySign,
-                    'success': function (res) {
-                      $Message({
-                        content: '报名成功！',
-                        type: 'success'
-                      });
-                      wx.navigateTo({
-                        url: '/pages/class/class?classid=' + that.data.classid,
-                      })
-                    },
-                    'fail': function (res) {
-                      if (res.errMsg == "requestPayment:fail cancel") {
-                        wx.showModal({
-                          title: '提示',
-                          content: '您已经取消了本次支付',
-                          showCancel: false
-                        })
-                      }
-                      else {
-                        wx.showModal({
-                          title: '提示',
-                          content: '网络错误，请重试',
-                          showCancel: false
-                        })
-                      }
-                    }
-                  })
-
-                }
-                else {
-                  $Message({
-                    content: '报名失败！',
-                    type: 'error'
-                  });
-                }
-              },
-              fail(re) {
-                $Message({
-                  content: '报名失败！',
-                  type: 'error'
-                });
-              }
-            })
-
-          }
-          else {
-            $Message({
-              content: '报名失败！',
-              type: 'error'
-            });
-          }
-        },
-        fail(res) {
-
-          $Message({
-            content: '报名失败！',
-            type: 'error'
-          });
-
-        }
-      })
+      });*/
 
       setTimeout(() => {
         action[1].loading = false;
@@ -191,7 +68,7 @@ Page({
 
       }, 2000);
   
-    }
+   // }
   },
 
   /**
@@ -206,39 +83,17 @@ Page({
     return {
       title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
       desc: '交友学习欢迎加入',
-      path: '/pages/class_signUp/class_signUp?classid=' + classid + '&num=' + num
+      path: '/pages/class_des_signUp/class_des_signUp?classid=' + classid + '&num=' + num
     }
   },
 
   onLoad: function (options) {
     var that = this;
+    var classid = that.options.classid;
     that.setData({
-      classid: options.classid
+      classid: classid
     });
-    wx.request({
-      url: requestIP + '/student/getClassInfo',
-      data: {
-        classid: that.data.classid
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'userid': app.globalData.userid
-      },
-      success(res) {
-        if (res.data.resultCode == '101') {
-          console.log(res.data)
-          that.setData({
-            courseList: res.data.data,
-            coursename: res.data.data.coursename,
-            improveprice: res.data.data.improveprice,
-            price: res.data.data.price
-          });
-        }
-      },
-      fail(res) {
-      }
-    })
+   that.getClassInfo();
     that.getMyInfo();
   },
 
@@ -280,6 +135,35 @@ Page({
     that.setData({ tel: e.detail.value })
   },
 
+  getClassInfo: function () {
+    var that = this;
+    var classid = that.data.classid;
+    wx.request({
+      url: requestIP + '/student/getClassInfo',
+      data: {
+        classid: classid
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'userid': app.globalData.userid
+      },
+      success(res) {
+        console.log(res.data.resultCode)
+        if (res.data.resultCode == '101') {
+          console.log(res.data.data);
+          that.setData({
+            courseList: res.data.data[0],
+            phoneNumber: res.data.data[0].hotline,
+            coursename: res.data.data[0].coursename,
+          });
+        }
+      },
+      fail(res) {
+      }
+    })
+  },
+
   //报名
   signUp: function (e) {
 
@@ -295,8 +179,108 @@ Page({
       return false;
     }
 
-    that.setData({
-      visible5:true
-    });
+    wx.request({
+      url: requestIP + '/student/signup',
+      data: {
+        classid: that.data.classid,
+        classname: that.data.coursename,
+        improveprice: that.data.improveprice,
+        price: that.data.price,
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'userid': app.globalData.userid
+      },
+      success(res) {
+        console.log(res.data.data);
+        if (res.data.resultCode == '101') {
+          var merchantNumber = res.data.data;
+          wx.request({
+            url: requestIP + '/weixin/pay',
+            data: {
+              merchantNumber: merchantNumber
+            },
+            method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded', // 默认值
+              'userid': app.globalData.userid
+            },
+            success(re) {
+              if (re.data.resultCode == '101') {
+
+                //调用微信API
+                wx.requestPayment({
+                  timeStamp: re.data.data.timeStamp,
+                  nonceStr: re.data.data.nonceStr,
+                  package: re.data.data.package,
+                  signType: re.data.data.signType,
+                  paySign: re.data.data.paySign,
+                  'success': function (res) {
+                    $Message({
+                      content: '报名成功！',
+                      type: 'success'
+                    });
+                    wx.redirectTo({
+                      url: '/pages/class/class?classid=' + that.data.classid,
+                    })
+                  },
+                  'fail': function (res) {
+                    if (res.errMsg == "requestPayment:fail cancel") {
+                      wx.showModal({
+                        title: '提示',
+                        content: '您已经取消了本次支付',
+                        showCancel: false
+                      })
+                    }
+                    else {
+                      wx.showModal({
+                        title: '提示',
+                        content: '网络错误，请重试',
+                        showCancel: false
+                      })
+                    }
+                  }
+                })
+
+              }
+              else {
+                $Message({
+                  content: '报名失败！',
+                  type: 'error'
+                });
+              }
+            },
+            fail(re) {
+              $Message({
+                content: '报名失败！',
+                type: 'error'
+              });
+            }
+          })
+
+        }
+        else {
+          $Message({
+            content: '报名失败！',
+            type: 'error'
+          });
+        }
+      },
+      fail(res) {
+
+        $Message({
+          content: '报名失败！',
+          type: 'error'
+        });
+
+      }
+    })
+
+   // that.handleClick5();
+
+    //that.setData({
+    //  visible5:true
+    //});
   }
 });

@@ -4,14 +4,18 @@ var app = getApp();
 var requestIP = app.globalData.requestIP;
 Page({
   data: {
+    index:0,
+    courseList:null,
+    classList: null,//该课程的排期
+    scheduleidList:null,
+    scheduleid:null,
+    reverseprice:"",//预约价格
     auth: "none",
-    courseList: null,
-    coursename:"",
-    username: '',
-    tel: '',
-    reservationCode:'',//预约码
-    primarytel: '',
-    authcode: '',
+    coursename:"",//课程名
+    username: '',//姓名
+    tel: '',//电话
+    primarytel: '',//预留电话
+    authcode: '',//验证码
     time: '获取验证码', //倒计时 
     currentTime: 60,//限制60s
     isClick: false,//获取验证码按钮，默认允许点击
@@ -21,7 +25,7 @@ Page({
         name: '取消'
       },
       {
-        name: '确认报名',
+        name: '确认预约',
         color: '#ed3f14',
         loading: false
       }
@@ -39,41 +43,31 @@ Page({
     return {
       title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
       desc: '交友学习欢迎加入',
-      path: '/pages/class_order/class_order?classid=' + classid + '&num=' + num
+      path: '/pages/class_des_order/class_des_order?classid=' + classid + '&num=' + num
     }
   },
 
   onLoad: function (options) {
     var that = this;
-    var classid = options.classid;
+    var classid = that.options.classid;
     that.setData({
       classid: classid
     })
-    console.log(classid);
-    wx.request({
-      url: requestIP + '/student/getClassInfo',
-      data: {
-        classid: classid
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'userid': app.globalData.userid
-      },
-      success(res) {
-        console.log(res.data.resultCode)
-        if (res.data.resultCode == '101') {
-          console.log(res.data)
-          that.setData({
-            courseList: res.data.data,
-            coursename: res.data.data.coursename
-          });
-        }
-      },
-      fail(res) {
-      }
+    console.log("classid"+classid);
+    that.getClassInfo();
+    that.getMyInfo();
+    that.getClassSchedule();
+  },
+
+  bindPickerChange(e) {
+    var that = this;
+    var scheduleidList = that.data.scheduleidList;
+   // var classList = that.data.classList;
+    var index = e.detail.value;
+    this.setData({
+      scheduleid: scheduleidList[index],
+      index: e.detail.value
     })
-    this.getMyInfo();
   },
 
   getMyInfo: function (e) {
@@ -94,10 +88,6 @@ Page({
   //获取用户名
   usernameInput: function (event) {
     this.setData({ username: event.detail.value })
-  },
-  //获取预约码
-  reservationCodeInput:function(e){
-    this.setData({ reservationCode: e.detail.value })
   },
 
   //获取手机号码
@@ -203,19 +193,18 @@ Page({
       return false;
     }
 
+    else if (!that.data.scheduleid) {
+      wx.showToast({
+        title: '请选择节次!',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    }
+
     else if (that.data.auth == "none")
       {
-      if (that.data.reservationCode.length == 0) {
-        wx.showToast({
-          title: '请填写预约码!',
-          icon: 'none',
-          duration: 1000
-        })
-        return false;
-      }
-      else{
         that.order("*noneedforcode*");
-        }
       }
     
       else if (that.data.auth == "block")
@@ -225,14 +214,6 @@ Page({
             title: '请输入验证码！',
             icon:'none',
             duration:1000
-          })
-          return false;
-        }
-        else if (that.data.reservationCode.length == 0) {
-          wx.showToast({
-            title: '请填写预约码!',
-            icon: 'none',
-            duration: 1000
           })
           return false;
         }
@@ -284,6 +265,175 @@ Page({
       wx.stopPullDownRefresh() //停止下拉刷新   
     }, 1500);
     var that = this;
+    that.getClassInfo();
+    that.getMyInfo();
+    that.getClassSchedule();
+  },
+
+  //预约
+  order:function(e){
+    var code = e;
+    var that = this;
+    var reverseprice = that.data.reverseprice;
+      wx.request({
+        url: requestIP + '/student/subscribe',
+        data: {
+          schid: that.data.classid,//班级编号
+          scheduid: that.data.scheduleid,//节次编号
+          phone: that.data.tel,//电话号码
+          code: code,//验证码
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded', // 默认值
+          'userid': app.globalData.userid
+        },
+        success(res) {
+          console.log(res.data.data);
+          if (res.data.resultCode == '101') {
+            if (reverseprice != '0') {
+              //付费
+              wx.request({
+                url: requestIP + '/weixin/paySubscribe',
+                data: {
+                  price: reverseprice
+                },
+                method: 'POST',
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded', // 默认值
+                  'userid': app.globalData.userid
+                },
+                success(re) {
+                  if (re.data.resultCode == '101') {
+                    //调用微信API
+                    wx.requestPayment({
+                      timeStamp: re.data.data.timeStamp,
+                      nonceStr: re.data.data.nonceStr,
+                      package: re.data.data.package,
+                      signType: re.data.data.signType,
+                      paySign: re.data.data.paySign,
+                      'success': function (res) {
+                        $Message({
+                          content: '预约成功！',
+                          type: 'success'
+                        });
+                        setTimeout(function () {
+                          //跳到更多页面
+                          wx.redirectTo({
+                            url: '/pages/more/more',
+                          }), 2000
+                        })
+                      },
+                      'fail': function (res) {
+                        if (res.errMsg == "requestPayment:fail cancel") {
+                          wx.showModal({
+                            title: '提示',
+                            content: '您已经取消了本次支付',
+                            showCancel: false
+                          })
+                        }
+                        else {
+                          wx.showModal({
+                            title: '提示',
+                            content: '网络错误，请重试',
+                            showCancel: false
+                          })
+                        }
+                      }
+                    })
+                  }
+                  else {
+                    $Message({
+                      content: '预约失败！',
+                      type: 'error'
+                    });
+                  }
+                },
+                fail(re) {
+                  $Message({
+                    content: '预约失败！',
+                    type: 'error'
+                  });
+                }
+              })
+            }
+            else if (reverseprice == '0')
+            {
+              //免费
+              wx.request({
+                url: requestIP + '/weixin/payFirst',
+                data: {
+                  price: reverseprice
+                },
+                method: 'POST',
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded', // 默认值
+                  'userid': app.globalData.userid
+                },
+                success(re) {
+                  if (re.data.resultCode == '101') {
+                    $Message({
+                      content: '预约成功！',
+                      type: 'success'
+                    });
+                    wx.redirectTo({
+                      url: '/pages/more/more',
+                    })
+                  }
+                  else {
+                    $Message({
+                      content: '预约失败！',
+                      type: 'error'
+                    });
+                  }
+                },
+                fail(re) {
+                  $Message({
+                    content: '预约失败！',
+                    type: 'error'
+                  });
+                }
+              })
+            }
+        /******************************** */
+          }
+          else if (res.data.resultCode == '216'){
+            //验证码错误
+            wx.showToast({
+              title: '验证码错误!',
+              icon: 'none',
+              duration: 1000
+            })
+            $Message({
+              content: '预约失败！',
+              type: 'error'
+            });
+          } else if (res.data.resultCode == '209'){
+            //旁听人数已达上限
+            wx.showToast({
+              title: '旁听人数已达上限!',
+              icon: 'none',
+              duration: 1000
+            })
+            $Message({
+              content: '预约失败！',
+              type: 'error'
+            });
+          }
+        },
+        fail(res) {
+          //出错
+          $Message({
+            content: '预约失败！',
+            type: 'error'
+          });
+        }
+      })
+  },
+
+  getClassInfo: function () {
+    var that = this;
+    var classid = that.data.classid;
     wx.request({
       url: requestIP + '/student/getClassInfo',
       data: {
@@ -295,12 +445,12 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.resultCode)
+        console.log(res.data.resultCode);
         if (res.data.resultCode == '101') {
-          console.log(res.data)
           that.setData({
-            courseList: res.data.data,
-            coursename: res.data.data.coursename
+            courseList: res.data.data[0],
+            coursename: res.data.data[0].coursename,
+            reverseprice: res.data.data[1].reverseprice
           });
         }
       },
@@ -308,33 +458,14 @@ Page({
       }
     })
   },
-  order_ing:function(){
-    wx.showToast({
-      title: '您的预约正在处理中，请勿重复预约!',
-      icon: "",
-      duration: 1000
-    })
-  },
-  order_ed:function(){
-    wx.showToast({
-      title: '您已预约该课程，请勿重复预约!',
-      icon: '',
-      duration: 1000
-    })
-  },
-  //预约
-  order:function(e){
-    console.log(e);
-    var code = e;
+
+  getClassSchedule: function (e) {
     var that = this;
+    var classid = that.data.classid;
     wx.request({
-      url: requestIP + '/student/subscribe',
+      url: requestIP + '/student/getClassSchedule',
       data: {
-        schid: that.data.classid,
-        name:that.data.username,
-        phone:that.data.tel,
-        code: code,
-        reservation:that.data.reservationCode
+        classid: classid
       },
       method: 'POST',
       header: {
@@ -342,39 +473,44 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.resultCode+res.data.data);
+        console.log(res.data.data)
         if (res.data.resultCode == '101') {
-          wx.showToast({
-            title: '预约成功！!',
-            icon: 'success',
-            duration: 1000
-          })
-          setTimeout(function(){
-            wx.navigateTo({
-              url: '../more/more',
-            }),2000
-          })
-        } else if (res.data.resultCode == '216'){
-          wx.showToast({
-            title: '验证码错误!',
-            icon: 'none',
-            duration: 1000
-          })
-        }
-        else {
-          $Message({
-            content: '预约失败！',
-            type: 'fail'
+          var classList = new Array();
+          var scheduleidList = new Array();
+          var schdule;
+          var scheduleid;
+          for(var i=0;i< res.data.data.length;i++)
+          {
+            schdule = res.data.data[i].date + " " + res.data.data[i].startpoint + " - " + res.data.data[i].endpoint;
+            classList.push(schdule);
+          }
+          for (var j = 0; j < res.data.data.length; j++) {
+            scheduleid = res.data.data[j].scheduleid;
+            scheduleidList.push(scheduleid);
+          }
+          that.setData({
+            classList: classList,
+            scheduleidList: scheduleidList,
+            scheduleid: scheduleidList[0]
           });
+          console.log("节次列表"+that.data.classList);
         }
       },
       fail(res) {
-        $Message({
-          content: '预约失败！',
-          type: 'fail'
-        });
       }
     })
+  },
+
+  orderclick:function(e){
+    //选择课堂预约
+    var that = this;
+    var index = e.currentTarget.dataset.index;
+    var courseList = that.data.courseList;
+    var scheduleid = courseList[index].scheduleid
+    that.setData({
+      scheduleid: scheduleid
+    })
+    //改变样式
   }
 
 });
