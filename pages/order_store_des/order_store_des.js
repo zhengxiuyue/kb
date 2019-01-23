@@ -12,7 +12,7 @@ Page({
     storeMes:"",
     aresname:"",
     aresmobile:"",
-    aresmessage:"",
+    aresmessage:"无",
     date:"",
     visible5: false,
     visible6: false,
@@ -76,50 +76,32 @@ Page({
         success(res) {
           console.log(res.data.data);
           if (res.data.resultCode == '101') {
-            setTimeout(() => {
-              action[1].loading = false;
               this.setData({
                 visible5: false,
-                actions5: action
               });
-
               $Message({
                 content: '操作成功！',
                 type: 'success'
               });
-            }, 2000);
-            wx.redirectTo({
-              url: '/pages/order/order',
+            setTimeout(function () {
+              //跳到页面
+              wx.redirectTo({
+                url: '/pages/order/order',
+              }), 2000
             })
           }
           else {
-            setTimeout(() => {
-              action[1].loading = false;
-              this.setData({
-                visible5: false,
-                actions5: action
-              });
-
               $Message({
                 content: '操作失败！',
                 type: 'error'
               });
-            }, 2000);
           }
         },
         fail(res) {
-          setTimeout(() => {
-            action[1].loading = false;
-            this.setData({
-              visible5: false,
-              actions5: action
-            });
-
             $Message({
               content: '操作失败！',
               type: 'error'
             });
-          }, 2000);
         }
       })
 
@@ -138,6 +120,7 @@ Page({
       this.setData({
         actions6: action
       });
+
       var that = this;
       wx.request({
         url: requestIP + '/assistant/cancelAreaReservation',
@@ -152,50 +135,32 @@ Page({
         success(res) {
           console.log(res.data.data);
           if (res.data.resultCode == '101') {
-            setTimeout(() => {
-              action[1].loading = false;
-              this.setData({
-                visible5: false,
-                actions5: action
-              });
 
               $Message({
                 content: '操作成功！',
                 type: 'success'
               });
-            }, 2000);
-            wx.redirectTo({
-              url: '/pages/order/order',
+
+          setTimeout(function () {
+          //跳到更多页面
+         wx.redirectTo({
+           url: '/pages/order/order',
+           }), 2000
             })
+
           }
           else {
-            setTimeout(() => {
-              action[1].loading = false;
-              this.setData({
-                visible5: false,
-                actions5: action
-              });
-
               $Message({
                 content: '操作失败！',
                 type: 'error'
               });
-            }, 2000);
           }
         },
         fail(res) {
-          setTimeout(() => {
-            action[1].loading = false;
-            this.setData({
-              visible5: false,
-              actions5: action
-            });
-
             $Message({
               content: '操作失败！',
               type: 'error'
             });
-          }, 2000);
         }
       })
 
@@ -210,6 +175,7 @@ Page({
     that.setData({
       aresid: aresid
     })
+    console.log("aresid"+that.data.aresid);
     that.getAreaReservationDetail();
   },
 
@@ -289,17 +255,22 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.data);
+        console.log("？？？" + res.data.resultCode);
         if (res.data.resultCode == '101') {
           var storeMes = res.data.data.province + res.data.data.city + res.data.data.areaname + res.data.data.location;
           var date = res.data.data.dateString + res.data.data.dateTime
           that.setData({
             storeMes: storeMes,
             date: date,
-            aresname: res.data.data.aresname,
-            aresmobile: res.data.data.aresmobile,
-            aresmessage: aresmessage
+            aresname: res.data.data.ares_name,
+            aresmobile: res.data.data.ares_mobile,
           });
+          if (res.data.data.ares_message)
+          {
+            that.setData({
+              aresmessage: res.data.data.ares_message
+            })
+          }
         }
       },
       fail(res) {
@@ -310,7 +281,7 @@ Page({
 
   call:function(e){
     var that = this;
-    var phonenumber = that.data.aresmessage;
+    var phonenumber = that.data.aresmobile;
     wx.makePhoneCall({
       phoneNumber: phonenumber
     })

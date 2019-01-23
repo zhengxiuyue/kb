@@ -102,6 +102,10 @@ Page({
 
   searchClassEnter: function (e) {
     var that = this;
+    if (!that.data.term) {
+      that.getClassList_signUp();
+      return false;
+    }
    // console.log("storeid" + that.data.storeid);
     wx.request({
       url: requestIP + '/student/searchClassEnter',

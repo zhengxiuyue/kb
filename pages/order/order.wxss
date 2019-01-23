@@ -16,7 +16,7 @@
  border-left:8rpx solid #1DA27F;
 }
 
-.img{
+.img1{
   width: 60rpx;
   height: 60rpx;
   position: relative;

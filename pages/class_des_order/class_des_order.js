@@ -6,7 +6,6 @@ Page({
     classid: null,
     coursename:"",
     reverseprice:"",
-    res_status:null//预约状态
   },
   GOclass_signUp: function (e) {
     var that = this;
@@ -52,10 +51,8 @@ Page({
   onLoad: function (options) {
     var that = this;
     var classid = wx.getStorageSync("classid");
-    var res_status = app.globalData.res_status;
     that.setData({
       classid: classid,
-      res_status: res_status
     })
     that.getClassInfo();
   },

@@ -1,1 +1,31 @@
-/* pages/mine_class_order/mine_class_order.wxss */
+.content-btn{
+  display:inline-block;
+  text-align:center;
+  font-size:28rpx;
+  width:120rpx;
+  height:60rpx;
+  line-height:60rpx;
+  background-color:#19be6b;
+  color:#fff;
+  border-radius:5rpx;
+  border-color:#1da27f;
+  position:relative;
+  top:-15rpx;
+  margin-left: 60rpx;
+}
+
+.content-btn1{
+  margin-left: 20rpx;
+  display:inline-block;
+  text-align:center;
+  font-size:28rpx;
+  width:120rpx;
+  height:60rpx;
+  line-height:60rpx;
+  background-color:#cdcdcd;
+  color:#fff;
+  border-radius:5rpx;
+  border-color:#10aeff;
+  position:relative;
+  top:-15rpx;
+}

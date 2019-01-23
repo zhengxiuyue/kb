@@ -51,13 +51,15 @@
           <view class='content-rank'>{{item.level}}</view>
           <view class='content-time'><text decode="true">{{item.name}}老师</text></view>
         </view>
+          <view class='content-btn'>预约</view>
+        <!--
         <view class='content-btn'style='display:{{item.res_status == null? "inline-block":"none"}}'>预约</view>
       <view class='content-btn1' style='display:{{item.res_status == "0"? "inline-block":"none"}}'>
           预约中
       </view>
       <view class='content-btn2' style='display:{{item.res_status == "1"? "inline-block":"none"}} '>
           已预约
-      </view>
+      </view>-->
       </view>
 
   </view>

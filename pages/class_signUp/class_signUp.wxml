@@ -65,6 +65,7 @@
 </i-modal>-->
 
 <i-message id="message" />
+
 </view>
 </view> 
 </view>

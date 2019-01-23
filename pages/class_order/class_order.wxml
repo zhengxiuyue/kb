@@ -103,7 +103,7 @@
 
 <view>
   <i-button type="success" bindtap='signUp'>确认预约</i-button>
-<i-message id="message" />
+  <i-message id="message" />
 </view>
 </view> 
 </view>

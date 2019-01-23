@@ -20,18 +20,19 @@ Page({
     var that = this;
     var index = e.currentTarget.dataset.index;
     var courseOrderList = this.data.courseOrderList;
-    var resid = courseOrderList[index].resid;
+    var resid = courseOrderList[index].res_id;
     wx.navigateTo({
-      url: '../order_course_des/order_course_des?"resid"=' + resid,
+      url: '../order_course_des/order_course_des?resid=' + resid,
     })
   },
   GO_order_store_des: function (e) {
     var that = this;
     var index = e.currentTarget.dataset.index;
     var storeOrderList = this.data.storeOrderList;
-    var aresid = storeOrderList[index].aresid;
+    var aresid = storeOrderList[index].ares_id;
+    console.log(aresid);
     wx.navigateTo({
-      url: '../order_store_des/order_store_des?"aresid"=' + aresid,
+      url: '../order_store_des/order_store_des?aresid=' + aresid,
     })
   },
 
@@ -54,6 +55,7 @@ Page({
             storeOrderList:res.data.data,
             error_noStoreOrder:"none"
           })
+          console.log(that.data.storeOrderList);
         }
         else {
           that.setData({

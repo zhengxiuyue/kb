@@ -1,2 +1,14 @@
-<!--pages/mine_class_order/mine_class_order.wxml-->
-<text>pages/mine_class_order/mine_class_order.wxml</text>
+<wxs src="../more/more.wxs" module="tools" />
+<!-- wx:for = "{{orderList}}"  wx:key="" data-classid='{{orderList.classid}}' -->
+<view>
+蒙族舞
+老师：王宇
+上课时间：2018-11-11 5：00-1：00
+地点：远见国际公寓2304
+<view class='content-btn'>预约中</view>
+<view class='content-btn1'>已预约</view>
+</view>
+<view class='classcard' style='display:{{Isclassspace}}'>
+  <image src='/image/space.png' class='space'></image>
+</view>
+

@@ -9,13 +9,13 @@
         </view>
       </view>
 
-      <view class='content'  bindtap='GO_order_store_des' wx:for="{{storeOrderList}}" data-index='{{index}}' wx:key="item.aresid">
+      <view class='content'  bindtap='GO_order_store_des'  wx:for="{{storeOrderList}}"  data-index='{{index}}' wx:key="item.ares_id">
         <view class='content-title'>
-         <image src = "/image/store.png" class='img'></image>
+         <image src = "/image/store.png" class='img1'></image>
         </view>
         <view class='content-middle'>
-          <view class='content-rank'>item.aresname</view>
-          <view class='content-time'><text decode="true">item.aresmoblie</text></view>
+          <view class='content-rank'>{{item.ares_name}}</view>
+          <view class='content-time'><text decode="true">{{item.ares_mobile}}</text></view>
         </view>
         <view class='content-btn'>处理</view>
         <view class='content-btn1'>
@@ -32,13 +32,13 @@
     </view>
       </view>
 
-        <view class='content'  bindtap='GO_order_course_des' wx:for="{{courseOrderList}}" data-index='{{index}}' wx:key="item.resid">
+        <view class='content'  bindtap='GO_order_course_des' wx:for="{{courseOrderList}}" data-index='{{index}}' wx:key="item.res_id">
         <view class='content-title'>
-         <image src = "/image/course.png" class='img'></image>
+         <image src = "/image/course.png" class='img1'></image>
         </view>
         <view class='content-middle'>
-          <view class='content-rank'>item.resname</view>
-          <view class='content-time'><text decode="true">item.resmobile</text></view>
+          <view class='content-rank'>{{item.res_name}}</view>
+          <view class='content-time'><text decode="true">{{item.res_mobile}}</text></view>
         </view>
         <view class='content-btn'>处理</view>
         <view class='content-btn1'>忽略</view>

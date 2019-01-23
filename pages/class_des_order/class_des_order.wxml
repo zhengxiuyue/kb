@@ -95,7 +95,14 @@
         </view>
         </button>
         </view>
-        <view class='btn' bindtap='GOclass_signUp' style='display:{{res_status == null && reverseprice != "0" ? "block":"none"}}'>
+        <view class='btn' bindtap='GOclass_signUp' style='display:{{reverseprice != "0" ? "block":"none"}}'>
+          预约<text decode="{{true}}" class = "price">&nbsp;{{reverseprice}}元</text>
+        </view>
+
+        <view class='btn' bindtap='GOclass_signUp' style='display:{{reverseprice == "0"? "block":"none"}}'>
+          预约<text class = "price" decode="{{true}}">&nbsp;首次免费</text>
+        </view>
+         <!--<view class='btn' bindtap='GOclass_signUp' style='display:{{res_status == null && reverseprice != "0" ? "block":"none"}}'>
           预约<text decode="{{true}}" class = "price">&nbsp;{{reverseprice}}元</text>
         </view>
 
@@ -103,12 +110,12 @@
           预约<text class = "price" decode="{{true}}">&nbsp;首次免费</text>
         </view>
 
-        <view class='btn' style='display:{{res_status == 0? "block":"none"}}' bindtap='order_ing'>
+       <view class='btn' style='display:{{res_status == 0? "block":"none"}}' bindtap='order_ing'>
           预约中
         </view>
 
         <view class='btn' style='display:{{res_status == 1? "block":"none"}}' bindtap='order_ed'>
           已预约
-        </view>
+        </view>-->
       
       </view>

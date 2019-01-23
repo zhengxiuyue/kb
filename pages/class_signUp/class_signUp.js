@@ -154,7 +154,8 @@ Page({
           console.log(res.data.data);
           that.setData({
             courseList: res.data.data[0],
-            phoneNumber: res.data.data[0].hotline,
+            price: res.data.data[0].price,
+            improveprice: res.data.data[0].improveprice,
             coursename: res.data.data[0].coursename,
           });
         }
@@ -186,6 +187,7 @@ Page({
         classname: that.data.coursename,
         improveprice: that.data.improveprice,
         price: that.data.price,
+        userid: app.globalData.userid
       },
       method: 'POST',
       header: {
@@ -193,7 +195,7 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.data);
+        console.log("/student/signup"+res.data.data);
         if (res.data.resultCode == '101') {
           var merchantNumber = res.data.data;
           wx.request({
@@ -221,8 +223,11 @@ Page({
                       content: '报名成功！',
                       type: 'success'
                     });
-                    wx.redirectTo({
-                      url: '/pages/class/class?classid=' + that.data.classid,
+                    setTimeout(function () {
+                      //跳到课堂页面
+                      wx.redirectTo({
+                        url: '/pages/class/class?classid=' + that.data.classid,
+                      }), 2000
                     })
                   },
                   'fail': function (res) {

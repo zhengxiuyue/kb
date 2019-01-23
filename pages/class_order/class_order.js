@@ -275,12 +275,17 @@ Page({
     var code = e;
     var that = this;
     var reverseprice = that.data.reverseprice;
+    var schid = that.data.classid;
+    var scheduid = that.data.scheduleid;
+    var phone = that.data.tel;
+    var name = that.data.username;
+    console.log(requestIP +"/student/subscribe");
       wx.request({
         url: requestIP + '/student/subscribe',
         data: {
-          schid: that.data.classid,//班级编号
-          scheduid: that.data.scheduleid,//节次编号
-          phone: that.data.tel,//电话号码
+          schid: schid,//班级编号
+          scheduid: scheduid,//节次编号
+          phone: phone,//电话号码
           code: code,//验证码
         },
         method: 'POST',
@@ -289,13 +294,16 @@ Page({
           'userid': app.globalData.userid
         },
         success(res) {
-          console.log(res.data.data);
           if (res.data.resultCode == '101') {
             if (reverseprice != '0') {
               //付费
               wx.request({
                 url: requestIP + '/weixin/paySubscribe',
                 data: {
+                  schid: schid,//班级编号
+                  scheduid: scheduid,//节次编号
+                  phone: phone,//电话号码
+                  name: name,//姓名
                   price: reverseprice
                 },
                 method: 'POST',
@@ -322,7 +330,7 @@ Page({
                           wx.redirectTo({
                             url: '/pages/more/more',
                           }), 2000
-                        })
+                      })
                       },
                       'fail': function (res) {
                         if (res.errMsg == "requestPayment:fail cancel") {
@@ -361,9 +369,12 @@ Page({
             {
               //免费
               wx.request({
-                url: requestIP + '/weixin/payFirst',
+                url: requestIP + '/student/payFirst',
                 data: {
-                  price: reverseprice
+                  schid: schid,//班级编号
+                  scheduid: scheduid,//节次编号
+                  phone: phone,//电话号码
+                  name: name,//姓名
                 },
                 method: 'POST',
                 header: {
@@ -376,8 +387,11 @@ Page({
                       content: '预约成功！',
                       type: 'success'
                     });
-                    wx.redirectTo({
-                      url: '/pages/more/more',
+                    setTimeout(function () {
+                      //跳到更多页面
+                      wx.redirectTo({
+                        url: '/pages/more/more',
+                      }), 2000
                     })
                   }
                   else {
@@ -419,7 +433,24 @@ Page({
               content: '预约失败！',
               type: 'error'
             });
-          }
+        }
+      else if(res.data.resultCode == '222'){
+      //不能旁听
+      wx.showToast({
+        title: '该课程不能旁听!',
+        icon: 'none',
+        duration: 1000
+      })
+      $Message({
+        content: '预约失败！',
+        type: 'error'
+      });
+    }else{
+            $Message({
+              content: '预约失败！',
+              type: 'error'
+            });
+    }
         },
         fail(res) {
           //出错
@@ -463,7 +494,7 @@ Page({
     var that = this;
     var classid = that.data.classid;
     wx.request({
-      url: requestIP + '/student/getClassSchedule',
+      url: requestIP + '/student/getInSchedule',
       data: {
         classid: classid
       },

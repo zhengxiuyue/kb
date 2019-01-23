@@ -151,7 +151,7 @@ App({
 
   globalData: {
     openid: "",
-    userid: "02c7a2e3eae711e8ab8e00163e00299d",
+    userid: "",
     userInfo: null,
     userstatus:"",//用户身份
     code:"",
@@ -162,9 +162,9 @@ App({
     storename:'',//门店名
     alreadyFlag: "0",//是否第一次加载
     res_status:null,
-   requestIP: "http://localhost:8080/happyschedule",
+  // requestIP: "http://localhost:8080/happyschedule",
   //  requestIP: "http://39.104.155.0:8080/happyschedule",
-   //requestIP: "http://4psarc.natappfree.cc/happyschedule",
+    requestIP: "http://iav4s9.natappfree.cc/happyschedule",
     
   //  requestIP: "https://curriculum.50fun.cn/happyschedule",
     storename:'',//门店名称

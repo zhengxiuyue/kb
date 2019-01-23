@@ -31,7 +31,8 @@
 
                    <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>预约时间：{{date}}</text></view>
+          <text>预约时间：</text></view>
+          <view class='class-desImg'>{{date}}</view>
   </view>
 </view>
 

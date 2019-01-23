@@ -13,8 +13,10 @@
   <view class="contact-tab">
 		<view class="{{current == 1 ? 'current' : ''}}" bindtap="changeTab" data-index="1">当前课堂</view>
 		<view class="{{current == 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">历史课堂</view>
+       <view class="{{current === 2 ? 'current' : ''}}" bindtap="changeTab" data-index="2">预约课程</view>
 	</view>
 
   	<class-now style="{{current == 1 ? 'display: inline;': 'display: none;'}}" item="{{item}}"  userstatus="{{userstatus}}"  Isclassspace="{{Isclassspace}}" ></class-now>
 	<class-history style="{{current == 0 ? 'display: inline;': 'display: none;'}}" item="{{item}}" userstatus="{{userstatus}}"  Isclassspace="{{Isclassspace}}"></class-history>
+   <class-order style="{{current == 2 ? 'display: inline;': 'display: none;'}}"></class-order>
   </view>

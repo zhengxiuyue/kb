@@ -1,18 +1,22 @@
 // pages/mine_class_order/mine_class_order.js
+var app = getApp();
+var requestIP = app.globalData.requestIP;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    orderList:null,//预约列表
+    Isclassspace:"none"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+     var that = this;
+     that.getMyShedule();
   },
 
   /**
@@ -62,5 +66,36 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  getMyShedule:function(){
+      var that = this;
+      wx.request({
+        url: requestIP + '/student/getMyShedule',
+        data: {
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded', // 默认值
+          'userid': app.globalData.userid
+        },
+        success(res) {
+          console.log(res.data.data);
+          if (res.data.resultCode == '101') {
+            that.setData({
+              orderList: res.data.data
+            });
+          }else{
+            that.setData({
+              orderList: res.data.data
+            });
+          }
+        },  
+        fail(res) {
+          that.setData({
+            orderList: ""
+          });
+        }
+      })
   }
 })

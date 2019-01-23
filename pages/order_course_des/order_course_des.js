@@ -9,6 +9,7 @@ Page({
    */
   data: {
     resid: null,
+    classid:"",
     resname: "",
     resmobile: "",
     startdate:"",
@@ -76,50 +77,30 @@ Page({
         success(res) {
           console.log(res.data.data);
           if (res.data.resultCode == '101') {
-            setTimeout(() => {
-              action[1].loading = false;
-              this.setData({
-                visible5: false,
-                actions5: action
-              });
-
               $Message({
                 content: '操作成功！',
                 type: 'success'
               });
-            }, 2000);
-            wx.redirectTo({
-              url: '/pages/order/order',
+
+            setTimeout(function () {
+              //跳到页面
+              wx.redirectTo({
+                url: '/pages/order/order',
+              }), 2000
             })
           }
           else {
-            setTimeout(() => {
-              action[1].loading = false;
-              this.setData({
-                visible5: false,
-                actions5: action
-              });
-
               $Message({
                 content: '操作失败！',
                 type: 'error'
               });
-            }, 2000);
           }
         },
         fail(res) {
-          setTimeout(() => {
-            action[1].loading = false;
-            this.setData({
-              visible5: false,
-              actions5: action
-            });
-
             $Message({
               content: '操作失败！',
               type: 'error'
             });
-          }, 2000);
         }
       })
 
@@ -152,51 +133,30 @@ Page({
         success(res) {
           console.log(res.data.data);
           if (res.data.resultCode == '101') {
-            setTimeout(() => {
-              action[1].loading = false;
-              this.setData({
-                visible5: false,
-                actions5: action
-              });
-
               $Message({
                 content: '操作成功！',
                 type: 'success'
               });
-            }, 2000);
-            wx.redirectTo({
-              url: '/pages/order/order',
+            setTimeout(function () {
+              //跳到页面
+              wx.redirectTo({
+                url: '/pages/order/order',
+              }), 2000
             })
-            
           }
           else {
-            setTimeout(() => {
-              action[1].loading = false;
-              this.setData({
-                visible5: false,
-                actions5: action
-              });
 
               $Message({
                 content: '操作失败！',
                 type: 'error'
               });
-            }, 2000);
           }
         },
         fail(res) {
-          setTimeout(() => {
-            action[1].loading = false;
-            this.setData({
-              visible5: false,
-              actions5: action
-            });
-
             $Message({
               content: '操作失败！',
               type: 'error'
             });
-          }, 2000);
         }
       })
 
@@ -211,6 +171,7 @@ Page({
     that.setData({
       resid: resid
     })
+
     that.getCourseReservationDetail();
   },
 
@@ -253,7 +214,7 @@ Page({
       wx.stopPullDownRefresh() //停止下拉刷新   
     }, 1500);
     var that = this;
-    that.getAreaReservationDetail();
+    that.getCourseReservationDetail();
   },
 
   /**
@@ -292,12 +253,14 @@ Page({
       success(res) {
         if (res.data.resultCode == '101') {
           that.setData({
-            resname: res.data.data.resname,
-            resmobile: res.data.data.resmobile,
+            resname: res.data.data.res_name,
+            resmobile: res.data.data.res_mobile,
             startdate: res.data.data.startdate,
             startpoint: res.data.data.startpoint,
-            endpoint: res.data.data.aresmessage
+            endpoint: res.data.data.endpoint,
+            classid:res.data.data.classid
           });
+          that.getClassInfo();
         }
       },
       fail(res) {
@@ -311,6 +274,34 @@ Page({
     var phonenumber = that.data.resmessage;
     wx.makePhoneCall({
       phoneNumber: phonenumber
+    })
+  },
+
+  getClassInfo: function () {
+    var that = this;
+    var classid = that.data.classid;
+    wx.request({
+      url: requestIP + '/student/getClassInfo',
+      data: {
+        classid: classid
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'userid': app.globalData.userid
+      },
+      success(res) {
+        if (res.data.resultCode == '101') {
+          that.setData({
+            courseList: res.data.data[0],
+            phoneNumber: res.data.data[0].hotline,
+            coursename: res.data.data[0].coursename,
+            reverseprice: res.data.data[1].reverseprice
+          });
+        }
+      },
+      fail(res) {
+      }
     })
   }
 })
