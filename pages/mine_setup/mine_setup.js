@@ -215,8 +215,18 @@ onConfirm: function () {
               wx.hideToast();
             }, 2000)
           }, 0);      
-        } else {
-          console.log("非101");          
+        } else if (res.data.resultCode == "222"){
+          wx.showLoading();
+          wx.hideLoading();
+          setTimeout(() => {
+            wx.showToast({
+              title: '请填写正确的旧密码',
+              icon: "none",
+            });
+            setTimeout(() => {
+              wx.hideToast();
+            }, 2000)
+          }, 0);       
         }
       },
       fail: function () {
@@ -226,7 +236,9 @@ onConfirm: function () {
   }
     this.hideModal()
     this.setData({ 
-      newpassword2:''
+      oldpassword:"",
+      newpassword2:'',
+      newpassword: '' 
     })
     this.setData({ 
       newpassword: '' 
