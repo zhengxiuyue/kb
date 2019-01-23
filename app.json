@@ -17,6 +17,7 @@
     "pages/notice/notice",
     "pages/mine_class_now/mine_class_now",
     "pages/mine_class_history/mine_class_history",
+    "pages/mine_class_order/mine_class_order",
     "pages/class/class",
     "pages/class_students/class_students",
     "pages/class_chat/class_chat",

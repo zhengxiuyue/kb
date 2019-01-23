@@ -159,23 +159,21 @@ App({
     province:"",//省
     city:"",//市
     areaname:"",//区
-<<<<<<< HEAD
     storename:'',//门店名
     alreadyFlag: "0",//是否第一次加载
     res_status:null,
-   // requestIP: "http://localhost:8080/happyschedule",
+   requestIP: "http://localhost:8080/happyschedule",
   //  requestIP: "http://39.104.155.0:8080/happyschedule",
    //requestIP: "http://4psarc.natappfree.cc/happyschedule",
     
-   requestIP: "https://curriculum.50fun.cn/happyschedule",
-=======
+  //  requestIP: "https://curriculum.50fun.cn/happyschedule",
     storename:'',//门店名称
     res_status:null,
    // requestIP: "http://localhost:8080/happyschedule",
    // requestIP: "http://39.104.155.0:8080/happyschedule",
-    requestIP: "http://mekxqf.natappfree.cc/happyschedule",
+   // requestIP: "http://4psarc.natappfree.cc/happyschedule",
    //requestIP: "https://curriculum.50fun.cn/happyschedule",
->>>>>>> 59ff3f02e78dec965a478cfa8aaf5dbb24b2917d
+
     
     //学生角色
     tabBar: {
