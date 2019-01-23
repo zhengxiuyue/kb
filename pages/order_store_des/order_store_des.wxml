@@ -1,0 +1,49 @@
+<!--pages/order_store_des/order_store_des.wxml-->
+<view class = 'page'>
+      <!--门店简介-->
+  <view class='title'>
+    <image src='/image/brief.png' class='titleImg'></image>
+    <text class='title-text'>门店信息</text>
+  </view>  
+  <view class='class'> 
+    <view class='class_des_text'>
+      <text>{{storeMes}}</text></view>
+  </view>
+
+  <!--个人信息-->
+<view>
+  <view class='title'>
+  <image src='/image/mineselected.png' class='titleImg'></image>
+  <text class='title-text'>预约信息</text>
+  </view >
+  <view class='class'>
+         <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>姓名：{{aresname}}</text></view>
+
+                   <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>电话：{{aresmobile}}</text><image src='/image/contact.png' class='img' bindtap='call'></image></view>
+
+                   <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>预约说明：{{aresmessage}}</text></view>
+
+                   <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>预约时间：{{date}}</text></view>
+  </view>
+</view>
+
+<view>
+    <i-button type="success" bind:click="handleOpen5">处理</i-button>
+    <i-button type="ghost" bind:click="handleOpen6">忽略</i-button>
+    <i-modal title="确认" visible="{{ visible5 }}" actions="{{ actions5 }}" bind:click="handleClick5">
+    <view>标记已处理将从预约信息列表移除</view>
+</i-modal>
+    <i-modal title="确认" visible="{{ visible6 }}" actions="{{ actions6 }}" bind:click="handleClick6">
+    <view>标记忽略将从预约信息列表移除</view>
+</i-modal>
+<i-message id="message" />
+</view>
+</view>

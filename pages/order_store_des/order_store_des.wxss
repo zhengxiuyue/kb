@@ -1,0 +1,151 @@
+.page{
+  line-height: 2; 
+}
+button::after{
+border:none;
+}
+
+input{
+outline:none;
+border:none;
+list-style: none;
+}
+.title{
+  font-size: 34rpx;
+  font-weight: bold ;
+  font-family: '微软雅黑';
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  margin-right: 20rpx;
+}
+
+.titleImg{
+  width:40rpx;
+  height:40rpx; 
+  margin-right: 20rpx;
+}
+
+.title-text{
+ position: relative;
+ top: -5rpx;
+}
+
+.class{
+  margin: 20rpx 60rpx;
+  line-height: 1.8;
+}
+
+.class-desImg{
+  display: inline-block;
+  position: relative;
+  top: 7rpx;
+  margin-right: 20rpx;
+}
+
+.class-desImg-img{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.class-des{
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  margin-bottom: 40rpx;
+}
+
+.class-des-item{
+  width: 50%;
+  display: inline-block;
+}
+
+.amount{
+  text-align: right;
+  color: #ff9900;
+}
+
+.tips{
+  margin: 10rpx auto;
+}
+
+.tipsImg{
+  width: 40rpx;
+  height: 40rpx;
+  float: left;
+  position: relative;
+  top: 15rpx;
+}
+
+.tipsText{
+  color: #666666;
+  display: inline-block;
+  position: relative;
+  top: -6rpx;
+  left: 10rpx;
+}
+
+.btn{
+  height: 60rpx;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  color: #2a9dd1;
+  border:none;
+  padding-top: 7rpx;
+  float: right;
+  background-color: #F8F8F8;
+  position: relative;
+  top: -55rpx;
+  z-index: 99;
+}
+
+button[disabled]{
+background-color: #F8F8F8 !important;
+color:#2a9dd1 !important;
+}
+
+.infm{
+  position: relative;
+  height: 60rpx;
+  margin:20rpx 80rpx 40rpx 80rpx;
+  border-bottom:4rpx solid #dddee1;
+}
+
+.infm-noborder{
+  position: relative;
+  height: 60rpx;
+  margin:20rpx 80rpx 50rpx 80rpx;
+}
+
+.infm-half{
+  position: relative;
+  height: 60rpx;
+  margin:20rpx 45% 0rpx 80rpx;
+  border-bottom:4rpx solid #dddee1;
+}
+
+#location{
+  display: inline-block;
+  margin-left: 60rpx;
+}
+
+.radio{
+  width: 75%;
+  margin: 0rpx auto;
+}
+
+.textarea-wrp {
+  padding: 0 25rpx;
+  background-color: #fff;
+}
+
+.picker{
+  color: #666666;
+}
+
+.img{
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 30rpx;
+  position: relative;
+  top: 10rpx;
+}
