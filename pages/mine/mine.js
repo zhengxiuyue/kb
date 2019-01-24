@@ -8,11 +8,12 @@ Page({
    */
   data: {
     current: 1,
-   // windowHeight:null,
     username:"",
     item: [],//定义变长数组课堂信息
     Isclassspace:"none",
     userstatus:"",
+    orderList: null,//预约列表
+    Isclassspace1: "none"
   },
 
   /**
@@ -181,35 +182,67 @@ Page({
       Isclassspace: "none",
       item: []
     })
-    wx.request({
-      url: requestIP + '/student/getMyClass',
-      data: {
-        state: this.data.current
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'userid': app.globalData.userid
-      },
-      success: function (res) {
-        if (res.data.resultCode == "101") {
-          for (var i = 0, len = res.data.data.length; i < len; i++) {
-            that.data.item[i] = res.data.data[i]
+    if (that.data.current == 0 || that.data.current == 1){
+      wx.request({
+        url: requestIP + '/student/getMyClass',
+        data: {
+          state: this.data.current
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.item[i] = res.data.data[i]
+            }
+            that.setData({
+              item: that.data.item
+            })
           }
+          else if (res.data.resultCode == "204") {
+            that.setData({
+              Isclassspace: "block"
+            })
+          }
+          else {
+            console.log("请求失败");
+          }
+        },
+      })
+    } 
+    else {
+      wx.request({
+        url: requestIP + '/student/getMySchedule',
+        data: {
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded', // 默认值
+          'userid': app.globalData.userid
+        },
+        success(res) {
+          console.log(res.data.data);
+          if (res.data.resultCode == '101') {
+            that.setData({
+              orderList: res.data.data
+            });
+          } else {
+            that.setData({
+              orderList: ""
+            });
+          }
+        },
+        fail(res) {
           that.setData({
-            item: that.data.item
-          })
+            orderList: ""
+          });
         }
-        else if (res.data.resultCode == "204") {
-          that.setData({
-            Isclassspace:"block"
-          })
-        } 
-        else {
-          console.log("请求失败");
-        }
-      },
-    })
+      })
+    }  
+    
   },
   dropDown:function(e){
     wx.navigateTo({

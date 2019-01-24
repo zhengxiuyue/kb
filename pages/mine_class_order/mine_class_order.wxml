@@ -19,7 +19,7 @@
 
       </view>      
 
-<view class='classcard' style='display:{{Isclassspace}}'>
+<view class='classcard' style='display:{{Isclassspace1}}'>
   <image src='/image/space.png' class='space'></image>
 </view>
 

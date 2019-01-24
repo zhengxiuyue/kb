@@ -18,5 +18,5 @@
 
   	<class-now style="{{current == 1 ? 'display: inline;': 'display: none;'}}" item="{{item}}"  userstatus="{{userstatus}}"  Isclassspace="{{Isclassspace}}" ></class-now>
 	<class-history style="{{current == 0 ? 'display: inline;': 'display: none;'}}" item="{{item}}" userstatus="{{userstatus}}"  Isclassspace="{{Isclassspace}}"></class-history>
-   <class-order style="{{current == 2 ? 'display: inline;': 'display: none;'}}"></class-order>
+   <class-order orderList="{{orderList}}" Isclassspace1="{{Isclassspace1}}" style="{{current == 2 ? 'display: inline;': 'display: none;'}}"></class-order>
   </view>
