@@ -46,9 +46,6 @@ Page({
     var time = util.formatTime(new Date())
     var endFormatTime = util.endFormatTime(new Date(),30)
     var endFormatTime2 = util.endFormatTime(new Date(), -30)
-    console.log(time)
-    console.log(endFormatTime)
-    console.log(endFormatTime2)
     // 再通过setData更改Page()里面的data，动态更新页面的数据    
 
     this.setData({
