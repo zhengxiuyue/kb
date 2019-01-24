@@ -8,7 +8,7 @@ Page({
    */
   data: {
     orderList:null,//预约列表
-    Isclassspace:"none"
+    Isclassspace:"block"
   },
 
   /**
@@ -16,7 +16,7 @@ Page({
    */
   onLoad: function (options) {
      var that = this;
-     that.getMyShedule();
+    that.getMySchedule();
   },
 
   /**
@@ -68,10 +68,10 @@ Page({
 
   },
 
-  getMyShedule:function(){
+  getMySchedule:function(){
       var that = this;
       wx.request({
-        url: requestIP + '/student/getMyShedule',
+        url: requestIP + '/student/getMySchedule',
         data: {
         },
         method: 'POST',
@@ -87,7 +87,7 @@ Page({
             });
           }else{
             that.setData({
-              orderList: res.data.data
+              orderList: ""
             });
           }
         },  

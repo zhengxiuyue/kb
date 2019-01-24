@@ -1,5 +1,4 @@
 .content-btn{
-  display:inline-block;
   text-align:center;
   font-size:28rpx;
   width:120rpx;
@@ -9,23 +8,66 @@
   color:#fff;
   border-radius:5rpx;
   border-color:#1da27f;
-  position:relative;
-  top:-15rpx;
-  margin-left: 60rpx;
 }
 
 .content-btn1{
-  margin-left: 20rpx;
-  display:inline-block;
   text-align:center;
   font-size:28rpx;
   width:120rpx;
   height:60rpx;
   line-height:60rpx;
-  background-color:#cdcdcd;
   color:#fff;
   border-radius:5rpx;
   border-color:#10aeff;
-  position:relative;
-  top:-15rpx;
+  background-color:#10aeff;
 }
+
+.classcard{
+  margin: 200rpx auto;
+  text-align: center;
+}
+
+.space{
+  height: 250rpx;
+  width: 250rpx;
+}  
+ 
+.content
+{
+height:250rpx;
+background-color:#fff;
+border-radius:10rpx;
+padding:40rpx 20rpx;
+text-align:left;
+margin:30rpx 40rpx;
+}
+
+.content1{
+  display: flex;
+  justify-content :space-between;
+}
+
+.content1-left{
+  margin-left: 20rpx;
+  display: inline-block;
+  color:#1DA27F;
+  font-weight: bold;
+  font-size: 34rpx;
+  position:relative;
+  top:10rpx;
+}
+
+.content2{
+  font-size:32rpx;
+  line-height:1.5;
+  padding: 20rpx;
+}
+
+.content3{
+  text-align: right;
+  color: #657180;
+  font-size: 30rpx;
+  padding-right: 20rpx;
+  padding-bottom: 20rpx;
+}
+

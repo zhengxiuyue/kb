@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 26,
+			"current": 28,
 			"list": [
 				{
 					"id": -1,
@@ -199,6 +199,17 @@
 					"name": "课程预约详情",
 					"pathName": "pages/order_course_des/order_course_des",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "mine_class_order",
+					"pathName": "pages/mine_class_order/mine_class_order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "mine",
+					"pathName": "pages/mine/mine"
 				}
 			]
 		}

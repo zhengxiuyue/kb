@@ -1,13 +1,24 @@
 <wxs src="../more/more.wxs" module="tools" />
-<!-- wx:for = "{{orderList}}"  wx:key="" data-classid='{{orderList.classid}}' -->
-<view>
-蒙族舞
-老师：王宇
-上课时间：2018-11-11 5：00-1：00
-地点：远见国际公寓2304
-<view class='content-btn'>预约中</view>
-<view class='content-btn1'>已预约</view>
-</view>
+
+      <view class='content' wx:for="{{orderList}}" data-index='{{index}}' wx:key="item.classid">
+
+      <view class='content1'>
+          <view class = 'content1-left'>{{item.coursename}}</view>
+          <view class = 'content1-right'>
+          <view class='content-btn' style='display:{{item.res_status == 1? "none":"inline-block"}}'>预约中</view>
+          <view class='content-btn1' style='display:{{item.res_status == 1? "inline-block":"none"}}'>已预约</view></view>
+       </view>
+
+      <view class = "content2">
+        <view>上课老师：{{item.name}}</view>
+        <view>上课时间：{{item.date}}<text decode="true">&nbsp;{{tools.my_slice(item.startpoint,0,5)}}-{{tools.my_slice(item.endpoint,0,5)}}</text></view>
+        <view>上课地点：{{item.classroomname}}</view>
+      </view>
+
+      <view class = "content3">{{item.res_reservetime}}</view>
+
+      </view>      
+
 <view class='classcard' style='display:{{Isclassspace}}'>
   <image src='/image/space.png' class='space'></image>
 </view>

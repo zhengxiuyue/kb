@@ -434,7 +434,19 @@ Page({
               type: 'error'
             });
         }
-      else if(res.data.resultCode == '222'){
+          else if (res.data.resultCode == '225') {
+            //旁听人数已达上限
+            wx.showToast({
+              title: '预约中，请勿重复预约!',
+              icon: 'none',
+              duration: 1000
+            })
+            $Message({
+              content: '预约失败！',
+              type: 'error'
+            });
+          }
+      else if(res.data.resultCode == '224'){
       //不能旁听
       wx.showToast({
         title: '该课程不能旁听!',

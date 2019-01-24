@@ -4,10 +4,10 @@ App({
     var that = this;
     var classid = options.query.classid
     console.log(options.query.num)
-    if (options.query.num){
+    if (options.query.num) {
       var num = options.query.num
     }
-    else{
+    else {
       var num = 0
     }
     console.log(num)
@@ -69,7 +69,7 @@ App({
     }
   },
 
-  onShow: function (options){
+  onShow: function (options) {
     var that = this
     var userstatus = wx.getStorageSync('userstatus')
     var classid = options.query.classid
@@ -95,7 +95,7 @@ App({
   },
 
   //学生   
-  editTabBar: function () {    
+  editTabBar: function () {
     //使用getCurrentPages可以获取当前加载中所有的页面对象的一个数组，数组最后一个就是当前页面。 
     var curPageArr = getCurrentPages();    //获取加载的页面   
     var curPage = curPageArr[curPageArr.length - 1];    //获取当前页面的对象    
@@ -151,30 +151,21 @@ App({
 
   globalData: {
     openid: "",
-    userid: "",
+    userid: "0137da84b68111e8ab8e00163e00299d",//学生 0137da84b68111e8ab8e00163e00299d 老师039cd505e50911e8ab8e00163e00299d 助教 12459ec8a77a11e8ab8e00163e00299d
     userInfo: null,
-    userstatus:"",//用户身份
-    code:"",
-    storeid:"",
-    province:"",//省
-    city:"",//市
-    areaname:"",//区
-    storename:'',//门店名
-    alreadyFlag: "0",//是否第一次加载
-    res_status:null,
-  // requestIP: "http://localhost:8080/happyschedule",
-  //  requestIP: "http://39.104.155.0:8080/happyschedule",
-    requestIP: "http://iav4s9.natappfree.cc/happyschedule",
-    
-  //  requestIP: "https://curriculum.50fun.cn/happyschedule",
-    storename:'',//门店名称
-    res_status:null,
-   // requestIP: "http://localhost:8080/happyschedule",
-   // requestIP: "http://39.104.155.0:8080/happyschedule",
-   // requestIP: "http://4psarc.natappfree.cc/happyschedule",
-   //requestIP: "https://curriculum.50fun.cn/happyschedule",
+    userstatus: "",//用户身份
+    code: "",
+    storeid: "",
+    province: "",//省
+    city: "",//市
+    areaname: "",//区
+    storename: '',//门店名称
+    //requestIP: "http://localhost:8080/happyschedule",
+    // requestIP: "http://39.104.155.0:8080/happyschedule",
+    requestIP: "http://g5ypy6.natappfree.cc/happyschedule",
+    // requestIP: "http://vy6nda.natappfree.cc/happyschedule",
+    //requestIP: "https://curriculum.50fun.cn/happyschedule",
 
-    
     //学生角色
     tabBar: {
       color: "black",
