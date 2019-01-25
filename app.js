@@ -45,7 +45,15 @@ App({
     // console.log(userid)
     // console.log(tel)
     if (userid && tel && name && openid && userstatus) {
-      if (userstatus == 2) {
+      if(userstatus == 1){
+        that.globalData.userid = userid
+        that.globalData.userstatus = userstatus
+        that.globalData.openid = openid
+        wx.redirectTo({
+          url: '/pages/index/A_index?num=' + num + "&classid=" + classid
+        })
+      }
+      else if (userstatus == 2) {
         that.globalData.userid = userid
         that.globalData.userstatus = userstatus
         that.globalData.openid = openid
@@ -81,7 +89,12 @@ App({
     }
 
     if (num == 1) {
-      if (userstatus == 2) {
+      if(userstatus == 1){
+        wx.redirectTo({
+          url: '/pages/index/A_index?num=' + num + "&classid=" + classid
+        })
+      }
+      else if (userstatus == 2) {
         wx.redirectTo({
           url: '/pages/index/T_index?num=' + num + "&classid=" + classid
         })
@@ -151,7 +164,7 @@ App({
 
   globalData: {
     openid: "",
-    userid: "",//学生 0137da84b68111e8ab8e00163e00299d 老师039cd505e50911e8ab8e00163e00299d 助教 12459ec8a77a11e8ab8e00163e00299d
+    userid: "0137da84b68111e8ab8e00163e00299d",//学生 0137da84b68111e8ab8e00163e00299d 老师039cd505e50911e8ab8e00163e00299d 助教 12459ec8a77a11e8ab8e00163e00299d
     userInfo: null,
     userstatus: "",//用户身份
     code: "",
@@ -160,11 +173,11 @@ App({
     city: "",//市
     areaname: "",//区
     storename: '',//门店名称
-    requestIP: "http://localhost:8080/happyschedule",
-    //requestIP: "http://39.104.155.0:8080/happyschedule",
+//    requestIP: "http://localhost:8080/happyschedule",
+   // requestIP: "http://39.104.155.0:8080/happyschedule",
    // requestIP: "http://g5ypy6.natappfree.cc/happyschedule",
     // requestIP: "http://vy6nda.natappfree.cc/happyschedule",
-   // requestIP: "https://curriculum.50fun.cn/happyschedule",
+    requestIP: "https://curriculum.50fun.cn/happyschedule",
 
     //学生角色
     tabBar: {
