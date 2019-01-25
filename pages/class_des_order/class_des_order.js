@@ -5,7 +5,7 @@ Page({
     phoneNumber: "",
     classid: null,
     coursename:"",
-    reverseprice:"",
+    reverseprice:0,
   },
   GOclass_signUp: function (e) {
     var that = this;

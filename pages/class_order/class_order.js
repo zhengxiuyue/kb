@@ -9,7 +9,7 @@ Page({
     classList: null,//该课程的排期
     scheduleidList:null,
     scheduleid:null,
-    reverseprice:"",//预约价格
+    reverseprice:0,//预约价格
     auth: "none",
     coursename:"",//课程名
     username: '',//姓名
@@ -295,7 +295,7 @@ Page({
         },
         success(res) {
           if (res.data.resultCode == '101') {
-            if (reverseprice != '0') {
+            if (reverseprice != 0) {
               //付费
               wx.request({
                 url: requestIP + '/weixin/paySubscribe',
@@ -365,7 +365,7 @@ Page({
                 }
               })
             }
-            else if (reverseprice == '0')
+            else if (reverseprice == 0)
             {
               //免费
               wx.request({
