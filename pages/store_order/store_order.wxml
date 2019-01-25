@@ -28,7 +28,7 @@
 
 <view class='infm' style='display:{{auth}}'>
   <input class='ipt' type='number' value='{{authcode}}' bindinput='authcodeInput' placeholder='请输入验证码' placeholder-class='placeholder' >
-  </input><button disabled='{{isClick}}' bindtap='gainAuthCodeAction' class='btn'>{{time1}}</button> 
+  </input><button disabled='{{isClick}}' bindtap='gainAuthCodeAction' class='btn'>{{time}}</button> 
 </view>
 
 <view class='infm'>
@@ -76,6 +76,7 @@
 
 <view>
   <i-button type="success" bindtap='signUp'>确认预约</i-button>
+
 <i-message id="message" />
 </view>
 </view> 

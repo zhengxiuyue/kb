@@ -391,8 +391,8 @@ Page({
                       //跳到更多页面
                       wx.redirectTo({
                         url: '/pages/more/more',
-                      }), 2000
-                    })
+                      })
+                    }, 2000)
                   }
                   else {
                     $Message({
@@ -493,12 +493,8 @@ Page({
           that.setData({
             courseList: res.data.data[0],
             coursename: res.data.data[0].coursename,
+            reverseprice: res.data.data[1].reverseprice
           });
-          if (res.data.data[1].reverseprice) {
-            that.setData({
-              reverseprice: res.data.data[1].reverseprice
-            })
-          }
         }
       },
       fail(res) {

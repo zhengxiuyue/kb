@@ -313,7 +313,6 @@ Page({
             content: '预约成功！',
             type: 'success'
           });
-
           setTimeout(function () {
             //跳到更多页面
             wx.redirectTo({
