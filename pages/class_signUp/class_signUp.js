@@ -227,8 +227,8 @@ Page({
                       //跳到课堂页面
                       wx.redirectTo({
                         url: '/pages/class/class?classid=' + that.data.classid,
-                      }), 2000
-                    })
+                      })
+                    }, 2000)
                   },
                   'fail': function (res) {
                     if (res.errMsg == "requestPayment:fail cancel") {

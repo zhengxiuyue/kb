@@ -313,12 +313,13 @@ Page({
             content: '预约成功！',
             type: 'success'
           });
+
           setTimeout(function () {
             //跳到更多页面
             wx.redirectTo({
               url: '/pages/more/more',
-            }), 2000
-          })
+            })
+          }, 2000)
 
         } else if (res.data.resultCode == '216') {
           wx.showToast({

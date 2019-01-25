@@ -87,13 +87,19 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
+        console.log(res.data.data);
         if (res.data.resultCode == '101') {
           that.setData({
             courseList: res.data.data[0],
             phoneNumber: res.data.data[0].hotline,
             coursename: res.data.data[0].coursename,
-            reverseprice: res.data.data[1].reverseprice
           });
+          if (res.data.data[1].reverseprice)
+          {
+            that.setData({
+              reverseprice: res.data.data[1].reverseprice
+            })
+          }
         }
       },
       fail(res) {
