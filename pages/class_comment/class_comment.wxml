@@ -18,8 +18,6 @@
 		  <view class="{{current == 0 ? 'current' : ''}}" bindtap="changeTab" data-index="0">讨论({{comment_num}})       </view>
   	</view>
 
-
-
 <view class='students1' wx:for = "{{comment}}" wx:key = "">
   <image wx:if="{{item.protrait!=null}}" class="headphoto1" src="{{item.protrait}}" background-size="cover"></image>
   <image wx:else class="headphoto1" src="{{imgUrl}}" background-size="cover"></image>
@@ -44,13 +42,6 @@
   <view class='clear'></view>
 </view>
 
- <!-- <view class="page__hd" style="">
-    <input placeholder='写评论…' placeholder-style='font-size:30rpx;' class='inpt' value='{{comment_content}}' bindinput='commentInput' cursor-spacing="40"></input>
-    <text class='release' bindtap='release'>发布</text>    
-  </view> -->
-
-
- 
 <view class="release" > 
 <textarea class="text" placeholder='写评论…' placeholder-style='font-size:30rpx;'
 placeholder-class="input_null" 

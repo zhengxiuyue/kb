@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 28,
+			"current": 29,
 			"list": [
 				{
 					"id": -1,
@@ -209,7 +209,14 @@
 				{
 					"id": -1,
 					"name": "mine",
-					"pathName": "pages/mine/mine"
+					"pathName": "pages/mine/mine",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "A_index",
+					"pathName": "pages/index/A_index",
+					"scene": null
 				}
 			]
 		}

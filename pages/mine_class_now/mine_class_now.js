@@ -36,11 +36,6 @@ Component({
       wx.navigateTo({
         url: '/pages/class/class?classid=' + classid,
       })
-    },
-    signin: function(){
-      wx.redirectTo({
-        url: '/pages/more/more',
-      })
     }
   },
 
