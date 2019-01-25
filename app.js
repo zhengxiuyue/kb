@@ -160,11 +160,11 @@ App({
     city: "",//市
     areaname: "",//区
     storename: '',//门店名称
-    //requestIP: "http://localhost:8080/happyschedule",
+    requestIP: "http://localhost:8080/happyschedule",
     //requestIP: "http://39.104.155.0:8080/happyschedule",
    // requestIP: "http://g5ypy6.natappfree.cc/happyschedule",
     // requestIP: "http://vy6nda.natappfree.cc/happyschedule",
-    requestIP: "https://curriculum.50fun.cn/happyschedule",
+   // requestIP: "https://curriculum.50fun.cn/happyschedule",
 
     //学生角色
     tabBar: {

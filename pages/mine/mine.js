@@ -227,17 +227,21 @@ Page({
           console.log(res.data.data);
           if (res.data.resultCode == '101') {
             that.setData({
-              orderList: res.data.data
+              orderList: res.data.data,
+              Isclassspace1:'none'
             });
+  
           } else {
             that.setData({
-              orderList: ""
+              orderList: "",
+              Isclassspace1: 'block'
             });
           }
         },
         fail(res) {
           that.setData({
-            orderList: ""
+            orderList: "",
+            Isclassspace1: 'block'
           });
         }
       })

@@ -72,11 +72,10 @@ Page({
       success(res) {
         console.log(res.data.resultCode)
         if (res.data.resultCode == '101') {
-          console.log(res.data.data);
           that.setData({
-            courseList: res.data.data[0],
-            phoneNumber: res.data.data[0].hotline,
-            coursename: res.data.data[0].coursename,
+            courseList: res.data.data,
+            phoneNumber: res.data.data.hotline,
+            coursename: res.data.data.coursename,
           });
         }
       },

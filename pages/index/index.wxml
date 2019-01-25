@@ -51,9 +51,9 @@
   </view>
 
   <view class="title">
-    <text class="app-title">我的课表</text>
-    <!--<view class='header-img' style='display:{{down}};' bindtap='Gotop'><image src='../../image/up-circle.png' class='areaIcon'></image></view>
- <view class='header-img' style='display:{{top}}; ' bindtap='Godown'><image src='../../image/down-circle.png' class='areaIcon'></image></view>-->
+    <text decode="true" class="app-title">我的课表&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+    <view class='header-img' bindtap='Gotop'><image src='../../image/helpCourse.png' class='areaIcon'></image></view>
+    <text class = "tips">近一周的课表</text>
   </view>
 
   <!--<view class='header-style' style='display:{{calendarsim}};'>

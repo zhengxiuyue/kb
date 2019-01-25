@@ -215,12 +215,13 @@ Page({
           location: { latitude: latitude, longitude: longitude },
           success: function (res) {
             //address 城市
-            // console.log(res.result);
+             console.log(res.result);
             that.setData({ address: res.result.address })
              wx.showToast({
               title: "当前位置: " + that.data.address,
              icon: 'none'
             });
+
             //把当前位置存入全局变量
             if (!app.globalData.province || !app.globalData.areaname ||! app.globalData.city)
             {

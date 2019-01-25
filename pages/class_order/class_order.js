@@ -295,7 +295,7 @@ Page({
         },
         success(res) {
           if (res.data.resultCode == '101') {
-            if (reverseprice != 0) {
+            if (res.data.data != 0) {
               //付费
               wx.request({
                 url: requestIP + '/weixin/paySubscribe',
@@ -323,7 +323,6 @@ Page({
                       'success': function (res) {
                         $Message({
                           content: '预约成功！',
-                          type: 'success'
                         });
                         setTimeout(function () {
                           //跳到更多页面
@@ -365,7 +364,7 @@ Page({
                 }
               })
             }
-            else if (reverseprice == 0)
+            else if (res.data.data == 0)
             {
               //免费
               wx.request({
@@ -385,7 +384,6 @@ Page({
                   if (re.data.resultCode == '101') {
                     $Message({
                       content: '预约成功！',
-                      type: 'success'
                     });
                     setTimeout(function () {
                       //跳到更多页面
@@ -491,10 +489,14 @@ Page({
         console.log(res.data.resultCode);
         if (res.data.resultCode == '101') {
           that.setData({
-            courseList: res.data.data[0],
-            coursename: res.data.data[0].coursename,
-            reverseprice: res.data.data[1].reverseprice
+            courseList: res.data.data,
+            coursename: res.data.data.coursename,
           });
+          if (res.data.data.reversefee) {
+            that.setData({
+              reverseprice: res.data.data.reversefee
+            })
+          }
         }
       },
       fail(res) {

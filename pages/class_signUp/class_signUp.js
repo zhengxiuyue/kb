@@ -153,10 +153,8 @@ Page({
         if (res.data.resultCode == '101') {
           console.log(res.data.data);
           that.setData({
-            courseList: res.data.data[0],
-            price: res.data.data[0].price,
-            improveprice: res.data.data[0].improveprice,
-            coursename: res.data.data[0].coursename,
+            courseList: res.data.data,
+            coursename: res.data.data.coursename,
           });
         }
       },
@@ -178,6 +176,22 @@ Page({
         duration: 1000
       })
       return false;
+    }
+
+//请求前判断app.globalData.userid是否为空
+    if (!app.globalData.userid)
+    {
+      wx.showToast({
+        title: '出错了!',
+        icon: 'loading',
+        duration: 2000
+      })
+      setTimeout(function () {
+        //跳到课堂页面
+        wx.redirectTo({
+          url: '/pages/login/login',
+        })
+      }, 2000)
     }
 
     wx.request({
@@ -221,7 +235,6 @@ Page({
                   'success': function (res) {
                     $Message({
                       content: '报名成功！',
-                      type: 'success'
                     });
                     setTimeout(function () {
                       //跳到课堂页面

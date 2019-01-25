@@ -293,11 +293,14 @@ Page({
       success(res) {
         if (res.data.resultCode == '101') {
           that.setData({
-            courseList: res.data.data[0],
-            phoneNumber: res.data.data[0].hotline,
-            coursename: res.data.data[0].coursename,
-            reverseprice: res.data.data[1].reverseprice
+            courseList: res.data.data,
+            coursename: res.data.data.coursename,
           });
+          if (res.data.data.reversefee) {
+            that.setData({
+              reverseprice: res.data.data.reversefee
+            })
+          }
         }
       },
       fail(res) {

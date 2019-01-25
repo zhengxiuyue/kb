@@ -311,7 +311,6 @@ Page({
         if (res.data.resultCode == '101') {
           $Message({
             content: '预约成功！',
-            type: 'success'
           });
           setTimeout(function () {
             //跳到更多页面

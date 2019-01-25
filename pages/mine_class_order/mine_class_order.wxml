@@ -21,5 +21,8 @@
 
 <view class='classcard' style='display:{{Isclassspace1}}'>
   <image src='/image/space.png' class='space'></image>
+    <view>  
+    <text style='font-size:30rpx;'>还没有预约</text>
+  </view>
 </view>
 

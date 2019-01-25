@@ -2,6 +2,7 @@ var app = getApp();
 var requestIP = app.globalData.requestIP;
 Page({
   data: {
+    Count: -1,//用户预约次数
     phoneNumber: "",
     classid: null,
     coursename:"",
@@ -90,16 +91,39 @@ Page({
         console.log(res.data.data);
         if (res.data.resultCode == '101') {
           that.setData({
-            courseList: res.data.data[0],
-            phoneNumber: res.data.data[0].hotline,
-            coursename: res.data.data[0].coursename,
+            courseList: res.data.data,
+            phoneNumber: res.data.data.hotline,
+            coursename: res.data.data.coursename,
           });
-          if (res.data.data[1].reverseprice)
-          {
+          if (res.data.data.reversefee) {
             that.setData({
-              reverseprice: res.data.data[1].reverseprice
+              reverseprice: res.data.data.reversefee
             })
           }
+        }
+      },
+      fail(res) {
+      }
+    })
+  },
+
+  SubCount: function () {
+    var that = this;
+    wx.request({
+      url: requestIP + '/student/SubCount',
+      data: {
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'userid': app.globalData.userid
+      },
+      success(res) {
+        console.log(res.data.data)
+        if (res.data.resultCode == '101') {
+          that.setData({
+            Count: res.data.data
+          })
         }
       },
       fail(res) {
