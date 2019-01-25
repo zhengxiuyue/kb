@@ -62,15 +62,20 @@ Page({
   },
   bindPickerChange: function (e) {
     var that = this;
-    app.globalData.storename = that.data.array[e.detail.value];
-    app.globalData.storeid = that.data.storeidList[e.detail.value];
-    that.setData({
-      storeid: app.globalData.storeid,
-      storename: app.globalData.storename
-    })
-    that.getClassList_signUp();
-    that.getClassList_order();
-    that.IfOrder();
+    if (that.data.array[e.detail.value] == '暂无门店')
+    {
+      return false;
+    }else{
+      app.globalData.storename = that.data.array[e.detail.value];
+      app.globalData.storeid = that.data.storeidList[e.detail.value];
+      that.setData({
+        storeid: app.globalData.storeid,
+        storename: app.globalData.storename
+      })
+      that.getClassList_signUp();
+      that.getClassList_order();
+      that.IfOrder();
+    }
   },
   bindRegionChange: function (e) {
     var that = this;
@@ -263,12 +268,13 @@ Page({
           that.setData({
             storeid: app.globalData.storeid
           })
+          that.setData({
+            array: ['暂无门店'],
+            storeidList: null
+          });
           that.getClassList_signUp();
           that.getClassList_order();
           that.IfOrder();
-          that.setData({
-            array: ['暂无门店']
-          });
         }
       },
       fail(res) {
@@ -280,12 +286,13 @@ Page({
         that.setData({
           storeid: app.globalData.storeid
         })
+        that.setData({
+          array: ['暂无门店'],
+          storeidList: null
+        });
         that.getClassList_signUp();
         that.getClassList_order();
         that.IfOrder();
-        that.setData({
-          array: ['暂无门店']
-        });
       }
     });
   },
