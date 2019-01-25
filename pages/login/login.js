@@ -135,15 +135,47 @@ Page({
     let that = this;
     var requestIP =app.globalData.requestIP
     var con = app.globalData.userstatus
+    //手机号码
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
-    //判断手机号码
-   
-    if ((app.globalData.userstatus == 3 || app.globalData.userstatus == 2)&!myreg.test(that.data.tel)) {
+    //邮箱
+    let str = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/
+    //对学生和老师判断手机号码
+    console.log(app.globalData.userstatus)
+    if (that.data.tel.length == 0 & app.globalData.userstatus == "")
+    {
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '请填写手机号码或邮箱',
+          icon: "none",
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
+      return false;
+    }
+    else if ((app.globalData.userstatus == 3 || app.globalData.userstatus == 2)&!myreg.test(that.data.tel)) {
       wx.showLoading();
       wx.hideLoading();
       setTimeout(() => {
         wx.showToast({
           title: '请填写正确的手机号码',
+          icon: "none",
+        });
+        setTimeout(() => {
+          wx.hideToast();
+        }, 2000)
+      }, 0);
+      return false;
+    }
+    else if (app.globalData.userstatus == 1 & !str.test(that.data.tel)) {
+      wx.showLoading();
+      wx.hideLoading();
+      setTimeout(() => {
+        wx.showToast({
+          title: '请填写正确的邮箱',
           icon: "none",
         });
         setTimeout(() => {

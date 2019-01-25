@@ -153,7 +153,7 @@ App({
     openid: "",
     userid: "039cd505e50911e8ab8e00163e00299d",//学生 0137da84b68111e8ab8e00163e00299d 老师039cd505e50911e8ab8e00163e00299d 助教 12459ec8a77a11e8ab8e00163e00299d
     userInfo: null,
-    userstatus: 2,//用户身份
+    userstatus: "",//用户身份
     code: "",
     storeid: "",
     province: "",//省
