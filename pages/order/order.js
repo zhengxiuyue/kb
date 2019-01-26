@@ -1,21 +1,60 @@
 // pages/order/order.js
 var app = getApp();
 var requestIP = app.globalData.requestIP;
-const { $Message } = require('../../dist/base/index');
 
 Page({
   data: {
+    current: 'tab1',
     storeOrderList:null,
     courseOrderList:null,
     error_noCourseOrder:"none",
-    error_noStoreOrder:"none"
+    error_noStoreOrder:"none",
+    order_status:0 //0是预约中 1是已处理
   },
-  onLoad: function (options) {
-    app.editTabBar2();
+
+  handleChange({ detail }) {
+    console.log(detail);
+    if (detail.key == "tab1")
+    {
+    this.setData({
+      current: detail.key,
+      order_status: 0 //0是预约中 1是已处理      
+    });
+    }
+    else if (detail.key == "tab2"){
+      this.setData({
+        current: detail.key,
+        order_status: 1 //0是预约中 1是已处理      
+      });
+    }
     var that = this;
     that.getAreaReservation();
     that.getCourseReservation();
   },
+
+
+  onLoad: function (options) {
+    app.editTabBar2();
+    var that = this;
+    if (wx.getStorageSync("order_status"))
+    {
+      if (wx.getStorageSync("order_status") == 0)
+      {
+      this.setData({
+        current: "tab1",
+        order_status: 0 //0是预约中 1是已处理      
+      });
+      } else if (wx.getStorageSync("order_status") == 1){
+        this.setData({
+          current: "tab2",
+          order_status: 1 //0是预约中 1是已处理      
+        });
+      }
+    }
+    that.getAreaReservation();
+    that.getCourseReservation();
+  },
+
   GO_order_course_des: function (e) {
     var that = this;
     var index = e.currentTarget.dataset.index;
@@ -25,6 +64,7 @@ Page({
       url: '../order_course_des/order_course_des?resid=' + resid,
     })
   },
+
   GO_order_store_des: function (e) {
     var that = this;
     var index = e.currentTarget.dataset.index;
@@ -39,8 +79,15 @@ Page({
   getAreaReservation: function (e) {
     //获取门店预约列表
     var that = this;
+    var interf;
+    if (that.data.order_status == 0)
+    {
+      interf = "getAreaReservation";
+    } else if (that.data.order_status == 1){
+      interf = "getAreaReservationHandled";
+    }
     wx.request({
-      url: requestIP + '/assistant/getAreaReservation',
+      url: requestIP + '/assistant/' + interf,
       data: {
       },
       method: 'POST',
@@ -76,8 +123,14 @@ Page({
   //获取课程预约列表
   getCourseReservation: function (e) {
     var that = this;
+    var interf;
+    if (that.data.order_status == 0) {
+      interf= "getCourseReservation";
+    } else if (that.data.order_status == 1) {
+      interf = "getCourseReservationHandled";
+    }
     wx.request({
-      url: requestIP + '/assistant/getCourseReservation',
+      url: requestIP + '/assistant/' + interf,
       data: {
       },
       method: 'POST',

@@ -14,9 +14,10 @@ Page({
     var classid = that.data.classid;
     var coursename = that.data.coursename;
     var classnumber = that.data.courseList.classnumber
+    var level = that.data.courseList.level
     console.log(classid + classnumber + coursename);
     wx.navigateTo({
-      url: '../schedule_order/schedule_order?classid=' + classid + "&coursename=" + coursename + "&classnumber=" + classnumber
+      url: '../schedule_order/schedule_order?classid=' + classid + "&coursename=" + coursename + "&classnumber=" + classnumber + "&level=" + level
     })
   },
   call: function (e) {

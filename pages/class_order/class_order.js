@@ -50,13 +50,13 @@ Page({
   onLoad: function (options) {
     var that = this;
     var classid = that.options.classid;
+    var scheduleid = that.options.scheduleid;
     that.setData({
-      classid: classid
+      classid: classid,
+      scheduleid: scheduleid
     })
-    console.log("classid"+classid);
     that.getClassInfo();
     that.getMyInfo();
-    that.getClassSchedule();
   },
 
   bindPickerChange(e) {

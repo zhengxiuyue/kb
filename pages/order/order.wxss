@@ -31,25 +31,20 @@
   padding: 20rpx 0rpx;
   text-align: left;
   margin-bottom: 20rpx;
+  line-height: 1.5;
 }
 
 .content-title
 {
   margin-left: 20rpx;
-  display: inline-block;
-  color:#1DA27F;
-  font-weight: bold;
-  font-size: 34rpx;
   width: 100rpx;
   position: relative;
   top: -10rpx;
-  text-align: center;
 }
 
 .content-middle{
   margin-left: 20rpx;
-  display: inline-block;
-  width: 250rpx;
+  width: 450rpx;
   position: relative;
   top: 12rpx;
 }
@@ -62,6 +57,7 @@
 
 .content-time{
   font-size: 30rpx;
+  font-weight: normal;
 }
 
 .content-btn{
@@ -77,27 +73,6 @@
   border-color:#1da27f;
   position:relative;
   top:-15rpx;
-  margin-left: 60rpx;
-}
-
-.content-btn1{
-  margin-left: 20rpx;
-  display:inline-block;
-  text-align:center;
-  font-size:28rpx;
-  width:120rpx;
-  height:60rpx;
-  line-height:60rpx;
-  background-color:#cdcdcd;
-  color:#fff;
-  border-radius:5rpx;
-  border-color:#cdcdcd;
-  position:relative;
-  top:-15rpx;
-}
-
-.break{
-  height: 20rpx;
 }
 
 .error{
@@ -106,6 +81,15 @@
 }
 
 .error_img{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.content-result{
+  color: #1DA27F;
+}
+
+.img2{
   width: 40rpx;
   height: 40rpx;
 }

@@ -15,7 +15,7 @@
       {{item.dayinweek}}
       </view>
       <view class='b2'>
-      {{item.coursename}} | {{item.classnumber}}班
+      {{item.coursename}}{{level}} | {{item.classnumber}}班
       </view>
       
       <view class='b3'>

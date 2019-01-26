@@ -2,47 +2,55 @@
 <import src="/pages/tabBar/tabBar.wxml"/> 
 <template is="tabBar" data="{{tabBar}}"/>
 
+<i-tabs class = "tab" current="{{ current }}" color="#1DA27F" bindchange="handleChange">
+    <i-tab key="tab1" title="预约中"></i-tab>
+    <i-tab key="tab2" title="已处理"></i-tab>
+</i-tabs>
+
 <view class = "page">
+
       <view class='big_title'>
         <view class="title">
           <text class="app-title">门店预约</text> 
         </view>
       </view>
 
-      <view class='content'  bindtap='GO_order_store_des'  wx:for="{{storeOrderList}}"  data-index='{{index}}' wx:key="item.ares_id">
-        <view class='content-title'>
+      <view class='content' bindtap='GO_order_store_des'  wx:for="{{storeOrderList}}"  data-index='{{index}}' wx:key="item.ares_id">
+        <view class='content-title' >
          <image src = "/image/store.png" class='img1'></image>
         </view>
         <view class='content-middle'>
-          <view class='content-rank'>{{item.ares_name}}</view>
-          <view class='content-time'><text decode="true">{{item.ares_mobile}}</text></view>
+          <view class='content-rank'>{{item.ares_name}} </view><text class='content-time'> {{item.ares_mobile}}</text>
+          <view class='content-time'>广电门外</view>
         </view>
-        <view class='content-btn'>处理</view>
-        <view class='content-btn1'>
-            忽略
-        </view>
+        <view class='content-btn'>详情</view>
       </view>
+
         <!--没有门店预约时的显示-->
   <view class='error' style='display:{{error_noStoreOrder}};'>
     <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;没有数据</text>
   </view>
+
         <view class='big_title'>
     <view class="title">
       <text class="app-title">课程预约</text> 
     </view>
       </view>
 
-        <view class='content'  bindtap='GO_order_course_des' wx:for="{{courseOrderList}}" data-index='{{index}}' wx:key="item.res_id">
+      <view class='content' bindtap='GO_order_course_des' wx:for="{{courseOrderList}}" data-index='{{index}}' wx:key="item.res_id">
         <view class='content-title'>
          <image src = "/image/course.png" class='img1'></image>
         </view>
+
         <view class='content-middle'>
-          <view class='content-rank'>{{item.res_name}}</view>
-          <view class='content-time'><text decode="true">{{item.res_mobile}}</text></view>
+          <view class='content-rank'>{{item.res_name}}王宇 </view><text class='content-time'> {{item.res_mobile}}</text>
+          <view class='content-time'>模特班基础班2班</view>
         </view>
-        <view class='content-btn'>处理</view>
-        <view class='content-btn1'>忽略</view>
+
+        <view class = "content-result"><image class='img2' src='/image/sure.png'></image>已确</view>
+         <view class='content-btn'>详情</view>
       </view>
+
         <!--没有课程预约时的显示-->
   <view class='error' style='display:{{error_noCourseOrder}};'>
     <image src='/image/no.png' class='error_img'></image><text decode="true">&nbsp;&nbsp;没有数据</text>

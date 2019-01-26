@@ -57,12 +57,6 @@ Page({
         visible5: false
       });
     } else {
-      const action = [...this.data.actions5];
-      action[1].loading = true;
-
-      this.setData({
-        actions5: action
-      });
       var that = this;
       wx.request({
         url: requestIP + '/assistant/handleCourseReservation',
@@ -86,8 +80,8 @@ Page({
               //跳到页面
               wx.redirectTo({
                 url: '/pages/order/order',
-              }), 2000
-            })
+              })
+            }, 2000)
           }
           else {
               $Message({
@@ -113,12 +107,6 @@ Page({
         visible6: false
       });
     } else {
-      const action = [...this.data.actions5];
-      action[1].loading = true;
-
-      this.setData({
-        actions6: action
-      });
       var that = this;
       wx.request({
         url: requestIP + '/assistant/cancelCourseReservation',
@@ -141,8 +129,8 @@ Page({
               //跳到页面
               wx.redirectTo({
                 url: '/pages/order/order',
-              }), 2000
-            })
+              })
+            }, 2000)
           }
           else {
 

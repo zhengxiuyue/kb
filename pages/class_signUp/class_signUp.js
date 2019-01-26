@@ -179,10 +179,10 @@ Page({
     }
 
 //请求前判断app.globalData.userid是否为空
-    if (!app.globalData.userid)
+    /*if (!app.globalData.userid)
     {
       wx.showToast({
-        title: '出错了!',
+        title: '登录已失效!',
         icon: 'loading',
         duration: 2000
       })
@@ -192,7 +192,7 @@ Page({
           url: '/pages/login/login',
         })
       }, 2000)
-    }
+    }*/
 
     wx.request({
       url: requestIP + '/student/signup',

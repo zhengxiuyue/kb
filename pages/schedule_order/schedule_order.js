@@ -11,7 +11,8 @@ Page({
     courseList:null,
     classid:null,
     coursename:null,
-    classnumber:null
+    classnumber:null,
+    level:null
   },
 
   /**
@@ -22,11 +23,13 @@ Page({
     var classid = that.options.classid;
     var coursename = that.options.coursename;
     var classnumber = that.options.classnumber;
+    var level = that.options.level
     console.log(classid + classnumber + coursename);
     that.setData({
       classid: classid,
       coursename: coursename,
-      classnumber: classnumber
+      classnumber: classnumber,
+      level: level
     })
     that.getClassSchedule();
   },
@@ -79,6 +82,17 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  enterclass:function(e){
+    var that = this;
+    var index = e.currentTarget.dataset.index;
+    var courseList = that.data.courseList;
+    var scheduleid = courseList[index].scheduleid;
+    var classid = that.data.classid;
+    wx.navigateTo({
+      url: '../class_order/class_order?scheduleid=' + scheduleid + "&classid=" + classid
+    })
   },
 
   getClassSchedule: function (e) {
