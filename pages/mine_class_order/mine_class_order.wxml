@@ -6,7 +6,7 @@
           <view class = 'content1-left'>{{item.coursename}}</view>
           <view class = 'content1-right'>
           <view class='content-btn' style='display:{{item.res_status == 1? "none":"inline-block"}}'>预约中</view>
-          <view class='content-btn1' style='display:{{item.res_status == 1? "inline-block":"none"}}'>已预约</view></view>
+          <view class='content-btn1' style='display:{{item.res_status == 1? "inline-block":"none"}}'>预约成功</view></view>
        </view>
 
       <view class = "content2">

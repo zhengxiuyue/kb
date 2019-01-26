@@ -34,7 +34,8 @@
     "pages/store_order/store_order",
     "pages/order_course_des/order_course_des",
     "pages/order_store_des/order_store_des",
-    "pages/class_order/class_order"
+    "pages/class_order/class_order",
+    "pages/schedule_order/schedule_order"
   ],
   "window":{
     "backgroundTextStyle":"dark",

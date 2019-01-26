@@ -16,7 +16,7 @@ Page({
       { name: '16:00', value: '16:00-18:00' }
     ],
     startdate: new Date().getFullYear() + "-" + (parseInt(new Date().getMonth()) + 1).toString() + "-" + new Date().getDate(),//起点
-    enddate: new Date().getFullYear() + "-" + (parseInt(new Date().getMonth()) + 2).toString() + "-" + new Date().getDate(),//终点
+    enddate: new Date().getFullYear() + "-" + (parseInt(new Date().getMonth()) + 4).toString() + "-" + new Date().getDate(),//终点
     date1:'today',//预约日期,
     date:"点击选择预约时间",
     time:"08:00",//预约时间段

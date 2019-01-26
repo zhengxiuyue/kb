@@ -2,7 +2,7 @@
 <view class='page'>
 
         <!--课程简介-->
-      <view class='title'>
+    <!--  <view class='title'>
         <image src='/image/brief.png' class='titleImg'></image>
         <text class='title-text'>课程简介</text>
       </view>
@@ -36,7 +36,7 @@
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
           <text>课容量：{{courseList.vol}}人</text></view>
 
-      </view>
+      </view>-->
 
   <!--个人信息-->
 <view>

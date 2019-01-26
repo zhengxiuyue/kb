@@ -47,6 +47,7 @@
      {{date}}
     </view>
   </picker>
+    <view class='header_tips'><image src='../../image/helpCourse.png' class='header-img'></image><text decode="true" class='header_text'>&nbsp;仅能预约近三个月内</text></view>
 </view>
 
 <!--<view class='radio'>

@@ -71,7 +71,7 @@ Page({
       success: function (res) {
         if (res.data.resultCode == "101") {
           that.setData({
-            items: res.data.data[0]
+            items: res.data.data
           })
         } else {
           console.log("请求失败");

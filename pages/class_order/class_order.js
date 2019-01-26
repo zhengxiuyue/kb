@@ -504,48 +504,6 @@ Page({
     })
   },
 
-  getClassSchedule: function (e) {
-    var that = this;
-    var classid = that.data.classid;
-    wx.request({
-      url: requestIP + '/student/getInSchedule',
-      data: {
-        classid: classid
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded', // 默认值
-        'userid': app.globalData.userid
-      },
-      success(res) {
-        console.log(res.data.data)
-        if (res.data.resultCode == '101') {
-          var classList = new Array();
-          var scheduleidList = new Array();
-          var schdule;
-          var scheduleid;
-          for(var i=0;i< res.data.data.length;i++)
-          {
-            schdule = res.data.data[i].date + " " + res.data.data[i].startpoint + " - " + res.data.data[i].endpoint;
-            classList.push(schdule);
-          }
-          for (var j = 0; j < res.data.data.length; j++) {
-            scheduleid = res.data.data[j].scheduleid;
-            scheduleidList.push(scheduleid);
-          }
-          that.setData({
-            classList: classList,
-            scheduleidList: scheduleidList,
-            scheduleid: scheduleidList[0]
-          });
-          console.log("节次列表"+that.data.classList);
-        }
-      },
-      fail(res) {
-      }
-    })
-  },
-
   orderclick:function(e){
     //选择课堂预约
     var that = this;

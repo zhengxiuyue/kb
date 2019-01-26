@@ -95,11 +95,11 @@
         </view>
         </button>
         </view>
-        <view class='btn' bindtap='GOclass_signUp' style='display:{{Count == 0||Count == -1? "block":"none"}}'>
+        <view class='btn' bindtap='GOschedule_order' style='display:{{Count == 0||Count == -1? "block":"none"}}'>
           预约<text decode="{{true}}" class = "price">&nbsp;{{reverseprice}}元</text>
         </view>
 
-        <view class='btn' bindtap='GOclass_signUp' style='display:{{Count == 0||Count == -1? "none":"block"}}'>
+        <view class='btn' bindtap='GOschedule_order' style='display:{{Count == 0||Count == -1? "none":"block"}}'>
           预约<text class = "price" decode="{{true}}">&nbsp;免费（{{Count}}次）</text>
         </view>
          <!--<view class='btn' bindtap='GOclass_signUp' style='display:{{res_status == null && reverseprice != "0" ? "block":"none"}}'>

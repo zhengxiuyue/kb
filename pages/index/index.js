@@ -128,9 +128,9 @@ Page({
   },
   enterclass:function(e){
     var index = e.currentTarget.dataset.index;
-    console.log(index);
     var courseList = this.data.courseList;
     var classid = courseList[index].classid;
+    console.log(classid);
     wx.navigateTo({
       url: '/pages/class/class?classid=' + classid,
     })

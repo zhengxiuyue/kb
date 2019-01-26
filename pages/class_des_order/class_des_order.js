@@ -7,12 +7,16 @@ Page({
     classid: null,
     coursename:"",
     reverseprice:0,
+    courseList:null
   },
-  GOclass_signUp: function (e) {
+  GOschedule_order: function (e) {
     var that = this;
     var classid = that.data.classid;
+    var coursename = that.data.coursename;
+    var classnumber = that.data.courseList.classnumber
+    console.log(classid + classnumber + coursename);
     wx.navigateTo({
-      url: '../class_order/class_order?classid=' + classid,
+      url: '../schedule_order/schedule_order?classid=' + classid + "&coursename=" + coursename + "&classnumber=" + classnumber
     })
   },
   call: function (e) {
@@ -47,6 +51,7 @@ Page({
     }, 1500);
     var that = this;
     that.getClassInfo();
+    that.SubCount();
   },
 
   onLoad: function (options) {
@@ -56,6 +61,7 @@ Page({
       classid: classid,
     })
     that.getClassInfo();
+    that.SubCount();
   },
 
   order_ing: function(){
@@ -110,7 +116,7 @@ Page({
   SubCount: function () {
     var that = this;
     wx.request({
-      url: requestIP + '/student/SubCount',
+      url: requestIP + '/student/subCount',
       data: {
       },
       method: 'POST',

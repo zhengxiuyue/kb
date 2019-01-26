@@ -40,7 +40,7 @@
           </view>
 
           <view class='class_des_text'>
-            <text>课容量：{{items.vol}}(人)</text>
+            <text>课容量：{{items.vol}}人</text>
           </view>
       </view>
     </view>

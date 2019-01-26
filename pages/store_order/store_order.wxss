@@ -141,3 +141,20 @@ color:#2a9dd1 !important;
 /*.picker{
   color: #666666;
 }*/
+
+
+.header_tips{
+  position:relative;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.header-img{
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.header_text{
+  position: relative;
+  top: -9rpx;
+}
