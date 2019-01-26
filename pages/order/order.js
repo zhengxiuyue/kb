@@ -60,6 +60,7 @@ Page({
     var index = e.currentTarget.dataset.index;
     var courseOrderList = this.data.courseOrderList;
     var resid = courseOrderList[index].res_id;
+    var order_status = that.data.order_status;  
     wx.navigateTo({
       url: '../order_course_des/order_course_des?resid=' + resid + "&order_status=" + order_status,
     })
