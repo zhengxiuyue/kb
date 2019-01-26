@@ -1,0 +1,68 @@
+/* pages/schedule_order/schedule_order.wxss */
+
+.Aclass{
+  padding: 0rpx;
+  border-radius: 10rpx;
+  margin: 20rpx;
+  overflow: hidden;
+}
+
+.b1,.b2,.b3,.b4{
+   height: 100rpx;
+   line-height: 100rpx;
+}
+
+.b1{
+  display: inline-block;
+  width: 30%;
+  background-color: #ffeb3c;
+  color: #209cfe;
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+}
+
+.b2{
+  display: inline-block;
+  width: 65%;
+  background-color: #61bbff;
+  color: #fff;
+  padding-left: 5%;
+}
+
+.b3{
+  display: inline-block;
+  width: 30%;
+  background-color: #fbc332;
+  color: #fff;
+  text-align: center;
+}
+
+.b4{
+  display: inline-block;
+  width: 65%;
+  background-color: #60bcff;
+  color: #fff;
+  padding-left: 5%;
+  }
+
+  .title{
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;   
+}
+
+.app-title{
+ font-weight: bold ;
+ margin-left: 20rpx;
+ margin-top: 20rpx;
+ padding-left: 20rpx;
+ border-left:8rpx solid #1DA27F;
+}
+.class_stu{
+    width:70rpx;
+    height:40rpx;
+    position:relative;
+    top:25rpx;
+    left:-5rpx;
+    float:right;
+}
