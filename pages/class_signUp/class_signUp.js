@@ -155,6 +155,8 @@ Page({
           that.setData({
             courseList: res.data.data,
             coursename: res.data.data.coursename,
+            improveprice: res.data.data.improveprice,
+            price: res.data.data.price
           });
         }
       },
