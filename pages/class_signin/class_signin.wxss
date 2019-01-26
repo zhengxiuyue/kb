@@ -314,8 +314,10 @@
   height: 46rpx;
   position: absolute;
   font-weight: bold;
-  margin-left: 75rpx;
+  margin-left: 50rpx;
   line-height: 30rpx;
+  text-align: right;
+  width: 100rpx;
 }
 
 .img_time{
