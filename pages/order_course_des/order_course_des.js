@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    order_status:0,
     resid: null,
     classid:"",
     resname: "",
@@ -17,6 +18,7 @@ Page({
     endpoint:"",
     visible5: false,
     visible6: false,
+    visible7: false,
     actions5: [
       {
         name: '取消'
@@ -36,7 +38,17 @@ Page({
         color: '#ed3f14',
         loading: false
       }
-    ]
+    ],
+    actions7: [
+      {
+        name: '取消'
+      },
+      {
+        name: '确认',
+        color: '#ed3f14',
+        loading: false
+      }
+    ],
   },
 
   handleOpen5() {
@@ -48,6 +60,12 @@ Page({
   handleOpen6() {
     this.setData({
       visible6: true
+    });
+  },
+
+  handleOpen7() {
+    this.setData({
+      visible7: true
     });
   },
 
@@ -71,6 +89,7 @@ Page({
         success(res) {
           console.log(res.data.data);
           if (res.data.resultCode == '101') {
+            wx.setStorageSync("order_status", 1)
               $Message({
                 content: '操作成功！',
                 type: 'success'
@@ -121,6 +140,7 @@ Page({
         success(res) {
           console.log(res.data.data);
           if (res.data.resultCode == '101') {
+            wx.setStorageSync("order_status", 1)
               $Message({
                 content: '操作成功！',
                 type: 'success'
@@ -150,14 +170,68 @@ Page({
 
     }
   },
+
+  handleClick7({ detail }) {
+    if (detail.index === 0) {
+      this.setData({
+        visible7: false
+      });
+    } else {
+      var that = this;
+      wx.request({
+        url: requestIP + '/assistant/confirmCourseReservation',
+        data: {
+          resid: that.data.resid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded', // 默认值
+          'userid': app.globalData.userid
+        },
+        success(res) {
+          console.log(res.data.data);
+          if (res.data.resultCode == '101') {
+            wx.setStorageSync("order_status", 1)
+            $Message({
+              content: '操作成功！',
+              type: 'success'
+            });
+            setTimeout(function () {
+              //跳到页面
+              
+              wx.redirectTo({
+                url: '/pages/order/order',
+              })
+            }, 2000)
+          }
+          else {
+
+            $Message({
+              content: '操作失败！',
+              type: 'error'
+            });
+          }
+        },
+        fail(res) {
+          $Message({
+            content: '操作失败！',
+            type: 'error'
+          });
+        }
+      })
+
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
     var resid = that.options.resid;
+    var order_status = that.options.order_status;
     that.setData({
-      resid: resid
+      resid: resid,
+      order_status: order_status
     })
 
     that.getCourseReservationDetail();

@@ -61,7 +61,7 @@ Page({
     var courseOrderList = this.data.courseOrderList;
     var resid = courseOrderList[index].res_id;
     wx.navigateTo({
-      url: '../order_course_des/order_course_des?resid=' + resid,
+      url: '../order_course_des/order_course_des?resid=' + resid + "&order_status=" + order_status,
     })
   },
 
@@ -70,9 +70,10 @@ Page({
     var index = e.currentTarget.dataset.index;
     var storeOrderList = this.data.storeOrderList;
     var aresid = storeOrderList[index].ares_id;
+    var order_status = that.data.order_status;
     console.log(aresid);
     wx.navigateTo({
-      url: '../order_store_des/order_store_des?aresid=' + aresid,
+      url: '../order_store_des/order_store_des?aresid=' + aresid + "&order_status=" + order_status,
     })
   },
 
@@ -160,5 +161,19 @@ Page({
         })
       }
     });
+  },
+  /**
+ * 页面相关事件处理函数--监听用户下拉动作
+ */
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading()
+    //模拟加载    
+    setTimeout(function () {      // complete      
+      wx.hideNavigationBarLoading() //完成停止加载      
+      wx.stopPullDownRefresh() //停止下拉刷新   
+    }, 1500);
+    var that = this;
+    that.getAreaReservation();
+    that.getCourseReservation();
   }
 });

@@ -15,15 +15,31 @@
         </view>
       </view>
 
-      <view class='content' bindtap='GO_order_store_des'  wx:for="{{storeOrderList}}"  data-index='{{index}}' wx:key="item.ares_id">
+
+      <view  class='content' bindtap='GO_order_store_des'  wx:for="{{storeOrderList}}"  data-index='{{index}}' wx:key="item.ares_id">
+
+        <view class = "content1">
         <view class='content-title' >
          <image src = "/image/store.png" class='img1'></image>
         </view>
         <view class='content-middle'>
           <view class='content-rank'>{{item.ares_name}} </view><text class='content-time'> {{item.ares_mobile}}</text>
-          <view class='content-time'>广电门外</view>
+          <view class='content-time'>{{item.storename}}</view>
+        </view>
+        <view class = "content-result" style='display:{{item.ares_status == 3&& order_status == 1? "block":"none"}}'>
+        <image class='img2' src='/image/sure.png'></image>已确认
+        </view>
+
+        <view class = "content-result1" style='display:{{item.ares_status != 3 && order_status == 1?"block":"none"}}'>
+        <image class='img2' src='/image/no_sure.png'></image>未确认
         </view>
         <view class='content-btn'>详情</view>
+      </view>
+
+      <view class='time' style='display:{{order_status == 0? "block":"none"}}'>{{item.areas_createtime}}</view>
+
+      <view class='time' style='display:{{order_status == 1? "block":"none"}}'>{{item.res_dealtime}}</view>
+
       </view>
 
         <!--没有门店预约时的显示-->
@@ -37,19 +53,35 @@
     </view>
       </view>
 
-      <view class='content' bindtap='GO_order_course_des' wx:for="{{courseOrderList}}" data-index='{{index}}' wx:key="item.res_id">
+      <view class='content' bindtap='GO_order_course_des' wx:for="{{courseOrderList}}" data-index='{{index}}' wx:key="item.res_id"> 
+      
+      <view class='content1'>
         <view class='content-title'>
          <image src = "/image/course.png" class='img1'></image>
         </view>
 
         <view class='content-middle'>
-          <view class='content-rank'>{{item.res_name}}王宇 </view><text class='content-time'> {{item.res_mobile}}</text>
-          <view class='content-time'>模特班基础班2班</view>
+          <view class='content-rank'>{{item.res_name}} </view><text class='content-time'> {{item.res_mobile}}</text>
+          <view class='content-time'>{{item.coursename}}班</view>
         </view>
 
-        <view class = "content-result"><image class='img2' src='/image/sure.png'></image>已确</view>
+        <view class = "content-result" style='display:{{item.res_status == 3&& order_status == 1? "block":"none"}}'>
+        <image class='img2' src='/image/sure.png'></image>已确认
+        </view>
+
+        <view class = "content-result1" style='display:{{item.res_status != 3 && order_status == 1?"block":"none"}}'>
+        <image class='img2' src='/image/no_sure.png'></image>未确认
+        </view>
+
          <view class='content-btn'>详情</view>
       </view>
+
+      <view class='time' style='display:{{order_status == 0? "block":"none"}}'>{{item.res_reservetime}}</view>
+
+      <view class='time' style='display:{{order_status == 1? "block":"none"}}'>{{item.res_dealtime}}</view>
+   
+      </view>
+
 
         <!--没有课程预约时的显示-->
   <view class='error' style='display:{{error_noCourseOrder}};'>

@@ -9,6 +9,7 @@ Page({
    */
   data: {
     aresid:null,
+    order_status:0,
     storeMes:"",
     aresname:"",
     aresmobile:"",
@@ -16,6 +17,7 @@ Page({
     date:"",
     visible5: false,
     visible6: false,
+    visible7: false,    
     actions5: [
       {
         name: '取消'
@@ -35,6 +37,16 @@ Page({
         color: '#ed3f14',
         loading: false
       }
+    ],
+    actions7: [
+      {
+        name: '取消'
+      },
+      {
+        name: '确认',
+        color: '#ed3f14',
+        loading: false
+      }
     ]
   },
 
@@ -47,6 +59,12 @@ Page({
   handleOpen6() {
     this.setData({
       visible6: true
+    });
+  },
+
+  handleOpen7() {
+    this.setData({
+      visible7: true
     });
   },
 
@@ -71,9 +89,7 @@ Page({
         success(res) {
           console.log(res.data.data);
           if (res.data.resultCode == '101') {
-              this.setData({
-                visible5: false,
-              });
+            wx.setStorageSync("order_status", 1)
               $Message({
                 content: '操作成功！',
                 type: 'success'
@@ -155,14 +171,70 @@ Page({
 
     }
   },
+
+  handleClick7({ detail }) {
+    if (detail.index === 0) {
+      this.setData({
+        visible7: false
+      });
+    } else {
+
+      var that = this;
+      wx.request({
+        url: requestIP + '/assistant/confirmAreaReservation',
+        data: {
+          aresid: that.data.aresid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded', // 默认值
+          'userid': app.globalData.userid
+        },
+        success(res) {
+          console.log(res.data.data);
+          if (res.data.resultCode == '101') {
+
+            $Message({
+              content: '操作成功！',
+              type: 'success'
+            });
+
+            setTimeout(function () {
+              //跳到更多页面
+              wx.setStorageSync("order_status", 1)
+              wx.redirectTo({
+                url: '/pages/order/order',
+              })
+            }, 2000)
+
+          }
+          else {
+            $Message({
+              content: '操作失败！',
+              type: 'error'
+            });
+          }
+        },
+        fail(res) {
+          $Message({
+            content: '操作失败！',
+            type: 'error'
+          });
+        }
+      })
+
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
     var aresid= that.options.aresid;
+    var order_status = that.options.order_status;
     that.setData({
-      aresid: aresid
+      aresid: aresid,
+      order_status: order_status
     })
     console.log("aresid"+that.data.aresid);
     that.getAreaReservationDetail();
@@ -244,7 +316,6 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log("？？？" + res.data.resultCode);
         if (res.data.resultCode == '101') {
           var storeMes = res.data.data.province + res.data.data.city + res.data.data.areaname + res.data.data.location;
           var date = res.data.data.dateString + res.data.data.dateTime
