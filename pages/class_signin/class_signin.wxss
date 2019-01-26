@@ -315,7 +315,7 @@
   position: absolute;
   font-weight: bold;
   margin-left: 75rpx;
-  line-height: 35rpx;
+  line-height: 30rpx;
 }
 
 .img_time{
