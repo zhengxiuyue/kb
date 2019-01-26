@@ -338,7 +338,6 @@
   left: 60%;
   top: 0rpx;
   width: 40%;
-  height: 190rpx;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -21,6 +21,7 @@ Page({
     ],//课堂签到
     Isnoticespace: "none",
     Ischatspace: "none",
+    isstudent:"none",//是否有学生
     openid:"",
     classnum:[],
     time:"",//当前时间
@@ -95,14 +96,24 @@ Page({
           that.setData({
             mate: []
           })
-          for (var i = 0, len = res.data.data.length; i < len; i++) {
-            that.data.mate[i] = res.data.data[i];
-            that.data.studentcount = res.data.data[0].studentcount
+          if (res.data.data[0].studentcount==0){
+            that.setData({
+              mate: [],
+              studentcount: 0,
+              isstudent : "block"
+            })          
           }
-          that.setData({
-            mate: that.data.mate,
-            studentcount:that.data.studentcount
-          })
+          else{
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.mate[i] = res.data.data[i];
+              that.data.studentcount = res.data.data[0].studentcount
+            }
+            that.setData({
+              mate: that.data.mate,
+              studentcount: that.data.studentcount,
+              isstudent:"none"
+            })
+          }
         } else {
           console.log("请求失败");
         }

@@ -19,6 +19,10 @@ Component({
       type:"String",
       value:""
     },
+    isstudent: {
+      type: "String",
+      value: ""
+    },
     Ismatespace: {
       type: "String",
       value: ""

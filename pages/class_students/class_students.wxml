@@ -40,3 +40,10 @@
     <text style='font-size:30rpx;'>未查询到任何结果</text>
   </view>
 </view>
+
+<view class='classcard' style='display:{{isstudent}}'>
+  <image src='{{space}}' class='space'></image>
+  <view>  
+    <text style='font-size:30rpx;'>还没有学生</text>
+  </view>
+</view>
