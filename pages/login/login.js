@@ -7,11 +7,12 @@ Page({
    */
   data: {
     items: [
-      {value: '学生', id: '3'},
-      {value: '老师',id:'2'},
-      {value: '助教', id: '1'}
+      { value: '学生', id: '3', checked:true},
+      { value: '老师', id: '2', checked:false},
+      {value: '助教', id: '1',checked:false}
     ],
-    userstatus: '',
+   
+    userstatus: '3',
     "tel": '',
     "password": '',
     authcode: '',//验证码
@@ -106,8 +107,9 @@ Page({
   //获取用户身份
   radioChange: function (event) {
     var con = event.detail.value
-    app.globalData.userstatus = con
-    this.setData({userstatus: event.detail.value })
+    this.setData({
+      userstatus: event.detail.value 
+    })
   },
 
   //获取手机号码
@@ -134,14 +136,13 @@ Page({
   login:function(e){
     let that = this;
     var requestIP =app.globalData.requestIP
-    var con = app.globalData.userstatus
+    var con = that.data.userstatus
     //手机号码
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
     //邮箱
     let str = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/
-    //对学生和老师判断手机号码
-    console.log(app.globalData.userstatus)
-    if (that.data.tel.length == 0 & app.globalData.userstatus == "")
+    //账号没输入时
+    if (that.data.tel.length == 0)
     {
       wx.showLoading();
       wx.hideLoading();
@@ -156,7 +157,8 @@ Page({
       }, 0);
       return false;
     }
-    else if ((app.globalData.userstatus == 3 || app.globalData.userstatus == 2)&!myreg.test(that.data.tel)) {
+    //对学生和老师判断手机号码
+    else if ((that.data.userstatus == 3 || that.data.userstatus == 2)&!myreg.test(that.data.tel)) {
       wx.showLoading();
       wx.hideLoading();
       setTimeout(() => {
@@ -170,7 +172,8 @@ Page({
       }, 0);
       return false;
     }
-    else if (app.globalData.userstatus == 1 & !str.test(that.data.tel)) {
+    //对助教判断邮箱
+    else if (that.data.userstatus == 1 & !str.test(that.data.tel)) {
       wx.showLoading();
       wx.hideLoading();
       setTimeout(() => {
@@ -200,22 +203,7 @@ Page({
       }, 0);
       return false;
     }
-
-    //判断身份
-    else if (that.data.userstatus == '') {
-      wx.showLoading();
-      wx.hideLoading();
-      setTimeout(() => {
-        wx.showToast({
-          title: '请选择身份!',
-          icon: 'none',
-        });
-        setTimeout(() => {
-          wx.hideToast();
-        }, 2000)
-      }, 0);
-      return false;
-    }
+    //判断验证码
     else if (that.data.authcode.length==0) {
       wx.showLoading();
       wx.hideLoading();
@@ -270,6 +258,7 @@ Page({
             if (res.data.resultCode == "101") {
               app.globalData.openid = res.data.data.openid
               app.globalData.userid = res.data.data.userid
+              app.globalData.userstatus = '3'
               wx.clearStorage();
               wx.setStorage({
                 key:"user",
@@ -277,7 +266,7 @@ Page({
                 {
                   userid: res.data.data.userid,
                   openid: res.data.data.openid,
-                  userstatus: 1,
+                  userstatus: 3,
                   name: res.data.data.name,
                   tel: res.data.data.tel
                 }
@@ -304,6 +293,7 @@ Page({
               })
               app.globalData.openid = ""
               app.globalData.userid = ""
+              app.globalData.userstatus = ""
               wx.login({
                 success(res) {
                   if (res.code) {
@@ -336,6 +326,7 @@ Page({
               })
               app.globalData.openid = ""
               app.globalData.userid = ""
+              app.globalData.userstatus = ""
               wx.login({
                 success(res) {
                   if (res.code) {
@@ -368,6 +359,7 @@ Page({
               })
               app.globalData.openid = ""
               app.globalData.userid = ""
+              app.globalData.userstatus = ""
               wx.login({
                 success(res) {
                   if (res.code) {
@@ -415,6 +407,7 @@ Page({
             if (res.data.resultCode == "101") {
               app.globalData.openid = res.data.data.openid
               app.globalData.userid = res.data.data.userid
+              app.globalData.userstatus = '2'
               wx.setStorage({
                 key: "user",
                 data:
@@ -448,6 +441,7 @@ Page({
               })
               app.globalData.openid = ""
               app.globalData.userid = ""
+              app.globalData.userid = ""
               wx.login({
                 success(res) {
                   if (res.code) {
@@ -480,6 +474,7 @@ Page({
               })
               app.globalData.openid = ""
               app.globalData.userid = ""
+              app.globalData.userstatus = ""
               wx.login({
                 success(res) {
                   if (res.code) {
@@ -512,6 +507,7 @@ Page({
               })
               app.globalData.openid = ""
               app.globalData.userid = ""
+              app.globalData.userstatus =""
               wx.login({
                 success(res) {
                   if (res.code) {
@@ -557,13 +553,14 @@ Page({
             if (res.data.resultCode == "101") {
               app.globalData.openid = res.data.data.openid
               app.globalData.userid = res.data.data.userid
+              app.globalData.userstatus = '1'
               wx.setStorage({
                 key: "user",
                 data:
                 {
                   userid: res.data.data.userid,
                   openid: res.data.data.openid,
-                  userstatus: 2,
+                  userstatus: 1,
                   name: res.data.data.name,
                   tel: res.data.data.tel
                 }
@@ -590,6 +587,7 @@ Page({
               })
               app.globalData.openid = ""
               app.globalData.userid = ""
+              app.globalData.userstatus = ""
               wx.login({
                 success(res) {
                   if (res.code) {
@@ -622,6 +620,7 @@ Page({
               })
               app.globalData.openid = ""
               app.globalData.userid = ""
+              app.globalData.userstatus = ""
               wx.login({
                 success(res) {
                   if (res.code) {
@@ -654,6 +653,7 @@ Page({
               })
               app.globalData.openid = ""
               app.globalData.userid = ""
+              app.globalData.userstatus = ""
               wx.login({
                 success(res) {
                   if (res.code) {

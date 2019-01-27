@@ -14,7 +14,7 @@
 <view class='infm-noborder'>
   <image src='/image/user.png' class='icon3'></image>
   <radio-group class="radio-group" bindchange="radioChange">
-    <label class="radio" wx:for-items="{{items}}" wx:key="xxx">
+    <label class="radio" wx:for-items="{{items}}">
       <radio value="{{item.id}}" checked="{{item.checked}}"/>{{item.value}}
     </label>
   </radio-group>
