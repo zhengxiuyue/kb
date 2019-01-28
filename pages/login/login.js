@@ -268,7 +268,8 @@ Page({
                   openid: res.data.data.openid,
                   userstatus: 3,
                   name: res.data.data.name,
-                  tel: res.data.data.tel
+                  tel: res.data.data.tel,
+                  avatarUrl: res.data.data.avatarUrl
                 }
               })
               wx.redirectTo({
@@ -416,7 +417,8 @@ Page({
                     openid: res.data.data.openid,
                     userstatus: 2,
                     name: res.data.data.name,
-                    tel: res.data.data.tel
+                    tel: res.data.data.tel,
+                    avatarUrl: res.data.data.avatarUrl
                   }
               })
               wx.redirectTo({
@@ -562,7 +564,8 @@ Page({
                   openid: res.data.data.openid,
                   userstatus: 1,
                   name: res.data.data.name,
-                  tel: res.data.data.tel
+                  tel: res.data.data.tel,
+                  avatarUrl: res.data.data.avatarUrl
                 }
               })
               wx.redirectTo({

@@ -1,7 +1,8 @@
 <!--pages/mine_setup/mine_setup.wxml-->
 <view class='page'>
   <view class='photo'>
-    <open-data type="userAvatarUrl" class='userAvatarUrl' style="" ></open-data>
+    <image src='{{avatarUrl}}' class='userAvatarUrl'></image>
+    <!-- <open-data type="userAvatarUrl" class='userAvatarUrl' style="" ></open-data> -->
   </view>
 
   <view class='title0'>个人信息</view>

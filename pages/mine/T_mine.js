@@ -12,7 +12,8 @@ Page({
     itemnow: [],//定义变长数组课堂信息
     itemhistory: [],//定义变长数组课堂信息
     Isclassspace: "none",
-    userstatus: ""
+    userstatus: "",
+    avatarUrl:''
   },
 
   /**
@@ -36,6 +37,7 @@ Page({
       key: "user",
       success(res) {
         that.setData({
+          avatarUrl: res.data.avatarUrl,
           userstatus: userstatus,
           username: res.data.name
         })
