@@ -51,7 +51,8 @@ Page({
     wx.request({
       url: requestIP + '/student/getClassAppointment',
       data: {
-        storeid: that.data.storeid
+        storeid: that.data.storeid,
+        getType: 1
       },
       method: 'POST',
       header: {

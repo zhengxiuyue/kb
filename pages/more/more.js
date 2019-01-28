@@ -121,7 +121,8 @@ Page({
     wx.request({
       url: requestIP+'/student/getClassEnter',
       data: {
-        storeid: app.globalData.storeid
+        storeid: app.globalData.storeid,
+          getType: 0
       },
       method:'POST',
       header: {
@@ -170,7 +171,8 @@ Page({
       wx.request({
         url: requestIP+'/student/getClassAppointment',
         data: {
-          storeid: app.globalData.storeid
+          storeid: app.globalData.storeid,
+          getType:0
         },
         method: 'POST',
         header: {
