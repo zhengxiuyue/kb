@@ -264,6 +264,17 @@ Page({
                 })
 
               }
+              else if (res.data.resultCode == '226'){
+                wx.showToast({
+                  title: '已报名!',
+                  icon: 'none',
+                  duration: 1000
+                })
+                $Message({
+                  content: '报名失败！',
+                  type: 'error'
+                });
+              }
               else {
                 $Message({
                   content: '报名失败！',
