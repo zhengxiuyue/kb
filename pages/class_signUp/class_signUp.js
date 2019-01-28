@@ -270,10 +270,6 @@ Page({
                   icon: 'none',
                   duration: 1000
                 })
-                $Message({
-                  content: '报名失败！',
-                  type: 'error'
-                });
               }
               else {
                 $Message({
