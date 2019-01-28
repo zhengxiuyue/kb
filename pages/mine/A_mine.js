@@ -12,7 +12,8 @@ Page({
     itemnow: [],//定义变长数组课堂信息
     itemhistory: [],//定义变长数组课堂信息
     Isclassspace: "none",
-    userstatus: ""
+    userstatus: "",
+    avatarUrl:""
   },
 
   /**
@@ -20,8 +21,6 @@ Page({
    */
   onLoad: function (options) {
     app.editTabBar2();
-    console.log(app.globalData.userstatus)
-    console.log(app.globalData.userid)
 
     var that = this
     var userstatus = app.globalData.userstatus
@@ -29,6 +28,7 @@ Page({
       key: "user",
       success(res) {
         that.setData({
+          avatarUrl: res.data.avatarUrl,
           userstatus: userstatus,
           username: res.data.name
         })

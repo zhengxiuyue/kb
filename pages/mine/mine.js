@@ -9,6 +9,7 @@ Page({
   data: {
     current: 1,
     username:"",
+    avatarUrl:"",
     item: [],//定义变长数组课堂信息
     Isclassspace:"none",
     userstatus:"",
@@ -37,6 +38,7 @@ Page({
       key: "user",
       success(res){
         that.setData({
+          avatarUrl: res.data.avatarUrl,
           userstatus: userstatus,
           username: res.data.name
         })        

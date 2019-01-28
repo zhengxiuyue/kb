@@ -5,7 +5,8 @@
 
   <view class='user'>
     <view class='username'>{{username}}老师</view>
-    <open-data type="userAvatarUrl" class='userAvatarUrl' style="" ></open-data>    
+    <!-- <open-data type="userAvatarUrl" class='userAvatarUrl' style="" ></open-data>     -->
+    <image src='{{avatarUrl}}' class='userAvatarUrl'></image>
     <image src='/image/dropDown.png' class='dropDown' bindtap='dropDown'></image>
                   <!-- <open-data type="userNickName" lang="zh_CN"></open-data> -->
   </view>
