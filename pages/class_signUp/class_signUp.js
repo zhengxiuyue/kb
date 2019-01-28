@@ -266,7 +266,7 @@ Page({
               }
               else if (res.data.resultCode == '226'){
                 wx.showToast({
-                  title: '已报名!',
+                  title: '已报名，请勿重复报名!',
                   icon: 'none',
                   duration: 1000
                 })
