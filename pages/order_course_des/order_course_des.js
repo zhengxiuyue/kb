@@ -9,6 +9,7 @@ Page({
    */
   data: {
     order_status:0,
+    res_status:null,
     resid: null,
     classid:"",
     resname: "",
@@ -101,6 +102,13 @@ Page({
                 url: '/pages/order/order',
               })
             }, 2000)
+          }
+          else if (res.data.resultCode == '227'){
+            wx.showToast({
+              title: '该课程的预约人数已达到上限!',
+              icon: 'none',
+              duration: 1000
+            })
           }
           else {
               $Message({
@@ -229,9 +237,11 @@ Page({
     var that = this;
     var resid = that.options.resid;
     var order_status = that.options.order_status;
+    var res_status = that.options.res_status;
     that.setData({
       resid: resid,
-      order_status: order_status
+      order_status: order_status,
+      res_status: res_status
     })
 
     that.getCourseReservationDetail();

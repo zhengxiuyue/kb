@@ -41,7 +41,8 @@
     <i-button type="ghost" bind:click="handleOpen6">忽略</i-button>
 </view>
 <view style='display:{{order_status == 1?"block":"none"}}'>
-    <i-button type="success" bind:click="handleOpen7">确认到场</i-button>
+    <i-button style='display:{{ares_status == 3?"none":"block"}}' type="success" bind:click="handleOpen7">确认到场</i-button>
+    <i-button style='display:{{ares_status != 3?"none":"block"}}' type="ghost">已确认到场</i-button>
 </view>
     <i-modal title="确认" visible="{{ visible5 }}" actions="{{ actions5 }}" bind:click="handleClick5">
     <view>确认已处理该预约信息</view>
