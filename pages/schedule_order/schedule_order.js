@@ -95,6 +95,20 @@ Page({
     })
   },
 
+  notenterclass:function(){
+    wx.showLoading();
+    wx.hideLoading();
+    setTimeout(() => {
+      wx.showToast({
+        title: '预约人数已满，不能预约',
+        icon: "none",
+      });
+      setTimeout(() => {
+        wx.hideToast();
+      }, 2000)
+    }, 0);
+  },
+
   getClassSchedule: function (e) {
     var that = this;
     var classid = that.data.classid;

@@ -10,7 +10,7 @@
     </view>
 
   <!--节次列表-->
-  <view class='Aclass' bindtap='enterclass'  wx:for="{{courseList}}" data-index='{{index}}' wx:key="item.scheduleid"> 
+  <view class='Aclass'  wx:for="{{courseList}}" data-index='{{index}}' wx:key="item.scheduleid"  bindtap='{{item.number>0?"enterclass":"notenterclass"}}' > 
       <view class='b1'>
       {{item.dayinweek}}
       </view>
