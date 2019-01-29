@@ -10,8 +10,9 @@
     </view>
 
   <!--节次列表-->
-  <view class='Aclass'  wx:for="{{courseList}}" data-index='{{index}}' wx:key="item.scheduleid"  bindtap='{{item.number>0?"enterclass":"notenterclass"}}' > 
-      <view class='b1'>
+  <view class='Aclass'  wx:for="{{courseList}}" data-index='{{index}}' wx:key="item.scheduleid"  bindtap='{{item.number!=0?"enterclass":"notenterclass"}}' > 
+  <view style='display:{{item.number != 0? "block":"none"}}'>
+        <view class='b1'>
       {{item.dayinweek}}
       </view>
       <view class='b2'>
@@ -25,6 +26,25 @@
         {{tools.my_slice(item.startpoint,0,5)}}-{{tools.my_slice(item.endpoint,0,5)}}
         <image  class = 'class_stu' src='../../image/class_stu.png'></image>
       </view>
+  </view>
+
+    <view style='display:{{item.number == 0 ? "block":"none"}}'>
+        <view class='a1'>
+      {{item.dayinweek}}
+      </view>
+      <view class='a2'>
+      {{item.coursename}}{{level}} | {{item.classnumber}}班
+      </view>
+      
+      <view class='a3'>
+        {{item.date}}
+      </view>
+      <view class='a4'>
+        {{tools.my_slice(item.startpoint,0,5)}}-{{tools.my_slice(item.endpoint,0,5)}}
+        <image  class = 'class_stu' src='../../image/class_stu.png'></image>
+      </view>
+  </view>
+
   </view>
   
     <!--没有节次时的显示-->

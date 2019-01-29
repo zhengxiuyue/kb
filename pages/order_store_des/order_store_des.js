@@ -239,7 +239,7 @@ Page({
       order_status: order_status,
       ares_status: ares_status
     })
-    console.log("aresid"+that.data.aresid);
+    console.log("ares_status" + that.data.ares_status);
     that.getAreaReservationDetail();
   },
 

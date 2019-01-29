@@ -74,7 +74,7 @@ Page({
     var aresid = storeOrderList[index].ares_id;
     var ares_status = storeOrderList[index].ares_status;
     var order_status = that.data.order_status;
-    console.log(aresid);
+    console.log("ares_status"+ares_status);
     wx.navigateTo({
       url: '../order_store_des/order_store_des?aresid=' + aresid + "&order_status=" + order_status + "&ares_status=" + ares_status,
     })
@@ -84,6 +84,9 @@ Page({
     //获取门店预约列表
     var that = this;
     var interf;
+    that.setData({
+      storeOrderList: null
+    })
     if (that.data.order_status == 0)
     {
       interf = "getAreaReservation";
@@ -128,6 +131,9 @@ Page({
   getCourseReservation: function (e) {
     var that = this;
     var interf;
+    that.setData({
+      courseOrderList: null
+    })
     if (that.data.order_status == 0) {
       interf= "getCourseReservation";
     } else if (that.data.order_status == 1) {
