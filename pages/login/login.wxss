@@ -58,7 +58,7 @@
   left:80rpx;
   height: auto;
   font-size: 30rpx;
-  width: 85%;
+  width: 90%;
 }
 
 .canvas{
