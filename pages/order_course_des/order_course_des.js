@@ -8,12 +8,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    reverseprice:"",
     order_status:0,
     res_status:null,
     resid: null,
     classid:"",
     resname: "",
     resmobile: "",
+    resfee:"",
     startdate:"",
     startpoint: "",
     endpoint:"",
@@ -323,14 +325,17 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
+        console.log(res.data.data);
         if (res.data.resultCode == '101') {
           that.setData({
             resname: res.data.data.res_name,
             resmobile: res.data.data.res_mobile,
-            startdate: res.data.data.startdate,
+            startdate: res.data.data.date,
             startpoint: res.data.data.startpoint,
             endpoint: res.data.data.endpoint,
-            classid:res.data.data.classid
+            classid:res.data.data.classid,
+            resfee: res.data.data.res_fee,
+            reversefee: res.data.data.reversefee
           });
           that.getClassInfo();
         }

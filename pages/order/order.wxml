@@ -38,7 +38,7 @@
 
       <view class='time' style='display:{{order_status == 0? "block":"none"}}'>{{item.areas_createtime}}</view>
 
-      <view class='time' style='display:{{order_status == 1? "block":"none"}}'>{{item.res_dealtime}}</view>
+      <view class='time' style='display:{{order_status == 1? "block":"none"}}'>{{item.ares_dealtime}}</view>
 
       </view>
 

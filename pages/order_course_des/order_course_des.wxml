@@ -15,6 +15,10 @@
         <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
           <text>班级：{{courseList.level}}{{courseList.classnumber}}班</text></view>
+          
+           <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>老师：{{courseList.teachername}}</text></view>
 
           <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
@@ -34,7 +38,7 @@
 
           <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>预约价格：{{courseList.reverseprice}}元</text></view>
+          <text>预约价格：{{reverseprice}}元</text></view>
 
            <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
@@ -56,10 +60,15 @@
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
           <text>电话：{{resmobile}}</text><image src='/image/contact.png' class='img' bindtap='call'></image></view>
 
-                   <view class='class_des_text'>
-          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text decode="{{true}}">预约节次：{{startdate}}&nbsp;{{tools.my_slice(startpoint,0,5)}}-{{tools.my_slice(endpoint,0,5)}}</text></view>
-  </view>
+      <view class='class_des_text'>
+      <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+      <text>预约费用：{{resfee}}元</text></view>
+
+      <view class='class_des_text'>
+      <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+      <text decode="{{true}}">预约节次：{{startdate}}&nbsp;{{tools.my_slice(startpoint,0,5)}}-{{tools.my_slice(endpoint,0,5)}}</text></view>
+      </view>
+
 </view>
 
 <view style='display:{{order_status == 0?"block":"none"}}'>
@@ -71,7 +80,7 @@
     <i-button style='display:{{res_status != 3?"none":"block"}}' type="ghost">已确认到场</i-button>
 </view>
     <i-modal title="确认" visible="{{ visible5 }}" actions="{{ actions5 }}" bind:click="handleClick5">
-    <view>确认已处理该预约信息</view>
+    <view>确认处理该预约信息</view>
 </i-modal>
     <i-modal title="确认" visible="{{ visible6 }}" actions="{{ actions6 }}" bind:click="handleClick6">
     <view>标记忽略将从预约信息列表移除</view>
