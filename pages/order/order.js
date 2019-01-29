@@ -60,9 +60,10 @@ Page({
     var index = e.currentTarget.dataset.index;
     var courseOrderList = this.data.courseOrderList;
     var resid = courseOrderList[index].res_id;
+    var res_status = courseOrderList[index].res_status;
     var order_status = that.data.order_status;  
     wx.navigateTo({
-      url: '../order_course_des/order_course_des?resid=' + resid + "&order_status=" + order_status,
+      url: '../order_course_des/order_course_des?resid=' + resid + "&order_status=" + order_status + "&res_status=" + res_status,
     })
   },
 
@@ -71,10 +72,11 @@ Page({
     var index = e.currentTarget.dataset.index;
     var storeOrderList = this.data.storeOrderList;
     var aresid = storeOrderList[index].ares_id;
+    var ares_status = storeOrderList[index].ares_status;
     var order_status = that.data.order_status;
     console.log(aresid);
     wx.navigateTo({
-      url: '../order_store_des/order_store_des?aresid=' + aresid + "&order_status=" + order_status,
+      url: '../order_store_des/order_store_des?aresid=' + aresid + "&order_status=" + order_status + "&ares_status=" + ares_status,
     })
   },
 

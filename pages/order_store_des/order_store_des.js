@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    ares_status:null,
     aresid:null,
     order_status:0,
     storeMes:"",
@@ -232,9 +233,11 @@ Page({
     var that = this;
     var aresid= that.options.aresid;
     var order_status = that.options.order_status;
+    var ares_status = that.options.ares_status;
     that.setData({
       aresid: aresid,
-      order_status: order_status
+      order_status: order_status,
+      ares_status: ares_status
     })
     console.log("aresid"+that.data.aresid);
     that.getAreaReservationDetail();
