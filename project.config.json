@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 30,
+			"current": 31,
 			"list": [
 				{
 					"id": -1,
@@ -222,7 +222,14 @@
 				{
 					"id": -1,
 					"name": "schedule_order",
-					"pathName": "pages/schedule_order/schedule_order"
+					"pathName": "pages/schedule_order/schedule_order",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "authorize",
+					"pathName": "pages/authorize/authorize",
+					"scene": null
 				}
 			]
 		}

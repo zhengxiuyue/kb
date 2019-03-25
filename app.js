@@ -19,6 +19,7 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
             success: function (res) {
+              console.log(res)
               that.globalData.nickName = res.userInfo.nickName
               that.globalData.avatarUrl = res.userInfo.avatarUrl
             }
@@ -200,6 +201,15 @@ App({
           "text": "更多",
           "iconPath": "/image/more.png",
           "selectedIconPath": "/image/moreselected.png",
+          "selectedColor": "#1DA27F",
+          "clas": "menu-item",
+          active: false
+        },
+        {
+          "pagePath": "/pages/activity/activity",
+          "text": "活动",
+          "iconPath": "/image/activity.png",
+          "selectedIconPath": "/image/activityselect.png",
           "selectedColor": "#1DA27F",
           "clas": "menu-item",
           active: false

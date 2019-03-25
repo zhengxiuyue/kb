@@ -12,7 +12,7 @@
 }
 
 .menu-item{ 
-  width: 32%;    
+  width: 24%;    
   float: left;    
   text-align: center;   
   padding-top: 4px; 

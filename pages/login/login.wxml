@@ -7,8 +7,8 @@
 </view>
 
 <view class='infm'>
-  <image src='/image/password.png' class='icon2'></image>
-  <input class='ipt' type='password' value='{{password}}' bindinput='passwordInput' placeholder='请输入密码' placeholder-class='placeholder' cursor-spacing="50"></input>
+  <image src='/image/user.png' class='icon2'></image>
+  <input class='ipt'  value='{{password}}' bindinput='passwordInput' placeholder='请输入姓名' placeholder-class='placeholder' cursor-spacing="50"></input>
 </view>
 
 <view class='infm-noborder'>
@@ -20,18 +20,9 @@
   </radio-group>
 </view>
 
-<view class='infm-total'>
-<view class='infm-half'>
-  <image src='/image/code.png' class='icon2'></image>
-  <input class='ipt' placeholder='请输入验证码' bindinput='authcodeInput' value='{{authcode}}'  placeholder-class='placeholder' cursor-spacing="50"></input>
-</view>
-<canvas canvas-id="canvas" bindtap='change' class='canvas1'></canvas>
-</view>
 
 <view class='submit'>
   <button class='login' bindtap='login' >登录</button>
-  <text class='forget' bindtap='forget'>忘记密码</text>
-  <text class='regist' bindtap='regist'>注册</text>
 </view>
 
 

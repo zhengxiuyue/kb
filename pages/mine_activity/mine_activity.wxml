@@ -1,0 +1,18 @@
+<!--pages/mine_activity/mine_activity.wxml-->
+<!--为你精选-->
+  <view class="guess-you-like-wrapper">
+    <!--为你精选商品列表-->
+    <view class="guess-you-like-list">    
+      <view class="guess-goods-item" wx:for="{{guessList}}" wx:key="{{item.wId}}" data-wid='{{item.wId}}' bindtap='gogoodsdetails'>
+        <image class="guess-img" src="{{item.wMainImage}}"></image>
+        <text class="guess-title">{{item.wTitle}}</text>
+        <text class="price">￥{{item.wStartPrice}}</text>
+        <view class="price-wrapper">          
+          <text class="sold">{{item.wMonthSale}}</text>
+          <button class='goods-btn' catchtap='seesamegoods' data-wid='{{item.wId}}'>查看详情</button>
+        </view>
+      </view>
+
+    </view>
+  </view>
+

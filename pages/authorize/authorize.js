@@ -84,14 +84,15 @@ Page({
   },
   bindGetUserInfo: function (e) {
     if (e.detail.userInfo) {
+      console.log(e)
       //用户按了允许授权按钮
       var that = this;
       app.globalData.nickName = e.detail.userInfo.nickName
       app.globalData.avatarUrl = e.detail.userInfo.avatarUrl
       
-      //授权成功后，跳转进入小程序首页
+      //授权成功后，跳授权tel
       wx.redirectTo({
-        url: '/pages/login/login'
+        url: '/pages/authorizetel/authorizetel'
       })
     } else {
       //用户按了拒绝按钮

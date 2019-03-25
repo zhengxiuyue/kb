@@ -1,0 +1,64 @@
+/* pages/activity/activity.wxss */
+page{
+  background: #fff;
+}
+.list-view{
+  border-top: 1px solid #cccccc;
+}
+
+.list-box{
+  display: flex;
+  padding: 5px 0px;
+  border-bottom: 1rpx solid #cccccc;
+  margin: 0rpx 30rpx;
+}
+
+.list-images image{
+  width: 170rpx;
+  height: 160rpx;
+}
+
+.list-text {
+  font-size: 14px;
+  color: #666666;
+  background-size:60rpx;
+}
+
+.list-text .name{
+  display: block;
+  height: 30rpx;
+  width: 500rpx;
+  padding: 0rpx 0rpx 20rpx 20rpx;
+  font-size: 30rpx;
+}
+
+.list-text .txt{
+  padding: 5px;
+  color:#aaaaaa;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-text .price{
+  font-size: 32rpx;
+  color: #ed4040;
+}
+
+.list-text .num{
+  font-size: 26rpx;
+  color:#999999
+}
+
+.list-text .store{
+  font-size: 24rpx;
+  padding-left: 20rpx;
+}
+
+.swiper-box{
+  height: 100%;
+}
+
+.scroll-box{
+  height: 100%;
+  padding-top: 260rpx;
+}

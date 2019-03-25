@@ -2,9 +2,10 @@
   "pages":[
     "pages/login/login",
     "pages/authorize/authorize",
+    "pages/authorizetel/authorizetel",
     "pages/index/index",
-    "pages/regist/regist",
-    "pages/forget/forget",
+    "pages/activity/activity",
+    "pages/mine_activity/mine_activity",
     "pages/tabBar/tabBar",
     "pages/index/T_index",
     "pages/index/A_index",
