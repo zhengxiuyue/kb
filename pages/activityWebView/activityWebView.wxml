@@ -1,0 +1,2 @@
+<!--pages/activityWebView/activityWebView.wxml-->
+<web-view src="{{src}}"></web-view>

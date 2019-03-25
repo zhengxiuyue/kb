@@ -1,0 +1,32 @@
+
+<view class='page'>
+<view>
+  <view class='title'>
+  <image src='/image/mineselected.png' class='titleImg'></image>
+  <text class='title-text'>个人信息</text>
+  </view>
+<view class='infm'>
+
+  <input class='ipt' bindinput='usernameInput' placeholder='请输入姓名' value='{{username}}'placeholder-class='placeholder'></input>
+</view>
+
+<view class='infm' id = "disabled">
+  <input class='ipt' disabled = "true" type='number' value='{{tel}}' bindinput='telInput' placeholder='请输入手机号码' placeholder-class='placeholder'></input>
+</view>
+
+<view class='tips'>
+  <image src='/image/warning.png' class='tipsImg'></image>
+  <view class='tipsText'>填写信息后支付，方便我们提供更深入的服务</view>
+</view>
+
+<view>
+  <i-button type="success" bindtap='signUp'>确认报名</i-button>
+  <!--<i-modal title="确认报名" visible="{{ visible5 }}" actions="{{ actions5 }}" bind:click="handleClick5">
+    <view>确认报名该课程？</view>
+</i-modal>-->
+
+<i-message id="message" />
+
+</view>
+</view> 
+</view>
