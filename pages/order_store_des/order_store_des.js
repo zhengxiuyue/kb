@@ -319,9 +319,10 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
+        console.log(res.data.data);
         if (res.data.resultCode == '101') {
           var storeMes = res.data.data.province + res.data.data.city + res.data.data.areaname + res.data.data.location;
-          var date = res.data.data.dateString + res.data.data.dateTime
+          var date = res.data.data.dateString + " " + res.data.data.dateTime
           that.setData({
             storeMes: storeMes,
             date: date,

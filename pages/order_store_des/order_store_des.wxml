@@ -31,8 +31,7 @@
 
                    <view class='class_des_text'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>预约时间：</text></view>
-          <view class='class-desImg'>{{date}}</view>
+          <text decode="{{true}}">预约时间：{{date}}</text></view>
   </view>
 </view>
 
@@ -45,7 +44,7 @@
     <i-button style='display:{{ares_status != 3?"none":"block"}}' type="ghost">已确认到场</i-button>
 </view>
     <i-modal title="确认" visible="{{ visible5 }}" actions="{{ actions5 }}" bind:click="handleClick5">
-    <view>确认已处理该预约信息</view>
+    <view>确认处理该预约信息</view>
 </i-modal>
     <i-modal title="确认" visible="{{ visible6 }}" actions="{{ actions6 }}" bind:click="handleClick6">
     <view>标记忽略将从预约信息列表移除</view>
