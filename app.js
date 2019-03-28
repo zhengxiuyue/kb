@@ -3,6 +3,7 @@ App({
   onLaunch: function (options) {
     var that = this;
     var classid = options.query.classid
+    var ay_id = options.query.ay_id
     console.log(options.query.num)
     if (options.query.num) {
       var num = options.query.num
@@ -105,6 +106,19 @@ App({
           url: '/pages/index/index?num=' + num + "&classid=" + classid
         })
       }
+    }
+    else if(num == 3){
+      if (userstatus == 3){
+        wx.redirectTo({
+          url: '/pages/activityDetail/activityDetail?ay_id=' + ay_id
+        })       
+      }
+      else{
+        wx.redirectTo({
+          url: '/pages/login/login',
+        })
+      }
+           
     }
   },
 

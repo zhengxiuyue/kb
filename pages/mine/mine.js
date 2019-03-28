@@ -116,50 +116,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    wx.showNavigationBarLoading()
-    //模拟加载    
-    setTimeout(function () {      // complete      
-      wx.hideNavigationBarLoading() //完成停止加载      
-      wx.stopPullDownRefresh() //停止下拉刷新   
-    }, 1500);
-
-    var that = this
-    
-    wx.request({
-      url: requestIP + '/student/getMyClass',
-      data: {
-        state: this.data.current
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'userid': app.globalData.userid
-      },
-      success: function (res) {
-        if (res.data.resultCode == "101") {
-          that.setData({
-            item: [],
-            Isclassspace: "none"
-          })
-          for (var i = 0, len = res.data.data.length; i < len; i++) {
-            that.data.item[i] = res.data.data[i]
-          }
-          that.setData({
-            item: that.data.item
-          })
-        }
-        else if (res.data.resultCode == "204") {
-          // console.log(res.data.resultCode)
-          that.setData({
-            item: [],
-            Isclassspace: "block"
-          })
-        }
-        else {
-          console.log("请求失败");
-        }
-      },
-    })
 
   },
 
@@ -233,12 +189,6 @@ Page({
             that.setData({
               activity: res.data.data
             })
-            // for (var i = 0, len = res.data.data.length; i < len; i++) {
-            //   that.data.item[i] = res.data.data[i]
-            // }
-            // that.setData({
-            //   item: that.data.item
-            // })
           }
           else if (res.data.resultCode == "204") {
             that.setData({

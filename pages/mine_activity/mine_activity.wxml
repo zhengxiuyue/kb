@@ -19,3 +19,9 @@
     </view>
   </view>
 
+<view class='classcard' style='display:{{Isclassspace}}'>
+  <image src='{{space}}' class='space'></image>
+  <view>  
+    <text style='font-size:30rpx;'>还没有课堂</text>
+  </view>
+</view>
