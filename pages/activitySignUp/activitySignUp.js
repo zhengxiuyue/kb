@@ -1,66 +1,156 @@
-// pages/activitySignUp/activitySignUp.js
+const { $Message } = require('../../dist/base/index');
+
+var app = getApp();
+var requestIP = app.globalData.requestIP;
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    username: '',
+    tel: '',
+    ay_id: ''
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
-
   },
 
   /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
+ * 用户点击右上角分享
+ */
   onShareAppMessage: function () {
 
+  },
+
+  onLoad: function (options) {
+    var ay_id = options.ay_id;
+    var that = this;
+    if (ay_id) {
+      that.setData({
+        ay_id: ay_id
+      })
+    }
+    that.getMyInfo();
+  },
+
+  getMyInfo: function (e) {
+    var that = this;
+    wx.getStorage({
+      key: 'user',
+      success(res) {
+        console.log(res.data)
+        that.setData({
+          username: res.data.name,
+          tel: res.data.tel
+        })
+      }
+    })
+  },
+
+  //报名
+  signUp: function (e) {
+
+    let that = this;
+
+    wx.request({
+      url: requestIP + '/activity/signup',
+      data: {
+        id: that.data.ay_id
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'userid': app.globalData.userid
+      },
+      success(res) {
+        if (res.data.resultCode == '101') {
+          var merchantNumber = res.data.data;
+          wx.request({
+            url: requestIP + '/activitypay/pay',
+            data: {
+              merchantNumber: merchantNumber
+            },
+            method: 'POST',
+            header: {
+              'content-type': 'application/x-www-form-urlencoded', // 默认值
+              'userid': app.globalData.userid
+            },
+            success(re) {
+              if (re.data.resultCode == '101') {
+
+                //调用微信API
+                wx.requestPayment({
+                  timeStamp: re.data.data.timeStamp,
+                  nonceStr: re.data.data.nonceStr,
+                  package: re.data.data.package,
+                  signType: re.data.data.signType,
+                  paySign: re.data.data.paySign,
+                  'success': function (res) {
+                    $Message({
+                      content: '报名成功！',
+                    });
+                    var ay_id = that.data.ay_id;
+                    setTimeout(function () {
+                      //跳到活动详情页面
+                      wx.navigateTo({
+                        url: '/pages/activityDetail/activityDetail?ay_id=' + ay_id,
+                      })
+                    }, 2000)
+                  },
+                  'fail': function (res) {
+                    if (res.errMsg == "requestPayment:fail cancel") {
+                      wx.showModal({
+                        title: '提示',
+                        content: '您已经取消了本次支付',
+                        showCancel: false
+                      })
+                    }
+                    else {
+                      wx.showModal({
+                        title: '提示',
+                        content: '网络错误，请重试',
+                        showCancel: false
+                      })
+                    }
+                  }
+                })
+
+              }
+              else if (res.data.resultCode == '226') {
+                wx.showToast({
+                  title: '已报名，请勿重复报名!',
+                  icon: 'none',
+                  duration: 1000
+                })
+              }
+              else {
+                $Message({
+                  content: '报名失败！',
+                  type: 'error'
+                });
+              }
+            },
+            fail(re) {
+              $Message({
+                content: '报名失败！',
+                type: 'error'
+              });
+            }
+          })
+
+        }
+        else {
+          $Message({
+            content: '报名失败！',
+            type: 'error'
+          });
+        }
+      },
+      fail(res) {
+
+        $Message({
+          content: '报名失败！',
+          type: 'error'
+        });
+
+      }
+    })
   }
-})
+});

@@ -6,7 +6,5 @@
     "i-message": "../../dist/message/index",
     "i-swipeout": "../../dist/swipeout/index"
   },
-  "navigationBarTitleText": "活动报名",
-  "enablePullDownRefresh": true,
-  "onReachBottomDistance": 400
+  "navigationBarTitleText": "活动报名"
 }

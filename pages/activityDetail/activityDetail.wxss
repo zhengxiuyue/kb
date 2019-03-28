@@ -1,6 +1,6 @@
 /* pages/class_des/class_des.wxss */
 
-.title{
+/*.title{
   font-weight: bold ;
   margin-left: 20rpx;
   margin-top: 20rpx;
@@ -28,14 +28,45 @@
 .class-desImg-img{
   width: 40rpx;
   height: 40rpx;
+}*/
+
+.page{
+  font-size: 30rpx;
+  color: #666;
+  line-height: 1.5;
+  padding: 0rpx;
 }
+
+.content2{
+  color: #2c2c2c;
+  padding: 20rpx 30rpx;
+  background-color: #fff;
+}
+
+.content3{
+  background-color: #fff;
+  margin-top:20rpx;
+  margin-bottom: 20rpx;
+  padding: 20rpx 30rpx;
+}
+
+.content4{
+  display: flex;
+  padding: 15rpx 0rpx;
+}
+
+.activity-icon{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+  }
 
 button::after {
   border: none;
 }
 button {
   background-color: #fff;
-  width: 33%;
+  width: 34%;
   padding: 0rpx;
   margin: 0rpx;
   color: #fff;
@@ -71,11 +102,25 @@ button {
 }
 
 .detail{
-  width: 34%;
-  background-color: #0181c8;
+  width: 33%;
+  background-color: #1296db;
 }
 
 .join{
   width: 33%;
   background-color: #e54b4d;
+}
+
+.noJoin{
+  width: 33%;
+  background-color: #bfbfbf;
+}
+
+.joined{
+  width: 33%;
+  background-color: #FFCC99;
+}
+
+.ay_memberprice{
+  color: #e54b4d;
 }

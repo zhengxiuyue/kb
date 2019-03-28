@@ -1,2 +1,1 @@
-<!--pages/activityWebView/activityWebView.wxml-->
-<web-view src="{{src}}"></web-view>
+<web-view src="{{activity.ay_link}}"></web-view>

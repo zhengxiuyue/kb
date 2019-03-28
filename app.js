@@ -165,7 +165,7 @@ App({
 
   globalData: {
     openid: "",
-    userid: "0137da84b68111e8ab8e00163e00299d",//学生 0137da84b68111e8ab8e00163e00299d 老师039cd505e50911e8ab8e00163e00299d 助教 12459ec8a77a11e8ab8e00163e00299d 
+    userid: "",//学生 0137da84b68111e8ab8e00163e00299d 老师039cd505e50911e8ab8e00163e00299d 助教 12459ec8a77a11e8ab8e00163e00299d 
     userInfo: null,
     userstatus: "",//用户身份
     code: "",
@@ -179,7 +179,7 @@ App({
     //requestIP: "http://cmvb2y.natappfree.cc/happyschedule",
     // requestIP: "http://vy6nda.natappfree.cc/happyschedule",
     // requestIP: "https://curriculum.50fun.cn/happyschedule",
-    requestIP: "http://192.168.0.41:8181/happyschedule",
+    requestIP: "http://10.169.35.53:8181/happyschedule",
    
     //学生角色
     tabBar: {

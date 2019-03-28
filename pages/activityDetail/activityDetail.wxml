@@ -1,59 +1,40 @@
-<!--pages/class_des/class_des.wxml-->
-<image src = "/image/log.jpg" class='img'></image>
-<view  class='page'>
-      <!--活动简介-->
-      <view class='title'>
-        <image src='/image/brief.png' class='titleImg'></image>
-        <text class='title-text'>活动简介</text>
+<image src = "{{activity.ay_image}}" class='img' />
+<view class='page'>
+  <view class='content2'>{{activity.ay_name}}</view>
+  <view class='content3'>
+      <view class='content4'>
+          <image class='activity-icon' src='/image/activity-type.png'></image>
+          <view>活动类型：{{activity.ay_type}}</view>
       </view>
-      
-      <view class='class'>
-        
-         <view class='class_des_text'>
-          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>活动名称：{{}}</text></view>
-
-        <view class='class_des_text'>
-          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>活动类型：{{}}</text></view>
-
-        <view class='class_des_text'>
-          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>活动时间：{{}}</text></view>
-
-          <view class='class_des_text'>
-          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>活动地点：{{}}</text></view>
-
-          <view class='class_des_text'>
-          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>价格：{{}}</text></view>
-
-          <view class='class_des_text'>
-          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>原价：{{}}</text></view>
-
-          <view class='class_des_text'>
-          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>会员价：{{}}</text></view>
-
-          <view class='class_des_text'>
-          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>负责人：{{}}</text></view>
-
-          <view class='class_des_text'>
-          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>已报名人数：{{}}</text></view>
-
-          <view class='class_des_text'>
-          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <text>活动状态：{{}}</text></view>
-
-      </view>      
+      <view class='content4'>
+          <image class='activity-icon' src='/image/activity-time.png'></image>
+          <view>{{activity.ay_starttime}}</view>
       </view>
-<!--报名按钮-->
-  <view class='fixed'>
-      <view class = 'detail' bindtap='GoactivityWebView'>查看详情</view>
-      <button open-type='share'><view class  = "share">分享</view></button>
-      <view class = "join" bindtap='GoactivitySignUp'>立即参与</view>
+      <view class='content4'>
+          <image class='activity-icon' src='/image/activity-location.png'></image>
+          <view>{{activity.ay_place}}</view>
+      </view>
+      <view class='content4'>
+          <image class='activity-icon' src='/image/activity-price.png'></image>
+          <view>{{activity.ay_originalprice}}元<text class='ay_memberprice' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;会员价：{{activity.ay_memberprice}}元</text></view>
+          <view class='num'></view>
+      </view>
+      <view class='content4'>
+          <image class='activity-icon' src='/image/activity-num.png'></image>
+          <view>已报名人数：{{activity.ay_paynum}} / {{activity.ay_totalnum}}</view>
+      </view>
+      <view class='content4'>
+          <image class='activity-icon' src='/image/activity-leading.png'></image>
+          <view>负责人：{{activity.ay_name}}</view>
+      </view>
   </view>
+</view>
+
+<view class='fixed'>
+    <button open-type='share'><view class  = "share">分享</view></button>
+    <view class = "detail" bindtap='GoactivityWebView'>查看详情</view>
+    <view class = "join" bindtap='GoactivitySignUp' style="{{activity.status == 0 &&  activity.ay_status == '1'? 'display: block': 'display: none;'}}">立即参与</view>
+    <view class = "noJoin" style="{{status == 0 &&  activity.ay_status == '0'? 'display: block': 'display: none;'}}">活动已结束</view>
+    <view class = "noJoin" style="{{status == 0 &&  activity.ay_status == '2'? 'display: block': 'display: none;'}}">人数已满</view>
+    <view class = "joined" style="{{activity.status == 1 ? 'display: block;': 'display: none;'}}">已报名</view>
+</view>

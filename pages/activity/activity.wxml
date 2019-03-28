@@ -3,7 +3,7 @@
 <template is="tabBar" data="{{tabBar}}"/>
 
 <view class="list-view" >
-  <view class="list-box" wx:for="{{activityList}}" wx:for-item="list" wx:key="index" data-id="{{list.ay_id}}" bindtap="">
+  <view class="list-box" wx:for="{{activityList}}" wx:for-item="list" wx:key="index" data-id="{{list.ay_id}}" data-index='{{index}}' bindtap="GoactivityDetail">
     <view class="list-images" ><image src="{{list.ay_image}}" /></view>
     <view class="list-text">
         <view class='ontop'>

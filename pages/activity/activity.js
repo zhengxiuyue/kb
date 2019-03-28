@@ -71,6 +71,16 @@ Page({
     }    
   },
 
+  GoactivityDetail:function(e){
+    var that = this;
+    var index = e.currentTarget.dataset.index;
+    var activityList = that.data.activityList;
+    var ay_id = activityList[index].ay_id;
+    wx.navigateTo({
+      url: '/pages/activityDetail/activityDetail?ay_id=' + ay_id,
+    })
+  },
+
   /**
    * 用户点击右上角分享
    */

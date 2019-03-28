@@ -12,7 +12,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.3.0",
-	"appid": "wx0f3d5c06e03cc86c",
+	"appid": "wx3f4ccb9e9f33c7cf",
 	"projectname": "curriculum",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 32,
+			"current": 33,
 			"list": [
 				{
 					"id": -1,
@@ -236,6 +236,13 @@
 					"id": -1,
 					"name": "activity",
 					"pathName": "pages/activity/activity",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "activityDetail",
+					"pathName": "pages/activityDetail/activityDetail",
 					"scene": null
 				}
 			]
