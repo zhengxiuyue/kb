@@ -3,16 +3,19 @@
   <view class="guess-you-like-wrapper">
     <!--为你精选商品列表-->
     <view class="guess-you-like-list">    
-      <view class="guess-goods-item" wx:for="{{guessList}}" wx:key="{{item.wId}}" data-wid='{{item.wId}}' bindtap='gogoodsdetails'>
-        <image class="guess-img" src="{{item.wMainImage}}"></image>
-        <text class="guess-title">{{item.wTitle}}</text>
-        <text class="price">￥{{item.wStartPrice}}</text>
+      <view class="guess-goods-item" wx:for="{{activity}}" wx:key="{{item.ay_id}}" data-wid='{{item.ay_id}}' bindtap=''>
+        <image class="guess-img" src="{{item.ay_image}}"></image>
+        <view class="price-wrapper"> 
+          <text class="guess-title">{{item.ay_name}}</text>
+          <button wx:if='{{item.ay_status == 1}}' class='activityon'>进行中</button>
+          <button wx:if='{{item.ay_status == 0}}' class='activityend'>已结束</button>
+        </view>
+        
+        <text class="price">￥{{item.am_price}}</text>
         <view class="price-wrapper">          
-          <text class="sold">{{item.wMonthSale}}</text>
-          <button class='goods-btn' catchtap='seesamegoods' data-wid='{{item.wId}}'>查看详情</button>
+          <text class="sold">{{item.ay_starttime}} {{item.ay_place}}</text>
         </view>
       </view>
-
     </view>
   </view>
 

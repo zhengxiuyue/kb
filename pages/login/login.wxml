@@ -1,25 +1,25 @@
 <!--pages/login/login.wxml-->
 <image src='/image/logo.png' class='logo'></image>
 
-<view class='infm'>
-  <image src='/image/tel.png' class='icon'></image>
-  <input class='ipt' value='{{tel}}' bindinput='telInput' placeholder='请输入手机号码或邮箱' placeholder-class='placeholder' cursor-spacing="0"></input>
-</view>
 
 <view class='infm'>
   <image src='/image/user.png' class='icon2'></image>
-  <input class='ipt'  value='{{password}}' bindinput='passwordInput' placeholder='请输入姓名' placeholder-class='placeholder' cursor-spacing="50"></input>
+  <input class='ipt'  value='{{name}}' bindinput='nameInput' placeholder='{{inputtext}}' placeholder-class='placeholder' cursor-spacing="50"></input>
+</view>
+
+<view class='infm' style="{{isadmin == 1 ? 'display: block;': 'display: none;'}}" >
+  <image src='/image/password.png' class='icon2'></image>
+  <input class='ipt'  value='{{pwd}}' bindinput='pwdInput' placeholder='请输入密码' placeholder-class='placeholder' cursor-spacing="50"></input>
 </view>
 
 <view class='infm-noborder'>
-  <image src='/image/user.png' class='icon3'></image>
+  <image src='/image/signinselected.png' class='icon3'></image>
   <radio-group class="radio-group" bindchange="radioChange">
     <label class="radio" wx:for-items="{{items}}">
       <radio value="{{item.id}}" checked="{{item.checked}}"/>{{item.value}}
     </label>
   </radio-group>
 </view>
-
 
 <view class='submit'>
   <button class='login' bindtap='login' >登录</button>

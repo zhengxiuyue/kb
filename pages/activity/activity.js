@@ -7,129 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    //商品列表
-    listgoods: [{
-      "id": '0101001',
-      "name": "活动名称活动名称",
-      "price": "价格（原价）",
-      "num": "活动地点",
-      "store": "活动时间",
-      "pic_url": "http://img14.yiguoimg.com/e/ad/2016/160914/585749449477366062_260x320.jpg"
-    }, {
-      "id": '0101002',
-      "name": "按综合排序（约125g/盒）",
-      "pic_url": "http://img09.yiguoimg.com/e/ad/2016/161011/585749449909281099_260x320.jpg",
-      "price": "177.0",
-      "num": "1009",
-      "address": "韩国",
-      "store": "阿迪达斯",
-    }, {
-      "id": '0101003',
-      "name": "按综合排序12个约160g/个(北京)",
-      "price": "178.0",
-      "num": "1009",
-      "address": "韩国",
-      "store": "阿迪达斯",
-      "pic_url": "http://img12.yiguoimg.com/e/ad/2016/160914/585749449480249646_260x320.jpg"
-    }, {
-      "id": '0102001',
-      "name": "按综合排序6个92-114g/个(北京)",
-      "price": "172.0",
-      "num": "1009",
-      "address": "韩国",
-      "store": "阿迪达斯",
-      "pic_url": "http://img14.yiguoimg.com/e/ad/2016/160914/585749449477366062_260x320.jpg"
-    }, {
-      "id": '0102002',
-      "name": "按综合排序约125g/盒）",
-      "pic_url": "http://img09.yiguoimg.com/e/ad/2016/161011/585749449909281099_260x320.jpg",
-      "price": "171.0",
-      "num": "1009",
-      "address": "英国",
-      "store": "阿迪达斯",
-    }, {
-      "id": '0102003',
-      "name": "按综合排序2个约160g/个(北京)",
-      "price": "174.0",
-      "num": "1009",
-      "address": "英国",
-      "store": "阿迪达斯",
-      "pic_url": "http://img12.yiguoimg.com/e/ad/2016/160914/585749449480249646_260x320.jpg"
-    }, {
-      "id": '0103001',
-      "name": "按综合排序6个92-114g/个(北京)",
-      "price": "177.0",
-      "num": "1009",
-      "address": "英国",
-      "store": "阿迪达斯",
-      "pic_url": "http://img14.yiguoimg.com/e/ad/2016/160914/585749449477366062_260x320.jpg"
-    }, {
-      "id": '0103002',
-      "name": "按综合排序（约125g/盒）",
-      "pic_url": "http://img09.yiguoimg.com/e/ad/2016/161011/585749449909281099_260x320.jpg",
-      "price": "173.0",
-      "num": "1009",
-      "address": "英国",
-      "store": "阿迪达斯"
-    }, {
-      "id": '0103003',
-      "name": "按综合排序160g/个(北京)",
-      "price": "169.0",
-      "num": "1009",
-      "address": "英国",
-      "store": "阿迪达斯",
-      "pic_url": "http://img12.yiguoimg.com/e/ad/2016/160914/585749449480249646_260x320.jpg"
-    }, {
-      "id": '0201001',
-      "name": "按综合排序6个92-114g/个(北京)",
-      "price": "159.0",
-      "num": "1009",
-      "address": "英国",
-      "store": "阿迪达斯",
-      "pic_url": "http://img14.yiguoimg.com/e/ad/2016/160914/585749449477366062_260x320.jpg"
-    }, {
-      "id": '0201002',
-      "name": "按综合排序（约125g/盒）",
-      "pic_url": "http://img09.yiguoimg.com/e/ad/2016/161011/585749449909281099_260x320.jpg",
-      "price": "149.0",
-      "num": "1009",
-      "address": "英国",
-      "store": "阿迪达斯",
-    }, {
-      "id": '0202001',
-      "name": "按综合排序约160g/个(北京)",
-      "price": "139.0",
-      "num": "1009",
-      "address": "英国",
-      "store": "阿迪达斯",
-      "pic_url": "http://img12.yiguoimg.com/e/ad/2016/160914/585749449480249646_260x320.jpg"
-    }, {
-      "id": '1203001',
-      "name": "按综合排序6个92-114g/个(北京)",
-      "price": "159.0",
-      "num": "1009",
-      "address": "英国",
-      "store": "阿迪达斯",
-      "pic_url": "http://img14.yiguoimg.com/e/ad/2016/160914/585749449477366062_260x320.jpg"
-    }, {
-      "id": '1401001',
-      "name": "按综合排序（约125g/盒）",
-      "pic_url": "http://img09.yiguoimg.com/e/ad/2016/161011/585749449909281099_260x320.jpg",
-      "price": "181.0",
-      "num": "1009",
-      "address": "英国",
-      "store": "阿迪达斯",
-    }, {
-      "id": '1101001',
-      "name": "按综合排序(北京)",
-      "price": "180.0",
-      "num": "1009",
-      "address": "英国",
-      "store": "阿迪达斯",
-      "pic_url": "http://img12.yiguoimg.com/e/ad/2016/160914/585749449480249646_260x320.jpg"
-    }],
-
-
+    pageIndex: 1,//当前请求页号
+    xiala: '',
+    activityList:[],//活动列表
   },
 
   /**
@@ -137,7 +17,8 @@ Page({
    */
   onLoad: function (options) {
     app.editTabBar();
-
+    var that = this
+    that.showActivityList()
   },
 
   /**
@@ -179,7 +60,15 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var that = this
+    if (that.data.xiala != '已经加载出全部'){
+      var pageIndex = that.data.pageIndex + 1; //获取当前页数并+1
+      that.setData({
+        pageIndex: pageIndex, //更新当前页数
+        xiala: "加载中..."
+      })
+      that.showActivityList()
+    }    
   },
 
   /**
@@ -187,5 +76,38 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  showActivityList:function(){ 
+    var that = this
+    wx.request({
+      url: requestIP + '/activity/getActivityList',
+      data: {
+        pageNumber: that.data.pageIndex,
+        pageSize:6
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'userid': app.globalData.userid
+      },
+      success: function (res) {
+        if (res.data.resultCode == "101") {
+          var arr1 = that.data.activityList; //从data获取当前guessList数组
+          var arr2 = res.data.data; //从此次请求返回的数据中获取新数组
+          arr1 = arr1.concat(arr2); //合并数组  
+          that.setData({
+            activityList: arr1
+          })
+        }
+        else if (res.data.resultCode == "204") {
+          that.setData({
+            xiala: "已经加载出全部"
+          })
+        }
+        else {
+          console.log("请求失败");
+        }
+      },
+    })
   }
 })

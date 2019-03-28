@@ -1,4 +1,8 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "活动"
+  "navigationBarTitleText": "活动",
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "i-spin": "../../dist/spin/index",
+    "i-icon": "../../dist/icon/index"
+  }
 }

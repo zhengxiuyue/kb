@@ -165,7 +165,7 @@ App({
 
   globalData: {
     openid: "",
-    userid: "",//学生 0137da84b68111e8ab8e00163e00299d 老师039cd505e50911e8ab8e00163e00299d 助教 12459ec8a77a11e8ab8e00163e00299d 
+    userid: "0137da84b68111e8ab8e00163e00299d",//学生 0137da84b68111e8ab8e00163e00299d 老师039cd505e50911e8ab8e00163e00299d 助教 12459ec8a77a11e8ab8e00163e00299d 
     userInfo: null,
     userstatus: "",//用户身份
     code: "",
@@ -175,11 +175,12 @@ App({
     areaname: "",//区
     storename: '',//门店名称
     //requestIP: "http://localhost:8080/happyschedule",
-   // requestIP: "http://39.104.155.0:8080/happyschedule",
+    // requestIP: "http://39.104.155.0:8080/happyschedule",
     //requestIP: "http://cmvb2y.natappfree.cc/happyschedule",
     // requestIP: "http://vy6nda.natappfree.cc/happyschedule",
-    requestIP: "https://curriculum.50fun.cn/happyschedule",
-
+    // requestIP: "https://curriculum.50fun.cn/happyschedule",
+    requestIP: "http://192.168.0.41:8181/happyschedule",
+   
     //学生角色
     tabBar: {
       color: "black",
@@ -266,7 +267,7 @@ App({
           "text": "首页",
           "iconPath": "/image/index.png",
           "selectedIconPath": "/image/indexselected.png",
-          "clas": "menu-item",
+          "clas": "menu-item2",
           "selectedColor": "#1DA27F",
           active: true
         },
@@ -276,7 +277,7 @@ App({
           "iconPath": "/image/order.png",
           "selectedIconPath": "/image/orderselected.png",
           "selectedColor": "#1DA27F",
-          "clas": "menu-item",
+          "clas": "menu-item2",
           active: false
         },
         {
@@ -285,7 +286,7 @@ App({
           "iconPath": "/image/mine.png",
           "selectedIconPath": "/image/mineselected.png",
           "selectedColor": "#1DA27F",
-          "clas": "menu-item",
+          "clas": "menu-item2",
           active: false
         }
       ],

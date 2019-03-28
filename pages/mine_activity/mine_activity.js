@@ -7,16 +7,12 @@ Component({
    */
 
   properties: {
-    item: {
+    activity: {
       type: "Array",
       value: "",
     },
     Isclassspace: {
       type: "String",
-      value: "",
-    },
-    userstatus: {
-      type: "Number",
       value: "",
     }
   },
@@ -26,26 +22,6 @@ Component({
    */
   data: {
     space: "/image/space.png",
-    guessList:[
-      {
-      wMainImage:"http://img14.yiguoimg.com/e/ad/2016/160914/585749449477366062_260x320.jpg",
-      wTitle:"活动名称",
-      wStartPrice:"活动价格",
-        wMonthSale:"活动时间  活动地点"
-    }, 
-    {
-        wMainImage: "http://img14.yiguoimg.com/e/ad/2016/160914/585749449477366062_260x320.jpg",
-        wTitle: "活动名称",
-        wStartPrice: "活动价格",
-        wMonthSale: "活动时间  活动地点"
-      },
-      {
-        wMainImage: "http://img14.yiguoimg.com/e/ad/2016/160914/585749449477366062_260x320.jpg",
-        wTitle: "活动名称",
-        wStartPrice: "活动价格",
-        wMonthSale: "活动时间  活动地点"
-      },
-    ]
   },
 
   /**

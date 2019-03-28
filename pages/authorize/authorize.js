@@ -83,6 +83,8 @@ Page({
 
   },
   bindGetUserInfo: function (e) {
+    app.globalData.iv1 = e.detail.iv
+    app.globalData.encryptedData1 = e.detail.encryptedData
     if (e.detail.userInfo) {
       console.log(e)
       //用户按了允许授权按钮

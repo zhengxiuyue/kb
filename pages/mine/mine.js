@@ -14,6 +14,7 @@ Page({
     Isclassspace:"none",
     userstatus:"",
     orderList: null,//预约列表
+    activity:[],//已报名活动
     Isclassspace1: "none"
   },
 
@@ -203,6 +204,41 @@ Page({
             that.setData({
               item: that.data.item
             })
+          }
+          else if (res.data.resultCode == "204") {
+            that.setData({
+              Isclassspace: "block"
+            })
+          }
+          else {
+            console.log("请求失败");
+          }
+        },
+      })
+    } 
+    //已报名活动
+    else if (that.data.current == 3) {
+      wx.request({
+        url: requestIP + '/activity/getMyActivity',
+        data: {
+          
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            that.setData({
+              activity: res.data.data
+            })
+            // for (var i = 0, len = res.data.data.length; i < len; i++) {
+            //   that.data.item[i] = res.data.data[i]
+            // }
+            // that.setData({
+            //   item: that.data.item
+            // })
           }
           else if (res.data.resultCode == "204") {
             that.setData({

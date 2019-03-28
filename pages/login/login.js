@@ -6,23 +6,17 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isadmin:0,
+    inputtext:"请输入姓名",
     items: [
       { value: '学生', id: '3', checked:true},
       { value: '老师', id: '2', checked:false},
-      {value: '助教', id: '1',checked:false}
+      { value: '助教', id: '1',checked:false}
     ],
-   
     userstatus: '3',
-    "tel": '',
-    "password": '',
-    authcode: '',//验证码
-    text: '',
+    "name": '',
     code:'',
-    ratio:'',
-    height:'',
-    width:'',
-    short: '',
-    long: '',
+    pwd:""
   },
 
   /**
@@ -30,18 +24,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.getSystemInfo({
-      success: function(res) {
-        that.setData({
-          // ratio: 750 / res.screenWidth,
-          width: res.screenWidth / 750 * 56,
-          height: res.screenWidth / 750 * 180,
-          short:  res.screenWidth / 750 * 40,
-          long: res.screenWidth / 750 * 52
-        })
-      },
-    })
-    drawPic(that);
     wx.login({
       success(res) {
         if (res.code) {
@@ -110,145 +92,65 @@ Page({
     this.setData({
       userstatus: event.detail.value 
     })
+    if(con == 1){
+      this.setData({
+        inputtext:"请输入邮箱",
+        isadmin:1
+      })
+    }
+    else{
+      this.setData({
+        inputtext: "请输入姓名",
+        isadmin: 0
+      })
+    }
   },
 
-  //获取手机号码
-  telInput: function (event) {
-    this.setData({ tel: event.detail.value })
+  //获取姓名/邮箱
+  nameInput: function (event) {
+    this.setData({ name: event.detail.value.replace(/\s+/g, '') })
   },
 
-  //获取密码
-  passwordInput: function (event) {
-    this.setData({ password: event.detail.value.replace(/\s+/g, '') })
+  //获取助教邮箱
+  //获取姓名/邮箱
+  pwdInput: function (event) {
+    this.setData({ pwd: event.detail.value.replace(/\s+/g, '') })
   },
-
-  //获取验证码
-  authcodeInput: function (event) {
-    this.setData({ authcode: event.detail.value })
-  },
-
-  change: function (e) {
-    var that = this;
-    drawPic(that);
-  }, 
 
   //修改全局变量selectCodition的值
   login:function(e){
     let that = this;
     var requestIP =app.globalData.requestIP
-    var con = that.data.userstatus
-    //手机号码
-    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
     //邮箱
     let str = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/
-    //账号没输入时
-    if (that.data.tel.length == 0)
-    {
-      wx.showLoading();
-      wx.hideLoading();
-      setTimeout(() => {
-        wx.showToast({
-          title: '请填写手机号码或邮箱',
-          icon: "none",
-        });
+    var con = that.data.userstatus
+    //学生和老师登录
+    if(con == 2 || con == 3){
+      if (that.data.name.length == 0) {
+        wx.showLoading();
+        wx.hideLoading();
         setTimeout(() => {
-          wx.hideToast();
-        }, 2000)
-      }, 0);
-      return false;
-    }
-    //对学生和老师判断手机号码
-    else if ((that.data.userstatus == 3 || that.data.userstatus == 2)&!myreg.test(that.data.tel)) {
-      wx.showLoading();
-      wx.hideLoading();
-      setTimeout(() => {
-        wx.showToast({
-          title: '请填写正确的手机号码',
-          icon: "none",
-        });
-        setTimeout(() => {
-          wx.hideToast();
-        }, 2000)
-      }, 0);
-      return false;
-    }
-    //对助教判断邮箱
-    else if (that.data.userstatus == 1 & !str.test(that.data.tel)) {
-      wx.showLoading();
-      wx.hideLoading();
-      setTimeout(() => {
-        wx.showToast({
-          title: '请填写正确的邮箱',
-          icon: "none",
-        });
-        setTimeout(() => {
-          wx.hideToast();
-        }, 2000)
-      }, 0);
-      return false;
-    }
-
-    //判断密码
-    else if (that.data.password.length == 0) {
-      wx.showLoading();
-      wx.hideLoading();
-      setTimeout(() => {
-        wx.showToast({
-          title: '请填写正确的密码!',
-          icon: 'none',
-        });
-        setTimeout(() => {
-          wx.hideToast();
-        }, 2000)
-      }, 0);
-      return false;
-    }
-    //判断验证码
-    else if (that.data.authcode.length==0) {
-      wx.showLoading();
-      wx.hideLoading();
-      setTimeout(() => {
-        wx.showToast({
-          title: '请输入验证码!',
-          icon: 'none',
-        });
-        setTimeout(() => {
-          wx.hideToast();
-        }, 2000)
-      }, 0);
-      return false;
-    }
-    //判断验证码 
-    else if (that.data.authcode.toUpperCase() != that.data.text.toUpperCase()) {
-      wx.showLoading();
-      wx.hideLoading();
-      setTimeout(() => {
-        wx.showToast({
-          title: '验证码错误!',
-          icon: 'none',
-        });
-        setTimeout(() => {
-          wx.hideToast();
-        }, 2000)
-      }, 0);
-      that.change()
-      that.setData({ 
-        authcode: ""
-      })
-      return false;
-    }
-    else {
-      //学生角色登录
-      if (con == 3) {
+          wx.showToast({
+            title: '请填写姓名!',
+            icon: 'none',
+          });
+          setTimeout(() => {
+            wx.hideToast();
+          }, 2000)
+        }, 0);
+        return false;
+      }
+      else{
         wx.request({
-          url: requestIP+'/user/login',
-          data:{
-            account: that.data.tel,
-            pwd: that.data.password,
-            "type":3,
+          url: requestIP + '/user/login',
+          data: {
             code: that.data.code,
-            nickName: app.globalData.nickName,
-            avatarUrl: app.globalData.avatarUrl
+            encryptedData: app.globalData.encryptedData,//手机号码
+            iv: app.globalData.iv,//手机号码
+            encryptedData1: app.globalData.encryptedData1,//个人信息
+            iv1: app.globalData.iv1,//个人信息
+            role: "3",
+            name: that.data.name,
           },
           method: 'POST',
           header: {
@@ -256,516 +158,197 @@ Page({
           },
           success: function (res) {
             if (res.data.resultCode == "101") {
+              if (that.data.userstatus == 3) {
+                wx.redirectTo({
+                  url: '/pages/index/index',
+                })
+              }
+              else if (that.data.userstatus == 2) {
+                wx.redirectTo({
+                  url: '/pages/index/T_index',
+                })
+              }
+              else if (that.data.userstatus == 1) {
+                wx.redirectTo({
+                  url: '/pages/index/A_index',
+                })
+              }
               app.globalData.openid = res.data.data.openid
               app.globalData.userid = res.data.data.userid
-              app.globalData.userstatus = '3'
+              app.globalData.userstatus = res.data.data.role
               wx.clearStorage();
               wx.setStorage({
-                key:"user",
+                key: "user",
                 data:
                 {
                   userid: res.data.data.userid,
                   openid: res.data.data.openid,
-                  userstatus: 3,
+                  userstatus: res.data.data.role,
                   name: res.data.data.name,
-                  tel: res.data.data.tel,
-                  avatarUrl: res.data.data.avatarUrl
+                  tel: res.data.data.phone,
+                  avatarUrl: res.data.data.Protrait
                 }
-              })
-              wx.redirectTo({
-                url: '/pages/index/index',
               })
             }
-            else if (res.data.resultCode == "204") {
-              wx.showLoading();
-              wx.hideLoading();
-              setTimeout(() => {
-                wx.showToast({
-                  title: '账号未注册!',
-                  icon: 'none',
-                });
-                setTimeout(() => {
-                  wx.hideToast();
-                }, 2000)
-              }, 0);
-              that.change()
-              that.setData({
-                authcode: ""
-              })
-              app.globalData.openid = ""
-              app.globalData.userid = ""
-              app.globalData.userstatus = ""
-              wx.login({
-                success(res) {
-                  if (res.code) {
-                    that.setData({
-                      code: res.code,
-                    })
-                    app.globalData.openid = null
-                  } else {
-                    console.log('登录失败！' + res.errMsg)
-                  }
-                }
-              })
-              return false;
-            } 
-            else if (res.data.resultCode == "214"){
-              wx.showLoading();
-              wx.hideLoading();
-              setTimeout(() => {
-                wx.showToast({
-                  title: '账号和密码不匹配!',
-                  icon: 'none',
-                });
-                setTimeout(() => {
-                  wx.hideToast();
-                }, 2000)
-              }, 0);
-              that.change()
-              that.setData({
-                authcode: ""
-              })
-              app.globalData.openid = ""
-              app.globalData.userid = ""
-              app.globalData.userstatus = ""
-              wx.login({
-                success(res) {
-                  if (res.code) {
-                    that.setData({
-                      code: res.code,
-                    })
-                    app.globalData.openid = null
-                  } else {
-                    console.log('登录失败！' + res.errMsg)
-                  }
-                }
-              })
-              return false;
-            } 
-            else if (res.data.resultCode == "213") {
-              wx.showLoading();
-              wx.hideLoading();
-              setTimeout(() => {
-                wx.showToast({
-                  title: '请选择正确的身份!',
-                  icon: 'none',
-                });
-                setTimeout(() => {
-                  wx.hideToast();
-                }, 2000)
-              }, 0);
-              that.change()
-              that.setData({
-                authcode: ""
-              })
-              app.globalData.openid = ""
-              app.globalData.userid = ""
-              app.globalData.userstatus = ""
-              wx.login({
-                success(res) {
-                  if (res.code) {
-                    that.setData({
-                      code: res.code,
-                    })
-                    app.globalData.openid = null
-                  } else {
-                    console.log('登录失败！' + res.errMsg)
-                  }
-                }
-              })
-              return false;
-            } 
             else {
+              wx.showLoading();
+              wx.hideLoading();
+              setTimeout(() => {
+                wx.showToast({
+                  title: '请求失败',
+                  icon: 'none',
+                });
+                setTimeout(() => {
+                  wx.hideToast();
+                }, 2000)
+              }, 0);
               app.globalData.openid = ""
               app.globalData.userid = ""
-              console.log("请求失败");
             }
           },
           fail: function () {
+            wx.showLoading();
+            wx.hideLoading();
+            setTimeout(() => {
+              wx.showToast({
+                title: '服务器异常',
+                icon: 'none',
+              });
+              setTimeout(() => {
+                wx.hideToast();
+              }, 2000)
+            }, 0);
             app.globalData.openid = ""
-            console.log("fail");
           },
         })
       }
-
-      //老师角色登录
-      else if (con == 2) {
+    }
+    //助教登录
+    else if(con == 1){
+      if (that.data.name.length == 0) {
+        wx.showLoading();
+        wx.hideLoading();
+        setTimeout(() => {
+          wx.showToast({
+            title: '请填写邮箱!',
+            icon: 'none',
+          });
+          setTimeout(() => {
+            wx.hideToast();
+          }, 2000)
+        }, 0);
+        return false;
+      }
+      else if (!str.test(that.data.name)) {
+        wx.showLoading();
+        wx.hideLoading();
+        setTimeout(() => {
+          wx.showToast({
+            title: '请填写正确的邮箱',
+            icon: "none",
+          });
+          setTimeout(() => {
+            wx.hideToast();
+          }, 2000)
+        }, 0);
+      }
+      else if (that.data.pwd.length == 0) {
+        wx.showLoading();
+        wx.hideLoading();
+        setTimeout(() => {
+          wx.showToast({
+            title: '请填写密码!',
+            icon: 'none',
+          });
+          setTimeout(() => {
+            wx.hideToast();
+          }, 2000)
+        }, 0);
+        return false;
+      }
+      else {
         wx.request({
-          url: requestIP + '/user/login',
+          url: requestIP + '/user/AdminLogin',
           data: {
-            account: that.data.tel,
-            pwd: that.data.password,
-            "type": 2,
             code: that.data.code,
-            nickName:app.globalData.nickName,
-            avatarUrl: app.globalData.avatarUrl
+            account: that.data.name,
+            pwd: that.data.pwd
           },
           method: 'POST',
           header: {
             'content-type': 'application/x-www-form-urlencoded',
           },
           success: function (res) {
-            if (res.data.resultCode == "101") {
+            if (res.data.resultCode == "101") {                           
+                wx.redirectTo({
+                  url: '/pages/index/A_index',
+                })
+           
               app.globalData.openid = res.data.data.openid
               app.globalData.userid = res.data.data.userid
-              app.globalData.userstatus = '2'
-              wx.setStorage({
-                key: "user",
-                data:
-                  {
-                    userid: res.data.data.userid,
-                    openid: res.data.data.openid,
-                    userstatus: 2,
-                    name: res.data.data.name,
-                    tel: res.data.data.tel,
-                    avatarUrl: res.data.data.avatarUrl
-                  }
-              })
-              wx.redirectTo({
-                url: '/pages/index/T_index',
-              })
-            }
-            else if (res.data.resultCode == "214"){
-              wx.showLoading();
-              wx.hideLoading();
-              setTimeout(() => {
-                wx.showToast({
-                  title: '账号和密码不匹配!',
-                  icon: 'none',
-                });
-                setTimeout(() => {
-                  wx.hideToast();
-                }, 2000)
-              }, 0);
-              that.change()
-              that.setData({
-                authcode: ""
-              })
-              app.globalData.openid = ""
-              app.globalData.userid = ""
-              app.globalData.userid = ""
-              wx.login({
-                success(res) {
-                  if (res.code) {
-                    that.setData({
-                      code: res.code,
-                    })
-                    app.globalData.openid = null
-                  } else {
-                    console.log('登录失败！' + res.errMsg)
-                  }
-                }
-              })
-              return false;
-            } 
-            else if (res.data.resultCode == "204") {
-              wx.showLoading();
-              wx.hideLoading();
-              setTimeout(() => {
-                wx.showToast({
-                  title: '账号未注册!',
-                  icon: 'none',
-                });
-                setTimeout(() => {
-                  wx.hideToast();
-                }, 2000)
-              }, 0);
-              that.change()
-              that.setData({
-                authcode: ""
-              })
-              app.globalData.openid = ""
-              app.globalData.userid = ""
-              app.globalData.userstatus = ""
-              wx.login({
-                success(res) {
-                  if (res.code) {
-                    that.setData({
-                      code: res.code,
-                    })
-                    app.globalData.openid = null
-                  } else {
-                    console.log('登录失败！' + res.errMsg)
-                  }
-                }
-              })
-              return false;
-            } 
-            else if (res.data.resultCode == "213") {
-              wx.showLoading();
-              wx.hideLoading();
-              setTimeout(() => {
-                wx.showToast({
-                  title: '请选择正确的身份!',
-                  icon: 'none',
-                });
-                setTimeout(() => {
-                  wx.hideToast();
-                }, 2000)
-              }, 0);
-              that.change()
-              that.setData({
-                authcode: ""
-              })
-              app.globalData.openid = ""
-              app.globalData.userid = ""
-              app.globalData.userstatus =""
-              wx.login({
-                success(res) {
-                  if (res.code) {
-                    that.setData({
-                      code: res.code,
-                    })
-                    app.globalData.openid = null
-                  } else {
-                    console.log('登录失败！' + res.errMsg)
-                  }
-                }
-              })
-              return false;
-            } 
-            else {
-              console.log("请求失败");
-            }
-          },
-          fail: function () {
-            app.globalData.openid = null
-            console.log("fail");
-          },
-        })
-      }   
-
-      //助教角色登录
-      else if (con == 1) {
-        wx.request({
-          url: requestIP + '/user/login',
-          data: {
-            account: that.data.tel,
-            pwd: that.data.password,
-            "type": 1,
-            code: that.data.code,
-            nickName: app.globalData.nickName,
-            avatarUrl: app.globalData.avatarUrl
-          },
-          method: 'POST',
-          header: {
-            'content-type': 'application/x-www-form-urlencoded',
-          },
-          success: function (res) {
-            if (res.data.resultCode == "101") {
-              app.globalData.openid = res.data.data.openid
-              app.globalData.userid = res.data.data.userid
-              app.globalData.userstatus = '1'
+              app.globalData.userstatus = res.data.data.role
+              wx.clearStorage();
               wx.setStorage({
                 key: "user",
                 data:
                 {
                   userid: res.data.data.userid,
                   openid: res.data.data.openid,
-                  userstatus: 1,
+                  userstatus: res.data.data.role,
                   name: res.data.data.name,
-                  tel: res.data.data.tel,
-                  avatarUrl: res.data.data.avatarUrl
+                  tel: res.data.data.phone,
+                  avatarUrl: res.data.data.Protrait
                 }
               })
-              wx.redirectTo({
-                url: '/pages/index/A_index',
-              })
             }
-            else if (res.data.resultCode == "214") {
+            else if (res.data.resultCode == "204"){
               wx.showLoading();
               wx.hideLoading();
               setTimeout(() => {
                 wx.showToast({
-                  title: '账号和密码不匹配!',
+                  title: '邮箱或密码错误',
                   icon: 'none',
                 });
                 setTimeout(() => {
                   wx.hideToast();
                 }, 2000)
               }, 0);
-              that.change()
-              that.setData({
-                authcode: ""
-              })
               app.globalData.openid = ""
               app.globalData.userid = ""
-              app.globalData.userstatus = ""
-              wx.login({
-                success(res) {
-                  if (res.code) {
-                    that.setData({
-                      code: res.code,
-                    })
-                    app.globalData.openid = null
-                  } else {
-                    console.log('登录失败！' + res.errMsg)
-                  }
-                }
-              })
-              return false;
-            }
-            else if (res.data.resultCode == "204") {
-              wx.showLoading();
-              wx.hideLoading();
-              setTimeout(() => {
-                wx.showToast({
-                  title: '账号未注册!',
-                  icon: 'none',
-                });
-                setTimeout(() => {
-                  wx.hideToast();
-                }, 2000)
-              }, 0);
-              that.change()
-              that.setData({
-                authcode: ""
-              })
-              app.globalData.openid = ""
-              app.globalData.userid = ""
-              app.globalData.userstatus = ""
-              wx.login({
-                success(res) {
-                  if (res.code) {
-                    that.setData({
-                      code: res.code,
-                    })
-                    app.globalData.openid = null
-                  } else {
-                    console.log('登录失败！' + res.errMsg)
-                  }
-                }
-              })
-              return false;
-            }
-            else if (res.data.resultCode == "213") {
-              wx.showLoading();
-              wx.hideLoading();
-              setTimeout(() => {
-                wx.showToast({
-                  title: '请选择正确的身份!',
-                  icon: 'none',
-                });
-                setTimeout(() => {
-                  wx.hideToast();
-                }, 2000)
-              }, 0);
-              that.change()
-              that.setData({
-                authcode: ""
-              })
-              app.globalData.openid = ""
-              app.globalData.userid = ""
-              app.globalData.userstatus = ""
-              wx.login({
-                success(res) {
-                  if (res.code) {
-                    that.setData({
-                      code: res.code,
-                    })
-                    app.globalData.openid = null
-                  } else {
-                    console.log('登录失败！' + res.errMsg)
-                  }
-                }
-              })
-              return false;
             }
             else {
-              console.log("请求失败");
+              wx.showLoading();
+              wx.hideLoading();
+              setTimeout(() => {
+                wx.showToast({
+                  title: '请求失败',
+                  icon: 'none',
+                });
+                setTimeout(() => {
+                  wx.hideToast();
+                }, 2000)
+              }, 0);
+              app.globalData.openid = ""
+              app.globalData.userid = ""
             }
           },
           fail: function () {
-            app.globalData.openid = null
-            console.log("fail");
+            wx.showLoading();
+            wx.hideLoading();
+            setTimeout(() => {
+              wx.showToast({
+                title: '服务器异常',
+                icon: 'none',
+              });
+              setTimeout(() => {
+                wx.hideToast();
+              }, 2000)
+            }, 0);
+            app.globalData.openid = ""
           },
         })
-      } 
+      }
     }    
   },
 
-  //注册
-  regist: function (e) {
-    wx.navigateTo({
-      url: '/pages/regist/regist',
-    })
-  },
-
-  //忘记密码
-  forget:function(e){
-    wx.navigateTo({
-      url: '/pages/forget/forget',
-    })
-  },
-
-  //更换验证码
-  mobile(e) { 
-    this.setData({ mobile: e.detail.value }) 
-  }
 })
-
-//绘制图片验证码
-function randomNum(min, max){ 
-  return Math.floor(Math.random() * (max - min) + min); 
-}
-
-/**生成一个随机色**/
-function randomColor(min, max){ 
-  var r = randomNum(min, max); 
-  var g = randomNum(min, max); 
-  var b = randomNum(min, max); 
-  return "rgb(" + r + "," + g + "," + b + ")"; 
-} 
-
-/**绘制验证码图片**/
-function drawPic(that)
-{
-  var height = that.data.height
-  var width = that.data.width
-  var long = that.data.long
-  var short = that.data.short
-  var xo = short*0.25
-  ctx = wx.createCanvasContext('canvas');    /**绘制背景色**/   
-  ctx.fillStyle = randomColor(180, 240); //颜色若太深可能导致看不清   
-  ctx.fillRect(0, 0, height, width)    /**绘制文字**/    
-  var arr;   
-  var text = '';    
-  var str = 'ABCEFGHJKLMNPQRSTWXY123456789';    
-  for (var i = 0; i < 4; i++) 
-  {        
-    var txt = str[randomNum(0, str.length)];        
-    ctx.fillStyle = randomColor(50, 160); //随机生成字体颜色    
-    ctx.font = randomNum(short, long) + 'px SimHei'; //随机生成字体大小     
-    var x = xo + i * short;      
-    var y = randomNum(short, long);       
-    var deg = randomNum(-short, short); //修改坐标原点和旋转角度       
-    ctx.translate(x, y);     
-    ctx.rotate(deg * Math.PI / 180);    
-    ctx.fillText(txt, 5, 0);    
-    text = text + txt; //恢复坐标原点和旋转角度    
-    ctx.rotate(-deg * Math.PI / 180);      
-    ctx.translate(-x, -y);    
-  }   
-  
-  /**绘制干扰线**/    
-  for (var i = 0; i < 4; i++) {        
-    ctx.strokeStyle = randomColor(40, 180);        
-    ctx.beginPath();        
-    ctx.moveTo(randomNum(0, height), randomNum(0, width));        
-    ctx.lineTo(randomNum(0, height), randomNum(0, width));        
-    ctx.stroke();    
-  }    
-  
-  /**绘制干扰点**/    
-  for (var i = 0; i < 20; i++) {        
-    ctx.fillStyle = randomColor(0, 255);        
-    ctx.beginPath();        
-    ctx.arc(randomNum(0, height), randomNum(0, width), 1, 0, 2 * Math.PI);        
-    ctx.fill();    
-  }    
-  ctx.draw(false, function(){        
-    that.setData({           
-      text: text       
-    })    
-  });
-}

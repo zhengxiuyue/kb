@@ -1,16 +1,19 @@
 /* pages/activity/activity.wxss */
 page{
   background: #fff;
+  margin-bottom: 100rpx;
 }
 .list-view{
   border-top: 1px solid #cccccc;
 }
 
 .list-box{
-  display: flex;
-  padding: 5px 0px;
-  border-bottom: 1rpx solid #cccccc;
-  margin: 0rpx 30rpx;
+  display:flex;
+  padding:5px 10px;
+  border:0.5px solid #f8f8f8;
+  margin:20rpx 10rpx;
+  border-radius:20rpx;
+  box-shadow:0rpx 0rpx 20rpx rgba(0, 0, 0, 0.1);
 }
 
 .list-images image{
@@ -61,4 +64,22 @@ page{
 .scroll-box{
   height: 100%;
   padding-top: 260rpx;
+}
+
+.activityon{
+  color:#ed4040;
+  padding:8rpx;
+  line-height:35rpx;
+  border:2rpx solid #ed4040;
+  font-size:24rpx;
+  margin-left:10rpx;
+  background:#fff;
+  display: inline;
+}
+
+.ontop{
+  display:flex;
+  margin-right:35%;
+  height:50rpx;
+  line-height:50rpx
 }

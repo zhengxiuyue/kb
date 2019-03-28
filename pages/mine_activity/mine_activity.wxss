@@ -62,7 +62,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-bottom: 10rpx;
-  padding: 0 20rpx;
 }
 
 .price-wrapper {
@@ -94,4 +93,26 @@
   border-radius: 30rpx;
   font-size: 24rpx;
   margin: 0rpx;
+}
+
+.activityon{
+  color:#ed4040;
+  width:100rpx;
+  padding:8rpx;
+  line-height:35rpx;
+  border:2rpx solid #ed4040;
+  font-size:24rpx;
+  margin:0rpx;
+  background:#fff;
+}
+
+.activityend{
+  color:gray;
+  width:100rpx;
+  padding:8rpx;
+  line-height:35rpx;
+  border:2rpx solid gray;
+  font-size:24rpx;
+  margin:0rpx;
+  background:#fff;
 }

@@ -1,21 +1,36 @@
 <!--pages/activity/activity.wxml-->
 <import src="/pages/tabBar/tabBar.wxml"/> 
 <template is="tabBar" data="{{tabBar}}"/>
-<!--pages/latestGoods/latestGoods.wxml-->
+
 <view class="list-view" >
-  <view class="list-box" wx:for="{{listgoods}}" wx:for-item="list" wx:key="index" data-id="{{list.id}}" bindtap="gogoodsdetails">
-    <view class="list-images" ><image src="{{list.pic_url}}" /></view>
+  <view class="list-box" wx:for="{{activityList}}" wx:for-item="list" wx:key="index" data-id="{{list.ay_id}}" bindtap="">
+    <view class="list-images" ><image src="{{list.ay_image}}" /></view>
     <view class="list-text">
-        <text class="name">{{list.name}}</text>
+        <view class='ontop'>
+            <text class="name">{{list.ay_name}}</text>
+            <view style='width:300rpx;text-align:right;margin-right:20rpx;'>
+              <button wx:if='{{list.status == 1}}' class='activityon'>已报名</button>
+              <button wx:if='{{list.ay_istop == 1}}' class='activityon'>置顶</button>
+            </view>            
+        </view>
         <view class="txt">
-            <text class="price">￥{{list.price}}</text>
-            <text class="num">{{list.num}}</text>
+            <text class="price">￥{{list.ay_originalprice}}</text>
         </view>
         <view catchtap='gostoreIndex'>
-            <text class="store" decode='{{true}}'><text style='color:#999999'>{{list.store}}</text> &nbsp;&nbsp;</text><i-icon type="enter" />
+            <text class="store" decode='{{true}}'><text style='color:#999999'>{{list.ay_starttime}}</text> &nbsp;&nbsp;{{list.ay_place}}</text>
         </view>
         
     </view>
   </view>
 </view>
 
+<i-grid>
+    <i-grid-item i-class="item">
+        <i-spin custom style='color:#9b9b9b'>{{xiala}}</i-spin>
+    </i-grid-item>
+    <i-grid-item i-class="item">
+        <i-spin custom>
+            <view class="loading"></view>
+        </i-spin>
+    </i-grid-item>
+</i-grid>
