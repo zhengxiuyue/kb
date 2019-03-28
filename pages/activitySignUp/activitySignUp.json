@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "i-input": "../../dist/input/index",
+    "i-button": "../../dist/button/index",
+    "i-modal": "../../dist/modal/index",
+    "i-message": "../../dist/message/index",
+    "i-swipeout": "../../dist/swipeout/index"
+  },
+  "navigationBarTitleText": "活动报名",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 400
+}

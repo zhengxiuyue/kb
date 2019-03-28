@@ -1,0 +1,59 @@
+<!--pages/class_des/class_des.wxml-->
+<image src = "/image/log.jpg" class='img'></image>
+<view  class='page'>
+      <!--活动简介-->
+      <view class='title'>
+        <image src='/image/brief.png' class='titleImg'></image>
+        <text class='title-text'>活动简介</text>
+      </view>
+      
+      <view class='class'>
+        
+         <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>活动名称：{{}}</text></view>
+
+        <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>活动类型：{{}}</text></view>
+
+        <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>活动时间：{{}}</text></view>
+
+          <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>活动地点：{{}}</text></view>
+
+          <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>价格：{{}}</text></view>
+
+          <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>原价：{{}}</text></view>
+
+          <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>会员价：{{}}</text></view>
+
+          <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>负责人：{{}}</text></view>
+
+          <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>已报名人数：{{}}</text></view>
+
+          <view class='class_des_text'>
+          <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
+          <text>活动状态：{{}}</text></view>
+
+      </view>      
+      </view>
+<!--报名按钮-->
+  <view class='fixed'>
+      <view class = 'detail' bindtap='GoactivityWebView'>查看详情</view>
+      <button open-type='share'><view class  = "share">分享</view></button>
+      <view class = "join" bindtap='GoactivitySignUp'>立即参与</view>
+  </view>
