@@ -28,7 +28,7 @@
     {{item.name}}
   </view>
   <view class='stu_tel'>
-    {{tools.my_slice(item.tel,0,3)}}****{{tools.my_slice(item.tel,7,11)}}
+    
   </view>
   <view class='clear'></view>
 </view>

@@ -4,6 +4,11 @@
   position: relative;
 }
 
+.video{
+  width: 100%;
+  height: auto;
+}
+
 .help .help_item {
   margin: 10rpx 0;
 }
