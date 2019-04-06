@@ -15,7 +15,8 @@ Page({
     userstatus:"",
     orderList: null,//预约列表
     activity:[],//已报名活动
-    Isclassspace1: "none"
+    Isclassspace1: "none",
+    orderListClass:null
   },
 
   /**
@@ -233,12 +234,47 @@ Page({
           });
         }
       })
+      that.getAreaReservation();
     }  
     
   },
   dropDown:function(e){
     wx.navigateTo({
       url: '/pages/mine_setup/mine_setup',
+    })
+  },
+  getAreaReservation:function(){
+    var that = this;
+    wx.request({
+      url: requestIP + '/student/getAreaReservation',
+      data: {
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'userid': app.globalData.userid
+      },
+      success(res) {
+        console.log(res.data.data);
+        if (res.data.resultCode == '101') {
+          that.setData({
+            orderListClass: res.data.data,
+            Isclassspace1: 'none'
+          });
+
+        } else {
+          that.setData({
+            orderListClass: "",
+            Isclassspace1: 'block'
+          });
+        }
+      },
+      fail(res) {
+        that.setData({
+          orderListClass: "",
+          Isclassspace1: 'block'
+        });
+      }
     })
   }
 })

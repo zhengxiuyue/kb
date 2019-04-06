@@ -71,3 +71,7 @@ margin:30rpx 40rpx;
   padding-bottom: 20rpx;
 }
 
+.bg_color{
+  background-color: #F8F8F8;
+}
+

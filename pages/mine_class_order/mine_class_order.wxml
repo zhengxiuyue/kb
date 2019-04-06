@@ -1,6 +1,11 @@
 <wxs src="../more/more.wxs" module="tools" />
 
-      <view class='content' wx:for="{{orderList}}" data-index='{{index}}' wx:key="item.classid">
+<i-tabs current="{{ current }}" bindchange="handleChange" i-class = "bg_color" color = "#1DA27F">
+    <i-tab key="tab2" title="门店预约"></i-tab>
+    <i-tab key="tab1" title="课程预约"></i-tab>
+</i-tabs>
+
+      <view class='content' wx:for="{{orderList}}" data-index='{{index}}' wx:key="item.classid" style='display:{{current == "tab1"? "block":"none"}}'>
 
       <view class='content1'>
           <view class = 'content1-left'>{{item.coursename}}</view>
@@ -25,4 +30,22 @@
     <text style='font-size:30rpx;'>还没有预约</text>
   </view>
 </view>
+
+<view class='content'  wx:for="{{orderListClass}}" data-index='{{index}}' wx:key="item.ares_id" style='display:{{current == "tab2"? "block":"none"}}' >
+
+      <view class='content1'>
+          <view class = 'content1-left'>{{item.storename}}</view>
+          <view class = 'content1-right'>
+          <view class='content-btn' style='display:{{item.ares_status == 1? "none":"inline-block"}}'>预约中</view>
+          <view class='content-btn1' style='display:{{item.ares_status == 1? "inline-block":"none"}}'>预约成功</view></view>
+       </view>
+
+      <view class = "content2">
+        <view>门店地址：{{item.province}}{{item.city}}{{item.storename}}{{item.location}}</view>
+        <view>预约时间：{{item.dateString}} {{item.dateTime}}</view>
+      </view>
+
+      <view class = "content3">{{item.areas_createtime}}</view>
+
+      </view>
 

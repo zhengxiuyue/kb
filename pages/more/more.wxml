@@ -24,8 +24,10 @@
       </view>
   <!--预约门店-->
     <view>
-    <view class = 'orderStore' bindtap='GoorderStore' style='display:{{orderStoreStatus == 1? "inline-block":"none"}}'>预约门店</view>
-    <view class = 'orderStored' style='display:{{orderStoreStatus == 0? "inline-block":"none"}}'>已预约</view>
+    <view class = 'orderStore' bindtap='GoorderStore'>预约门店</view>
+
+   <!-- <view class = 'orderStore' bindtap='GoorderStore' style='display:{{orderStoreStatus == 1? "inline-block":"none"}}'>预约门店</view>
+    <view class = 'orderStored' style='display:{{orderStoreStatus == 0? "inline-block":"none"}}'>已预约</view>-->
     </view>
 
   </view>

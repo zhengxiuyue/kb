@@ -3,12 +3,29 @@
 
     <!--门店简介-->
   <view class='title'>
+    <image src='/image/time.png' class='titleImg'></image>
+    <text class='title-text'>选择门店</text>
+  </view>
+    <view class='infm'>
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+       {{array[index]}}
+    </view>
+  </picker>
+
+      <view class='header_tips'><image src='../../image/helpCourse.png' class='header-img'></image><text decode="true" class='header_text'>&nbsp;点击选择门店</text></view>
+</view>
+
+<view style='height:20rpx;'></view>
+
+  <view class='title'>
     <image src='/image/brief.png' class='titleImg'></image>
     <text class='title-text'>门店信息</text>
-  </view>  
+  </view> 
+
   <view class='class'> 
     <view class='class_des_text'>
-      <text>{{storeMes}}</text></view>
+      <text>{{locationList[index]}}</text></view>
   </view>
 
   <!--个人信息-->
@@ -17,6 +34,31 @@
   <image src='/image/mineselected.png' class='titleImg'></image>
   <text class='title-text'>预约信息</text>
   </view>
+<view class='infm'>
+ <picker
+    mode="date"
+    value="{{date}}"
+    start="{{startdate}}"
+    end="{{enddate}}"
+    bindchange="bindDateChange"
+  >
+    <view class="picker">
+     {{date}}
+    </view>
+  </picker>
+    <view class='header_tips'><image src='../../image/helpCourse.png' class='header-img'></image><text decode="true" class='header_text'>&nbsp;仅能预约近三个月内</text></view>
+</view>
+
+<view style='height:20rpx;'></view>
+
+<view class='radio'>
+<radio-group class="radio-group" bindchange="radioChange">
+  <label class="radio" wx:for="{{items}}">
+    <radio value="{{item.name}}" checked="{{item.checked}}" />
+    {{item.value}}
+  </label>
+</radio-group>
+</view>
 
 <view class='infm'>
   <input class='ipt' bindinput='usernameInput' placeholder='请输入姓名' value='{{username}}'placeholder-class='placeholder'></input>
@@ -35,21 +77,6 @@
 <input class='ipt' type='text' value='{{message}}' bindinput='messageInput' placeholder='预约说明(选填)' placeholder-class='placeholder' maxlength ="50"></input>
 </view>
 
-<view class='infm'>
- <picker
-    mode="date"
-    value="{{date}}"
-    start="{{startdate}}"
-    end="{{enddate}}"
-    bindchange="bindDateChange"
-  >
-    <view class="picker">
-     {{date}}
-    </view>
-  </picker>
-    <view class='header_tips'><image src='../../image/helpCourse.png' class='header-img'></image><text decode="true" class='header_text'>&nbsp;仅能预约近三个月内</text></view>
-</view>
-
 <!--<view class='radio'>
 <radio-group class="radio-group" bindchange="radioChange1">
   <label class="radio" wx:for="{{items1}}">
@@ -58,17 +85,6 @@
   </label>
 </radio-group>
 </view>-->
-
-<view style='height:20rpx;'></view>
-
-<view class='radio'>
-<radio-group class="radio-group" bindchange="radioChange">
-  <label class="radio" wx:for="{{items}}">
-    <radio value="{{item.name}}" checked="{{item.checked}}" />
-    {{item.value}}
-  </label>
-</radio-group>
-</view>
 
 <view class='tips'>
   <image src='/image/warning.png' class='tipsImg'></image>

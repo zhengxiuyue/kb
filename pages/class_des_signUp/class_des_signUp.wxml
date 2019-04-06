@@ -31,6 +31,8 @@
           <text style='display: {{courseList.improveprice == null? "none":"inline"}}' >课程价格：{{courseList.improveprice}}元</text>
 
           <text style='display: {{courseList.improveprice == null? "inline":"none"}}' >课程价格：{{courseList.price}}元</text>
+
+          <text class = "member_price" decode='true'>&nbsp;&nbsp;&nbsp;&nbsp;会员价：{{courseList.memberprice}}元</text>
           </view>
 
            <view class='class_des_text'>

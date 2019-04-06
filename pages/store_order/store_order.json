@@ -5,7 +5,5 @@
     "i-modal": "../../dist/modal/index",
     "i-message": "../../dist/message/index"
   },
-  "navigationBarTitleText": "门店预约",
-  "enablePullDownRefresh": true,
-  "onReachBottomDistance": 400
+  "navigationBarTitleText": "门店预约"
 }

@@ -193,3 +193,8 @@ top: 20rpx;
   width:40rpx;
   height:40rpx;
 }
+
+.member_price{
+  font-size: 30rpx;
+  color: red;
+}
