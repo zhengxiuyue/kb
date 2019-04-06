@@ -15,6 +15,7 @@ Page({
     items:[], //课堂详情
     notice:[],//课堂通知
     chat:[],//课堂讨论
+    video:[],//视频
     studentcount:'',//学生数量
     sign:[
       {classnum:''}
@@ -710,6 +711,49 @@ Page({
           }
         },
       })
+    }
+
+    else if (that.data.current == 4){
+      //获取签到列表
+      wx.request({
+        url: requestIP + '/student/getClassSchedule',
+        data: {
+          classid: that.data.classid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          var time = util.formatTime(new Date());
+          if (res.data.resultCode == "101") {
+            that.setData({
+              sign: [],
+              gosignteamore: "0"
+            })
+            for (var i = 0, len = res.data.data.length; i < len; i++) {
+              that.data.sign[i] = res.data.data[i]
+              that.data.sign[i].classnum = i + 1//获取第几节课
+            }
+            that.setData({
+              sign: that.data.sign,
+            })
+          } else {
+            that.setData({
+              sign: []
+            })
+            console.log("请求失败");
+          }
+        },
+        fail: function () {
+          that.setData({
+            sign: []
+          })
+          console.log("fail");
+        },
+      })
+     
     }
   },
   panel: function (e) {

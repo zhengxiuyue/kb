@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 34,
+			"current": 36,
 			"list": [
 				{
 					"id": -1,
@@ -250,6 +250,20 @@
 					"id": -1,
 					"name": "class",
 					"pathName": "pages/class/class",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "class_notice",
+					"pathName": "pages/class_notice/class_notice",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "class_notice_edit",
+					"pathName": "pages/class_notice_edit/class_notice_edit",
 					"scene": null
 				}
 			]

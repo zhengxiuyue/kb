@@ -1,0 +1,49 @@
+/* pages/class_videodetails/class_videodetails.wxss */
+/* 宣传视频 */
+.cards {
+  background: #fff;
+  margin: 20rpx;
+}
+
+.card {
+  background: #ffffff;
+  margin-bottom: 20rpx;
+  padding:10rpx;
+  transition: 0.5s all;
+  box-shadow:0 0 20rpx #ccc;
+}
+
+.card.hover {
+  box-shadow: 0 70rpx 90rpx rgba(0, 0, 0, 0.06);
+}
+
+.card image {
+  position: relative;
+}
+
+.card image,
+.card video {
+  height: 36vh;
+  width: 100%;
+}
+
+.card .content {
+  height: 18vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.content .header{
+  font-size: 13pt;
+  color: #313131;
+}
+.content .description{
+  margin-top: 20rpx;
+  font-size: 10pt;
+  color: #ccc;
+}
+
+.video{
+  width: 100%;
+}

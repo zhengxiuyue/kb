@@ -191,6 +191,18 @@ Page({
               })
             }
             else {
+              wx.login({
+                success(res) {
+                  if (res.code) {
+                    that.setData({
+                      code: res.code,
+                    })
+                    app.globalData.openid = null
+                  } else {
+                    console.log('登录失败！' + res.errMsg)
+                  }
+                }
+              })
               wx.showLoading();
               wx.hideLoading();
               setTimeout(() => {
@@ -203,10 +215,22 @@ Page({
                 }, 2000)
               }, 0);
               app.globalData.openid = ""
-              app.globalData.userid = ""
+              app.globalData.userid = ""            
             }
           },
           fail: function () {
+            wx.login({
+              success(res) {
+                if (res.code) {
+                  that.setData({
+                    code: res.code,
+                  })
+                  app.globalData.openid = null
+                } else {
+                  console.log('登录失败！' + res.errMsg)
+                }
+              }
+            })
             wx.showLoading();
             wx.hideLoading();
             setTimeout(() => {
@@ -282,13 +306,12 @@ Page({
             if (res.data.resultCode == "101") {                           
                 wx.redirectTo({
                   url: '/pages/index/A_index',
-                })
-           
-              app.globalData.openid = res.data.data.openid
-              app.globalData.userid = res.data.data.userid
-              app.globalData.userstatus = res.data.data.role
-              wx.clearStorage();
-              wx.setStorage({
+                })           
+                app.globalData.openid = res.data.data.openid
+                app.globalData.userid = res.data.data.userid
+                app.globalData.userstatus = res.data.data.role
+                wx.clearStorage();
+                wx.setStorage({
                 key: "user",
                 data:
                 {
@@ -302,6 +325,18 @@ Page({
               })
             }
             else if (res.data.resultCode == "204"){
+              wx.login({
+                success(res) {
+                  if (res.code) {
+                    that.setData({
+                      code: res.code,
+                    })
+                    app.globalData.openid = null
+                  } else {
+                    console.log('登录失败！' + res.errMsg)
+                  }
+                }
+              })
               wx.showLoading();
               wx.hideLoading();
               setTimeout(() => {
@@ -317,6 +352,18 @@ Page({
               app.globalData.userid = ""
             }
             else {
+              wx.login({
+                success(res) {
+                  if (res.code) {
+                    that.setData({
+                      code: res.code,
+                    })
+                    app.globalData.openid = null
+                  } else {
+                    console.log('登录失败！' + res.errMsg)
+                  }
+                }
+              })
               wx.showLoading();
               wx.hideLoading();
               setTimeout(() => {
@@ -333,6 +380,18 @@ Page({
             }
           },
           fail: function () {
+            wx.login({
+              success(res) {
+                if (res.code) {
+                  that.setData({
+                    code: res.code,
+                  })
+                  app.globalData.openid = null
+                } else {
+                  console.log('登录失败！' + res.errMsg)
+                }
+              }
+            })
             wx.showLoading();
             wx.hideLoading();
             setTimeout(() => {

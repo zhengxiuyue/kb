@@ -1,15 +1,10 @@
 <!--pages/class_video/class_video.wxml-->
-<!-- 宣传视频 -->
-<view class="cards">
-  <view class="card" hover-class="hover" >
-    <video class='video' src="{{discovery.video}}" poster="{{discovery.image}}" objectFit="cover" duration="{{discovery.duration_raw}}" />
-    <view style='padding-top:30rpx;font-size:30rpx;'>2018/09/04</view>
+<wxs src="../more/more.wxs" module="tools" />
+<view class='classcard1' bindtap='govideo' wx:for = "{{sign}}" wx:key="" data-scheduleid='{{item.scheduleid}}'>
+  <view class='classtop1'>
+    <text class='classname1'>第{{index + 1}}节</text>
   </view>
+  <text class='classgrate'>时间：{{item.date}}</text>
+  <text class='classinfm1' decode="{{true}}"></text>
 </view>
 
-<view class="cards">
-  <view class="card" hover-class="hover" >
-    <video class='video' src="{{discovery.video}}" poster="{{discovery.image}}" objectFit="cover" duration="{{discovery.duration_raw}}" />
-  </view>
-  <view style='padding-top:30rpx;font-size:30rpx;'>2018/09/04</view>
-</view>

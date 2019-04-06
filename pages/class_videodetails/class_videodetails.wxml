@@ -1,0 +1,14 @@
+<!--pages/class_videodetails/class_videodetails.wxml-->
+<!-- 宣传视频 -->
+<view class="cards" wx:for='{{video}}'>
+  <view class="card" hover-class="hover" >
+    <video class='video' src="{{item.link}}" />
+  </view>
+</view>
+<!-- 
+<view class="cards">
+  <view class="card" hover-class="hover" >
+    <video class='video' src="{{discovery.video}}" poster="{{discovery.image}}" objectFit="cover" duration="{{discovery.duration_raw}}" />
+  </view>
+  <view style='padding-top:30rpx;font-size:30rpx;'>2018/09/04</view>
+</view> -->

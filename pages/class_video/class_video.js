@@ -6,7 +6,15 @@ Component({
    * 组件的属性列表
    */
 
-  properties: {
+  properties: {    
+    video: {
+      type: "Array",
+      value: "",
+    },
+    sign: {
+      type: "Array",
+      value: "",
+    },
 
   },
 
@@ -21,17 +29,28 @@ Component({
       duration_raw: 74//秒数
     },
 
+    classList:[{
+      coursename:"点歌单",
+      levelname:"ss"
+    }]
+
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-
+    govideo:function(e){
+      console.log(e)
+      var scheduleid = e.currentTarget.dataset.scheduleid
+      wx.navigateTo({
+        url: '/pages/class_videodetails/class_videodetails?scheduleid=' + scheduleid,
+      })
+    }
   },
 
   ready: function () {
-
+    console.log(this.data.video)
   }
 })
 

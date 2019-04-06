@@ -106,6 +106,6 @@
 	<signin style="{{current == 1 ? 'display: inline;': 'display: none;'}}"  userstatus="{{userstatus}}" sign="{{sign}}" classnum="{{classnum}}" time="{{time}}" endFormatTime="{{endFormatTime}}" endFormatTime2="{{endFormatTime2}}" classid="{{classid}}" Issignstu="{{Issignstu}}" gosignteamore="{{gosignteamore}}"  firstPerson="{{firstPerson}}" Issign="{{Issign}}" signbtn="{{signbtn}}" signtime="{{signtime}}"  signnum="{{signnum}}" ></signin>
   <chat style="{{current == 2 ? 'display: inline;': 'display: none;'}}" chat="{{chat}}" Ischatspace="{{Ischatspace}}" openid="{{openid}}" classid="{{classid}}" items="{{items}}" current="{{current}}"></chat>
 	<notice id="notice" bindmyevent="myEventListener" style="{{current == 3 ? 'display: inline;': 'display: none;'}}"  notice="{{notice}}" Isnoticespace="{{Isnoticespace}}" classid="{{classid}}" items="{{items}}" current="{{current}}" wx:if="{{showCom}}"></notice>
-  <video id="video"  bindmyevent="myEventListener" class='video' style="{{current == 4 ? 'display: inline;': 'display: none;'}}"></video>
+  <video id="video"  bindmyevent="myEventListener" class='video' style="{{current == 4 ? 'display: inline;': 'display: none;'}}" sign="{{sign}}" video="{{video}}"></video>
   
 </view>
