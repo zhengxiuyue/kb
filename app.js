@@ -191,9 +191,8 @@ App({
     //requestIP: "http://localhost:8080/happyschedule",
     // requestIP: "http://39.104.155.0:8080/happyschedule",
     //requestIP: "http://cmvb2y.natappfree.cc/happyschedule",
-    // requestIP: "http://vy6nda.natappfree.cc/happyschedule",
-    // requestIP: "https://curriculum.50fun.cn/happyschedule",
-    requestIP: "http://192.168.43.79:8181/happyschedule",
+    requestIP: "http://qas57b.natappfree.cc/happyschedule",
+
    
     //学生角色
     tabBar: {

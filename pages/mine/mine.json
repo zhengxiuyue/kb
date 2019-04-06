@@ -5,7 +5,5 @@
   "class-history": "/pages/mine_class_history/mine_class_history",
   "class-order": "/pages/mine_class_order/mine_class_order",
   "activity": "/pages/mine_activity/mine_activity"
-  },
-  "enablePullDownRefresh": true,
-  "onReachBottomDistance": 400
+  }
 }

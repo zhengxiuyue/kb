@@ -3,7 +3,7 @@
 <view wx:if="{{canIUse}}">
   <view class='header'>
       <image src='/image/log.jpg' class='logo'></image>
-      <view class='title'>快乐课堂</view>
+      <view class='title'>快乐课表</view>
   </view>
   <view class='clear' ></view>
     <view class='content'>

@@ -4,6 +4,10 @@ var app = getApp();
 var requestIP = app.globalData.requestIP;
 Page({
   data: {
+    array:null,//所有门店列表
+    index:0,
+    storeidList:null,
+    locationList:null,
     items1: [
       { name: 'today', value: '今天', checked: 'true' },
       { name: 'tomorrow', value: '明天' },
@@ -55,6 +59,12 @@ Page({
       date1: e.detail.value
     })
   },
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
+    })
+  },
   bindDateChange(e) {
     this.setData({
       date: e.detail.value
@@ -69,6 +79,7 @@ Page({
       console.log("storeid" + storeid);
     this.getStoreInfo();
     this.getMyInfo();
+    this.getArea();
   },
 
   getMyInfo: function (e) {
@@ -273,15 +284,6 @@ Page({
     })
   },
   onPullDownRefresh: function () {
-    wx.showNavigationBarLoading()
-    //模拟加载    
-    setTimeout(function () {      // complete      
-      wx.hideNavigationBarLoading() //完成停止加载      
-      wx.stopPullDownRefresh() //停止下拉刷新   
-    }, 1500);
-    var that = this;
-    that.getMyInfo();
-    that.getStoreInfo();
   },
 
   //预约
@@ -290,10 +292,12 @@ Page({
     var code = e;
     var that = this;
     console.log("");
+    var index = that.data.index;
+    var storeid = that.data.storeidList[index];
     wx.request({
       url: requestIP + '/student/subStore',
       data: {
-        storeid: that.data.storeid,
+        storeid: storeid,
         name: that.data.username,
         phone: that.data.tel,
         code: code,
@@ -365,6 +369,45 @@ Page({
         that.setData({
           storeMes: storeMes
         })
+        }
+      },
+      fail(res) {
+      }
+    })
+  },
+
+  getArea:function(){
+    var that = this;
+    wx.request({
+      url: requestIP + '/user/getArea',
+      data: {
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+        'userid': app.globalData.userid
+      },
+      success(res) {
+        if (res.data.resultCode == '101') {
+          var array = [];
+         // var Aarray;
+          var locationList = [];
+          var storeidList = [];
+         // var ALocation;
+          for(var i=0;i<res.data.data.length;i++)
+          {
+            var Aarray = res.data.data[i].province + res.data.data[i].city + res.data.data[i].areaname + res.data.data[i].storename;
+            array.push(Aarray);
+            var ALocation = res.data.data[i].province + res.data.data[i].city + res.data.data[i].areaname + res.data.data[i].storename+res.data.data[i].location;
+            locationList.push(ALocation);
+            var Astoreid = res.data.data[i].areaid;
+            storeidList.push(Astoreid);
+          }
+          that.setData({
+            array: array,
+            locationList: locationList,
+            storeidList: storeidList
+          })
         }
       },
       fail(res) {

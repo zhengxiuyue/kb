@@ -147,6 +147,7 @@ color:#2a9dd1 !important;
   position:relative;
   font-size: 28rpx;
   color: #666;
+  top:10rpx;
 }
 
 .header-img{
