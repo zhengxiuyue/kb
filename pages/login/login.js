@@ -10,7 +10,7 @@ Page({
     isadmin:0,
     isstu:1,
     isauth:1,
-    inputtext:"请输入姓名",
+    inputtext:"建议填写真实姓名",
     items: [
       { value: '学生', id: '3', checked:true},
       { value: '老师', id: '2', checked:false},
@@ -123,7 +123,7 @@ Page({
     }
     else if (con == 3){
       this.setData({
-        inputtext: "请输入姓名",
+        inputtext: "建议填写真实姓名",
         isadmin: 0,
         isstu: 1,
         isauth: 1
