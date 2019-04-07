@@ -1,5 +1,6 @@
 // pages/login/login.js
 var app = getApp();
+var requestIP = app.globalData.requestIP
 var ctx;
 Page({
   /**
@@ -7,6 +8,8 @@ Page({
    */
   data: {
     isadmin:0,
+    isstu:1,
+    isauth:1,
     inputtext:"请输入姓名",
     items: [
       { value: '学生', id: '3', checked:true},
@@ -16,6 +19,7 @@ Page({
     userstatus: '3',
     "name": '',
     code:'',
+    newcode:"",
     pwd:""
   },
 
@@ -24,6 +28,17 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var tel = wx.getStorageSync('tel')
+    if (tel != '') {
+      that.setData({
+        isauth:1
+      })
+    }
+    else{
+      that.setData({
+        isauth: 0
+      })
+    }
     wx.login({
       success(res) {
         if (res.code) {
@@ -86,6 +101,7 @@ Page({
   onShareAppMessage: function () {
 
   },
+  
   //获取用户身份
   radioChange: function (event) {
     var con = event.detail.value
@@ -95,15 +111,344 @@ Page({
     if(con == 1){
       this.setData({
         inputtext:"请输入邮箱",
-        isadmin:1
+        isadmin:1,
+        isstu:1
       })
     }
-    else{
+    else if (con == 2) {
+      this.setData({
+        isadmin: 0,
+        isstu: 0
+      })
+    }
+    else if (con == 3){
       this.setData({
         inputtext: "请输入姓名",
-        isadmin: 0
+        isadmin: 0,
+        isstu: 1,
+        isauth: 1
       })
     }
+  },
+
+  //获取手机号码
+  getPhoneNumber:function(e){  
+    var that = this
+    console.log(e.detail.iv);
+    console.log(e.detail.encryptedData);
+    var avatarUrl = wx.getStorageSync('avatarUrl')
+    var nickName = wx.getStorageSync('nickName')
+    wx.request({
+      url: requestIP + '/user/getPhone',
+      data: {
+        code: that.data.code,
+        encryptedData: e.detail.encryptedData,
+        iv: e.detail.iv,
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success: function (res) {
+        if (res.data.resultCode == "101") {
+          app.globalData.tel = res.data.data
+          wx.setStorageSync('tel', res.data.data)
+          wx.login({
+            success(res) {
+              if (res.code) {
+                that.setData({
+                  newcode: res.code,
+                })
+                console.log("xin" + res.code)
+                if (!avatarUrl | !nickName) {
+                  wx.redirectTo({
+                    url: '/pages/authorize/authorize',
+                  })
+                }
+                //老师
+                else if (that.data.userstatus == 2) {
+                  wx.request({
+                    url: requestIP + '/user/teacherLogin',
+                    data: {
+                      avatarUrl: wx.getStorageSync('avatarUrl'),
+                      nickName: wx.getStorageSync('nickName'),
+                      phone: wx.getStorageSync('tel'),
+                      code: that.data.newcode
+                    },
+                    method: 'POST',
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded',
+                    },
+                    success: function (res) {
+                      if (res.data.resultCode == "101") {
+                        wx.redirectTo({
+                          url: '/pages/index/T_index',
+                        })
+                        app.globalData.openid = res.data.data.openid
+                        app.globalData.userid = res.data.data.userid
+                        app.globalData.userstatus = res.data.data.role
+
+                        // wx.setStorageSync("avatarUrl", res.data.data.Protrait)
+                        // wx.setStorageSync('name', res.data.data.name)
+                        wx.setStorage({
+                          key: "user",
+                          data:
+                          {
+                            userid: res.data.data.userid,
+                            openid: res.data.data.openid,
+                            userstatus: res.data.data.role,
+                            name: res.data.data.name,
+                            tel: res.data.data.phone,
+                            avatarUrl: res.data.data.Protrait
+                          }
+                        })
+                      }
+                      else if (res.data.resultCode == "213") {
+                        wx.login({
+                          success(res) {
+                            if (res.code) {
+                              that.setData({
+                                code: res.code,
+                              })
+                              app.globalData.openid = null
+                            } else {
+                              console.log('登录失败！' + res.errMsg)
+                            }
+                          }
+                        })
+                        wx.showToast({
+                          title: '角色错误',
+                          icon: 'none',
+                        });
+                        app.globalData.openid = ""
+                        app.globalData.userid = ""
+                      }
+                      else if (res.data.resultCode == "211") {
+                        wx.login({
+                          success(res) {
+                            if (res.code) {
+                              that.setData({
+                                code: res.code,
+                              })
+                              app.globalData.openid = null
+                            } else {
+                              console.log('登录失败！' + res.errMsg)
+                            }
+                          }
+                        })
+                        wx.showToast({
+                          title: '用户不存在',
+                          icon: 'none',
+                        });
+                        app.globalData.openid = ""
+                        app.globalData.userid = ""
+                      }
+                      else {
+                        wx.login({
+                          success(res) {
+                            if (res.code) {
+                              that.setData({
+                                code: res.code,
+                              })
+                              app.globalData.openid = null
+                            } else {
+                              console.log('登录失败！' + res.errMsg)
+                            }
+                          }
+                        })
+                        wx.showToast({
+                          title: '请求失败',
+                          icon: 'none',
+                        });
+                        app.globalData.openid = ""
+                        app.globalData.userid = ""
+                      }
+                    },
+                    fail: function () {
+                      wx.login({
+                        success(res) {
+                          if (res.code) {
+                            that.setData({
+                              code: res.code,
+                            })
+                            app.globalData.openid = null
+                          } else {
+                            console.log('登录失败！' + res.errMsg)
+                          }
+                        }
+                      })
+                      wx.showToast({
+                        title: '服务器异常',
+                        icon: 'none',
+                      });
+                      app.globalData.openid = ""
+                    },
+                  })
+                }
+                //学生
+                if (that.data.userstatus == 3) {
+                  wx.request({
+                    url: requestIP + '/user/studentLogin',
+                    data: {
+                      name: that.data.name,
+                      avatarUrl: wx.getStorageSync('avatarUrl'),
+                      nickName: wx.getStorageSync('nickName'),
+                      phone: wx.getStorageSync('tel'),
+                      code: that.data.newcode
+                    },
+                    method: 'POST',
+                    header: {
+                      'content-type': 'application/x-www-form-urlencoded',
+                    },
+                    success: function (res) {
+                      if (res.data.resultCode == "101") {
+                        wx.redirectTo({
+                          url: '/pages/index/index',
+                        })
+                        app.globalData.openid = res.data.data.openid
+                        app.globalData.userid = res.data.data.userid
+                        app.globalData.userstatus = res.data.data.role
+
+                        wx.setStorage({
+                          key: "user",
+                          data:
+                          {
+                            userid: res.data.data.userid,
+                            openid: res.data.data.openid,
+                            userstatus: res.data.data.role,
+                            name: res.data.data.name,
+                            tel: res.data.data.phone,
+                            avatarUrl: res.data.data.Protrait
+                          }
+                        })
+                      }
+                      else if (res.data.resultCode == "213") {
+                        wx.login({
+                          success(res) {
+                            if (res.code) {
+                              that.setData({
+                                code: res.code,
+                              })
+                              app.globalData.openid = null
+                            } else {
+                              console.log('登录失败！' + res.errMsg)
+                            }
+                          }
+                        })
+                        wx.showToast({
+                          title: '角色错误',
+                          icon: 'none',
+                        });
+                        app.globalData.openid = ""
+                        app.globalData.userid = ""
+                      }
+                      else if (res.data.resultCode == "212") {
+                        wx.login({
+                          success(res) {
+                            if (res.code) {
+                              that.setData({
+                                code: res.code,
+                              })
+                              app.globalData.openid = null
+                            } else {
+                              console.log('登录失败！' + res.errMsg)
+                            }
+                          }
+                        })
+                        wx.showToast({
+                          title: '用户不存在',
+                          icon: 'none',
+                        });
+                        app.globalData.openid = ""
+                        app.globalData.userid = ""
+                      }
+                      else {
+                        wx.login({
+                          success(res) {
+                            if (res.code) {
+                              that.setData({
+                                code: res.code,
+                              })
+                              app.globalData.openid = null
+                            } else {
+                              console.log('登录失败！' + res.errMsg)
+                            }
+                          }
+                        })
+                        wx.showToast({
+                          title: '请求失败',
+                          icon: 'none',
+                        });
+                        app.globalData.openid = ""
+                        app.globalData.userid = ""
+                      }
+                    },
+                    fail: function () {
+                      wx.login({
+                        success(res) {
+                          if (res.code) {
+                            that.setData({
+                              code: res.code,
+                            })
+                            app.globalData.openid = null
+                          } else {
+                            console.log('登录失败！' + res.errMsg)
+                          }
+                        }
+                      })
+                      wx.showToast({
+                        title: '服务器异常',
+                        icon: 'none',
+                      });
+                      app.globalData.openid = ""
+                    },
+                  })
+                }   
+              } else {
+                console.log('登录失败！' + res.errMsg)
+              }
+            }
+          })
+           
+        }
+        else {
+          wx.login({
+            success(res) {
+              if (res.code) {
+                that.setData({
+                  code: res.code,
+                })
+              } else {
+                console.log('请求失败！' + res.errMsg)
+              }
+            }
+          })
+          wx.showToast({
+            title: '请求失败',
+            icon: 'none',
+          });
+        }
+      },
+      fail: function () {
+        wx.login({
+          success(res) {
+            if (res.code) {
+              that.setData({
+                code: res.code,
+              })
+            } else {
+              console.log('登录失败！' + res.errMsg)
+            }
+          }
+        })
+        wx.showToast({
+          title: '服务器异常',
+          icon: 'none',
+        });
+      },
+    }) 
+   
+
   },
 
   //获取姓名/邮箱
@@ -120,37 +465,34 @@ Page({
   //修改全局变量selectCodition的值
   login:function(e){
     let that = this;
-    var requestIP =app.globalData.requestIP
+    var avatarUrl = wx.getStorageSync('avatarUrl')
+    var nickName = wx.getStorageSync('nickName')
     //邮箱
     let str = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/
     var con = that.data.userstatus
-    //学生和老师登录
-    if(con == 2 || con == 3){
+    //学生登录
+    if(con == 3){
       if (that.data.name.length == 0) {
-        wx.showLoading();
-        wx.hideLoading();
-        setTimeout(() => {
-          wx.showToast({
-            title: '请填写姓名!',
-            icon: 'none',
-          });
-          setTimeout(() => {
-            wx.hideToast();
-          }, 2000)
-        }, 0);
+        wx.showToast({
+          title: '请填写姓名!',
+          icon: 'none',
+        });
         return false;
       }
-      else{
-        wx.request({
-          url: requestIP + '/user/login',
+      else if (!avatarUrl | !nickName) {
+        wx.redirectTo({
+          url: '/pages/authorize/authorize',
+        })
+      }
+      else{        
+        wx.request({      
+          url: requestIP + '/user/studentLogin',
           data: {
-            code: that.data.code,
-            encryptedData: app.globalData.encryptedData,//手机号码
-            iv: app.globalData.iv,//手机号码
-            encryptedData1: app.globalData.encryptedData1,//个人信息
-            iv1: app.globalData.iv1,//个人信息
-            role: "3",
             name: that.data.name,
+            avatarUrl: wx.getStorageSync('avatarUrl'),
+            nickName: wx.getStorageSync('nickName'),
+            phone: wx.getStorageSync('tel'),
+            code: that.data.code
           },
           method: 'POST',
           header: {
@@ -158,25 +500,13 @@ Page({
           },
           success: function (res) {
             if (res.data.resultCode == "101") {
-              if (that.data.userstatus == 3) {
-                wx.redirectTo({
-                  url: '/pages/index/index',
-                })
-              }
-              else if (that.data.userstatus == 2) {
-                wx.redirectTo({
-                  url: '/pages/index/T_index',
-                })
-              }
-              else if (that.data.userstatus == 1) {
-                wx.redirectTo({
-                  url: '/pages/index/A_index',
-                })
-              }
+              wx.redirectTo({
+                url: '/pages/index/index',
+              })
               app.globalData.openid = res.data.data.openid
               app.globalData.userid = res.data.data.userid
               app.globalData.userstatus = res.data.data.role
-              wx.clearStorage();
+             
               wx.setStorage({
                 key: "user",
                 data:
@@ -203,17 +533,10 @@ Page({
                   }
                 }
               })
-              wx.showLoading();
-              wx.hideLoading();
-              setTimeout(() => {
-                wx.showToast({
-                  title: '请求失败',
-                  icon: 'none',
-                });
-                setTimeout(() => {
-                  wx.hideToast();
-                }, 2000)
-              }, 0);
+              wx.showToast({
+                title: '请求失败',
+                icon: 'none',
+              });
               app.globalData.openid = ""
               app.globalData.userid = ""            
             }
@@ -231,69 +554,173 @@ Page({
                 }
               }
             })
-            wx.showLoading();
-            wx.hideLoading();
-            setTimeout(() => {
-              wx.showToast({
-                title: '服务器异常',
-                icon: 'none',
-              });
-              setTimeout(() => {
-                wx.hideToast();
-              }, 2000)
-            }, 0);
+            wx.showToast({
+              title: '服务器异常',
+              icon: 'none',
+            });
             app.globalData.openid = ""
           },
         })
       }
     }
+    //老师登录
+    else if (con == 2) {
+      if (!avatarUrl | !nickName ){
+        wx.redirectTo({
+          url: '/pages/authorize/authorize',
+        })
+      }
+      else{
+        wx.request({
+          url: requestIP + '/user/teacherLogin',
+          data: {
+            avatarUrl: wx.getStorageSync('avatarUrl'),
+            nickName: wx.getStorageSync('nickName'),
+            phone: wx.getStorageSync('tel'),
+            code: that.data.code
+          },
+          method: 'POST',
+          header: {
+            'content-type': 'application/x-www-form-urlencoded',
+          },
+          success: function (res) {
+            if (res.data.resultCode == "101") {
+              wx.redirectTo({
+                url: '/pages/index/T_index',
+              })
+              app.globalData.openid = res.data.data.openid
+              app.globalData.userid = res.data.data.userid
+              app.globalData.userstatus = res.data.data.role
+             
+              wx.setStorage({
+                key: "user",
+                data:
+                {
+                  userid: res.data.data.userid,
+                  openid: res.data.data.openid,
+                  userstatus: res.data.data.role,
+                  name: res.data.data.name,
+                  tel: res.data.data.phone,
+                  avatarUrl: res.data.data.Protrait
+                }
+              })
+            }
+            else if (res.data.resultCode == "213") {
+              wx.login({
+                success(res) {
+                  if (res.code) {
+                    that.setData({
+                      code: res.code,
+                    })
+                    app.globalData.openid = null
+                  } else {
+                    console.log('登录失败！' + res.errMsg)
+                  }
+                }
+              })
+              wx.showToast({
+                title: '角色错误',
+                icon: 'none',
+              });
+              app.globalData.openid = ""
+              app.globalData.userid = ""
+            }
+            else if (res.data.resultCode == "212") {
+              wx.login({
+                success(res) {
+                  if (res.code) {
+                    that.setData({
+                      code: res.code,
+                    })
+                    app.globalData.openid = null
+                  } else {
+                    console.log('登录失败！' + res.errMsg)
+                  }
+                }
+              })
+              wx.showToast({
+                title: '用户不存在',
+                icon: 'none',
+              });
+              app.globalData.openid = ""
+              app.globalData.userid = ""
+            }
+            else {
+              wx.login({
+                success(res) {
+                  if (res.code) {
+                    that.setData({
+                      code: res.code,
+                    })
+                    app.globalData.openid = null
+                  } else {
+                    console.log('登录失败！' + res.errMsg)
+                  }
+                }
+              })
+              wx.showToast({
+                title: '请求失败',
+                icon: 'none',
+              });
+              app.globalData.openid = ""
+              app.globalData.userid = ""
+            }
+          },
+          fail: function () {
+            wx.login({
+              success(res) {
+                if (res.code) {
+                  that.setData({
+                    code: res.code,
+                  })
+                  app.globalData.openid = null
+                } else {
+                  console.log('登录失败！' + res.errMsg)
+                }
+              }
+            })
+            wx.showToast({
+              title: '服务器异常',
+              icon: 'none',
+            });
+            app.globalData.openid = ""
+          },
+        })       
+      }      
+    }  
     //助教登录
     else if(con == 1){
+      if (!avatarUrl | !nickName) {
+        wx.redirectTo({
+          url: '/pages/authorize/authorize',
+        })
+      }
       if (that.data.name.length == 0) {
-        wx.showLoading();
-        wx.hideLoading();
-        setTimeout(() => {
-          wx.showToast({
-            title: '请填写邮箱!',
-            icon: 'none',
-          });
-          setTimeout(() => {
-            wx.hideToast();
-          }, 2000)
-        }, 0);
+        wx.showToast({
+          title: '请填写邮箱!',
+          icon: 'none',
+        });
         return false;
       }
       else if (!str.test(that.data.name)) {
-        wx.showLoading();
-        wx.hideLoading();
-        setTimeout(() => {
-          wx.showToast({
-            title: '请填写正确的邮箱',
-            icon: "none",
-          });
-          setTimeout(() => {
-            wx.hideToast();
-          }, 2000)
-        }, 0);
+        wx.showToast({
+          title: '请填写正确的邮箱',
+          icon: "none",
+        });
       }
       else if (that.data.pwd.length == 0) {
-        wx.showLoading();
-        wx.hideLoading();
-        setTimeout(() => {
-          wx.showToast({
-            title: '请填写密码!',
-            icon: 'none',
-          });
-          setTimeout(() => {
-            wx.hideToast();
-          }, 2000)
-        }, 0);
+        wx.showToast({
+          title: '请填写密码!',
+          icon: 'none',
+        });
         return false;
       }
       else {
         wx.request({
           url: requestIP + '/user/AdminLogin',
           data: {
+            avatarUrl: wx.getStorageSync('avatarUrl'),
+            nickName: wx.getStorageSync('nickName'),            
             code: that.data.code,
             account: that.data.name,
             pwd: that.data.pwd
@@ -309,8 +736,7 @@ Page({
                 })           
                 app.globalData.openid = res.data.data.openid
                 app.globalData.userid = res.data.data.userid
-                app.globalData.userstatus = res.data.data.role
-                wx.clearStorage();
+                app.globalData.userstatus = res.data.data.role              
                 wx.setStorage({
                 key: "user",
                 data:
@@ -337,17 +763,10 @@ Page({
                   }
                 }
               })
-              wx.showLoading();
-              wx.hideLoading();
-              setTimeout(() => {
-                wx.showToast({
-                  title: '邮箱或密码错误',
-                  icon: 'none',
-                });
-                setTimeout(() => {
-                  wx.hideToast();
-                }, 2000)
-              }, 0);
+              wx.showToast({
+                title: '邮箱或密码错误',
+                icon: 'none',
+              });
               app.globalData.openid = ""
               app.globalData.userid = ""
             }
@@ -364,17 +783,10 @@ Page({
                   }
                 }
               })
-              wx.showLoading();
-              wx.hideLoading();
-              setTimeout(() => {
-                wx.showToast({
-                  title: '请求失败',
-                  icon: 'none',
-                });
-                setTimeout(() => {
-                  wx.hideToast();
-                }, 2000)
-              }, 0);
+              wx.showToast({
+                title: '请求失败',
+                icon: 'none',
+              });
               app.globalData.openid = ""
               app.globalData.userid = ""
             }
@@ -392,17 +804,10 @@ Page({
                 }
               }
             })
-            wx.showLoading();
-            wx.hideLoading();
-            setTimeout(() => {
-              wx.showToast({
-                title: '服务器异常',
-                icon: 'none',
-              });
-              setTimeout(() => {
-                wx.hideToast();
-              }, 2000)
-            }, 0);
+            wx.showToast({
+              title: '服务器异常',
+              icon: 'none',
+            });
             app.globalData.openid = ""
           },
         })

@@ -91,10 +91,11 @@ Page({
       var that = this;
       app.globalData.nickName = e.detail.userInfo.nickName
       app.globalData.avatarUrl = e.detail.userInfo.avatarUrl
-      
+      wx.setStorageSync('avatarUrl', e.detail.userInfo.avatarUrl)
+      wx.setStorageSync('nickName', e.detail.userInfo.nickName)
       //授权成功后，跳授权tel
       wx.redirectTo({
-        url: '/pages/authorizetel/authorizetel'
+        url: '/pages/login/login'
       })
     } else {
       //用户按了拒绝按钮

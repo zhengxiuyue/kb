@@ -22,8 +22,6 @@
     <text class='cont' decode="{{true}}" style='color:#1DA27F' bindtap='showDialogBtn'>&nbsp;修改密码</text>
   </view>
 
-  <button class='revise' bindtap='exit' >退出登录</button>
-
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>  
 <view class="modal-dialog" wx:if="{{showModal}}">    
   <view class="modal-title">修改密码</view>    
