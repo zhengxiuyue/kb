@@ -22,7 +22,7 @@ Page({
     wx.request({
       url: requestIP + '/user/getVideo',
       data: {
-        scheduleid: 1
+        scheduleid: scheduleid
       },
       method: 'POST',
       header: {
