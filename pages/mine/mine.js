@@ -16,7 +16,8 @@ Page({
     orderList: null,//预约列表
     activity:[],//已报名活动
     Isclassspace1: "none",
-    orderListClass:null
+    orderListClass:null,
+    Isclassspace2:"none"
   },
 
   /**
@@ -259,20 +260,20 @@ Page({
         if (res.data.resultCode == '101') {
           that.setData({
             orderListClass: res.data.data,
-            Isclassspace1: 'none'
+            Isclassspace2: 'none'
           });
 
         } else {
           that.setData({
             orderListClass: "",
-            Isclassspace1: 'block'
+            Isclassspace2: 'block'
           });
         }
       },
       fail(res) {
         that.setData({
           orderListClass: "",
-          Isclassspace1: 'block'
+          Isclassspace2: 'block'
         });
       }
     })

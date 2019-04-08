@@ -73,6 +73,9 @@ Page({
   },
 
   handleClick5({ detail }) {
+    this.setData({
+      visible5: false
+    });
     if (detail.index === 0) {
       this.setData({
         visible5: false
@@ -94,8 +97,7 @@ Page({
           if (res.data.resultCode == '101') {
             wx.setStorageSync("order_status", 1)
               $Message({
-                content: '操作成功！',
-                type: 'success'
+                content: '操作成功！'
               });
 
             setTimeout(function () {
@@ -131,6 +133,9 @@ Page({
   },
 
   handleClick6({ detail }) {
+    this.setData({
+      visible6: false
+    });
     if (detail.index === 0) {
       this.setData({
         visible6: false
@@ -152,8 +157,7 @@ Page({
           if (res.data.resultCode == '101') {
             wx.setStorageSync("order_status", 1)
               $Message({
-                content: '操作成功！',
-                type: 'success'
+                content: '操作成功！'
               });
             setTimeout(function () {
               //跳到页面
@@ -182,6 +186,9 @@ Page({
   },
 
   handleClick7({ detail }) {
+    this.setData({
+      visible7: false
+    });
     if (detail.index === 0) {
       this.setData({
         visible7: false
@@ -203,8 +210,7 @@ Page({
           if (res.data.resultCode == '101') {
             wx.setStorageSync("order_status", 1)
             $Message({
-              content: '操作成功！',
-              type: 'success'
+              content: '操作成功！'
             });
             setTimeout(function () {
               //跳到页面

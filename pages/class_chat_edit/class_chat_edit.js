@@ -146,7 +146,7 @@ Page({
             wx.hideLoading();
             setTimeout(() => {
               wx.showToast({
-                title: '发你成功',
+                title: '发布成功',
                 icon: "success",
               });
               setTimeout(() => {
