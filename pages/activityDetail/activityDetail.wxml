@@ -16,8 +16,9 @@
       </view>
       <view class='content4'>
           <image class='activity-icon' src='/image/activity-price.png'></image>
-          <view>{{activity.ay_originalprice}}元<text class='ay_memberprice' decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;会员价：{{activity.ay_memberprice}}元</text></view>
-          <view class='num'></view>
+          <view>{{activity.ay_originalprice}}元</view>
+          <image class='activity-icon' src='/image/member.png' id = "member"></image>
+          <text class='ay_memberprice' decode='true'>&nbsp;&nbsp;&nbsp;&nbsp;会员价:{{activity.ay_memberprice}}元</text>
       </view>
       <view class='content4'>
           <image class='activity-icon' src='/image/activity-num.png'></image>

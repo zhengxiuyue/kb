@@ -41,7 +41,8 @@
     "pages/schedule_order/schedule_order",
     "pages/activityDetail/activityDetail",
     "pages/activitySignUp/activitySignUp",
-    "pages/activityWebView/activityWebView"
+    "pages/activityWebView/activityWebView",
+    "pages/message/message"
   ],
   "window":{
     "backgroundTextStyle":"dark",

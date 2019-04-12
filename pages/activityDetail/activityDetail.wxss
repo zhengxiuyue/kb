@@ -124,3 +124,12 @@ button {
 .ay_memberprice{
   color: #e54b4d;
 }
+
+.subcontent4{
+  display: flex;
+}
+
+#member{
+  position: relative;
+  left: 40rpx;
+}

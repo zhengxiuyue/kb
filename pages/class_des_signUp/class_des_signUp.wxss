@@ -134,3 +134,15 @@ button {
   display: inline-block;
   margin-left: 60rpx;
 }
+
+.class_des_text1{
+  display: flex;
+}
+
+.member-icon{
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+  top: 8rpx;
+  left: 25rpx;
+}

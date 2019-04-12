@@ -22,7 +22,7 @@ Page({
     startdate: new Date().getFullYear() + "-" + (parseInt(new Date().getMonth()) + 1).toString() + "-" + new Date().getDate(),//起点
     enddate: new Date().getFullYear() + "-" + (parseInt(new Date().getMonth()) + 4).toString() + "-" + new Date().getDate(),//终点
     date1:'today',//预约日期,
-    date:"点击选择预约时间",
+    date: new Date().getFullYear() + "-" + (parseInt(new Date().getMonth()) + 1).toString() + "-" + new Date().getDate(),
     time:"08:00",//预约时间段
     storeMes:"",//门店信息
     storeid:null,
