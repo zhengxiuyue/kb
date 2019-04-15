@@ -8,7 +8,7 @@ Page({
    */
   data: {
     isadmin:0,
-    isstu:1,
+    // isstu:1,
     isauth:1,
     inputtext:"建议填写真实姓名",
     items: [
@@ -112,20 +112,20 @@ Page({
       this.setData({
         inputtext:"请输入邮箱",
         isadmin:1,
-        isstu:1
+        // isstu:1
       })
     }
     else if (con == 2) {
       this.setData({
         isadmin: 0,
-        isstu: 0
+        // isstu: 0
       })
     }
     else if (con == 3){
       this.setData({
         inputtext: "建议填写真实姓名",
         isadmin: 0,
-        isstu: 1,
+        // isstu: 1,
         isauth: 1
       })
     }
@@ -133,285 +133,301 @@ Page({
 
   //获取手机号码
   getPhoneNumber:function(e){  
-    var that = this
-    console.log(e.detail.iv);
-    console.log(e.detail.encryptedData);
-    var avatarUrl = wx.getStorageSync('avatarUrl')
-    var nickName = wx.getStorageSync('nickName')
-    wx.request({
-      url: requestIP + '/user/getPhone',
-      data: {
-        code: that.data.code,
-        encryptedData: e.detail.encryptedData,
-        iv: e.detail.iv,
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-      },
-      success: function (res) {
-        if (res.data.resultCode == "101") {
-          app.globalData.tel = res.data.data
-          wx.setStorageSync('tel', res.data.data)
-          wx.login({
-            success(res) {
-              if (res.code) {
-                that.setData({
-                  newcode: res.code,
-                })
-                console.log("xin" + res.code)
-                if (!avatarUrl | !nickName) {
-                  wx.redirectTo({
-                    url: '/pages/authorize/authorize',
+    console.log(e)
+    if(e.detail.iv){    
+      var that = this
+      console.log(e.detail.iv);
+      console.log(e.detail.encryptedData);
+      var avatarUrl = wx.getStorageSync('avatarUrl')
+      var nickName = wx.getStorageSync('nickName')
+      wx.request({
+        url: requestIP + '/user/getPhone',
+        data: {
+          code: that.data.code,
+          encryptedData: e.detail.encryptedData,
+          iv: e.detail.iv,
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            app.globalData.tel = res.data.data
+            wx.setStorageSync('tel', res.data.data)
+            wx.login({
+              success(res) {
+                if (res.code) {
+                  that.setData({
+                    newcode: res.code,
                   })
-                }
-                //老师
-                else if (that.data.userstatus == 2) {
-                  wx.request({
-                    url: requestIP + '/user/teacherLogin',
-                    data: {
-                      avatarUrl: wx.getStorageSync('avatarUrl'),
-                      nickName: wx.getStorageSync('nickName'),
-                      phone: wx.getStorageSync('tel'),
-                      code: that.data.newcode
-                    },
-                    method: 'POST',
-                    header: {
-                      'content-type': 'application/x-www-form-urlencoded',
-                    },
-                    success: function (res) {
-                      if (res.data.resultCode == "101") {
-                        wx.redirectTo({
-                          url: '/pages/index/T_index',
-                        })
-                        app.globalData.openid = res.data.data.openid
-                        app.globalData.userid = res.data.data.userid
-                        app.globalData.userstatus = res.data.data.role
-
-                        // wx.setStorageSync("avatarUrl", res.data.data.Protrait)
-                        // wx.setStorageSync('name', res.data.data.name)
-                        wx.setStorage({
-                          key: "user",
-                          data:
-                          {
-                            userid: res.data.data.userid,
-                            openid: res.data.data.openid,
-                            userstatus: res.data.data.role,
-                            name: res.data.data.name,
-                            tel: res.data.data.phone,
-                            avatarUrl: res.data.data.Protrait
-                          }
-                        })
-                      }
-                      else if (res.data.resultCode == "213") {
-                        wx.login({
-                          success(res) {
-                            if (res.code) {
-                              that.setData({
-                                code: res.code,
-                              })
-                              app.globalData.openid = null
-                            } else {
-                              console.log('登录失败！' + res.errMsg)
+                  console.log("xin" + res.code)
+                  if (!avatarUrl | !nickName) {
+                    wx.redirectTo({
+                      url: '/pages/authorize/authorize',
+                    })
+                  }
+                  //老师
+                  else if (that.data.userstatus == 2) {
+                    wx.request({
+                      url: requestIP + '/user/teacherLogin',
+                      data: {
+                        avatarUrl: wx.getStorageSync('avatarUrl'),
+                        nickName: wx.getStorageSync('nickName'),
+                        phone: wx.getStorageSync('tel'),
+                        code: that.data.newcode
+                      },
+                      method: 'POST',
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded',
+                      },
+                      success: function (res) {
+                        if (res.data.resultCode == "101") {
+                          wx.redirectTo({
+                            url: '/pages/index/T_index',
+                          })
+                          app.globalData.openid = res.data.data.openid
+                          app.globalData.userid = res.data.data.userid
+                          app.globalData.userstatus = res.data.data.role
+                          wx.setStorage({
+                            key: "user",
+                            data:
+                            {
+                              userid: res.data.data.userid,
+                              openid: res.data.data.openid,
+                              userstatus: res.data.data.role,
+                              nickname: res.data.data.nickname,
+                              tel: res.data.data.phone,
+                              avatarUrl: res.data.data.Protrait
                             }
-                          }
-                        })
-                        wx.showToast({
-                          title: '角色错误',
-                          icon: 'none',
-                        });
-                        app.globalData.openid = ""
-                        app.globalData.userid = ""
-                      }
-                      else if (res.data.resultCode == "211") {
-                        wx.login({
-                          success(res) {
-                            if (res.code) {
-                              that.setData({
-                                code: res.code,
-                              })
-                              app.globalData.openid = null
-                            } else {
-                              console.log('登录失败！' + res.errMsg)
-                            }
-                          }
-                        })
-                        wx.showToast({
-                          title: '用户不存在',
-                          icon: 'none',
-                        });
-                        app.globalData.openid = ""
-                        app.globalData.userid = ""
-                      }
-                      else {
-                        wx.login({
-                          success(res) {
-                            if (res.code) {
-                              that.setData({
-                                code: res.code,
-                              })
-                              app.globalData.openid = null
-                            } else {
-                              console.log('登录失败！' + res.errMsg)
-                            }
-                          }
-                        })
-                        wx.showToast({
-                          title: '请求失败',
-                          icon: 'none',
-                        });
-                        app.globalData.openid = ""
-                        app.globalData.userid = ""
-                      }
-                    },
-                    fail: function () {
-                      wx.login({
-                        success(res) {
-                          if (res.code) {
-                            that.setData({
-                              code: res.code,
-                            })
-                            app.globalData.openid = null
-                          } else {
-                            console.log('登录失败！' + res.errMsg)
-                          }
+                          })
                         }
-                      })
-                      wx.showToast({
-                        title: '服务器异常',
-                        icon: 'none',
-                      });
-                      app.globalData.openid = ""
-                    },
-                  })
-                }
-                //学生
-                if (that.data.userstatus == 3) {
-                  wx.request({
-                    url: requestIP + '/user/studentLogin',
-                    data: {
-                      name: that.data.name,
-                      avatarUrl: wx.getStorageSync('avatarUrl'),
-                      nickName: wx.getStorageSync('nickName'),
-                      phone: wx.getStorageSync('tel'),
-                      code: that.data.newcode
-                    },
-                    method: 'POST',
-                    header: {
-                      'content-type': 'application/x-www-form-urlencoded',
-                    },
-                    success: function (res) {
-                      if (res.data.resultCode == "101") {
-                        wx.redirectTo({
-                          url: '/pages/index/index',
-                        })
-                        app.globalData.openid = res.data.data.openid
-                        app.globalData.userid = res.data.data.userid
-                        app.globalData.userstatus = res.data.data.role
-
-                        wx.setStorage({
-                          key: "user",
-                          data:
-                          {
-                            userid: res.data.data.userid,
-                            openid: res.data.data.openid,
-                            userstatus: res.data.data.role,
-                            name: res.data.data.name,
-                            tel: res.data.data.phone,
-                            avatarUrl: res.data.data.Protrait
-                          }
-                        })
-                      }
-                      else if (res.data.resultCode == "213") {
-                        wx.login({
-                          success(res) {
-                            if (res.code) {
-                              that.setData({
-                                code: res.code,
-                              })
-                              app.globalData.openid = null
-                            } else {
-                              console.log('登录失败！' + res.errMsg)
+                        else if (res.data.resultCode == "213") {
+                          wx.login({
+                            success(res) {
+                              if (res.code) {
+                                that.setData({
+                                  code: res.code,
+                                })
+                                app.globalData.openid = null
+                              } else {
+                                console.log('登录失败！' + res.errMsg)
+                              }
                             }
-                          }
-                        })
-                        wx.showToast({
-                          title: '角色错误',
-                          icon: 'none',
-                        });
-                        app.globalData.openid = ""
-                        app.globalData.userid = ""
-                      }
-                      else if (res.data.resultCode == "212") {
-                        wx.login({
-                          success(res) {
-                            if (res.code) {
-                              that.setData({
-                                code: res.code,
-                              })
-                              app.globalData.openid = null
-                            } else {
-                              console.log('登录失败！' + res.errMsg)
-                            }
-                          }
-                        })
-                        wx.showToast({
-                          title: '用户不存在',
-                          icon: 'none',
-                        });
-                        app.globalData.openid = ""
-                        app.globalData.userid = ""
-                      }
-                      else {
-                        wx.login({
-                          success(res) {
-                            if (res.code) {
-                              that.setData({
-                                code: res.code,
-                              })
-                              app.globalData.openid = null
-                            } else {
-                              console.log('登录失败！' + res.errMsg)
-                            }
-                          }
-                        })
-                        wx.showToast({
-                          title: '请求失败',
-                          icon: 'none',
-                        });
-                        app.globalData.openid = ""
-                        app.globalData.userid = ""
-                      }
-                    },
-                    fail: function () {
-                      wx.login({
-                        success(res) {
-                          if (res.code) {
-                            that.setData({
-                              code: res.code,
-                            })
-                            app.globalData.openid = null
-                          } else {
-                            console.log('登录失败！' + res.errMsg)
-                          }
+                          })
+                          wx.showToast({
+                            title: '角色错误',
+                            icon: 'none',
+                          });
+                          app.globalData.openid = ""
+                          app.globalData.userid = ""
                         }
-                      })
-                      wx.showToast({
-                        title: '服务器异常',
-                        icon: 'none',
-                      });
-                      app.globalData.openid = ""
-                    },
-                  })
-                }   
-              } else {
-                console.log('登录失败！' + res.errMsg)
+                        else if (res.data.resultCode == "211") {
+                          wx.login({
+                            success(res) {
+                              if (res.code) {
+                                that.setData({
+                                  code: res.code,
+                                })
+                                app.globalData.openid = null
+                              } else {
+                                console.log('登录失败！' + res.errMsg)
+                              }
+                            }
+                          })
+                          wx.showToast({
+                            title: '用户不存在',
+                            icon: 'none',
+                          });
+                          app.globalData.openid = ""
+                          app.globalData.userid = ""
+                        }
+                        else {
+                          wx.login({
+                            success(res) {
+                              if (res.code) {
+                                that.setData({
+                                  code: res.code,
+                                })
+                                app.globalData.openid = null
+                              } else {
+                                console.log('登录失败！' + res.errMsg)
+                              }
+                            }
+                          })
+                          wx.showToast({
+                            title: '请求失败',
+                            icon: 'none',
+                          });
+                          app.globalData.openid = ""
+                          app.globalData.userid = ""
+                        }
+                      },
+                      fail: function () {
+                        wx.login({
+                          success(res) {
+                            if (res.code) {
+                              that.setData({
+                                code: res.code,
+                              })
+                              app.globalData.openid = null
+                            } else {
+                              console.log('登录失败！' + res.errMsg)
+                            }
+                          }
+                        })
+                        wx.showToast({
+                          title: '服务器异常',
+                          icon: 'none',
+                        });
+                        app.globalData.openid = ""
+                      },
+                    })
+                  }
+                  //学生
+                  if (that.data.userstatus == 3) {
+                    wx.request({
+                      url: requestIP + '/user/studentLogin',
+                      data: {
+                        avatarUrl: wx.getStorageSync('avatarUrl'),
+                        nickName: wx.getStorageSync('nickName'),
+                        phone: wx.getStorageSync('tel'),
+                        code: that.data.newcode
+                      },
+                      method: 'POST',
+                      header: {
+                        'content-type': 'application/x-www-form-urlencoded',
+                      },
+                      success: function (res) {
+                        if (res.data.resultCode == "101") {
+                          wx.redirectTo({
+                            url: '/pages/index/index',
+                          })
+                          app.globalData.openid = res.data.data.openid
+                          app.globalData.userid = res.data.data.userid
+                          app.globalData.userstatus = res.data.data.role
+
+                          wx.setStorage({
+                            key: "user",
+                            data:
+                            {
+                              userid: res.data.data.userid,
+                              openid: res.data.data.openid,
+                              userstatus: res.data.data.role,
+                              nickName: res.data.data.nickName,
+                              tel: res.data.data.phone,
+                              avatarUrl: res.data.data.Protrait
+                            }
+                          })
+                        }
+                        else if (res.data.resultCode == "213") {
+                          wx.login({
+                            success(res) {
+                              if (res.code) {
+                                that.setData({
+                                  code: res.code,
+                                })
+                                app.globalData.openid = null
+                              } else {
+                                console.log('登录失败！' + res.errMsg)
+                              }
+                            }
+                          })
+                          wx.showToast({
+                            title: '角色错误',
+                            icon: 'none',
+                          });
+                          app.globalData.openid = ""
+                          app.globalData.userid = ""
+                        }
+                        else if (res.data.resultCode == "212") {
+                          wx.login({
+                            success(res) {
+                              if (res.code) {
+                                that.setData({
+                                  code: res.code,
+                                })
+                                app.globalData.openid = null
+                              } else {
+                                console.log('登录失败！' + res.errMsg)
+                              }
+                            }
+                          })
+                          wx.showToast({
+                            title: '用户不存在',
+                            icon: 'none',
+                          });
+                          app.globalData.openid = ""
+                          app.globalData.userid = ""
+                        }
+                        else {
+                          wx.login({
+                            success(res) {
+                              if (res.code) {
+                                that.setData({
+                                  code: res.code,
+                                })
+                                app.globalData.openid = null
+                              } else {
+                                console.log('登录失败！' + res.errMsg)
+                              }
+                            }
+                          })
+                          wx.showToast({
+                            title: '授权失败',
+                            icon: 'none',
+                          });
+                          app.globalData.openid = ""
+                          app.globalData.userid = ""
+                        }
+                      },
+                      fail: function () {
+                        wx.login({
+                          success(res) {
+                            if (res.code) {
+                              that.setData({
+                                code: res.code,
+                              })
+                              app.globalData.openid = null
+                            } else {
+                              console.log('登录失败！' + res.errMsg)
+                            }
+                          }
+                        })
+                        wx.showToast({
+                          title: '服务器异常',
+                          icon: 'none',
+                        });
+                        app.globalData.openid = ""
+                      },
+                    })
+                  }   
+                } else {
+                  console.log('登录失败！' + res.errMsg)
+                }
               }
-            }
-          })
-           
-        }
-        else {
+            })
+            
+          }
+          else {
+            wx.login({
+              success(res) {
+                if (res.code) {
+                  that.setData({
+                    code: res.code,
+                  })
+                } else {
+                  console.log('请求失败！' + res.errMsg)
+                }
+              }
+            })
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
+          }
+        },
+        fail: function () {
           wx.login({
             success(res) {
               if (res.code) {
@@ -419,37 +435,33 @@ Page({
                   code: res.code,
                 })
               } else {
-                console.log('请求失败！' + res.errMsg)
+                console.log('登录失败！' + res.errMsg)
               }
             }
           })
           wx.showToast({
-            title: '请求失败',
+            title: '服务器异常',
             icon: 'none',
           });
-        }
-      },
-      fail: function () {
-        wx.login({
-          success(res) {
-            if (res.code) {
-              that.setData({
-                code: res.code,
-              })
-            } else {
-              console.log('登录失败！' + res.errMsg)
-            }
+        },
+      }) 
+    }
+    else{
+      //用户按了拒绝按钮
+      wx.showModal({
+        title: '警告',
+        content: '您点击了拒绝授权，将无法进入小程序，请授权之后再进入!!!',
+        showCancel: false,
+        confirmText: '返回授权',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击了“返回授权”')
           }
-        })
-        wx.showToast({
-          title: '服务器异常',
-          icon: 'none',
-        });
-      },
-    }) 
-   
-
-  },
+        }
+      })
+      console.log("juejue")
+    }
+  }, 
 
   //获取姓名/邮箱
   nameInput: function (event) {
@@ -472,14 +484,7 @@ Page({
     var con = that.data.userstatus
     //学生登录
     if(con == 3){
-      if (that.data.name.length == 0) {
-        wx.showToast({
-          title: '请填写姓名!',
-          icon: 'none',
-        });
-        return false;
-      }
-      else if (!avatarUrl | !nickName) {
+      if (!avatarUrl | !nickName) {
         wx.redirectTo({
           url: '/pages/authorize/authorize',
         })
@@ -488,7 +493,6 @@ Page({
         wx.request({      
           url: requestIP + '/user/studentLogin',
           data: {
-            name: that.data.name,
             avatarUrl: wx.getStorageSync('avatarUrl'),
             nickName: wx.getStorageSync('nickName'),
             phone: wx.getStorageSync('tel'),
@@ -514,7 +518,7 @@ Page({
                   userid: res.data.data.userid,
                   openid: res.data.data.openid,
                   userstatus: res.data.data.role,
-                  name: res.data.data.name,
+                  nickname: res.data.data.nickname,
                   tel: res.data.data.phone,
                   avatarUrl: res.data.data.Protrait
                 }
@@ -599,7 +603,7 @@ Page({
                   userid: res.data.data.userid,
                   openid: res.data.data.openid,
                   userstatus: res.data.data.role,
-                  name: res.data.data.name,
+                  nickname: res.data.data.nickname,
                   tel: res.data.data.phone,
                   avatarUrl: res.data.data.Protrait
                 }
@@ -744,7 +748,7 @@ Page({
                   userid: res.data.data.userid,
                   openid: res.data.data.openid,
                   userstatus: res.data.data.role,
-                  name: res.data.data.name,
+                  nickname: res.data.data.nickname,
                   tel: res.data.data.phone,
                   avatarUrl: res.data.data.Protrait
                 }

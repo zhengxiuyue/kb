@@ -7,14 +7,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    username:"",
+    nickName:"",
     avatarUrl:"",
     tel:"",
     newpassword: "",
     oldpassword: "",
     newpassword2: "",
     hiddenmodalput: true,
-    showModal: false
+    showModal: false,
+    userstatus:null
   },
 
   /**
@@ -28,8 +29,9 @@ Page({
       success(res) {
         that.setData({
           tel: res.data.tel,
-          username: res.data.name,
+          nickName: wx.getStorageSync('nickName'),
           avatarUrl: res.data.avatarUrl,
+          userstatus: res.data.userstatus,
         })
       }
     })    

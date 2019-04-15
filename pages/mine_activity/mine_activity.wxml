@@ -8,7 +8,8 @@
         <view class="price-wrapper"> 
           <text class="guess-title">{{item.ay_name}}</text>
           <button wx:if='{{item.ay_status == 1}}' class='activityon'>进行中</button>
-          <button wx:if='{{item.ay_status == 0}}' class='activityend'>已结束</button>
+          <button wx:if='{{item.ay_status == 0}}' class='activityend'>已结束</button> 
+          <button wx:if='{{item.ay_status == 2}}' class='activityend'>人数已满</button> 
         </view>
         
         <text class="price">￥{{item.am_price}}</text>

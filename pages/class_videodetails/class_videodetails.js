@@ -7,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    video:[]
+    video:[],
+    space: "/image/space.png",
+    Isvideospace:"none"
 
   },
 
@@ -38,12 +40,15 @@ Page({
         }
         else if (res.data.resultCode == "204") {
           that.setData({
-            notice: [],
-            Isnoticespace: "block"
+            video: [],
+            Isvideospace: "block"
           })
         }
         else {
-          console.log("请求失败");
+          wx.showToast({
+            title: '请求失败',
+            icon: 'none',
+          })
         }
       },
     })

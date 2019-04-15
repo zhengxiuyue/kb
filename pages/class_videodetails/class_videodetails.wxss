@@ -47,3 +47,13 @@
 .video{
   width: 100%;
 }
+
+.classcard{
+  margin: 200rpx auto;
+  text-align: center;
+}
+
+.space{
+  height: 250rpx;
+  width: 250rpx;
+}

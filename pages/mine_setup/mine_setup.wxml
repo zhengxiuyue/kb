@@ -10,7 +10,7 @@
   <view class='infm'>
     <text class='title'>姓名
     </text>
-    <text class='cont' decode="{{true}}">&nbsp;{{username}}</text>
+    <text class='cont' decode="{{true}}">&nbsp;{{nickName}}</text>
   </view>
 
   <view class='infm'>
@@ -18,7 +18,7 @@
     <text class='cont' decode="{{true}}">&nbsp;{{tel}}</text>
   </view>
 
-  <view class='infm1'>
+  <view class='infm1' wx:if='{{userstatus == 1}}'>
     <text class='cont' decode="{{true}}" style='color:#1DA27F' bindtap='showDialogBtn'>&nbsp;修改密码</text>
   </view>
 
@@ -40,10 +40,11 @@
       </view>      
       
       <view class="modal-input">        
-      <input placeholder-class="input-holder" type="password" maxlength="10" bindinput="passwordInput2" class="input" placeholder="确认密码" value='{{newpassword2}}'placeholder-style='font-size:34rpx;' cursor-spacing="50">
+        <input placeholder-class="input-holder" type="password" maxlength="10" bindinput="passwordInput2" class="input" placeholder="确认密码" value='{{newpassword2}}'placeholder-style='font-size:34rpx;' cursor-spacing="50">
       </input>      
-      </view>      
+      </view>    
     </view>    
+
     <view class="modal-footer">      
       <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>              <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>         </view>  
   </view>

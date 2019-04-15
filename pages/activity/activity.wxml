@@ -34,3 +34,10 @@
         </i-spin>
     </i-grid-item>
 </i-grid>
+
+<view class='classcard' style='display:{{Isactivityspace}}'>
+  <image src='{{space}}' class='space'></image>
+  <view>  
+    <text style='font-size:30rpx;'>还没有活动</text>
+  </view>
+</view>

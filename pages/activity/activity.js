@@ -10,6 +10,8 @@ Page({
     pageIndex: 1,//当前请求页号
     xiala: '',
     activityList:[],//活动列表
+    Isactivityspace:'none',
+    space: "/image/space.png"
   },
 
   /**
@@ -110,12 +112,22 @@ Page({
           })
         }
         else if (res.data.resultCode == "204") {
-          that.setData({
-            xiala: "已经加载出全部"
-          })
+          if (that.data.pageIndex == 1){
+            that.setData({
+              Isactivityspace: "block"
+            })
+          }
+          else{
+            that.setData({
+              xiala: "已经加载出全部"
+            })
+          }
         }
         else {
-          console.log("请求失败");
+          wx.showToast({
+            title: '请求失败',
+            icon: 'none',
+          })
         }
       },
     })

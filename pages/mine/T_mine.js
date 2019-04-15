@@ -8,7 +8,7 @@ Page({
    */
   data: {
     current: 1,
-    username: "",
+    nickName: "",
     itemnow: [],//定义变长数组课堂信息
     itemhistory: [],//定义变长数组课堂信息
     Isclassspace: "none",
@@ -39,7 +39,7 @@ Page({
         that.setData({
           avatarUrl: res.data.avatarUrl,
           userstatus: userstatus,
-          username: res.data.name
+          nickName: wx.getStorageSync('nickName'),
         })
       }
     })

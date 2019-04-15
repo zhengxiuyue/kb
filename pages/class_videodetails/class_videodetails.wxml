@@ -12,3 +12,10 @@
   </view>
   <view style='padding-top:30rpx;font-size:30rpx;'>2018/09/04</view>
 </view> -->
+
+<view class='classcard' style='display:{{Isvideospace}}'>
+  <image src='{{space}}' class='space'></image>
+  <view>  
+    <text style='font-size:30rpx;'>还没有视频</text>
+  </view>
+</view>

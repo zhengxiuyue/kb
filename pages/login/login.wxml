@@ -10,10 +10,10 @@
   </radio-group>
 </view>
 
-<view class='infm' style="{{isstu == 1 ? 'display: block;': 'display: none;'}}">
+<!-- <view class='infm' style="{{isstu == 1 ? 'display: block;': 'display: none;'}}">
   <image src='/image/user.png' class='icon2'></image>
   <input class='ipt'  value='{{name}}' bindinput='nameInput' placeholder='{{inputtext}}' placeholder-class='placeholder' cursor-spacing="50"></input>
-</view>
+</view> -->
 
 <view class='infm' style="{{isadmin == 1 ? 'display: block;': 'display: none;'}}" >
   <image src='/image/password.png' class='icon2'></image>

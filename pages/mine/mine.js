@@ -8,7 +8,7 @@ Page({
    */
   data: {
     current: 1,
-    username:"",
+    nickName:"",
     avatarUrl:"",
     item: [],//定义变长数组课堂信息
     Isclassspace:"none",
@@ -36,13 +36,14 @@ Page({
     // }).exec();
 
     var userstatus = app.globalData.userstatus
+    
     wx.getStorage({
       key: "user",
       success(res){
         that.setData({
           avatarUrl: res.data.avatarUrl,
           userstatus: userstatus,
-          username: res.data.name
+          nickName: wx.getStorageSync('nickName'),
         })        
       }
     })
