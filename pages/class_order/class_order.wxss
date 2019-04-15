@@ -73,7 +73,7 @@ list-style: none;
   height: 40rpx;
   float: left;
   position: relative;
-  top: 15rpx;
+  top: 8rpx;
 }
 
 .tipsText{

@@ -26,6 +26,13 @@ list-style: none;
   margin-right: 20rpx;
 }
 
+.titleImg1{
+  width:30rpx;
+  height:30rpx;
+  position:relative;
+  top: 20rpx;  
+}
+
 .title-text{
  position: relative;
  top: -5rpx;
@@ -73,7 +80,7 @@ list-style: none;
   height: 40rpx;
   float: left;
   position: relative;
-  top: 15rpx;
+  top: 8rpx;
 }
 
 .tipsText{
@@ -141,6 +148,11 @@ color:#2a9dd1 !important;
 /*.picker{
   color: #666666;
 }*/
+
+.picker{
+  display: flex;
+  justify-content: space-between;
+}
 
 
 .header_tips{

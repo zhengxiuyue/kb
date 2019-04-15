@@ -78,7 +78,7 @@ list-style: none;
   height: 40rpx;
   float: left;
   position: relative;
-  top: 15rpx;
+  top: 8rpx;
 }
 
 .tipsText{
@@ -120,10 +120,6 @@ list-style: none;
   height: 60rpx;
   margin:20rpx 45% 0rpx 80rpx;
   border-bottom:4rpx solid #dddee1;
-}
-
-#disabled{
-  color: #666666;
 }
 
 #location{

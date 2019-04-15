@@ -78,8 +78,8 @@
   <input class='ipt' bindinput='usernameInput' placeholder='请输入姓名' value='{{username}}'placeholder-class='placeholder'></input>
 </view>
 
-<view class='infm'>
-  <input class='ipt' type='number' value='{{tel}}' bindinput='telInput' placeholder='请输入手机号码' placeholder-class='placeholder'></input>
+<view class='infm' id = "disabled">
+  <input class='ipt' disabled = "true" type='number' value='{{tel}}' bindinput='telInput' placeholder='请输入手机号码' placeholder-class='placeholder'></input>
 </view>
 
 <view class='infm' style='display:{{auth}}'>

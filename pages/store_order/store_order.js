@@ -22,7 +22,7 @@ Page({
     startdate: new Date().getFullYear() + "-" + (parseInt(new Date().getMonth()) + 1).toString() + "-" + new Date().getDate(),//起点
     enddate: new Date().getFullYear() + "-" + (parseInt(new Date().getMonth()) + 4).toString() + "-" + new Date().getDate(),//终点
     date1:'today',//预约日期,
-    date:"点击选择预约时间",
+    date: new Date().getFullYear() + "-" + (parseInt(new Date().getMonth()) + 1).toString() + "-" + new Date().getDate(),
     time:"08:00",//预约时间段
     storeMes:"",//门店信息
     storeid:null,
@@ -313,7 +313,7 @@ Page({
       success(res) {
         console.log(res.data.resultCode + res.data.data);
         if (res.data.resultCode == '101') {
-          $Message({
+          /*$Message({
             content: '预约成功！',
           });
           setTimeout(function () {
@@ -321,8 +321,10 @@ Page({
             wx.redirectTo({
               url: '/pages/more/more',
             })
-          }, 2000)
-
+          }, 2000)*/
+          wx.navigateTo({
+            url: '/pages/message/message?flag=1',
+          })
         } else if (res.data.resultCode == '216') {
           wx.showToast({
             title: '验证码错误!',

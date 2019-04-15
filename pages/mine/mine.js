@@ -16,7 +16,8 @@ Page({
     orderList: null,//预约列表
     activity:[],//已报名活动
     Isclassspace1: "none",
-    orderListClass:null
+    orderListClass:null,
+    Isclassspace2:"none"
   },
 
   /**
@@ -24,11 +25,16 @@ Page({
    */
   onLoad: function (options) {
     app.editTabBar();
-
     //page高度加高
     //创建节点选择器
     // var query = wx.createSelectorQuery();    //选择id    
     var that = this;
+    if(that.options.current)
+    {
+      that.setData({
+        current: that.options.current
+      })
+    }
     // query.select('.page').boundingClientRect(function (rect) {      // 
     //   that.setData({
     //     windowHeight: rect.height + 90 + 'px'
@@ -260,20 +266,20 @@ Page({
         if (res.data.resultCode == '101') {
           that.setData({
             orderListClass: res.data.data,
-            Isclassspace1: 'none'
+            Isclassspace2: 'none'
           });
 
         } else {
           that.setData({
             orderListClass: "",
-            Isclassspace1: 'block'
+            Isclassspace2: 'block'
           });
         }
       },
       fail(res) {
         that.setData({
           orderListClass: "",
-          Isclassspace1: 'block'
+          Isclassspace2: 'block'
         });
       }
     })

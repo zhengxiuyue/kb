@@ -1,4 +1,6 @@
 /**app.wxss**/
+@import 'weui.wxss';
+
 .page{
   display: flex;
   flex-direction: column;
@@ -195,6 +197,9 @@ top: 20rpx;
 }
 
 .member_price{
-  font-size: 30rpx;
   color: red;
+}
+
+#disabled{
+  color: #666666;
 }

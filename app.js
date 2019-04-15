@@ -188,10 +188,8 @@ App({
     city: "",//市
     areaname: "",//区
     storename: '',//门店名称
-    //requestIP: "http://localhost:8080/happyschedule",
-    requestIP: "http://192.168.43.79:8181/happyschedule",
-    //requestIP: "http://cmvb2y.natappfree.cc/happyschedule",
-    // requestIP: "http://rwpwqu.natappfree.cc/happyschedule",
+    requestIP: "http://localhost:8080/happyschedule",
+
    
     //学生角色
     tabBar: {

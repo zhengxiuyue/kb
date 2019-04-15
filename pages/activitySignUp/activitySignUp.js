@@ -83,7 +83,7 @@ Page({
                   signType: re.data.data.signType,
                   paySign: re.data.data.paySign,
                   'success': function (res) {
-                    $Message({
+                    /*$Message({
                       content: '报名成功！',
                     });
                     var ay_id = that.data.ay_id;
@@ -92,7 +92,10 @@ Page({
                       wx.navigateTo({
                         url: '/pages/activityDetail/activityDetail?ay_id=' + ay_id,
                       })
-                    }, 2000)
+                    }, 2000)*/
+                    wx.navigateTo({
+                      url: '/pages/message/message?flag=4',
+                    })
                   },
                   'fail': function (res) {
                     if (res.errMsg == "requestPayment:fail cancel") {

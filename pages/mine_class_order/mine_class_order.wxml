@@ -4,8 +4,8 @@
     <i-tab key="tab2" title="门店预约"></i-tab>
     <i-tab key="tab1" title="课程预约"></i-tab>
 </i-tabs>
-
-      <view class='content' wx:for="{{orderList}}" data-index='{{index}}' wx:key="item.classid" style='display:{{current == "tab1"? "block":"none"}}'>
+<view style='display:{{current == "tab1"? "block":"none"}}'>
+      <view class='content' wx:for="{{orderList}}" data-index='{{index}}' wx:key="item.classid">
 
       <view class='content1'>
           <view class = 'content1-left'>{{item.coursename}}</view>
@@ -30,8 +30,10 @@
     <text style='font-size:30rpx;'>还没有预约</text>
   </view>
 </view>
+</view>
 
-<view class='content'  wx:for="{{orderListClass}}" data-index='{{index}}' wx:key="item.ares_id" style='display:{{current == "tab2"? "block":"none"}}' >
+<view style='display:{{current == "tab2"? "block":"none"}}' >
+<view class='content'  wx:for="{{orderListClass}}" data-index='{{index}}' wx:key="item.ares_id" >
 
       <view class='content1'>
           <view class = 'content1-left'>{{item.storename}}</view>
@@ -48,4 +50,13 @@
       <view class = "content3">{{item.areas_createtime}}</view>
 
       </view>
+
+<view class='classcard' style='display:{{Isclassspace2}}'>
+  <image src='/image/space.png' class='space'></image>
+    <view>  
+    <text style='font-size:30rpx;'>还没有预约</text>
+  </view>
+</view>
+
+</view>
 

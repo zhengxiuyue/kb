@@ -9,10 +9,9 @@
     <view class='infm'>
     <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
     <view class="picker">
-       {{array[index]}}
+       {{array[index]}}<image src='/image/dropDown.png' class='titleImg1'></image>
     </view>
   </picker>
-
       <view class='header_tips'><image src='../../image/helpCourse.png' class='header-img'></image><text decode="true" class='header_text'>&nbsp;点击选择门店</text></view>
 </view>
 
@@ -25,7 +24,7 @@
 
   <view class='class'> 
     <view class='class_des_text'>
-      <text>{{locationList[index]}}</text></view>
+      <text style='color:#666'>{{locationList[index]}}</text></view>
   </view>
 
   <!--个人信息-->
@@ -43,10 +42,10 @@
     bindchange="bindDateChange"
   >
     <view class="picker">
-     {{date}}
+     {{date}}<image src='/image/dropDown.png' class='titleImg1'></image>
     </view>
   </picker>
-    <view class='header_tips'><image src='../../image/helpCourse.png' class='header-img'></image><text decode="true" class='header_text'>&nbsp;仅能预约近三个月内</text></view>
+    <view class='header_tips'><image src='../../image/helpCourse.png' class='header-img'></image><text decode="true" class='header_text'>&nbsp;点击选择预约时间，仅能预约近三个月内</text></view>
 </view>
 
 <view style='height:20rpx;'></view>
@@ -64,13 +63,13 @@
   <input class='ipt' bindinput='usernameInput' placeholder='请输入姓名' value='{{username}}'placeholder-class='placeholder'></input>
 </view>
 
-<view class='infm'>
-  <input class='ipt' type='number' value='{{tel}}' bindinput='telInput' placeholder='请输入手机号码' placeholder-class='placeholder'></input>
+<view class='infm' id = "disabled">
+  <input class='ipt' type='number' disabled = "true" value='{{tel}}' bindinput='telInput' placeholder='请输入手机号码' placeholder-class='placeholder'></input>
 </view>
 
 <view class='infm' style='display:{{auth}}'>
   <input class='ipt' type='number' value='{{authcode}}' bindinput='authcodeInput' placeholder='请输入验证码' placeholder-class='placeholder' >
-  </input><button disabled='{{isClick}}' bindtap='gainAuthCodeAction' class='btn'>{{time}}</button> 
+  </input><button disabled='{{isClick}}' bindtap='gainAuthCodeAction' class='btn'>{{time1}}</button> 
 </view>
 
 <view class='infm'>

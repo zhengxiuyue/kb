@@ -13,6 +13,10 @@ Component({
       type: "String",
       value: "",
     },
+    Isclassspace2: {
+      type: "String",
+      value: "",
+    },
     orderListClass: {
       type: "Array",
       value: "",
