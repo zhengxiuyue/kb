@@ -321,7 +321,7 @@ Page({
                       signType: re.data.data.signType,
                       paySign: re.data.data.paySign,
                       'success': function (res) {
-                        $Message({
+                        /*$Message({
                           content: '预约成功！',
                         });
                         setTimeout(function () {
@@ -329,7 +329,10 @@ Page({
                           wx.redirectTo({
                             url: '/pages/more/more',
                           })
-                        }, 2000)
+                        }, 2000)*/
+                        wx.navigateTo({
+                          url: '/pages/message/message?flag=2',
+                        })
                       },
                       'fail': function (res) {
                         if (res.errMsg == "requestPayment:fail cancel") {

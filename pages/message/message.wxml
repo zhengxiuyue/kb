@@ -1,3 +1,14 @@
-<!--pages/message/message.wxml-->
-<view class='page'>
+<view class="page">
+    <view class="weui-msg">
+        <view class="weui-msg__icon-area">
+            <icon type="success" size="93"></icon>
+        </view>
+        <view class="weui-msg__text-area">
+            <view class="weui-msg__title">{{message}}</view>
+            <view class="weui-msg__desc" style='display:{{flag == 1? "block":"none"}}' >门店预约进度可前往<navigator url="/pages/mine/mine?current=2" class="weui-msg__link">预约信息</navigator>查看</view>
+            <view class="weui-msg__desc" style='display:{{flag == 2? "block":"none"}}' >课程预约进度可前往<navigator url="/pages/mine/mine?current=2" class="weui-msg__link">预约信息</navigator>查看</view>
+            <view class="weui-msg__desc" style='display:{{flag == 3? "block":"none"}}' >课程报名成功可前往<navigator url="/pages/mine/mine" class="weui-msg__link">当前课堂</navigator>查看</view>
+            <view class="weui-msg__desc" style='display:{{flag == 4? "block":"none"}}' >活动报名进度可前往<navigator url="/pages/mine/mine?current=3" class="weui-msg__link">已报名活动</navigator>查看</view>
+        </view>
+    </view>
 </view>

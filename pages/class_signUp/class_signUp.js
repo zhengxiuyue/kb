@@ -235,7 +235,7 @@ Page({
                   signType: re.data.data.signType,
                   paySign: re.data.data.paySign,
                   'success': function (res) {
-                    $Message({
+                    /*$Message({
                       content: '报名成功！',
                     });
                     setTimeout(function () {
@@ -243,7 +243,10 @@ Page({
                       wx.redirectTo({
                         url: '/pages/class/class?classid=' + that.data.classid,
                       })
-                    }, 2000)
+                    }, 2000)*/
+                    wx.navigateTo({
+                      url: '/pages/message/message?flag=3',
+                    })
                   },
                   'fail': function (res) {
                     if (res.errMsg == "requestPayment:fail cancel") {

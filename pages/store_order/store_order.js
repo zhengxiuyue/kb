@@ -313,7 +313,7 @@ Page({
       success(res) {
         console.log(res.data.resultCode + res.data.data);
         if (res.data.resultCode == '101') {
-          $Message({
+          /*$Message({
             content: '预约成功！',
           });
           setTimeout(function () {
@@ -321,8 +321,10 @@ Page({
             wx.redirectTo({
               url: '/pages/more/more',
             })
-          }, 2000)
-
+          }, 2000)*/
+          wx.navigateTo({
+            url: '/pages/message/message?flag=1',
+          })
         } else if (res.data.resultCode == '216') {
           wx.showToast({
             title: '验证码错误!',

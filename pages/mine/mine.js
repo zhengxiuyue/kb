@@ -25,11 +25,16 @@ Page({
    */
   onLoad: function (options) {
     app.editTabBar();
-
     //page高度加高
     //创建节点选择器
     // var query = wx.createSelectorQuery();    //选择id    
     var that = this;
+    if(that.options.current)
+    {
+      that.setData({
+        current: that.options.current
+      })
+    }
     // query.select('.page').boundingClientRect(function (rect) {      // 
     //   that.setData({
     //     windowHeight: rect.height + 90 + 'px'
