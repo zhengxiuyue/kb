@@ -97,16 +97,25 @@ Page({
     that.getMyInfo();
   },
 
-  getMyInfo:function(e){
+  getMyInfo: function (e) {
     var that = this;
     wx.getStorage({
       key: 'user',
       success(res) {
         console.log(res.data)
         that.setData({
-          username: res.data.nickName,
+          //username: res.data.nickName,
           primarytel: res.data.tel,
           tel: res.data.tel
+        })
+      }
+    })
+    wx.getStorage({
+      key: 'nickName',
+      success(res) {
+        console.log(res.data)
+        that.setData({
+          username: res.data
         })
       }
     })

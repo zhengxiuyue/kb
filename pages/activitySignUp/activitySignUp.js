@@ -37,8 +37,18 @@ Page({
       success(res) {
         console.log(res.data)
         that.setData({
-          username: res.data.nickName,
+          //username: res.data.nickName,
+          primarytel: res.data.tel,
           tel: res.data.tel
+        })
+      }
+    })
+    wx.getStorage({
+      key: 'nickName',
+      success(res) {
+        console.log(res.data)
+        that.setData({
+          username: res.data
         })
       }
     })
@@ -65,6 +75,7 @@ Page({
     wx.request({
       url: requestIP + '/activity/signup',
       data: {
+        username:that.data.username,
         id: that.data.ay_id
       },
       method: 'POST',
