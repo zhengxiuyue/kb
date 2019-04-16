@@ -179,7 +179,7 @@ App({
 
   globalData: {
     openid: "",
-    userid: "0137da84b68111e8ab8e00163e00299d",//学生 0137da84b68111e8ab8e00163e00299d 老师039cd505e50911e8ab8e00163e00299d 助教 12459ec8a77a11e8ab8e00163e00299d 
+    userid: "",//学生 0137da84b68111e8ab8e00163e00299d 老师039cd505e50911e8ab8e00163e00299d 助教 12459ec8a77a11e8ab8e00163e00299d 
     userInfo: null,
     userstatus: "3",//用户身份
     code: "",
@@ -188,7 +188,7 @@ App({
     city: "",//市
     areaname: "",//区
     storename: '',//门店名称
-    requestIP: "http://localhost:8080/happyschedule",
+    requestIP: "https://curriculum.50fun.cn/happyschedule",
 
    
     //学生角色

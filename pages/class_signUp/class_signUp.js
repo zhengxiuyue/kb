@@ -104,7 +104,7 @@ Page({
       success(res) {
         console.log(res.data)
         that.setData({
-          username: res.data.name,
+          username: res.data.nickName,
           primarytel: res.data.tel,
           tel: res.data.tel
         })

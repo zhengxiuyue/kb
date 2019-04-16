@@ -7,7 +7,7 @@
   </view>
 <view class='infm'>
 
-  <input class='ipt' id = "disabled" disabled = "true" placeholder='请输入姓名' value='{{username}}'placeholder-class='placeholder'></input>
+  <input class='ipt' id = "disabled" disabled = "true" placeholder='请输入姓名' value='{{username}}' bindinput='usernameInput' placeholder-class='placeholder' ></input>
 </view>
 
 <view class='infm' id = "disabled">

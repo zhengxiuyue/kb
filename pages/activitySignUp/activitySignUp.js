@@ -37,17 +37,30 @@ Page({
       success(res) {
         console.log(res.data)
         that.setData({
-          username: res.data.name,
+          username: res.data.nickName,
           tel: res.data.tel
         })
       }
     })
   },
 
+  //获取用户名
+  usernameInput: function (event) {
+    this.setData({ username: event.detail.value })
+  },
+
   //报名
   signUp: function (e) {
-
     let that = this;
+    if (that.data.username.length == 0) {
+      wx.showToast({
+        title: '请填写姓名!',
+        icon: 'none',
+        duration: 1000
+      })
+      return false;
+    }
+    else{
 
     wx.request({
       url: requestIP + '/activity/signup',
@@ -155,5 +168,6 @@ Page({
 
       }
     })
+    }
   }
 });
