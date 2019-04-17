@@ -2,7 +2,6 @@
   "pages":[
     "pages/login/login",
     "pages/authorize/authorize",
-    "pages/authorizetel/authorizetel",
     "pages/index/index",
     "pages/activity/activity",
     "pages/mine_activity/mine_activity",
@@ -23,7 +22,6 @@
     "pages/class_students/class_students",
     "pages/class_chat/class_chat",
     "pages/class_signin/class_signin",
-    "pages/class_signinadm/class_signinadm",
     "pages/class_notice/class_notice",
     "pages/class_video/class_video",
     "pages/class_videodetails/class_videodetails",

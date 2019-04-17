@@ -38,6 +38,12 @@ Component({
       wx.switchTab({
         url: '/pages/more/more',
       })
+    },
+    goactivityDetail:function(e){
+      var ayid = e.currentTarget.dataset.ayid
+      wx.navigateTo({
+        url: '/pages/activityDetail/activityDetail?ay_id='+ayid,
+      })
     }
   },
 

@@ -190,7 +190,6 @@ App({
     storename: '',//门店名称
     // requestIP: "http://localhost:8080/happyschedule",
     requestIP:'https://curriculum.50fun.cn/happyschedule',
-   
     //学生角色
     tabBar: {
       color: "black",
