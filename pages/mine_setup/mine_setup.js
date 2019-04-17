@@ -28,11 +28,21 @@ Page({
       key: "user",
       success(res) {
         that.setData({
-          tel: res.data.tel,
-          nickName: wx.getStorageSync('nickName'),
-          avatarUrl: res.data.avatarUrl,
+          tel: res.data.tel,          
+          avatarUrl: wx.getStorageSync('avatarUrl'),
           userstatus: res.data.userstatus,
         })
+        if (res.data.userstatus == 3) 
+        {
+          that.setData({
+            nickName: wx.getStorageSync('nickName')
+          })
+        }
+        else{
+          that.setData({
+            nickName: res.data.name,
+          })
+        }
       }
     })    
   },

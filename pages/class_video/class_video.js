@@ -15,6 +15,10 @@ Component({
       type: "Array",
       value: "",
     },
+    Issignspace: {
+      type: "String",
+      value: "",
+    }//是否204
 
   },
 
@@ -28,6 +32,7 @@ Component({
       image: "https://i1.mifile.cn/a4/xmad_15278351912522_frJQc.jpg",//封面图
       duration_raw: 74//秒数
     },
+    space: "/image/space.png",
 
     classList:[{
       coursename:"点歌单",

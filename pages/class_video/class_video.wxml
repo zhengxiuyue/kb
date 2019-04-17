@@ -1,10 +1,16 @@
 <!--pages/class_video/class_video.wxml-->
-<wxs src="../more/more.wxs" module="tools" />
-<view class='classcard1' bindtap='govideo' wx:for = "{{sign}}" wx:key="" data-scheduleid='{{item.scheduleid}}'>
+<view class='classcard1' bindtap='govideo' style="{{Issignspace == 'none' ? 'display: bloak;': 'display: none;'}}" wx:for = "{{sign}}" wx:key="" data-scheduleid='{{item.scheduleid}}'>
   <view class='classtop1'>
     <text class='classname1'>第{{index + 1}}节</text>
   </view>
   <text class='classgrate'>时间：{{item.date}}</text>
   <text class='classinfm1' decode="{{true}}"></text>
+</view>
+
+<view class='classcard' style='display:{{Issignspace}}'>
+  <image src='{{space}}' class='space'></image>
+  <view>  
+    <text style='font-size:30rpx;'>还没有视频信息</text>
+  </view>
 </view>
 

@@ -51,7 +51,11 @@ Component({
     firstPerson: {
       type: "String",
       value: "",
-    },//老师签到框   
+    },//老师签到框
+    Issignspace:{
+      type: "String",
+      value: "",
+    }//是否204
   },
 
   /**

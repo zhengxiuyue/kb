@@ -47,7 +47,7 @@ Page({
       key: "user",
       success(res){
         that.setData({
-          avatarUrl: res.data.avatarUrl,
+          avatarUrl: wx.getStorageSync('avatarUrl'),
           userstatus: userstatus,
           nickName: wx.getStorageSync('nickName'),
         })        

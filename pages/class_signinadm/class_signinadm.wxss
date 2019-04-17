@@ -1,6 +1,7 @@
-/* pages/class_video/class_video.wxss */
+/* pages/class_signinadm/class_signinadm.wxss */
+/* 列表 */
 .classcard1{
-  height: 120rpx;
+  height: 320rpx;
   margin: 30rpx 40rpx;
   padding: 20 40rpx;
   border-radius: 2rpx;
@@ -51,8 +52,8 @@
 .classgrate{
   font-weight: bold; 
   position: absolute;
-  top: 60rpx;
-  left: 280rpx;
+  top: 38rpx;
+  right: 20rpx;
   font-size:32rpx;
   color: #464c5b;
 }
@@ -77,3 +78,13 @@
 }
 
 
+/* 为空 */
+.classcard{
+  margin: 100rpx auto;
+  text-align: center;
+}
+
+.space{
+  height: 250rpx;
+  width: 250rpx;
+}

@@ -7,7 +7,7 @@
     <!-- 已经上完的课-->
     <block wx:for="{{sign}}" wx:key="" wx:if = "{{time > (item.date+' '+item.endpoint) || (time > (item.date+' '+item.startpoint) && time <= (item.date+' '+item.endpoint) && item.sign_id != null) }}">   
       <view class='weui-cell-list'>     
-      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+      <view class='weui-cell-name'>第{{index + 1}}节</view>    
         <view class='weui-cell-circle'></view>       
         <view class='weui-cell-line'>         
           <view class='weui-cell-time'>
@@ -31,7 +31,7 @@
     <!-- 正在上的课 -->
     <block wx:for="{{sign}}" wx:key="" wx:if = "{{time > (item.date+' '+item.startpoint) && time <= (item.date+' '+item.endpoint) && item.sign_id == null}}">   
       <view class='weui-cell-list'>     
-      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+      <view class='weui-cell-name'>第{{index + 1}}节</view>    
         <view class='weui-cell-circle'></view>       
         <view class='weui-cell-line'>         
           <view class='weui-cell-time'>
@@ -55,7 +55,7 @@
     <!-- 还未到时间的课 -->
     <block wx:for="{{sign}}" wx:key="" wx:if = "{{time < (item.date+' '+item.startpoint)}}">   
       <view class='weui-cell-list'>     
-      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+      <view class='weui-cell-name'>第{{index + 1}}节</view>    
         <view class='weui-cell-circle'></view>       
         <view class='weui-cell-line'>         
           <view class='weui-cell-time'>
@@ -83,7 +83,7 @@
     <!-- 已上完的课 -->
     <block wx:for="{{sign}}" wx:key="" wx:if = "{{time > (item.date+' '+item.endpoint) || (time > (item.date+' '+item.startpoint) && time <= (item.date+' '+item.endpoint) && item.sign_id != null) }}">   
       <view class='weui-cell-list'>     
-      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+      <view class='weui-cell-name'>第{{index + 1}}节</view>    
         <view class='weui-cell-circle'></view>       
         <view class='weui-cell-line-tea'>         
           <view class='weui-cell-time'>
@@ -117,7 +117,7 @@
     <!-- 正在上的课 -->
     <block wx:for="{{sign}}" wx:key="" wx:if = "{{endFormatTime > (item.date+' '+item.startpoint) && endFormatTime2 <= (item.date+' '+item.endpoint) }}">   
       <view class='weui-cell-list'>     
-      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+      <view class='weui-cell-name'>第{{index + 1}}节</view>    
         <view class='weui-cell-circle'></view>       
         <view class='weui-cell-line-tea'>         
           <view class='weui-cell-time'>
@@ -158,7 +158,7 @@
     <!-- 还未上课的课 -->
     <block wx:for="{{sign}}" wx:key="" wx:if = "{{endFormatTime < (item.date+' '+item.startpoint)}}">   
       <view class='weui-cell-list'>     
-      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+      <view class='weui-cell-name'>第{{index + 1}}节</view>    
         <view class='weui-cell-circle'></view>       
         <view class='weui-cell-line-tea' style='height:110rpx;'>         
           <view class='weui-cell-time'>
@@ -225,14 +225,14 @@
 </view>
 
 <!-- 助教角色 -->
-<view wx:if="{{userstatus==1}}" class='sign1'>
+<view wx:if="{{userstatus==1}}" class='sign1' style="{{Issignspace == 'none' ? 'display: bloak;': 'display: none;'}}">
   <view class='instruction'>提示：上课前半个小时，下课后半个小时可以签到签退</view>
    <view class='weui-cell-third' style='display:{{gosignteamore == 0? "block":"none"}};'>  
     
     <!-- 已上完的课 -->
     <block wx:for="{{sign}}" wx:key="" wx:if = "{{time > (item.date+' '+item.endpoint) || (time > (item.date+' '+item.startpoint) && time <= (item.date+' '+item.endpoint) && item.sign_id != null) }}">   
       <view class='weui-cell-list'>     
-      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+      <view class='weui-cell-name'>第{{index +1}}节</view>    
         <view class='weui-cell-circle'></view>       
         <view class='weui-cell-line-tea'>         
           <view class='weui-cell-time'>
@@ -268,7 +268,7 @@
     <!-- 正在上的课 -->
     <block wx:for="{{sign}}" wx:key="" wx:if = "{{endFormatTime > (item.date+' '+item.startpoint) && endFormatTime2 <= (item.date+' '+item.endpoint) }}">   
       <view class='weui-cell-list'>     
-      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+      <view class='weui-cell-name'>第{{index +1}}节</view>    
         <view class='weui-cell-circle'></view>       
         <view class='weui-cell-line-tea'>         
           <view class='weui-cell-time'>
@@ -312,7 +312,7 @@
     <!-- 还未上课的课 -->
     <block wx:for="{{sign}}" wx:key="" wx:if = "{{endFormatTime < (item.date+' '+item.startpoint)}}">   
       <view class='weui-cell-list'>     
-      <view class='weui-cell-name'>第{{item.classnum}}节</view>    
+      <view class='weui-cell-name'>第{{index + 1}}节</view>    
         <view class='weui-cell-circle'></view>       
         <view class='weui-cell-line-tea' style='height:110rpx;'>         
           <view class='weui-cell-time'>
@@ -375,6 +375,13 @@
     <view>  
       <text style='font-size:30rpx;'>没有学生</text>
     </view>
+  </view>
+</view>
+
+<view class='classcard' style='display:{{Issignspace}}'>
+  <image src='{{space}}' class='space'></image>
+  <view>  
+    <text style='font-size:30rpx;'>还没有签到信息</text>
   </view>
 </view>
 

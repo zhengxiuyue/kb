@@ -22,6 +22,7 @@ Page({
     ],//课堂签到
     Isnoticespace: "none",
     Ischatspace: "none",
+    Issignspace:"none",
     isstudent:"none",//是否有学生
     openid:"",
     classnum:[],
@@ -538,8 +539,15 @@ Page({
             }
             that.setData({
               sign: that.data.sign,
+              Issignspace: "none"
             })
-          } else {
+          }
+          else if (res.data.resultCode == "204"){
+            that.setData({
+              Issignspace: "bloak"
+            })
+          } 
+          else {
             that.setData({
               sign: []
             })
@@ -580,8 +588,15 @@ Page({
             }
             that.setData({
               sign: that.data.sign,
+              Issignspace: "none"
             })
-          } else {
+          } 
+          else if (res.data.resultCode == "204") {
+            that.setData({
+              Issignspace: "bloak"
+            })
+          } 
+          else {
             that.setData({
               sign: []
             })
@@ -612,18 +627,25 @@ Page({
         success: function (res) {
           var time = util.formatTime(new Date());
           if (res.data.resultCode == "101") {
+            // for (var i = 0, len = res.data.data.length; i < len; i++) {
+            //   if (res.data.data[i].signIn == null){
+            //     res.data.data[i].signIn='未签到'
+            //   }
+            //   else if (res.data.data[i].signOut == null) {
+            //     res.data.data[i].signOut = '未签退'
+            //   }              
+            // }
             that.setData({
-              sign: [],
-              gosignteamore: "0"
+              sign: res.data.data,
+              Issignspace: "none"
             })
-            for (var i = 0, len = res.data.data.length; i < len; i++) {
-              that.data.sign[i] = res.data.data[i]
-              that.data.sign[i].classnum = i + 1//获取第几节课
-            }
+          }
+          else if (res.data.resultCode == "204") {
             that.setData({
-              sign: that.data.sign,
+              Issignspace: "bloak"
             })
-          } else {
+          } 
+          else {
             that.setData({
               sign: []
             })
@@ -739,7 +761,13 @@ Page({
             that.setData({
               sign: that.data.sign,
             })
-          } else {
+          } 
+          else if (res.data.resultCode == "204") {
+            that.setData({
+              Issignspace: "bloak"
+            })
+          } 
+          else {
             that.setData({
               sign: []
             })

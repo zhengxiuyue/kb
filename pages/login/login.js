@@ -8,16 +8,14 @@ Page({
    */
   data: {
     isadmin:0,
-    // isstu:1,
     isauth:1,
-    inputtext:"建议填写真实姓名",
     items: [
       { value: '学生', id: '3', checked:true},
       { value: '老师', id: '2', checked:false},
       { value: '助教', id: '1',checked:false}
     ],
     userstatus: '3',
-    "name": '',
+    name: '',
     code:'',
     newcode:"",
     pwd:""
@@ -110,22 +108,17 @@ Page({
     })
     if(con == 1){
       this.setData({
-        inputtext:"请输入邮箱",
         isadmin:1,
-        // isstu:1
       })
     }
     else if (con == 2) {
       this.setData({
         isadmin: 0,
-        // isstu: 0
       })
     }
     else if (con == 3){
       this.setData({
-        inputtext: "建议填写真实姓名",
         isadmin: 0,
-        // isstu: 1,
         isauth: 1
       })
     }
@@ -196,9 +189,8 @@ Page({
                               userid: res.data.data.userid,
                               openid: res.data.data.openid,
                               userstatus: res.data.data.role,
-                              nickname: res.data.data.nickname,
                               tel: res.data.data.phone,
-                              avatarUrl: res.data.data.Protrait
+                              name: res.data.data.name,
                             }
                           })
                         }
@@ -314,9 +306,7 @@ Page({
                               userid: res.data.data.userid,
                               openid: res.data.data.openid,
                               userstatus: res.data.data.role,
-                              nickName: res.data.data.nickName,
-                              tel: res.data.data.phone,
-                              avatarUrl: res.data.data.Protrait
+                              tel: res.data.data.phone,                      
                             }
                           })
                         }
@@ -518,9 +508,7 @@ Page({
                   userid: res.data.data.userid,
                   openid: res.data.data.openid,
                   userstatus: res.data.data.role,
-                  nickname: res.data.data.nickname,
                   tel: res.data.data.phone,
-                  avatarUrl: res.data.data.Protrait
                 }
               })
             }
@@ -603,9 +591,8 @@ Page({
                   userid: res.data.data.userid,
                   openid: res.data.data.openid,
                   userstatus: res.data.data.role,
-                  nickname: res.data.data.nickname,
                   tel: res.data.data.phone,
-                  avatarUrl: res.data.data.Protrait
+                  name: res.data.data.name,
                 }
               })
             }
@@ -748,9 +735,8 @@ Page({
                   userid: res.data.data.userid,
                   openid: res.data.data.openid,
                   userstatus: res.data.data.role,
-                  nickname: res.data.data.nickname,
-                  tel: res.data.data.phone,
-                  avatarUrl: res.data.data.Protrait
+                  name: res.data.data.name,
+                  tel: res.data.data.tel,
                 }
               })
             }
