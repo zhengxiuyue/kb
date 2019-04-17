@@ -77,9 +77,18 @@ Page({
       success(res) {
         console.log(res.data)
         that.setData({
-          username: res.data.name,
+          //username: res.data.nickName,
           primarytel: res.data.tel,
           tel: res.data.tel
+        })
+      }
+    })
+    wx.getStorage({
+      key: 'nickName',
+      success(res) {
+        console.log(res.data)
+        that.setData({
+          username: res.data
         })
       }
     })
@@ -385,7 +394,7 @@ Page({
                 },
                 success(re) {
                   if (re.data.resultCode == '101') {
-                    $Message({
+                    /*$Message({
                       content: '预约成功！',
                     });
                     setTimeout(function () {
@@ -393,7 +402,10 @@ Page({
                       wx.redirectTo({
                         url: '/pages/more/more',
                       })
-                    }, 2000)
+                    }, 2000)*/
+                    wx.navigateTo({
+                      url: '/pages/message/message?flag=2',
+                    })
                   }
                   else {
                     $Message({

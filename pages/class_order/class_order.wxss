@@ -32,7 +32,7 @@ list-style: none;
 }
 
 .class{
-  margin: 20rpx 60rpx;
+  margin: 20rpx 17rpx;
   line-height: 1.8;
 }
 
