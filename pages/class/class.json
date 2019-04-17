@@ -3,7 +3,6 @@
   "usingComponents": {
     "students": "/pages/class_students/class_students",
     "signin": "/pages/class_signin/class_signin",
-    "signinadm": "/pages/class_signinadm/class_signinadm",
     "chat": "/pages/class_chat/class_chat",
     "notice": "/pages/class_notice/class_notice",
     "video": "/pages/class_video/class_video"
