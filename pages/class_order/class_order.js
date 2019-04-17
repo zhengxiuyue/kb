@@ -429,7 +429,7 @@ Page({
             wx.showToast({
               title: '验证码错误!',
               icon: 'none',
-              duration: 1000
+              duration: 2000
             })
             $Message({
               content: '预约失败！',
@@ -440,7 +440,7 @@ Page({
             wx.showToast({
               title: '旁听人数已达上限!',
               icon: 'none',
-              duration: 1000
+              duration: 2000
             })
             $Message({
               content: '预约失败！',
@@ -452,7 +452,7 @@ Page({
             wx.showToast({
               title: '预约中，请勿重复预约!',
               icon: 'none',
-              duration: 1000
+              duration: 2000
             })
             $Message({
               content: '预约失败！',
@@ -464,7 +464,7 @@ Page({
       wx.showToast({
         title: '该课程不能旁听!',
         icon: 'none',
-        duration: 1000
+        duration: 2000
       })
       $Message({
         content: '预约失败！',

@@ -280,7 +280,7 @@ Page({
                 wx.showToast({
                   title: '已报名，请勿重复报名!',
                   icon: 'none',
-                  duration: 1000
+                  duration: 2000
                 })
               }
               else {
