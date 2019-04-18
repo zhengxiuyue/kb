@@ -21,7 +21,7 @@
 </view>
 
 <view class='submit'>
-  <button wx:if='{{isauth == "" && (userstatus == 2 || userstatus == 3)}}' class='login' open-type="getPhoneNumber"  bindgetphonenumber="getPhoneNumber" >登录</button>
+  <button wx:if='{{isauth == 0 && (userstatus == 2 || userstatus == 3)}}' class='login' open-type="getPhoneNumber"  bindgetphonenumber="getPhoneNumber" >登录</button>
   <button wx:else class='login' bindtap='login' >登录</button>
 </view>
 

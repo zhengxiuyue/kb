@@ -119,7 +119,7 @@ Page({
     else if (con == 3){
       this.setData({
         isadmin: 0,
-        isauth: 1
+        isauth: 0
       })
     }
   },
