@@ -23,7 +23,7 @@ Page({
     errortips_recent:'',
     recentClassList:null,//近期开课课程
     noticeList:[{
-      no_content: "快乐50课表，专为退休人士创办的学习社区！本周课表出炉，了解一下？"
+      no_content: "该小程序当前正处于内测阶段，请勿付费，否则概不退款~"
     }],//通知
     courseList:'',//课表列表
     userstatus:null,
