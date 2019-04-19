@@ -1,6 +1,4 @@
 <!--pages/login/login.wxml-->
-<image src='/image/logo.png' class='logo'></image>
-
 <view class='infm-noborder'>
   <image src='/image/signinselected.png' class='icon3'></image>
   <radio-group class="radio-group" bindchange="radioChange">
