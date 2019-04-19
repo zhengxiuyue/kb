@@ -19,66 +19,65 @@
 .img1{
   width: 60rpx;
   height: 60rpx;
-  position: relative;
-  top:15rpx;
 }
   
 .content
 {
-  height: 180rpx;
+  display: block;
   background-color: #fff; 
   border-radius: 10rpx;
   padding: 20rpx 0rpx;
   text-align: left;
   margin-bottom: 20rpx;
   line-height: 1.5;
+  height: 180rpx;
 }
 
 .content1{
   display: flex;
   justify-content: space-between;
+  width: 750rpx;
+  height: 150rpx;
 }
 
 .content-title
 {
   margin-left: 20rpx;
   width: 80rpx;
-  position: relative;
-  top: 10rpx;
+  line-height: 180rpx;
 }
 
 .content-middle{
-  margin-left: 20rpx;
+  margin-left: 60rpx;
   width: 350rpx;
-  position: relative;
-  top: 12rpx;
 }
 
 .content-rank
 {
-  display: inline-block;
   font-weight: bold;
+  height: 50rpx;
+  line-height: 50rpx;
 }
 
 .content-time{
   font-size: 30rpx;
   font-weight: normal;
+  height: 50rpx;
+  line-height: 50rpx;
 }
 
 .content-btn{
-  display:inline-block;
   text-align:center;
   font-size:28rpx;
-  width:120rpx;
+  width:150rpx;
   height:60rpx;
   line-height:60rpx;
   background-color:#19be6b;
   color:#fff;
   border-radius:5rpx;
   border-color:#1da27f;
-  position:relative;
-  top:20rpx;
-  margin-right: 20rpx;
+  margin-right: 40rpx;
+  margin-top: 40rpx;
 }
 
 .error{
@@ -94,19 +93,17 @@
 .content-result{
   color: #1DA27F;
   font-size:26rpx;
-  width: 120rpx;
-  position:relative;
-  top:20rpx;
-  margin-right: 20rpx;
+  width: 150rpx;
+  line-height: 150rpx;
+  margin-right: 40rpx;
 }
 
 .content-result1{
-  color:#d81e06;
+  color: #d81e06;
   font-size:26rpx;
-  width: 120rpx;
-  position:relative;
-  top:20rpx;
-  margin-right: 20rpx;
+  width: 150rpx;
+  line-height: 150rpx;
+  margin-right: 40rpx;
 }
 
 .img2{
@@ -117,11 +114,10 @@
 }
 
 .time{
+  clear: both;
   text-align: right;
   color: #657180;
   font-size: 30rpx;
   padding-right: 20rpx;
   padding-bottom: 20rpx;
-  position:absolute;
-  right:10rpx;
 }

@@ -34,13 +34,13 @@
    height: 250rpx;
 }
 
-.content {
+.content1 {
     margin-left: 50rpx;
     margin-bottom: 90rpx;
     line-height: 1
 }
 
-.content text {
+.content1 text {
     display: block;
     color: #9d9d9d;
     margin-top: 40rpx;

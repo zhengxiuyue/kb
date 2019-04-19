@@ -116,7 +116,7 @@
 
 .b1{
   display: inline-block;
-  width: 30%;
+  width: 40%;
   background-color: #ffeb3c;
   color: #209cfe;
   font-size: 36rpx;
@@ -126,7 +126,7 @@
 
 .b2{
   display: inline-block;
-  width: 65%;
+  width: 55%;
   background-color: #61bbff;
   color: #fff;
   padding-left: 5%;
@@ -134,7 +134,7 @@
 
 .b3{
   display: inline-block;
-  width: 30%;
+  width: 40%;
   background-color: #fbc332;
   color: #fff;
   text-align: center;
@@ -142,7 +142,7 @@
 
 .b4{
   display: inline-block;
-  width: 65%;
+  width: 55%;
   background-color: #60bcff;
   color: #fff;
   padding-left: 5%;

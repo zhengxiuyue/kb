@@ -62,38 +62,33 @@
 
 .content
 {
+  display: flex;
+  justify-content: space-between;
   height: 100rpx;
   background-color: #fff; 
   border-radius: 10rpx;
-  padding: 20rpx 0rpx;
+  padding: 20rpx;
   text-align: left;
   margin-bottom: 20rpx;
 }
 
 .content-title
 {
-  margin-left: 20rpx;
-  display: inline-block;
   color:#1DA27F;
   font-weight: bold;
   font-size: 34rpx;
   width: 190rpx;
-  position: relative;
-  top: -10rpx;
   text-align: center;
+  line-height: 100rpx;
 }
 
 .content-middle{
   margin-left: 20rpx;
-  display: inline-block;
   width: 370rpx;
-  position: relative;
-  top: 12rpx;
 }
 
 .content-rank
 {
-  display: inline-block;
   font-weight: bold;
 }
 
@@ -102,7 +97,7 @@
 }
 
 .content-btn{
-  display:inline-block;
+  margin: 20rpx 0rpx;
   text-align:center;
   font-size:28rpx;
   width:120rpx;
@@ -112,12 +107,10 @@
   color:#fff;
   border-radius:5rpx;
   border-color:#1da27f;
-  position:relative;
-  top:-15rpx;
 }
 
 .content-btn2{
-  display:inline-block;
+  margin: 20rpx 0rpx;
   text-align:center;
   font-size:28rpx;
   width:120rpx;
@@ -127,13 +120,11 @@
   color:#fff;
   border-radius:5rpx;
   border-color:#10aeff;
-  position:relative;
-  top:-15rpx;
 }
 
 .content-btn1{
-  display:inline-block;
-  text-align:center;
+    margin: 20rpx 0rpx;
+    text-align:center;
   font-size:28rpx;
   width:120rpx;
   height:60rpx;
@@ -142,8 +133,6 @@
   color:#fff;
   border-radius:5rpx;
   border-color:#cdcdcd;
-  position:relative;
-  top:-15rpx;
 }
 
 .break{
@@ -182,18 +171,18 @@
 display:flex; 
 font-size: 30rpx;
 color: #666666;
-position: relative;
-top: 20rpx;
+margin-top: 30rpx;
 }
 .more_text
 {
   height: 60rpx;
-  position: relative;
-  left: 10rpx;
 }
 .more_img{
   width:40rpx;
   height:40rpx;
+  position: relative;
+  left: -10rpx;
+  top: 5rpx;
 }
 
 .member_price{
