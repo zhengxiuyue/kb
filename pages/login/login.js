@@ -9,11 +9,11 @@ Page({
   data: {
     isadmin:0,
     isauth:1,
-    items: [
-      { value: '学生', id: '3', checked:true},
-      { value: '老师', id: '2', checked:false},
-      { value: '助教', id: '1',checked:false}
-    ],
+    // items: [
+    //   { value: '学生', id: '3', checked:true},
+    //   { value: '老师', id: '2', checked:false},
+    //   { value: '助教', id: '1',checked:false}
+    // ],
     userstatus: '3',
     name: '',
     code:'',
@@ -101,10 +101,11 @@ Page({
   },
   
   //获取用户身份
-  radioChange: function (event) {
-    var con = event.detail.value
+  userStatusChange:function(e){
+   console.log(e) 
+    var con = e.currentTarget.dataset.userstatus
     this.setData({
-      userstatus: event.detail.value 
+      userstatus: con
     })
     if(con == 1){
       this.setData({
@@ -121,7 +122,29 @@ Page({
         isadmin: 0,
       })
     }
+   
   },
+  // radioChange: function (event) {
+  //   var con = event.detail.value
+  //   this.setData({
+  //     userstatus: event.detail.value 
+  //   })
+  //   if(con == 1){
+  //     this.setData({
+  //       isadmin:1,
+  //     })
+  //   }
+  //   else if (con == 2) {
+  //     this.setData({
+  //       isadmin: 0,
+  //     })
+  //   }
+  //   else if (con == 3){
+  //     this.setData({
+  //       isadmin: 0,
+  //     })
+  //   }
+  // },
 
   //获取手机号码
   getPhoneNumber:function(e){  
