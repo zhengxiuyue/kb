@@ -1,18 +1,7 @@
 //app.js
 App({
   onLaunch: function (options) {
-    var that = this;
-    var classid = options.query.classid
-    var ay_id = options.query.ay_id
-    console.log(options.query.num)
-    if (options.query.num) {
-      var num = options.query.num
-    }
-    else {
-      var num = 0
-    }
-    console.log(num)
-
+    var that = this
     //判断是否授权 未授权跳授权页面
     wx.getSetting({
       success: function (res) {
@@ -23,6 +12,7 @@ App({
               console.log(res)
               that.globalData.nickName = res.userInfo.nickName
               that.globalData.avatarUrl = res.userInfo.avatarUrl
+
             }
           })
         }
@@ -32,94 +22,77 @@ App({
           })
         }
       }
-    })
-
-    //判断是否还有缓存 有跳入index 无跳入login
-    var userid = wx.getStorageSync('userid')
-    var userstatus = wx.getStorageSync('userstatus')
-    var openid = wx.getStorageSync('openid')
-    var name = wx.getStorageSync('name')
-    var tel = wx.getStorageSync('tel')
-    // console.log(userid) 
-    // console.log(userstatus)
-    // console.log(openid)
-    // console.log(name)
-    // console.log(userid)
-    // console.log(tel)
-    if (userid && tel && name && openid && userstatus) {
-      if(userstatus == 1){
-        that.globalData.userid = userid
-        that.globalData.userstatus = userstatus
-        that.globalData.openid = openid
-        wx.redirectTo({
-          url: '/pages/index/A_index?num=' + num + "&classid=" + classid
-        })
-      }
-      else if (userstatus == 2) {
-        that.globalData.userid = userid
-        that.globalData.userstatus = userstatus
-        that.globalData.openid = openid
-        wx.redirectTo({
-          url: '/pages/index/T_index?num=' + num + "&classid=" + classid
-        })
-      }
-      else if (userstatus == 3) {
-        that.globalData.userid = userid
-        that.globalData.userstatus = userstatus
-        that.globalData.openid = openid
-        wx.redirectTo({
-          url: '/pages/index/index?num=' + num + "&classid=" + classid
-        })
-      }
-      else {
-        wx.redirectTo({
-          url: '/pages/login/login'
-        })
-      }
-    }
+    })    
   },
 
   onShow: function (options) {
-    var that = this
-    var userstatus = wx.getStorageSync('userstatus')
+    var that = this;
     var classid = options.query.classid
+    console.log(options.query.num)
     if (options.query.num) {
       var num = options.query.num
     }
     else {
       var num = 0
     }
+    console.log(num + "活动id" + classid)
+    //3是活动
 
-    if (num == 1) {
-      if(userstatus == 1){
-        wx.redirectTo({
-          url: '/pages/index/A_index?num=' + num + "&classid=" + classid
-        })
+    
+    //判断是否还有缓存 有跳入index 无跳入login
+    var userid = ''
+    var userstatus = ''
+    var openid = ''
+    var tel = ''
+    wx.getStorage({//获取本地缓存
+      key: "user",
+      success: function (res) {
+        console.log(res)
+        userid = res.data.userid
+        userstatus = res.data.userstatus
+        openid = res.data.openid
+        tel = res.data.tel
+        var name = wx.getStorageSync('nickName')
+        console.log(name)
+        console.log(userid)
+        console.log(userstatus)
+        console.log(openid)
+        console.log(tel)
+        if (userid && tel && name && openid && userstatus) {
+          console.log('douyou')
+          if (userstatus == 1) {
+            that.globalData.userid = userid
+            that.globalData.userstatus = userstatus
+            that.globalData.openid = openid
+            wx.redirectTo({
+              url: '/pages/index/A_index?num=' + num + "&classid=" + classid
+            })
+          }
+          else if (userstatus == 2) {
+            that.globalData.userid = userid
+            that.globalData.userstatus = userstatus
+            that.globalData.openid = openid
+            wx.redirectTo({
+              url: '/pages/index/T_index?num=' + num + "&classid=" + classid
+            })
+          }
+          else if (userstatus == 3) {
+            that.globalData.userid = userid
+            that.globalData.userstatus = userstatus
+            that.globalData.openid = openid
+            wx.redirectTo({
+              url: '/pages/index/index?num=' + num + "&classid=" + classid
+            })
+          }
+          else {
+            wx.redirectTo({
+              url: '/pages/login/login'
+            })
+          }
+        }
       }
-      else if (userstatus == 2) {
-        wx.redirectTo({
-          url: '/pages/index/T_index?num=' + num + "&classid=" + classid
-        })
-      }
-      else if (userstatus == 3) {
-        wx.redirectTo({
-          url: '/pages/index/index?num=' + num + "&classid=" + classid
-        })
-      }
-    }
-    else if(num == 3){
-      if (userstatus == 3){
-        wx.redirectTo({
-          url: '/pages/activityDetail/activityDetail?ay_id=' + ay_id
-        })       
-      }
-      else{
-        wx.redirectTo({
-          url: '/pages/login/login',
-        })
-      }
-           
-    }
+    })
+
   },
 
   //学生   

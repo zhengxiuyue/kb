@@ -55,6 +55,13 @@ Page({
         url: '/pages/class_des_order/class_des_order',
       })
     }
+    else if (options.num == 3) {
+      console.log(options.classid);
+      wx.setStorageSync("classid", options.classid)
+      wx.navigateTo({
+        url: '/pages/activityDetail/activityDetail?ay_id=' + options.classid,
+      })
+    }
     
     app.editTabBar();
     var userstatus = app.globalData.userstatus
