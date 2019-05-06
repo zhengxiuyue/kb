@@ -5,7 +5,7 @@
       <view class='title'>快乐课表</view>
   </view>
   <view class='clear' ></view>
-    <view class='content'>
+    <view class='content1'>
         <view class="inf">申请获取以下权限</view>
         <text class='info'>获得你的公开信息(昵称，头像等)</text>
     </view>

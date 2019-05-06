@@ -92,8 +92,10 @@ Page({
   },
 
   GoactivityWebView: function () {
+    var that = this;
+    var ay_id = that.data.ay_id;
     wx.navigateTo({
-      url: '/pages/activityWebView/activityWebView',
+      url: '/pages/activityWebView/activityWebView?ay_id=' + ay_id,
     })
   },
 

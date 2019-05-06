@@ -21,19 +21,20 @@
         <view class = "content1">
         <view class='content-title' >
          <image src = "/image/store.png" class='img1'></image>
-            <view class = "content-result" style='display:{{item.ares_status == 3&& order_status == 1? "block":"none"}}'>
+
+        </view>
+        <view class='content-middle'>
+          <view class='content-rank'>{{item.ares_name}} </view>
+          <view class='content-time'>{{item.ares_mobile}}</view>
+          <view class='content-time'>{{item.storename}}</view>
+        </view>
+                 <view class = "content-result" style='display:{{item.ares_status == 3&& order_status == 1? "block":"none"}}'>
         <image class='img2' src='/image/sure.png'></image>已确认
         </view>
 
         <view class = "content-result1" style='display:{{item.ares_status != 3 && order_status == 1?"block":"none"}}'>
         <image class='img2' src='/image/no_sure.png'></image>未确认
         </view>
-        </view>
-        <view class='content-middle'>
-          <view class='content-rank'>{{item.ares_name}} </view><text class='content-time'> \n{{item.ares_mobile}}</text>
-          <view class='content-time'>{{item.storename}}</view>
-        </view>
-     
         <view class='content-btn'>详情</view>
       </view>
 
@@ -59,19 +60,19 @@
       <view class='content1'>
         <view class='content-title'>
          <image src = "/image/course.png" class='img1'></image>
-          <view class = "content-result" style='display:{{item.res_status == 3&& order_status == 1? "block":"none"}}'>
+        </view>
+
+        <view class='content-middle'>
+          <view class='content-rank'>{{item.res_name}} </view>
+          <view class='content-time'>{{item.res_mobile}}</view>
+          <view class='content-time'>{{item.coursename}}班</view>
+        </view>  
+                  <view class = "content-result" style='display:{{item.res_status == 3&& order_status == 1? "block":"none"}}'>
         <image class='img2' src='/image/sure.png'></image>已确认
         </view>
             <view class = "content-result1" style='display:{{item.res_status != 3 && order_status == 1?"block":"none"}}'>
         <image class='img2' src='/image/no_sure.png'></image>未确认
-        </view>
-
-        </view>
-
-        <view class='content-middle'>
-          <view class='content-rank'>{{item.res_name}} </view><text class='content-time'> \n{{item.res_mobile}}</text>
-          <view class='content-time'>{{item.coursename}}班</view>
-        </view>           
+        </view>         
          <view class='content-btn'>详情</view>
       </view>
 
