@@ -8,7 +8,8 @@
     <view class="list-text">
         <view class='ontop'>
             <text class="name">{{list.ay_name}}</text>
-            <view style='width:300rpx;text-align:right;margin-right:20rpx;'>
+            <view style='width:500rpx;text-align:right;margin-right:20rpx;'>
+              <button wx:if='{{list.isEnough == 1}}' class='activityon'>人数已满</button>
               <button wx:if='{{list.status == 1}}' class='activityon'>已报名</button>
               <button wx:if='{{list.ay_istop == 1}}' class='activityon'>置顶</button>
             </view>            
