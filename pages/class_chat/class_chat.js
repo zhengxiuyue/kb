@@ -142,12 +142,18 @@ Component({
                         })
                       }
                       else {
-                        console.log("请求失败");
+                        wx.showToast({
+                          title: '请求失败',
+                          icon: 'none',
+                        });
                       }
                     },
                   })
                 } else {
-                  console.log("请求失败");
+                  wx.showToast({
+                    title: '请求失败',
+                    icon: 'none',
+                  });
                 }
               }
             })

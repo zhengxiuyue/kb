@@ -86,7 +86,6 @@ Page({
     app.globalData.iv1 = e.detail.iv
     app.globalData.encryptedData1 = e.detail.encryptedData
     if (e.detail.userInfo) {
-      console.log(e)
       //用户按了允许授权按钮
       var that = this;
       app.globalData.nickName = e.detail.userInfo.nickName
@@ -106,7 +105,6 @@ Page({
         confirmText: '返回授权',
         success: function (res) {
           if (res.confirm) {
-            console.log('用户点击了“返回授权”')
           }
         }
       })

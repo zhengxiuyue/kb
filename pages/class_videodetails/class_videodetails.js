@@ -19,7 +19,6 @@ Page({
   onLoad: function (options) {
 
     var that = this
-    console.log(that.options)
     var scheduleid = that.options.scheduleid
     wx.request({
       url: requestIP + '/user/getVideo',
@@ -36,7 +35,6 @@ Page({
           that.setData({
             video : res.data.data
           })
-          console.log(that.data.video)
         }
         else if (res.data.resultCode == "204") {
           that.setData({

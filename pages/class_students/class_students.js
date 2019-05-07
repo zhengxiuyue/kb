@@ -76,7 +76,10 @@ Component({
                 mate: that.data.mate
               })
             } else {
-              console.log("请求失败");
+              wx.showToast({
+                title: '请求失败',
+                icon: 'none',
+              });
             }
           },
         })
@@ -118,7 +121,10 @@ Component({
               mate: [],
               Ismatespace: "none"
             })
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         }
       })

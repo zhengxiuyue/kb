@@ -70,14 +70,16 @@ Page({
           })
         }
         else if (res.data.resultCode == "204") {
-          // console.log(res.data.resultCode)
           that.setData({
             itemnow: [],
             Isclassspace: "block"
           })
         }
         else {
-          console.log("请求失败");
+          wx.showToast({
+            title: '请求失败',
+            icon: 'none',
+          });
         }
       },
     })
@@ -149,14 +151,16 @@ Page({
             })
           }
           else if (res.data.resultCode == "204") {
-            // console.log(res.data.resultCode)
             that.setData({
               itemnow: [],
               Isclassspace: "block"
             })
           }
           else {
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
       })
@@ -187,14 +191,16 @@ Page({
             })
           }
           else if (res.data.resultCode == "204") {
-            // console.log(res.data.resultCode)
             that.setData({
               itemhistory: [],
               Isclassspace: "block"
             })
           }
           else {
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
       })
@@ -249,7 +255,6 @@ Page({
             })
           }
           else {
-            console.log("请求失败");
           }
         },
       })
@@ -277,13 +282,15 @@ Page({
             })
           }
           else if (res.data.resultCode == "204") {
-            // console.log(res.data.resultCode)
             that.setData({
               Isclassspace: "block"
             })
           }
           else {
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
       })

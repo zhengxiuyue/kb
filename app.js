@@ -9,7 +9,6 @@ App({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称
           wx.getUserInfo({
             success: function (res) {
-              console.log(res)
               that.globalData.nickName = res.userInfo.nickName
               that.globalData.avatarUrl = res.userInfo.avatarUrl
 
@@ -28,14 +27,12 @@ App({
   onShow: function (options) {
     var that = this;
     var classid = options.query.classid
-    console.log(options.query.num)
     if (options.query.num) {
       var num = options.query.num
     }
     else {
       var num = 0
     }
-    console.log(num + "活动id" + classid)
     //3是活动
 
     
@@ -47,19 +44,11 @@ App({
     wx.getStorage({//获取本地缓存
       key: "user",
       success: function (res) {
-        console.log(res)
         userid = res.data.userid
         userstatus = res.data.userstatus
         openid = res.data.openid
         tel = res.data.tel
-        var name = wx.getStorageSync('nickName')
-        console.log(name)
-        console.log(userid)
-        console.log(userstatus)
-        console.log(openid)
-        console.log(tel)
-        if (userid && tel && name && openid && userstatus) {
-          console.log('douyou')
+        if (userid && tel && openid && userstatus) {
           if (userstatus == 1) {
             that.globalData.userid = userid
             that.globalData.userstatus = userstatus

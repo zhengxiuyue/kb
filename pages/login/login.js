@@ -45,7 +45,6 @@ Page({
           })
           app.globalData.openid = null
         } else {
-          console.log('登录失败！' + res.errMsg)
         }
       }
     })
@@ -102,7 +101,6 @@ Page({
   
   //获取用户身份
   userStatusChange:function(e){
-   console.log(e) 
     var con = e.currentTarget.dataset.userstatus
     this.setData({
       userstatus: con
@@ -147,12 +145,9 @@ Page({
   // },
 
   //获取手机号码
-  getPhoneNumber:function(e){  
-    console.log(e)
+  getPhoneNumber:function(e){ 
     if(e.detail.iv){    
       var that = this
-      console.log(e.detail.iv);
-      console.log(e.detail.encryptedData);
       var avatarUrl = wx.getStorageSync('avatarUrl')
       var nickName = wx.getStorageSync('nickName')
       wx.request({
@@ -176,7 +171,6 @@ Page({
                   that.setData({
                     newcode: res.code,
                   })
-                  console.log("xin" + res.code)
                   if (!avatarUrl | !nickName) {
                     wx.redirectTo({
                       url: '/pages/authorize/authorize',
@@ -225,7 +219,6 @@ Page({
                                 })
                                 app.globalData.openid = null
                               } else {
-                                console.log('登录失败！' + res.errMsg)
                               }
                             }
                           })
@@ -245,7 +238,6 @@ Page({
                                 })
                                 app.globalData.openid = null
                               } else {
-                                console.log('登录失败！' + res.errMsg)
                               }
                             }
                           })
@@ -265,7 +257,6 @@ Page({
                                 })
                                 app.globalData.openid = null
                               } else {
-                                console.log('登录失败！' + res.errMsg)
                               }
                             }
                           })
@@ -286,7 +277,6 @@ Page({
                               })
                               app.globalData.openid = null
                             } else {
-                              console.log('登录失败！' + res.errMsg)
                             }
                           }
                         })
@@ -341,7 +331,6 @@ Page({
                                 })
                                 app.globalData.openid = null
                               } else {
-                                console.log('登录失败！' + res.errMsg)
                               }
                             }
                           })
@@ -361,7 +350,6 @@ Page({
                                 })
                                 app.globalData.openid = null
                               } else {
-                                console.log('登录失败！' + res.errMsg)
                               }
                             }
                           })
@@ -381,7 +369,6 @@ Page({
                                 })
                                 app.globalData.openid = null
                               } else {
-                                console.log('登录失败！' + res.errMsg)
                               }
                             }
                           })
@@ -402,7 +389,6 @@ Page({
                               })
                               app.globalData.openid = null
                             } else {
-                              console.log('登录失败！' + res.errMsg)
                             }
                           }
                         })
@@ -415,7 +401,6 @@ Page({
                     })
                   }   
                 } else {
-                  console.log('登录失败！' + res.errMsg)
                 }
               }
             })
@@ -429,7 +414,6 @@ Page({
                     code: res.code,
                   })
                 } else {
-                  console.log('请求失败！' + res.errMsg)
                 }
               }
             })
@@ -447,7 +431,6 @@ Page({
                   code: res.code,
                 })
               } else {
-                console.log('登录失败！' + res.errMsg)
               }
             }
           })
@@ -467,11 +450,9 @@ Page({
         confirmText: '返回授权',
         success: function (res) {
           if (res.confirm) {
-            console.log('用户点击了“返回授权”')
           }
         }
       })
-      console.log("juejue")
     }
   }, 
 
@@ -543,7 +524,6 @@ Page({
                     })
                     app.globalData.openid = null
                   } else {
-                    console.log('登录失败！' + res.errMsg)
                   }
                 }
               })
@@ -564,7 +544,6 @@ Page({
                   })
                   app.globalData.openid = null
                 } else {
-                  console.log('登录失败！' + res.errMsg)
                 }
               }
             })
@@ -627,7 +606,6 @@ Page({
                     })
                     app.globalData.openid = null
                   } else {
-                    console.log('登录失败！' + res.errMsg)
                   }
                 }
               })
@@ -647,7 +625,6 @@ Page({
                     })
                     app.globalData.openid = null
                   } else {
-                    console.log('登录失败！' + res.errMsg)
                   }
                 }
               })
@@ -667,7 +644,6 @@ Page({
                     })
                     app.globalData.openid = null
                   } else {
-                    console.log('登录失败！' + res.errMsg)
                   }
                 }
               })
@@ -688,7 +664,6 @@ Page({
                   })
                   app.globalData.openid = null
                 } else {
-                  console.log('登录失败！' + res.errMsg)
                 }
               }
             })
@@ -771,7 +746,6 @@ Page({
                     })
                     app.globalData.openid = null
                   } else {
-                    console.log('登录失败！' + res.errMsg)
                   }
                 }
               })
@@ -791,7 +765,6 @@ Page({
                     })
                     app.globalData.openid = null
                   } else {
-                    console.log('登录失败！' + res.errMsg)
                   }
                 }
               })
@@ -812,7 +785,6 @@ Page({
                   })
                   app.globalData.openid = null
                 } else {
-                  console.log('登录失败！' + res.errMsg)
                 }
               }
             })

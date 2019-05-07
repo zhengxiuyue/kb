@@ -77,7 +77,10 @@ Page({
             items: res.data.data
           })
         } else {
-          console.log("请求失败");
+          wx.showToast({
+            title: '请求失败',
+            icon: 'none',
+          });
         }
       },
     })
@@ -117,7 +120,10 @@ Page({
             })
           }
         } else {
-          console.log("请求失败");
+          wx.showToast({
+            title: '请求失败',
+            icon: 'none',
+          });
         }
       },
     })
@@ -173,7 +179,10 @@ Page({
               Ischatspace: "none",
               search: ""
             })
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
       })
@@ -209,7 +218,10 @@ Page({
             })
           }
           else {
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
       })
@@ -274,7 +286,10 @@ Page({
               Ismatespace: "none",
               search: ""
             })
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
       })
@@ -311,14 +326,20 @@ Page({
             that.setData({
               sign: []
             })
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
         fail: function () {
           that.setData({
             sign: []
           })
-          console.log("fail");
+          wx.showToast({
+            title: '服务器异常',
+            icon: 'none',
+          });
         },
       })
     }
@@ -354,14 +375,20 @@ Page({
             that.setData({
               sign: []
             })
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
         fail: function () {
           that.setData({
             sign: [],
           })
-          console.log("fail");
+          wx.showToast({
+            title: '服务器异常',
+            icon: 'none',
+          });
         },
       })
     }
@@ -404,7 +431,10 @@ Page({
             })
           }
           else {
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
       })
@@ -440,7 +470,10 @@ Page({
             })
           }
           else {
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
       })
@@ -507,7 +540,10 @@ Page({
               Ismatespace: "none",
               search:""
             })
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
       })
@@ -551,14 +587,20 @@ Page({
             that.setData({
               sign: []
             })
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
         fail: function () {
           that.setData({
             sign: []
           })
-          console.log("fail");
+          wx.showToast({
+            title: '服务器异常',
+            icon: 'none',
+          });
         },
       })
     }
@@ -600,14 +642,20 @@ Page({
             that.setData({
               sign: []
             })
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
         fail: function () {
           that.setData({
             sign: [],
           })
-          console.log("fail");
+          wx.showToast({
+            title: '服务器异常',
+            icon: 'none',
+          });
         },
       })
     }
@@ -649,14 +697,20 @@ Page({
             that.setData({
               sign: []
             })
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
         fail: function () {
           that.setData({
             sign: [],
           })
-          console.log("fail");
+          wx.showToast({
+            title: '服务器异常',
+            icon: 'none',
+          });
         },
       })
     }
@@ -693,7 +747,10 @@ Page({
             })
           }
           else {
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
       })
@@ -729,7 +786,10 @@ Page({
             })
           }
           else {
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
       })
@@ -771,14 +831,20 @@ Page({
             that.setData({
               sign: []
             })
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
         fail: function () {
           that.setData({
             sign: []
           })
-          console.log("fail");
+          wx.showToast({
+            title: '服务器异常',
+            icon: 'none',
+          });
         },
       })
      

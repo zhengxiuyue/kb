@@ -59,7 +59,6 @@ Page({
           })
         }
         else if (res.data.resultCode == "204") {
-          // console.log(res.data.resultCode)
           that.setData({
             itemnow: [],
             Isclassspace: "block"
@@ -138,7 +137,6 @@ Page({
             })
           }
           else if (res.data.resultCode == "204") {
-            // console.log(res.data.resultCode)
             that.setData({
               itemnow: [],
               Isclassspace: "block"
@@ -176,7 +174,6 @@ Page({
             })
           }
           else if (res.data.resultCode == "204") {
-            // console.log(res.data.resultCode)
             that.setData({
               itemhistory: [],
               Isclassspace: "block"

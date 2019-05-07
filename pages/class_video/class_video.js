@@ -46,7 +46,6 @@ Component({
    */
   methods: {
     govideo:function(e){
-      console.log(e)
       var scheduleid = e.currentTarget.dataset.scheduleid
       wx.navigateTo({
         url: '/pages/class_videodetails/class_videodetails?scheduleid=' + scheduleid,
@@ -55,7 +54,7 @@ Component({
   },
 
   ready: function () {
-    console.log(this.data.video)
+    
   }
 })
 

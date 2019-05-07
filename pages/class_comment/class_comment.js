@@ -76,7 +76,10 @@ Page({
           })
         }
         else {
-          console.log("请求失败");
+          wx.showToast({
+            title: '请求失败',
+            icon: 'none',
+          });
         }
       },
     })
@@ -185,7 +188,10 @@ Page({
             that.onLoad()//刷新评论信息
           }
           else {
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
       })
@@ -259,12 +265,18 @@ Page({
                       })
                     }
                     else {
-                      console.log("请求失败");
+                      wx.showToast({
+                        title: '请求失败',
+                        icon: 'none',
+                      });
                     }
                   },
                 })
               } else {
-                console.log("请求失败");
+                wx.showToast({
+                  title: '请求失败',
+                  icon: 'none',
+                });
               }
             }
           })

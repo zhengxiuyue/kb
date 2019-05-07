@@ -79,14 +79,16 @@ Page({
           })
         } 
         else if (res.data.resultCode == "204") {
-          // console.log(res.data.resultCode)
           that.setData({
             item: [],
             Isclassspace:"block"
           })
         } 
         else {
-          console.log("请求失败");
+          wx.showToast({
+            title: '请求失败',
+            icon: 'none',
+          });
         }
       },
     })
@@ -175,7 +177,10 @@ Page({
             })
           }
           else {
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
       })
@@ -204,7 +209,10 @@ Page({
             })
           }
           else {
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
       })
@@ -220,7 +228,6 @@ Page({
           'userid': app.globalData.userid
         },
         success(res) {
-          console.log(res.data.data);
           if (res.data.resultCode == '101') {
             that.setData({
               orderList: res.data.data,
@@ -262,7 +269,6 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.data);
         if (res.data.resultCode == '101') {
           that.setData({
             orderListClass: res.data.data,
