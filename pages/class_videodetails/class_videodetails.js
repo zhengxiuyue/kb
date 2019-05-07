@@ -10,7 +10,6 @@ Page({
     video:[],
     space: "/image/space.png",
     Isvideospace:"none"
-
   },
 
   /**
@@ -100,6 +99,12 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    var that = this
+    var nickname = app.globalData.nickName
+    return {
+      title: nickname + '给你分享了"快乐课堂"，快打开看看吧',
+      desc: '交友学习欢迎加入',
+      imageUrl: '/image/onshare.png',
+    }
   }
 })

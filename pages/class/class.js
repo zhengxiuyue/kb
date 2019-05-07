@@ -499,6 +499,7 @@ Page({
     return {
       title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
       desc: '交友学习欢迎加入',
+      imageUrl: '/image/onshare.png',
       path: '/pages/class/class?classid=' + classid + '&num=' +num
     }
   },
