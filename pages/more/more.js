@@ -94,7 +94,6 @@ Page({
     app.editTabBar();
     that.getRecentStoreList();
     that.IfOrder();
-    //var flagMore = app.globalData.flagMore;
     var flagMore =  wx.getStorageSync("flagMore");
     that.setData({
       flagMore: flagMore
@@ -104,8 +103,6 @@ Page({
   changeflagMore:function(){
     var that = this;
     wx.setStorageSync("flagMore",2);
-    //app.globalData.flagMore = 2;
-    //var flagMore = app.globalData.flagMore;
     var flagMore = wx.getStorageSync("flagMore");
     that.setData({
       flagMore: flagMore
