@@ -93,7 +93,6 @@ Page({
           'userid': app.globalData.userid
         },
         success(res) {
-          console.log(res.data.data);
           if (res.data.resultCode == '101') {
             wx.setStorageSync("order_status", 1)
               $Message({
@@ -153,7 +152,6 @@ Page({
           'userid': app.globalData.userid
         },
         success(res) {
-          console.log(res.data.data);
           if (res.data.resultCode == '101') {
             wx.setStorageSync("order_status", 1)
               $Message({
@@ -206,7 +204,6 @@ Page({
           'userid': app.globalData.userid
         },
         success(res) {
-          console.log(res.data.data);
           if (res.data.resultCode == '101') {
             wx.setStorageSync("order_status", 1)
             $Message({
@@ -337,7 +334,6 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.data);
         if (res.data.resultCode == '101') {
           that.setData({
             resname: res.data.data.res_name,

@@ -91,7 +91,6 @@ Page({
           'userid': app.globalData.userid
         },
         success(res) {
-          console.log(res.data.data);
           if (res.data.resultCode == '101') {
             wx.setStorageSync("order_status", 1)
               $Message({
@@ -144,7 +143,6 @@ Page({
           'userid': app.globalData.userid
         },
         success(res) {
-          console.log(res.data.data);
           if (res.data.resultCode == '101') {
 
               $Message({
@@ -199,7 +197,6 @@ Page({
           'userid': app.globalData.userid
         },
         success(res) {
-          console.log(res.data.data);
           if (res.data.resultCode == '101') {
 
 
@@ -246,7 +243,6 @@ Page({
       order_status: order_status,
       ares_status: ares_status
     })
-    console.log("ares_status" + that.data.ares_status);
     that.getAreaReservationDetail();
   },
 
@@ -332,7 +328,6 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.data);
         if (res.data.resultCode == '101') {
           var storeMes = res.data.data.province + res.data.data.city + res.data.data.areaname + res.data.data.location;
           var date = res.data.data.dateString + " " + res.data.data.dateTime

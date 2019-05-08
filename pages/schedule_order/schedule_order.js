@@ -24,7 +24,6 @@ Page({
     var coursename = that.options.coursename;
     var classnumber = that.options.classnumber;
     var level = that.options.level
-    console.log(classid + classnumber + coursename);
     that.setData({
       classid: classid,
       coursename: coursename,
@@ -133,7 +132,6 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.data)
         if (res.data.resultCode == '101') {
           that.setData({
             error_noClass: 'none',

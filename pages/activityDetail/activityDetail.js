@@ -124,7 +124,6 @@ Page({
           'userid': app.globalData.userid
         },
         success(res) {
-          console.log(res.data.data);
           if (res.data.resultCode == '101') {
             that.setData({
               activity: res.data.data,

@@ -88,7 +88,6 @@ Page({
   
   enterclass: function (e) {
     var index = e.currentTarget.dataset.index;
-    console.log(index);
     var courseList = this.data.courseList;
     var classid = courseList[index].classid;
     wx.navigateTo({
@@ -109,7 +108,6 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data);
         if (res.data.resultCode == '101') {
           that.setData({
             courseList: res.data.data

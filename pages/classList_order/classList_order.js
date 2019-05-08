@@ -34,7 +34,6 @@ Page({
 
   GOclass_des1: function (e) {
     var index = e.currentTarget.dataset.index;
-    console.log(index);
     var classList_order = this.data.classList_order;
     var classid = classList_order[index].classid;
     wx.setStorageSync("classid", classid);
@@ -73,7 +72,6 @@ Page({
           that.setData({
             classList_order: res.data.data
           });
-          console.log(that.data.classList_order[0]);
           that.setData({
             error_noClassOrder: "none"
           });
@@ -127,14 +125,12 @@ Page({
       },
       success(res) {
         if (res.data.resultCode == '101') {
-          console.log("有多少可预约" + res.data.data.length);
           that.setData({
             classList_order: null
           });
           that.setData({
             classList_order: res.data.data
           });
-          console.log(that.data.classList_order[0]);
           that.setData({
             error_noClassOrder: "none"
           });

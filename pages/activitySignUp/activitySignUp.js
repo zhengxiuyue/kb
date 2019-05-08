@@ -41,7 +41,6 @@ Page({
     wx.getStorage({
       key: 'user',
       success(res) {
-        console.log(res.data)
         that.setData({
           //username: res.data.nickName,
           primarytel: res.data.tel,
@@ -52,7 +51,6 @@ Page({
     wx.getStorage({
       key: 'nickName',
       success(res) {
-        console.log(res.data)
         that.setData({
           username: res.data
         })

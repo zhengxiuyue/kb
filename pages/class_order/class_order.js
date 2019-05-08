@@ -76,7 +76,6 @@ Page({
     wx.getStorage({
       key: 'user',
       success(res) {
-        console.log(res.data)
         that.setData({
           //username: res.data.nickName,
           primarytel: res.data.tel,
@@ -87,7 +86,6 @@ Page({
     wx.getStorage({
       key: 'nickName',
       success(res) {
-        console.log(res.data)
         that.setData({
           username: res.data
         })
@@ -127,7 +125,6 @@ Page({
     let that = this;
     //第一步：验证手机号码
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
-    console.log("手机号" + that.data.tel);
     if (that.data.tel.length == 0) {
       wx.showToast({
         title: '请填写正确的手机号码!',
@@ -175,7 +172,6 @@ Page({
     let that = this;
     //第一步：验证手机号码
     var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;// 判断手机号码的正则
-    console.log("手机号" + that.data.tel);
     if (that.data.username.length == 0) {
       wx.showToast({
         title: '请填写姓名!',
@@ -249,7 +245,6 @@ Page({
       },// 设置请求的 header
       success: function (res) {
         if (res.data.resultCode == "101") {
-          console.log(res.data.data);
         } else {
           wx.showToast({
             title: '验证码发送失败!',
@@ -289,7 +284,6 @@ Page({
     var scheduid = that.data.scheduleid;
     var phone = that.data.tel;
     var name = that.data.username;
-    console.log(requestIP +"/student/subscribe");
       wx.request({
         url: requestIP + '/student/subscribe',
         data: {
@@ -502,7 +496,6 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.resultCode);
         if (res.data.resultCode == '101') {
           that.setData({
             courseList: res.data.data,

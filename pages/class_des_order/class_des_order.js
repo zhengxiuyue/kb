@@ -15,7 +15,6 @@ Page({
     var coursename = that.data.coursename;
     var classnumber = that.data.courseList.classnumber
     var level = that.data.courseList.level
-    console.log(classid + classnumber + coursename);
     wx.navigateTo({
       url: '../schedule_order/schedule_order?classid=' + classid + "&coursename=" + coursename + "&classnumber=" + classnumber + "&level=" + level
     })
@@ -96,7 +95,6 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.data);
         if (res.data.resultCode == '101') {
           that.setData({
             courseList: res.data.data,
@@ -127,7 +125,6 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.data)
         if (res.data.resultCode == '101') {
           that.setData({
             Count: res.data.data

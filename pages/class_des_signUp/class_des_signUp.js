@@ -11,7 +11,6 @@ Page({
   {
     var that = this;
     var classid = that.data.classid;
-    console.log("详情页面的"+classid);
     wx.navigateTo({
       url: '../class_signUp/class_signUp?classid='+classid,
     })
@@ -71,7 +70,6 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.resultCode)
         if (res.data.resultCode == '101') {
           that.setData({
             courseList: res.data.data,

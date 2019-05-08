@@ -103,7 +103,6 @@ Page({
     wx.getStorage({
       key: 'user',
       success(res) {
-        console.log(res.data)
         that.setData({
           //username: res.data.nickName,
           primarytel: res.data.tel,
@@ -114,7 +113,6 @@ Page({
     wx.getStorage({
       key: 'nickName',
       success(res) {
-        console.log(res.data)
         that.setData({
           username: res.data
         })
@@ -130,8 +128,6 @@ Page({
   //获取手机号码
   telInput: function (e) {
     var that = this;
-    console.log(e.detail.value);
-    console.log(that.data.primarytel);
     if (e.detail.value == that.data.primarytel) {
       that.setData({
         auth: "none"
@@ -159,9 +155,7 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.resultCode)
         if (res.data.resultCode == '101') {
-          console.log(res.data.data);
           that.setData({
             courseList: res.data.data,
             coursename: res.data.data.coursename,
@@ -221,7 +215,6 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log("/student/signup"+res.data.data);
         if (res.data.resultCode == '101') {
           var merchantNumber = res.data.data;
           wx.request({

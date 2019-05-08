@@ -13,7 +13,6 @@ Page({
   },
 
   handleChange({ detail }) {
-    console.log(detail);
     if (detail.key == "tab1")
     {
     this.setData({
@@ -87,7 +86,6 @@ Page({
     var aresid = storeOrderList[index].ares_id;
     var ares_status = storeOrderList[index].ares_status;
     var order_status = that.data.order_status;
-    console.log("ares_status"+ares_status);
     wx.navigateTo({
       url: '../order_store_des/order_store_des?aresid=' + aresid + "&order_status=" + order_status + "&ares_status=" + ares_status,
     })
@@ -116,13 +114,11 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data);
         if (res.data.resultCode == '101') {
           that.setData({
             storeOrderList:res.data.data,
             error_noStoreOrder:"none"
           })
-          console.log(that.data.storeOrderList);
         }
         else {
           that.setData({
@@ -162,7 +158,6 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data);
         if (res.data.resultCode == '101') {
           that.setData({
             courseOrderList: res.data.data,

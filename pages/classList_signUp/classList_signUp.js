@@ -28,7 +28,6 @@ Page({
   //获取当前门店下的可报名课程
   getClassList_signUp: function (e) {
     var that = this;
-    console.log("storeid" + that.data.storeid);
     wx.request({
       url: requestIP + '/student/getClassEnter',
       data: {
@@ -41,9 +40,7 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.data);
         if (res.data.resultCode == '101') {
-          console.log("有多少可报名" + res.data.data.length);
           that.setData({
             classList_signUp: res.data.data
           });
@@ -89,7 +86,6 @@ Page({
 
   GOclass_des: function (e) {
     var index = e.currentTarget.dataset.index;
-    console.log(index);
     var classList_signUp = this.data.classList_signUp;
     var classid = classList_signUp[index].classid;
     wx.setStorageSync("classid", classid);
@@ -100,7 +96,6 @@ Page({
 
   onLoad: function (options) {
     var storeid = wx.getStorageSync("storeid");
-    console.log("报名课程的列表" + storeid);
     this.setData({
       storeid: storeid
     }),
@@ -113,7 +108,6 @@ Page({
       that.getClassList_signUp();
       return false;
     }
-   // console.log("storeid" + that.data.storeid);
     wx.request({
       url: requestIP + '/student/searchClassEnter',
       data: {
@@ -126,9 +120,7 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.data);
         if (res.data.resultCode == '101') {
-          console.log("返回的搜索结果是" + res.data.data);
           that.setData({
             classList_signUp: res.data.data
           });

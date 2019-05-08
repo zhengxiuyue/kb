@@ -134,23 +134,35 @@ Component({
                   that.setData({
                     sign: []
                   })
-                  console.log("请求失败");
+                  wx.showToast({
+                    title: '请求失败',
+                    icon: 'none',
+                  });
                 }
               },
               fail: function () {
                 that.setData({
                   sign: []
                 })
-                console.log("fail");
+                wx.showToast({
+                  title: '服务器异常',
+                  icon: 'none',
+                });
               },
             })
           }
           else {          
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
         fail: function () {
-          console.log("fail");
+          wx.showToast({
+            title: '服务器异常',
+            icon: 'none',
+          });
         },
       })
     },   
@@ -209,22 +221,34 @@ Component({
                   that.setData({
                     sign: []
                   })
-                  console.log("请求失败");
+                  wx.showToast({
+                    title: '请求失败',
+                    icon: 'none',
+                  });
                 }
               },
               fail: function () {
                 that.setData({
                   sign: [],
                 })
-                console.log("fail");
+                wx.showToast({
+                  title: '服务器异常',
+                  icon: 'none',
+                });
               },
             })
           } else {
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
         fail: function () {
-          console.log("fail");
+          wx.showToast({
+            title: '服务器异常',
+            icon: 'none',
+          });
         },
       })
     },
@@ -283,22 +307,34 @@ Component({
                   that.setData({
                     sign: []
                   })
-                  console.log("请求失败");
+                  wx.showToast({
+                    title: '请求失败',
+                    icon: 'none',
+                  });
                 }
               },
               fail: function () {
                 that.setData({
                   sign: [],
                 })
-                console.log("fail");
+                wx.showToast({
+                  title: '服务器异常',
+                  icon: 'none',
+                });
               },
             })
           } else {
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
         fail: function () {
-          console.log("fail");
+          wx.showToast({
+            title: '服务器异常',
+            icon: 'none',
+          });
         },
       })
     },
@@ -344,14 +380,20 @@ Component({
             })
           }
           else {
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
         fail: function () {
           that.setData({
             current: "1"
           })
-          console.log("fail");
+          wx.showToast({
+            title: '服务器异常',
+            icon: 'none',
+          });
         },
       })
     },
@@ -405,7 +447,10 @@ Component({
               Issignnumspace: "none",
               signstu: []
             })
-            console.log("请求失败");
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            });
           }
         },
         fail: function () {
@@ -413,7 +458,10 @@ Component({
             Issignnumspace: "none",
             signstu: []
           })
-          console.log("fail");
+          wx.showToast({
+            title: '服务器异常',
+            icon: 'none',
+          });
         },
       })
     },

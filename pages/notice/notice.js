@@ -88,7 +88,6 @@ Page({
     var province = wx.getStorageSync("Nprovince");
     var areaname = wx.getStorageSync("Nareaname");
     var city = wx.getStorageSync("Ncity");
-   // console.log(province + areaname + city);
     wx.request({
       url: requestIP + '/student/getNotice',
       data: {
@@ -103,7 +102,6 @@ Page({
       },
       success(res) {
         if (res.data.resultCode == '101') {
-          console.log("通知"+res.data.data)
           that.setData({
             noticeList: res.data.data,
              error_noNotice: "none"

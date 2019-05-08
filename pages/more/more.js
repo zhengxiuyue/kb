@@ -137,7 +137,6 @@ Page({
   //获取当前门店下的可报名课程
   getClassList_signUp:function(e){
     var that = this;
-   // console.log("storeid" + that.data.storeid);
     wx.request({
       url: requestIP+'/student/getClassEnter',
       data: {
@@ -187,7 +186,6 @@ Page({
   //获取当前门店下的可预约课程
     getClassList_order: function (e) {
       var that = this;
-      console.log(app.globalData.storeid);
       wx.request({
         url: requestIP+'/student/getClassAppointment',
         data: {
@@ -260,7 +258,6 @@ Page({
       },
       success(res) {
         if (res.data.resultCode == '101') {
-          console.log(res.data.data);
           var storeList = [];
           var storeidList = [];
           for (var i = 0; i < res.data.data.length; i++) {
@@ -344,7 +341,6 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.data);
         if (res.data.resultCode == '101') {
           that.setData({
             orderStoreStatus: res.data.data

@@ -42,21 +42,18 @@ Page({
     var that = this;
     //创建节点选择器
     if(options.num == 1){
-      console.log(options.classid);
       wx.setStorageSync("classid", options.classid)
       wx.navigateTo({
         url: '/pages/class_des_signUp/class_des_signUp',
       })
     }
     else if(options.num == 2){
-      console.log(options.classid);
       wx.setStorageSync("classid", options.classid)
       wx.navigateTo({
         url: '/pages/class_des_order/class_des_order',
       })
     }
     else if (options.num == 3) {
-      console.log(options.classid);
       wx.setStorageSync("classid", options.classid)
       wx.navigateTo({
         url: '/pages/activityDetail/activityDetail?ay_id=' + options.classid,
@@ -121,7 +118,6 @@ Page({
   },
 
   selectDate: function (e) {
-    console.log(e)
     var that = this;
     that.setData({
       date:e.detail.date
@@ -143,14 +139,12 @@ Page({
     var index = e.currentTarget.dataset.index;
     var courseList = this.data.courseList;
     var classid = courseList[index].classid;
-    console.log(classid);
     wx.navigateTo({
       url: '/pages/class/class?classid=' + classid,
     })
   },
   GOclass_des: function (e) {
     var index = e.currentTarget.dataset.index;
-    console.log(index);
     var recentClassList = this.data.recentClassList;
     var classid = recentClassList[index].classid;
     wx.setStorageSync("classid", classid);
@@ -177,7 +171,6 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.data);
         if (res.data.resultCode == '101') {
           that.setData({
             recentClassList: res.data.data
@@ -214,7 +207,6 @@ Page({
 
 //获取当前定位并写入缓存
   getLocation: function (e) {
-   // console.log("执行了获取地理位置");
     var that = this;
     wx.getLocation({  //获取当前地址
       success: function (res) {
@@ -228,7 +220,6 @@ Page({
           location: { latitude: latitude, longitude: longitude },
           success: function (res) {
             //address 城市
-             console.log(res.result);
             that.setData({ address: res.result.address })
              wx.showToast({
               title: "当前位置: " + that.data.address,
@@ -290,7 +281,6 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-        console.log(res.data.data);
         if (res.data.resultCode == '101') {
           that.setData({
             noticeList: res.data.data
@@ -313,12 +303,10 @@ Page({
         'userid': app.globalData.userid
       },
       success(res) {
-       console.log(res.data.data);
         if (res.data.resultCode == '101') {
           that.setData({
             courseList: res.data.data
           });
-          console.log(res.data.data[0].dayinweek);
           that.setData({
             error_noClass: "none"
           });
