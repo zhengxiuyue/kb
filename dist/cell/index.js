@@ -1,6 +1,5 @@
 const warn = (msg, getValue) => {
     console.warn(msg);
-    console.log('接受到的值为：', getValue);
 };
 
 Component({
