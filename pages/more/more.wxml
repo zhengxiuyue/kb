@@ -2,7 +2,12 @@
 <wxs src="more.wxs" module="tools" />
 <import src="/pages/tabBar/tabBar.wxml"/> 
 <template is="tabBar" data="{{tabBar}}"/>
-
+<view class='mask' style='display:{{flagMore == 1? "block":"none"}}'>
+  <image src='/image/circle.png' class='mask-img1'></image>
+  <image src='/image/circle.png' class='mask-img2'></image>
+  <image src='/image/tips.png' class='mask-img3'></image>
+  <image src='/image/iknow.png' class='mask-img4' bindtap='changeflagMore'></image>
+</view>
 <view class='page'>
   <!--选择地区-->
 

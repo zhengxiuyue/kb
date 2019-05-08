@@ -27,13 +27,13 @@
 
          <view class='class_des_text1'>
           <view class='class-desImg'><image src='/image/small.png' class='class-desImg-img'/></view>
-          <view>
+          <view class='class_des_text2'>
           <text style='display: {{courseList.improveprice == null? "none":"inline"}}' >课程价格：{{courseList.improveprice}}元</text>
 
           <text style='display: {{courseList.improveprice == null? "inline":"none"}}' >课程价格：{{courseList.price}}元</text>
           </view>
           
-          <view><image src='/image/member.png' class='member-icon'></image>
+          <view style='display: {{courseList.memberprice == null? "none":"inline"}}' class='class_des_text2'><image src='/image/member.png' class='member-icon'></image>
           <text class = "member_price" decode='true'>&nbsp;&nbsp;会员价：{{courseList.memberprice}}元</text></view>
           </view>
 

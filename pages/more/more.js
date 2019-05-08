@@ -19,7 +19,8 @@ Page({
     multiArray: [[], [], [], []],
     multiIndex: [0, 0, 0, 0],
     flag:0,
-    orderStoreStatus:null//门店预约状态
+    orderStoreStatus:null,//门店预约状态
+    flagMore:1
   },
 
   tips(info) {
@@ -93,6 +94,22 @@ Page({
     app.editTabBar();
     that.getRecentStoreList();
     that.IfOrder();
+    //var flagMore = app.globalData.flagMore;
+    var flagMore =  wx.getStorageSync("flagMore");
+    that.setData({
+      flagMore: flagMore
+    })
+  },
+
+  changeflagMore:function(){
+    var that = this;
+    wx.setStorageSync("flagMore",2);
+    //app.globalData.flagMore = 2;
+    //var flagMore = app.globalData.flagMore;
+    var flagMore = wx.getStorageSync("flagMore");
+    that.setData({
+      flagMore: flagMore
+    })
   },
 
   onPullDownRefresh: function () {

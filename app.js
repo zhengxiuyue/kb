@@ -1,6 +1,9 @@
 //app.js
 App({
   onLaunch: function (options) {
+    if (!wx.getStorageSync("flagMore")){
+      wx.setStorageSync("flagMore", 1);
+    }
     var that = this
     //判断是否授权 未授权跳授权页面
     wx.getSetting({
