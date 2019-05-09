@@ -106,5 +106,12 @@ Page({
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
     }
-  }
+  },
+  GovideoWebView: function (e) {
+    var that = this;
+    app.globalData.video_link = e.currentTarget.dataset.link
+    wx.navigateTo({
+      url: '/pages/videoWebView/videoWebView',
+    })
+  },
 })

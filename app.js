@@ -150,6 +150,7 @@ App({
     code: "",
     storeid: "",
     province: "",//省
+    video_link:"",//视频链接
     city: "",//市
     areaname: "",//区
     storename: '',//门店名称

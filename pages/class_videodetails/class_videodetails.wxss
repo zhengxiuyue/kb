@@ -1,51 +1,14 @@
 /* pages/class_videodetails/class_videodetails.wxss */
-/* 宣传视频 */
-.cards {
-  background: #fff;
-  margin: 20rpx;
+page{
+  background: #f8f8f8;
 }
-
-.card {
-  background: #ffffff;
-  margin-bottom: 20rpx;
-  padding:10rpx;
-  transition: 0.5s all;
-  box-shadow:0 0 20rpx #ccc;
-}
-
-.card.hover {
-  box-shadow: 0 70rpx 90rpx rgba(0, 0, 0, 0.06);
-}
-
-.card image {
+.classcard1{
+  height: 120rpx;
+  margin: 30rpx 40rpx;
+  padding: 20 40rpx;
+  border-radius: 2rpx;
+  background-color: #fff;
   position: relative;
-}
-
-.card image,
-.card video {
-  height: 36vh;
-  width: 100%;
-}
-
-.card .content {
-  height: 18vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.content .header{
-  font-size: 13pt;
-  color: #313131;
-}
-.content .description{
-  margin-top: 20rpx;
-  font-size: 10pt;
-  color: #ccc;
-}
-
-.video{
-  width: 100%;
 }
 
 .classcard{
@@ -57,3 +20,63 @@
   height: 250rpx;
   width: 250rpx;
 }
+
+.signin{
+  font-size: 30rpx;
+  color: #1296db;
+}
+
+.signin2{
+  font-size: 30rpx;
+  color: #1296db;
+}
+
+.classtop1{
+  height: 60rpx;
+  width: 200rpx;
+  margin: 10rpx 20rpx;
+  position: absolute;
+  top: 20rpx;
+  left: -40rpx;
+  background-color: rgb(255,202,0);
+  z-index: 99;
+  text-align: center;
+}
+
+.classname1{
+  color: #fff;
+  line-height: 60rpx;
+  justify-content: center;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+.classgrate{
+  font-weight: bold; 
+  position: absolute;
+  top: 35rpx;
+  left: 240rpx;
+  font-size:30rpx;
+  color: #464c5b;
+}
+
+.classinfm1{
+  font-size: 32rpx;
+  position: absolute;
+  line-height: 1.5;
+  top: 100rpx;
+  left: 40rpx;
+}
+
+.classbottom{
+  height: 150rpx;
+  background-color: #fff;
+  font-size: 30rpx;
+}
+
+.classinfm{
+  padding: 0rpx 10rpx;
+  padding-top: 8rpx;
+}
+
+

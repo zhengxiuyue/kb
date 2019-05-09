@@ -1,0 +1,2 @@
+<!--pages/videoWebView/videoWebView.wxml-->
+<web-view src="{{video_link}}"></web-view>
