@@ -3,7 +3,6 @@
   <view class='classtop1'>
         <text class='classname1'>{{item.coursename}}{{item.levelname}}{{item.classnumber}}</text>
   </view>
-  <text class='classgrate'>班级：{{item.levelname}}</text>
   <text class='classinfm1' decode="{{true}}">开始时间：{{item.startdate}}
   结束时间：{{item.enddate}} 
   上课时间：{{tools.my_slice(item.startpoint,0,5)}}--{{tools.my_slice(item.endpoint,0,5)}}
