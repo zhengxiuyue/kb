@@ -18,9 +18,9 @@
             <text class="price">￥{{list.ay_originalprice}}</text>
         </view>
         <view catchtap='gostoreIndex'>
-            <text class="store" decode='{{true}}'><text style='color:#999999'>{{list.ay_starttime}}</text> &nbsp;&nbsp;{{list.ay_place}}</text>
+            <text class="store" decode='{{true}}'><text style='color:#999999'>{{list.ay_starttime}}\n</text></text>
+            <text class="store" decode='{{true}}'><text style='color:#999999'>{{list.ay_place}}</text></text>
         </view>
-        
     </view>
   </view>
 </view>

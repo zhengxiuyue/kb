@@ -26,7 +26,7 @@
       </view>
       <view class='content4'>
           <image class='activity-icon' src='/image/activity-leading.png'></image>
-          <view>负责人：{{activity.ay_name}}</view>
+          <view>负责人：{{activity.name}}</view>
       </view>
   </view>
 </view>

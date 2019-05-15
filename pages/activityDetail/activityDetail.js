@@ -88,7 +88,7 @@ Page({
     return {
       title: nickname + '给你分享了' + ay_name + '活动，快打开看看吧',
       desc: '交友学习欢迎加入',
-      imageUrl: '/image/onshare.png',
+      imageUrl: that.data.activity.ay_image,
       path: '/pages/activityDetail/activityDetail?classid=' + classid + '&num=' + num
     }
 
