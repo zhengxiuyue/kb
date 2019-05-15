@@ -17,9 +17,8 @@
         <view class="txt">
             <text class="price">￥{{list.ay_originalprice}}</text><text class="store" decode='{{true}}'><text style='color:#999999'>报名截至：{{list.ay_signtime}}\n</text></text>
         </view>
-        <view>
-             
-            <text class="store" decode='{{true}}'><text style='color:#999999'>地点:{{list.ay_place}}</text></text>
+        <view class="store">
+          地点：{{list.ay_place}}
         </view>
     </view>
   </view>

@@ -53,8 +53,12 @@ page{
 }
 
 .list-text .store{
+  color:#999999;
   font-size: 24rpx;
   padding-left: 20rpx;
+  display:flex;
+  flex-wrap:wrap;
+  width:525rpx;
 }
 
 .swiper-box{

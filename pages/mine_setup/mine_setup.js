@@ -257,26 +257,9 @@ onConfirm: function () {
       content: '确定要退出登录吗？',
       success: function (sm) {
         if (sm.confirm) {
-          wx.request({
-            url: requestIP + '/user/exit',
-            data: {
-            },
-            method: 'POST',
-            header: {
-              'content-type': 'application/x-www-form-urlencoded', // 默认值
-              'userid': app.globalData.userid
-            },
-            success(res) {
-              if (res.data.resultCode == '101') {
-                wx.reLaunch({
-                  url: '/pages/login/login',
-                })
-              }
-            },
-            fail(res) {
-            }
+          wx.redirectTo({
+            url: '/pages/login/login',
           })
-          // 用户点击了确定 可以调用删除方法了
         } else if (sm.cancel) {
         }
       }
