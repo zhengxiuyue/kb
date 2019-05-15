@@ -17,7 +17,7 @@ page{
 }
 
 .list-images image{
-  width: 170rpx;
+  width: 160rpx;
   height: 160rpx;
 }
 
@@ -39,7 +39,7 @@ page{
   padding: 5px;
   color:#aaaaaa;
   display: flex;
-  justify-content: space-between;
+  align-items:center;
 }
 
 .list-text .price{
