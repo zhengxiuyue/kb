@@ -151,6 +151,13 @@ Page({
                   duration: 2000
                 })
               }
+              else if (res.data.resultCode == '229') {
+                wx.showToast({
+                  title: '活动报名时间已截止!',
+                  icon: 'none',
+                  duration: 2000
+                })
+              }
               else {
                 $Message({
                   content: '报名失败！',
