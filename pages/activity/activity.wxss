@@ -14,29 +14,35 @@ page{
   margin:20rpx 10rpx;
   border-radius:20rpx;
   box-shadow:0rpx 0rpx 20rpx rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
 }
 
 .list-images image{
   width: 160rpx;
   height: 160rpx;
+  margin: auto;
+}
+
+.list-images{
+  display: flex;
 }
 
 .list-text {
   font-size: 14px;
   color: #666666;
   background-size:60rpx;
+  display: flex;
+  flex-direction: column;
 }
 
 .list-text .name{
   display: block;
-  height: 30rpx;
-  width: 300rpx;
-  padding: 0rpx 0rpx 20rpx 20rpx;
+  padding: 0rpx 0rpx 0rpx 20rpx;
   font-size: 30rpx;
 }
 
 .list-text .txt{
-  padding: 5px;
+  padding: 5rpx 20rpx;
   color:#aaaaaa;
   display: flex;
   align-items:center;
@@ -79,13 +85,15 @@ page{
   margin-left:10rpx;
   background:#fff;
   display: inline;
+  height: 50rpx;
+  margin-right: 10rpx;
 }
 
 .ontop{
   display:flex;
-  margin-right:35%;
-  height:50rpx;
-  line-height:50rpx
+  line-height:50rpx;
+  justify-content: space-between; 
+  width: 520rpx; 
 }
 
 .classcard{

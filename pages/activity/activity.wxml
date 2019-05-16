@@ -1,4 +1,5 @@
 <!--pages/activity/activity.wxml-->
+<wxs src="../more/more.wxs" module="tools" />
 <import src="/pages/tabBar/tabBar.wxml"/> 
 <template is="tabBar" data="{{tabBar}}"/>
 
@@ -7,15 +8,16 @@
     <view class="list-images" ><image src="{{list.ay_image}}" /></view>
     <view class="list-text">
         <view class='ontop'>
-            <text class="name">{{list.ay_name}}</text>
-            <view style='width:500rpx;text-align:right;margin-right:20rpx;'>
-              <button wx:if='{{list.isEnough == 1}}' class='activityon'>人数已满</button>
-              <button wx:if='{{list.status == 1}}' class='activityon'>已报名</button>
-              <button wx:if='{{list.ay_istop == 1}}' class='activityon'>置顶</button>
-            </view>            
+            <view class="name">{{list.ay_name}}</view>         
         </view>
         <view class="txt">
-            <text class="price">￥{{list.ay_originalprice}}</text><text class="store" decode='{{true}}'><text style='color:#999999'>报名截至：{{list.ay_signtime}}\n</text></text>
+            <text class="price">￥{{list.ay_originalprice}}</text>
+             <button wx:if='{{list.isEnough == 1}}' class='activityon'>人数已满</button>
+              <button wx:if='{{list.status == 1}}' class='activityon'>已报名</button>
+              <button wx:if='{{list.ay_istop == 1}}' class='activityon'>置顶</button>
+        </view>
+        <view class="txt">
+          <text style='color:#999999' >报名截止：{{tools.my_slice(list.ay_signtime,0,16)}}<text style='color:#ed4040' decode='true' wx:if='{{list.isOver == 1}}'> &nbsp;已截止\n</text></text>
         </view>
         <view class="store">
           地点：{{list.ay_place}}
