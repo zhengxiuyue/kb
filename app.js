@@ -24,13 +24,15 @@ App({
           })
         }
       }
-    })    
-  },
+    })  
 
-  onShow: function (options) {
-    var that = this;
-    var classid = options.query.classid
-    if (options.query.num) {
+    if (options.query.classid) {//分享是课程
+      var classid = options.query.classid
+    }
+    if (options.query.ay_id) {//分享的是活动
+      var ay_id = options.query.ay_id
+    }
+    if (options.query.num) {//来自转发页面
       var num = options.query.num
     }
     else {
@@ -38,7 +40,6 @@ App({
     }
     //3是活动
 
-    
     //判断是否还有缓存 有跳入index 无跳入login
     var userid = ''
     var userstatus = ''
@@ -56,16 +57,18 @@ App({
             that.globalData.userid = userid
             that.globalData.userstatus = userstatus
             that.globalData.openid = openid
+
             wx.redirectTo({
-              url: '/pages/index/A_index?num=' + num + "&classid=" + classid
+              url: '/pages/index/A_index?num=' + num + "&classid=" + classid + "&ay_id=" + ay_id
             })
+
           }
           else if (userstatus == 2) {
             that.globalData.userid = userid
             that.globalData.userstatus = userstatus
             that.globalData.openid = openid
             wx.redirectTo({
-              url: '/pages/index/T_index?num=' + num + "&classid=" + classid
+              url: '/pages/index/T_index?num=' + num + "&classid=" + classid + "&ay_id=" + ay_id
             })
           }
           else if (userstatus == 3) {
@@ -73,7 +76,7 @@ App({
             that.globalData.userstatus = userstatus
             that.globalData.openid = openid
             wx.redirectTo({
-              url: '/pages/index/index?num=' + num + "&classid=" + classid
+              url: '/pages/index/index?num=' + num + "&classid=" + classid + "&ay_id=" + ay_id
             })
           }
           else {
@@ -82,9 +85,13 @@ App({
             })
           }
         }
+        else {
+          wx.redirectTo({
+            url: '/pages/login/login'
+          })
+        }
       }
-    })
-
+    })  
   },
 
   //学生   
@@ -144,9 +151,9 @@ App({
 
   globalData: {
     openid: "",
-    userid: "12459ec8a77a11e8ab8e00163e00299d",//学生 0137da84b68111e8ab8e00163e00299d 老师 039cd505e50911e8ab8e00163e00299d 助教 12459ec8a77a11e8ab8e00163e00299d 
+    userid: "",//学生 0137da84b68111e8ab8e00163e00299d 老师 039cd505e50911e8ab8e00163e00299d 助教 12459ec8a77a11e8ab8e00163e00299d 
     userInfo: null,
-    userstatus: "3",//用户身份
+    userstatus: "",//用户身份
     code: "",
     storeid: "",
     province: "",//省
