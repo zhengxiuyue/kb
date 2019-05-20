@@ -18,7 +18,7 @@ page{
 }
 
 .list-images image{
-  width: 160rpx;
+  width: 284rpx;
   height: 160rpx;
   margin: auto;
 }
@@ -38,7 +38,6 @@ page{
 .list-text .name{
   display: block;
   padding: 0rpx 0rpx 0rpx 20rpx;
-  font-size: 30rpx;
 }
 
 .list-text .txt{
@@ -55,16 +54,15 @@ page{
 
 .list-text .num{
   font-size: 26rpx;
-  color:#999999
+  color:#666
 }
 
 .list-text .store{
-  color:#999999;
-  font-size: 24rpx;
+  color:#666;
   padding-left: 20rpx;
   display:flex;
   flex-wrap:wrap;
-  width:525rpx;
+  width:400rpx;
 }
 
 .swiper-box{

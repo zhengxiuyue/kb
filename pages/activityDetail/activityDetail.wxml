@@ -1,4 +1,7 @@
-<image src = "{{activity.ay_image}}" class='img' />
+<view  class='img'>
+<image src = "{{activity.ay_image}}" class='image' />
+</view>
+
 <view class='page'>
   <view class='content2'>{{activity.ay_name}}</view>
   <view class='content3'>
