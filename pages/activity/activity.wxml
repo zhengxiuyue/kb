@@ -11,9 +11,9 @@
             <view class="name">{{list.ay_name}}</view>         
         </view>
         <view class="txt">
-            <i-tag  class="i-tags" name="标签一" color="yellow"> 会员价</i-tag>
-            <text class="price">￥{{list.ay_memberprice}}</text>
-            <text class="price" decode='true' style='text-decoration:line-through;color:#666'>&nbsp;￥{{list.ay_originalprice}}</text>
+         <text class="price"  style='color:#666' decode='true'>￥{{list.ay_originalprice}}&nbsp;&nbsp;</text>
+            <i-tag  class="i-tags" name="" color="yellow"> 会员价</i-tag>
+            <text class="price" >￥{{list.ay_memberprice}}</text>           
              <button wx:if='{{list.isEnough == 1}}' class='activityon'>人数已满</button>
               <button wx:if='{{list.status == 1}}' class='activityon'>已报名</button>
               <button wx:if='{{list.ay_istop == 1}}' class='activityon'>置顶</button>
