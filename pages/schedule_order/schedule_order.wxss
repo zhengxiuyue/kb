@@ -7,6 +7,7 @@
   overflow: hidden;
 }
 
+
 .b1,.b2,.b3,.b4{
    height: 100rpx;
    line-height: 100rpx;
@@ -14,7 +15,7 @@
 
 .b1{
   display: inline-block;
-  width: 30%;
+  width: 40%;
   background-color: #ffeb3c;
   color: #209cfe;
   font-size: 36rpx;
@@ -24,7 +25,7 @@
 
 .b2{
   display: inline-block;
-  width: 65%;
+  width: 55%;
   background-color: #61bbff;
   color: #fff;
   padding-left: 5%;
@@ -32,7 +33,7 @@
 
 .b3{
   display: inline-block;
-  width: 30%;
+  width: 40%;
   background-color: #fbc332;
   color: #fff;
   text-align: center;
@@ -40,45 +41,11 @@
 
 .b4{
   display: inline-block;
-  width: 65%;
+  width: 55%;
   background-color: #60bcff;
   color: #fff;
   padding-left: 5%;
   }
-
-  .a1,.a2,.a3,.a4{
-   height: 100rpx;
-   line-height: 100rpx;
-   background-color: #cdcdcd;
-   color: #fff;
-}
-
-.a1{
-  display: inline-block;
-  width: 30%;
-  font-size: 36rpx;
-  font-weight: bold;
-  text-align: center;
-}
-
-.a2{
-  display: inline-block;
-  width: 65%;
-  padding-left: 5%;
-}
-
-.a3{
-  display: inline-block;
-  width: 30%;
-  text-align: center;
-}
-
-.a4{
-  display: inline-block;
-  width: 65%;
-  padding-left: 5%;
-  }
-
   .title{
   margin-top: 30rpx;
   margin-bottom: 20rpx;   

@@ -54,9 +54,9 @@ Page({
       })
     }
     else if (options.num == 3) {
-      wx.setStorageSync("classid", options.classid)
+      wx.setStorageSync("ay_id", options.ay_id)
       wx.navigateTo({
-        url: '/pages/activityDetail/activityDetail?ay_id=' + options.classid,
+        url: '/pages/activityDetail/activityDetail?ay_id=' + options.ay_id,
       })
     }
     

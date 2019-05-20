@@ -74,18 +74,7 @@ Page({
   /**
  * 用户点击右上角分享
  */
-  onShareAppMessage: function () {
-    var that = this
-    var coursename = that.data.coursename
-    var classid = that.data.classid
-    var nickname = app.globalData.nickName
-    var num = 1
-    return {
-      imageUrl: '/image/onshare.png',
-      title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
-      desc: '交友学习欢迎加入',
-      path: '/pages/class_des_signUp/class_des_signUp?classid=' + classid + '&num=' + num
-    }    
+  onShareAppMessage: function () {  
   },
 
   onLoad: function (options) {
