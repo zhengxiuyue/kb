@@ -98,7 +98,7 @@
         </button>
         </view>
         <view class='btn' bindtap='GOclass_signUp'>
-          报名体验
+          立即报名
         </view>
       
       </view>
