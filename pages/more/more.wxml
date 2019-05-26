@@ -55,7 +55,7 @@
           {{item.coursename}}
         </view>
         <view class='content-middle'>
-          <view class='content-rank'>{{item.level}}</view>
+          <view class='content-rank'>{{item.level}}{{item.classnumber}}</view>
           <view class='content-time'><text decode="true">{{item.name}}老师</text></view>
         </view>
           <view class='content-btn'>预约</view>
@@ -93,7 +93,7 @@
           {{item.coursename}}
         </view>
         <view class='content-middle'>    
-          <view class='content-rank'>{{item.level}}</view>
+          <view class='content-rank'>{{item.level}}{{item.classnumber}}</view>
           <view class='content-time'><text decode="true">{{item.startdate}}&nbsp;{{tools.my_slice(item.startpoint,0,5)}}-{{tools.my_slice(item.endpoint,0,5)}}</text></view>
         </view>
        <view class='content-btn'>报名</view>
