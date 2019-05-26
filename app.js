@@ -1,6 +1,7 @@
 //app.js
 App({
   onLaunch: function (options) {
+    //更多页面提示
     if (!wx.getStorageSync("flagMore")){
       wx.setStorageSync("flagMore", 1);
     }
@@ -32,6 +33,9 @@ App({
     if (options.query.ay_id) {//分享的是活动
       var ay_id = options.query.ay_id
     }
+    if (options.query.ay_id) {//分享的是视频
+      var video_link = options.query.video_link
+    }
     if (options.query.num) {//来自转发页面
       var num = options.query.num
     }
@@ -59,7 +63,7 @@ App({
             that.globalData.openid = openid
 
             wx.redirectTo({
-              url: '/pages/index/A_index?num=' + num + "&classid=" + classid + "&ay_id=" + ay_id
+              url: '/pages/index/A_index?num=' + num + "&classid=" + classid + "&ay_id=" + ay_id + '&video_link=' + video_link
             })
 
           }
@@ -68,7 +72,7 @@ App({
             that.globalData.userstatus = userstatus
             that.globalData.openid = openid
             wx.redirectTo({
-              url: '/pages/index/T_index?num=' + num + "&classid=" + classid + "&ay_id=" + ay_id
+              url: '/pages/index/T_index?num=' + num + "&classid=" + classid + "&ay_id=" + ay_id + '&video_link=' + video_link
             })
           }
           else if (userstatus == 3) {
@@ -76,7 +80,7 @@ App({
             that.globalData.userstatus = userstatus
             that.globalData.openid = openid
             wx.redirectTo({
-              url: '/pages/index/index?num=' + num + "&classid=" + classid + "&ay_id=" + ay_id
+              url: '/pages/index/index?num=' + num + "&classid=" + classid + "&ay_id=" + ay_id + '&video_link=' + video_link
             })
           }
           else {

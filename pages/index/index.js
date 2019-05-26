@@ -59,6 +59,38 @@ Page({
         url: '/pages/activityDetail/activityDetail?ay_id=' + options.ay_id,
       })
     }
+    else if (options.num == 4) {
+      wx.request({
+        url: requestIP + '/user/IsClass',
+        data: {
+          userid: app.globalData.userid,
+          classid: options.classid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded', 
+        },
+        success(res) {
+          if (res.data.resultCode == '101') {
+            wx.navigateTo({
+              url: '/pages/videoWebView/videoWebView?video_link=' + options.video_link,
+            })           
+          }
+          else {
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none'
+            })
+          }
+        },
+        fail(res) {
+         wx.showToast({
+           title: '服务器异常',
+           icon: 'none'
+         })
+        }
+      })      
+    }
     
     app.editTabBar();
     var userstatus = app.globalData.userstatus

@@ -65,6 +65,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    var that = this
+    var coursename = that.data.items.coursename
+    var classid = that.data.classid
+    var nickname = app.globalData.nickName
+    var num = 4
+    return {
+      title: nickname + '给你分享了"快乐课堂"，快打开看看吧',
+      desc: '交友学习欢迎加入',
+      imageUrl: '/image/onshare.png',
+      path: '/pages/videoWebView/videoWebView?video_link=' + video_link + '&classid=' + wx.getStorageSync(classid)
+    }
   }
 })

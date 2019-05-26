@@ -33,6 +33,7 @@ Component({
   methods: {
     classcard: function (e) {
       var classid = e.currentTarget.dataset.classid
+      wx.setStorageSync('classid', classid)
       wx.navigateTo({
         url: '/pages/class/class?classid=' + classid,
       })
