@@ -16,7 +16,6 @@ Page({
     this.setData({
       video_link: app.globalData.video_link
     })
-
   },
 
   /**
@@ -29,8 +28,36 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: function (options) {
+    if (options.num == 4) {
+      wx.request({
+        url: requestIP + '/user/IsClass',
+        data: {
+          userid: app.globalData.userid,
+          classid: options.classid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+        },
+        success(res) {
+          if (res.data.resultCode == '101') {
+           
+          }
+          else {
+            wx.redirectTo({
+              url: '/pages/login/login',
+            })
+          }
+        },
+        fail(res) {
+          wx.showToast({
+            title: '服务器异常',
+            icon: 'none'
+          })
+        }
+      })
+    }
   },
 
   /**
@@ -66,15 +93,13 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this
-    var coursename = that.data.items.coursename
-    var classid = that.data.classid
     var nickname = app.globalData.nickName
     var num = 4
     return {
       title: nickname + '给你分享了"快乐课堂"，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
-      path: '/pages/videoWebView/videoWebView?video_link=' + video_link + '&classid=' + wx.getStorageSync(classid)
+      path: '/pages/videoWebView/videoWebView?video_link=' + that.data.video_link + '&classid=' + wx.getStorageSync('classid') + '&num=' + num
     }
   }
 })

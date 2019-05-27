@@ -1,6 +1,9 @@
 //app.js
 App({
   onLaunch: function (options) {
+  },  
+  
+  onShow: function (options) {
     //更多页面提示
     if (!wx.getStorageSync("flagMore")){
       wx.setStorageSync("flagMore", 1);
@@ -33,7 +36,7 @@ App({
     if (options.query.ay_id) {//分享的是活动
       var ay_id = options.query.ay_id
     }
-    if (options.query.ay_id) {//分享的是视频
+    if (options.query.video_link) {//分享的是视频
       var video_link = options.query.video_link
     }
     if (options.query.num) {//来自转发页面
