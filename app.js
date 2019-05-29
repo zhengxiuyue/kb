@@ -1,7 +1,7 @@
 //app.js
 App({
   onLaunch: function (options) {
-    //更多页面提示，只执行一次
+    //更多页面提示
     if (!wx.getStorageSync("flagMore")) {
       wx.setStorageSync("flagMore", 1);
     }
@@ -15,6 +15,7 @@ App({
             success: function (res) {
               that.globalData.nickName = res.userInfo.nickName
               that.globalData.avatarUrl = res.userInfo.avatarUrl
+
             }
           })
         }
@@ -41,6 +42,7 @@ App({
     else {
       var num = 0
     }
+    //3是活动
 
     //判断是否还有缓存 有跳入index 无跳入login
     var userid = ''
@@ -59,6 +61,7 @@ App({
             that.globalData.userid = userid
             that.globalData.userstatus = userstatus
             that.globalData.openid = openid
+
             wx.redirectTo({
               url: '/pages/index/A_index?num=' + num + "&classid=" + classid + "&ay_id=" + ay_id + '&video_link=' + video_link
             })
@@ -91,11 +94,18 @@ App({
             url: '/pages/login/login'
           })
         }
+      },
+      fail:function(res){
+        wx.redirectTo({
+          url: '/pages/login/login'
+        })
       }
-    }) 
-  },  
-  
-  onShow: function (options) { 
+    })
+
+  },
+
+  onShow: function (options) {
+
   },
 
   //学生   

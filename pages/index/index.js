@@ -26,7 +26,6 @@ Page({
       no_content: "该小程序当前正处于内测阶段，请勿付费，否则概不退款"
     }],//通知
     courseList:'',//课表列表
-    userstatus:null,
     windowHeight:null
   },
 
@@ -41,11 +40,6 @@ Page({
   onLoad: function (options) {
     var that = this;    
     app.editTabBar();
-    var userstatus = app.globalData.userstatus
-    this.setData({
-      userstatus: userstatus,
-    })
-
     this.getLocation();
     this.getRecentClass();
     this.getMyCourse();
@@ -77,33 +71,6 @@ Page({
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
     }
-  },
-  Godown:function(e){
-    var that = this;
-    that.setData({
-      down:"block",
-      top:"none",
-      calendarsim:"none",
-      calendar:"block"
-    })
-  },
-  Gotop: function (e) {
-    var that = this;
-    that.setData({
-      top: "block",
-      down: "none",
-      calendar: "none",
-      calendarsim: "block"
-    })
-  },
-
-  selectDate: function (e) {
-    var that = this;
-    that.setData({
-      date:e.detail.date
-    })
-    that.Gotop();
-    that.getMyCourse();
   },
   more:function(){
     wx.redirectTo({
