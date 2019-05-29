@@ -11,7 +11,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.3.0",
+	"libVersion": "2.7.0",
 	"appid": "wx3f4ccb9e9f33c7cf",
 	"projectname": "curriculum",
 	"debugOptions": {

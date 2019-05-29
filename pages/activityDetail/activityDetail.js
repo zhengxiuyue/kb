@@ -79,7 +79,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
- 
     var that = this
     var ay_name = that.data.ay_name
     var ay_id = that.data.ay_id
@@ -89,11 +88,35 @@ Page({
       title: nickname + '给你分享了' + ay_name + '活动，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: that.data.activity.ay_image,
-      path: '/pages/activityDetail/activityDetail?ay_id=' + ay_id + '&num=' + num
+      path: '/pages/activityDetail/activityDetail?ay_id=' + ay_id + '&num=' + num,
+      success(){
+        console.log("转发成功")
+      },
+      fail(){
+        console.log("转发失败")
+      }
+      
     }
 
   },
-
+  // onShareAppMessage: function (res) {
+  //   if (res.from === 'button') {
+  //     // 来自页面内转发按钮
+  //     console.log(res.target)
+  //   }
+  //   return {
+  //     title: '自定义转发标题',
+  //     path: '/pages/activityDetail/activityDetail',
+  //     success: function (res) {
+  //       console.log("转发成功")
+  //       that.onLoad()
+  //     },
+  //     fail: function (res) {
+  //       console.log("转发失败")
+  //       that.onLoad()
+  //     }
+  //   }
+  // },
   GoactivityWebView: function () {
     var that = this;
     var ay_id = that.data.ay_id;

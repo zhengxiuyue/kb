@@ -6,8 +6,6 @@
   overflow:hidden;
   display:block;
   margin:10rpx auto;
-  
-
 }
 
 .info{

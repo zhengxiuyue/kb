@@ -1,11 +1,8 @@
 //app.js
 App({
   onLaunch: function (options) {
-  },  
-  
-  onShow: function (options) {
     //更多页面提示
-    if (!wx.getStorageSync("flagMore")){
+    if (!wx.getStorageSync("flagMore")) {
       wx.setStorageSync("flagMore", 1);
     }
     var that = this
@@ -28,7 +25,7 @@ App({
           })
         }
       }
-    })  
+    })
 
     if (options.query.classid) {//分享是课程
       var classid = options.query.classid
@@ -99,6 +96,10 @@ App({
         }
       }
     })  
+  },  
+  
+  onShow: function (options) {
+  
   },
 
   //学生   

@@ -125,6 +125,7 @@ Page({
       title: nickname + '给你分享了"快乐课堂"，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
+     
     }
   },
   Godown:function(e){
