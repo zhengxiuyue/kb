@@ -94,13 +94,22 @@ App({
             url: '/pages/login/login'
           })
         }
+      },
+      fail:function(res){
+        wx.redirectTo({
+          url: '/pages/login/login'
+        })
       }
     })  
   },  
   
   onShow: function (options) {
   
+
+
   },
+
+
 
   //学生   
   editTabBar: function () {

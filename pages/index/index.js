@@ -26,7 +26,6 @@ Page({
       no_content: "该小程序当前正处于内测阶段，请勿付费，否则概不退款"
     }],//通知
     courseList:'',//课表列表
-    userstatus:null,
     windowHeight:null
   },
 
@@ -39,62 +38,8 @@ Page({
    */
   //获取全局变量
   onLoad: function (options) {
-    var that = this;
-    //创建节点选择器
-    if(options.num == 1){
-      wx.setStorageSync("classid", options.classid)
-      wx.navigateTo({
-        url: '/pages/class_des_signUp/class_des_signUp',
-      })
-    }
-    else if(options.num == 2){
-      wx.setStorageSync("classid", options.classid)
-      wx.navigateTo({
-        url: '/pages/class_des_order/class_des_order',
-      })
-    }
-    else if (options.num == 3) {
-      wx.setStorageSync("ay_id", options.ay_id)
-      wx.navigateTo({
-        url: '/pages/activityDetail/activityDetail?ay_id=' + options.ay_id,
-      })
-    }
-    else if (options.num == 4) {
-      wx.request({
-        url: requestIP + '/user/IsClass',
-        data: {
-          userid: app.globalData.userid,
-          classid: options.classid
-        },
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded', 
-        },
-        success(res) {
-          if (res.data.resultCode == '101') {
-            wx.navigateTo({
-              url: '/pages/videoWebView/videoWebView?video_link=' + options.video_link,
-            })           
-          }
-          else {
-            return false
-          }
-        },
-        fail(res) {
-         wx.showToast({
-           title: '服务器异常',
-           icon: 'none'
-         })
-        }
-      })      
-    }
-    
+    var that = this;    
     app.editTabBar();
-    var userstatus = app.globalData.userstatus
-    this.setData({
-      userstatus: userstatus,
-    })
-
     this.getLocation();
     this.getRecentClass();
     this.getMyCourse();
@@ -127,33 +72,6 @@ Page({
       imageUrl: '/image/onshare.png',
      
     }
-  },
-  Godown:function(e){
-    var that = this;
-    that.setData({
-      down:"block",
-      top:"none",
-      calendarsim:"none",
-      calendar:"block"
-    })
-  },
-  Gotop: function (e) {
-    var that = this;
-    that.setData({
-      top: "block",
-      down: "none",
-      calendar: "none",
-      calendarsim: "block"
-    })
-  },
-
-  selectDate: function (e) {
-    var that = this;
-    that.setData({
-      date:e.detail.date
-    })
-    that.Gotop();
-    that.getMyCourse();
   },
   more:function(){
     wx.redirectTo({
