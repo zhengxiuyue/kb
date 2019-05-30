@@ -110,7 +110,7 @@ Page({
             wx.showToast({
               title: '该课程的预约人数已达到上限!',
               icon: 'none',
-              duration: 1000
+              duration: 2000
             })
           }
           else {

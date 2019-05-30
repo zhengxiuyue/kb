@@ -6,16 +6,120 @@ Page({
    * 页面的初始数据
    */
   data: {
-    video_link:''
+    video_link:'',
+    classid:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      video_link: app.globalData.video_link
+    var that = this;
+    if (app.globalData.video_link) {
+      that.setData({
+        video_link: app.globalData.video_link
+      })
+    } else if (that.options.video_link) {
+      that.setData({
+        video_link: that.options.video_link
+      })
+    }
+
+    if (that.options.classid) {
+      that.setData({
+        classid: that.options.classid
+      })
+    }
+    //判断是否授权 未授权跳授权页面
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+        }
+        else {
+          wx.redirectTo({
+            url: '/pages/authorize/authorize',
+          })
+        }
+      }
     })
+    //判断是否还有缓存 有跳入index 无跳入login
+    var userid = ''
+    var userstatus = ''
+    var openid = ''
+    var tel = ''
+    wx.getStorage({//获取本地缓存
+      key: "user",
+      success: function (res) {
+        userid = res.data.userid
+        userstatus = res.data.userstatus
+        openid = res.data.openid
+        tel = res.data.tel
+        if (userid && tel && openid && userstatus) {
+          if (userstatus == 1) {
+            that.globalData.userid = userid
+            that.globalData.userstatus = userstatus
+            that.globalData.openid = openid
+            wx.showToast({
+              title: '登录身份不是学生!',
+              icon: 'none',
+              duration: 2000
+            })
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '/pages/index/A_index'
+              })
+            }, 2000)
+          }
+          else if (userstatus == 2) {
+            that.globalData.userid = userid
+            that.globalData.userstatus = userstatus
+            that.globalData.openid = openid
+            wx.showToast({
+              title: '登录身份不是学生!',
+              icon: 'none',
+              duration: 2000
+            })
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '/pages/index/T_index'
+              })
+            }, 2000)
+          }
+          else if (userstatus == 3) {
+            that.globalData.userid = userid
+            that.globalData.userstatus = userstatus
+            that.globalData.openid = openid
+            that.isClass();//判断是否为当前课堂的学生
+          }
+          else {
+            wx.showToast({
+              title: '请先登录再打开分享链接!',
+              icon: 'none',
+              duration: 2000
+            })
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '/pages/login/login'
+              })
+            }, 2000)
+          }
+        }
+        else {
+          wx.showToast({
+            title: '请先登录再打开分享链接!',
+            icon: 'none',
+            duration: 2000
+          })
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '/pages/login/login'
+            })
+          }, 2000)
+        }
+      }
+    })
+
   },
 
   /**
@@ -25,39 +129,42 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function (options) {
-    if (options.num == 4) {
-      wx.request({
-        url: requestIP + '/user/IsClass',
-        data: {
-          userid: app.globalData.userid,
-          classid: options.classid
-        },
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-        },
-        success(res) {
-          if (res.data.resultCode == '101') {
-           
-          }
-          else {
-            wx.redirectTo({
-              url: '/pages/login/login',
-            })
-          }
-        },
-        fail(res) {
-          wx.showToast({
-            title: '服务器异常',
-            icon: 'none'
-          })
+  isClass:function(){
+    var that
+    wx.request({
+      url: requestIP + '/user/IsClass',
+      data: {
+        userid: app.globalData.userid,
+        classid: that.data.classid
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success(res) {
+        if (res.data.resultCode == '101') {
+
         }
-      })
-    }
+        else {
+          wx.showToast({
+            title: '您不是该课堂的学生!',
+            icon: 'none',
+            duration: 2000
+          })
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '/pages/index/index',
+            })
+          }, 2000)
+        }
+      },
+      fail(res) {
+        wx.showToast({
+          title: '服务器异常',
+          icon: 'none'
+        })
+      }
+    })
   },
 
   /**
@@ -94,12 +201,11 @@ Page({
   onShareAppMessage: function () {
     var that = this
     var nickname = app.globalData.nickName
-    var num = 4
     return {
       title: nickname + '给你分享了"快乐课堂"，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
-      path: '/pages/videoWebView/videoWebView?video_link=' + that.data.video_link + '&classid=' + wx.getStorageSync('classid') + '&num=' + num
+      path: '/pages/videoWebView/videoWebView?video_link=' + that.data.video_link + '&classid=' + wx.getStorageSync('classid')
     }
   }
 })

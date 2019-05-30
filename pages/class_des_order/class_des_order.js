@@ -34,12 +34,11 @@ Page({
     var coursename = that.data.coursename
     var classid = that.data.classid
     var nickname = app.globalData.nickName
-    var num = 2
     return {
       title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
-      path: '/pages/class_des_order/class_des_order?classid=' + classid + '&num=' + num
+      path: '/pages/class_des_order/class_des_order?classid=' + classid
     }
   },
   
@@ -57,7 +56,13 @@ Page({
 
   onLoad: function (options) {
     var that = this;
-    var classid = wx.getStorageSync("classid");
+    
+    if (wx.getStorageSync("classid")){
+      var classid = wx.getStorageSync("classid");
+    } else if (that.options.classid){
+      var classid = that.options.classid;
+    }
+    
     that.setData({
       classid: classid,
     })
@@ -69,7 +74,7 @@ Page({
     wx.showToast({
       title: '您的预约申请正在处理中，请勿重复预约!',
       icon: 'none',
-      duration: 1000
+      duration: 2000
     })
   },
 
@@ -77,7 +82,7 @@ Page({
     wx.showToast({
       title: '您已预约该课程，请勿重复预约!',
       icon: 'none',
-      duration: 1000
+      duration: 2000
     })
   },
 

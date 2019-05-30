@@ -157,7 +157,7 @@ Page({
       wx.showToast({
         title: '请填写正确的手机号码!',
         icon: 'none',
-        duration: 1000
+        duration: 2000
       })
       return false;
     }
@@ -166,7 +166,7 @@ Page({
       wx.showToast({
         title: '请填写正确的手机号码!',
         icon: 'none',
-        duration: 1000
+        duration: 2000
       })
       return false;
     }
@@ -204,7 +204,7 @@ Page({
       wx.showToast({
         title: '请填写姓名!',
         icon: 'none',
-        duration: 1000
+        duration: 2000
       })
       return false;
     }
@@ -213,7 +213,7 @@ Page({
       wx.showToast({
         title: '请填写正确的手机号码!',
         icon: 'none',
-        duration: 1000
+        duration: 2000
       })
       return false;
     }
@@ -222,7 +222,7 @@ Page({
       wx.showToast({
         title: '请填写正确的手机号码!',
         icon: 'none',
-        duration: 1000
+        duration: 2000
       })
       return false;
     }
@@ -233,7 +233,7 @@ Page({
           wx.showToast({
             title: '请选择预约时间!',
             icon: 'none',
-            duration: 1000
+            duration: 2000
           })
           return false;
         }
@@ -247,7 +247,7 @@ Page({
         wx.showToast({
           title: '请填写验证码！',
           icon: 'none',
-          duration: 1000
+          duration: 2000
         })
         return false;
       }
@@ -256,7 +256,7 @@ Page({
           wx.showToast({
             title: '请选择预约时间!',
             icon: 'none',
-            duration: 1000
+            duration: 2000
           })
           return false;
         }
@@ -287,7 +287,7 @@ Page({
           wx.showToast({
             title: '验证码发送失败!',
             icon: 'none',
-            duration: 1000
+            duration: 2000
           })
         }
       },
@@ -295,7 +295,7 @@ Page({
         wx.showToast({
           title: '验证码发送失败!',
           icon: 'none',
-          duration: 1000
+          duration: 2000
         })
       }
     })
@@ -343,7 +343,7 @@ Page({
           wx.showToast({
             title: '验证码错误!',
             icon: 'none',
-            duration: 1000
+            duration: 2000
           })
           $Message({
             content: '预约失败！',

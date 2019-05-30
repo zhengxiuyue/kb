@@ -168,26 +168,10 @@ Page({
       wx.showToast({
         title: '请填写姓名!',
         icon: 'none',
-        duration: 1000
+        duration: 2000
       })
       return false;
     }
-
-//请求前判断app.globalData.userid是否为空
-    /*if (!app.globalData.userid)
-    {
-      wx.showToast({
-        title: '登录已失效!',
-        icon: 'loading',
-        duration: 2000
-      })
-      setTimeout(function () {
-        //跳到课堂页面
-        wx.redirectTo({
-          url: '/pages/login/login',
-        })
-      }, 2000)
-    }*/
 
     wx.request({
       url: requestIP + '/student/signup',

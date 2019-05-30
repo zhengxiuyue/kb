@@ -15,7 +15,6 @@ App({
             success: function (res) {
               that.globalData.nickName = res.userInfo.nickName
               that.globalData.avatarUrl = res.userInfo.avatarUrl
-
             }
           })
         }
@@ -26,23 +25,6 @@ App({
         }
       }
     })
-
-    if (options.query.classid) {//分享是课程
-      var classid = options.query.classid
-    }
-    if (options.query.ay_id) {//分享的是活动
-      var ay_id = options.query.ay_id
-    }
-    if (options.query.video_link) {//分享的是视频
-      var video_link = options.query.video_link
-    }
-    if (options.query.num) {//来自转发页面
-      var num = options.query.num
-    }
-    else {
-      var num = 0
-    }
-    //3是活动
 
     //判断是否还有缓存 有跳入index 无跳入login
     var userid = ''
@@ -61,9 +43,8 @@ App({
             that.globalData.userid = userid
             that.globalData.userstatus = userstatus
             that.globalData.openid = openid
-
             wx.redirectTo({
-              url: '/pages/index/A_index?num=' + num + "&classid=" + classid + "&ay_id=" + ay_id + '&video_link=' + video_link
+              url: '/pages/index/A_index'
             })
 
           }
@@ -72,7 +53,7 @@ App({
             that.globalData.userstatus = userstatus
             that.globalData.openid = openid
             wx.redirectTo({
-              url: '/pages/index/T_index?num=' + num + "&classid=" + classid + "&ay_id=" + ay_id + '&video_link=' + video_link
+              url: '/pages/index/T_index'
             })
           }
           else if (userstatus == 3) {
@@ -80,7 +61,7 @@ App({
             that.globalData.userstatus = userstatus
             that.globalData.openid = openid
             wx.redirectTo({
-              url: '/pages/index/index?num=' + num + "&classid=" + classid + "&ay_id=" + ay_id + '&video_link=' + video_link
+              url: '/pages/index/index'
             })
           }
           else {
@@ -94,17 +75,8 @@ App({
             url: '/pages/login/login'
           })
         }
-      },
-      fail:function(res){
-        wx.redirectTo({
-          url: '/pages/login/login'
-        })
       }
-    })
-
-  },
-
-  onShow: function (options) {
+    }) 
 
   },
 
@@ -165,13 +137,14 @@ App({
 
   globalData: {
     openid: "",
-    userid: "",//学生 0137da84b68111e8ab8e00163e00299d 老师 039cd505e50911e8ab8e00163e00299d 助教 12459ec8a77a11e8ab8e00163e00299d 
+    userid: "0137da84b68111e8ab8e00163e00299d",//学生 0137da84b68111e8ab8e00163e00299d 老师 039cd505e50911e8ab8e00163e00299d 助教 12459ec8a77a11e8ab8e00163e00299d 
     userInfo: null,
     userstatus: "",//用户身份
     code: "",
     storeid: "",
     province: "",//省
     video_link:"",//视频链接
+    shareFlag:"",//1代表从分享过来，缓存里有classid
     city: "",//市
     areaname: "",//区
     storename: '',//门店名称
