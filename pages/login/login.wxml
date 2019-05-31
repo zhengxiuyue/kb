@@ -1,18 +1,18 @@
 <!--pages/login/login.wxml-->
 <view class='oneuser' >
   <image src='/image/istu.png' class='info' ></image>
-  <image src='/image/stu.png' class='userAvatarUrl' style="{{userstatus == 3 ? 'border:4rpx solid #699df1;width:156rpx;height:156rpx;box-shadow:0rpx 0rpx 120rpx rgba(89, 139, 247, 0.3);': ''}}" data-userstatus='3' bindtap='userStatusChange'></image>
+  <image src='/image/stu.png' class='userAvatarUrl' style="{{userstatus == 3 ? 'border:6rpx solid #699df1;width:154rpx;height:154rpx;': ''}}" data-userstatus='3' bindtap='userStatusChange'></image>
 </view>
 
 <view class='towuser'>
   <view>
     <image src='/image/itea.png' class='info'></image>
-    <image src='/image/tea.png' class='userAvatarUrl' style="{{userstatus == 2 ? 'border:4rpx solid #699df1;width:156rpx;height:156rpx;box-shadow:0rpx 0rpx 120rpx rgba(89, 139, 247, 0.3);': ''}}" data-userstatus='2' bindtap='userStatusChange'></image>
+    <image src='/image/tea.png' class='userAvatarUrl' style="{{userstatus == 2 ? 'border:6rpx solid #699df1;width:154rpx;height:154rpx;': ''}}" data-userstatus='2' bindtap='userStatusChange'></image>
   </view>
 
   <view>
     <image src='/image/iadmin.png'  class='info'></image>
-    <image src='/image/admin.png' class='userAvatarUrl' style="{{userstatus == 1 ? 'border:2rpx solid #699df1;width:158rpx;height:158rpx;box-shadow:0rpx 0rpx 120rpx rgba(89, 139, 247, 0.3);': ''}}" data-userstatus='1' bindtap='userStatusChange'></image>
+    <image src='/image/admin.png' class='userAvatarUrl' style="{{userstatus == 1 ? 'border:6rpx solid #699df1;width:154rpx;height:154rpx;': ''}}" data-userstatus='1' bindtap='userStatusChange'></image>
   </view>
 
 </view>

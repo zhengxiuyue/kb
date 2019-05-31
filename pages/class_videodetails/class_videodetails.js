@@ -9,7 +9,8 @@ Page({
   data: {
     video:[],
     space: "/image/space.png",
-    Isvideospace:"none"
+    Isvideospace:"none",
+    scheduleid:""
   },
 
   /**
@@ -19,6 +20,9 @@ Page({
 
     var that = this
     var scheduleid = that.options.scheduleid
+    that.setData({
+      scheduleid: scheduleid 
+    })
     wx.request({
       url: requestIP + '/user/getVideo',
       data: {
@@ -111,7 +115,7 @@ Page({
     var that = this;
     app.globalData.video_link = e.currentTarget.dataset.link
     wx.navigateTo({
-      url: '/pages/videoWebView/videoWebView',
+      url: '/pages/videoWebView/videoWebView?scheduleid='+that.data.scheduleid,
     })
   },
 })

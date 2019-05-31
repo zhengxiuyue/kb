@@ -46,7 +46,6 @@ App({
             wx.redirectTo({
               url: '/pages/index/A_index'
             })
-
           }
           else if (userstatus == 2) {
             that.globalData.userid = userid
@@ -76,10 +75,9 @@ App({
           })
         }
       }
-    }) 
-
-  },
-
+    })  
+  },  
+  
   //学生   
   editTabBar: function () {
     //使用getCurrentPages可以获取当前加载中所有的页面对象的一个数组，数组最后一个就是当前页面。 
@@ -137,14 +135,13 @@ App({
 
   globalData: {
     openid: "",
-    userid: "0137da84b68111e8ab8e00163e00299d",//学生 0137da84b68111e8ab8e00163e00299d 老师 039cd505e50911e8ab8e00163e00299d 助教 12459ec8a77a11e8ab8e00163e00299d 
+    userid: "",//学生 0137da84b68111e8ab8e00163e00299d 老师 039cd505e50911e8ab8e00163e00299d 助教 12459ec8a77a11e8ab8e00163e00299d 
     userInfo: null,
     userstatus: "",//用户身份
     code: "",
     storeid: "",
     province: "",//省
     video_link:"",//视频链接
-    shareFlag:"",//1代表从分享过来，缓存里有classid
     city: "",//市
     areaname: "",//区
     storename: '',//门店名称

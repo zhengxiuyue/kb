@@ -1,5 +1,6 @@
 // pages/videoWebView/videoWebView.js
 var app = getApp();
+var requestIP = app.globalData.requestIP;
 Page({
 
   /**
@@ -7,7 +8,7 @@ Page({
    */
   data: {
     video_link:'',
-    classid:""
+    scheduleid:""
   },
 
   /**
@@ -25,9 +26,9 @@ Page({
       })
     }
 
-    if (that.options.classid) {
+    if (that.options.scheduleid) {
       that.setData({
-        classid: that.options.classid
+        scheduleid: that.options.scheduleid
       })
     }
     //判断是否授权 未授权跳授权页面
@@ -57,11 +58,11 @@ Page({
         tel = res.data.tel
         if (userid && tel && openid && userstatus) {
           if (userstatus == 1) {
-            that.globalData.userid = userid
-            that.globalData.userstatus = userstatus
-            that.globalData.openid = openid
+            app.globalData.userid = userid
+            app.globalData.userstatus = userstatus
+            app.globalData.openid = openid
             wx.showToast({
-              title: '登录身份不是学生!',
+              title: '登录身份不是学生，无法查看！',
               icon: 'none',
               duration: 2000
             })
@@ -72,11 +73,11 @@ Page({
             }, 2000)
           }
           else if (userstatus == 2) {
-            that.globalData.userid = userid
-            that.globalData.userstatus = userstatus
-            that.globalData.openid = openid
+            app.globalData.userid = userid
+            app.globalData.userstatus = userstatus
+            app.globalData.openid = openid
             wx.showToast({
-              title: '登录身份不是学生!',
+              title: '登录身份不是学生，无法查看！',
               icon: 'none',
               duration: 2000
             })
@@ -87,9 +88,9 @@ Page({
             }, 2000)
           }
           else if (userstatus == 3) {
-            that.globalData.userid = userid
-            that.globalData.userstatus = userstatus
-            that.globalData.openid = openid
+            app.globalData.userid = userid
+            app.globalData.userstatus = userstatus
+            app.globalData.openid = openid
             that.isClass();//判断是否为当前课堂的学生
           }
           else {
@@ -125,17 +126,16 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
+  onShow: function () {
   },
 
   isClass:function(){
-    var that
+    var that = this;
     wx.request({
       url: requestIP + '/user/IsClass',
       data: {
         userid: app.globalData.userid,
-        classid: that.data.classid
+        sid: that.data.scheduleid
       },
       method: 'POST',
       header: {
@@ -143,19 +143,22 @@ Page({
       },
       success(res) {
         if (res.data.resultCode == '101') {
-
-        }
-        else {
-          wx.showToast({
-            title: '您不是该课堂的学生!',
-            icon: 'none',
-            duration: 2000
-          })
-          setTimeout(function () {
-            wx.redirectTo({
-              url: '/pages/index/index',
+          if(res.data.data==1)
+          {
+            console.log("正常加载");
+          }else if(res.data.data==0)
+          {
+            wx.showToast({
+              title: '您不是该课堂的学生，无法查看!',
+              icon: 'none',
+              duration: 2000
             })
-          }, 2000)
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '/pages/index/index',
+              })
+            }, 2000)
+          }
         }
       },
       fail(res) {
@@ -205,7 +208,7 @@ Page({
       title: nickname + '给你分享了"快乐课堂"，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
-      path: '/pages/videoWebView/videoWebView?video_link=' + that.data.video_link + '&classid=' + wx.getStorageSync('classid')
+      path: '/pages/videoWebView/videoWebView?video_link=' + that.data.video_link + '&scheduleid=' + that.data.scheduleid
     }
   }
 })

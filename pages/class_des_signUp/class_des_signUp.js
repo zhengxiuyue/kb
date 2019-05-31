@@ -35,6 +35,7 @@ Page({
   var that = this;
   that.getClassInfo();
   },
+
   onShareAppMessage: function (ops) {
     var that = this
     var coursename = that.data.coursename
@@ -47,6 +48,7 @@ Page({
       path: '/pages/class_des_signUp/class_des_signUp?classid=' + classid
     }
   },
+
   onLoad: function (options) {
     var that = this;
     if (wx.getStorageSync("classid")) {
