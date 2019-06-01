@@ -743,7 +743,7 @@ Page({
                 }
               })
             }
-            else if (res.data.resultCode == "204"){
+            else if (res.data.resultCode == "214" || res.data.resultCode == "204"){
               wx.login({
                 success(res) {
                   if (res.code) {

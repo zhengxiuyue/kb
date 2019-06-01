@@ -257,6 +257,11 @@ onConfirm: function () {
       content: '确定要退出登录吗？',
       success: function (sm) {
         if (sm.confirm) {
+          wx.removeStorage({
+            key: 'user',
+            success(res) {
+            }
+          })
           wx.redirectTo({
             url: '/pages/login/login',
           })

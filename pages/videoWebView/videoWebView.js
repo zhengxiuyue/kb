@@ -56,55 +56,12 @@ Page({
         userstatus = res.data.userstatus
         openid = res.data.openid
         tel = res.data.tel
+        //console.log("userid" + userid + "userstatus" + userstatus + openid + "openid" + openid + "tel" + tel);
         if (userid && tel && openid && userstatus) {
-          if (userstatus == 1) {
-            app.globalData.userid = userid
-            app.globalData.userstatus = userstatus
-            app.globalData.openid = openid
-            wx.showToast({
-              title: '登录身份不是学生，无法查看！',
-              icon: 'none',
-              duration: 2000
-            })
-            setTimeout(function () {
-              wx.redirectTo({
-                url: '/pages/index/A_index'
-              })
-            }, 2000)
-          }
-          else if (userstatus == 2) {
-            app.globalData.userid = userid
-            app.globalData.userstatus = userstatus
-            app.globalData.openid = openid
-            wx.showToast({
-              title: '登录身份不是学生，无法查看！',
-              icon: 'none',
-              duration: 2000
-            })
-            setTimeout(function () {
-              wx.redirectTo({
-                url: '/pages/index/T_index'
-              })
-            }, 2000)
-          }
-          else if (userstatus == 3) {
             app.globalData.userid = userid
             app.globalData.userstatus = userstatus
             app.globalData.openid = openid
             that.isClass();//判断是否为当前课堂的学生
-          }
-          else {
-            wx.showToast({
-              title: '请先登录再打开分享链接!',
-              icon: 'none',
-              duration: 2000
-            })
-            setTimeout(function () {
-              wx.redirectTo({
-                url: '/pages/login/login'
-              })
-            }, 2000)
-          }
         }
         else {
           wx.showToast({
