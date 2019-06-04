@@ -26,6 +26,76 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    //判断是否授权 未授权跳授权页面
+    wx.getSetting({
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              app.globalData.nickName = res.userInfo.nickName
+              app.globalData.avatarUrl = res.userInfo.avatarUrl
+            }
+          })
+        }
+        else {
+          wx.redirectTo({
+            url: '/pages/authorize/authorize',
+          })
+        }
+      }
+    })
+
+    //判断是否还有缓存 有跳入index 无跳入login
+    var userid = ''
+    var userstatus = ''
+    var openid = ''
+    var tel = ''
+    wx.getStorage({//获取本地缓存
+      key: "user",
+      success: function (res) {
+        userid = res.data.userid
+        userstatus = res.data.userstatus
+        openid = res.data.openid
+        tel = res.data.tel
+        if (userid && tel && openid && userstatus) {
+          if (userstatus == 1) {
+            app.globalData.userid = userid
+            app.globalData.userstatus = userstatus
+            app.globalData.openid = openid
+            wx.redirectTo({
+              url: '/pages/index/A_index'
+            })
+          }
+          else if (userstatus == 2) {
+            app.globalData.userid = userid
+            app.globalData.userstatus = userstatus
+            app.globalData.openid = openid
+            wx.redirectTo({
+              url: '/pages/index/T_index'
+            })
+          }
+          else if (userstatus == 3) {
+            app.globalData.userid = userid
+            app.globalData.userstatus = userstatus
+            app.globalData.openid = openid
+            wx.redirectTo({
+              url: '/pages/index/index'
+            })
+          }
+          else {
+            wx.redirectTo({
+              url: '/pages/login/login'
+            })
+          }
+        }
+        else {
+          wx.redirectTo({
+            url: '/pages/login/login'
+          })
+        }
+      }
+    })
     var tel = wx.getStorageSync('tel')
     if (tel != '') {
       that.setData({
