@@ -5,28 +5,16 @@ App({
     if (!wx.getStorageSync("flagMore")) {
       wx.setStorageSync("flagMore", 1);
     }
-    var that = this
-    //判断是否授权 未授权跳授权页面
-    wx.getSetting({
-      success: function (res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success: function (res) {
-              that.globalData.nickName = res.userInfo.nickName
-              that.globalData.avatarUrl = res.userInfo.avatarUrl
-            }
-          })
-        }
-        else {
-          wx.redirectTo({
-            url: '/pages/authorize/authorize',
-          })
-        }
-      }
-    })
 
-    //判断是否还有缓存 有跳入index 无跳入login
+  },  
+
+  onShow:function(){
+    console.log("触发了onshow");
+    var that = this;
+    if (that.options.shareStatus){
+    var shareStatus = that.options.shareStatus;
+    }
+    //判断是否还有缓存 无跳入login
     var userid = ''
     var userstatus = ''
     var openid = ''
@@ -39,29 +27,43 @@ App({
         openid = res.data.openid
         tel = res.data.tel
         if (userid && tel && openid && userstatus) {
-          if (userstatus == 1) {
-            that.globalData.userid = userid
-            that.globalData.userstatus = userstatus
-            that.globalData.openid = openid
-            wx.redirectTo({
-              url: '/pages/index/A_index'
-            })
-          }
-          else if (userstatus == 2) {
-            that.globalData.userid = userid
-            that.globalData.userstatus = userstatus
-            that.globalData.openid = openid
-            wx.redirectTo({
-              url: '/pages/index/T_index'
-            })
-          }
-          else if (userstatus == 3) {
-            that.globalData.userid = userid
-            that.globalData.userstatus = userstatus
-            that.globalData.openid = openid
-            wx.redirectTo({
-              url: '/pages/index/index'
-            })
+          if (shareStatus){
+            if (userstatus == shareStatus) {
+              app.globalData.userid = userid
+              app.globalData.userstatus = userstatus
+              app.globalData.openid = openid
+            }
+            else if (userstatus != shareStatus) {
+              wx.showToast({
+                title: '角色错误！无法查看分享页面！',
+                icon: 'none',
+                duration: 2000
+              })
+              if (userstatus == 1) {
+                app.globalData.userid = userid
+                app.globalData.userstatus = userstatus
+                app.globalData.openid = openid
+                wx.redirectTo({
+                  url: '/pages/index/A_index'
+                })
+              }
+              else if (userstatus == 2) {
+                app.globalData.userid = userid
+                app.globalData.userstatus = userstatus
+                app.globalData.openid = openid
+                wx.redirectTo({
+                  url: '/pages/index/T_index'
+                })
+              }
+              else if (userstatus == 3) {
+                app.globalData.userid = userid
+                app.globalData.userstatus = userstatus
+                app.globalData.openid = openid
+                wx.redirectTo({
+                  url: '/pages/index/index'
+                })
+              }
+            }
           }
           else {
             wx.redirectTo({
@@ -75,8 +77,8 @@ App({
           })
         }
       }
-    })  
-  },  
+    }) 
+  },
   
   //学生   
   editTabBar: function () {

@@ -307,10 +307,12 @@ Page({
   onShareAppMessage: function () {
     var that = this
     var nickname = app.globalData.nickName
+    var shareStatus = app.globalData.shareStatus
     return {
       title: nickname + '给你分享了"快乐课堂"，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
+      path: '/pages/order_course_des/order_course_des?shareStatus=' + shareStatus
     }
   },
 

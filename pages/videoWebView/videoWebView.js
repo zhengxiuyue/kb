@@ -225,7 +225,7 @@ Page({
       title: nickname + '给你分享了"快乐课堂"，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
-      path: '/pages/videoWebView/videoWebView?video_link=' + that.data.video_link + '&scheduleid=' + that.data.scheduleid
+      path: '/pages/videoWebView/videoWebView&scheduleid=' + that.data.scheduleid
     }
   }
 })

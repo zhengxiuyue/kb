@@ -83,11 +83,12 @@ Page({
     var ay_name = that.data.ay_name
     var ay_id = that.data.ay_id
     var nickname = app.globalData.nickName
+    var shareStatus = app.globalData.shareStatus
     return {
       title: nickname + '给你分享了' + ay_name + '活动，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: that.data.activity.ay_image,
-      path: '/pages/activityDetail/activityDetail?ay_id=' + ay_id
+      path: '/pages/activityDetail/activityDetail?ay_id=' + ay_id + '&shareStatus=' + shareStatus
     }
 
   },
