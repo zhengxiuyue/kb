@@ -7,8 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    video_link:'',
-    scheduleid:""
+    video_link: '',
+    scheduleid: ""
   },
 
   /**
@@ -57,10 +57,10 @@ Page({
         openid = res.data.openid
         tel = res.data.tel
         if (userid && tel && openid && userstatus) {
-            app.globalData.userid = userid
-            app.globalData.userstatus = userstatus
-            app.globalData.openid = openid
-            that.isClass();//判断是否为当前课堂的学生
+          app.globalData.userid = userid
+          app.globalData.userstatus = userstatus
+          app.globalData.openid = openid
+          that.isClass();//判断是否为当前课堂的学生
         }
         else {
           wx.showToast({
@@ -146,7 +146,7 @@ Page({
     })
   },
 
-  isClass:function(){
+  isClass: function () {
     var that = this;
     wx.request({
       url: requestIP + '/user/IsClass',
@@ -160,11 +160,9 @@ Page({
       },
       success(res) {
         if (res.data.resultCode == '101') {
-          if(res.data.data==1)
-          {
+          if (res.data.data == 1) {
             console.log("正常加载");
-          }else if(res.data.data==0)
-          {
+          } else if (res.data.data == 0) {
             wx.showToast({
               title: '您不是该课堂的学生，无法查看!',
               icon: 'none',
@@ -221,11 +219,12 @@ Page({
   onShareAppMessage: function () {
     var that = this
     var nickname = app.globalData.nickName
+    var shareStatus = app.globalData.userstatus
     return {
       title: nickname + '给你分享了"快乐课堂"，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
-      path: '/pages/videoWebView/videoWebView&scheduleid=' + that.data.scheduleid
+      path: '/pages/videoWebView/videoWebView&scheduleid=' + that.data.scheduleid + '&shareStatus=' + shareStatus
     }
   }
 })

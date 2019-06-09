@@ -5,15 +5,15 @@ App({
     if (!wx.getStorageSync("flagMore")) {
       wx.setStorageSync("flagMore", 1);
     }
-
   },  
 
-  onShow:function(){
+  onShow: function (options){
     console.log("触发了onshow");
     var that = this;
-    if (that.options.shareStatus){
-    var shareStatus = that.options.shareStatus;
-    }
+    console.log(options);
+    if (options.query.shareStatus){
+    var shareStatus = options.query.shareStatus;
+    console.log("shareStatus=" + shareStatus);
     //判断是否还有缓存 无跳入login
     var userid = ''
     var userstatus = ''
@@ -22,62 +22,85 @@ App({
     wx.getStorage({//获取本地缓存
       key: "user",
       success: function (res) {
+        console.log("3333");
         userid = res.data.userid
         userstatus = res.data.userstatus
         openid = res.data.openid
         tel = res.data.tel
         if (userid && tel && openid && userstatus) {
-          if (shareStatus){
+            console.log("shareStatus=" + shareStatus + "userstatus=" + userstatus);
             if (userstatus == shareStatus) {
-              app.globalData.userid = userid
-              app.globalData.userstatus = userstatus
-              app.globalData.openid = openid
+              that.globalData.userid = userid
+              that.globalData.userstatus = userstatus
+              that.globalData.openid = openid
             }
             else if (userstatus != shareStatus) {
               wx.showToast({
-                title: '角色错误！无法查看分享页面！',
-                icon: 'none',
+                title: '角色错误！',
+                icon: 'loading',
                 duration: 2000
               })
               if (userstatus == 1) {
-                app.globalData.userid = userid
-                app.globalData.userstatus = userstatus
-                app.globalData.openid = openid
-                wx.redirectTo({
-                  url: '/pages/index/A_index'
-                })
+                that.globalData.userid = userid
+                that.globalData.userstatus = userstatus
+                that.globalData.openid = openid
+                setTimeout(() => {
+                  wx.redirectTo({
+                    url: '/pages/index/A_index'
+                  })
+                }, 2000)
               }
               else if (userstatus == 2) {
-                app.globalData.userid = userid
-                app.globalData.userstatus = userstatus
-                app.globalData.openid = openid
-                wx.redirectTo({
-                  url: '/pages/index/T_index'
-                })
+                that.globalData.userid = userid
+                that.globalData.userstatus = userstatus
+                that.globalData.openid = openid
+                setTimeout(() => {
+                  wx.redirectTo({
+                    url: '/pages/index/T_index'
+                  })
+                }, 2000)
               }
               else if (userstatus == 3) {
-                app.globalData.userid = userid
-                app.globalData.userstatus = userstatus
-                app.globalData.openid = openid
-                wx.redirectTo({
-                  url: '/pages/index/index'
-                })
+                that.globalData.userid = userid
+                that.globalData.userstatus = userstatus
+                that.globalData.openid = openid
+                setTimeout(() => {
+                  wx.redirectTo({
+                    url: '/pages/index/index'
+                  })
+                }, 2000)
               }
             }
-          }
-          else {
+        }
+        else {
+          wx.showToast({
+            title: '请先登录！',
+            icon: 'loading',
+            duration: 2000
+          })
+          console.log("1111");
+          setTimeout(() => {
             wx.redirectTo({
               url: '/pages/login/login'
             })
-          }
+            }, 2000)
         }
-        else {
+      },
+      fail:function(){
+        wx.showToast({
+          title: '请先登录！',
+          icon: 'loading',
+          duration: 2000
+        })
+        console.log("222");
+        setTimeout(() => {
           wx.redirectTo({
             url: '/pages/login/login'
-          })
-        }
+          })       
+          }, 2000)
       }
     }) 
+    }
   },
   
   //学生   

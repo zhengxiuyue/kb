@@ -495,7 +495,7 @@ Page({
     var coursename = that.data.items.coursename
     var classid = that.data.classid
     var nickname = app.globalData.nickName
-    var shareStatus = app.globalData.shareStatus
+    var shareStatus = app.globalData.userstatus
     return {
       title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
       desc: '交友学习欢迎加入',
