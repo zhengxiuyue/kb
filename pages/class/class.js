@@ -495,18 +495,12 @@ Page({
     var coursename = that.data.items.coursename
     var classid = that.data.classid
     var nickname = app.globalData.nickName
-    var num = 2
+    var shareStatus = app.globalData.userstatus
     return {
       title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
-      path: '/pages/class/class?classid=' + classid + '&num=' +num,
-      success: (res) => {
-        console.log("转发成功", res);
-      },
-      fail: (res) => {
-        console.log("转发失败", res);
-      }
+      path: '/pages/class/class?shareStatus=' + shareStatus
     }
   },
   changeTab(e) {

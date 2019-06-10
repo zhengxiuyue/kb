@@ -5,46 +5,16 @@ App({
     if (!wx.getStorageSync("flagMore")) {
       wx.setStorageSync("flagMore", 1);
     }
-    var that = this
-    //判断是否授权 未授权跳授权页面
-    wx.getSetting({
-      success: function (res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success: function (res) {
-              that.globalData.nickName = res.userInfo.nickName
-              that.globalData.avatarUrl = res.userInfo.avatarUrl
+  },  
 
-            }
-          })
-        }
-        else {
-          wx.redirectTo({
-            url: '/pages/authorize/authorize',
-          })
-        }
-      }
-    })
-
-    if (options.query.classid) {//分享是课程
-      var classid = options.query.classid
-    }
-    if (options.query.ay_id) {//分享的是活动
-      var ay_id = options.query.ay_id
-    }
-    if (options.query.video_link) {//分享的是视频
-      var video_link = options.query.video_link
-    }
-    if (options.query.num) {//来自转发页面
-      var num = options.query.num
-    }
-    else {
-      var num = 0
-    }
-    //3是活动
-
-    //判断是否还有缓存 有跳入index 无跳入login
+  onShow: function (options){
+    console.log("触发了onshow");
+    var that = this;
+    console.log(options);
+    if (options.query.shareStatus){
+    var shareStatus = options.query.shareStatus;
+    console.log("shareStatus=" + shareStatus);
+    //判断是否还有缓存 无跳入login
     var userid = ''
     var userstatus = ''
     var openid = ''
@@ -52,65 +22,87 @@ App({
     wx.getStorage({//获取本地缓存
       key: "user",
       success: function (res) {
+        console.log("3333");
         userid = res.data.userid
         userstatus = res.data.userstatus
         openid = res.data.openid
         tel = res.data.tel
         if (userid && tel && openid && userstatus) {
-          if (userstatus == 1) {
-            that.globalData.userid = userid
-            that.globalData.userstatus = userstatus
-            that.globalData.openid = openid
-
-            wx.redirectTo({
-              url: '/pages/index/A_index?num=' + num + "&classid=" + classid + "&ay_id=" + ay_id + '&video_link=' + video_link
-            })
-
-          }
-          else if (userstatus == 2) {
-            that.globalData.userid = userid
-            that.globalData.userstatus = userstatus
-            that.globalData.openid = openid
-            wx.redirectTo({
-              url: '/pages/index/T_index?num=' + num + "&classid=" + classid + "&ay_id=" + ay_id + '&video_link=' + video_link
-            })
-          }
-          else if (userstatus == 3) {
-            that.globalData.userid = userid
-            that.globalData.userstatus = userstatus
-            that.globalData.openid = openid
-            wx.redirectTo({
-              url: '/pages/index/index?num=' + num + "&classid=" + classid + "&ay_id=" + ay_id + '&video_link=' + video_link
-            })
-          }
-          else {
+            console.log("shareStatus=" + shareStatus + "userstatus=" + userstatus);
+            if (userstatus == shareStatus) {
+              that.globalData.userid = userid
+              that.globalData.userstatus = userstatus
+              that.globalData.openid = openid
+            }
+            else if (userstatus != shareStatus) {
+              wx.showToast({
+                title: '角色错误！',
+                icon: 'loading',
+                duration: 2000
+              })
+              if (userstatus == 1) {
+                that.globalData.userid = userid
+                that.globalData.userstatus = userstatus
+                that.globalData.openid = openid
+                setTimeout(() => {
+                  wx.redirectTo({
+                    url: '/pages/index/A_index'
+                  })
+                }, 2000)
+              }
+              else if (userstatus == 2) {
+                that.globalData.userid = userid
+                that.globalData.userstatus = userstatus
+                that.globalData.openid = openid
+                setTimeout(() => {
+                  wx.redirectTo({
+                    url: '/pages/index/T_index'
+                  })
+                }, 2000)
+              }
+              else if (userstatus == 3) {
+                that.globalData.userid = userid
+                that.globalData.userstatus = userstatus
+                that.globalData.openid = openid
+                setTimeout(() => {
+                  wx.redirectTo({
+                    url: '/pages/index/index'
+                  })
+                }, 2000)
+              }
+            }
+        }
+        else {
+          wx.showToast({
+            title: '请先登录！',
+            icon: 'loading',
+            duration: 2000
+          })
+          console.log("1111");
+          setTimeout(() => {
             wx.redirectTo({
               url: '/pages/login/login'
             })
-          }
-        }
-        else {
-          wx.redirectTo({
-            url: '/pages/login/login'
-          })
+            }, 2000)
         }
       },
-      fail:function(res){
-        wx.redirectTo({
-          url: '/pages/login/login'
+      fail:function(){
+        wx.showToast({
+          title: '请先登录！',
+          icon: 'loading',
+          duration: 2000
         })
+        console.log("222");
+        setTimeout(() => {
+          wx.redirectTo({
+            url: '/pages/login/login'
+          })       
+          }, 2000)
       }
-    })  
-  },  
-  
-  onShow: function (options) {
-  
-
-
+    }) 
+    }
   },
-
-
-
+  
   //学生   
   editTabBar: function () {
     //使用getCurrentPages可以获取当前加载中所有的页面对象的一个数组，数组最后一个就是当前页面。 

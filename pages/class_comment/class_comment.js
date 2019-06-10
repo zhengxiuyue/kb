@@ -133,10 +133,12 @@ Page({
   onShareAppMessage: function () {
     var that = this
     var nickname = app.globalData.nickName
+    var shareStatus = app.globalData.userstatus
     return {
       title: nickname + '给你分享了"快乐课堂"，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
+      path: '/pages/class_comment/class_comment?shareStatus=' + shareStatus
     }
   },
 

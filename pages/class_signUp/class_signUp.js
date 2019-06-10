@@ -75,6 +75,17 @@ Page({
  * 用户点击右上角分享
  */
   onShareAppMessage: function () {  
+    var that = this
+    var coursename = that.data.coursename
+    var classid = that.data.classid
+    var nickname = app.globalData.nickName
+    var shareStatus = app.globalData.userstatus
+    return {
+      title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
+      desc: '交友学习欢迎加入',
+      imageUrl: '/image/onshare.png',
+      path: '/pages/class_signUp/class_signUp?shareStatus=' + shareStatus
+    }
   },
 
   onLoad: function (options) {
@@ -168,26 +179,10 @@ Page({
       wx.showToast({
         title: '请填写姓名!',
         icon: 'none',
-        duration: 1000
+        duration: 2000
       })
       return false;
     }
-
-//请求前判断app.globalData.userid是否为空
-    /*if (!app.globalData.userid)
-    {
-      wx.showToast({
-        title: '登录已失效!',
-        icon: 'loading',
-        duration: 2000
-      })
-      setTimeout(function () {
-        //跳到课堂页面
-        wx.redirectTo({
-          url: '/pages/login/login',
-        })
-      }, 2000)
-    }*/
 
     wx.request({
       url: requestIP + '/student/signup',

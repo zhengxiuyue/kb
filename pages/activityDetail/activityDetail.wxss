@@ -1,35 +1,3 @@
-/* pages/class_des/class_des.wxss */
-
-/*.title{
-  font-weight: bold ;
-  margin-left: 20rpx;
-  margin-top: 20rpx;
-}
-
-.titleImg{
-  width:40rpx;
-  height:40rpx; 
-  margin-right: 20rpx;
-}
-.title-text{
- position: relative;
- top: -5rpx;
-}
-.class{
-  margin: 20rpx 60rpx;
-  line-height: 1.8;
-}
-.class-desImg{
-  display: inline-block;
-  position: relative;
-  top: 7rpx;
-  margin-right: 20rpx;
-}
-.class-desImg-img{
-  width: 40rpx;
-  height: 40rpx;
-}*/
-
 .page{
   font-size: 30rpx;
   color: #666;

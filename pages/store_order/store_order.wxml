@@ -67,23 +67,9 @@
   <input class='ipt' type='number' disabled = "true" value='{{tel}}' bindinput='telInput' placeholder='请输入手机号码' placeholder-class='placeholder'></input>
 </view>
 
-<view class='infm' style='display:{{auth}}'>
-  <input class='ipt' type='number' value='{{authcode}}' bindinput='authcodeInput' placeholder='请输入验证码' placeholder-class='placeholder' >
-  </input><button disabled='{{isClick}}' bindtap='gainAuthCodeAction' class='btn'>{{time1}}</button> 
-</view>
-
 <view class='infm'>
 <input class='ipt' type='text' value='{{message}}' bindinput='messageInput' placeholder='预约说明(选填)' placeholder-class='placeholder' maxlength ="50"></input>
 </view>
-
-<!--<view class='radio'>
-<radio-group class="radio-group" bindchange="radioChange1">
-  <label class="radio" wx:for="{{items1}}">
-    <radio value="{{item.name}}" checked="{{item.checked}}" />
-    {{item.value}}
-  </label>
-</radio-group>
-</view>-->
 
 <view class='tips'>
   <image src='/image/warning.png' class='tipsImg'></image>

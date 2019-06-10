@@ -78,15 +78,19 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (ops) {
     var that = this
+    var coursename = that.data.coursename
+    var classid = that.data.classid
     var nickname = app.globalData.nickName
+    var shareStatus = app.globalData.userstatus
     return {
-      title: nickname + '给你分享了"快乐课堂"，快打开看看吧',
+      title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
+      path: '/pages/class_notice_edit/class_notice_edit?shareStatus=' + shareStatus
     }
-  },
+  },  
 
   noticetitleInput: function (event) {
     this.setData({

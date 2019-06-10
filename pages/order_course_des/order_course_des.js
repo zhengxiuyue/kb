@@ -110,7 +110,7 @@ Page({
             wx.showToast({
               title: '该课程的预约人数已达到上限!',
               icon: 'none',
-              duration: 1000
+              duration: 2000
             })
           }
           else {
@@ -307,10 +307,12 @@ Page({
   onShareAppMessage: function () {
     var that = this
     var nickname = app.globalData.nickName
+    var shareStatus = app.globalData.userstatus
     return {
       title: nickname + '给你分享了"快乐课堂"，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
+      path: '/pages/order_course_des/order_course_des?shareStatus=' + shareStatus
     }
   },
 

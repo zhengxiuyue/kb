@@ -18,10 +18,12 @@ Page({
   onShareAppMessage: function () {
     var that = this
     var nickname = app.globalData.nickName
+    var shareStatus = app.globalData.userstatus
     return {
       title: nickname + '给你分享了"快乐课堂"，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
+      path: '/pages/activitySignUp/activitySignUp?shareStatus=' + shareStatus
     }
   },
 
@@ -70,7 +72,7 @@ Page({
       wx.showToast({
         title: '请填写姓名!',
         icon: 'none',
-        duration: 1000
+        duration: 2000
       })
       return false;
     }
@@ -111,16 +113,6 @@ Page({
                   signType: re.data.data.signType,
                   paySign: re.data.data.paySign,
                   'success': function (res) {
-                    /*$Message({
-                      content: '报名成功！',
-                    });
-                    var ay_id = that.data.ay_id;
-                    setTimeout(function () {
-                      //跳到活动详情页面
-                      wx.navigateTo({
-                        url: '/pages/activityDetail/activityDetail?ay_id=' + ay_id,
-                      })
-                    }, 2000)*/
                     wx.navigateTo({
                       url: '/pages/message/message?flag=4',
                     })

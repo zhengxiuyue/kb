@@ -9,7 +9,8 @@ Page({
   data: {
     video:[],
     space: "/image/space.png",
-    Isvideospace:"none"
+    Isvideospace:"none",
+    scheduleid:""
   },
 
   /**
@@ -19,6 +20,9 @@ Page({
 
     var that = this
     var scheduleid = that.options.scheduleid
+    that.setData({
+      scheduleid: scheduleid 
+    })
     wx.request({
       url: requestIP + '/user/getVideo',
       data: {
@@ -100,18 +104,22 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this
+    var coursename = that.data.coursename
+    var classid = that.data.classid
     var nickname = app.globalData.nickName
+    var shareStatus = app.globalData.userstatus
     return {
-      title: nickname + '给你分享了"快乐课堂"，快打开看看吧',
+      title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
+      path: '/pages/class_videodetails/class_videodetails?shareStatus=' + shareStatus
     }
   },
   GovideoWebView: function (e) {
     var that = this;
     app.globalData.video_link = e.currentTarget.dataset.link
     wx.navigateTo({
-      url: '/pages/videoWebView/videoWebView',
+      url: '/pages/videoWebView/videoWebView?scheduleid='+that.data.scheduleid,
     })
   },
 })

@@ -35,22 +35,28 @@ Page({
   var that = this;
   that.getClassInfo();
   },
+
   onShareAppMessage: function (ops) {
     var that = this
     var coursename = that.data.coursename
     var classid = that.data.classid
     var nickname = app.globalData.nickName
-    var num = 1
+    var shareStatus = app.globalData.userstatus
     return {
       title: nickname + '给你分享了' + coursename + '课程，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
-      path: '/pages/class_des_signUp/class_des_signUp?classid=' + classid + '&num=' + num
+      path: '/pages/class_des_signUp/class_des_signUp?shareStatus=' + shareStatus
     }
   },
+
   onLoad: function (options) {
     var that = this;
-    var classid = wx.getStorageSync("classid");
+    if (wx.getStorageSync("classid")) {
+      var classid = wx.getStorageSync("classid");
+    } else if (that.options.classid) {
+      var classid = that.options.classid;
+    }
     that.setData({
       classid:classid
     })
