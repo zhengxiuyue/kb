@@ -1,5 +1,6 @@
 // pages/videoWebView/videoWebView.js
 var app = getApp();
+var requestIP = app.globalData.requestIP
 Page({
 
   /**
@@ -13,8 +14,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      video_link: app.globalData.video_link
+    var that = this
+    var scheduleid = that.options.scheduleid
+    wx.request({
+      url: requestIP + '/user/getVideo',
+      data: {
+        scheduleid: scheduleid
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'userid': app.globalData.userid
+      },
+      success: function (res) {
+        if (res.data.resultCode == "101") {
+          // that.setData({
+          //   video: res.data.data
+          // })
+        }
+        else if (res.data.resultCode == "204") {
+          // that.setData({
+          //   video: [],
+          //   Isvideospace: "block"
+          // })
+        }
+        else {
+          // wx.showToast({
+          //   title: '请求失败',
+          //   icon: 'none',
+          // })
+        }
+      },
     })
   },
 

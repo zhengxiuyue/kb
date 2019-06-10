@@ -48,7 +48,7 @@ Component({
     govideo:function(e){
       var scheduleid = e.currentTarget.dataset.scheduleid
       wx.navigateTo({
-        url: '/pages/class_videodetails/class_videodetails?scheduleid=' + scheduleid,
+        url: '/pages/videoWebView/videoWebView?scheduleid=' + scheduleid,
       })
     }
   },
