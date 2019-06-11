@@ -8,12 +8,9 @@ App({
   },  
 
   onShow: function (options){
-    console.log("触发了onshow");
     var that = this;
-    console.log(options);
     if (options.query.shareStatus){
     var shareStatus = options.query.shareStatus;
-    console.log("shareStatus=" + shareStatus);
     //判断是否还有缓存 无跳入login
     var userid = ''
     var userstatus = ''
@@ -22,13 +19,11 @@ App({
     wx.getStorage({//获取本地缓存
       key: "user",
       success: function (res) {
-        console.log("3333");
         userid = res.data.userid
         userstatus = res.data.userstatus
         openid = res.data.openid
         tel = res.data.tel
         if (userid && tel && openid && userstatus) {
-            console.log("shareStatus=" + shareStatus + "userstatus=" + userstatus);
             if (userstatus == shareStatus) {
               that.globalData.userid = userid
               that.globalData.userstatus = userstatus
@@ -78,7 +73,6 @@ App({
             icon: 'loading',
             duration: 2000
           })
-          console.log("1111");
           setTimeout(() => {
             wx.redirectTo({
               url: '/pages/login/login'
@@ -92,7 +86,6 @@ App({
           icon: 'loading',
           duration: 2000
         })
-        console.log("222");
         setTimeout(() => {
           wx.redirectTo({
             url: '/pages/login/login'
@@ -170,8 +163,8 @@ App({
     city: "",//市
     areaname: "",//区
     storename: '',//门店名称
-    // requestIP: "http://localhost:8080/happyschedule",
-    requestIP:'https://curriculum.50fun.cn/happyschedule',
+    requestIP: "http://localhost:8080/happyschedule",
+    //requestIP:'https://curriculum.50fun.cn/happyschedule',
     //学生角色
     tabBar: {
       color: "black",
