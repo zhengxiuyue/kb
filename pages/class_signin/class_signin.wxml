@@ -2,15 +2,22 @@
 
 <!-- 学生角色 -->
 <view wx:if="{{userstatus==3}}" class='sign'>
- <view class='classcard1' bindtap='govideo' style="{{Issignspace == 'none' ? 'display: bloak;': 'display: none;'}}" wx:for = "{{sign}}" wx:key="" data-scheduleid='{{item.scheduleid}}'>
+ <view class='classcard1' style="{{Issignspace == 'none' ? 'display: bloak;': 'display: none;'}}" wx:for = "{{sign}}" wx:key="" data-scheduleid='{{item.scheduleid}}'>
   <view class='classtop1'>
     <text class='classname1'>第{{index + 1}}节</text>
   </view>
   <view class='classgrate'>时间：{{item.date}}</view>
-  <view class='classindex'>已请假</view>
-  <!-- <view class='btn'>请假</view> -->
+  <view class='classindex' wx:if='{{item.si_id != null}}'>已请假</view>
+  <i-button wx:if = "{{endFormatTime < (item.date+' '+item.startpoint) && item.si_id == null}}" type='info' size='small' style='padding:0rpx;position:absolute;top:10rpx;right:0rpx;' data-scheduleid='{{item.scheduleid}}' bindtap="handleOpen5">请假</i-button>
 </view>
 </view>
+
+<i-modal title="请假理由" visible="{{ visible5 }}" actions="{{ actions5 }}" bind:click="handleClick5">
+   <textarea class="weui-textarea" placeholder='写输入请假理由' placeholder-class='place_notice' bindinput="reasonInput">
+  </textarea>
+</i-modal>
+
+<i-message id="message" />
 
 <!-- 老师角色 -->
 <view wx:if="{{userstatus==2}}" class='sign1'>

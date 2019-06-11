@@ -47,8 +47,37 @@ Component({
   methods: {
     govideo:function(e){
       var scheduleid = e.currentTarget.dataset.scheduleid
-      wx.navigateTo({
-        url: '/pages/videoWebView/videoWebView?scheduleid=' + scheduleid,
+      wx.request({
+        url: requestIP + '/user/getVideo',
+        data: {
+          scheduleid: scheduleid
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'userid': app.globalData.userid
+        },
+        success: function (res) {
+          if (res.data.resultCode == "101") {
+            app.globalData.video_link = res.data.data[0].link
+            console.log(app.globalData.video_link)
+            wx.navigateTo({
+              url: '/pages/videoWebView/videoWebView?scheduleid=' + scheduleid,
+            })            
+          }
+          else if (res.data.resultCode == "204") {
+            wx.showToast({
+              title: '本节课没视频',
+              icon: 'none',
+            })            
+          }
+          else {
+            wx.showToast({
+              title: '请求失败',
+              icon: 'none',
+            })
+          }
+        },
       })
     }
   },

@@ -299,30 +299,23 @@ Page({
     else if (that.data.current == 1 & that.data.userstatus == 3) {
       //获取签到列表
       wx.request({
-        url: requestIP + '/student/getClassSchedule',
+        url: requestIP + '/user/getScheStu',
         data: {
-          classid: that.data.classid
+          classid: that.data.classid,
+          userid: app.globalData.userid
         },
         method: 'POST',
         header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'userid': app.globalData.userid
+          'content-type': 'application/x-www-form-urlencoded'        
         },
         success: function (res) {
           var time = util.formatTime(new Date());
-          if (res.data.resultCode == "101") {
+          if (res.data.resultCode == "101") {         
             that.setData({
-              sign: [],
-              gosignteamore: "0"
+              sign: res.data.data,
             })
-            for (var i = 0, len = res.data.data.length; i < len; i++) {
-              that.data.sign[i] = res.data.data[i]
-              that.data.sign[i].classnum = i + 1//获取第几节课
-            }
-            that.setData({
-              sign: that.data.sign,
-            })
-          } else {
+          } 
+          else {
             that.setData({
               sign: []
             })
@@ -554,36 +547,22 @@ Page({
     else if (that.data.current == 1 & that.data.userstatus == 3){
       //获取签到列表
       wx.request({
-        url: requestIP + '/student/getClassSchedule',
+        url: requestIP + '/user/getScheStu',
         data: {
-          classid: that.data.classid
+          classid: that.data.classid,
+          userid: app.globalData.userid
         },
         method: 'POST',
         header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'userid': app.globalData.userid
+          'content-type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
-          var time = util.formatTime(new Date()); 
+          var time = util.formatTime(new Date());
           if (res.data.resultCode == "101") {
             that.setData({
-              sign: [],
-              gosignteamore:"0"
-            })
-            for (var i = 0, len = res.data.data.length; i < len; i++) {
-              that.data.sign[i] = res.data.data[i]
-              that.data.sign[i].classnum = i+1//获取第几节课
-            }
-            that.setData({
-              sign: that.data.sign,
-              Issignspace: "none"
+              sign: res.data.data,
             })
           }
-          else if (res.data.resultCode == "204"){
-            that.setData({
-              Issignspace: "bloak"
-            })
-          } 
           else {
             that.setData({
               sign: []

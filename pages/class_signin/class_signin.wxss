@@ -5,9 +5,6 @@
   padding: 20 40rpx;
   border-radius: 2rpx;
   background-color: #fff;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   position: relative;
 }
 
@@ -15,6 +12,9 @@
   color: #5cadff;
   font-size: 32rpx;
   font-weight: 700;
+  position: absolute;
+  right: 40rpx;
+  top: 40rpx;
 }
 
 .btn{
@@ -22,6 +22,10 @@
   border: 2rpx solid #1DA27F;
   border-radius: 10rpx;
   color: #1DA27F;
+  width: 80rpx;
+  position: absolute;
+  top: 35rpx;
+  right: 20rpx;
 }
 
 .classtop1{
@@ -49,7 +53,22 @@
   line-height: 120rpx;
   font-size:32rpx;
   color: #464c5b;
-  margin-left: 180rpx;
+  margin-left: 20rpx;
+}
+
+.weui-textarea{
+  padding: 2%;
+  margin-left:5%;
+  width: 86%;
+  height: 200rpx;
+  background-color: #fff;
+  text-align: left;
+  border: 2rpx solid #9ea7b4;
+  border-radius: 10rpx;
+}
+
+.place_notice{
+  color: #dddee1;
 }
 
 .classinfm1{

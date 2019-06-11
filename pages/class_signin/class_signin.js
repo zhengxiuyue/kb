@@ -1,5 +1,6 @@
 // pages/signin/signin.js
 var util = require('../../utils/util.js');
+const { $Message } = require('../../dist/base/index');
 var app = getApp();
 var requestIP = app.globalData.requestIP;
 Component({
@@ -75,62 +76,72 @@ Component({
     notsignstu: [],//未签到学生信息
     signnum:"",//已签到学生人数
     notsignnum:"",//未签到学生人数
-    Issignnumspace:"none"
+    Issignnumspace:"none",
+    visible5: false,
+    actions5: [
+      {
+        name: '取消'
+      },
+      {
+        name: '确定',
+        color: '#ed3f14',
+        loading: false
+      }
+    ],
+    reason:'',//学生请假理由
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    //学生角色签到
-    signstu:function(e){
+    //获取学生请假理由
+    reasonInput: function (event) {
       var that = this
+      that.setData({
+        reason: event.detail.value
+      })
+    },
+    //学生角色请假
+    askForLeave:function(e){
+      var that = this
+      console.log(e)
       wx.request({
-        url: requestIP + '/student/sign',
+        url: requestIP + '/user/askForLeave',
         data: {
-          scheduleid: e.currentTarget.dataset.scheduleid
+          scheduleid: that.data.scheduleid,
+          userid: app.globalData.userid,
+          reason: that.data.reason
         },
         method: 'POST',
         header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'userid': app.globalData.userid
+          'content-type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
           if (res.data.resultCode == "101") {
-            wx.showLoading();
-            wx.hideLoading();
-            setTimeout(() => {
-              wx.showToast({
-                title: '签到成功',
-                icon: "success",
-              });
-              setTimeout(() => {
-                wx.hideToast();
-              }, 2000)
-            }, 0);
+            wx.showToast({
+              title: '请假成功',
+              icon:'success'
+            })     
+            //获取签到列表
             wx.request({
-              url: requestIP + '/student/getClassSchedule',
+              url: requestIP + '/user/getScheStu',
               data: {
-                classid: that.data.classid
+                classid: that.data.classid,
+                userid: app.globalData.userid
               },
               method: 'POST',
               header: {
-                'content-type': 'application/x-www-form-urlencoded',
-                'userid': app.globalData.userid
+                'content-type': 'application/x-www-form-urlencoded'
               },
               success: function (res) {
+                var time = util.formatTime(new Date());
                 if (res.data.resultCode == "101") {
                   that.setData({
-                    sign: []
+                    sign: res.data.data,
                   })
-                  for (var i = 0, len = res.data.data.length; i < len; i++) {
-                    that.data.sign[i] = res.data.data[i]
-                    that.data.sign[i].classnum = i + 1//获取第几节课
-                  }
-                  that.setData({
-                    sign: that.data.sign,
-                  })
-                } else {
+                }
+                else {
                   that.setData({
                     sign: []
                   })
@@ -149,9 +160,8 @@ Component({
                   icon: 'none',
                 });
               },
-            })
-          }
-          else {          
+            })       
+          } else {
             wx.showToast({
               title: '请求失败',
               icon: 'none',
@@ -165,7 +175,53 @@ Component({
           });
         },
       })
-    },   
+      
+    },
+
+
+    handleOpen5(e) {
+      this.setData({
+        visible5: true,
+        scheduleid: e.currentTarget.dataset.scheduleid,
+        reason:''
+      });
+    },
+
+    handleClick5({ detail }) {
+      var that = this
+      if (detail.index === 0) {
+        this.setData({
+          visible5: false
+        });
+      } 
+      else {
+        if (that.data.reason.replace(/\s+/g, '').length == 0){
+          wx.showToast({
+            title: '请输入请假理由',
+            icon: "none",
+          });
+          return
+        }
+        else{
+          const action = [...this.data.actions5];
+          action[1].loading = true;
+
+          this.setData({
+            actions5: action
+          });
+
+          setTimeout(() => {
+            action[1].loading = false;
+            this.setData({
+              visible5: false,
+              actions5: action
+            });
+            that.askForLeave()
+          }, 2000);
+        }
+        
+      }
+    },
 
     //老师签到
     signin:function(e){
