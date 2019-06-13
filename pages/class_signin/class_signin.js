@@ -219,7 +219,6 @@ Component({
             that.askForLeave()
           }, 2000);
         }
-        
       }
     },
 
