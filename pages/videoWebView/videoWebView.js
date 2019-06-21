@@ -9,28 +9,19 @@ Page({
   data: {
     video_link: '',
     scheduleid: ""
-  },
+    },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
-    if (app.globalData.video_link) {
-      that.setData({
-        video_link: app.globalData.video_link
-      })
-    } else if (that.options.video_link) {
-      that.setData({
-        video_link: that.options.video_link
-      })
-    }
-
     if (that.options.scheduleid) {
       that.setData({
         scheduleid: that.options.scheduleid
       })
     }
+
     //判断是否授权 未授权跳授权页面
     wx.getSetting({
       success: function (res) {
@@ -84,21 +75,12 @@ Page({
    */
   onShow: function (options) {
     var that = this;
-    if (app.globalData.video_link) {
-      that.setData({
-        video_link: app.globalData.video_link
-      })
-    } else if (that.options.video_link) {
-      that.setData({
-        video_link: that.options.video_link
-      })
-    }
-
     if (that.options.scheduleid) {
       that.setData({
         scheduleid: that.options.scheduleid
       })
     }
+
     //判断是否授权 未授权跳授权页面
     wx.getSetting({
       success: function (res) {
@@ -161,7 +143,7 @@ Page({
       success(res) {
         if (res.data.resultCode == '101') {
           if (res.data.data == 1) {
-            console.log("正常加载");
+            that.getVideo();
           } else if (res.data.data == 0) {
             wx.showToast({
               title: '您不是该课堂的学生，无法查看!',
@@ -224,7 +206,47 @@ Page({
       title: nickname + '给你分享了"快乐课堂"，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
-      path: '/pages/videoWebView/videoWebView&scheduleid=' + that.data.scheduleid + '&shareStatus=' + shareStatus
+      path: '/pages/videoWebView/videoWebView?scheduleid=' + that.data.scheduleid + '&shareStatus=' + shareStatus
     }
+  },
+
+  getVideo: function () {
+    var that = this;
+    var scheduleid = that.data.scheduleid
+    wx.request({
+      url: requestIP + '/user/getVideo',
+      data: {
+        scheduleid: scheduleid
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'userid': app.globalData.userid
+      },
+      success: function (res) {
+        if (res.data.resultCode == "101") {
+          var video_link = res.data.data[0].link
+          that.setData({
+            video_link: video_link
+          })
+        }
+        else if (res.data.resultCode == "204") {
+          that.setData({
+            video_link: null
+            })
+          wx.showToast({
+            title: '暂无相关视频！',
+            icon: 'none',
+            duration: 10000
+          })
+        }
+        else {
+          wx.showToast({
+            title: '请求失败',
+            icon: 'none',
+          })
+        }
+      },
+    })
   }
 })

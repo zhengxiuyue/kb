@@ -109,6 +109,6 @@
 
   <chat style="{{current == 2 ? 'display: inline;': 'display: none;'}}" chat="{{chat}}" Ischatspace="{{Ischatspace}}" openid="{{openid}}" classid="{{classid}}" items="{{items}}" current="{{current}}"></chat>
 	<notice id="notice" bindmyevent="myEventListener" style="{{current == 3 ? 'display: inline;': 'display: none;'}}"  notice="{{notice}}" Isnoticespace="{{Isnoticespace}}" classid="{{classid}}" items="{{items}}" current="{{current}}" wx:if="{{showCom}}"></notice>
-  <video id="video"  bindmyevent="myEventListener" class='video' style="{{current == 4 ? 'display: inline;': 'display: none;'}}" sign="{{sign}}" video="{{video}}" Issignspace='{{Issignspace}}'></video>
+  <video id="video"  bindmyevent="myEventListener" class='video' style="{{current == 4 ? 'display: inline;': 'display: none;'}}"  video="{{video}}" Issignspace='{{Issignspace}}'></video>
   
 </view>

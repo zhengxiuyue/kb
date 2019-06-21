@@ -11,10 +11,6 @@ Component({
       type: "Array",
       value: "",
     },
-    sign: {
-      type: "Array",
-      value: "",
-    },
     Issignspace: {
       type: "String",
       value: "",
@@ -26,19 +22,6 @@ Component({
    * 组件的初始数据
    */
   data: {
-    //宣传视频
-    discovery: {
-      video: 'https://v.mifile.cn/b2c-mimall-media/ed921294fb62caf889d40502f5b38147.mp4',
-      image: "https://i1.mifile.cn/a4/xmad_15278351912522_frJQc.jpg",//封面图
-      duration_raw: 74//秒数
-    },
-    space: "/image/space.png",
-
-    classList:[{
-      coursename:"点歌单",
-      levelname:"ss"
-    }]
-
   },
 
   /**
@@ -46,38 +29,13 @@ Component({
    */
   methods: {
     govideo:function(e){
-      var scheduleid = e.currentTarget.dataset.scheduleid
-      wx.request({
-        url: requestIP + '/user/getVideo',
-        data: {
-          scheduleid: scheduleid
-        },
-        method: 'POST',
-        header: {
-          'content-type': 'application/x-www-form-urlencoded',
-          'userid': app.globalData.userid
-        },
-        success: function (res) {
-          if (res.data.resultCode == "101") {
-            app.globalData.video_link = res.data.data[0].link
-            console.log(app.globalData.video_link)
-            wx.navigateTo({
-              url: '/pages/videoWebView/videoWebView?scheduleid=' + scheduleid,
-            })            
-          }
-          else if (res.data.resultCode == "204") {
-            wx.showToast({
-              title: '本节课没视频',
-              icon: 'none',
-            })            
-          }
-          else {
-            wx.showToast({
-              title: '请求失败',
-              icon: 'none',
-            })
-          }
-        },
+      var that = this;
+      var index = e.currentTarget.dataset.index;
+      console.log(that.properties.video)
+      console.log(index)
+      var scheduleid = that.properties.video[index].scheduleid;
+      wx.navigateTo({
+        url: '/pages/videoWebView/videoWebView?scheduleid=' + scheduleid,
       })
     }
   },

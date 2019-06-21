@@ -776,7 +776,7 @@ Page({
     }
 
     else if (that.data.current == 4){
-      //获取签到列表
+      //获取课堂列表
       wx.request({
         url: requestIP + '/student/getClassSchedule',
         data: {
@@ -791,15 +791,15 @@ Page({
           var time = util.formatTime(new Date());
           if (res.data.resultCode == "101") {
             that.setData({
-              sign: [],
+              video: [],
               gosignteamore: "0"
             })
             for (var i = 0, len = res.data.data.length; i < len; i++) {
-              that.data.sign[i] = res.data.data[i]
-              that.data.sign[i].classnum = i + 1//获取第几节课
+              that.data.video[i] = res.data.data[i]
+              that.data.video[i].classnum = i + 1//获取第几节课
             }
             that.setData({
-              sign: that.data.sign,
+              video: that.data.video,
             })
           } 
           else if (res.data.resultCode == "204") {
@@ -809,7 +809,7 @@ Page({
           } 
           else {
             that.setData({
-              sign: []
+              video: []
             })
             wx.showToast({
               title: '请求失败',
@@ -819,7 +819,7 @@ Page({
         },
         fail: function () {
           that.setData({
-            sign: []
+            video: []
           })
           wx.showToast({
             title: '服务器异常',

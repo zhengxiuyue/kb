@@ -159,12 +159,11 @@ App({
     code: "",
     storeid: "",
     province: "",//省
-    video_link:"",//视频链接
     city: "",//市
     areaname: "",//区
     storename: '',//门店名称
-    requestIP: "http://localhost:8080/happyschedule",
-    //requestIP:'https://curriculum.50fun.cn/happyschedule',
+    //requestIP: "http://localhost:8080/happyschedule",
+    requestIP:'https://curriculum.50fun.cn/happyschedule',
     //学生角色
     tabBar: {
       color: "black",

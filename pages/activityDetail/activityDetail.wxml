@@ -42,7 +42,6 @@
     <button open-type='share'><view class  = "share">分享</view></button>
     <view class = "detail" bindtap='GoactivityWebView'>查看详情</view>
     <view class = "join" bindtap='GoactivitySignUp' style="{{activity.status == 0 &&  activity.ay_status == '1'? 'display: block': 'display: none;'}}">立即参与</view>
-    <view class = "noJoin" style="{{status == 0 &&  activity.ay_status == '0'? 'display: block': 'display: none;'}}">活动已结束</view>
-    <view class = "noJoin" style="{{status == 0 &&  activity.ay_status == '2'? 'display: block': 'display: none;'}}">人数已满</view>
+    <view class = "noJoin" style="{{activity.status == 0 &&  activity.ay_status == '0'? 'display: block': 'display: none;'}}">活动已结束</view>
     <view class = "joined" style="{{activity.status == 1 ? 'display: block;': 'display: none;'}}">已报名</view>
 </view>

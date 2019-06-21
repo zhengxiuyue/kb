@@ -1,5 +1,5 @@
 <!--pages/class_video/class_video.wxml-->
-<view class='classcard1' bindtap='govideo' style="{{Issignspace == 'none' ? 'display: bloak;': 'display: none;'}}" wx:for = "{{sign}}" wx:key="" data-scheduleid='{{item.scheduleid}}'>
+<view class='classcard1' bindtap='govideo' style="{{Issignspace == 'none' ? 'display: bloak;': 'display: none;'}}" wx:for = "{{video}}" wx:key="" data-scheduleid='{{item.scheduleid}}' data-index='{{index}}'>
   <view class='classtop1'>
     <text class='classname1'>第{{index + 1}}节</text>
   </view>

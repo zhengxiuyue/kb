@@ -8,7 +8,7 @@ Page({
    */
   data: {
     activity: null,
-    ay_id: '2'
+    ay_id: ''
   },
 
   /**
@@ -80,11 +80,12 @@ Page({
     var that = this
     var nickname = app.globalData.nickName
     var shareStatus = app.globalData.userstatus
+    var ay_id = that.data.ay_id
     return {
       title: nickname + '给你分享了"快乐课堂"，快打开看看吧',
       desc: '交友学习欢迎加入',
       imageUrl: '/image/onshare.png',
-      path: '/pages/activityWebView/activityWebView?shareStatus=' + shareStatus
+      path: '/pages/activityWebView/activityWebView?shareStatus=' + shareStatus + "&ay_id=" + ay_id
     }
   },
 
