@@ -8,12 +8,13 @@
   </view>
   <view class='classgrate'>时间：{{item.date}}</view>
   <view class='classindex' wx:if='{{item.si_id != null}}'>已请假</view>
+  <view class='classindex' wx:if="{{item.si_id == null && endFormatTime >= (item.date+' '+item.startpoint)}}">已签到</view>
   <i-button wx:if = "{{endFormatTime < (item.date+' '+item.startpoint) && item.si_id == null}}" type='info' size='small' style='padding:0rpx;position:absolute;top:10rpx;right:0rpx;' data-scheduleid='{{item.scheduleid}}' bindtap="handleOpen5">请假</i-button>
 </view>
 </view>
 
 <i-modal title="请假理由" visible="{{ visible5 }}" actions="{{ actions5 }}" bind:click="handleClick5">
-   <textarea class="weui-textarea" placeholder='写输入请假理由' placeholder-class='place_notice' bindinput="reasonInput">
+   <textarea class="weui-textarea" placeholder='请输入请假理由' placeholder-class='place_notice' wx:if='{{visible5}}' bindinput="reasonInput">
   </textarea>
 </i-modal>
 

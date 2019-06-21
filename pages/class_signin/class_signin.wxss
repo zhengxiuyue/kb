@@ -63,8 +63,8 @@
   height: 200rpx;
   background-color: #fff;
   text-align: left;
-  border: 2rpx solid #9ea7b4;
-  border-radius: 10rpx;
+  border: 2rpx solid #dddeee;
+  border-radius: 5rpx;
 }
 
 .place_notice{
@@ -82,6 +82,7 @@
   position: relative;
   text-align: center;
   margin:0rpx auto; 
+  z-index: 99;
 }
 
 .sign_stu{
