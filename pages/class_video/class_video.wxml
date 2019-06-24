@@ -5,6 +5,7 @@
   </view>
   <text class='classgrate'>时间：{{item.date}}</text>
   <text class='classinfm1' decode="{{true}}"></text>
+  <button style='display: {{item.videoid == 0? "none":"block"}}' class='activityon'>有视频</button>
 </view>
 
 <view class='classcard' style='display:{{Issignspace}}'>

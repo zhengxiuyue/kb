@@ -52,7 +52,7 @@
   font-weight: bold; 
   position: absolute;
   top: 60rpx;
-  left: 280rpx;
+  left: 230rpx;
   font-size:32rpx;
   color: #464c5b;
 }
@@ -74,6 +74,21 @@
 .classinfm{
   padding: 0rpx 10rpx;
   padding-top: 8rpx;
+}
+
+.activityon{
+  color:#ed4040;
+  padding:8rpx;
+  height: 50rpx;
+  line-height:35rpx;
+  border:2rpx solid #ed4040;
+  font-size:24rpx;
+  margin-left:10rpx;
+  background:#fff;
+  display: inline;
+  position: absolute;
+  top: 35rpx;
+  right: 20rpx;
 }
 
 
