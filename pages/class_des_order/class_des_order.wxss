@@ -1,6 +1,6 @@
 /* pages/class_des/class_des.wxss */
 .page{
-  height: 1300rpx;
+  height: 1200rpx;
 }
 .title{
   font-weight: bold ;
@@ -18,7 +18,7 @@
  top: -5rpx;
 }
 .class{
-  margin: 20rpx 60rpx;
+  margin: 20rpx 17rpx;
   line-height: 1.8;
 }
 .class-desImg{
@@ -32,14 +32,14 @@
   height: 40rpx;
 }
 .teacher{
-  margin-left: 60rpx;
+  margin-left: 77rpx;
   line-height: 2;
 }
 .teacher-rank{
   color: #333333;
 }
 .know{
-  margin-left: 60rpx;
+  margin-left: 77rpx;
   line-height: 1.8;
 }
 .sign{
@@ -137,7 +137,6 @@ button {
 
 .class_des_text1{
   display: flex;
-  justify-content: flex-start;
 }
 
 .member-icon{
